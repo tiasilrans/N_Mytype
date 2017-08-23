@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<h2>Google Map API</h2>
+일단 google map api 검색해서 사이트 접근후에, 지도를 띄울 영역을 설정하고,<br/>
+미리 활성화된 영역에 나중에 그려지는거라서..사이즈가 있어야 함.	
 <h2>구글 맵</h2>
 <div id="map" style="width:80%; height: 50%;"></div>
     <script>
