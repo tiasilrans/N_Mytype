@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<mvc:default-servlet-handler/>
+	<mvc:annotation-driven/>
+	<context:component-scan base-package="controller"/>
+
+	<!-- websocket handler 등록-->
+	<websocket:handlers>
+		<websocket:mapping handler="ws" path="/ws/chat.ws"/>
+		<websocket:mapping handler="alertWs" path="/ws/alert.ws"/>
+		<websocket:handshake-interceptors>
+			<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+		</websocket:handshake-interceptors>
+	</websocket:handlers>	
+
+	<!-- view Resolver -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<constructor-arg name="prefix" value="/WEB-INF/view/"/>
+		<constructor-arg name="suffix" value=".jsp"/>
+		<property name="order" value="9"></property>
+	</bean>
+	
+	<!-- DBCP 오라클 DB 셋팅 -->
+	<bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="ds">
+		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="user" value="tmdxor"/>
+		<property name="password" value="xortmd"/>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.10.61:1521:xe"/>
+	</bean>	
+	
+	<!-- mybatis 설정 -->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="ds"/>
+		<property name="mapperLocations">
+			<list>
+				<value>/WEB-INF/mapper/member-mapper.xml</value>
+				<value>/WEB-INF/mapper/memo-mapper.xml</value>
+				<value>/WEB-INF/mapper/opendata-mapper.xml</value>
+				<value>/WEB-INF/mapper/freetalk-mapper.xml</value>
+				<value>/WEB-INF/mapper/point-mapper.xml</value>
+			</list>
+		</property>
+	</bean>	
+
+	<!-- 구글 메일 설정 (회원가입 이메일 인증 등) -->
+	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com"></property>
+		<property name="port" value="587"></property>
+		<property name="username" value="tmdxor44@gmail.com"></property>
+		<property name="password" value="1q2w3e4r!"></property>
+		<property name="javaMailProperties">
+		<props>
+			<prop key="mail.smtp.auth">true</prop>
+			<prop key="mail.smtp.starttls.enable">true</prop>
+		</props>
+		</property>
+	</bean>
+	
+	<!-- multipart handler / id 필수 (파일 업로드)-->
+	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" 
+		id="multipartResolver">
+		<property name="uploadTempDir" value="/temp"/>
+		<property name="defaultEncoding" value="utf-8"/>
+	</bean>
+
+	<!-- json 사용 설정 -->
+	<bean class="com.fasterxml.jackson.databind.ObjectMapper" id="objMapper"/>
+	
+	<!-- 컨트롤러 설정 -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="1"></property>
+	</bean>
+	
+	<!-- 타일 설정 -->
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+		<property name="order" value="2"></property>
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles/tiles-config.xml</value>
+			</list>
+		</property>
+	</bean>	
+	
+	
+	
+	
+
+</beans>
