@@ -18,9 +18,9 @@
 	</definition>
 	
 	<!--  -->
-	<definition name="t_el_memo" extends="t_base">
+	<definition name="t_el_blog" extends="t_base">
 		<put-attribute name="section">
-			<definition template="/WEB-INF/view/message/template.jsp">
+			<definition template="/WEB-INF/view/blog/template.jsp">
 				<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp" />
 			</definition>
 		</put-attribute>
