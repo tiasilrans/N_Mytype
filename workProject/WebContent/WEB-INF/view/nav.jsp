@@ -148,14 +148,18 @@ body{
       <div class="collapse navbar-collapse  header-right-menu" id="navbar-primary-collapse">
             <ul class="nav navbar-nav navbar-left">
             <li class="page-scroll">
-                        <a class="header" href="javascript:" id="about-menu">홈</a>
+                        <a class="header" href="javascript:" id="home">홈</a>
                     </li>
                     <li>
                         <a class="" href="javascript:" id="services-menu">구독</a>
                     </li>
-                    <li>
-                        <a class="" href="javascript:" id="Clients-menu">내 블로그</a>
-                    </li>
+                    <li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">내 블로그<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href=""></a></li>
+							<li><a href=""></a></li>							
+							<li><a href="/blog/create">새 블로그 만들기</a></li>
+					</ul></li>
                 </ul>
                 <form class="navbar-form navbar-right form-horizontal" role="search">
 	              <div class="input-group">
