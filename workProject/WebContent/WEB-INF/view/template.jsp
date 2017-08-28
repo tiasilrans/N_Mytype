@@ -13,89 +13,9 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-<style>
-body {
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  letter-spacing: .5px;
-}
-h1 {
-  font-family: 'Roboto Condensed', sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-header {
-  position: relative;
-  background-size: cover;
-  background-color: #7d6060;
-  background-position: center;
-  padding-top: 300px;
-  padding-bottom: 300px;
-}
-.overlay {
-  position: absolute;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  background-color: #e6e6e6;
-}
-.navbar {
-  position: absolute;
-  width: 100%;
-  top: 0px;
-  margin-bottom: 0px;
-  border-radius: 0px;
-  background-color: transparent;
-  border: transparent;
-  -webkit-transition: all ease-in-out 0.4s;
-  -moz-transition: all ease-in-out 0.4s;
-  -o-transition: all ease-in-out 0.4s;
-  transition: all ease-in-out 0.4s;
-}
-.navbar-default .navbar-nav > li > a:hover {
-  color: #fff;
-  background-color: transparent;
-}
-.navbar-nav > li > a {
-  text-transform: uppercase;
-  line-height: 42px;
-  -webkit-transition: all ease-in-out 0.4s;
-  -moz-transition: all ease-in-out 0.4s;
-  -o-transition: all ease-in-out 0.4s;
-  transition: all ease-in-out 0.4s;
-}
-.navbar-default .navbar-nav > li > a {
-  color: #fff;
-  font-size: 13.5px;
-}
-.navbar-brand {
-  padding: 17px 15px;
-}
-.navbar-brand img {
-  width: 200px;
-}
-.shrink-nav {
-  color: #000 !important;
-  top: 0px;
-  background-color: #fff;
-  position: fixed;
-}
-.shrink-nav .navbar-nav > li > a {
-  color: #000 !important;
-  line-height: 24px;
-}
-@media (max-width: 767px) {
-  .navbar-nav > li > a {
-    line-height: 20px;
-  }
-  .navbar-brand {
-    padding: 7px 15px;
-  }
-  .navbar-brand img {
-    width: 144px;
-  }
-}
 
+
+<style>
  .navbar-form {
   margin:0;
   margin-top: 5px;
@@ -132,21 +52,6 @@ header {
   z-index: 3;   
 }
 
-@media (min-width: 768px) {
-    .dropdown:hover {background-color: #000;}
-	.dropdown:hover .dropdown-menu {
-	  display: block;
-	}
-	.navbar-form {
-	  padding:0px;
-	}	
-	.navbar-form .search-box {
-	  width:260px;
-	  height:32px;
-	}
-
-}
-
 </style>
 
 
@@ -157,7 +62,7 @@ header {
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="container">
+	<div>
 	<nav>
 		<tiles:insertAttribute name="nav"/>
 	</nav>
