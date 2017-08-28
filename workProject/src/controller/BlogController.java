@@ -24,7 +24,7 @@ public class BlogController {
 	@RequestMapping("/blogView")
 	public ModelAndView createBlog(/*@PathVariable(value="url") String url,*/ @RequestParam Map m){
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_el_blog");
+			mav.setViewName("blog_base");
 		 	mav.addObject("section", "blog/blog");
 		
 		return mav;
