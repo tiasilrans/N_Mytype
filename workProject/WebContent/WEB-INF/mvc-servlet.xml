@@ -5,11 +5,13 @@
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
 	<mvc:default-servlet-handler/>
 	<mvc:annotation-driven/>
@@ -24,12 +26,34 @@
 		</websocket:handshake-interceptors>
 	</websocket:handlers>	
 
+
+
 	<!-- view Resolver -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<constructor-arg name="prefix" value="/WEB-INF/view/"/>
 		<constructor-arg name="suffix" value=".jsp"/>
 		<property name="order" value="9"></property>
 	</bean>
+	
+	<!-- 컨트롤러 설정 -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="1"></property>
+	</bean>
+	
+	<!-- 타일 설정 -->
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+		<property name="order" value="2"></property>
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles/tiles-config.xml</value>
+			</list>
+		</property>
+	</bean>	
+	
+	
 	
 	<!-- DBCP 오라클 DB 셋팅 -->
 	<bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="ds">
@@ -38,6 +62,7 @@
 		<property name="password" value="xortmd"/>
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.10.61:1521:xe"/>
 	</bean>	
+	
 	
 	<!-- mybatis 설정 -->
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -77,23 +102,7 @@
 	<!-- json 사용 설정 -->
 	<bean class="com.fasterxml.jackson.databind.ObjectMapper" id="objMapper"/>
 	
-	<!-- 컨트롤러 설정 -->
-	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
-		<property name="order" value="1"></property>
-	</bean>
 	
-	<!-- 타일 설정 -->
-	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
-		<property name="order" value="2"></property>
-	</bean>
-	
-	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
-		<property name="definitions">
-			<list>
-				<value>/WEB-INF/tiles/tiles-config.xml</value>
-			</list>
-		</property>
-	</bean>	
 	
 	
 	
