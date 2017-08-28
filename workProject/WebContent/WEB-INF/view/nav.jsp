@@ -163,6 +163,10 @@ body{
 	                 <button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
 	              </div>
 	         	 </form>
+	         	 <ul class="nav navbar-nav navbar-right">
+	         	 <li class="page-scroll">
+	         	 </li>
+	         	 </ul>
                 
          </div><!-- /.navbar-collapse -->
   </div>
