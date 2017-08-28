@@ -37,10 +37,7 @@ body{
  padding: 5px 15px !important;   
     
 }
-.site-logo{
-    padding: 15px 20px !important; 
-    margin: 15px 10px !important;
-}
+
 .navbar-me{
     padding: 10px 0px;
     background-color: transparent;
@@ -59,8 +56,76 @@ body{
     background-color: transparent;
 }
 .menu-collapsed-button{
-    margin: 20px 15px 10px 15px !important;
+    margin: 10px 15px 10px 15px !important;
 }
+
+@media (max-width: 767px) {
+  .navbar-nav > li > a {
+    line-height: 20px;
+  }
+  .navbar-brand {
+    padding: 7px 15px;
+  }
+  .navbar-brand img {
+    width: 144px;
+  }
+}
+
+ .navbar-form {
+  margin:0;
+  margin-top: 5px;
+  padding:8px 0px;
+}
+ 
+.navbar-form .search-box {
+  border:0px;
+  height:35px;
+  outline: none;
+  width:320px;
+  padding-right: 3px;
+  padding-left: 15px;
+  margin:4px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  border-radius: 22px;
+}
+ 
+.navbar-form button {
+  border: 0;
+  background: none;
+  padding: 2px 5px;
+  margin-top: 2px;
+  position: relative;
+  left: -34px;
+  margin-bottom: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+ 
+.search-box:focus + button {
+  z-index: 3;   
+}
+
+@media (min-width: 768px) {
+    .dropdown:hover {background-color: #000;}
+	.dropdown:hover .dropdown-menu {
+	  display: block;
+	}
+	.navbar-form {
+	  padding:0px;
+	}	
+	.navbar-form .search-box {
+	  width:260px;
+	  height:32px;
+	}
+
+}
+
+
+
+
+
 </style>	
 	
     <!--navbar menu-->
@@ -70,33 +135,35 @@ body{
   <div class="container-fluid ">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed menu-collapsed-button" data-toggle="collapse" data-target="#navbar-primary-collapse" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed menu-collapsed-button" data-toggle="collapse" data-target="#navbar-primary-collapse" aria-expanded="false"
+      								style="float: left;">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand site-logo" href="#">MyType</a>
+      <a class="navbar-brand" href="#">MyType</a>
     </div>
       
-      <div class="collapse navbar-collapse navbar-right  header-right-menu" id="navbar-primary-collapse">
-            <ul class="nav navbar-nav ">
+      <div class="collapse navbar-collapse  header-right-menu" id="navbar-primary-collapse">
+            <ul class="nav navbar-nav navbar-left">
             <li class="page-scroll">
-                        <a class="header" href="javascript:" id="about-menu">About</a>
+                        <a class="header" href="javascript:" id="about-menu">홈</a>
                     </li>
                     <li>
-                        <a class="" href="javascript:" id="services-menu">Services</a>
+                        <a class="" href="javascript:" id="services-menu">구독</a>
                     </li>
                     <li>
-                        <a class="" href="javascript:" id="Clients-menu">Clients</a>
-                    </li>
-                    <li>
-                        <a class="" href="javascript:" id="contact-menu">Contact</a>
-                    </li>
-                    <li>
-                        <a class="" href="javascript:" id="project-menu">Projects</a>
+                        <a class="" href="javascript:" id="Clients-menu">내 블로그</a>
                     </li>
                 </ul>
+                <form class="navbar-form navbar-right form-horizontal" role="search">
+	              <div class="input-group">
+	                 <input type="text" class="search-box" placeholder="Search">
+	                 <button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
+	              </div>
+	         	 </form>
+                
          </div><!-- /.navbar-collapse -->
   </div>
  </nav>
