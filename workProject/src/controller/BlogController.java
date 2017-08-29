@@ -30,6 +30,14 @@ public class BlogController {
 		return mav;
 	}
 	
+	@RequestMapping("/postWrite")
+	public ModelAndView postWrite(@RequestParam Map m){
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("post");
+			mav.addObject("title", "포스트작성");
+		return mav;
+	}
+	
 	
 	
 
