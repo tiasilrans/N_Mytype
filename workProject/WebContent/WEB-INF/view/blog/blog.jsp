@@ -29,6 +29,7 @@ body {
 	-webkit-border-radius: 22px;
 	-moz-border-radius: 22px;
 	border-radius: 22px;
+	border-color: #d9d9d9;
 }
 
 .navbar-form button {
@@ -108,9 +109,11 @@ body {
 				<div class="media">
 						<div class="media-body" align="left">
 						<h3 class="media-heading" style="color: black;">블로그 제목</h3>
-							     <span>구독자</span> <span>포스트</span> 
+						<div style="color: #a6a6a6;">
+							     <span>구독자</span> 0 <span>포스트</span> 0 
 							     <br/>
 							     <br/>
+						</div>
 							     <button type="submit" class="btn">구독하기</button>
 							
 						</div>
@@ -137,6 +140,7 @@ body {
 							<li class="Kategorie nav-item"><a class="nav-link" href=""
 								style="color: #a6a6a6;" align="left">수필<span
 									class="post-count">3</span></a></li>
+				
 						</ul>
 					</div>
 				</section>
