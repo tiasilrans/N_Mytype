@@ -27,7 +27,7 @@
 	<div class="col-xs-12 col-md-4">
 		
  <div class="form-group joinbox row" >
-			<form action="/" method="post">					
+			<form action="/JoinExec.mt" method="post">					
 				<h3 align="left">회원가입 </h3>
 				<br/>				
 				<div class="form-group row">
@@ -66,6 +66,13 @@
 	
 	<div class="col-xs-0 col-md-4"></div>
 </div>
+
+
+
+
+
+
+
 <script>
 	
 	//이메일 인증 버튼 활성화 

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -56,13 +55,6 @@ public class MainController {
 		return mav;
 	}
 	
-	@RequestMapping("join.mt")
-	public ModelAndView join(){
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("t_join/join");
-		return mav;
-	}
-	
 	@RequestMapping("emailcheck.mt")
 	@ResponseBody
 	public String emailcheck(@RequestParam Map map) throws JsonProcessingException{
@@ -71,4 +63,33 @@ public class MainController {
 		String mz=objMapper.writeValueAsString(result);
 		return mz;
 	}
+
+	@RequestMapping("join.mt")
+	public ModelAndView join(){
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("t_join/join");
+		return mav;
+	}
+	
+	@RequestMapping("joinExec.mt")
+	public ModelAndView joinExec(@RequestParam Map map,	HttpSession session){
+		ModelAndView mav = new ModelAndView();
+		
+		/*
+		 * 회원가입 메소드 들어갈곳
+		 * */
+		
+		
+		/*if(flag){
+		 	//회원가입 성공시 로그인 시키고 메인화면으로 이동
+			mav.setViewName("redirect:/");//메인으로 돌아감
+			session.setAttribute("login", map.get("email"));
+		}else{
+			//다시 회원가입창으로 이동
+			mav.setViewName("t_join/join");
+			
+		}*/
+		return mav;
+	}
+	
 }

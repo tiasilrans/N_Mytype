@@ -8,17 +8,17 @@
 	border: 1px solid;
 	border-color: #d9d9d9;
 	margin: 20px;
-	width: 90%;
-	height: 40%;
+	width: auto;
+	height: auto;
 	padding: 20px;
 }
 #sbt{
-	width : 95%;
-	height: 20%;
+	width : 360px;
+	height: 60px;
 }
 #email,#password{
-	width : 95%;
-	height: 15%;
+	width : 360px;
+	height: 40px;
 }
 
 
@@ -41,11 +41,9 @@
 						placeholder="비밀번호" name="password" id="password" required />
 				</div>
 				<div align="center" class="row">
-					<div class="col-md-6 form-group">
-					</div>
-					<div class="col-md-6 form-group" align="right">
-					<a>비밀번호 찾기</a>｜
-					<a>회원가입</a>
+
+					<div class="form-group" align="right" style="margin-right: 45px;">
+					<a>비밀번호 찾기</a>｜<a>회원가입</a>
 					</div>
 					<button id="sbt" type="submit" class="btn">로그인</button>
 				</div>
