@@ -54,7 +54,7 @@
 
 <div class="col-xs-0 col-md-2"></div>
 <div class="col-xs-12 col-md-8">
- <div class="container">
+<div class="container">
 
  
             <div class="float-left" style="float: left;">
@@ -68,22 +68,12 @@
 
         <div class="float-right" style="float: right;">
         
-            <section class="section search">
-           	 <div class="form-group box">	   
-               <div class="container">
-				<div class="row">
-			        <div class="span12">
-			            <form id="custom-search-form" class="form-search form-horizontal pull-right">
-			                <div class="input-append span12">
-			                    <input type="text" class="search-query" placeholder="Search">
-			                    <button type="submit" class="btn"><i class="icon-search"></i></button>
-			                </div>
-			            </form>
-			        </div>
-	</div>
-</div>
-             </div>  
+             <section class="section blog-info">
+                   <div class="form-group box">	   
+                   	검색
+                   </div>   
             </section>
+            
 
             <section class="section blog-info">
                    <div class="form-group box">	   
