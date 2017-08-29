@@ -63,6 +63,20 @@ body {
 	.navbar-form {
 		padding: 0px;
 	}
+
+.label.hashtag {
+    display: inline-block;
+    padding: 7px;
+    margin-right: 2px;
+    margin-bottom: 6px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;
+    color: #606060;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    text-decoration: none;
+}
 	
 }
 </style>
@@ -127,10 +141,16 @@ body {
 					</div>
 				</section>
 				<section class="section box">
-				
-						
-							<h3 align="left" style="color: black;">태그</h3>
-				
+					<h3 align="left" style="color: black;">태그</h3>
+				<div align="left">
+                 	<a class="label hashtag" href="/">혼잣말</a>
+                    <a class="label hashtag" href="/">일상</a> 
+                    <a class="label hashtag" href="/">테스트</a>
+                    <a class="label hashtag" href="/">일기</a>  
+                    <a class="label hashtag" href="/">소설</a>
+                    <a class="label hashtag" href="/">수필</a>  
+                    <a class="label hashtag" href="/">하루</a>     
+                </div>
 				</section>
 			</div>
 		</div>
