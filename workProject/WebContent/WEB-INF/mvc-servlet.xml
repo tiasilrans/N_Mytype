@@ -58,9 +58,9 @@
 	<!-- DBCP 오라클 DB 셋팅 -->
 	<bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="ds">
 		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="user" value="tmdxor"/>
-		<property name="password" value="xortmd"/>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.10.61:1521:xe"/>
+		<property name="user" value="mytype"/>
+		<property name="password" value="mytype123"/>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@sample-instance.cahlombjjr77.ap-northeast-2.rds.amazonaws.com:1521:orcl"/>
 	</bean>	
 	
 	
