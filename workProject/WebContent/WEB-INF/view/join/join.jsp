@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <style>
 .joinbox{
 	border: 1px solid;
@@ -27,7 +28,7 @@
 	<div class="col-xs-12 col-md-4">
 		
  <div class="form-group joinbox row" >
-			<form action="/JoinExec.mt" method="post">					
+			<form action="/joinExec.mt" method="post">					
 				<h3 align="left">회원가입 </h3>
 				<br/>				
 				<div class="form-group row">
@@ -67,6 +68,11 @@
 	<div class="col-xs-0 col-md-4"></div>
 </div>
 
+<c:if test="${uuid ne null }">
+<script>
+	window.alert("인증번호값을 잘못 입력하였습니다.");	
+</script>
+</c:if>
 
 
 
@@ -80,8 +86,9 @@
 	function cnbtDisabled(){
 		var e = $("#email").val().length;		//email 길이
 		var p = $("#pw").val().length;	//password 길이
-		var dis = $("#email").prop("disabled");	//이메일 사용 여부
-		if( e > 0 && p > 0 && dis){
+		var read = $("#email").prop("readonly");	//이메일 사용 여부
+		console.log(read);
+		if( e > 0 && p > 0 && read){
 			$("#cnbt").prop("disabled", false);	
 		}else{
 			$("#cnbt").prop("disabled", true);	
@@ -98,8 +105,8 @@
 	//이메일 사용여부 
 	function emailUse(){
 		$("#emailtrue").css("display","none");
-		$("#email").prop("disabled",true);
 		cnbtDisabled();
+		$("#email").prop("readonly",true);
 	}
 	
 	$("#emailuse").on("click",emailUse);
@@ -139,6 +146,13 @@
 		$("#cnrow").css("display", "block");
 		$("#cnbt").css("display", "none");
 		$("#sbt").css("display", "block");
+		$.ajax({
+			url:"/emailUuidSend.mt",
+			method : "get",
+			data : {
+				"email" : $("#email").val(),
+			}
+		})
 		
 	});
 
