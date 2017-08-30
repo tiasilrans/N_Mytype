@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 body {
 	margin: 0px;
 	padding: 0px;
 	min-height: 2500px;
-	background-color: #f28281;
+	background-color: #fff;
 }
 
 .navbar-info {
@@ -25,7 +26,7 @@ body {
 	top: 0;
 	z-index: 888;
 	width: 100%;
-	border-bottom: 3px solid #e65100 !important;
+	border-bottom: 3px solid #00134d !important;
 }
 
 .navbar-me {
@@ -144,10 +145,12 @@ body {
 
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse">
+				<c:choose>
+				<c:when test="${sessionScope.login ne null }">
 				<ul class="nav navbar-nav navbar-left">
-					<li class=""><a class="header" href="javascript:"
+					<li class=""><a class="header" href="/"
 						id="home">홈</a></li>
-					<li><a class="" href="javascript:" id="services-menu">구독</a></li>
+					<li><a class="" href="">구독</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">내 블로그<span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -157,18 +160,38 @@ body {
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-				<li><form class="navbar-form form-horizontal" role="search">
-					<div class="input-group">
-						<input type="text" class="search-box" placeholder="Search">
-						<button type="submit" class="btn">
-							<span class="glyphicon glyphicon-search"></span>
-						</button>
-					</div>
-				</form></li>				
-					<li><a class="bnt" href="/join.mt" id="join">회원가입</a></li>
-					<li><a class="bnt" href="/login.mt" id="login">로그인</a></li>
+					<li class="dropdown">
+						<a id="account-toggler" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#" role="button" title="MY"
+													style="padding: 0px; margin: 10px;">
+                            <img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;">
+                            <span class="sr-only">계정</span></a>
+                            <ul class="dropdown-menu">
+                            	<li><a href=""><i class="glyphicon glyphicon-th-list"></i>　　MY홈</a></li>
+                            	<li><a href=""><i class="glyphicon glyphicon-heart"></i>　　좋아요</a></li>
+                            	<li><a href=""><i class="glyphicon glyphicon-save"></i>　　구매항목</a></li>
+                            	<li><a href=""><i class="fa fa-money"></i>　　포인트</a></li>
+                            	<li><a href=""><i class="glyphicon glyphicon-cog"></i>　　설정</a></li>
+                            </ul>
+					</li>
 				</ul>
-
+				</c:when>
+				<c:otherwise>
+				<ul class="nav navbar-nav navbar-right">											
+					<li><a class="bnt" href="/join.mt" id="join">회원가입</a></li>
+					<li><a class="bnt" href="/login.mt" id="login">로그인</a></li>				
+				</ul>
+				</c:otherwise>
+			</c:choose>	
+				<ul class="nav navbar-nav navbar-right">
+					<li><form class="navbar-form form-horizontal" role="search">
+						<div class="input-group">
+							<input type="text" class="search-box" placeholder="Search">
+							<button type="submit" class="btn">
+								<span class="glyphicon glyphicon-search"></span>
+							</button>
+						</div>
+					</form></li>				
+				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
 		</div>
