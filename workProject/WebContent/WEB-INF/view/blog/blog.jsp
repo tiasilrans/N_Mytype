@@ -110,6 +110,21 @@ body {
 		border-radius: 3px;
 		text-decoration: none;
 	}
+	.button {
+	    background-color: #4CAF50; /* Green */
+	    border: none;
+	    color: white;
+	    padding: 8px 20px;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 14px;
+	    margin: 4px 2px;
+	    cursor: pointer;
+	    border-radius: 5px;
+	}
+	.button1 {background-color: #303030;}
+
 }
 </style>
 
@@ -119,7 +134,7 @@ body {
 		<div class="row">
 			<div class="col-xs-8" align="left" style="color: black;">
 				발행한 포스트가 없습니다.<br /> <br />
-				<button type="submit" class="btn">새 포스트 쓰기</button>
+				<button class="button button1" title="새 포스트를 작성합니다.">새 포스트 쓰기</button>
 			</div>
 			<div class="col-xs-4">
 
@@ -144,7 +159,7 @@ body {
 							<div style="color: #a6a6a6;">
 								<span>구독자</span> 0 <span>포스트</span> 0 <br /> <br />
 							</div>
-							<button type="submit" class="btn">구독하기</button>
+							<button class="button button1">구독하기</button>
 
 						</div>
 						<div class="media-right">
