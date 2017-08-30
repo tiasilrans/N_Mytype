@@ -57,6 +57,8 @@ body {
 	background-color: transparent;
 }
 
+
+
 .menu-collapsed-button {
 	margin: 10px 15px 10px 15px !important;
 }
@@ -111,7 +113,10 @@ body {
 
 @media ( min-width : 768px) {
 	.dropdown:hover {
-		background-color: #000;
+		background-color: #fff;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+		
 	}
 	.dropdown:hover .dropdown-menu {
 		display: block;
