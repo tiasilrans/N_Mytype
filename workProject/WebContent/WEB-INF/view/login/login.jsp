@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
 <style>
@@ -12,11 +12,11 @@
 	height: auto;
 	padding: 20px;
 }
-#sbt{
+#sbt,#alert{
 	width : 360px;
 	height: 60px;
 }
-#email,#password{
+#email,#pw{
 	width : 360px;
 	height: 40px;
 }
@@ -38,12 +38,17 @@
 				
 				<div class="form-group row">
 					 <input class="form-control" type="password"
-						placeholder="비밀번호" name="password" id="password" required />
+						placeholder="비밀번호" name="pw" id="pw" required />
 				</div>
+				<c:if test="${flag ne null}">
+				<div class="alert alert-danger" id="alert">
+					<b>로그인실패 !</b>
+				</div>
+				</c:if>
 				<div align="center" class="row">
 
 					<div class="form-group" align="right" style="margin-right: 45px;">
-					<a>비밀번호 찾기</a>｜<a>회원가입</a>
+					<a>비밀번호 찾기</a>｜<a href="join.mt">회원가입</a>
 					</div>
 					<button id="sbt" type="submit" class="btn">로그인</button>
 				</div>
