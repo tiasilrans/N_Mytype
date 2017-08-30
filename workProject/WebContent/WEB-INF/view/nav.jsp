@@ -163,7 +163,7 @@ body {
 					<li class="dropdown">
 						<a id="account-toggler" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#" role="button" title="MY"
 													style="padding: 0px; margin: 10px;">
-                            <img src="https://cdn.postype.com/assets/img/avatar/avatar_pink.png" style="border-radius: 50%; height: 32px; width: 32px;">
+                            <img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;">
                             <span class="sr-only">계정</span></a>
                             <ul class="dropdown-menu">
                             	<li><a href=""><i class="glyphicon glyphicon-th-list"></i>　　MY홈</a></li>
