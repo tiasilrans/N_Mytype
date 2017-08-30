@@ -44,7 +44,6 @@ body{
     top: 0px;
     border: 0px;
     border-radius: 0px;
-    bottom : 0px;
 }
 .navbar-collapse{
     text-align: center;
@@ -132,7 +131,7 @@ body{
     <!--navbar menu-->
 <section class="navbar-info">
 
-<nav class="navbar navbar-default navbar-me">
+<nav id="primary-nav" class="primary-nav navbar navbar-default navbar-me" role="navigation">
   <div class="container-fluid ">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -175,7 +174,27 @@ body{
                 
          </div><!-- /.navbar-collapse -->
   </div>
+  <div class="container container-fluid">
+			<ul class="nav navbar-nav">
+				<li class="nav-item ">
+					<a class="nav-link" href="#">My홈</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">좋아요</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">구매항목</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">포인트</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">설정</a>
+				</li>
+			</ul>
+		</div>
  </nav>
+ 
 </section>
 <!-- end of navbar-->
 
@@ -189,4 +208,3 @@ $(window).scroll(function() {
 });
 
 </script>
-    
