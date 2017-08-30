@@ -142,10 +142,10 @@ body {
 				<a class="navbar-brand" href="#">MyType</a>
 			</div>
 
-			<div class="collapse navbar-collapse  header-right-menu"
+			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse">
 				<ul class="nav navbar-nav navbar-left">
-					<li class="page-scroll"><a class="header" href="javascript:"
+					<li class=""><a class="header" href="javascript:"
 						id="home">홈</a></li>
 					<li><a class="" href="javascript:" id="services-menu">구독</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
@@ -156,17 +156,17 @@ body {
 							<li><a href="/blog/create">새 블로그 만들기</a></li>
 						</ul></li>
 				</ul>
-				<form class="navbar-form navbar-right form-horizontal" role="search">
+				<ul class="nav navbar-nav navbar-right">
+				<li><form class="navbar-form form-horizontal" role="search">
 					<div class="input-group">
 						<input type="text" class="search-box" placeholder="Search">
 						<button type="submit" class="btn">
 							<span class="glyphicon glyphicon-search"></span>
 						</button>
 					</div>
-				</form>
-				<ul class="nav navbar-nav navbar-right">
-					<li class="page-scroll"><a class="bnt" href="" id="join">회원가입</a></li>
-					<li class="page-scroll"><a class="bnt" href="" id="login">로그인</a></li>
+				</form></li>				
+					<li><a class="bnt" href="" id="join">회원가입</a></li>
+					<li><a class="bnt" href="" id="login">로그인</a></li>
 				</ul>
 
 			</div>
