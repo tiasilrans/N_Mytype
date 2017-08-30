@@ -1,6 +1,9 @@
 package controller;
 
+import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,24 +25,26 @@ public class BlogController {
 	}
 	
 	@RequestMapping("/ctrateBlog.mt")
-	public ModelAndView createBlog(@RequestParam Map m){
-		System.out.println(m);
+	public ModelAndView createBlog(@RequestParam Map m, HttpSession session){
+		System.out.println(m.get("title"));
+		System.out.println(m.get("intro"));
+		String msg = "<h1>" + m.get("title") + "</h1><br/><h4>" + m.get("intro") + "</h4>";
+		m.put("intro", msg);
+		
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("redirect:/blog/{url}");
-			mav.addObject("url", m.get("url"));
-			mav.addObject("title", m.get("title"));
-			mav.addObject("intro", m.get("intro"));
+			mav.setViewName("redirect:/blog/"+m.get("url"));
+			session.setAttribute("map", m);
 		return mav;
 	}
 	
 	
 	@RequestMapping("/{url}")
-	public ModelAndView BlogView(@PathVariable(value="url") String url, @RequestParam Map m){
-		System.out.println("블로그 뷰로 가져온 값 : " + m);
+	public ModelAndView BlogView(@PathVariable(value="url") String url, HttpSession session){		
+		System.out.println(session.getAttribute("map"));
+		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("blog_base");
-		 	mav.addObject("section", "blog/blog");
-		
+			mav.addObject("section", "blog/blog");
 		return mav;
 	}
 	
