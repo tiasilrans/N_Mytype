@@ -22,7 +22,7 @@
 #post{
 	height: 350px;
 	width : 300px;
-	background-color: aqua;
+	background-color: #DAFFFF;
 	border-radius: 10px;
 	margin: 10px;
 	padding-top: 15px;
