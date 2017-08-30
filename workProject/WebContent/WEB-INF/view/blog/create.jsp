@@ -18,7 +18,7 @@
 	<div class="col-xs-0 col-md-2"></div>
 	<div class="col-xs-12 col-md-8">
 		<div class="form-group box row">		
-			<form action="" method="post">					
+			<form action="ctrateBlog.mt" method="post">					
 				<h3 align="left">새 블로그 만들기 </h3>
 				<br/>				
 				<div class="form-group row">
@@ -57,7 +57,7 @@
 					<div class="col-md-6 form-group">
 					</div>
 					<div class="col-md-6 form-group" align="right">
-						<button id="sbt" type="submit" class="btn" disabled>새 블로그 만들기</button>
+						<button id="sbt" type="submit" class="btn">새 블로그 만들기</button>
 					</div>
 				</div>
 			</form>
@@ -67,6 +67,13 @@
 	
 	<div class="col-xs-0 col-md-2"></div>
 </div>
+
+<script>
+	
+</script>
+
+
+
 
 
 

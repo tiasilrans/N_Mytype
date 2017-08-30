@@ -21,8 +21,21 @@ public class BlogController {
 		return mav;
 	}
 	
-	@RequestMapping("/blogView")
-	public ModelAndView createBlog(/*@PathVariable(value="url") String url,*/ @RequestParam Map m){
+	@RequestMapping("/ctrateBlog.mt")
+	public ModelAndView createBlog(@RequestParam Map m){
+		System.out.println(m);
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("redirect:/blog/{url}");
+			mav.addObject("url", m.get("url"));
+			mav.addObject("title", m.get("title"));
+			mav.addObject("intro", m.get("intro"));
+		return mav;
+	}
+	
+	
+	@RequestMapping("/{url}")
+	public ModelAndView BlogView(@PathVariable(value="url") String url, @RequestParam Map m){
+		System.out.println("블로그 뷰로 가져온 값 : " + m);
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("blog_base");
 		 	mav.addObject("section", "blog/blog");

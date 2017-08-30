@@ -176,6 +176,7 @@ body {
                             	<li><a href=""><i class="glyphicon glyphicon-save"></i>　　구매항목</a></li>
                             	<li><a href=""><i class="fa fa-money"></i>　　포인트</a></li>
                             	<li><a href=""><i class="glyphicon glyphicon-cog"></i>　　설정</a></li>
+                            	<li><a href="/logout.mt"><i class="glyphicon glyphicon-off"></i>　　로그아웃</a></li>
                             </ul>
 					</li>
 				</ul>
