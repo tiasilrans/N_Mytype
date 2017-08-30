@@ -165,8 +165,8 @@ body {
 						</button>
 					</div>
 				</form></li>				
-					<li><a class="bnt" href="" id="join">회원가입</a></li>
-					<li><a class="bnt" href="" id="login">로그인</a></li>
+					<li><a class="bnt" href="/join.mt" id="join">회원가입</a></li>
+					<li><a class="bnt" href="/login.mt" id="login">로그인</a></li>
 				</ul>
 
 			</div>
