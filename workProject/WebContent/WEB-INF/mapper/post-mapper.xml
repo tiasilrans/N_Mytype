@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="post">
+	<!-- 게시물 전체 불러오기 -->
+	<select id="listAll" resultType="java.util.HashMap">
+		select tmp2.* from (select rownum as r, tmp.* from
+		 (select * from post order by pdate desc)
+		 tmp)tmp2 where tmp2.r between 1 and 9
+	</select>
+	
+	<!-- 게시물 구독한 게시물 불러오기 -->
+	<select id="listLike" parameterType="java.lang.String" resultType="java.util.HashMap">
+		select tmp2.* from (select rownum as r, tmp.* from
+		 (select * from (select p.*,s.EMAIL from post p left join (select * from subscribe where email=#{email}) s on p.address=s.address)tmp where email=#{email} order by pdate desc
+		 )tmp)tmp2 where tmp2.r between 1 and 9
+	</select>
+
+</mapper>

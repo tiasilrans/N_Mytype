@@ -19,6 +19,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.MemberDao;
+import model.PostDao;
 
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -30,12 +31,21 @@ public class MainController {
 	MemberDao mdao;
 	
 	@Autowired
+	PostDao pdao;
+	
+	@Autowired
 	JavaMailSender sender;
 	
 	@RequestMapping({ "/", "/index.mt" })
-	public String welcome(Map map) {
-		map.put("section", "main");
-		return "t_el";
+	public ModelAndView welcome(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("t_main");
+		mav.addObject("listAll",pdao.listAll());
+		if(session.getAttribute("login") != null){
+			String email = (String)session.getAttribute("login");
+			mav.addObject("listLike",pdao.listLike(email));
+		}
+		return mav;
 	}
 	
 	@RequestMapping("login.mt")

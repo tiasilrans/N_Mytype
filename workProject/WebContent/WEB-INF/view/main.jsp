@@ -20,21 +20,10 @@
 	margin: 10px;
 }
 
-.list-nav-item{
-	font-size: 16px;
-	border-radius: 5px;
-	padding: 4px;
-	background-color: #E6FFFF;
-	color: black;
+.btn-primary{
+	background-color: green;
 }
 
-.list-nav-item-active{
-	font-size: 16px;
-	border-radius: 5px;
-	padding: 4px;
-	background-color: #5A5A5A;
-	color : white;
-}
 
 #post{
 	height: 330px;
@@ -133,16 +122,13 @@
 			<div id="secondlogo" class="col-xs-0 col-md-4">3</div>
 			
 			<!-- 목록 nav -->
-			<div class="col-xs-0 col-md-12">
-			<a><span class="list-nav-item-active"><b>전체</b></span></a>
-			<a><span class="list-nav-item"><b>구독</b></span></a>
-			
+			<div class="col-xs-0 col-md-12">			
 			
 			<div class="btn-group" data-toggle="buttons">
-			  <label class="btn btn-primary active">
+			  <label class="btn btn-default active">
 			    <input type="radio" name="options" id="option1" autocomplete="off" checked>전체
 			  </label>
-			  <label class="btn btn-primary">
+			  <label class="btn btn-default">
 			    <input type="radio" name="options" id="option2" autocomplete="off">구독
 			  </label>
 			</div>
