@@ -86,7 +86,7 @@
 				}
 			}).done(function(result) {
 					if(result.result){
-						location.href="/blog/"+url; 
+						location.href="/blog/"+result.url; 
 					}
 				})
 		}else{

@@ -40,6 +40,7 @@ public class BlogController {
 		boolean f = bDAO.blogCreate(m);
 		if(f){			
 			map.put("result", true);
+			map.put("url", m.get("url"));
 		}else{
 			map.put("result", false);
 		}
