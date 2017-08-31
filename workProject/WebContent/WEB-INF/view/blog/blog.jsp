@@ -6,129 +6,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
-body {
-	margin: 0px;
-	padding: 0px;
-}
-
-.box {
-	border: 1px solid;
-	border-color: #d9d9d9;
-	width: 100%;
-}
-
-.navbar-form {
-	margin: 0;
-	margin-top: 5px;
-	padding: 8px 0px;
-}
-
-.search-input {
-	height: 48px;
-	position: relative;
-	padding: 6px 48px 6px 12px;
-	font-size: 14px;
-	border: 1px solid #e5e5e5;
-	border-radius: 3px;
-	position: relative;
-}
-
-.search {
-	display: block;
-	position: relative;
-}
-
-.btn-search {
-	position: absolute;
-	top: 0;
-	right: 0px;
-	width: 48px;
-	height: 48px;
-	padding: 12px;
-	background-color: transparent;
-	border: 0;
-}
-
-.navbar-form .search-box {
-	border: 1px solid;
-	height: 35px;
-	outline: none;
-	width: 320px;
-	padding-right: 3px;
-	padding-left: 15px;
-	margin: 4px;
-	-webkit-border-radius: 22px;
-	-moz-border-radius: 22px;
-	border-radius: 22px;
-	border-color: #d9d9d9;
-}
-
-.navbar-form button {
-	border: 0;
-	background: none;
-	padding: 2px 5px;
-	margin-top: 2px;
-	position: relative;
-	left: -34px;
-	margin-bottom: 0;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-a:hover{
-	color: red;
-}
-.search-box:focus+button {
-	z-index: 3;
-}
-
-.section {
-	padding: 15px;
-	margin-bottom: 16px;
-	background-color: #fff;
-}
-
-@media ( min-width : 768px) {
-	.dropdown:hover {
-		background-color: #000;
-	}
-	.dropdown:hover .dropdown-menu {
-		display: block;
-	}
-	.navbar-form {
-		padding: 0px;
-	}
-	.label.hashtag {
-		display: inline-block;
-		padding: 7px;
-		margin-right: 2px;
-		margin-bottom: 6px;
-		font-weight: 400;
-		font-size: 13px;
-		line-height: 17px;
-		color: #606060;
-		border: 1px solid #e5e5e5;
-		border-radius: 3px;
-		text-decoration: none;
-	}
-	.button {
-	    background-color: #4CAF50; /* Green */
-	    border: none;
-	    color: white;
-	    padding: 8px 20px;
-	    text-align: center;
-	    text-decoration: none;
-	    display: inline-block;
-	    font-size: 14px;
-	    margin: 4px 2px;
-	    cursor: pointer;
-	    border-radius: 5px;
-	}
-	.button1 {background-color: #303030;}
-
-}
-</style>
+<link rel="stylesheet" href="/css/blogViewCss.css">
 
 <div class="row" align="center">
 	<div class="col-xs-0 col-md-1"></div>
@@ -158,7 +36,7 @@ a:hover{
 				<section class="section box">
 					<div class="media">
 						<div class="media-body" align="left">
-							<h3 class="media-heading" style="color: black;">블로그 제목</h3>
+							<h5 class="media-heading" style="color: black; font-weight: bold;">${map.TITLE }</h5>
 							<div style="color: #a6a6a6;">
 								<span>구독자</span> 0 <span>포스트</span> 0 <br /> <br />
 							</div>

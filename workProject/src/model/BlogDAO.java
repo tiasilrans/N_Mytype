@@ -1,5 +1,6 @@
 package model;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -26,5 +27,20 @@ public class BlogDAO {
 			session.close();
 		}
 	}
+	
+	public HashMap blogView(Map map){
+		SqlSession session = factory.openSession();				
+		try {
+			HashMap r = session.selectOne("blog.view", map);
+			return r;
+		} catch (Exception e) {
+			System.out.println("blogView : " + e.toString());
+			return null;
+		}finally {
+			session.close();
+		}		
+	}
+	
+	
 
 }

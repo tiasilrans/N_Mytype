@@ -8,6 +8,9 @@
  		insert into blog(email, title, introduce, address, createdate) 
  					values(#{email}, #{title}, #{intro}, #{url}, sysdate)
  	</insert>
- 	
+ 	<!-- 블로그 뷰 -->
+ 	<select id="view" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+ 		select * from blog where address=#{url}
+ 	</select>
  
  </mapper>
