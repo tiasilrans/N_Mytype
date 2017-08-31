@@ -11,6 +11,25 @@
 	padding: 20px;
 }
 
+p {
+	color: #a6a6a6;	
+
+}
+
+.button {
+	    background-color: #4CAF50; /* Green */
+	    border: none;
+	    color: white;
+	    padding: 8px 20px;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 14px;
+	    margin: 4px 2px;
+	    cursor: pointer;
+	    border-radius: 5px;
+	}
+	.button1 {background-color: #303030;}
 
 </style>   
 
@@ -18,11 +37,11 @@
 	<div class="col-xs-0 col-md-2"></div>
 	<div class="col-xs-12 col-md-8">
 		<div class="form-group box row">				
-				<h3 align="left">새 블로그 만들기 </h3>
+				<h3 align="left" style="color: #262626">새 블로그 만들기 </h3>
 				<br/>				
 				<div class="form-group row">
 					<div class="col-sm-3" align="left">
-						<label>제목</label> 
+						<label style="color: #4d4d4d;">제목</label> 
 					</div>
 					<div class="col-sm-9">
 						<input class="form-control" type="text"
@@ -32,7 +51,7 @@
 				
 				<div class="form-group row">
 					<div class="col-sm-3" align="left">
-						<label>블로그 소개</label>
+						<label style="color: #4d4d4d;">블로그 소개</label>
 					</div>
 				<div class="col-sm-9">
 					 <input class="form-control" type="text"
@@ -42,12 +61,12 @@
 				
 				<div class="form-group row">
 					<div class="col-sm-3" align="left">
-						<label>블로그 URL</label>
+						<label style="color: #4d4d4d;">블로그 URL</label>
 					</div>
 					<div class="col-sm-9">
 					    <input class="form-control" type="text"
 						placeholder="블로그 URL" name="url" id="url" required/>
-						영문 소문자, 숫자, 대시(-)를 조합하여 6자 이상으로 만들 수 있습니다.
+						<p align="left">영문 소문자, 숫자, 대시(-)를 조합하여 6자 이상으로 만들 수 있습니다.</p>
 					</div>
 				</div>
 				<br/>
@@ -56,7 +75,7 @@
 					<div class="col-md-6 form-group">
 					</div>
 					<div class="col-md-6 form-group" align="right">
-						<button id="bt" type="button" class="btn">새 블로그 만들기</button>
+						<button class="button button1">새 블로그 만들기</button>
 					</div>
 				</div>
 		</div>
