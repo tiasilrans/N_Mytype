@@ -76,7 +76,9 @@ body {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
-
+a:hover{
+	color: red;
+}
 .search-box:focus+button {
 	z-index: 3;
 }
