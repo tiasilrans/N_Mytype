@@ -82,7 +82,7 @@ body {
 }
 
 .navbar-form .search-box {
-	border: 0px;
+	border: 1px solid rgba(0,0,0,.25);
 	height: 35px;
 	outline: none;
 	width: 320px;
@@ -145,8 +145,8 @@ body {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">MyType</a>
-			</div>
+				<a class="navbar-brand" href="#"><img src="/타이틀.png" width="110"; height="32";></a>
+				</div>
 
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse">
@@ -159,15 +159,14 @@ body {
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">내 블로그<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href=""></a></li>
-							<li><a href=""></a></li>
-							<li><a href="/blog/create">새 블로그 만들기</a></li>
+							<li><a href="/blog/create"><i class="glyphicon glyphicon-plus"  style="margin-right:7px;"></i> 새 블로그 만들기</a></li>
 						</ul></li>
 				</ul>
+			
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
 						<a id="account-toggler" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#" role="button" title="MY"
-													style="padding: 0px; margin: 10px;">
+													style="padding: 0px; margin: 6px;">
                             <img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;">
                             <span class="sr-only">계정</span></a>
                             <ul class="dropdown-menu">
@@ -176,7 +175,10 @@ body {
                             	<li><a href=""><i class="glyphicon glyphicon-save"></i>　　구매항목</a></li>
                             	<li><a href=""><i class="fa fa-money"></i>　　포인트</a></li>
                             	<li><a href=""><i class="glyphicon glyphicon-cog"></i>　　설정</a></li>
-                            	<li><a href="/logout.mt"><i class="glyphicon glyphicon-off"></i>　　로그아웃</a></li>
+                            	<li><a></a></li>
+                            	<li><a></a></li>
+                            	<li><a></a></li>
+                            	<li><a href="/logout.mt"><i class="glyphicon glyphicon-off "></i>　　로그아웃</a></li>
                             </ul>
 					</li>
 				</ul>
@@ -191,9 +193,9 @@ body {
 				<ul class="nav navbar-nav navbar-right">
 					<li><form class="navbar-form form-horizontal" role="search">
 						<div class="input-group">
-							<input type="text" class="search-box" placeholder="Search">
+							<input type="text" class="search-box" placeholder="마이타입 검색">
 							<button type="submit" class="btn">
-								<span class="glyphicon glyphicon-search"></span>
+								<span class="glyphicon glyphicon-search" style="margin-bottom: 7px;"></span>
 							</button>
 						</div>
 					</form></li>				
