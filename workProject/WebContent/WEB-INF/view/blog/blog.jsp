@@ -52,7 +52,7 @@ _buttons.scss:
 		<div class="row">
 			<div class="col-xs-8" align="left" style="color: black;">
 				발행한 포스트가 없습니다.<br /> <br />
-				<button class="button button1" title="새 포스트를 작성합니다.">새 포스트 쓰기</button>
+				<a href="/blog/postWrite"><button class="button button1" title="새 포스트를 작성합니다.">새 포스트 쓰기</button></a>
 			</div>
 			
 			<div class="col-xs-4">
