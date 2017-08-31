@@ -13,7 +13,7 @@
 #app-menu-toggler:hover {
     box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 5px 10px 0 rgba(0,0,0,.05), 0 10px 20px 0 rgba(0,0,0,.05);
 }
-common_blog.css?v=11160:1
+common_blog.css
 #app-menu-toggler {
     z-index: 1060;
     padding: 8px;
@@ -27,7 +27,7 @@ style.css
     background-color: #f5f5f5;
     border-color: #e5e5e5;
 }
-_buttons.scss:16
+_buttons.scss:
 .btn-secondary:hover {
     color: #373a3c;
     background-color: #e6e6e6;
@@ -123,7 +123,7 @@ _buttons.scss:16
 			
 			<div id="app-menu-container">
 		    <button id="app-menu-toggler" class="btn btn-secondary" type="button">
-		       <img src="대지 1.png">
+		       <img src="/images/button.png">
 		    </button>
 		</div>
 			
