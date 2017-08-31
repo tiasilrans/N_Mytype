@@ -5,16 +5,23 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import model.BlogDAO;
 
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
 @RequestMapping("/blog")
 public class BlogController {
+	
+	@Autowired
+	BlogDAO bDAO;
 	
 	@RequestMapping("/create")
 	public ModelAndView newBlog(){
@@ -25,16 +32,18 @@ public class BlogController {
 	}
 	
 	@RequestMapping("/ctrateBlog.mt")
-	public ModelAndView createBlog(@RequestParam Map m, HttpSession session){
-		System.out.println(m.get("title"));
-		System.out.println(m.get("intro"));
-		String msg = "<h1>" + m.get("title") + "</h1><br/><h4>" + m.get("intro") + "</h4>";
-		m.put("intro", msg);
-		
-		ModelAndView mav = new ModelAndView();
-			mav.setViewName("redirect:/blog/"+m.get("url"));
-			session.setAttribute("map", m);
-		return mav;
+	@ResponseBody
+	public Map createBlog(@RequestParam Map m, HttpSession session){
+		Map map = new HashMap();
+		m.put("email", session.getAttribute("login"));
+		System.out.println(m);
+		boolean f = bDAO.blogCreate(m);
+		if(f){			
+			map.put("result", true);
+		}else{
+			map.put("result", false);
+		}
+		return map;
 	}
 	
 	

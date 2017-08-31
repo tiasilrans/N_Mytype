@@ -17,8 +17,7 @@
 <div align="center" class="row">
 	<div class="col-xs-0 col-md-2"></div>
 	<div class="col-xs-12 col-md-8">
-		<div class="form-group box row">		
-			<form action="ctrateBlog.mt" method="post">					
+		<div class="form-group box row">				
 				<h3 align="left">새 블로그 만들기 </h3>
 				<br/>				
 				<div class="form-group row">
@@ -37,7 +36,7 @@
 					</div>
 				<div class="col-sm-9">
 					 <input class="form-control" type="text"
-						placeholder="블로그 소개" name="intro" id="intro " required />
+						placeholder="블로그 소개" name="intro" id="intro" required />
 				</div>
 				</div>
 				
@@ -48,7 +47,7 @@
 					<div class="col-sm-9">
 					    <input class="form-control" type="text"
 						placeholder="블로그 URL" name="url" id="url" required/>
-						영문 소문자, 숫자, 대시(-)를 조합하여 6자 이상으로 만들 수 있습니다. (대시는 문장 가운데에만 입력 가능합니다.)
+						영문 소문자, 숫자, 대시(-)를 조합하여 6자 이상으로 만들 수 있습니다.
 					</div>
 				</div>
 				<br/>
@@ -57,10 +56,9 @@
 					<div class="col-md-6 form-group">
 					</div>
 					<div class="col-md-6 form-group" align="right">
-						<button id="sbt" type="submit" class="btn">새 블로그 만들기</button>
+						<button id="bt" type="button" class="btn">새 블로그 만들기</button>
 					</div>
 				</div>
-			</form>
 		</div>
 		
 	</div>
@@ -71,7 +69,35 @@
 <script>
 	
 </script>
-
+<script>	
+	
+	$("#bt").on("click", function(){				
+		var r = /^[a-z]|[0-9]$/;
+		var url = $("#url").val();
+		var len = url.length;
+		
+		if(r.test(url) && len >=6){
+			$.post({
+				url:"/blog/ctrateBlog.mt",
+				data : {
+					"title" : $("#title").val(),
+					"intro" : $("#intro").val(),
+					"url" : $("#url").val()				
+				}
+			}).done(function(result) {
+					if(result.result){
+						location.href="/blog/"+url; 
+					}
+				})
+		}else{
+			
+			window.alert("블로그 url은 영문 소문자, 숫자, 대시(-)를 조합하여 6자 이상으로 만들 수 있습니다.");
+		}
+		
+	});
+		
+	
+</script>
 
 
 

@@ -20,7 +20,7 @@
 	<!-- 블로그 타일 -->
 	<definition name="blog_base" template="/WEB-INF/view/blog/template.jsp">
 		<put-attribute name="title" expression="${sessionScope.map.title}" />
-		<put-attribute name="header" expression="${ sessionScope.map.intro}"/>
+		<put-attribute name="header" value="/WEB-INF/view/blog/header.jsp"/>
 		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/view/blog/footer.jsp" />	
 	</definition>
