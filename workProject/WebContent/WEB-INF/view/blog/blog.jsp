@@ -34,6 +34,10 @@ _buttons.scss:
     border-color: #adadad;
 }
 
+.btn{
+	padding: 0px;
+}
+
 #app-menu-container {
     position: fixed;
     right: 16px;
@@ -123,7 +127,7 @@ _buttons.scss:
 			
 			<div id="app-menu-container">
 		    <button id="app-menu-toggler" class="btn btn-secondary" type="button">
-		       <img src="/images/button.png">
+		       <img src="/images/button.png" width="40px"; height="40px;">
 		    </button>
 		</div>
 			
