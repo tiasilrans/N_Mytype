@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="post">
+  	<!-- 포스트 쓰기 -->
+  	<insert id="write" parameterType="java.util.HashMap">
+  		insert into post(num, category, nickname, title, subtitle, fcontent, ccontent, good, 
+  					hash, report, pdate, url) 
+ 					values(post_seq.nextval, #{category}, #{nickname}, #{title}, #{subtitle},
+ 						#{fcontent}, #{ccontent}, 0, #{hash}, 0, sysdate, #{url})
+  	</insert>
+  	<!-- 게시물 전체 불러오기 -->
+	<select id="listall" parameterType="java.lang.String" resultType="java.util.HashMap">
+		select tmp3.*,p.nickname as heart from 
+		(select tmp2.* from (select rownum as r, tmp.* from (select * from post order by pdate desc)tmp)tmp2 where tmp2.r between 1 and 9
+		)tmp3 left join (select pg.* from postgood pg left join (select nickname as nick from member where email=#{email})pf on pg.NICKNAME=pf.nick where pf.nick is not null) p on tmp3.num=p.pnum
+		</select>
+	
+	<!-- 게시물 구독한 게시물 불러오기 -->
+	<select id="listLike" parameterType="java.lang.String" resultType="java.util.HashMap">
+		select tmp3.*,p.nickname as heart from (
+		select tmp2.* from (select rownum as r, tmp.* from
+		 (select * from (select p.*,s.EMAIL from post p left join (select * from subscribe where email=#{email}) s on p.url=s.address)tmp where email=#{email} order by pdate desc
+		 )tmp)tmp2 where tmp2.r between 1 and 9
+		 )tmp3 left join (select pg.* from postgood pg left join (select nickname as nick from member where email=#{email})pf on pg.NICKNAME=pf.nick where pf.nick is not null) p on tmp3.num=p.pnum
+	</select>
+	
+	<!-- 게시글 좋아요(게시글좋아요 update) -->
+	<update id="postgoodPlus">
+		update post set good=good+1 where num=#{num}
+	</update>
+	<insert id="postgoodAdd">
+		insert into postgood(num, pnum, nickname, pgdate) values(postgood_seq.nextval, #{num}, #{nick}, sysdate)
+	</insert>
+	<update id="postgoodMinus">
+		update post set good=good-1 where num=#{num}
+	</update>
+	<delete id="postgoodRemove">
+		delete postgood from where pnum=#{num}
+	</delete>
+  
+  
+  
+  </mapper>
