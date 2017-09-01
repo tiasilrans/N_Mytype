@@ -158,10 +158,28 @@
  	<div>
  		<div>
  			<div class="menu-header">
- 				<div class="col-xs-8 px-0">
- 					<a><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"></a>
+ 				<div class="col-xs-8 px-0" style="margin-bottom: 5px; margin-top: 20px;">
+ 					<a><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626;;">사용자 이름</span></a>
+ 					
  				</div>
+ 				<div class="col-xs-2 px-0" style="margin-top: 28px;">
+ 					<span><i class="glyphicon glyphicon-bell"></i></span> 
+ 				</div>
+ 				
+ 				<div class="col-xs-2 px-0" style="margin-top: 28px;">
+ 					<span><i class="glyphicon glyphicon-off"></i></span>
+ 				</div>
+ 				
+ 				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
+ 					<i class="glyphicon glyphicon-home"></i>홈
+ 				</div>
+ 				
+ 				<div class="col-xs-8 px-0" style="margin : 5px; margin-bottom: 30px;">
+ 					<i class="glyphicon glyphicon-ok-sign"></i>구독
+ 				</div>
+ 				
  			</div>
+ 			
  			
  		</div>
  	</div>
