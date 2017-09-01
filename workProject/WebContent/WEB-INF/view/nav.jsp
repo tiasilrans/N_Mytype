@@ -145,7 +145,7 @@ body {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><img src="/타이틀.png" width="110"; height="32";></a>
+				<a class="navbar-brand" href="#"><img src="/images/title.png" width="110"; height="32";></a>
 				</div>
 
 			<div class="collapse navbar-collapse header-right-menu"
