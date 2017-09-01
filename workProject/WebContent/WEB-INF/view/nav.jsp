@@ -128,7 +128,10 @@ body {
 		width: 260px;
 		height: 32px;
 	}
+	
+	
 }
+
 </style>
 
 <!--navbar menu-->

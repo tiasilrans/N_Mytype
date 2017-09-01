@@ -7,7 +7,6 @@
 	border-color: #d9d9d9;
 	margin: 20px;
 	width: 90%;
-	height: 50%;
 	padding: 20px;
 }
 
