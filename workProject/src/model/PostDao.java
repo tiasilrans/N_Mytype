@@ -14,14 +14,16 @@ public class PostDao {
 	@Autowired
 	SqlSessionFactory factory;
 		
-	public List<Map> listAll(){
+	public List<Map> listAll(String email){
 		SqlSession session = factory.openSession();
-		
+		List<Map> list = new ArrayList<>();
 		try{
-			return session.selectList("post.listAll");
+			list = session.selectList("post.listall", email);
+			return list; 
 		}catch(Exception e){
 			System.out.println("PostListAll Error");
-			return null;
+			e.printStackTrace();
+			return list;
 		}finally{
 			session.close();
 		}
@@ -34,6 +36,7 @@ public class PostDao {
 			return session.selectList("post.listLike", email);
 		}catch(Exception e){
 			System.out.println("PostListLike Error");
+			e.printStackTrace();
 			return null;
 		}finally{
 			session.close();

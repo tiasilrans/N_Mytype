@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 <style>
 
 #logo{
@@ -28,7 +29,7 @@
 #post{
 	height: 330px;
 	width : 300px;
-	background-color: #DAFFFF;
+	background-color: #F6F6F6;
 	border-radius: 10px;
 	margin: 10px;
 	padding-top: 15px;
@@ -77,6 +78,7 @@
 	font-size: 12;
 }
 .conbody{
+	height: 60%;
 }
 
 .conbody-title{
@@ -92,12 +94,17 @@
 	font-size: 13;
 	background-color: #D8D8D8;
 	border-radius: 2px;
-	padding: 3px;
+	margin-right: 3px;
+	padding: 4px;
 	text-decoration: none;
 }
 
+.confooter{
+	padding-top: 7px;
+}
+
 .confooter-like, .confooter-like:focus, .confooter-like:hover{
-	font-size: 20;
+	font-size: 18;
 	color : red;
 	outline: none;
 	text-decoration: none;
@@ -111,6 +118,7 @@
 }
 
 </style>   
+
 <div class="container" style="margin-left: 300px;">
 
 			<!-- 메인쪽 로고 부분 -->
@@ -126,70 +134,175 @@
 			
 			<div class="btn-group" data-toggle="buttons">
 			  <label class="btn btn-default active">
-			    <input type="radio" name="options" id="option1" autocomplete="off" checked>전체
+			    <input type="radio" name="listbtn" id="allListbtn" value="all"  autocomplete="off" checked>전체
 			  </label>
 			  <label class="btn btn-default">
-			    <input type="radio" name="options" id="option2" autocomplete="off">구독
+			    <input type="radio" name="listbtn" id="likeListbtn" value="like"  autocomplete="off">구독
 			  </label>
 			</div>
             
 			</div>
 			
-			<!-- 게시글 배치 -->
-			<c:forEach begin="1" end="9" varStatus="vs">
+			<!-- 전체 게시글 배치 -->
+			<div id="allList">
+			<c:forEach var="all" items="${listAll}" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
 				<div id="post" class="col-xs-0 col-md-4">
 				
 					<!-- head -->
 					<div class="conhead">
 						<img class="conhead-profileimg" src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png">
 						<div class="conhead-title">
-							<span class="conhead-title-name"><b>홍승택님</b></span><br/>
-							<span class="conhead-title-date">21시간전 </span>|
-							<span class="conhead-title-blog"><a>블로그명눌러서바로가기</a></span>
+							<span class="conhead-title-name"><b>${all.NICKNAME }</b></span><br/>
+							<span class="conhead-title-date">${all.PDATE } </span>|
+							<span class="conhead-title-blog"><a>${all.URL }</a></span>
 						</div>	
 					</div>
 					
 					
 					<!-- body -->
 					<div class="conbody">
-						<span class="conbody-title"><b>제에에에목</b></span><br/>
-						<span class="conbody-content">내용이 들어갈껀데 작고 길게 많이 많이 들어갈수잇게 아무말이나 아무말이나 내용이 들어갈껀데 작고 길게 많이 많이 들어갈수잇게 아무말이나 아무말이나 내용이 들어갈껀데 작고 길게 많이 많이 들어갈수잇게 아무말이나 아무말이나</span><br/><br/>
-						<span class="conbody-hashtag"><a href="/"><span style="color: #909090;">#해쉬태그</span></a></span>
+						<span class="conbody-title"><b>${all.TITLE }</b></span><br/>
+						<span class="conbody-content">${all.FCONTENT }</span><br/><br/>
 						
 					</div>
 					
 					
+					<c:set var="msg" value="${all.HASH }"/>
+					<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
+					<c:forEach items="${hashtag}" var="hash">
+					<span class="conbody-hashtag">
+						<a href="/"><span style="color: #909090;">#${hash}</span></a>
+					</span>
+					</c:forEach>
+						
+					
+					<br/>
 					<!-- footer -->
 					<div class="confooter">
-						<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like"></button>
-						<span class="confooter-count">5</span>
+					<c:choose>
+					<c:when test="${all.HEART == null}">
+						<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
+					</c:otherwise>
+					</c:choose>
+						<span class="confooter-count heart-${all.NUM}">${all.GOOD }</span>
 					</div>
 				
 				</div>
 			
-			<c:if test="vs % 3 = 0">
+			<c:if test="(vs+1) % 3 = 0">
 				<br/>
 			</c:if>
 			</c:forEach>
+			</div>
+			
+			<!-- 구독 게시물 배치 -->
+			<div id="likeList" style="display: none;">
+				<c:forEach var="all" items="${listLike}" begin="0" end="${listLike.size() < 8 ? listLike.size() : 8}" varStatus="vs">
+				<div id="post" class="col-xs-0 col-md-4">
+				
+					<!-- head -->
+					<div class="conhead">
+						<img class="conhead-profileimg" src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png">
+						<div class="conhead-title">
+							<span class="conhead-title-name"><b>${all.NICKNAME }</b></span><br/>
+							<span class="conhead-title-date">${all.PDATE } </span>|
+							<span class="conhead-title-blog"><a>${all.URL }</a></span>
+						</div>	
+					</div>
+					
+					
+					<!-- body -->
+					<div class="conbody">
+						<span class="conbody-title"><b>${all.TITLE }</b></span><br/>
+						<span class="conbody-content">${all.FCONTENT }</span><br/><br/>
+						
+					</div>
+					
+					
+					<c:set var="msg" value="${all.HASH }"/>
+					<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
+					<c:forEach items="${hashtag}" var="hash">
+					<span class="conbody-hashtag">
+						<a href="/"><span style="color: #909090;">#${hash}</span></a>
+					</span>
+					</c:forEach>
+						
+					
+					<br/>
+					<!-- footer -->
+					<div class="confooter">
+					<c:choose>
+					<c:when test="${all.HEART == null}">
+						<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
+					</c:otherwise>
+					</c:choose>
+						<span class="confooter-count heart-${all.NUM}">${all.GOOD }</span>
+					</div>
+				
+				</div>
+			
+			<c:if test="(vs+1) % 3 = 0">
+				<br/>
+			</c:if>
+			</c:forEach>
+			</div>
+
+			
 </div>
-<script>
-	//좋아요 버튼 눌렀을때 마다 하트가 변하는 스크립트 
+
+<c:choose>
+	<c:when test="${sessionScope.login == null}">
+	<script>
 	function likechange(){
-		if(this.className == "btn-link glyphicon glyphicon-heart-empty confooter-like like"){
-			this.className = "btn-link glyphicon glyphicon-heart confooter-like like";
-		}else{
-			this.className = "btn-link glyphicon glyphicon-heart-empty confooter-like like";
-		}
+		window.alert("로그인후 이용 가능합니다.");
+	}
+	function postset(){
+		window.alert("로그인후 이용 가능합니다.");
 	}
 	$(".like").on("click", likechange);
+	$("input[name='listbtn']:radio").change(postset);
+	</script>
+	</c:when>
 	
-	
-	//전체,구독 누를때 목록불러오는 스크립트
-	function listchange(){
-		window.alert(this.className);
-	}
-	$(".btn btn-primary").on("click", listchange);
-</script> 
+	<c:otherwise>
+	<script>
+		//좋아요 버튼 눌렀을때 마다 하트가 변하는 스크립트 
+		function likechange(){
+			var str = this.value;
+			if(this.classList.contains("glyphicon-heart-empty")){
+				$("."+str).html(parseInt($("."+str).html())+1);
+				$(".o"+str).removeClass("glyphicon-heart-empty");
+				$(".o"+str).addClass("glyphicon-heart");
+			}else{
+				$("."+str).html(parseInt($("."+str).html())-1);
+				$(".o"+str).removeClass("glyphicon-heart");
+				$(".o"+str).addClass("glyphicon-heart-empty");
+			}
+		}
+		$(".like").on("click", likechange);
+		
+		
+		//전체,구독 누를때 목록불러오는 스크립트
+		function postset(){
+			if(this.value == "all"){
+				$("#likeList").css("display","none");
+				$("#allList").css("display","block");
+			}else{
+				$("#likeList").css("display","block");
+				$("#allList").css("display","none");
+			}
+		}
+		$("input[name='listbtn']:radio").change(postset);
+	</script>
+	</c:otherwise>
+</c:choose>
+
 
 
 
