@@ -6,7 +6,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/css/blogViewCss.css">
+<link rel="stylesheet" href="/css/blogViewcss.css">
 
 <style>
 
@@ -58,7 +58,7 @@ _buttons.scss:
 			<div class="col-xs-4">
 
 				<section class="section box">
-					<div class="form-group" align="left">
+					<div class="form-group" align="left" style="margin-bottom: -15px;">
 						<form class="search" aria-labelledby="search-toggler"
 							role="search" action="/search" method="get">
 							<input class="form-control form-control-sm search-input"
@@ -85,7 +85,6 @@ _buttons.scss:
 							<img
 								src="https://cdn.postype.com/assets/img/avatar/blog_blank_p.svg"
 								class="media-object" style="width: 60px">
-
 						</div>
 
 					</div>
