@@ -13,7 +13,7 @@
 #app-menu-toggler:hover {
     box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 5px 10px 0 rgba(0,0,0,.05), 0 10px 20px 0 rgba(0,0,0,.05);
 }
-common_blog.css
+
 #app-menu-toggler {
     z-index: 1060;
     padding: 8px;
@@ -21,13 +21,13 @@ common_blog.css
     background-color: #fff;
     box-shadow: 0 0 0 1px rgba(0,0,0,.15);
 }
-style.css
+
 .btn-secondary:hover, .btn-secondary.focus, .btn-secondary:focus {
     color: #303030!important;
     background-color: #f5f5f5;
     border-color: #e5e5e5;
 }
-_buttons.scss:
+
 .btn-secondary:hover {
     color: #373a3c;
     background-color: #e6e6e6;
@@ -44,6 +44,25 @@ _buttons.scss:
     bottom: 16px;
     z-index: 1050;
 }
+
+ #app-menu {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    bottom: 48px;
+    right: 0;
+    width: 100%;
+    max-width: 288px;
+    max-height: 700px;
+    margin: 16px 16px 30px 16px;
+    overflow-y: auto;
+    border: 0;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.05), 0 5px 10px 0 rgba(0,0,0,.05), 0 10px 20px 0 rgba(0,0,0,.05);
+}
+  
+
 </style>
 
 <div class="row" align="center">
@@ -126,15 +145,43 @@ _buttons.scss:
 			</div>
 			
 			<div id="app-menu-container">
-		    <button id="app-menu-toggler" class="btn btn-secondary" type="button">
-		       <img src="/images/button.png" width="40px"; height="40px;">
-		    </button>
-		</div>
+			    <button id="app-menu-toggler" class="btn btn-secondary" type="button">
+			       <img src="/images/button.png" width="40px;" height="40px;">
+			    </button>		    
+			</div>
 			
 		</div>
 	</div>
 	<div class="col-xs-0 col-md-1"></div>
 </div>
+
+ <div id="app-menu" style="display: none;">
+ 	<div>
+ 		<div>
+ 			<div class="menu-header">
+ 				<div class="col-xs-8 px-0">
+ 					<a><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"></a>
+ 				</div>
+ 			</div>
+ 			
+ 		</div>
+ 	</div>
+ </div>
+  
+<script>
+	$("#app-menu-toggler").on("click", function(){
+		var menu = $("#app-menu");
+		if(menu.css("display") == "none"){
+			menu.css("display", "block");
+		}else{
+			menu.css("display", "none");
+		}
+		
+	});
+
+</script>
+
+
 
 
 

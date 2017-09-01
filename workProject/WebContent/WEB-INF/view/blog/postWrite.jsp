@@ -72,7 +72,7 @@ div#editor {
     padding-right: 15px;
 }
 
-.title-wrap textarea {
+.title-wrap input {
     width: 100%;
     border: 0;
     padding: 0;
@@ -160,42 +160,9 @@ a{
   		<br/>
   		<br/>
   	</nav>
-  	<section> 
-	  	<div align="center" class="row ">
-		<div class="col-xs-0 col-md-1"></div>
-		<div class="col-xs-12 col-md-10">
-		<article class="post">
-	        <div class="container">
-		        <form class="form-group">
-		            <div class="title-wrap">
-		                <div class="inner">
-		                    <textarea id="title" name="title" rows="1" class="form-control" 
-		                    placeholder="제목을 입력하세요." data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; height: 41px; font-size: 32px;"></textarea>
-		                    <textarea id="subtitle" name="subtitle" rows="1" class="form-control" 
-		                    placeholder="부제목을 입력하세요." data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; height: 20px; font-size: 16px;"></textarea>
-		                </div>
-		            </div>
-					<div class="editor" id="editor">
-					
-					</div>
-					<div class="tag-wrap">
-		                <i class="glyphicon glyphicon-tags" title="태그"></i>
-		                <label for="post-tags" class="sr-only">태그</label>
-		                <textarea id="post-tags" name="tags" rows="1" class="post-tags autosize" placeholder="여러 개의 태그는 공백(space)으로 구분하여 입력하세요." data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; height: 24px;"></textarea>
-		            </div>
-		        </form>
-	        </div>                    
-    	</article>
-		
-		
-			
-		</div>
-			<div class="col-xs-0 col-md-1"></div>
-		</div>
   	
- 	</section>
- 	
- 	<div class="modal-dialog modal modal fade" id="modalPublish" role="dialog">
+  	
+  	<div class="modal fade" id="modalPublish" role="dialog">
   		<div class="modal-content">
   			<div class="modal-header" style="border-bottom: 0px;">
   			<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -244,6 +211,46 @@ a{
 	        </div>
 	    </div>  		  		
   	</div>
+  	
+  	
+  	<section> 
+	  	<div align="center" class="row ">
+		<div class="col-xs-0 col-md-1"></div>
+		<div class="col-xs-12 col-md-10">
+		<article class="post">
+	        <div class="container">
+		       
+		            <div class="title-wrap">
+							<div class="form-group">
+								<input type="text" class="form-control" id="title" name="title"
+									placeholder="제목을 입력하세요" style="font-size: 32px;">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="subtitle" name="subtitle"
+									placeholder="부제목을 입력하세요" style="font-size: 16px;">
+							</div>
+					</div>
+					<div class="editor" id="editor">
+					
+					</div>
+					<div class="tag-wrap">
+		                <i class="glyphicon glyphicon-tags" title="태그"></i>
+		                <label for="post-tags" class="sr-only">태그</label>
+		                
+		            </div>
+		       
+	        </div>                    
+    	</article>
+		
+		
+			
+		</div>
+			<div class="col-xs-0 col-md-1"></div>
+		</div>
+  	
+ 	</section>
+ 	
+ 	
  	
  	
 	<script type="text/javascript"
@@ -257,9 +264,6 @@ a{
 	
 	<!-- Initialize the editor. -->
 	<script>	
-		$(function() {
-			$("#editor").froalaEditor()
-		});
 		
 		$(function(){
 			  $("#editor").froalaEditor({
