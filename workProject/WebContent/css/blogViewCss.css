@@ -9,7 +9,7 @@ body {
 	border: 1px solid;
 	border-color: #d9d9d9;
 	width: 100%;
-	padding: 0px;
+	padding: 0px;     
 }
 
 .navbar-form {
@@ -70,9 +70,11 @@ body {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
-a:hover{
+
+a:hover {
 	color: red;
 }
+
 .search-box:focus+button {
 	z-index: 3;
 }
@@ -83,44 +85,11 @@ a:hover{
 	background-color: #fff;
 }
 
-@media ( min-width : 768px) {
-	.dropdown:hover {
-		background-color: #000;
-	}
-	.dropdown:hover .dropdown-menu {
-		display: block;
-	}
-	.navbar-form {
-		padding: 0px;
-	}
-	.label.hashtag {
-		display: inline-block;
-		padding: 7px;
-		margin-right: 2px;
-		margin-bottom: 6px;
-		font-weight: 400;
-		font-size: 13px;
-		line-height: 17px;
-		color: #606060;
-		border: 1px solid #e5e5e5;
-		border-radius: 3px;
-		text-decoration: none;
-	}
-	.button {
-	    background-color: #4CAF50; /* Green */
-	    border: none;
-	    color: white;
-	    padding: 8px 20px;
-	    text-align: center;
-	    text-decoration: none;
-	    display: inline-block;
-	    font-size: 14px;
-	    margin: 4px 2px;
-	    cursor: pointer;
-	    border-radius: 5px;
-	}
-	.button1 {background-color: #303030;}
+.dropdown:hover {
+	background-color: #000;
+}
 
+<<<<<<< HEAD
 }
 
 
@@ -128,3 +97,44 @@ a:hover{
 
 
 
+=======
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+
+.navbar-form {
+	padding: 0px;
+}
+
+.label.hashtag {
+	display: inline-block;
+	padding: 7px;
+	margin-right: 2px;
+	margin-bottom: 6px;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 17px;
+	color: #606060; 
+	border: 1px solid #e5e5e5;
+	border-radius: 3px;
+	text-decoration: none;
+}
+
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.button1 {
+	background-color: #303030;
+}
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git

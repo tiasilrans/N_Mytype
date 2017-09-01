@@ -77,7 +77,7 @@
 			<div class="col-xs-4">
 
 				<section class="section box">
-					<div class="form-group" align="left">
+					<div class="form-group" align="left" style="margin-bottom: -15px;">
 						<form class="search" aria-labelledby="search-toggler"
 							role="search" action="/search" method="get">
 							<input class="form-control form-control-sm search-input"
@@ -104,7 +104,6 @@
 							<img
 								src="https://cdn.postype.com/assets/img/avatar/blog_blank_p.svg"
 								class="media-object" style="width: 60px">
-
 						</div>
 
 					</div>
