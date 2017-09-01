@@ -17,9 +17,11 @@
 	<definition name="t_*/*" extends="t_base">
 		<put-attribute name="section" value="/WEB-INF/view/{1}/{2}.jsp" />
 	</definition>
+	
+	<!-- MYHome -->
 	<definition name="t_my" extends="t_base">
-		<put-attribute name="nav" value="/WEB-INF/view/mynav.jsp" />
-		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp" />
+		<put-attribute name="nav" value="/WEB-INF/view/my/mynav.jsp" />
+		<put-attribute name="section" expression="/WEB-INF/view/my/${section}.jsp" />
 	</definition>
 	
 	<!-- 블로그 타일 -->
