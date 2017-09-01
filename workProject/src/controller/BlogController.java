@@ -1,7 +1,6 @@
 package controller;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -45,16 +44,19 @@ public class BlogController {
 			map.put("result", false);
 		}
 		return map;
-	}
-	
+	}	
 	
 	@RequestMapping("/{url}")
 	public ModelAndView BlogView(@PathVariable(value="url") String url, HttpSession session){		
-		System.out.println(session.getAttribute("map"));
-		
 		ModelAndView mav = new ModelAndView();
+		Map map = new HashMap();
+			map.put("url", url);
+		HashMap r = bDAO.blogView(map);
 			mav.setViewName("blog_base");
 			mav.addObject("section", "blog/blog");
+			mav.addObject("header", "blog/header");
+			mav.addObject("map", r);
+			mav.addObject("title", r.get("TITLE"));
 		return mav;
 	}
 	
