@@ -14,32 +14,88 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_style.min.css"
 	rel="stylesheet" type="text/css" />
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+	
 <!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
 
 
 
-<style type="text/css">
+
+<style>
+
 div#editor {
 	width: 81%;
 	margin: auto;
 	text-align: left;
 }
+
+.title-wrap {
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid rgba(0,0,0,.09);
+}
+@media (min-width: 576px)
+ .post {
+    padding: 2.5em 0;
+}
+
+.post .container {
+    padding: 0 20px;
+}
+
+.post .container {
+    padding: 0 20px;
+}
+
+.container {
+    width: 100%;
+}
+@media (min-width: 576px)
+
+.container {
+    width: 540px;
+    max-width: 100%;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.title-wrap textarea {
+    width: 100%;
+    border: 0;
+    padding: 0;
+    margin: 10px;
+    border-radius: 0;
+}
+
+textarea.autosize {
+    resize: none;
+}
+
+
+ .post {
+    width: 100%;
+    height: 100%;
+    padding: 1.5em 0;
+    margin: 20px;
+    font-size: 16px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
 
 a{
 	margin: 10px;
@@ -108,9 +164,31 @@ a{
 	  	<div align="center" class="row ">
 		<div class="col-xs-0 col-md-1"></div>
 		<div class="col-xs-12 col-md-10">
-			<div class="editor" id="editor">
+		<article class="post">
+	        <div class="container">
+		        <form class="form-group">
+		            <div class="title-wrap">
+		                <div class="inner">
+		                    <textarea id="title" name="title" rows="1" class="form-control" 
+		                    placeholder="제목을 입력하세요." data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; height: 41px; font-size: 32px;"></textarea>
+		                    <textarea id="subtitle" name="subtitle" rows="1" class="form-control" 
+		                    placeholder="부제목을 입력하세요." data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; height: 20px; font-size: 16px;"></textarea>
+		                </div>
+		            </div>
+					<div class="editor" id="editor">
 					
-			</div>
+					</div>
+					<div class="tag-wrap">
+		                <i class="glyphicon glyphicon-tags" title="태그"></i>
+		                <label for="post-tags" class="sr-only">태그</label>
+		                <textarea id="post-tags" name="tags" rows="1" class="post-tags autosize" placeholder="여러 개의 태그는 공백(space)으로 구분하여 입력하세요." data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; height: 24px;"></textarea>
+		            </div>
+		        </form>
+	        </div>                    
+    	</article>
+		
+		
+			
 		</div>
 			<div class="col-xs-0 col-md-1"></div>
 		</div>
