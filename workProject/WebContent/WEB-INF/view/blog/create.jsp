@@ -75,7 +75,7 @@ p {
 					<div class="col-md-6 form-group">
 					</div>
 					<div class="col-md-6 form-group" align="right">
-						<button class="button button1">새 블로그 만들기</button>
+						<button class="button button1" id="bt">새 블로그 만들기</button>
 					</div>
 				</div>
 		</div>
