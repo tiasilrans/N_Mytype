@@ -8,6 +8,6 @@
 
 
 <div class="blogintro" style="margin-bottom: 50px; margin: -30px;">
-<h4 align="center" style="font-family: inherit; color: #4d4d4d;">${map.INTRODUCE }</h4>
+<h4 align="center" style="font-family: inherit; color: #4d4d4d;">${map.INTRO }</h4>
 </div>
 
