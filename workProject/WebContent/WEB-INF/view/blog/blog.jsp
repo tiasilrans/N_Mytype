@@ -8,6 +8,44 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/css/blogViewCss.css">
 
+<style>
+
+#app-menu-toggler:hover {
+    box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 5px 10px 0 rgba(0,0,0,.05), 0 10px 20px 0 rgba(0,0,0,.05);
+}
+common_blog.css
+#app-menu-toggler {
+    z-index: 1060;
+    padding: 8px;
+    border: 0;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.15);
+}
+style.css
+.btn-secondary:hover, .btn-secondary.focus, .btn-secondary:focus {
+    color: #303030!important;
+    background-color: #f5f5f5;
+    border-color: #e5e5e5;
+}
+_buttons.scss:
+.btn-secondary:hover {
+    color: #373a3c;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
+.btn{
+	padding: 0px;
+}
+
+#app-menu-container {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 1050;
+}
+</style>
+
 <div class="row" align="center">
 	<div class="col-xs-0 col-md-1"></div>
 	<div class="col-xs-12 col-md-10">
@@ -38,9 +76,9 @@
 						<div class="media-body" align="left">
 							<h5 class="media-heading" style="color: black; font-weight: bold;">${map.TITLE }</h5>
 							<div style="color: #a6a6a6;">
-								<span>구독자</span> 0 <span>포스트</span> 0 <br /> <br />
+								<span style="font-size: 12px;">구독자</span> 0 <span style="font-size: 12px;">포스트</span> 0
 							</div>
-							<button class="button button1">구독하기</button>
+							<button class="button button1" style="margin-top: 10px;">구독하기</button>
 
 						</div>
 						<div class="media-right">
@@ -55,25 +93,26 @@
 
 
 				<section class="section box">
-					<div class="form-group">
-						<h3 align="left" style="color: black;">카테고리</h3>
+					<div class="form-group" style="font-family:sans-serif;">
+						<h6 align="left" style="color: black;">카테고리</h6>
 						<ul class="Kategorie nav row">
 							<li class="Kategorie nav-item"><a class="Kategorie nav-link"
-								href="/blog/blogView" style="color: #a6a6a6;" align="left">
+								href="/blog/blogView" style="color: black; font-weight :light;" align="left">
 									전체 보기 <span class="post-count">3</span>
 							</a></li>
 							<li class="Kategorie nav-item"><a class="nav-link" href=""
-								style="color: #a6a6a6;" align="left">일기<span
+								style="color: #8c8c8c;" align="left">일기<span
 									class="post-count">3</span></a></li>
 							<li class="Kategorie nav-item"><a class="nav-link" href=""
-								style="color: #a6a6a6;" align="left">수필<span
+								style="color: #8c8c8c;" align="left">수필<span
 									class="post-count">3</span></a></li>
 
 						</ul>
 					</div>
 				</section>
+				
 				<section class="section box">
-					<h3 align="left" style="color: black;">태그</h3>
+					<h6 align="left" style="color: black; font-family: sans-serif;">태그</h6>
 					<div align="left">
 						<a class="label hashtag" href="/">혼잣말</a> 
 						<a class="label hashtag" href="/">일상</a> 
@@ -85,6 +124,13 @@
 					</div>
 				</section>
 			</div>
+			
+			<div id="app-menu-container">
+		    <button id="app-menu-toggler" class="btn btn-secondary" type="button">
+		       <img src="/images/button.png" width="40px"; height="40px;">
+		    </button>
+		</div>
+			
 		</div>
 	</div>
 	<div class="col-xs-0 col-md-1"></div>
