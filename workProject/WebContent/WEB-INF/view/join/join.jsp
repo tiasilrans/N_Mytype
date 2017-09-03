@@ -41,7 +41,7 @@
 						</b>
 						</div>	
 						
-						<b id="emailfalse" style="display: none;"><br/>해당 이메일은 이미 사용중 입니다.</b>
+						<b id="emailfalse" style="display: none; color: red"><br/>해당 이메일은 이미 사용중 입니다.</b>
 						
 				</div>
 				
@@ -87,7 +87,6 @@
 		var e = $("#email").val().length;		//email 길이
 		var p = $("#pw").val().length;	//password 길이
 		var read = $("#email").prop("readonly");	//이메일 사용 여부
-		console.log(read);
 		if( e > 0 && p > 0 && read){
 			$("#cnbt").prop("disabled", false);	
 		}else{

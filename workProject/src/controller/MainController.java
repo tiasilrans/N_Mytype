@@ -41,12 +41,11 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("t_main");
 		//내가 누른 게시물의 하트표시를 표시하기위한 string 비로그인일때는 null널을 넣어서 안나오게끔 유도
-		String str = (session.getAttribute("login") == null ? "null널" : (String)session.getAttribute("login"));
-		System.out.println(str);
+		Map str = new HashMap<>();
+		str.put("email",(String)session.getAttribute("login"));
 		mav.addObject("listAll",pdao.listAll(str));
 		if(session.getAttribute("login") != null){
-			String email = (String)session.getAttribute("login");
-			mav.addObject("listLike",pdao.listLike(email));
+			mav.addObject("listLike",pdao.listLike(str));
 		}
 		return mav;
 	}
@@ -125,10 +124,10 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 
 		if(map.get("cn").equals((String)session.getAttribute("EC"))){
-				mdao.join(map);
-				mav.setViewName("redirect:/");
-				session.setAttribute("login", map.get("email"));
-				session.removeAttribute("EC");
+			session.removeAttribute("EC");
+			mdao.join(map);
+			mav.setViewName("redirect:/");
+			session.setAttribute("login", map.get("email"));
 		}else{
 			mav.setViewName("t_join/join");
 			mav.addObject("uuid", true);

@@ -132,6 +132,16 @@ body {
 	
 }
 
+/* 로그인창 */
+#login-sbt,#login-alert{
+	width : 360px;
+	height: 60px;
+}
+#login-email,#login-pw{
+	width : 360px;
+	height: 40px;
+}
+
 </style>
 
 <!--navbar menu-->
@@ -148,7 +158,7 @@ body {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><img src="/images/title.png" width="110"; height="32";></a>
+				<a class="navbar-brand" href="/"><img src="/images/title.png" width="110"; height="32";></a>
 				</div>
 
 			<div class="collapse navbar-collapse header-right-menu"
@@ -189,7 +199,7 @@ body {
 				<c:otherwise>
 				<ul class="nav navbar-nav navbar-right">											
 					<li><a class="bnt" href="/join.mt" id="join">회원가입</a></li>
-					<li><a class="bnt" href="/login.mt" id="login">로그인</a></li>				
+					<li><a class="bnt" id="login" data-toggle="modal" data-target="#login-form">로그인</a></li>				
 				</ul>
 				</c:otherwise>
 			</c:choose>	
@@ -219,3 +229,43 @@ body {
 		}
 	});
 </script>
+
+
+
+<!-- 로그인창 modal  -->
+  <div class="modal fade" id="login-form" role="dialog">
+    <div class="modal-dialog" style="width: 450px;">
+    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">로그인</h4>
+        </div>
+        
+        <div class="modal-body">
+          		<div class="form-group row" align="center">		
+			<form action="/loginExec.mt" method="post">					
+				<div class="form-group row">
+						<input class="form-control" type="email"
+							placeholder="e-mail" name="email" id="login-email" required />
+				</div>
+				
+				<div class="form-group row">
+					 <input class="form-control" type="password"
+						placeholder="비밀번호" name="pw" id="login-pw" required />
+				</div>
+				<div align="center" class="row">
+
+					<div class="form-group row" align="right" style="width: 360px;">
+					<a>비밀번호 찾기</a>｜<a href="join.mt">회원가입</a>
+					</div>
+					<button id="login-sbt" type="submit" class="btn">로그인</button>
+				</div>
+			</form>
+		</div>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>

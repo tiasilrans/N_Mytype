@@ -1,16 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 <style>
-
-#logo{
-	height: 350px;
-	width : 620px;
-	background-color: gray;
+.logo-frame{
+	width:100%;
 	border-radius: 10px;
-	margin: 10px;
-	background-image: url("/images/mainimg/바다.jpg");
 }
 
 #secondlogo{
@@ -119,10 +115,34 @@
 
 </style>   
 
-<div class="container" style="margin-left: 300px;">
+<div class="container" style="margin-left: auto;">
 
 			<!-- 메인쪽 로고 부분 -->
-			<div id="logo" class="col-xs-0 col-md-4">
+			  <div class="container col-md-4" style="width:620px; height: 350px;">
+			  <div id="myCarousel" class="carousel" data-ride="carousel" style="width:580px; margin: 10px;">
+			  
+			    <!-- Indicators -->
+			    <ol class="carousel-indicators">
+			      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			      <li data-target="#myCarousel" data-slide-to="1"></li>
+			      <li data-target="#myCarousel" data-slide-to="2"></li>
+			    </ol>
+			
+			    <!-- Wrapper for slides -->
+			    <div class="carousel-inner">
+			      <div class="logo-frame item active">
+			        <img src="/images/mainimg/바다.jpg" alt="Los Angeles" style="width:100%; height: 350px; border-radius: 10px;">
+			      </div>
+			
+			      <div class="logo-frame item">
+			        <img src="/images/mainimg/겨울.jpg" alt="Chicago" style="width:100%; height: 350px; border-radius: 10px;">
+			      </div>
+			    
+			      <div class="logo-frame item">
+			        <img src="/images/mainimg/봄.jpg" alt="New york" style="width:100%; height: 350px; border-radius: 10px;">
+			      </div>
+			    </div>
+			  </div>
 			</div>
 			
 
@@ -131,20 +151,17 @@
 			
 			<!-- 목록 nav -->
 			<div class="col-xs-0 col-md-12">			
+		
+			<ul class="nav nav-tabs" style="width: 970px;">
+			<li class="active"><a data-toggle="tab" href="#allList">전체</a></li>
+			<li><a data-toggle="tab" href="#likeList">구독</a></li>
+			</ul>
 			
-			<div class="btn-group" data-toggle="buttons">
-			  <label class="btn btn-default active">
-			    <input type="radio" name="listbtn" id="allListbtn" value="all"  autocomplete="off" checked>전체
-			  </label>
-			  <label class="btn btn-default">
-			    <input type="radio" name="listbtn" id="likeListbtn" value="like"  autocomplete="off">구독
-			  </label>
-			</div>
-            
-			</div>
+			
+			<div class="tab-content">
 			
 			<!-- 전체 게시글 배치 -->
-			<div id="allList">
+			<div id="allList" class="tab-pane fade in active">
 			<c:forEach var="all" items="${listAll}" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
 				<div id="post" class="col-xs-0 col-md-4">
 				
@@ -198,9 +215,17 @@
 			</c:forEach>
 			</div>
 			
+			
 			<!-- 구독 게시물 배치 -->
-			<div id="likeList" style="display: none;">
-				<c:forEach var="all" items="${listLike}" begin="0" end="${listLike.size() < 8 ? listLike.size() : 8}" varStatus="vs">
+			<div id="likeList" class="tab-pane fade">
+			<c:choose>
+			<c:when test="${sessionScope.login == null}">
+			<div align="center">
+				<div class="alert alert-warning" style="width:600px; margin-top: 10px;"><h1> 로그인 후에 이용 가능합니다.</h1></div>
+			</div>
+			</c:when>
+			<c:otherwise>
+			<c:forEach var="all" items="${listLike}" begin="0" end="${listLike.size() < 8 ? listLike.size() : 8}" varStatus="vs">
 				<div id="post" class="col-xs-0 col-md-4">
 				
 					<!-- head -->
@@ -251,9 +276,14 @@
 				<br/>
 			</c:if>
 			</c:forEach>
+			</c:otherwise>
+			</c:choose>
+			
 			</div>
 
 			
+			</div>
+</div>
 </div>
 
 <c:choose>
@@ -262,11 +292,7 @@
 	function likechange(){
 		window.alert("로그인후 이용 가능합니다.");
 	}
-	function postset(){
-		window.alert("로그인후 이용 가능합니다.");
-	}
 	$(".like").on("click", likechange);
-	$("input[name='listbtn']:radio").change(postset);
 	</script>
 	</c:when>
 	
@@ -276,29 +302,38 @@
 		function likechange(){
 			var str = this.value;
 			if(this.classList.contains("glyphicon-heart-empty")){
-				$("."+str).html(parseInt($("."+str).html())+1);
-				$(".o"+str).removeClass("glyphicon-heart-empty");
-				$(".o"+str).addClass("glyphicon-heart");
+				$.ajax({
+					url:"/postgoodAdd.mt",
+					method : "get",
+					data : {
+					"num" : str,
+					}
+				}).done(function(result) {
+					var rst = JSON.parse(result);
+					if(rst.rst){
+						$("."+str).html(parseInt($("."+str).html())+1);
+						$(".o"+str).removeClass("glyphicon-heart-empty");
+						$(".o"+str).addClass("glyphicon-heart");
+					}
+				});
 			}else{
-				$("."+str).html(parseInt($("."+str).html())-1);
-				$(".o"+str).removeClass("glyphicon-heart");
-				$(".o"+str).addClass("glyphicon-heart-empty");
+				$.ajax({
+					url:"/postgoodRemove.mt",
+					method : "get",
+					data : {
+					"num" : str,
+					}
+				}).done(function(result) {
+					var rst = JSON.parse(result);
+					if(rst.rst){
+						$("."+str).html(parseInt($("."+str).html())-1);
+						$(".o"+str).removeClass("glyphicon-heart");
+						$(".o"+str).addClass("glyphicon-heart-empty");
+					}
+				});
 			}
 		}
 		$(".like").on("click", likechange);
-		
-		
-		//전체,구독 누를때 목록불러오는 스크립트
-		function postset(){
-			if(this.value == "all"){
-				$("#likeList").css("display","none");
-				$("#allList").css("display","block");
-			}else{
-				$("#likeList").css("display","block");
-				$("#allList").css("display","none");
-			}
-		}
-		$("input[name='listbtn']:radio").change(postset);
 	</script>
 	</c:otherwise>
 </c:choose>
