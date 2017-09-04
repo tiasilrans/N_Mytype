@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="/css/my.css">
 
 <nav id="tertiary-nav" class="tertiary-nav navbar scroll-x">
@@ -42,6 +42,7 @@ table.type07 thead th {
     border-bottom : 1px solid #ccc ;
 }
 table.type07 td {
+	text-align: center;
     padding: 7px;
 }
 </style>
@@ -57,22 +58,23 @@ table.type07 td {
     </thead>
     <tbody>
     <tr>
-        <td>2017-09-04</td>
         <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>2017-09-04</td>
         <td></td>
         <td></td>
         <td></td>
     </tr>
-    <tr>
-        <td>2017-09-04</td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
+     <c:if test="${sessionScope.login eq null }">
+    	<tr>
+    		<td colspan="4" style="height:100px;">거래 내역이 없습니다.</td>
+    	</tr>
+    </c:if>
     </tbody>
 </table>
+
+
+
+
+
+
+
+
