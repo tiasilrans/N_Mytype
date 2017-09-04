@@ -137,7 +137,7 @@ body {
 	z-index: 3;
 }
 
-
+ 
 @media ( min-width : 768px) {
 	.dropdown:hover {
 		background-color: #fff;
