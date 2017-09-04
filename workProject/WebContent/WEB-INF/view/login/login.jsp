@@ -12,12 +12,12 @@
 	height: auto;
 	padding: 20px;
 }
-#sbt,#alert{
-	width : 360px;
+#login-sbt,#login-alert{
+	width : 80%;
 	height: 60px;
 }
-#email,#pw{
-	width : 360px;
+#login-email,#login-pw{
+	width : 80%;
 	height: 40px;
 }
 
@@ -33,16 +33,16 @@
 				<br/>				
 				<div class="form-group row">
 						<input class="form-control" type="email"
-							placeholder="e-mail" name="email" id="email" required />
+							placeholder="e-mail" name="email" id="login-email" required />
 				</div>
 				
 				<div class="form-group row">
 					 <input class="form-control" type="password"
-						placeholder="비밀번호" name="pw" id="pw" required />
+						placeholder="비밀번호" name="pw" id="login-pw" required />
 				</div>
 				<c:if test="${flag ne null}">
-				<div class="alert alert-danger" id="alert">
-					<b>로그인실패 !</b>
+				<div class="alert alert-danger" id="login-alert">
+					<b>입력한 정보가 올바르지 않습니다.</b>
 				</div>
 				</c:if>
 				<div align="center" class="row">
@@ -50,7 +50,7 @@
 					<div class="form-group" align="right" style="margin-right: 45px;">
 					<a>비밀번호 찾기</a>｜<a href="join.mt">회원가입</a>
 					</div>
-					<button id="sbt" type="submit" class="btn">로그인</button>
+					<button id="login-sbt" type="submit" class="btn">로그인</button>
 				</div>
 			</form>
 		</div>

@@ -10,5 +10,50 @@
  					values(post_seq.nextval, #{category}, #{nickname}, #{title}, #{subtitle},
  						#{fcontent}, #{ccontent}, 0, #{hash}, 0, sysdate, #{url})
   	</insert>
+  	
+  	
+  	<!--(메인) 게시물 전체 불러오기 -->
+	<select id="listall" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select tmp3.*,p.nickname as heart from 
+		(select tmp2.* from (select rownum as r, tmp.* from (select * from post order by pdate desc)tmp)tmp2 where tmp2.r between 1 and 9
+		)tmp3 left join (select pg.* from postgood pg left join (select nickname as nick from member
+		<choose>
+		<when test="email != null">
+		 where email=#{email}
+		</when>
+		<otherwise>
+		 where email='널값을주기위한아무말'
+		</otherwise>
+		</choose>
+		 )pf on pg.NICKNAME=pf.nick where pf.nick is not null) p on tmp3.num=p.pnum
+		</select>
+	
+	<!-- (메인) 게시물 구독한 게시물 불러오기 -->
+	<select id="listLike" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	<if test="email != null">
+		select tmp3.*,p.nickname as heart from (
+		select tmp2.* from (select rownum as r, tmp.* from
+		 (select * from (select p.*,s.EMAIL from post p left join (select * from subscribe where email=#{email}) s on p.url=s.address)tmp where email=#{email} order by pdate desc
+		 )tmp)tmp2 where tmp2.r between 1 and 9
+		 )tmp3 left join (select pg.* from postgood pg left join (select nickname as nick from member where email=#{email})pf on pg.NICKNAME=pf.nick where pf.nick is not null) p on tmp3.num=p.pnum
+	</if>
+	</select>
+	
+	<!-- 게시글 좋아요(게시글좋아요 update) -->
+	<update id="postgoodPlus" parameterType="java.util.HashMap">
+		update post set good=good+1 where num=#{num}
+	</update>
+	<insert id="postgoodAdd" parameterType="java.util.HashMap">
+		insert into postgood(num, pnum, nickname, pgdate) values(postgood_seq.nextval, #{num}, (select nickname from member where email=#{email}), sysdate)
+	</insert>
+	
+	<update id="postgoodMinus" parameterType="java.util.HashMap">
+		update post set good=good-1 where num=#{num}
+	</update>
+	<delete id="postgoodRemove" parameterType="java.util.HashMap">
+		delete from postgood where pnum=#{num} and nickname=(select nickname from member where email=#{email})
+	</delete>
+  
+  
   
   </mapper>

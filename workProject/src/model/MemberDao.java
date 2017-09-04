@@ -21,7 +21,7 @@ public class MemberDao {
 		}catch(Exception e){
 			System.out.println("MemberJoin Error");
 		}finally{
-			session.commit();
+			session.close();
 		}
 	}
 	
@@ -33,7 +33,7 @@ public class MemberDao {
 			System.out.println("MemberEmailCheck Error");
 			return null;
 		}finally{
-			session.commit();
+			session.close();
 		}
 	}
 	
@@ -46,7 +46,7 @@ public class MemberDao {
 			System.out.println("Memberlogin Error");
 			return null;
 		}finally{
-			session.commit();
+			session.close();
 		}
 	}
 }

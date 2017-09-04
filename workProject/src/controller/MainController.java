@@ -18,7 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import model.BlogDAO;
 import model.MemberDao;
+import model.PostDao;
 
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -30,12 +32,26 @@ public class MainController {
 	MemberDao mdao;
 	
 	@Autowired
+	PostDao pdao;
+	
+	@Autowired
+	BlogDAO bdao;
+	
+	@Autowired
 	JavaMailSender sender;
 	
 	@RequestMapping({ "/", "/index.mt" })
-	public String welcome(Map map) {
-		map.put("section", "main");
-		return "t_el";
+	public ModelAndView welcome(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("t_main");
+		//내가 누른 게시물의 하트표시를 표시하기위한 string 비로그인일때는 null널을 넣어서 안나오게끔 유도
+		Map str = new HashMap<>();
+		str.put("email",(String)session.getAttribute("login"));
+		mav.addObject("listAll",pdao.listAll(str));
+		if(session.getAttribute("login") != null){
+			mav.addObject("listLike",pdao.listLike(str));
+		}
+		return mav;
 	}
 	
 	@RequestMapping("login.mt")
@@ -54,6 +70,7 @@ public class MainController {
 		if(result != null){
 			mav.setViewName("redirect:/");//메인으로 돌아감
 			session.setAttribute("login", map.get("email"));
+			session.setAttribute("blog", bdao.mybloglist(map));
 		}else{
 			mav.setViewName("t_login/login");
 			mav.addObject("flag",true);//로그인창으로 돌아가서 경고창 띄우기위함
@@ -67,6 +84,7 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("redirect:/");
 			session.removeAttribute("login");
+			session.removeAttribute("blog");
 		return mav;
 	}
 	
@@ -112,10 +130,10 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 
 		if(map.get("cn").equals((String)session.getAttribute("EC"))){
-				mdao.join(map);
-				mav.setViewName("redirect:/");
-				session.setAttribute("login", map.get("email"));
-				session.removeAttribute("EC");
+			session.removeAttribute("EC");
+			mdao.join(map);
+			mav.setViewName("redirect:/");
+			session.setAttribute("login", map.get("email"));
 		}else{
 			mav.setViewName("t_join/join");
 			mav.addObject("uuid", true);

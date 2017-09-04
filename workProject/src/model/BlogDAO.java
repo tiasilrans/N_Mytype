@@ -1,7 +1,6 @@
 package model;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -41,6 +40,17 @@ public class BlogDAO {
 		}		
 	}
 	
-	
+	public List<Map> mybloglist(Map map){
+		SqlSession session = factory.openSession();				
+		try {
+			List<Map> r = session.selectList("blog.mybloglist", map);
+			return r;
+		} catch (Exception e) {
+			System.out.println("mybloglist : " + e.toString());
+			return null;
+		}finally {
+			session.close();
+		}		
+	}
 
 }

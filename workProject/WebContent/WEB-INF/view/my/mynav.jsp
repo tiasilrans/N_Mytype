@@ -137,6 +137,7 @@ body {
 	z-index: 3;
 }
 
+
 @media ( min-width : 768px) {
 	.dropdown:hover {
 		background-color: #fff;
@@ -150,6 +151,7 @@ body {
 	.navbar-form {
 		padding: 0px;
 	}
+	
 	.navbar-form .search-box {
 		width: 260px;
 		height: 32px;
