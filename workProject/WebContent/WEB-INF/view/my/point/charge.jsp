@@ -1,15 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
-<style>
 
-.tertiary-nav {
-    margin-top: 1px;
-    height: 43px;
-    border-bottom: 1px solid rgba(0,0,0,.075);
-}
-  
-</style>
+<link rel="stylesheet" href="/css/my.css">
 
 <nav id="tertiary-nav" class="tertiary-nav navbar scroll-x">
     <div>
