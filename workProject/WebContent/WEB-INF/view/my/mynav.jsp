@@ -17,7 +17,6 @@ body {
 	padding: 0px;
 	min-height: 2500px;
 	background-color: #f8f8f8;;
-	align: center;
 }
 
 .navbar-info {
@@ -43,7 +42,6 @@ body {
 	transition: all 1s;
 }
 
-<<<<<<< HEAD
 .navbar-me{
     padding: 10px 0px;
     background-color: transparent;
@@ -57,10 +55,10 @@ body {
     border-top-width: 0px;
     padding-top: 10px;
     margin-top: 5px;
-=======
+}
+  
 .header-right-menu {
 	padding: 5px 15px !important;
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 }
 
 .navbar-me {
