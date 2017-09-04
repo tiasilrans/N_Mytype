@@ -71,6 +71,8 @@
 		<property name="mapperLocations">
 			<list>
 				<value>/WEB-INF/mapper/member-mapper.xml</value>
+				<value>/WEB-INF/mapper/blog-mapper.xml</value>
+				<value>/WEB-INF/mapper/post-mapper.xml</value>
 			</list>
 		</property>
 	</bean>	

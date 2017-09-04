@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="blog">
+ 	<!-- 블로그 생성 -->
+ 	<insert id="create" parameterType="java.util.HashMap">
+ 		insert into blog(email, title, intro, url, createdate) 
+ 					values(#{email}, #{title}, #{intro}, #{url}, sysdate)
+ 	</insert>
+ 	<!-- 블로그 뷰 -->
+ 	<select id="view" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+ 		select * from blog where url=#{url}
+ 	</select>
+ 
+ </mapper>

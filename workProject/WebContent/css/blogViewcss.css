@@ -1,0 +1,182 @@
+@CHARSET "UTF-8";
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+.box {
+	border: 1px solid;
+	border-color: #d9d9d9;
+	width: 100%;
+	padding: 0px;     
+}
+
+.navbar-form {
+	margin: 0;
+	margin-top: 5px;
+	padding: 8px 0px;
+}
+
+.search-input {
+	height: 48px;
+	position: relative;
+	padding: 6px 48px 6px 12px;
+	font-size: 14px;
+	border: 1px solid #e5e5e5;
+	border-radius: 3px;
+	position: relative;
+}
+
+.search {
+	display: block;
+	position: relative;
+}
+
+.btn-search {
+	position: absolute;
+	top: 0;
+	right: 0px;
+	width: 48px;
+	height: 48px;
+	padding: 12px;
+	background-color: transparent;
+	border: 0;
+}
+
+.navbar-form .search-box {
+	border: 1px solid;
+	height: 35px;
+	outline: none;
+	width: 320px;
+	padding-right: 3px;
+	padding-left: 15px;
+	margin: 4px;
+	-webkit-border-radius: 22px;
+	-moz-border-radius: 22px;
+	border-radius: 22px;
+	border-color: #d9d9d9;
+}
+
+.navbar-form button {
+	border: 0;
+	background: none;
+	padding: 2px 5px;
+	margin-top: 2px;
+	position: relative;
+	left: -34px;
+	margin-bottom: 0;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+a:hover {
+	color: red;
+}
+
+.search-box:focus+button {
+	z-index: 3;
+}
+
+.section {
+	padding: 15px;
+	margin-bottom: 16px;
+	background-color: #fff;
+}
+
+.dropdown:hover {
+	background-color: #000;
+}
+
+<<<<<<< HEAD
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+
+.navbar-form {
+	padding: 0px;
+}
+
+.label.hashtag {
+	display: inline-block;
+	padding: 7px;
+	margin-right: 2px;
+	margin-bottom: 6px;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 17px;
+	color: #606060; 
+	border: 1px solid #e5e5e5;
+	border-radius: 3px;
+	text-decoration: none;
+}
+
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.button1 {
+	background-color: #303030;
+}
+=======
+<<<<<<< HEAD
+}
+
+
+
+
+
+
+=======
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+
+.navbar-form {
+	padding: 0px;
+}
+
+.label.hashtag {
+	display: inline-block;
+	padding: 7px;
+	margin-right: 2px;
+	margin-bottom: 6px;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 17px;
+	color: #606060; 
+	border: 1px solid #e5e5e5;
+	border-radius: 3px;
+	text-decoration: none;
+}
+
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.button1 {
+	background-color: #303030;
+}
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git

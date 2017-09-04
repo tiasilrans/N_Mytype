@@ -6,77 +6,8 @@
 	String today = ft.format(new java.util.Date());
 %>
 
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- 
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
--->
+<link rel="stylesheet" href="/css/my.css">
 
-<style>
-
-.secondary-nav {
-    height: 20px;
-    border-top: 1px solid rgba(0,0,0,.075);
-}
-
-.card {
-    position: relative;
-    display: block;
-    width : 80%;
-	height: 40%;
-    margin-bottom: .75rem;
-    background-color: #fff;
-    border-radius: .25rem;
-    border: 1px solid rgba(0,0,0,.125);
-}
-  
-a { color: black;}
-
-.lcard {
-	background-color: white;
-	width : 90%;
-	height: 30%;
-    display: flex;
-    border-radius : 10px;
-	margin: 10px;
-}
-
-.incard {
-    float: left;
-    width : 45%;
-	height: 70%;
-    overflow: hidden;
-    border-radius : 5px;
-    border : 1px solid silver;
-}
-  
-.title{
-	padding-top :15px;
-	margin-left: 10px;
-}
-
-.lbox{
-  float:left;
-  width:50%;
-  height:35%;
-}
-  
-.rbox{
-  clear:right;
-  float:right;
-  width:50%;
-  height:35%;
-}
-  
-.boxsp{
-  padding: 15px;
-}
-.bicon {
-  font-size: 17px;
-}
-  
-</style>
 
 <div class="col-xs-offset-1 col-md-offset-1 container-fluid">
 	<div class="card col-xs-6 col-md-6 col-lg-4">
@@ -123,7 +54,7 @@ a { color: black;}
 			<br/><br/>
 			<div class="incard" >
 				<div class="title">
-					<a style="float:left; padding-right: 10px;"><img src="/resources/image.png" width="40px" height="40px" /></a>
+					<a style="float:left; padding-right: 10px;"><img src="/images/basic.png" width="40px" height="40px" /></a>
 					<div>소히</div>
 					<div>6일전 · TEST</div>
 				</div>
@@ -158,15 +89,6 @@ a { color: black;}
 </div>
 
 
-<script>
-	$(window).scroll(function() {
-		if ($(this).scrollTop() > 5) {
-			$(".navbar-me").addClass("fixed-me");
-		} else {
-			$(".navbar-me").removeClass("fixed-me");
-		}
-	});
-</script>
 
 
 

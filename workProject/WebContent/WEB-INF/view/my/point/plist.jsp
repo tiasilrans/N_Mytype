@@ -1,51 +1,78 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
  
-
-<style>
-
-.tertiary-nav {
-    margin-top: 1px;
-    height: 43px;
-    border-bottom: 1px solid rgba(0,0,0,.075);
-}
-/*
-.card-block>*:last-child {
-    margin-bottom: 0;
-}
-.card-table {
-    position: relative;
-    margin-right: -15px;
-    margin-left: -15px;
-    font-size: 14px;
-}
-
-div {
-    display: block;
-}
-*/
-  
-</style>
+<link rel="stylesheet" href="/css/my.css">
 
 <nav id="tertiary-nav" class="tertiary-nav navbar scroll-x">
-    <div>
+    <div >
         <ul class="nav navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" href="/my/point/plist">Æ÷ÀÎÆ® ³»¿ª</a>
+                <a class="nav-link active" href="/my/point/plist">í¬ì¸íŠ¸ ë‚´ì—­</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/my/point/charge">Æ÷ÀÎÆ® ÃæÀü</a>
+                <a class="nav-link" href="/my/point/charge">í¬ì¸íŠ¸ ì¶©ì „</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/my/point/clist">ÃæÀü ³»¿ª</a>
+                <a class="nav-link" href="/my/point/clist">ì¶©ì „ ë‚´ì—­</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/my/point/withdraw">Ãâ±İ ½ÅÃ»</a>
+                <a class="nav-link" href="/my/point/withdraw">ì¶œê¸ˆ ì‹ ì²­</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/my/point/wlist">Ãâ±İ ³»¿ª</a>
+                <a class="nav-link" href="/my/point/wlist">ì¶œê¸ˆ ë‚´ì—­</a>
             </li>
         </ul>
     </div>
 </nav>
 
+<style>
+  
+table.type07 {
+    text-align: center;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+table.type07 thead {
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+table.type07 thead th {
+    padding: 10px;
+     border-bottom : 1px solid #ccc ;
+}
+table.type07 td {
+    padding: 7px;
+}
+</style>
+
+<table class="type07" align="center" >
+    <thead>
+    <tr>
+        <th style="width: 100px;" >ë‚ ì§œ</th>
+        <th style="width:200px;">ì¹´í…Œê³ ë¦¬</th>
+        <th style="width:100px;">í¬ì¸íŠ¸</th>
+        <th style="width:300px;">ìƒì„¸ë‚´ìš©</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>2017-09-04</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2017-09-04</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2017-09-04</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>

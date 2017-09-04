@@ -1,35 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> 
 	
 <style>
+
+.secondary-nav {
+    border-top: 1px solid rgba(0,0,0,.075);
+    border-bottom: 0;
+    padding-bottom:0;
+}
 
 body {
 	margin: 0px;
 	padding: 0px;
 	min-height: 2500px;
-	background-color: #fff;
-}
-
-.secondary-nav {
-    height: 20px;
-    border-top: 1px solid rgba(0,0,0,.075);
-}
-
-.navbar {
-    min-height: 20px;
-    padding: 0;
-    border-radius: 0;
-}
-
-*, ::after, ::before {
-    -webkit-box-sizing: inherit;
-    box-sizing: inherit;
+	background-color: #f8f8f8;;
+	align: center;
 }
 
 .navbar-info {
 	width: 100%;
+}
+
+.fixed-me {
+	transition: all 1s;
 }
 
 .fixed-me {
@@ -47,6 +43,7 @@ body {
 	transition: all 1s;
 }
 
+<<<<<<< HEAD
 .navbar-me{
     padding: 10px 0px;
     background-color: transparent;
@@ -60,13 +57,33 @@ body {
     border-top-width: 0px;
     padding-top: 10px;
     margin-top: 5px;
+=======
+.header-right-menu {
+	padding: 5px 15px !important;
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 }
 
+.navbar-me {
+	padding: 10px 0px;
+	background-color: transparent;
+	top: 0px;
+	border: 0px;
+	border-radius: 0px;
+}
+
+.navbar-collapse {
+	text-align: center;
+	border-top-width: 0px;
+	padding-top: 10px;
+	margin-top: 5px;
+}
 
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover
 	{
 	background-color: transparent;
 }
+
+
 
 .menu-collapsed-button {
 	margin: 10px 15px 10px 15px !important;
@@ -91,7 +108,7 @@ body {
 }
 
 .navbar-form .search-box {
-	border: 0px;
+	border: 1px solid rgba(0,0,0,.25);
 	height: 35px;
 	outline: none;
 	width: 320px;
@@ -122,7 +139,10 @@ body {
 
 @media ( min-width : 768px) {
 	.dropdown:hover {
-		background-color: #000;
+		background-color: #fff;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+		
 	}
 	.dropdown:hover .dropdown-menu {
 		display: block;
@@ -134,23 +154,27 @@ body {
 		width: 260px;
 		height: 32px;
 	}
+	
+	
 }
+
 </style>
 	
     <!--navbar menu-->
 <section class="navbar-info">
-	<nav id="primary-nav" class="primary-nav navbar navbar-default navbar-me" role="navigation">
+	<nav class="navbar navbar-default navbar-me" role="navigation">
 		<div class="container-fluid ">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">
-		    	<button type="button" class="navbar-toggle collapsed menu-collapsed-button" data-toggle="collapse" data-target="#navbar-primary-collapse" aria-expanded="false"
+		    	<button type="button" class="navbar-toggle collapsed menu-collapsed-button col-md-offset-1" 
+		    	data-toggle="collapse" data-target="#navbar-primary-collapse" aria-expanded="false"
 		      								style="float: left;">
 		      		<span class="sr-only">Toggle navigation</span>
 		        	<span class="icon-bar"></span>
 		        	<span class="icon-bar"></span>
 		        	<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">MyType</a>
+				<a class="navbar-brand" href="/">MyType</a>
 		    </div>
 	      
 			<div class="collapse navbar-collapse  header-right-menu" id="navbar-primary-collapse">
@@ -183,7 +207,7 @@ body {
 			</div><!-- /.navbar-collapse -->
 		</div>
 		
-		<nav id="secondary-nav" class="secondary-nav navbar" role="navigation">
+		<nav class="secondary-nav navbar ">
 			<div>
 				<ul class="nav navbar-nav">
 					<li class="nav-item">

@@ -1,16 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> 
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <style>
 
 .tertiary-nav {
-    margin-top: 1px;
     height: 43px;
     border-bottom: 1px solid rgba(0,0,0,.075);
+    padding: 0;
 }
   
 </style>
@@ -19,20 +17,21 @@
     <div>
         <ul class="nav navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" href="/my/point/plist">Æ÷ÀÎÆ® ³»¿ª</a>
+                <a class="nav-link active" href="/my/point/plist">í¬ì¸íŠ¸ ë‚´ì—­</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/my/point/charge">Æ÷ÀÎÆ® ÃæÀü</a>
+                <a class="nav-link" href="/my/point/charge">í¬ì¸íŠ¸ ì¶©ì „</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/my/point/clist">ÃæÀü ³»¿ª</a>
+                <a class="nav-link" href="/my/point/clist">ì¶©ì „ ë‚´ì—­</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/my/point/withdraw">Ãâ±İ ½ÅÃ»</a>
+                <a class="nav-link" href="/my/point/withdraw">ì¶œê¸ˆ ì‹ ì²­</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/my/point/wlist">Ãâ±İ ³»¿ª</a>
+                <a class="nav-link" href="/my/point/wlist">ì¶œê¸ˆ ë‚´ì—­</a>
             </li>
         </ul>
     </div>
 </nav>
+

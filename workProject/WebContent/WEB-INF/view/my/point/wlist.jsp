@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
  
 <style>
 
@@ -15,19 +15,19 @@
     <div>
         <ul class="nav navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" href="/my/point/plist">Æ÷ÀÎÆ® ³»¿ª</a>
+                <a class="nav-link active" href="/my/point/plist">í¬ì¸íŠ¸ ë‚´ì—­</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/my/point/charge">Æ÷ÀÎÆ® ÃæÀü</a>
+                <a class="nav-link" href="/my/point/charge">í¬ì¸íŠ¸ ì¶©ì „</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/my/point/clist">ÃæÀü ³»¿ª</a>
+                <a class="nav-link" href="/my/point/clist">ì¶©ì „ ë‚´ì—­</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/my/point/withdraw">Ãâ±Ý ½ÅÃ»</a>
+                <a class="nav-link" href="/my/point/withdraw">ì¶œê¸ˆ ì‹ ì²­</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/my/point/wlist">Ãâ±Ý ³»¿ª</a>
+                <a class="nav-link" href="/my/point/wlist">ì¶œê¸ˆ ë‚´ì—­</a>
             </li>
         </ul>
     </div>
