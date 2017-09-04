@@ -26,10 +26,12 @@
 </nav>
 <div align="center">
 <ul class="list-group" style="width: 60%; text-align: left">
-<li class="list-group-item"><h4><b>1. 충전할 포인트의 양을 선택해 주세요.</b></h4></li>
 <li class="list-group-item">
   <table class="table table-hover">
     <thead>
+    <tr>
+    <th colspan="2"><h4><b>1. 충전할 포인트의 양을 선택해 주세요.</b></h4></th>
+    </tr>
       <tr>
         <th>충전할 포인트</th>
         <th>결제할 금액</th>
