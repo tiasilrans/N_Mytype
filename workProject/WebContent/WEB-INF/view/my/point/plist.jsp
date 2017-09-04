@@ -28,7 +28,6 @@
 <style>
   
 table.type07 {
-    text-align: center;
     line-height: 1.5;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -38,8 +37,9 @@ table.type07 thead {
     border-left: 1px solid #ccc;
 }
 table.type07 thead th {
-    padding: 10px;
-     border-bottom : 1px solid #ccc ;
+	text-align: center;
+	padding: 10px;
+    border-bottom : 1px solid #ccc ;
 }
 table.type07 td {
     padding: 7px;

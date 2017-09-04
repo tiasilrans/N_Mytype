@@ -1,17 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> 
-
-<style>
-
-.tertiary-nav {
-    height: 43px;
-    border-bottom: 1px solid rgba(0,0,0,.075);
-    padding: 0;
-}
-  
-</style>
+<link rel="stylesheet" href="/css/my.css">
 
 <nav id="tertiary-nav" class="tertiary-nav navbar scroll-x">
     <div>

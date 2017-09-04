@@ -8,7 +8,6 @@
 
 <link rel="stylesheet" href="/css/my.css">
 
-
 <div class="col-xs-offset-1 col-md-offset-1 container-fluid">
 	<div class="card col-xs-6 col-md-6 col-lg-4">
 		<div class="title">
