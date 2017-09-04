@@ -15,10 +15,6 @@ body {
 }
 
 .fixed-me {
-	transition: all 1s;
-}
-
-.fixed-me {
 	background-color: #fff !important;
 	padding: 0px !important;
 	margin-bottom: 5px;
@@ -27,8 +23,10 @@ body {
 	z-index: 888;
 	width: 100%;
 	border-bottom: 3px solid #00134d !important;
+	transition: all 1s;
 }
 
+HEAD
 .navbar-me{
     padding: 10px 0px;
     background-color: transparent;
@@ -48,13 +46,6 @@ body {
   
 .header-right-menu {
 	padding: 5px 15px !important;
-}
-
-.navbar-collapse {
-	text-align: center;
-	border-top-width: 0px;
-	padding-top: 10px;
-	margin-top: 5px;
 }
 
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover
@@ -148,11 +139,11 @@ body {
 </style>
 
 <!--navbar menu-->
-<section class="navbar-info">
-	<nav class="navbar navbar-default navbar-me">
+<section class="navbar-info ">
+	<nav class="navbar navbar-default">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
+			<div class="navbar-header navbar-me">
 				<button type="button"
 					class="navbar-toggle collapsed menu-collapsed-button"
 					data-toggle="collapse" data-target="#navbar-primary-collapse"
@@ -177,7 +168,7 @@ body {
 						<ul class="dropdown-menu">
 						
 						<!-- 만든 블로그가 잇을 경우 보여준다 -->
-						<c:if test="${sessionScope.blog eq null }">
+						<c:if test="${sessionScope.blog ne null }">
 						<c:forEach var="blog" items="${sessionScope.blog}" begin="0" end="${sessionScope.blog.size()}">
 							<li><a href="/blog/${blog.URL}">${blog.TITLE}</a></li>
 						</c:forEach>
@@ -242,7 +233,6 @@ body {
 </script>
 
 
-
 <!-- 로그인창 modal  -->
   <div class="modal fade" id="login-form" role="dialog">
     <div class="modal-dialog" style="width: 450px;">
@@ -280,3 +270,4 @@ body {
       
     </div>
   </div>
+ 

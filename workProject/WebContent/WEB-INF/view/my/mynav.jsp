@@ -22,11 +22,6 @@ body {
 .navbar-info {
 	width: 100%;
 }
-
-.fixed-me {
-	transition: all 1s;
-}
-
 .fixed-me {
 	background-color: #fff !important;
 	padding: 0px !important;
@@ -36,12 +31,10 @@ body {
 	z-index: 888;
 	width: 100%;
 	border-bottom: 3px solid #00134d !important;
-}
-
-.navbar-me {
 	transition: all 1s;
 }
 
+HEAD
 .navbar-me{
     padding: 10px 0px;
     background-color: transparent;
@@ -49,26 +42,12 @@ body {
     border: 0px;
     border-radius: 0px;
     bottom : 0px;
+    transition: all 1s;
 }
-.navbar-collapse{
-    text-align: center;
-    border-top-width: 0px;
-    padding-top: 10px;
-    margin-top: 5px;
-}
-  
+
 .header-right-menu {
 	padding: 5px 15px !important;
 }
-
-.navbar-me {
-	padding: 10px 0px;
-	background-color: transparent;
-	top: 0px;
-	border: 0px;
-	border-radius: 0px;
-}
-
 .navbar-collapse {
 	text-align: center;
 	border-top-width: 0px;
@@ -80,8 +59,6 @@ body {
 	{
 	background-color: transparent;
 }
-
-
 
 .menu-collapsed-button {
 	margin: 10px 15px 10px 15px !important;
@@ -135,7 +112,6 @@ body {
 	z-index: 3;
 }
 
- 
 @media ( min-width : 768px) {
 	.dropdown:hover {
 		background-color: #fff;
@@ -149,12 +125,10 @@ body {
 	.navbar-form {
 		padding: 0px;
 	}
-	
 	.navbar-form .search-box {
 		width: 260px;
 		height: 32px;
 	}
-	
 	
 }
 
@@ -166,8 +140,7 @@ body {
 		<div class="container-fluid col-md-offset-1">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">
-		    	<button type="button" class="navbar-toggle collapsed menu-collapsed-button col-md-offset-1" 
-		    	data-toggle="collapse" data-target="#navbar-primary-collapse" aria-expanded="false"
+		    	<button type="button" class="navbar-toggle collapsed menu-collapsed-button col-md-offset-1" data-toggle="collapse" data-target="#navbar-primary-collapse" aria-expanded="false"
 		      								style="float: left;">
 		      		<span class="sr-only">Toggle navigation</span>
 		        	<span class="icon-bar"></span>
@@ -242,3 +215,5 @@ body {
 	    }
 	});
 </script>
+
+
