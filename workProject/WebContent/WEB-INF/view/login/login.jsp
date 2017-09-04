@@ -13,11 +13,11 @@
 	padding: 20px;
 }
 #login-sbt,#login-alert{
-	width : 360px;
+	width : 80%;
 	height: 60px;
 }
 #login-email,#login-pw{
-	width : 360px;
+	width : 80%;
 	height: 40px;
 }
 

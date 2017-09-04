@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import model.BlogDAO;
 import model.MemberDao;
 import model.PostDao;
 
@@ -32,6 +33,9 @@ public class MainController {
 	
 	@Autowired
 	PostDao pdao;
+	
+	@Autowired
+	BlogDAO bdao;
 	
 	@Autowired
 	JavaMailSender sender;
@@ -66,6 +70,7 @@ public class MainController {
 		if(result != null){
 			mav.setViewName("redirect:/");//메인으로 돌아감
 			session.setAttribute("login", map.get("email"));
+			session.setAttribute("blog", bdao.mybloglist(map));
 		}else{
 			mav.setViewName("t_login/login");
 			mav.addObject("flag",true);//로그인창으로 돌아가서 경고창 띄우기위함
@@ -79,6 +84,7 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("redirect:/");
 			session.removeAttribute("login");
+			session.removeAttribute("blog");
 		return mav;
 	}
 	
