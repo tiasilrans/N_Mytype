@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/css/my.css">
 
 <nav id="tertiary-nav" class="tertiary-nav navbar scroll-x">
-    <div >
+	<div class="col-xs-offset-1 col-md-offset-1">
         <ul class="nav navbar-nav">
             <li class="nav-item">
                 <a class="nav-link active" href="/my/settings/account">계정</a>

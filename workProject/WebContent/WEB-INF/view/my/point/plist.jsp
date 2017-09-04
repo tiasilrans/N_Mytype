@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/css/my.css">
 
 <nav id="tertiary-nav" class="tertiary-nav navbar scroll-x">
-    <div >
+    <div class="col-xs-offset-1 col-md-offset-1">
         <ul class="nav navbar-nav">
             <li class="nav-item">
                 <a class="nav-link active" href="/my/point/plist">포인트 내역</a>
@@ -46,7 +46,7 @@ table.type07 td {
 }
 </style>
 
-<table class="type07" align="center" >
+<table class="type07 col-xs-offset-1 col-md-offset-1">
     <thead>
     <tr>
         <th style="width: 100px;" >날짜</th>

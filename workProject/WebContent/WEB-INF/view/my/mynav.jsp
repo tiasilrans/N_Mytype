@@ -137,7 +137,7 @@ HEAD
     <!--navbar menu-->
 <section class="navbar-info">
 	<nav class="navbar navbar-default navbar-me" role="navigation">
-		<div class="container-fluid col-md-offset-1">
+		<div class="container-fluid col-xs-offset-1 col-md-offset-1">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">
 		    	<button type="button" class="navbar-toggle collapsed menu-collapsed-button col-md-offset-1" data-toggle="collapse" data-target="#navbar-primary-collapse" aria-expanded="false"
@@ -181,7 +181,7 @@ HEAD
 		</div>
 		
 		<nav class="secondary-nav navbar ">
-			<div class="col-md-offset-1">
+			<div class="col-xs-offset-1 col-md-offset-1">
 				<ul class="nav navbar-nav">
 					<li class="nav-item">
 						<a class="nav-link" href="/my/home">MY홈</a>
