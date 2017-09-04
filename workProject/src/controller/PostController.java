@@ -25,24 +25,17 @@ public class PostController {
 	@Autowired
 	PostDao pdao;	
 	
-	@RequestMapping("postgoodAdd.mt")
+	@RequestMapping("postgood.mt")
 	@ResponseBody
-	public String postgoodAdd(@RequestParam Map map,HttpSession session) throws JsonProcessingException{
+	public String postgood(@RequestParam Map map,HttpSession session) throws JsonProcessingException{
 		Map result = new HashMap<>();
 		map.put("num", ((String)map.get("num")).replace("heart-", ""));
 		map.put("email", (String)session.getAttribute("login"));
-		result.put("rst", pdao.postgoodAdd(map) > 0 ? true: false);
-		String mz=objMapper.writeValueAsString(result);
-		return mz;
-	}
-	
-	@RequestMapping("postgoodRemove.mt")
-	@ResponseBody
-	public String postgoodRemove(@RequestParam Map map,HttpSession session) throws JsonProcessingException{
-		Map result = new HashMap<>();
-		map.put("num", ((String)map.get("num")).replace("heart-", ""));
-		map.put("email", (String)session.getAttribute("login"));
-		result.put("rst", pdao.postgoodRemove(map) > 0 ? true: false);
+		if(Boolean.parseBoolean(((String)map.get("type")))){
+			result.put("rst", pdao.postgoodAdd(map) > 0 ? true: false);
+		}else{
+			result.put("rst", pdao.postgoodRemove(map) > 0 ? true: false);
+		}
 		String mz=objMapper.writeValueAsString(result);
 		return mz;
 	}

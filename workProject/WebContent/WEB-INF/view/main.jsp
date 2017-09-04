@@ -6,19 +6,15 @@
 <style>
 .logo-frame{
 	width:100%;
-	border-radius: 10px;
+	border-radius: 5px;
 }
 
 #secondlogo{
 	height: 350px;
 	width : 300px;
-	background-color: green;
-	border-radius: 10px;
+	background-color: #F6F6F6;
+	border-radius: 5px;
 	margin: 10px;
-}
-
-.btn-primary{
-	background-color: green;
 }
 
 
@@ -26,7 +22,7 @@
 	height: 330px;
 	width : 300px;
 	background-color: #F6F6F6;
-	border-radius: 10px;
+	border-radius: 5px;
 	margin: 10px;
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -131,15 +127,15 @@
 			    <!-- Wrapper for slides -->
 			    <div class="carousel-inner">
 			      <div class="logo-frame item active">
-			        <img src="/images/mainimg/바다.jpg" alt="Los Angeles" style="width:100%; height: 350px; border-radius: 10px;">
+			        <img src="/images/mainimg/바다.jpg" alt="Los Angeles" style="width:100%; height: 350px; border-radius: 5px;">
 			      </div>
 			
 			      <div class="logo-frame item">
-			        <img src="/images/mainimg/겨울.jpg" alt="Chicago" style="width:100%; height: 350px; border-radius: 10px;">
+			        <img src="/images/mainimg/겨울.jpg" alt="Chicago" style="width:100%; height: 350px; border-radius: 5px;">
 			      </div>
 			    
 			      <div class="logo-frame item">
-			        <img src="/images/mainimg/봄.jpg" alt="New york" style="width:100%; height: 350px; border-radius: 10px;">
+			        <img src="/images/mainimg/봄.jpg" alt="New york" style="width:100%; height: 350px; border-radius: 5px;">
 			      </div>
 			    </div>
 			  </div>
@@ -147,7 +143,8 @@
 			
 
 			<!-- 메인쪽 로고 오른쪽 부분 -->
-			<div id="secondlogo" class="col-xs-0 col-md-4">3</div>
+			<div id="secondlogo" class="col-xs-0 col-md-4">
+			</div>
 			
 			<!-- 목록 nav -->
 			<div class="col-xs-0 col-md-12">			
@@ -303,10 +300,11 @@
 			var str = this.value;
 			if(this.classList.contains("glyphicon-heart-empty")){
 				$.ajax({
-					url:"/postgoodAdd.mt",
+					url:"/postgood.mt",
 					method : "get",
 					data : {
 					"num" : str,
+					"type" : true,
 					}
 				}).done(function(result) {
 					var rst = JSON.parse(result);
@@ -318,10 +316,11 @@
 				});
 			}else{
 				$.ajax({
-					url:"/postgoodRemove.mt",
+					url:"/postgood.mt",
 					method : "get",
 					data : {
 					"num" : str,
+					"type" : false,
 					}
 				}).done(function(result) {
 					var rst = JSON.parse(result);
