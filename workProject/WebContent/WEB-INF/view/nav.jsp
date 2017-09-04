@@ -166,14 +166,14 @@ body {
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<button type="button"
+<!-- 				<button type="button"
 					class="navbar-toggle collapsed menu-collapsed-button"
 					data-toggle="collapse" data-target="#navbar-primary-collapse"
 					aria-expanded="false" style="float: left;">
 					<span class="sr-only">Toggle navigation</span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
-				</button>
+				</button> -->
 				<a class="navbar-brand" href="/"><img src="/images/title.png" width="110"; height="32";></a>
 				</div>
 
