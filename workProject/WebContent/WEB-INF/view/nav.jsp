@@ -33,8 +33,24 @@ body {
 	transition: all 1s;
 }
 
+<<<<<<< HEAD
+.navbar-me{
+    padding: 10px 0px;
+    background-color: transparent;
+    top: 0px;
+    border: 0px;
+    border-radius: 0px;
+    bottom : 0px;
+}
+.navbar-collapse{
+    text-align: center;
+    border-top-width: 0px;
+    padding-top: 10px;
+    margin-top: 5px;
+=======
 .header-right-menu {
 	padding: 5px 15px !important;
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 }
 
 .navbar-me {
@@ -191,11 +207,11 @@ body {
                             <img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;">
                             <span class="sr-only">계정</span></a>
                             <ul class="dropdown-menu">
-                            	<li><a href=""><i class="glyphicon glyphicon-th-list"></i>　　MY홈</a></li>
-                            	<li><a href=""><i class="glyphicon glyphicon-heart"></i>　　좋아요</a></li>
-                            	<li><a href=""><i class="glyphicon glyphicon-save"></i>　　구매항목</a></li>
-                            	<li><a href=""><i class="fa fa-money"></i>　　포인트</a></li>
-                            	<li><a href=""><i class="glyphicon glyphicon-cog"></i>　　설정</a></li>
+                            	<li><a href="/my/home"><i class="glyphicon glyphicon-th-list"></i>　　MY홈</a></li>
+                            	<li><a href="/my/goods"><i class="glyphicon glyphicon-heart"></i>　　좋아요</a></li>
+                            	<li><a href="/my/purchases"><i class="glyphicon glyphicon-save"></i>　　구매항목</a></li>
+                            	<li><a href="/my/point/plist"><i class="fa fa-money"></i>　　포인트</a></li>
+                            	<li><a href="/my/settings/account"><i class="glyphicon glyphicon-cog"></i>　　설정</a></li>
                             	<li><a></a></li>
                             	<li><a></a></li>
                             	<li><a></a></li>
