@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" href="/css/my.css">
 
@@ -25,3 +26,49 @@
     </div>
 </nav>
 
+<style>
+  
+table.type07 {
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+table.type07 thead {
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+table.type07 thead th {
+	text-align: center;
+	padding: 10px;
+    border-bottom : 1px solid #ccc ;
+}
+table.type07 td {
+	text-align: center;
+    padding: 7px;
+}
+</style>
+
+<table class="type07 col-xs-offset-1 col-md-offset-1">
+    <thead>
+    <tr>
+        <th style="width: 100px;">날짜</th>
+        <th style="width:200px;">충전금액</th>
+        <th style="width:100px;">결제금액</th>
+        <th style="width:150px;">결제방법</th>
+        <th style="width:200px;">결제상태</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+     <c:if test="${sessionScope.login eq null }">
+    	<tr>
+    		<td colspan="5" style="height:100px;">충전 내역이 없습니다.</td>
+    	</tr>
+    </c:if>
+    </tbody>
+</table>
