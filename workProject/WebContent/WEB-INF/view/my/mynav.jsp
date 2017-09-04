@@ -165,7 +165,7 @@ body {
     <!--navbar menu-->
 <section class="navbar-info">
 	<nav class="navbar navbar-default navbar-me" role="navigation">
-		<div class="container-fluid ">
+		<div class="container-fluid col-md-offset-1">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">
 		    	<button type="button" class="navbar-toggle collapsed menu-collapsed-button col-md-offset-1" 
@@ -210,7 +210,7 @@ body {
 		</div>
 		
 		<nav class="secondary-nav navbar ">
-			<div>
+			<div class="col-md-offset-1">
 				<ul class="nav navbar-nav">
 					<li class="nav-item">
 						<a class="nav-link" href="/my/home">MY홈</a>

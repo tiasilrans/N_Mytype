@@ -174,7 +174,7 @@ body {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/"><img src="/images/title.png" width="110"; height="32";></a>
+				<a class="navbar-brand" href="/"><img src="/images/mytype.png" ></a>
 				</div>
 
 			<div class="collapse navbar-collapse header-right-menu"
@@ -190,7 +190,7 @@ body {
 						<ul class="dropdown-menu">
 						
 						<!-- 만든 블로그가 잇을 경우 보여준다 -->
-						<c:if test="${sessionScope.blog != null }">
+						<c:if test="${sessionScope.blog eq null }">
 						<c:forEach var="blog" items="${sessionScope.blog}" begin="0" end="${sessionScope.blog.size()}">
 							<li><a href="/blog/${blog.URL}">${blog.TITLE}</a></li>
 						</c:forEach>
