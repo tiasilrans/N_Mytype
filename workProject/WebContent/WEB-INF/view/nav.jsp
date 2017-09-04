@@ -29,11 +29,6 @@ body {
 	border-bottom: 3px solid #00134d !important;
 }
 
-.navbar-me {
-	transition: all 1s;
-}
-
-<<<<<<< HEAD
 .navbar-me{
     padding: 10px 0px;
     background-color: transparent;
@@ -41,24 +36,18 @@ body {
     border: 0px;
     border-radius: 0px;
     bottom : 0px;
+    transition: all 1s;
 }
+  
 .navbar-collapse{
     text-align: center;
     border-top-width: 0px;
     padding-top: 10px;
     margin-top: 5px;
-=======
+}
+  
 .header-right-menu {
 	padding: 5px 15px !important;
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
-}
-
-.navbar-me {
-	padding: 10px 0px;
-	background-color: transparent;
-	top: 0px;
-	border: 0px;
-	border-radius: 0px;
 }
 
 .navbar-collapse {
@@ -72,8 +61,6 @@ body {
 	{
 	background-color: transparent;
 }
-
-
 
 .menu-collapsed-button {
 	margin: 10px 15px 10px 15px !important;
