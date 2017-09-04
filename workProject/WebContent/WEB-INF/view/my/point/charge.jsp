@@ -26,7 +26,7 @@
 </nav>
 <div align="center">
 <ul class="list-group" style="width: 60%; text-align: left">
-  <li class="list-group-item">1. 충전할 포인트의 양을 선택해 주세요.</li>
+  <li class="list-group-item"><h4><b>1. 충전할 포인트의 양을 선택해 주세요.</b></h4></li>
   <li class="list-group-item">Second item</li>
   <li class="list-group-item">Third item</li>
 </ul>
