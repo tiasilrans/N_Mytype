@@ -61,7 +61,7 @@
     background-color: #fff;
     box-shadow: 0 0 0 1px rgba(0,0,0,.05), 0 5px 10px 0 rgba(0,0,0,.05), 0 10px 20px 0 rgba(0,0,0,.05);
 }
-  
+
 
 </style>
 
@@ -171,11 +171,12 @@
  				</div>
  				
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
- 					<i class="glyphicon glyphicon-home" style="color: #a6a6a6; font-size: 20px;"></i><span style="margin-left: 10px;">홈</span>
+ 					<i class="material-icons" style="color: #a6a6a6; font-size: 26px;">home</i><span style="margin-left: 10px;">홈</span>
  				</div>
  				
- 				<div class="col-xs-8 px-0" style="margin : 3px; margin-bottom: 30px;">
- 					<i class="material-icons" style="color: #a6a6a6; font-size: 25px;">check_circle</i><span style="margin-left: 10px;">구독</span>
+ 				<div class="col-xs-8 px-0" style="margin : 5px; margin-bottom: 30px;">
+ 					<i class="material-icons" style="color: #a6a6a6; font-size: 25px;">check_circle</i> <span style="margin-left: 10px;">구독</span>
+ 					
  				</div>
  				
  			</div>

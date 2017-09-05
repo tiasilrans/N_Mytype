@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- navCss -->
 <link rel="stylesheet" href="/css/navcss.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <!--navbar menu-->
 <section class="navbar-info ">
@@ -51,15 +52,15 @@
                             <img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;">
                             <span class="sr-only">계정</span></a>
                             <ul class="dropdown-menu">
-                            	<li><a href="/my/home"><i class="glyphicon glyphicon-th-list"></i>　　MY홈</a></li>
-                            	<li><a href="/my/goods"><i class="glyphicon glyphicon-heart"></i>　　좋아요</a></li>
-                            	<li><a href="/my/purchases"><i class="glyphicon glyphicon-save"></i>　　구매항목</a></li>
-                            	<li><a href="/my/point/plist"><i class="fa fa-money"></i>　　포인트</a></li>
-                            	<li><a href="/my/settings/account"><i class="glyphicon glyphicon-cog"></i>　　설정</a></li>
+                            	<li><a href="/my/home"><i class="material-icons" style="color: #999999;">dashboard</i>　　MY홈</a></li>
+                            	<li><a href="/my/goods"><i class="material-icons" style="color: #999999;">favorite</i>　　좋아요</a></li>
+                            	<li><a href="/my/purchases"><i class="material-icons" style="color: #999999;">get_app</i>　　구매항목</a></li>
+                            	<li><a href="/my/point/plist"><i class="material-icons" style="color: #999999;">monetization_on</i>　　포인트</a></li>
+                            	<li><a href="/my/settings/account"><i class="material-icons" style="color: #999999;">settings</i>　　설정</a></li>
                             	<li><a></a></li>
                             	<li><a></a></li>
                             	<li><a></a></li>
-                            	<li><a href="/logout.mt"><i class="glyphicon glyphicon-off "></i>　　로그아웃</a></li>
+                            	<li><a href="/logout.mt"><i class="material-icons" style="color: #999999;">power_settings_new</i>　　로그아웃</a></li>
                             </ul>
 					</li>
 				</ul>
