@@ -40,6 +40,21 @@ public class BlogDAO {
 		}		
 	}
 	
+	public boolean categoryAdd(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			session.insert("blog.category_add", map);
+			return true;
+		}catch(Exception e){
+			System.out.println("categoryAdd Error");
+			e.printStackTrace();
+			return false;
+		}finally{
+			session.close();
+		}
+	}
+	
+	
 	public List<Map> mybloglist(Map map){
 		SqlSession session = factory.openSession();				
 		try {
