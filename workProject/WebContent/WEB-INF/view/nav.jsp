@@ -152,7 +152,7 @@ HEAD
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/"><img src="/images/mytype.png" ></a>
+				<a class="navbar-brand" href="/"><img src="/images/title.png" style="margin: 5px;"></a>
 				</div>
 
 			<div class="collapse navbar-collapse header-right-menu"
@@ -168,13 +168,14 @@ HEAD
 						<ul class="dropdown-menu">
 						
 						<!-- 만든 블로그가 잇을 경우 보여준다 -->
+				
 						<c:if test="${sessionScope.blog ne null }">
 						<c:forEach var="blog" items="${sessionScope.blog}" begin="0" end="${sessionScope.blog.size()}">
 							<li><a href="/blog/${blog.URL}">${blog.TITLE}</a></li>
 						</c:forEach>
 						</c:if>
-						
-							<li><a href="/blog/create"><i class="glyphicon glyphicon-plus"  style="margin-right:7px;"></i> 새 블로그 만들기</a></li>
+
+							<li><a href="/blog/create"><i class="glyphicon glyphicon-plus"  "></i> 새 블로그 만들기</a></li>
 						</ul></li>
 				</ul>
 			

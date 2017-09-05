@@ -163,19 +163,19 @@
  					
  				</div>
  				<div class="col-xs-2 px-0" style="margin-top: 28px;">
- 					<span><i class="glyphicon glyphicon-bell"></i></span> 
+ 					<span><i class="glyphicon glyphicon-bell" style="color: #a6a6a6; font-size: 20px;"></i></span> 
  				</div>
  				
  				<div class="col-xs-2 px-0" style="margin-top: 28px;">
- 					<span><i class="glyphicon glyphicon-off"></i></span>
+ 					<span><i class="glyphicon glyphicon-off" style="color: #a6a6a6; font-size: 20px;"></i></span>
  				</div>
  				
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
- 					<i class="glyphicon glyphicon-home"></i>홈
+ 					<i class="glyphicon glyphicon-home" style="color: #a6a6a6; font-size: 20px;"></i><span style="margin-left: 10px;">홈</span>
  				</div>
  				
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-bottom: 30px;">
- 					<i class="glyphicon glyphicon-ok-sign"></i>구독
+ 					<i class="glyphicon glyphicon-ok" style="color: #a6a6a6; font-size: 20px;"></i><span style="margin-left: 10px;">구독</span>
  				</div>
  				
  			</div>
@@ -207,3 +207,4 @@
 
 
 
+ 				
