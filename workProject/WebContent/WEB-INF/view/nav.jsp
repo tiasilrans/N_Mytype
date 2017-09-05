@@ -32,10 +32,8 @@
 					<li><a class="" href="">구독</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">내 블로그<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-						
-						<!-- 만든 블로그가 잇을 경우 보여준다 -->
-				
+						<ul class="dropdown-menu">						
+						<!-- 블로그 리스트 -->				
 						<c:if test="${sessionScope.blog ne null }">
 						<c:forEach var="blog" items="${sessionScope.blog}" begin="0" end="${sessionScope.blog.size()}">
 							<li><a href="/blog/${blog.URL}">${blog.TITLE}</a></li>
