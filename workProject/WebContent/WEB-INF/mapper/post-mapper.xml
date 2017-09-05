@@ -11,6 +11,11 @@
  						#{fcontent}, #{ccontent}, 0, #{hash}, 0, sysdate, #{url})
   	</insert>
   	
+  	<!-- 카테고리 목록 가져오기 -->
+  	<select id="cate_list" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+  		select *from blogcategory where email=#{email}
+  	</select>
+  	  	
   	
   	<!--(메인) 게시물 전체 불러오기 -->
 	<select id="listall" parameterType="java.util.HashMap" resultType="java.util.HashMap">

@@ -23,7 +23,28 @@ public class PostController {
 	ObjectMapper objMapper;
 	
 	@Autowired
-	PostDao pdao;	
+	PostDao pdao;
+	
+	@RequestMapping("postWriter.mt")
+	@ResponseBody
+	public Map posrWrite(@RequestParam Map m){
+		System.out.println(m);
+		Map map= new HashMap<>();
+		boolean f = pdao.postWrite(m);
+		if(f){			
+			map.put("result", true);
+			map.put("url", m.get("url"));
+		}else{
+			map.put("result", false);
+		}
+		
+		return map;
+	}
+	
+	
+	
+	
+	
 	
 	@RequestMapping("postgood.mt")
 	@ResponseBody

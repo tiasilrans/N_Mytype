@@ -24,91 +24,8 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-
-
-
-
-
-<style>
-
-div#editor {
-	width: 81%;
-	margin: auto;
-	text-align: left;
-}
-
-.title-wrap {
-    padding: 0;
-    margin: 0;
-    border-bottom: 1px solid rgba(0,0,0,.09);
-}
-@media (min-width: 576px)
- .post {
-    padding: 2.5em 0;
-}
-
-.post .container {
-    padding: 0 20px;
-}
-
-.post .container {
-    padding: 0 20px;
-}
-
-.container {
-    width: 100%;
-}
-@media (min-width: 576px)
-
-.container {
-    width: 540px;
-    max-width: 100%;
-}
-
-.container {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-.title-wrap input {
-    width: 100%;
-    border: 0;
-    padding: 0;
-    margin: 10px;
-    border-radius: 0;
-}
-
-textarea.autosize {
-    resize: none;
-}
-
-
- .post {
-    width: 100%;
-    height: 100%;
-    padding: 1.5em 0;
-    margin: 20px;
-    font-size: 16px;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-
-
-a{
-	margin: 10px;
-}
-
-@media (min-width: 576px){
-.col-sm-3 {
-    float: left;
-    width: 25%;
-}}
-
-
-</style>
+<!-- css -->
+<link rel="stylesheet" href="/css/editorcss.css">
 
 </head> 
 
@@ -185,29 +102,36 @@ a{
 	     
 	          	<div class="row">
 		          	<div class="col-xs-3">카테고리</div>
-		          	<div class="col-xs-9">카테고리 선택</div>
+		          	<div class="col-xs-3">
+		          		<select name="category" class="form-control">
+		          			<c:forEach var="obj" items="${catelist }"> 							
+								<option>${obj.BLOG_TITLE }</option>
+								<option>${obj.CATEGORY_NAME }</option>							
+							</c:forEach>
+						</select>
+		          	</div>
 	          	</div>
 	          	<div class="row">
-		          	<div class="col-xs-3">카테고리</div>
-		          	<div class="col-xs-9">카테고리 선택</div>
+		          	<div class="col-xs-3">최소 후원금액</div>
+		          	<div class="col-xs-9">포인트</div>
 	          	</div>
 	          	<div class="row">
-		          	<div class="col-xs-3">카테고리</div>
-		          	<div class="col-xs-9">카테고리 선택</div>
+		          	<div class="col-xs-3">표시설정</div>
+		          	<div class="col-xs-9"><p>공지</p><p>성인물</p></div>
 	          	</div>
 	          	<div class="row">
-		          	<div class="col-xs-3">카테고리</div>
-		          	<div class="col-xs-9">카테고리 선택</div>
+		          	<div class="col-xs-3">공개설정</div>
+		          	<div class="col-xs-9"></div>
 	          	</div>
 	          	<div class="row">
 		          	<div class="col-xs-3">댓글 쓰기 권한</div>
-		          	<div class="col-xs-9">카테고리 선택</div>
+		          	<div class="col-xs-9"></div>
 	          	</div>
 	         
 	         
 	        </div>
 	        <div class="modal-footer">
-	          <button type="button" class="btn">발행하기</button>
+	          <button type="button" class="btn" id="bt">발행하기</button>
 	        </div>
 	    </div>  		  		
   	</div>
@@ -270,13 +194,34 @@ a{
 			    toolbarButtons: ['fontFamily', '|', 'fontSize', '|', 'paragraphFormat', '|', 'bold', 'italic', 'underline', 'undo', 'redo', 'codeView'],
 			    fontFamilySelection: true,
 			    fontSizeSelection: true,
-			    paragraphFormatSelection: true
+			    paragraphFormatSelection: true,
+			    heightMin: 100,
+			    heightMax: 300
 			  })
 			});
 		
 		$(function(){
 		    $('[data-toggle="popover"]').popover()
 		    });
+		
+		
+		$("#bt").on("click", function() {
+			$.post({
+				url : "/postWriter.mt",
+				data : {
+					"title" : $("#title").val(),
+					"subtitle" : $("#subtitle").val(),
+					"fcontent" : $("#editor").val()
+					
+				}
+			}).done(function(result) {
+				if(result.result){
+					location.href="/blog/"+result.url; 
+				}
+			})		
+			
+		});
+		
 		
 	</script>
 </body>
