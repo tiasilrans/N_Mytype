@@ -12,5 +12,10 @@
  	<select id="view" parameterType="java.util.HashMap" resultType="java.util.HashMap">
  		select * from blog where url=#{url}
  	</select>
+ 	
+ 	<!-- 나의 블로그 리스트 (내블로그쪽에 들어갈것)  -->
+ 	<select id="mybloglist" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+ 		select * from blog where email=#{email}
+ 	</select>
  
  </mapper>

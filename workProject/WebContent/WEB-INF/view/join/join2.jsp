@@ -22,6 +22,7 @@
 
 
 </style>   
+
 <div align="center" class="row">
 	<div class="col-xs-0 col-md-4"></div>
 	<div class="col-xs-12 col-md-4">
