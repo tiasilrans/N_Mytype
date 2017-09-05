@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import model.BlogDAO;
+import model.PostDao;
 
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -21,6 +22,9 @@ public class BlogController {
 	
 	@Autowired
 	BlogDAO bDAO;
+	
+	@Autowired
+	PostDao pDAO;
 	
 	@RequestMapping("/create")
 	public ModelAndView newBlog(){
@@ -62,14 +66,56 @@ public class BlogController {
 	}
 	
 	@RequestMapping("/postWrite")
-	public ModelAndView postWrite(@RequestParam Map m){
+	public ModelAndView postWrite(@RequestParam Map m, HttpSession session){
+		String email = (String)session.getAttribute("login");
+			m.put("email", email);
+		List<Map> catelist = pDAO.categoryList(m);	
+		System.out.println(catelist);
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("post");
 			mav.addObject("title", "포스트작성");
+			mav.addObject("map", m);
+			mav.addObject("catelist", catelist);
 		return mav;
 	}
 	
+	@RequestMapping("/{url}/categories")
+	public ModelAndView categories(@PathVariable(value="url") String url){
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("blog_setting");
+			mav.addObject("title", "블로그제목");
+			mav.addObject("section", "blog/categories");
+	 		mav.addObject("url", url);
+	 		System.out.println(mav);
+		return mav;
+		
+	}
+	
+	@RequestMapping("/categoryAdd.mt")
+	@ResponseBody
+	public Map categoryAdd(@RequestParam Map m, HttpSession session){
+		Map map = new HashMap();
+		m.put("email", session.getAttribute("login"));
+		System.out.println(m);
+		boolean f = bDAO.categoryAdd(m);
+		if(f){			
+			map.put("result", true);
+			map.put("url", m.get("url"));
+		}else{
+			map.put("result", false);
+		}
+	 		
+ 		return map;		
+	}
 	
 	
 
+	
+	
+	
+	
+	
+	
+	
+	
 }
