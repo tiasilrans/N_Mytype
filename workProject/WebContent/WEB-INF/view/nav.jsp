@@ -40,7 +40,7 @@
 						</c:forEach>
 						</c:if>
 
-							<li><a href="/blog/create"><i class="glyphicon glyphicon-plus"  "></i> 새 블로그 만들기</a></li>
+							<li><a href="/blog/create"><i class="glyphicon glyphicon-plus" ></i> 새 블로그 만들기</a></li>
 						</ul></li>
 				</ul>
 			
