@@ -16,8 +16,14 @@ public class BlogDAO {
 	public boolean blogCreate(Map map){
 		SqlSession session = factory.openSession();
 		try{
-			session.insert("blog.create", map);
-			return true;
+			int r = session.insert("blog.create", map);
+			if(r==1){
+				session.insert("blog.create_cate", map);
+				return true;
+			}else{
+				return false;
+			}
+			
 		}catch(Exception e){
 			System.out.println("BlogCreate Error");
 			e.printStackTrace();

@@ -88,20 +88,21 @@
 			<div class="col-xs-offset-1 col-md-offset-1">
 				<ul class="nav navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link" href="/my/home">MY홈</a>
+						<a class="nav-link" href="/blog/${url}">${title}</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/my/goods">좋아요</a>
+						<a class="nav-link" href="">포스트</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/my/purchases">구매 항목</a>
+						<a class="nav-link" href="/blog/${url} /categories">카테고리</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/my/point/plist">포인트</a>
+						<a class="nav-link" href="">구독자</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/my/settings/account">설정</a>
+						<a class="nav-link" href="">설정</a>
 					</li>
+					
 				</ul>
 			</div>
 		</nav>
