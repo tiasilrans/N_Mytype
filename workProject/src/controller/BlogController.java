@@ -88,6 +88,31 @@ public class BlogController {
 		
 	}
 	
+	@RequestMapping("/categoryAdd.mt")
+	@ResponseBody
+	public Map categoryAdd(@RequestParam Map m, HttpSession session){
+		Map map = new HashMap();
+		m.put("email", session.getAttribute("login"));
+		System.out.println(m);
+		boolean f = bDAO.categoryAdd(m);
+		if(f){			
+			map.put("result", true);
+			map.put("url", m.get("url"));
+		}else{
+			map.put("result", false);
+		}
+	 		
+ 		return map;		
+	}
+	
 	
 
+	
+	
+	
+	
+	
+	
+	
+	
 }
