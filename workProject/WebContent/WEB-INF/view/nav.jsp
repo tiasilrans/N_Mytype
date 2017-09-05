@@ -136,10 +136,20 @@ HEAD
 	height: 40px;
 }
 
+.logoicon{
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    overflow: hidden;
+    vertical-align: top;
+    background: url(/images/mytype.png) no-repeat;
+    background-size: 55px 55px;
+}
+
 </style>
 
 <!--navbar menu-->
-<section class="navbar-info ">
+<section class="navbar-info">
 	<nav class="navbar navbar-default">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -152,7 +162,7 @@ HEAD
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/"><img src="/images/mytype.png" ></a>
+				<a class="navbar-brand" href="/" style="padding-top:5px; padding-right:0px;"><i class="logoicon"></i></a>
 				</div>
 
 			<div class="collapse navbar-collapse header-right-menu"
@@ -160,6 +170,7 @@ HEAD
 				<c:choose>
 				<c:when test="${sessionScope.login ne null }">
 				<ul class="nav navbar-nav navbar-left">
+				
 					<li class=""><a class="header" href="/"
 						id="home">홈</a></li>
 					<li><a class="" href="">구독</a></li>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> 
@@ -161,8 +162,12 @@ HEAD
 					<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#">내 블로그<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href=""></a></li>
-								<li><a href=""></a></li>							
+						<!-- 만든 블로그가 잇을 경우 보여준다 -->
+								<c:if test="${sessionScope.blog ne null }">
+								<c:forEach var="blog" items="${sessionScope.blog}" begin="0" end="${sessionScope.blog.size()}">
+									<li><a href="/blog/${blog.URL}">${blog.TITLE}</a></li>
+								</c:forEach>
+								</c:if>							
 								<li><a href="/blog/create">새 블로그 만들기</a></li>
 							</ul>
 					</li>

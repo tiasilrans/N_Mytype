@@ -51,6 +51,12 @@ public class MyController {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("t_my");
 			mav.addObject("section","point/charge");
+			String[] cards = "카드를 선택해주세요.,농협,국민은행,우리은행,하나은행,신한은행,외환은행,씨티은행,우체국,부산은행,SC은행".split(",");
+			String[] banks = "은행을 선택해주세요.,산업은행,기업은행,국민은행,외환은행,수협,농협,우리은행,SC은행,씨티은행,대구은행,부산은행,광주은행,제주은행,전분은행,경남은행,새마을금고,신협,우체국,하나은행,신한은행".split(",");
+			String[] telecoms = "통신사를 선택해주세요.,SKT,KT,LGU+,LGU+(알뜰폰)".split(",");
+			mav.addObject("cards",cards);
+			mav.addObject("banks",banks);
+			mav.addObject("telecoms",telecoms);
 		return mav;
 	}
 	@RequestMapping("/point/clist")
