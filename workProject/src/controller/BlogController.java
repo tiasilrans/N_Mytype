@@ -81,8 +81,9 @@ public class BlogController {
 	@RequestMapping("/{url}/categories")
 	public ModelAndView categories(@PathVariable(value="url") String url){
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("t_el");
-	 	mav.addObject("section", "blog/categories");
+			mav.setViewName("t_el");
+			mav.addObject("section", "blog/categories");
+	 		mav.addObject("url", url);
 		return mav;
 		
 	}
