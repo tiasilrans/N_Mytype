@@ -176,8 +176,8 @@
  				
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-bottom: 30px;">
  					<i class="material-icons" style="color: #a6a6a6; font-size: 25px;">check_circle</i> <span style="margin-left: 10px;">구독</span>
- 					
  				</div>
+ 			
  				
  			</div>
  			
