@@ -171,7 +171,8 @@
  				</div>
  				
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
- 					<i class="material-icons" style="color: #a6a6a6; font-size: 26px;">home</i><span style="margin-left: 10px;">홈</span>
+ 					<a class="home" href="/"
+						id="home"><i class="material-icons" style="color: #a6a6a6; font-size: 26px;">home</i></a><span style="margin-left: 10px;">홈</span>
  				</div>
  				
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-bottom: 30px;">
