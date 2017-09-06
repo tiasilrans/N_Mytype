@@ -81,11 +81,15 @@ public class BlogController {
 	
 	@RequestMapping("/{url}/categories")
 	public ModelAndView categories(@PathVariable(value="url") String url){
+		Map map = new HashMap();
+			map.put("url", url);
+		HashMap r = bDAO.blogView(map);
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("blog_setting");
-			mav.addObject("title", "블로그제목");
+			mav.addObject("title", r.get("TITLE"));
 			mav.addObject("section", "blog/categories");
 	 		mav.addObject("url", url);
+	 		mav.addObject("map", r);
 	 		System.out.println(mav);
 		return mav;
 		

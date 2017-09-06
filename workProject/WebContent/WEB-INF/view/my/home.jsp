@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">    
+    
 <%@ page import="java.util.*, java.text.SimpleDateFormat" %>
 <%
 	SimpleDateFormat ft = new SimpleDateFormat("yyyy.MM.dd");
@@ -11,36 +13,36 @@
 <div class="col-xs-offset-1 col-md-offset-1 container-fluid">
 	<div class="card col-xs-6 col-md-6 col-lg-4">
 		<div class="title">
-			<span style="float:left; font-size: 17px;"><b>오늘</b></span>
-			<span style="float:right; font-size: 13px; padding-right:15px;"><%=today %></span>
-		</div>
+			<span style="float:left; font-size: 17px; margin-left: 5px;"><b>오늘</b></span>
+			<span style="float:right; font-size: 13px; padding-right:15px; color: #999999;" ><%=today %></span>
+		</div>  
 		<br/><hr/>
 		<div align="left">
 			<div class="lbox" >
 				<a style="text-decoration: none;">
 					<span class="boxsp">포인트 잔액</span> <br/>
-					<span class="glyphicon glyphicon-usd boxsp bicon"></span> 0p
+					<span style="margin-left: 13px; color: #999999;"><i class="material-icons">monetization_on</i></span> 0p
 				</a>
             </div>
             <div class="rbox" >
             	<a style="text-decoration: none;">
 					<span class="boxsp">출금 가능 금액</span> <br/>
-					<span class="glyphicon glyphicon-piggy-bank boxsp bicon"></span> 0p
+					<span style="margin-left: 15px; color: #999999;"><i class="material-icons">account_balance</i></span> 0p
 				</a>
             </div>
             <hr/>
             <div class="lbox" >
             <a style="text-decoration: none;">
             	<span class="boxsp">수익</span> <br/>
-            	<span class="glyphicon glyphicon-saved boxsp bicon"></span> 0p
+            	<span style="margin-left: 13px; color: #999999;"><i class="material-icons">store</i></span> 0p
             </a>
-            </div>
+            </div>  
             <div class="rbox">
             	<a style="text-decoration: none;">
             		<span class="boxsp">구매/후원</span> <br/>
-            		<span class="glyphicon glyphicon-gift boxsp bicon"></span> 0p
+            		<span style="margin-left: 15px; color: #999999;"><i class="material-icons">card_giftcard</i></span> 0p
             	</a>
-            </div>
+            </div> 
 		</div>
 	</div>
 	
@@ -48,7 +50,7 @@
 		<div class="title">
 			<span style="float:left; font-size: 17px;"><b>좋아요</b></span>
 			<span style="font-size: 13px; float:right; padding-right:15px;">
-				<a style="text-decoration:none;" href="/my/goods"> 더 보기 > </a> 
+				<a style="text-decoration:none; color: #999999;" href="/my/goods"> 더 보기 > </a> 
 			</span>
 			<br/><br/>
 			<div class="incard" >
@@ -80,7 +82,7 @@
 		<div class="title">
           <span style="float:left; font-size: 17px;"><b>공지사항</b></span>
           <span style="font-size: 13px; float:right; padding-right:15px;">
-				<a style="text-decoration:none;"> 더 보기 > </a> 
+				<a style="text-decoration:none; color: #999999;"> 더 보기 > </a> 
 			</span>
         </div>
 	</div>
