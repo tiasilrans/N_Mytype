@@ -46,6 +46,7 @@ public class BlogController {
 		if(f){			
 			map.put("result", true);
 			map.put("url", m.get("url"));
+			session.setAttribute("blog", bDAO.mybloglist(m));
 		}else{
 			map.put("result", false);
 		}
