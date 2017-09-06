@@ -38,6 +38,11 @@
 						<c:if test="${sessionScope.blog ne null }">
 						<c:forEach var="blog" items="${sessionScope.blog}" begin="0" end="${sessionScope.blog.size()}">
 							<li><a href="/blog/${blog.URL}">${blog.TITLE}</a></li>
+							<li><a href="">임시저장글</a></li>
+							<li><a href="">발행글</a></li>
+							<li><a href="/blog/${blog.URL}/categories">카테고리</a></li>
+							<li><a href="">구독자</a></li>
+							<li><a href="">설정</a></li>
 						</c:forEach>
 						</c:if>
 
