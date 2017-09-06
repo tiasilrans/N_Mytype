@@ -1,8 +1,11 @@
 package controller;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -57,6 +60,15 @@ public class MyController {
 			mav.addObject("cards",cards);
 			mav.addObject("banks",banks);
 			mav.addObject("telecoms",telecoms);
+		return mav;
+	}
+	
+	@RequestMapping("/point/chargeExec")
+	public ModelAndView chargeExec(@RequestParam Map map) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println(map);
+		//메서드들어갈곳
+		mav.setViewName("/");
 		return mav;
 	}
 	@RequestMapping("/point/clist")

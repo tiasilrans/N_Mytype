@@ -28,9 +28,9 @@
 </nav>
 <div align="center">
 
-<form action="/">
+<form action="/my/point/chargeExec">
 <ul class="list-group" style="width: 50%; text-align: left">
-<li class="list-group-item">
+<li class="list-group-item" style="background-color: #D4F4FA;">
 <h5><b>1. 충전할 포인트의 양을 선택해 주세요.</b></h5>
 </li>
 
@@ -44,29 +44,29 @@
     </thead>
     <tbody>
       <tr>
-        <td><input type="radio" name="point" value="3000p"/> 3000P</td>
-        <td>3000원</td>
+        <td><input type="radio" name="point" value="3000"/> 3000P</td>
+        <td>3300원<small class="text-muted">(부가가치세 10% 포함)</small></td>
       </tr>
       <tr>
-        <td><input type="radio" name="point" value="5000p"/> 5000P</td>
-        <td>5000원</td>
+        <td><input type="radio" name="point" value="5000"/> 5000P</td>
+        <td>5500원</td>
       </tr>
       <tr>
-        <td><input type="radio" name="point" value="10000p"/> 10000P</td>
-        <td>10000원</td>
+        <td><input type="radio" name="point" value="10000"/> 10000P</td>
+        <td>11000원</td>
       </tr>
       <tr>
-        <td><input type="radio" name="point" value="22000p"/> 22000P</td>
-        <td>20000원</td>
+        <td><input type="radio" name="point" value="22000"/> 20000P</td>
+        <td>22000원</td>
       </tr>
       <tr>
-        <td><input type="radio" name="point" value="30000p"/> 30000P</td>
-        <td>30000원</td>
+        <td><input type="radio" name="point" value="30000"/> 30000P</td>
+        <td>33000원</td>
       </tr>
     </tbody>
   </table></li>
 
-<li class="list-group-item">
+<li class="list-group-item" style="background-color: #D4F4FA;">
 <h5><b>2. 결제 정보를 입력해 주세요.</b></h5>
 </li>
 
@@ -90,7 +90,7 @@
 	</td>
 	<td style="width: 60%; border-top-color: white;">
 		<div class="panel panel-info">
-			<div class="panel-heading">
+			<div class="panel-heading" style="background-color: #D4F4FA;">
 				<input type="radio" name="pay" value="card" style="margin: 5px;" checked/><b>카드 결제</b>
 				<input type="radio" name="pay" value="untouched" style="margin: 5px;"/><b>무통장입금</b>
 				<input type="radio" name="pay" value="phone" style="margin: 5px;"/><b>휴대폰 결제</b>
@@ -98,7 +98,7 @@
 			
 			<div class="panel-body form-inline" id="cardpanel">
 			<b>카드 선택 : </b>
-			<select class="form-control" style="width: 45%;">
+			<select class="form-control" name="payval" style="width: 45%;">
 			<c:forEach var="card" items="${cards}">
 				<option value="${card}">${card}</option>
 			</c:forEach>
@@ -107,7 +107,7 @@
 			
 			<div class="panel-body form-inline" id="untouchedpanel">
 			<b>은행 선택 : </b>
-			<select class="form-control" style="width: 45%;">
+			<select class="form-control" name="payval" style="width: 45%;">
 			<c:forEach var="bank" items="${banks}">
 				<option value="${bank}">${bank}</option>
 			</c:forEach>
@@ -116,7 +116,7 @@
 			
 			<div class="panel-body form-inline" id="phonepanel">
 			<b>통신사 선택 : </b>
-			<select class="form-control" style="width: 45%;">
+			<select class="form-control" name="payval" style="width: 45%;">
 			<c:forEach var="telecom" items="${telecoms}">
 				<option value="${telecom}">${telecom}</option>
 			</c:forEach>
@@ -170,6 +170,6 @@
 	//포인트 체크박스 누를때마다 밑에있는 포인트 텍스트 변환
     $('input[name="point"]').click(function() {
         var selected = $(this).val();
-        $()
+        $("#chargepoint").html(selected+"P");
     });
 </script>
