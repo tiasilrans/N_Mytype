@@ -159,7 +159,7 @@
  		<div>
  			<div class="menu-header">
  				<div class="col-xs-8 px-0" style="margin-bottom: 5px; margin-top: 20px;">
- 					<a><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626;;">사용자 이름</span></a>
+ 					<a herf=""><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626;">사용자 이름</span></a>
  					
  				</div>
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
@@ -172,17 +172,17 @@
  				
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
  					<a class="home" href="/"
-						id="home"><i class="material-icons" style="color: #a6a6a6; font-size: 26px;">home</i></a><span style="margin-left: 10px;">홈</span>
- 				</div>
- 				
+						id="home"><label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">home</label></a><div class="home" style="display:inline; margin-left: 14px;">홈</div>
+ 				</div>    
+ 				      
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-bottom: 30px;">
- 					<i class="material-icons" style="color: #a6a6a6; font-size: 25px;">check_circle</i> <span style="margin-left: 10px;">구독</span>
+ 					<label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="home" style="display:inline; margin-left: 14px;">구독</div>
  				</div>
  			
- 				
- 			</div>
+ 				       
+ 			</div> 
  			
- 			
+ 			 
  		</div>
  	</div>
  </div>
