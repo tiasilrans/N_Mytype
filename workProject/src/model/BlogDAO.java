@@ -60,6 +60,22 @@ public class BlogDAO {
 		}
 	}
 	
+	public List<Map> cate_List(Map map){
+		List<Map> list = new ArrayList<>();
+		SqlSession session = factory.openSession();
+		try {
+			list = session.selectList("blog.oneBlog_cList", map);			
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("cate_List ERROR : " + e.toString());
+			return list;
+		}finally {
+			session.close();
+		}			
+	}
+	
+	
 	
 	public List<Map> mybloglist(Map map){
 		SqlSession session = factory.openSession();				

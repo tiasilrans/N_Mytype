@@ -37,8 +37,10 @@ public class BlogController {
 	@RequestMapping("/ctrateBlog.mt")
 	@ResponseBody
 	public Map createBlog(@RequestParam Map m, HttpSession session){
+		String uuid = UUID.randomUUID().toString().substring(0, 11);
 		Map map = new HashMap();
 		m.put("email", session.getAttribute("login"));
+		m.put("cate_id", uuid);
 		System.out.println(m);
 		boolean f = bDAO.blogCreate(m);
 		if(f){			
@@ -79,16 +81,22 @@ public class BlogController {
 	}
 	
 	@RequestMapping("/{url}/categories")
-	public ModelAndView categories(@PathVariable(value="url") String url){
+	public ModelAndView categories(@PathVariable(value="url") String url, HttpSession session){
+		String email = (String)session.getAttribute("login");
 		Map map = new HashMap();
 			map.put("url", url);
+			map.put("email", email);
+		System.out.println("보내기 전  값 : " + map);
 		HashMap r = bDAO.blogView(map);
+		List<Map> list = bDAO.cate_List(map);
+		System.out.println("리스트" + list);
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("blog_setting");
 			mav.addObject("title", r.get("TITLE"));
 			mav.addObject("section", "blog/categories");
 	 		mav.addObject("url", url);
 	 		mav.addObject("map", r);
+	 		mav.addObject("list", list);
 	 		System.out.println(mav);
 		return mav;
 		
@@ -96,19 +104,46 @@ public class BlogController {
 	
 	@RequestMapping("/categoryAdd.mt")
 	@ResponseBody
-	public Map categoryAdd(@RequestParam Map m, HttpSession session){
+	public Map categoryAdd(@RequestParam Map m, @RequestParam(name = "cate_name[]") String[] cate_name,
+							HttpSession session){
 		Map map = new HashMap();
-		m.put("email", session.getAttribute("login"));
+		if(cate_name.length == 1){
+			
+		}
+		String uuid = UUID.randomUUID().toString().substring(0, 11);	
+		
+		
+		System.out.println("총 카테고리 수(전체 제외) :" + cate_name.length);
+		for(String n : cate_name ){
+			System.out.println("카테고리 이름 : " + n);
+		}
+		
+		
+		
+			m.put("email", session.getAttribute("login"));
+			m.put("cate_id", uuid);
+			m.put("cate_name", cate_name);
 		System.out.println(m);
+		
 		boolean f = bDAO.categoryAdd(m);
-		if(f){			
+		
+		/*if(f){			
 			map.put("result", true);
 			map.put("url", m.get("url"));
 		}else{
 			map.put("result", false);
-		}
+		}*/
 	 		
  		return map;		
+	}
+	
+	@RequestMapping("test.mt")
+	public ModelAndView test(){
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("t_el");
+			mav.addObject("section", "blog/test");
+		
+ 		return mav;			
 	}
 	
 	
