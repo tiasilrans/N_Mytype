@@ -230,6 +230,7 @@
 					</div>
 					
 					
+					
 					<c:set var="msg" value="${all.HASH }"/>
 					<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
 					<c:forEach items="${hashtag}" var="hash">
