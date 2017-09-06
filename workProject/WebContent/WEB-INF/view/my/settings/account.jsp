@@ -21,3 +21,11 @@
         </ul>
     </div>
 </nav>
+
+<div class="col-xs-offset-1 col-md-offset-1 container-fluid">
+	<div class="card col-xs-6 col-md-6 col-lg-4">
+		<div class="title">
+			<span style="float:left; font-size: 17px; margin-left: 5px;"><b>계정 설정</b></span>
+		</div>
+	</div>
+</div>

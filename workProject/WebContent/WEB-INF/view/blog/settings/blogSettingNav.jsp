@@ -82,9 +82,31 @@
 						</div>
 					</form></li>				
 				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
+			</div><!-- /.navbar-collapse -->
 		</div>
+		<nav class="secondary-nav navbar ">
+			<div class="col-xs-offset-1 col-md-offset-1">
+				<ul class="nav navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="/blog/${url}">${title}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="">포스트</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/blog/${url} /categories">카테고리</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="">구독자</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="">설정</a>
+					</li>
+					
+				</ul>
+			</div>
+		</nav>
+		
 	</nav>
 </section>
 <!-- end of navbar-->

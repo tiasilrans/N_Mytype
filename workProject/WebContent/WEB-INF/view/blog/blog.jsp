@@ -7,7 +7,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/css/blogViewcss.css">
-
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 
 #app-menu-toggler:hover {
@@ -61,7 +61,7 @@
     background-color: #fff;
     box-shadow: 0 0 0 1px rgba(0,0,0,.05), 0 5px 10px 0 rgba(0,0,0,.05), 0 10px 20px 0 rgba(0,0,0,.05);
 }
-  
+
 
 </style>
 
@@ -162,21 +162,22 @@
  					<a><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626;;">사용자 이름</span></a>
  					
  				</div>
- 				<div class="col-xs-2 px-0" style="margin-top: 28px;">
- 					<span><i class="glyphicon glyphicon-bell"></i></span> 
+ 				<div class="col-xs-2 px-0" style="margin-top: 23px;">
+ 					<span><i class="material-icons" style="color: #a6a6a6; font-size: 26px;">notifications_none</i></span> 
  				</div>
  				
- 				<div class="col-xs-2 px-0" style="margin-top: 28px;">
- 					<span><i class="glyphicon glyphicon-off"></i></span>
+ 				<div class="col-xs-2 px-0" style="margin-top: 23px;">
+ 					<i class="material-icons" style="color: #a6a6a6; font-size: 26px;">power_settings_new</i></span>
  				</div>
  				
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
- 					<i class="glyphicon glyphicon-home"></i>홈
+ 					<i class="material-icons" style="color: #a6a6a6; font-size: 26px;">home</i><span style="margin-left: 10px;">홈</span>
  				</div>
  				
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-bottom: 30px;">
- 					<i class="glyphicon glyphicon-ok-sign"></i>구독
+ 					<i class="material-icons" style="color: #a6a6a6; font-size: 25px;">check_circle</i> <span style="margin-left: 10px;">구독</span>
  				</div>
+ 			
  				
  			</div>
  			
@@ -207,3 +208,4 @@
 
 
 
+ 				

@@ -16,8 +16,14 @@ public class BlogDAO {
 	public boolean blogCreate(Map map){
 		SqlSession session = factory.openSession();
 		try{
-			session.insert("blog.create", map);
-			return true;
+			int r = session.insert("blog.create", map);
+			if(r==1){
+				session.insert("blog.create_cate", map);
+				return true;
+			}else{
+				return false;
+			}
+			
 		}catch(Exception e){
 			System.out.println("BlogCreate Error");
 			e.printStackTrace();
@@ -39,6 +45,21 @@ public class BlogDAO {
 			session.close();
 		}		
 	}
+	
+	public boolean categoryAdd(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			session.insert("blog.category_add", map);
+			return true;
+		}catch(Exception e){
+			System.out.println("categoryAdd Error");
+			e.printStackTrace();
+			return false;
+		}finally{
+			session.close();
+		}
+	}
+	
 	
 	public List<Map> mybloglist(Map map){
 		SqlSession session = factory.openSession();				
