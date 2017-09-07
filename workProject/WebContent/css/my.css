@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+a { color: black;}
+
 .card {
     position: relative;
     display: block;
@@ -10,8 +12,12 @@
     border-radius: .25rem;
     border: 1px solid rgba(0,0,0,.125);
 }
-  
-a { color: black;}
+
+.card-block {
+	margin-left: 10px;
+    padding: 15px;
+    position: relative;
+}
 
 .lcard {
 	background-color: white;
@@ -65,3 +71,4 @@ a { color: black;}
     height: 43px;
     border-bottom: 1px solid rgba(0,0,0,.075);
 }
+
