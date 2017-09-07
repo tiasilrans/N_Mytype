@@ -289,8 +289,9 @@ input[type=radio]:checked+label:before {
 
 						<div class="title-wrap ">
 							<div class="form-group">
-								<input type="text" class="form-control" id="title" name="title"
-									placeholder="제목을 입력하세요" style="font-size: 32px;">
+								<input type="text" class="form-control" id="title" 
+									name="title" placeholder="제목을 입력하세요" 
+									style="font-size: 32px;">
 							</div>
 							
 							<div class="form-group" style="margin-left: 112px;">
