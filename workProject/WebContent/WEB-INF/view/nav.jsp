@@ -21,7 +21,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="/"><img src="/images/title.png" style="margin: 5px;"></a>
-				</div>
+				</div> 
 
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse">
@@ -38,18 +38,17 @@
 						<c:if test="${sessionScope.blog ne null }">
 						<c:forEach var="blog" items="${sessionScope.blog}" begin="0" end="${sessionScope.blog.size()}">
 							<li style="margin-left: 25px;"><a href="/blog/${blog.URL}">${blog.TITLE}</a></li>
-							<li style="margin-left: 25px;"><a href="">임시저장글 <i class="material-icons" style="margin-left: 10px; float: right;">mode_edit</i></a></li>
-							<li style="margin-left: 25px;"><a href="">발행글</a></li>
-							<li style="margin-left: 25px;"><a href="/blog/${blog.URL}/categories">카테고리</a></li>
-							<li style="margin-left: 25px;"><a href="">구독자</a></li> 
-							<li style="margin-left: 25px;"><a href="">설정</a></li>
-						</c:forEach> 
-						</c:if>  
-
+							<li style="margin-left: 25px;"><a href="">임시저장글 <i class="material-icons" style="margin-left: 10px; float: right; font-size: 23px;">mode_edit</i></a></li>
+							<li style="margin-left: 25px;"><a href="">발행글</a></li>  
+							<li style="margin-left: 25px;"><a href="/blog/${blog.URL}/categories">카테고리</a></li> 
+							<li style="margin-left: 25px;"><a href="">구독자</a></li>   
+							<li style="margin-left: 25px;"><a href="">설정</a></li> 
+						</c:forEach>  
+						</c:if>   
 							<li><a href="/blog/create"><i class="glyphicon glyphicon-plus" style="margin-right: 7px;"></i> 새 블로그 만들기</a></li>
-						</ul></li>
-				</ul>
-			
+						</ul></li> 
+				</ul>   
+			   
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
 						<a id="account-toggler" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#" role="button" title="MY"
@@ -57,15 +56,15 @@
                             <img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px; margin: 2px;">
                             <span class="sr-only">계정</span></a>
                             <ul class="dropdown-menu">     
-                            	<li style="vertical-align: middle;"><a href="/my/home"><label class="material-icons" style="color: #999999; font-size: 22px; float: left;">dashboard</label>　　<font style="margin-top: 7px;">MY홈</font> </a></li>
-                            	<li><a href="/my/goods"><i class="material-icons" style="color: #999999; font-size: 22px; float: left;">favorite</i>　　좋아요</a></li>   
-                            	<li><a href="/my/purchases"><i class="material-icons" style="color: #999999; font-size: 22px; float: left;">get_app</i>　　구매항목 </a></li>
-                            	<li><a href="/my/point/plist"><i class="material-icons" style="color: #999999; font-size: 22px; float: left;">monetization_on</i>　　포인트</a></li> 
-                            	<li><a href="/my/settings/account"><i class="material-icons" style="color: #999999; font-size: 22px; float: left;">settings</i>　　설정</a></li>
+                            	<li style="vertical-align: middle;"><a href="/my/home"><label class="material-icons" style="color: #999999; font-size: 23px; float: left;">dashboard</label>　　<font style="margin-top: 7px;">MY홈</font> </a></li>
+                            	<li><a href="/my/goods"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">favorite</i>　　좋아요</a></li>   
+                            	<li><a href="/my/purchases"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">get_app</i>　　구매항목 </a></li>
+                            	<li><a href="/my/point/plist"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">monetization_on</i>　　포인트</a></li> 
+                            	<li><a href="/my/settings/account"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">settings</i>　　설정</a></li>
                             	<li><a></a></li>
-                            	<li><a></a></li>    
-                            	<li><a></a></li>
-                            	<li><a href="/logout.mt"><i class="material-icons" style="color: #999999; font-size: 22px; float: left;">power_settings_new</i>　　로그아웃</a></li>
+                            	<li><a></a></li>     
+                            	<li><a></a></li>  
+                            	<li><a href="/logout.mt"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">power_settings_new</i>　　로그아웃</a></li>
                             </ul>
 					</li>   
 				</ul>
