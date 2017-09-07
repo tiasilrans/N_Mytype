@@ -37,8 +37,10 @@ public class BlogController {
 	@RequestMapping("/ctrateBlog.mt")
 	@ResponseBody
 	public Map createBlog(@RequestParam Map m, HttpSession session){
+		String uuid = UUID.randomUUID().toString().substring(0, 11);
 		Map map = new HashMap();
 		m.put("email", session.getAttribute("login"));
+		m.put("cate_id", uuid);
 		System.out.println(m);
 		boolean f = bDAO.blogCreate(m);
 		if(f){			
@@ -80,36 +82,77 @@ public class BlogController {
 	}
 	
 	@RequestMapping("/{url}/categories")
-	public ModelAndView categories(@PathVariable(value="url") String url){
+	public ModelAndView categories(@PathVariable(value="url") String url, HttpSession session){
+		String email = (String)session.getAttribute("login");
 		Map map = new HashMap();
 			map.put("url", url);
+			map.put("email", email);
 		HashMap r = bDAO.blogView(map);
+		List<Map> list = bDAO.cate_List(map);
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("blog_setting");
 			mav.addObject("title", r.get("TITLE"));
 			mav.addObject("section", "blog/categories");
 	 		mav.addObject("url", url);
 	 		mav.addObject("map", r);
-	 		System.out.println(mav);
+	 		mav.addObject("list", list);
 		return mav;
 		
 	}
 	
 	@RequestMapping("/categoryAdd.mt")
 	@ResponseBody
-	public Map categoryAdd(@RequestParam Map m, HttpSession session){
+	public Map categoryAdd(@RequestParam Map m, 
+				 HttpSession session){
+			m.put("email", session.getAttribute("login"));
+		System.out.println("넘어온 값 : " + m);
+		System.out.println("----------------카테고리 수정----------------");
 		Map map = new HashMap();
-		m.put("email", session.getAttribute("login"));
-		System.out.println(m);
-		boolean f = bDAO.categoryAdd(m);
+		String cate_name_order = (String)m.get("cate_name_order");
+		String[] orderArr = cate_name_order.split(",");
+		String addName = (String)m.get("addcate_name");
+		String[] addcate_name = addName.split(",");
+		String cate_name = (String)m.get("cate_name");
+		String cate_id = (String)m.get("cate_id");
+		
+		
+		if(addcate_name != null){ // 카테고리 추가 해야 할 경우 -------------------------------------*
+			System.out.println("추가해야 할 카테고리 id 수 :" + (addcate_name.length));			
+			for(int i = 0; i<addcate_name.length; i++){
+				String uuid = UUID.randomUUID().toString().substring(0, 11);
+				m.put("addcate_id", uuid);
+				m.put("addcate_name", addcate_name[i]);
+				System.out.println("추가 / 넘길 값 : " + m);
+				//bDAO.categoryAdd(m);
+			}
+		}else{
+			
+			
+		}
+		m.put("cate_name", cate_name);
+		m.put("cate_id", cate_id);
+			
+		
+		
+		/*boolean f = bDAO.categoryAdd(m);
+		
 		if(f){			
 			map.put("result", true);
 			map.put("url", m.get("url"));
 		}else{
 			map.put("result", false);
-		}
+		}*/
 	 		
  		return map;		
+	}
+	
+	@RequestMapping("test.mt")
+	public ModelAndView test(){
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("t_el");
+			mav.addObject("section", "blog/test");
+		
+ 		return mav;			
 	}
 	
 	

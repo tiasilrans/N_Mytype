@@ -9,19 +9,23 @@
  					values(#{email}, #{title}, #{intro}, #{url}, sysdate)
  	</insert>
  	<insert id="create_cate" parameterType="java.util.HashMap">
- 		insert into blogcategory(email, category_name, create_date, BLOG_TITLE, num)
-					values(#{email}, '전체 보기', sysdate, #{title}, 0)
+ 		insert into blogcategory(email, category_name, create_date, BLOG_TITLE, cate_id)
+					values(#{email}, '전체 보기', sysdate, #{title}, #{cate_id})
  	</insert>
  	
 	<!-- 카테고리 생성 --> 
 	<insert id="category_add" parameterType="java.util.HashMap">
-		insert into blogcategory(email, category_name, create_date, BLOG_TITLE, num)
-					values(#{email}, #{category_name}, sysdate, #{title}, #{num}) 
+		insert into blogcategory(email, category_name, create_date, BLOG_TITLE, cate_id)
+					values(#{email}, #{addcate_name}, sysdate, #{title}, #{addcate_id}) 
+ 	</insert>
+ 	<insert id="cate_order" parameterType="java.util.HashMap">
+ 		insert into cateorder(cate_id, cate_index) values(#{cate_id}, #{cate_index})
  	</insert>
  	
  	<!-- 해당 블로그의 카테고리 목록 -->
  	<select id="oneBlog_cList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
- 		select
+ 		select a.*, o.CATE_INDEX from (select * from BLOGCATEGORY where email=#{email}) a 
+ 				left join CATEORDER o on a.cate_id=o.cate_id order by o.CATE_INDEX asc
  	</select>
  	
  	

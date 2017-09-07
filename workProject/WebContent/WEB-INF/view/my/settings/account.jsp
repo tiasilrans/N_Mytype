@@ -3,25 +3,36 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link href="/css/my.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <style>
+
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+}
 
 a:hover {
 	text-decoration: none;
 }
 
 label{
+	width: 80px;
 	font-weight: normal;
-	margin-right:20%;
+	margin-right: 24%;
+}
+
+
+.tertiary-nav {
+    height: 43px;
+    border-bottom: 1px solid rgba(0,0,0,.075);
 }
 
 .scard {
     position: relative;
     display: block;
-    width : 80%;
+    width : 850px;
 	height: 53%;
     margin-bottom: .75rem;
     background-color: #fff;
@@ -66,7 +77,7 @@ label{
 		<div class="card-block">
 			<div style="padding-bottom: 10px; font-size:17px;">이메일 설정</div>
 			<label style="color: #606060;" >이메일</label>
-			<div class="input-group" style="width: 60%;">
+			<div class="input-group" style="width: 65%;">
 				<input type="text" name="username" class="form-control" >
 				<span class="input-group-addon" style="background-color:white; width:5%;">
 					<i class="fa fa-check-circle" style="font-size:20px; color:#14c880;"></i>
