@@ -16,7 +16,7 @@
 	<!-- 카테고리 생성 --> 
 	<insert id="category_add" parameterType="java.util.HashMap">
 		insert into blogcategory(email, category_name, create_date, BLOG_TITLE, cate_id)
-					values(#{email}, #{category_name}, sysdate, #{title}, #{cate_id}) 
+					values(#{email}, #{addcate_name}, sysdate, #{title}, #{addcate_id}) 
  	</insert>
  	<insert id="cate_order" parameterType="java.util.HashMap">
  		insert into cateorder(cate_id, cate_index) values(#{cate_id}, #{cate_index})

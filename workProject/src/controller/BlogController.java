@@ -87,10 +87,8 @@ public class BlogController {
 		Map map = new HashMap();
 			map.put("url", url);
 			map.put("email", email);
-		System.out.println("보내기 전  값 : " + map);
 		HashMap r = bDAO.blogView(map);
 		List<Map> list = bDAO.cate_List(map);
-		System.out.println("리스트" + list);
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("blog_setting");
 			mav.addObject("title", r.get("TITLE"));
@@ -98,37 +96,47 @@ public class BlogController {
 	 		mav.addObject("url", url);
 	 		mav.addObject("map", r);
 	 		mav.addObject("list", list);
-	 		System.out.println(mav);
 		return mav;
 		
 	}
 	
 	@RequestMapping("/categoryAdd.mt")
 	@ResponseBody
-	public Map categoryAdd(@RequestParam Map m, @RequestParam(name = "cate_name[]") String[] cate_name,
-							HttpSession session){
+	public Map categoryAdd(@RequestParam Map m, 
+				 HttpSession session){
+			m.put("email", session.getAttribute("login"));
+		System.out.println("넘어온 값 : " + m);
+		System.out.println("----------------카테고리 수정----------------");
 		Map map = new HashMap();
-		if(cate_name.length == 1){
+		String cate_name_order = (String)m.get("cate_name_order");
+		String[] orderArr = cate_name_order.split(",");
+		String addName = (String)m.get("addcate_name");
+		String[] addcate_name = addName.split(",");
+		String cate_name = (String)m.get("cate_name");
+		String cate_id = (String)m.get("cate_id");
+		
+		
+		if(addcate_name != null){ // 카테고리 추가 해야 할 경우 -------------------------------------*
+			System.out.println("추가해야 할 카테고리 id 수 :" + (addcate_name.length));			
+			for(int i = 0; i<addcate_name.length; i++){
+				String uuid = UUID.randomUUID().toString().substring(0, 11);
+				m.put("addcate_id", uuid);
+				m.put("addcate_name", addcate_name[i]);
+				System.out.println("추가 / 넘길 값 : " + m);
+				//bDAO.categoryAdd(m);
+			}
+		}else{
+			
 			
 		}
-		String uuid = UUID.randomUUID().toString().substring(0, 11);	
+		m.put("cate_name", cate_name);
+		m.put("cate_id", cate_id);
+			
 		
 		
-		System.out.println("총 카테고리 수(전체 제외) :" + cate_name.length);
-		for(String n : cate_name ){
-			System.out.println("카테고리 이름 : " + n);
-		}
+		/*boolean f = bDAO.categoryAdd(m);
 		
-		
-		
-			m.put("email", session.getAttribute("login"));
-			m.put("cate_id", uuid);
-			m.put("cate_name", cate_name);
-		System.out.println(m);
-		
-		boolean f = bDAO.categoryAdd(m);
-		
-		/*if(f){			
+		if(f){			
 			map.put("result", true);
 			map.put("url", m.get("url"));
 		}else{
