@@ -119,7 +119,8 @@ p {
 	});
 	
 	
-	$(".cate_delete").on("click", function() {		
+	$(".cate_delete").on("click", function() {	
+		console.log($(this).parent().parent().parent());
 		$(this).parent().parent().remove();		
 	});
 	
@@ -138,7 +139,8 @@ p {
 								+ "</div><div class=\"col-xs-1 col-md-1 form-group\"><button class=\"form-control cate-bt cate_delete\"><i class=\"glyphicon glyphicon-remove\"></i></button></div></div>";
 						$("#catelist").append(add);
 						$(".cate_up").attr('onclick', '').unbind('click');
-						$(".cate_delete").on("click", function() {		
+						$(".cate_delete").on("click", function() {
+							console.log($(this).parent().parent());
 							$(this).parent().parent().remove();		
 						});
 						$(".cate_up").on("click", function() {
@@ -152,38 +154,30 @@ p {
 
 	$("#bt").on("click", function() {
 		var cate_name_order = "";
-		var cate_name = "";
-		var cate_id = "";
 		var addcate_name = "";
-		var vs1 = $('[name=cate_name]');
-		var vs2 = $('[name=cate_id]');
 		var a1 = $('[name=addcate_name]');
-		for (var i = 0; i < vs1.length; i++) {
-			cate_name += vs1.eq(i).val() + ",";
-			cate_id += vs2.eq(i).val() + ",";
-		}
 		for (var i = 0; i < a1.length; i++) {
 			addcate_name += a1.eq(i).val() + ",";
 		}
-
 		$(".cate_name").each(function() {
 			cate_name_order += $(this).val() + ",";
 		});
 		console.log("순서 : " + cate_name_order)
-		console.log("이미 있는 카테 이름  : " + cate_name);
-		console.log("이미 있는 카테  아이디 : " + cate_id);
 		console.log("추가 카테 이름  : " + addcate_name);
-
+		
 		$.post({
-			url : "/blog/categoryAdd.mt",
+			url : "/blog/categoryUpdate.mt",
 			data : {
+				"title" : "${title}",
+				"url" : "${url}",
 				"cate_name_order" : cate_name_order,
-				"cate_name" : cate_name,
-				"cate_id" : cate_id,
 				"addcate_name" : addcate_name
 			}
 		}).done(function(result) {
-			window.alert(result.result);
+			if(result.result){
+				location.href="/blog/"+result.url+"/categories";
+				window.alert("카테고리가 수정되었습니다.");
+			}
 		})
 
 	});

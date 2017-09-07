@@ -100,48 +100,58 @@ public class BlogController {
 		
 	}
 	
-	@RequestMapping("/categoryAdd.mt")
+	@RequestMapping("/categoryUpdate.mt")
 	@ResponseBody
 	public Map categoryAdd(@RequestParam Map m, 
 				 HttpSession session){
 			m.put("email", session.getAttribute("login"));
 		System.out.println("넘어온 값 : " + m);
-		System.out.println("----------------카테고리 수정----------------");
+		
 		Map map = new HashMap();
 		String cate_name_order = (String)m.get("cate_name_order");
 		String[] orderArr = cate_name_order.split(",");
 		String addName = (String)m.get("addcate_name");
 		String[] addcate_name = addName.split(",");
-		String cate_name = (String)m.get("cate_name");
-		String cate_id = (String)m.get("cate_id");
-		
-		
-		if(addcate_name != null){ // 카테고리 추가 해야 할 경우 -------------------------------------*
-			System.out.println("추가해야 할 카테고리 id 수 :" + (addcate_name.length));			
-			for(int i = 0; i<addcate_name.length; i++){
-				String uuid = UUID.randomUUID().toString().substring(0, 11);
-				m.put("addcate_id", uuid);
+		String uuid = "";		
+		boolean f = false;
+					
+		for(int i = 0; i<addcate_name.length; i++){
+			if(addcate_name[i]!=""){ // 카테고리 추가 해야 할 경우 -------------------------------------*
+				uuid += UUID.randomUUID().toString().substring(0, 11) + ",";
+				m.put("addcate_id", uuid.split(",")[i]);
 				m.put("addcate_name", addcate_name[i]);
-				System.out.println("추가 / 넘길 값 : " + m);
-				//bDAO.categoryAdd(m);
+				bDAO.categoryAdd(m);
+				bDAO.categoryAddOrder(m);				
 			}
-		}else{
-			
-			
 		}
-		m.put("cate_name", cate_name);
-		m.put("cate_id", cate_id);
-			
 		
+		/*if(){ // 삭제해야 할 경우
+			f = bDAO.cateRemover(m);
+		}*/
 		
-		/*boolean f = bDAO.categoryAdd(m);
-		
+		List<Map> list = bDAO.cateAfterList(m);		
+		Map cateNameOrder = new HashMap();
+		for(int i = 0; i<orderArr.length; i++ ){// 카테고리 순서 설정
+			cateNameOrder.put(orderArr[i], i); // 키 : 카테고리 이름  - 값 : 카테고리 인덱스			
+		}		
+		for(Map li : list){
+			String key = (String)li.get("CATEGORY_NAME");
+			String id = (String)li.get("CATE_ID");
+			if(!key.equals("전체 보기")){
+				Integer idx = (Integer)cateNameOrder.get(key);				
+				Map orderMap = new HashMap();
+					orderMap.put("cate_index", idx);
+					orderMap.put("cate_id", id);
+				f = bDAO.cateOrderUpdate(orderMap);				
+			}			
+		}		
+				
 		if(f){			
 			map.put("result", true);
 			map.put("url", m.get("url"));
 		}else{
 			map.put("result", false);
-		}*/
+		}
 	 		
  		return map;		
 	}
