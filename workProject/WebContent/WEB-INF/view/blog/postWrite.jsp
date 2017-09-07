@@ -152,7 +152,7 @@ input[type=radio]:checked+label:before {
 
 <title>${title }</title>
 <body>
-	<header>
+	<header> 
 		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="navbar-header">
 				<a class="navbar-toggle" style="float: left; border: 0px;"> <span
@@ -160,7 +160,7 @@ input[type=radio]:checked+label:before {
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target="#postNav">
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+						class="icon-bar"></span> 
 				</button>
 			</div>
 			<div class="collapse navbar-collapse" id="postNav">
@@ -292,19 +292,20 @@ input[type=radio]:checked+label:before {
 								<input type="text" class="form-control" id="title" name="title"
 									placeholder="제목을 입력하세요" style="font-size: 32px;">
 							</div>
-							<div class="form-group">
+							
+							<div class="form-group" style="margin-left: 112px;">
 								<input type="text" class="form-control" id="subtitle"
 									name="subtitle" placeholder="부제목을 입력하세요"
 									style="font-size: 16px;">
-							</div>
-						</div>
+							</div>  
+						</div> 
 						<div class="editor" id="editor"></div>
-						<div class="tag-wrap row"> 
-						<label class="material-icons" title="태그" style="float: left; margin-left: 90px;">bookmark</label>
+						<div class="tag-wrap" style="margin-top: 20px;"> 
+						<label class="material-icons" title="태그" style="float: left; margin-left: 120px;">bookmark</label>
 						<label for="post-tags" class="sr-only">태그</label>
 						<textarea id="post-tags" name="tags" rows="1" class="tagtext"
 							placeholder="여러 개의 태그는 공백(space)으로 구분하여 입력하세요." 
-							style="width: 850px;"></textarea>
+							style="width: 850px; height: 24px; margin-left: -300px;"></textarea>
 						</div>
    
 					</div>
