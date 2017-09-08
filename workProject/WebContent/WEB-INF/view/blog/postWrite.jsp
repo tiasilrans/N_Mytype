@@ -388,14 +388,6 @@ input[type=radio]:checked+label:before {
 		setTimeout(function() {
 			$("[href='https://www.froala.com/wysiwyg-editor?k=u']").eq(0).remove();
 		}, 5);
-	
-	var f = "<div><h2>야호</h2></div>"	
-		
-	$("#editor").children(".fr-wrapper").append(f);
-		
-		
-		
-		
 
 	$("#bt").on("click", function() {
 		$.post({
@@ -404,23 +396,14 @@ input[type=radio]:checked+label:before {
 				"title" : $("#title").val(),
 				"subtitle" : $("#subtitle").val(),
 				"fcontent" : $("#editor").val()
-
 			}
 		}).done(function(result) {
 			if (result.result) {
 				location.href = "/blog/" + result.url;
 			}
 		})
-
 	});
 		
 </script>
 </body>
 </html>
-
-
-
-
-
-
-

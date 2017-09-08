@@ -55,28 +55,50 @@
 				<a style="text-decoration:none; color: #999999;" href="/my/goods"> 더 보기 > </a> 
 			</span>
 			<br/><br/>
-			<div class="incard" >
+			<div class="incard" style="float: left;" >
 				<div class="title">
-					<a style="float:left; padding-right: 10px;"><img src="/images/basic.png" width="40px" height="40px" /></a>
+					<a style="float:left; padding-right: 10px;"><img src="/images/avatar_yellow.png" style="border-radius: 50%;" width="40px" height="40px" /></a>
 					<div>소히</div>
-					<div>6일전 · TEST</div>
+					<div style="color:#909090; font-size: 11px;">6일전 · TEST</div>
 				</div>
-                <div style="margin:12px; padding-bottom: 3px;">
-                	<div>제목 없음</div>
-                	<div>
+                <div style="height:50px; margin:12px; padding-bottom: 3px;">
+                	<div style="font-size: 15px; padding-bottom: 5px; ">제목 없음</div>
+                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
                 		테스트글입니다.
                 		
 						데이터 보호 및 정보 관리 전문 기업 컴볼트가 '클라우드 도입 시에 기업 경영진의 고려사항' 
 						
 						주제로 실행한 설문조사 결과를 8월25일 발표했다.
 						
-						기업 임원 81%, 클라우드 도입에 뒤처지는 것에 염려
                 	</div>
                 </div>
-                <div style="margin:12px; padding-bottom: 3px;">
+                <div style="margin:12px; padding-top: 17%;" >
                 	<span class="glyphicon glyphicon-heart"></span>
                 </div>
 			</div>
+			
+			<div class="incard" style=" margin-left: 20px; clear: right;" >
+				<div class="title">
+					<a style="float:left; padding-right: 10px;"><img src="/images/avatar_yellow.png" style="border-radius: 50%;" width="40px" height="40px" /></a>
+					<div>소히</div>
+					<div style="color:#909090; font-size: 11px;">6일전 · TEST</div>
+				</div>
+                <div style="height:50px; margin:12px; padding-bottom: 3px;">
+                	<div>~제목 없음~</div>
+                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
+                		테스트글입니다.
+                		
+						데이터 보호 및 정보 관리 전문 기업 컴볼트가 '클라우드 도입 시에 기업 경영진의 고려사항' 
+						
+						주제로 실행한 설문조사 결과를 8월25일 발표했다.
+						
+                	</div>
+                </div>
+                <div style="margin:12px; padding-top: 17%;" >
+                	<span class="glyphicon glyphicon-heart"></span>
+                </div>
+			</div>
+			
 		</div>
 	</div>
 
