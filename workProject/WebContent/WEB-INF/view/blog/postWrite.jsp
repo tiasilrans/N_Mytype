@@ -169,14 +169,11 @@ input[type=radio]:checked+label:before {
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span> 
 				</button>
-			</div>
-			
-			<div style="display: inline;"> 
-				<a href=""><i class="material-icons" style="color: #4d4d4d;">keyboard_arrow_left</i></a>
-			</div>
+			</div>		
 			
 			<div class="collapse navbar-collapse" id="postNav">
-				<ul class="nav navbar-nav">  
+				<ul class="nav navbar-nav">
+					
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#" style=" margin: 0px; background-image: none; background-color: white;"><span><img
 								src="/images/mytype.png"></span><span class="caret"></span></a>
