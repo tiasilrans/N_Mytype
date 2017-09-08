@@ -157,8 +157,7 @@ input[type=radio]:checked+label:before {
 
 <title>${title }</title>
 <body>
-	<header>
-	
+	<header>	
 		<div style="display: inline;"> 
 		<a href=""><i class="material-icons">keyboard_arrow_left</i></a>
 		</div>
