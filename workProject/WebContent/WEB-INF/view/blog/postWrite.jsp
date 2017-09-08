@@ -158,10 +158,7 @@ input[type=radio]:checked+label:before {
 <title>${title }</title>
 <body>
 	<header>
-	
-		<div style="display: inline;"> 
-		<a href=""><i class="material-icons">keyboard_arrow_left</i></a>
-		</div>
+
 		
 		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="navbar-header">
@@ -173,12 +170,17 @@ input[type=radio]:checked+label:before {
 						class="icon-bar"></span> 
 				</button>
 			</div>
+			
+			<div style="display: inline;"> 
+				<a href=""><i class="material-icons" style="color: #4d4d4d;">keyboard_arrow_left</i></a>
+			</div>
+			
 			<div class="collapse navbar-collapse" id="postNav">
 				<ul class="nav navbar-nav">  
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#"><span><img
+						data-toggle="dropdown" href="#" style=" margin: 0px; background-image: none; background-color: white;"><span><img
 								src="/images/mytype.png"></span><span class="caret"></span></a>
-						<ul class="dropdown-menu"> 
+						<ul class="dropdown-menu">  
 							<li><a>새 포스트 쓰기</a></li> 
 							<li><a href="">발행글</a></li>
 							<li><a href="">임시저장글</a></li>
