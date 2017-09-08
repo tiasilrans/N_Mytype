@@ -30,9 +30,8 @@ a { color: black;}
 
 .incard {
     float: left;
-    width : 45%;
+    width : 180px;
 	height: 70%;
-    overflow: hidden;
     border-radius : 5px;
     border : 1px solid silver;
 }
