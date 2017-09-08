@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="point">
+	<!-- 포인트 충전 신청 -->
+	<insert id="charge" parameterType="java.util.HashMap">
+		insert into deposit(num,email,point,accept,ddate,payment,paymentoption)
+		values(deposit_seq.nextval, #{email},#{point},'N',sysdate,#{pay},#{paymentoption})
+	</insert>
+	
+	<!-- 포인트 충전 신청 내역 -->
+	<select id="selectdeposit" parameterType="java.lang.String" resultType="java.util.HashMap">
+		select * from deposit where email=#{email} order by ddate desc
+	</select>
+	
+	<!-- 포인트 충전 신청 취소 -->
+	<delete id="chargeCancel" parameterType="java.lang.String">
+		delete from deposit where num=#{num}
+	</delete>
+	
+	<!-- 포인트 사용 내역 -->
+	<select id="selectpoint" parameterType="java.lang.String" resultType="java.util.HashMap">
+		select * from point where email=#{email} order by ptdate desc
+	</select>
+	
+	<!-- 포인트 sum -->
+	<select id="selectpointsum" parameterType="java.lang.String" resultType="java.util.HashMap">
+		select NVL(sum(charge),0)-NVL(sum(use),0) as sum from point where email=#{email}
+	</select>
+	
+	
+	<!-- ================출금 관련 SQL======================= -->
+	
+	<!-- 출금 내역 -->
+	<select id="selectwithdraw" parameterType="java.lang.String" resultType="java.util.HashMap">
+		select * from withdraw where email=#{email} order by wdate desc
+	</select>
+
+	<!-- 출금 신청 시 포인트 로그에 추가-->
+	<insert id="withdrawlog" parameterType="java.util.HashMap">
+		insert into point(num, email, use, cause, ptdate) values(point_seq.nextval, #{email}, #{money}, '포인트 출금', sysdate)
+	</insert>
+	
+	<!-- 출금 신청 시 해당 로그번호 불러오기-->
+	<select id="selectpnum" parameterType="java.lang.String" resultType="java.util.HashMap">
+		select MAX(num)as num from point where email=#{email}
+	</select>
+
+	<!-- 출금 신청 -->
+	<insert id="withdraw" parameterType="java.util.HashMap">
+		insert into withdraw(num, email, money, accept, wdate, pnum, bank, account, holder) values(withdraw_seq.nextval, #{email}, #{money}, 'N', sysdate, #{num}, #{bank}, #{account}, #{holder})
+	</insert>
+
+	
+	<!-- 출금 취소 시 로그 삭제 -->
+	<delete id="withdrawlogCancel" parameterType="java.lang.String">
+		delete from point where num=#{num}
+	</delete>
+	
+	<!-- 출금 취소 시 내역 삭제 -->
+	<delete id="withdrawCancel" parameterType="java.lang.String">
+		delete from withdraw where pnum=#{num}
+	</delete>
+	
+	
+</mapper>
+
+
+
+
+

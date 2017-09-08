@@ -25,8 +25,6 @@
 
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse">
-				<c:choose>
-				<c:when test="${sessionScope.login ne null }">
 				<ul class="nav navbar-nav navbar-left">
 					<li class=""><a class="header" href="/"
 						id="home">홈</a></li>
@@ -64,14 +62,11 @@
                             </ul>
 					</li>
 				</ul>
-				</c:when>
-				<c:otherwise>
-				<ul class="nav navbar-nav navbar-right">											
-					<li><a class="bnt" href="/join.mt" id="join">회원가입</a></li>
-					<li><a class="bnt" id="login" data-toggle="modal" data-target="#login-form">로그인</a></li>				
+				
+				<ul class="nav navbar-nav navbar-right">
+					<li style="margin: -7px;"><a href="/my/home"><i class="material-icons" style="color: #999999; font-size: 30px;">notifications_none</i></a></li>
 				</ul>
-				</c:otherwise>
-			</c:choose>	
+
 				<ul class="nav navbar-nav navbar-right">
 					<li><form class="navbar-form form-horizontal" role="search">
 						<div class="input-group">
@@ -80,11 +75,10 @@
 								<span class="glyphicon glyphicon-search" style="margin-bottom: 7px;"></span>
 							</button>
 						</div>
-					</form></li>				
+					</form></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div>
-		<nav class="secondary-nav navbar ">
 			<div class="col-xs-offset-1 col-md-offset-1">
 				<ul class="nav navbar-nav">
 					<li class="nav-item">
