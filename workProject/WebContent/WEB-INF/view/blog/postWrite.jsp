@@ -248,55 +248,54 @@
 
 
 
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
 
-	<!-- Initialize the editor. -->
-	<script>
-		$(function() {
-			$("#editor").froalaEditor(
-					{
-						toolbarButtons : [ 'fontFamily', '|', 'fontSize', '|',
+<!-- Initialize the editor. -->
+<script>
+	$(function() {
+		$("#editor").froalaEditor(
+				{
+					toolbarButtons : [ 'fontFamily', '|', 'fontSize', '|',
 								'paragraphFormat', '|', 'bold', 'italic',
 								'underline', 'undo', 'redo', 'codeView' ],
-						fontFamilySelection : true,
-						fontSizeSelection : true,
-						paragraphFormatSelection : true,
-						heightMin : 100,
-						heightMax : 300
-					})
+					fontFamilySelection : true,
+					fontSizeSelection : true,
+					paragraphFormatSelection : true,
+					heightMin : 100,
+					heightMax : 300
+				})
 		});
+	
 		setTimeout(function() {
 			$("[href='https://www.froala.com/wysiwyg-editor?k=u']").eq(0).remove();
 		}, 5);
-		$(function() {
-		//	$('[data-toggle="popover"]').popover()
-		});
+				
 
-		$("#bt").on("click", function() {
-			$.post({
-				url : "/postWriter.mt",
-				data : {
-					"title" : $("#title").val(),
-					"subtitle" : $("#subtitle").val(),
-					"fcontent" : $("#editor").val()
+	$("#bt").on("click", function() {
+		$.post({
+			url : "/postWriter.mt",
+			data : {
+				"title" : $("#title").val(),
+				"subtitle" : $("#subtitle").val(),
+				"fcontent" : $("#editor").val()
 
-				}
-			}).done(function(result) {
-				if (result.result) {
-					location.href = "/blog/" + result.url;
-				}
-			})
+			}
+		}).done(function(result) {
+			if (result.result) {
+				location.href = "/blog/" + result.url;
+			}
+		})
 
-		});
+	});
 		
-	</script>
+</script>
 </body>
 </html>
 
