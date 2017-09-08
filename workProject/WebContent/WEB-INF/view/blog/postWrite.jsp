@@ -142,6 +142,12 @@ input[type=radio]:checked+label:before {
     border: 0;
 }
 
+#title::-webkit-input-placeholder {
+   font-weight: bold; 
+}
+
+
+출처: http://yjcorp.tistory.com/6 [yj factory]
 
 }
 </style>
@@ -152,24 +158,29 @@ input[type=radio]:checked+label:before {
 
 <title>${title }</title>
 <body>
-	<header> 
+	<header>
+	
+		<div style="display: inline;"> 
+		<a href=""><i class="material-icons">keyboard_arrow_left</i></a>
+		</div>
+		
 		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="navbar-header">
 				<a class="navbar-toggle" style="float: left; border: 0px;"> <span
-					class="glyphicon glyphicon-menu-left"></span></a>
+					class="glyphicon glyphicon-menu-left"></span></a>  
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#postNav">
+					data-target="#postNav"> 
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span> 
 				</button>
 			</div>
 			<div class="collapse navbar-collapse" id="postNav">
-				<ul class="nav navbar-nav"> 
+				<ul class="nav navbar-nav">  
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#"><span><img
 								src="/images/mytype.png"></span><span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a>새 포스트 쓰기</a></li>
+						<ul class="dropdown-menu"> 
+							<li><a>새 포스트 쓰기</a></li> 
 							<li><a href="">발행글</a></li>
 							<li><a href="">임시저장글</a></li>
 							<li><a href="">카테고리</a></li>
@@ -287,19 +298,21 @@ input[type=radio]:checked+label:before {
 			<div class="col-xs-12 col-md-10">
 				<article class="post">
 					<div class="container">
-
-						<div class="title-wrap ">
-							<div class="form-group">
+					
+					
+					
+						<div class="title-wrap">
+							<div class="form-group" style="margin-top: 70px; margin-left: 112px;">
 								<input type="text" class="form-control" id="title" 
-									name="title" placeholder="제목을 입력하세요" 
+									name="title" placeholder="제목을 입력하세요." 
 									style="font-size: 32px;">
-							</div>
-						
-							
+							</div> 
+						  
+							 
 							<div class="form-group" style="margin-left: 112px;">
 								<input type="text" class="form-control" id="subtitle"
-									name="subtitle" placeholder="부제목을 입력하세요"
-									style="font-size: 16px;">
+									name="subtitle" placeholder="부제목을 입력하세요."
+									style="font-size: 16px;"> 
 							</div>  
 						</div> 
 						<div class="editor" id="editor"></div>
