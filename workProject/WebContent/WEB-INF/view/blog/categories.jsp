@@ -128,10 +128,7 @@ p {
 	
 	
 	
-	$("#add")
-			.on(
-					"click",
-					function() {
+	$("#add").on("click", function() {
 						var add = "<div class=\"category-row row\"><div class=\"col-xs-9 col-md-9 form-group\">"
 								+ "<input class=\"form-control cate_name\" type=\"text\" name=\"addcate_name\"/>"
 								+ "<input type=\"hidden\" name=\"addcate_id\" class=\"cate_id\" />"
