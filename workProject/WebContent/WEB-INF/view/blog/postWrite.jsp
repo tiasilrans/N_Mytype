@@ -151,7 +151,7 @@
 	        </div>
 	    </div>  		  		
   	</div>
-  	
+  </div>	
   	
   	<section> 
 	  	<div align="center" class="row ">
