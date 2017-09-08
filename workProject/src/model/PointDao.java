@@ -15,7 +15,7 @@ public class PointDao {
 	@Autowired
 	SqlSessionFactory factory;
 	
-	//í¬ì¸íŠ¸ ì¶©ì „
+	//Æ÷ÀÎÆ® ÃæÀü
 	public boolean pointcharge(Map map){
 		SqlSession session = factory.openSession();
 		boolean flag = false;
@@ -31,7 +31,7 @@ public class PointDao {
 		}
 	}
 	
-	//í¬ì¸íŠ¸ ì¶©ì „ ì·¨ì†Œ
+	//Æ÷ÀÎÆ® ÃæÀü Ãë¼Ò
 	public boolean chargeCancel(String num){
 		SqlSession session = factory.openSession();
 		boolean flag = false;
@@ -47,7 +47,7 @@ public class PointDao {
 		}
 	}
 	
-	//í¬ì¸íŠ¸ ì¶©ì „ ì‹ ì²­ ë‚´ì—­ ë¶ˆëŸ¬ì˜¤ê¸°
+	//Æ÷ÀÎÆ® ÃæÀü ½ÅÃ» ³»¿ª ºÒ·¯¿À±â
 	public List<Map> selectdeposit(String email){
 		SqlSession session = factory.openSession();
 		try{
@@ -61,7 +61,7 @@ public class PointDao {
 		}
 	}
 	
-	//í¬ì¸íŠ¸ ì‚¬ìš© ì‹ ì²­ ë‚´ì—­ ë¶ˆëŸ¬ì˜¤ê¸°
+	//Æ÷ÀÎÆ® »ç¿ë ½ÅÃ» ³»¿ª ºÒ·¯¿À±â
 	public List<Map> selectpoint(String email){
 		SqlSession session = factory.openSession();
 		try{
@@ -75,7 +75,7 @@ public class PointDao {
 		}
 	}
 	
-	//ì¶œê¸ˆ ë‚´ì—­ ë¶ˆëŸ¬ì˜¤ê¸°
+	//Ãâ±İ ³»¿ª ºÒ·¯¿À±â
 	public List<Map> selectwithdraw(String email){
 		SqlSession session = factory.openSession();
 		try{
@@ -89,7 +89,7 @@ public class PointDao {
 		}
 	}
 	
-	//ì”ì—¬ í¬ì¸íŠ¸ ì¡°íšŒ (SUM)
+	//ÀÜ¿© Æ÷ÀÎÆ® Á¶È¸ (SUM)
 	public Map selectpointsum(String email){
 		SqlSession session = factory.openSession();
 		try{
@@ -103,14 +103,14 @@ public class PointDao {
 		}
 	}
 	
-	//ì¶œê¸ˆ ì‹ ì²­
+	//Ãâ±İ ½ÅÃ»
 	public boolean withdraw(Map map){
 		SqlSession session = factory.openSession();
 		boolean flag = false;
 		try{
-			/* 1. ì²˜ìŒì— í¬ì¸íŠ¸ ë¡œê·¸ì— ì¶”ê°€ í›„
-			 * 2. ì¶”ê°€í•œ ë¡œê·¸ì˜ ë²ˆí˜¸ë¥¼ ê°€ì ¸ì™€ì„œ
-			 * 3. mapì— ë‹¤ì‹œë„£ì–´ì„œ ì¶œê¸ˆë‚´ì—­ì— ì¶”ê°€
+			/* 1. Ã³À½¿¡ Æ÷ÀÎÆ® ·Î±×¿¡ Ãß°¡ ÈÄ
+			 * 2. Ãß°¡ÇÑ ·Î±×ÀÇ ¹øÈ£¸¦ °¡Á®¿Í¼­
+			 * 3. map¿¡ ´Ù½Ã³Ö¾î¼­ Ãâ±İ³»¿ª¿¡ Ãß°¡
 			 * */
 			session.insert("point.withdrawlog", map);
 			Map num = session.selectOne("point.selectpnum", map);
@@ -129,7 +129,7 @@ public class PointDao {
 		}
 	}
 	
-	//ì¶œê¸ˆ ì·¨ì†Œ
+	//Ãâ±İ Ãë¼Ò
 	public boolean withdrawCancel(String num){
 		SqlSession session = factory.openSession();
 		boolean flag = false;

@@ -54,7 +54,7 @@ public class MyController {
 		return mav;
 	}
 	
-	// í¬ì¸íŠ¸ë¶€ë¶„
+	// Æ÷ÀÎÆ®ºÎºĞ
 	@RequestMapping("/point/plist")
 	public ModelAndView plist(HttpSession session) {
 		String email = (String)session.getAttribute("login");
@@ -74,9 +74,9 @@ public class MyController {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("t_my");
 			mav.addObject("section","point/charge");
-			String[] cards = "ë†í˜‘,êµ­ë¯¼ì€í–‰,ìš°ë¦¬ì€í–‰,í•˜ë‚˜ì€í–‰,ì‹ í•œì€í–‰,ì™¸í™˜ì€í–‰,ì”¨í‹°ì€í–‰,ìš°ì²´êµ­,ë¶€ì‚°ì€í–‰,SCì€í–‰".split(",");
-			String[] banks = "ì‚°ì—…ì€í–‰,ê¸°ì—…ì€í–‰,êµ­ë¯¼ì€í–‰,ì™¸í™˜ì€í–‰,ìˆ˜í˜‘,ë†í˜‘,ìš°ë¦¬ì€í–‰,SCì€í–‰,ì”¨í‹°ì€í–‰,ëŒ€êµ¬ì€í–‰,ë¶€ì‚°ì€í–‰,ê´‘ì£¼ì€í–‰,ì œì£¼ì€í–‰,ì „ë¶„ì€í–‰,ê²½ë‚¨ì€í–‰,ìƒˆë§ˆì„ê¸ˆê³ ,ì‹ í˜‘,ìš°ì²´êµ­,í•˜ë‚˜ì€í–‰,ì‹ í•œì€í–‰".split(",");
-			String[] telecoms = "SKT,KT,LGU+,LGU+(ì•Œëœ°í°)".split(",");
+			String[] cards = "³óÇù,±¹¹ÎÀºÇà,¿ì¸®ÀºÇà,ÇÏ³ªÀºÇà,½ÅÇÑÀºÇà,¿ÜÈ¯ÀºÇà,¾¾Æ¼ÀºÇà,¿ìÃ¼±¹,ºÎ»êÀºÇà,SCÀºÇà".split(",");
+			String[] banks = "»ê¾÷ÀºÇà,±â¾÷ÀºÇà,±¹¹ÎÀºÇà,¿ÜÈ¯ÀºÇà,¼öÇù,³óÇù,¿ì¸®ÀºÇà,SCÀºÇà,¾¾Æ¼ÀºÇà,´ë±¸ÀºÇà,ºÎ»êÀºÇà,±¤ÁÖÀºÇà,Á¦ÁÖÀºÇà,ÀüºĞÀºÇà,°æ³²ÀºÇà,»õ¸¶À»±İ°í,½ÅÇù,¿ìÃ¼±¹,ÇÏ³ªÀºÇà,½ÅÇÑÀºÇà".split(",");
+			String[] telecoms = "SKT,KT,LGU+,LGU+(¾Ë¶ãÆù)".split(",");
 			mav.addObject("cards",cards);
 			mav.addObject("banks",banks);
 			mav.addObject("telecoms",telecoms);
@@ -100,13 +100,13 @@ public class MyController {
 				map.put("paymentoption", str);
 				switch ((String)map.get("pay")) {
 				case "card":
-					map.put("pay", "ì¹´ë“œê²°ì œ");
+					map.put("pay", "Ä«µå°áÁ¦");
 					break;
 				case "untouched":
-					map.put("pay", "ë¬´í†µì¥ì…ê¸ˆ");
+					map.put("pay", "¹«ÅëÀåÀÔ±İ");
 					break;
 				case "phone":
-					map.put("pay", "íœ´ëŒ€í°ê²°ì œ");
+					map.put("pay", "ÈŞ´ëÆù°áÁ¦");
 					break;
 				}
 				pointDao.pointcharge(map);
@@ -130,7 +130,7 @@ public class MyController {
 		return mav;
 	}
 	
-	//í¬ì¸íŠ¸ ê²°ì œ ì·¨ì†Œ
+	//Æ÷ÀÎÆ® °áÁ¦ Ãë¼Ò
 	@RequestMapping("/point/delete")
 	@ResponseBody
 	public String delete(@RequestParam Map map,HttpSession session) throws JsonProcessingException {
@@ -151,7 +151,7 @@ public class MyController {
 		return mz;
 	}
 	
-	//ì¶œê¸ˆ ì‹ ì²­ 
+	//Ãâ±İ ½ÅÃ» 
 	@RequestMapping("/point/withdraw")
 	public ModelAndView withdraw(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -167,7 +167,7 @@ public class MyController {
 		return mav;
 	}
 	
-	//ì¶œê¸ˆ ì‹ ì²­ ì‹¤í–‰
+	//Ãâ±İ ½ÅÃ» ½ÇÇà
 	@RequestMapping("/point/withdrawExec")
 	public ModelAndView withdrawExec(@RequestParam Map map, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -186,7 +186,7 @@ public class MyController {
 		return mav;
 	}
 	
-	//ì¶œê¸ˆ ë‚´ì—­
+	//Ãâ±İ ³»¿ª
 	@RequestMapping("/point/wlist")
 	public ModelAndView wlist(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -201,7 +201,7 @@ public class MyController {
 	}
 	
 	
-	// ì„¤ì • ë¶€ë¶„
+	// ¼³Á¤ ºÎºĞ
 	@RequestMapping("/settings/account")
 	public ModelAndView settings() {
 		ModelAndView mav = new ModelAndView();

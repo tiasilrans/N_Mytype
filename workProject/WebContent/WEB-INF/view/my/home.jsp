@@ -21,28 +21,30 @@
 			<div class="lbox" >
 				<a style="text-decoration: none;">
 					<span class="boxsp">포인트 잔액</span> <br/>
-					<span style="margin-left: 13px; color: #999999;"><i class="material-icons">monetization_on</i></span> 0p
+					<span style="margin-left: 13px; color: #999999; float: left;"><label class="material-icons">monetization_on</label></span> 0p
 				</a>
             </div>
-            <div class="rbox" >
+            <div class="rbox" > 
             	<a style="text-decoration: none;">
 					<span class="boxsp">출금 가능 금액</span> <br/>
-					<span style="margin-left: 15px; color: #999999;"><i class="material-icons">account_balance</i></span> 0p
+					<span style="margin-left: 15px; color: #999999; float: left;"><label class="material-icons">account_balance</label></span>0p 
 				</a>
+			
             </div>
             <hr/>
             <div class="lbox" >
             <a style="text-decoration: none;">
             	<span class="boxsp">수익</span> <br/>
-            	<span style="margin-left: 13px; color: #999999;"><i class="material-icons">store</i></span> 0p
+            	<span style="margin-left: 13px; color: #999999; float: left;"><label class="material-icons">store</label></span> 0p
             </a>
             </div>  
             <div class="rbox">
             	<a style="text-decoration: none;">
             		<span class="boxsp">구매/후원</span> <br/>
-            		<span style="margin-left: 15px; color: #999999;"><i class="material-icons">card_giftcard</i></span> 0p
+            		<span style="margin-left: 15px; color: #999999; float: left;"><label class="material-icons">card_giftcard</label></span> <span>0p</span> 
             	</a>
-            </div> 
+            
+            </div>  
 		</div>
 	</div>
 	

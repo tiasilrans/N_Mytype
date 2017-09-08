@@ -26,7 +26,8 @@
 
 <!-- css -->
 <link rel="stylesheet" href="/css/editorcss.css">
-
+<link rel="stylesheet" href="/css/blogViewcss.css">
+ 
 </head> 
 
 
@@ -113,29 +114,44 @@
 	          	</div>
 	          	<div class="row">
 		          	<div class="col-xs-3">최소 후원금액</div>
-		          	<div class="col-xs-9">포인트</div>
+		          	<div class="col-xs-6">
+		          	<input class="form-control" type="text"
+						   name=" support" id=" support" required style="width: 100px;"/>
+					</div>
+					<div class="col-xs-3">
+					<span>포인트</span>
+		          	</div> 
+					
 	          	</div>
 	          	<div class="row">
 		          	<div class="col-xs-3">표시설정</div>
-		          	<div class="col-xs-9"><p>공지</p><p>성인물</p></div>
+		          	<div class="col-xs-9"><label for="notice"><input type="checkbox" id="notice" name="notice">공지</label>
+		          	<label for="adult"><input type="checkbox" id="adult" name="adult">성인물</label>
 	          	</div>
+	          	
 	          	<div class="row">
 		          	<div class="col-xs-3">공개설정</div>
 		          	<div class="col-xs-9"></div>
+		          	<label for="all"><input type="radio" id="all" name="all">전체 공개</label>
+		          	<label for="my"><input type="radio" id="my" name="my">나만 보기</label>
+		          	<label for="secret"><input type="radio" id="secret" name="secret">비밀글</label>
 	          	</div>
+	          	
 	          	<div class="row">
 		          	<div class="col-xs-3">댓글 쓰기 권한</div>
 		          	<div class="col-xs-9"></div>
+		          	<label for="login"><input type="radio" id="login" name="login">로그인 사용자</label>
+		          	<label for="buy"><input type="radio" id="buy" name="buy">구매자/후원자</label>
 	          	</div>
 	         
 	         
 	        </div>
 	        <div class="modal-footer">
-	          <button type="button" class="btn" id="bt">발행하기</button>
+	          <button type="button" class="button button1" id="bt">발행하기</button>
 	        </div>
 	    </div>  		  		
   	</div>
-  	
+  </div>	
   	
   	<section> 
 	  	<div align="center" class="row ">
