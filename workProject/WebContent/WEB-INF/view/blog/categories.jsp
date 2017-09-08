@@ -109,6 +109,8 @@ p {
 
 
 <script>
+	var cate_delete = "";
+
 	$(".cate_up").on("click", function() {
 		$(this).parent().parent().after($(this).parent().parent().prev());	
 		
@@ -120,7 +122,7 @@ p {
 	
 	
 	$(".cate_delete").on("click", function() {	
-		console.log($(this).parent().parent().parent());
+		cate_delete += $(this).parent().prev().prev().prev().children('[type="hidden"]').val()+ ",";
 		$(this).parent().parent().remove();		
 	});
 	
@@ -139,8 +141,9 @@ p {
 								+ "</div><div class=\"col-xs-1 col-md-1 form-group\"><button class=\"form-control cate-bt cate_delete\"><i class=\"glyphicon glyphicon-remove\"></i></button></div></div>";
 						$("#catelist").append(add);
 						$(".cate_up").attr('onclick', '').unbind('click');
+						$(".cate_delete").attr('onclick', '').unbind('click');
 						$(".cate_delete").on("click", function() {
-							console.log($(this).parent().parent());
+							cate_delete += $(this).parent().prev().prev().prev().children('[type="hidden"]').val() + ",";
 							$(this).parent().parent().remove();		
 						});
 						$(".cate_up").on("click", function() {
@@ -168,6 +171,7 @@ p {
 		$.post({
 			url : "/blog/categoryUpdate.mt",
 			data : {
+				"cate_delete" : cate_delete,
 				"title" : "${title}",
 				"url" : "${url}",
 				"cate_name_order" : cate_name_order,

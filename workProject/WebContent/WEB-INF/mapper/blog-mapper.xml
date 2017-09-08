@@ -36,10 +36,8 @@
  	
  	<!-- 카테고리 삭제 -->
  	<delete id="cate_delete" parameterType="java.util.Iterator">
- 		delete from BLOGCATEGORY where 
-		<foreach collection="arr" item="cate_id" separator=" or " open="(" close=")">
-		cate_id=#{cate_id}
-		</foreach>
+ 		delete from BLOGCATEGORY where cate_id=#{cate_id}
+		
  	</delete>
  	
  	

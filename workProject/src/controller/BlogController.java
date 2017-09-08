@@ -75,7 +75,7 @@ public class BlogController {
 		System.out.println(catelist);
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("post");
-			mav.addObject("title", "í¬ìŠ¤íŠ¸ì‘ì„±");
+			mav.addObject("title", "Æ÷½ºÆ®ÀÛ¼º");
 			mav.addObject("map", m);
 			mav.addObject("catelist", catelist);
 		return mav;
@@ -105,18 +105,35 @@ public class BlogController {
 	public Map categoryAdd(@RequestParam Map m, 
 				 HttpSession session){
 			m.put("email", session.getAttribute("login"));
-		System.out.println("ë„˜ì–´ì˜¨ ê°’ : " + m);
+		System.out.println("³Ñ¾î¿Â °ª : " + m);
 		
 		Map map = new HashMap();
+		String delete = (String)m.get("cate_delete");
+		String[] arr = delete.split(",");
 		String cate_name_order = (String)m.get("cate_name_order");
 		String[] orderArr = cate_name_order.split(",");
 		String addName = (String)m.get("addcate_name");
 		String[] addcate_name = addName.split(",");
-		String uuid = "";		
+		String uuid = "";	
 		boolean f = false;
-					
+		
+		List<Map> before = bDAO.cateAfterList(m);
+		for(String d : arr){// »èÁ¦ÇØ¾ß ÇÒ °æ¿ì			
+			for(Map li : before){
+				String id = (String)li.get("CATE_ID");
+				if(id.equals(d)){
+					System.out.println( " ID >> "+  d + "ÀÇ »èÁ¦¸¦ ½ÃÀÛÇÑ´Ù");
+					Map deleteMap = new HashMap();					
+					deleteMap.put("cate_id", d);
+					bDAO.cateRemover(deleteMap);
+				}
+			}					
+			System.out.println("»èÁ¦ ¿Ï·á");
+		}
+		
+		
 		for(int i = 0; i<addcate_name.length; i++){
-			if(addcate_name[i]!=""){ // ì¹´í…Œê³ ë¦¬ ì¶”ê°€ í•´ì•¼ í•  ê²½ìš° -------------------------------------*
+			if(addcate_name[i]!=""){ // Ä«Å×°í¸® Ãß°¡ ÇØ¾ß ÇÒ °æ¿ì -------------------------------------*
 				uuid += UUID.randomUUID().toString().substring(0, 11) + ",";
 				m.put("addcate_id", uuid.split(",")[i]);
 				m.put("addcate_name", addcate_name[i]);
@@ -124,20 +141,17 @@ public class BlogController {
 				bDAO.categoryAddOrder(m);				
 			}
 		}
-		
-		/*if(){ // ì‚­ì œí•´ì•¼ í•  ê²½ìš°
-			f = bDAO.cateRemover(m);
-		}*/
-		
+				
+			
 		List<Map> list = bDAO.cateAfterList(m);		
 		Map cateNameOrder = new HashMap();
-		for(int i = 0; i<orderArr.length; i++ ){// ì¹´í…Œê³ ë¦¬ ìˆœì„œ ì„¤ì •
-			cateNameOrder.put(orderArr[i], i); // í‚¤ : ì¹´í…Œê³ ë¦¬ ì´ë¦„  - ê°’ : ì¹´í…Œê³ ë¦¬ ì¸ë±ìŠ¤			
+		for(int i = 0; i<orderArr.length; i++ ){// Ä«Å×°í¸® ¼ø¼­ ¼³Á¤
+			cateNameOrder.put(orderArr[i], i); // Å° : Ä«Å×°í¸® ÀÌ¸§  - °ª : Ä«Å×°í¸® ÀÎµ¦½º			
 		}		
 		for(Map li : list){
 			String key = (String)li.get("CATEGORY_NAME");
 			String id = (String)li.get("CATE_ID");
-			if(!key.equals("ì „ì²´ ë³´ê¸°")){
+			if(!key.equals("ÀüÃ¼ º¸±â")){
 				Integer idx = (Integer)cateNameOrder.get(key);				
 				Map orderMap = new HashMap();
 					orderMap.put("cate_index", idx);
