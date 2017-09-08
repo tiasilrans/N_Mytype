@@ -157,7 +157,9 @@ input[type=radio]:checked+label:before {
 
 <title>${title }</title>
 <body>
+
 	<header>
+
 
 		
 		<div class="navbar navbar-default navbar-fixed-top">
