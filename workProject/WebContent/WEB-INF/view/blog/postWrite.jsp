@@ -146,10 +146,6 @@ input[type=radio]:checked+label:before {
    font-weight: bold; 
 }
 
-
-출처: http://yjcorp.tistory.com/6 [yj factory]
-
-}
 </style>
 
 </head>
@@ -272,17 +268,14 @@ input[type=radio]:checked+label:before {
 							for="secret">비밀글</label>
 						</div>
 					</div>
-					
-<<<<<<< HEAD
-
 					<div class="row" style="margin-top: 20px;">
 						<div class="col-xs-3" style="color: #4d4d4d;">댓글 쓰기 권한</div>
 						<div class="col-xs-9">
 						<input type="radio" id="login" class="radio-style" name="comment" /><label
 							for="login">로그인 사용자</label> <input type="radio" id="buy"
 							class="radio-style" name="comment" /><label for="buy">구매자/후원자</label>
-						</div>
-=======
+					</div>
+
 	          	</div>
 	          	<div class="row">
 		          	<div class="col-xs-3">표시설정</div>
@@ -314,32 +307,7 @@ input[type=radio]:checked+label:before {
   	</div>
   </div>	
   	
-  	<section> 
-	  	<div align="center" class="row ">
-		<div class="col-xs-0 col-md-1"></div>
-		<div class="col-xs-12 col-md-10">
-		<article class="post">
-	        <div class="container">
-		       
-		            <div class="title-wrap">
-							<div class="form-group">
-								<input type="text" class="form-control" id="title" name="title"
-									placeholder="제목을 입력하세요" style="font-size: 32px;">
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" id="subtitle" name="subtitle"
-									placeholder="부제목을 입력하세요" style="font-size: 16px;">
-							</div>
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
-					</div>
-
-
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="button button1" id="bt">발행하기</button>
-				</div>
-			</div>
-		</div>
+  	
 	
 
 	<section>
