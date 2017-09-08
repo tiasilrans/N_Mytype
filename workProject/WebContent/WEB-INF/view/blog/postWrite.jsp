@@ -5,20 +5,28 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
-<link	href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_editor.pkgd.min.css"	rel="stylesheet" type="text/css" />
-<link	href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_style.min.css"	rel="stylesheet" type="text/css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_editor.pkgd.min.css"
+	rel="stylesheet" type="text/css" />
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_style.min.css"
+	rel="stylesheet" type="text/css" />
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
-<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Optional theme -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
 	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
 	crossorigin="anonymous">
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!-- Latest compiled and minified JavaScript -->
 <script
@@ -30,103 +38,6 @@
 <link rel="stylesheet" href="/css/editorcss.css">
 <link rel="stylesheet" href="/css/blogViewcss.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-<style>
-input[type=checkbox] {
-	display: none;
-}
-input[type=checkbox]+label {
-	display: inline-block;
-	cursor: pointer;
-	position: relative;
-	padding-left: 25px;
-	margin-right: 15px;
-	font-size: 13px;
-}
-input[type=checkbox]+label:before {
-	content: "";
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	margin-right: 10px;
-	position: absolute;
-	left: 0;
-	bottom: 1px;
-	background-color: #ccc;
-	border-radius: 2px;
-	box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px
-		rgba(255, 255, 255, .8);
-}
-input[type=checkbox]:checked+label:before {
-	content: "\2714"; /* 체크모양 */
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
-	font-size: 18px;
-	font-weight: 800;
-	color: #fff;
-	background: #1a1a1a;
-	text-align: center;
-	line-height: 18px;
-}
-input[type=radio] {
-	display: none;
-}
-input[type=radio]+label {
-	display: inline-block;
-	cursor: pointer;
-	position: relative;
-	padding-left: 25px;
-	margin-right: 15px;
-	font-size: 13px;
-}
-input[type=radio]+label:before {
-	content: "";
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	margin-right: 10px;
-	position: absolute;
-	left: 0;
-	bottom: 1px;
-	background-color: #ccc;
-	border-radius: 10px;
-	box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px
-		rgba(255, 255, 255, .8);
-}
-input[type=radio]:checked+label:before {
-	content: "\2714"; /* 체크모양 */
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
-	font-size: 18px;
-	font-weight: 800;
-	color: #fff;
-	background: #1a1a1a;
-	text-align: center;
-	line-height: 18px;
-}
-.btn-default {
-	text-shadow: 0 1px 0 #fff;
-	background-image: -webkit-linear-gradient(top, #fff 0, #e0e0e0 100%);
-	background-image: -o-linear-gradient(top, #fff 0, #e0e0e0 100%);
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff),
-		to(#e0e0e0));
-	background-image: linear-gradient(to bottom, #fff 0, #ffffff 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',
-		endColorstr='#ffffffff', GradientType=0);
-	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-	background-repeat: repeat-x;
-	border-color: #dbdbdb;
-	border-color: #ccc;
-}
-.tagtext {
-    width: 100%;
-    padding: 0 0 0 32px;
-    font-size: 14px;
-    line-height: 24px;
-    border: 0;
-}
-#title::-webkit-input-placeholder {
-   font-weight: bold; 
-}
-</style>
 
 </head>
 
@@ -337,51 +248,50 @@ input[type=radio]:checked+label:before {
 
 
 
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
 
-	<!-- Initialize the editor. -->
-	<script>
-		$(function() {
-			$("#editor").froalaEditor(
-					{
-						toolbarButtons : [ 'fontFamily', '|', 'fontSize', '|',
+<!-- Initialize the editor. -->
+<script>
+	$(function() {
+		$("#editor").froalaEditor(
+				{
+					toolbarButtons : [ 'fontFamily', '|', 'fontSize', '|',
 								'paragraphFormat', '|', 'bold', 'italic',
 								'underline', 'undo', 'redo', 'codeView' ],
-						fontFamilySelection : true,
-						fontSizeSelection : true,
-						paragraphFormatSelection : true,
-						heightMin : 100,
-						heightMax : 300
-					})
+					fontFamilySelection : true,
+					fontSizeSelection : true,
+					paragraphFormatSelection : true,
+					heightMin : 100,
+					heightMax : 300
+				})
 		});
+	
 		setTimeout(function() {
 			$("[href='https://www.froala.com/wysiwyg-editor?k=u']").eq(0).remove();
 		}, 5);
-		$(function() {
-		//	$('[data-toggle="popover"]').popover()
-		});
-		$("#bt").on("click", function() {
-			$.post({
-				url : "/postWriter.mt",
-				data : {
-					"title" : $("#title").val(),
-					"subtitle" : $("#subtitle").val(),
-					"fcontent" : $("#editor").val()
-				}
-			}).done(function(result) {
-				if (result.result) {
-					location.href = "/blog/" + result.url;
-				}
-			})
-		});
+				
+	$("#bt").on("click", function() {
+		$.post({
+			url : "/postWriter.mt",
+			data : {
+				"title" : $("#title").val(),
+				"subtitle" : $("#subtitle").val(),
+				"fcontent" : $("#editor").val()
+			}
+		}).done(function(result) {
+			if (result.result) {
+				location.href = "/blog/" + result.url;
+			}
+		})
+	});
 		
-	</script>
+</script>
 </body>
 </html>
