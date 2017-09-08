@@ -67,7 +67,7 @@ label{
         </ul>
     </div>
 </nav>
-
+  
 <form class="form-inline form-horizontal">
 	<div class="scard col-xs-offset-1 col-md-offset-1">
 		<div class="title">
