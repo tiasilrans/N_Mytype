@@ -164,7 +164,7 @@ input[type=radio]:checked+label:before {
 				</button>
 			</div>
 			<div class="collapse navbar-collapse" id="postNav">
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav"> 
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#"><span><img
 								src="/images/mytype.png"></span><span class="caret"></span></a>
@@ -210,20 +210,20 @@ input[type=radio]:checked+label:before {
 
 				<div class="form-group">
 					<div class="row">
-						<div class="col-xs-12 col-sm-3">
+						<div class="col-xs-12 col-sm-3">       
 							<label class="form-control-label" style="color: #4d4d4d;">썸네일</label>
 						</div>
-						<div class="col-xs-12 col-sm-9">
+						<div class="col-xs-12 col-sm-9" style="margin-left: -9px;">
 							<a class="btn btn-default" href="#" role="button" id="">썸네일
 								선택</a> <a class="btn btn-default" href="#" role="button" id=""
 								style="margin-left: -10px;">삭제</a>
 						</div>
 					</div>
-				</div>
+				</div> 
 
 				<div class="row" style="margin-top: 20px;">
 					<div class="col-xs-3" style="color: #4d4d4d;">카테고리</div>
-					<div class="col-xs-3" style="margin-left: 9px;">
+					<div class="col-xs-3">  
 						<select name="category" class="form-control">
 							<c:forEach var="obj" items="${catelist }">
 								<option>${obj.BLOG_TITLE }</option>
@@ -238,10 +238,10 @@ input[type=radio]:checked+label:before {
 						<input class="form-control" type="text" name=" support"
 							id=" support" required style="width: 100px;" />
 					</div>
-					<div class="col-xs-3">
-						<span>포인트</span>
-					</div>
-
+					<div class="col-xs-3" style="margin-left: -690px; margin-top: 7px;"> 
+						<span>포인트</span> 
+					</div>          
+  
 				</div>
 				<div class="row" style="margin-top: 20px;">
 					<div class="col-xs-3" style="color: #4d4d4d;">표시설정</div>
@@ -250,25 +250,26 @@ input[type=radio]:checked+label:before {
 							for="notice">공지</label> <input type="checkbox" id="adult"
 							class="checkbox-style" /><label for="adult">성인물</label>
 					</div>
-
-					<div class="row" style="margin-top: 40px;">
+</div>
+					<div class="row" style="margin-top: 20px;">
 						<div class="col-xs-3" style="color: #4d4d4d;">공개설정</div>
-						<div class="col-xs-9"></div>
+						<div class="col-xs-9">
 						<input type="radio" id="all" class="radio-style" name="open" /><label
 							for="all">전체 공개</label> <input type="radio" id="my"
 							class="radio-style" name="open" /><label for="my">나만 보기</label> <input
 							type="radio" id="secret" class="radio-style" name="open" /><label
 							for="secret">비밀글</label>
 						</div>
+					</div>
 					
 
 					<div class="row" style="margin-top: 20px;">
 						<div class="col-xs-3" style="color: #4d4d4d;">댓글 쓰기 권한</div>
-						<div class="col-xs-9"></div>
+						<div class="col-xs-9">
 						<input type="radio" id="login" class="radio-style" name="comment" /><label
 							for="login">로그인 사용자</label> <input type="radio" id="buy"
 							class="radio-style" name="comment" /><label for="buy">구매자/후원자</label>
-
+						</div>
 					</div>
 
 
@@ -278,7 +279,7 @@ input[type=radio]:checked+label:before {
 				</div>
 			</div>
 		</div>
-	</div>
+	
 
 	<section>
 		<div align="center" class="row ">
@@ -293,6 +294,7 @@ input[type=radio]:checked+label:before {
 									name="title" placeholder="제목을 입력하세요" 
 									style="font-size: 32px;">
 							</div>
+						
 							
 							<div class="form-group" style="margin-left: 112px;">
 								<input type="text" class="form-control" id="subtitle"
@@ -304,17 +306,18 @@ input[type=radio]:checked+label:before {
 						<div class="tag-wrap" style="margin-top: 20px;"> 
 						<label class="material-icons" title="태그" style="float: left; margin-left: 120px;">bookmark</label>
 						<label for="post-tags" class="sr-only">태그</label>
-						<textarea id="post-tags" name="tags" rows="1" class="tagtext"
-							placeholder="여러 개의 태그는 공백(space)으로 구분하여 입력하세요." 
-							style="width: 850px; height: 24px; margin-left: -300px;"></textarea>
+						
+						<input type="text" class="form-control" id="post-tags" 
+									name="tags" placeholder="여러 개의 태그는 공백(space)으로 구분하여 입력하세요." 
+							 	class="tagtext" style="width: 850px; margin-left: -300px; height: 25px;">    
 						</div>
-   
-					</div>
+    
+					</div> 
 				</article>
+ 
 
 
-
-			</div>
+			</div> 
 			<div class="col-xs-0 col-md-1"></div>
 		</div>
 
