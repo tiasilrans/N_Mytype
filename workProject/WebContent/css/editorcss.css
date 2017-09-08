@@ -1,5 +1,112 @@
 @CHARSET "EUC-KR";
 
+input[type=checkbox] {
+	display: none;
+}
+
+input[type=checkbox]+label {
+	display: inline-block;
+	cursor: pointer;
+	position: relative;
+	padding-left: 25px;
+	margin-right: 15px;
+	font-size: 13px;
+}
+
+input[type=checkbox]+label:before {
+	content: "";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+	position: absolute;
+	left: 0;
+	bottom: 1px;
+	background-color: #ccc;
+	border-radius: 2px;
+	box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px
+		rgba(255, 255, 255, .8);
+}
+
+input[type=checkbox]:checked+label:before {
+	content: "\2714"; /* 체크모양 */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+	font-size: 18px;
+	font-weight: 800;
+	color: #fff;
+	background: #1a1a1a;
+	text-align: center;
+	line-height: 18px;
+}
+
+input[type=radio] {
+	display: none;
+}
+
+input[type=radio]+label {
+	display: inline-block;
+	cursor: pointer;
+	position: relative;
+	padding-left: 25px;
+	margin-right: 15px;
+	font-size: 13px;
+}
+
+input[type=radio]+label:before {
+	content: "";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+	position: absolute;
+	left: 0;
+	bottom: 1px;
+	background-color: #ccc;
+	border-radius: 10px;
+	box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px
+		rgba(255, 255, 255, .8);
+}
+
+input[type=radio]:checked+label:before {
+	content: "\2714"; /* 체크모양 */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+	font-size: 18px;
+	font-weight: 800;
+	color: #fff;
+	background: #1a1a1a;
+	text-align: center;
+	line-height: 18px;
+}
+
+.btn-default {
+	text-shadow: 0 1px 0 #fff;
+	background-image: -webkit-linear-gradient(top, #fff 0, #e0e0e0 100%);
+	background-image: -o-linear-gradient(top, #fff 0, #e0e0e0 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff),
+		to(#e0e0e0));
+	background-image: linear-gradient(to bottom, #fff 0, #ffffff 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',
+		endColorstr='#ffffffff', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+	background-repeat: repeat-x;
+	border-color: #dbdbdb;
+	border-color: #ccc;
+}
+
+
+.tagtext {
+    width: 100%;
+    padding: 0 0 0 32px;
+    font-size: 14px;
+    line-height: 24px;
+    border: 0;
+}
+
+#title::-webkit-input-placeholder {
+   font-weight: bold; 
+}
+
+
 
 div#editor {
 	width: 81%;
