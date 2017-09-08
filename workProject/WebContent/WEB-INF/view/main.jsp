@@ -149,7 +149,7 @@
 
 </style>   
 
-<div class="container" style="margin-left: auto;">
+<div class="container" style="margin-left: auto; width: 65%">
 
 			<!-- 메인쪽 로고 부분 -->
 			  <div class="container col-md-4" style="width:620px; height: 350px;">
@@ -196,10 +196,11 @@
 			<!-- 목록 nav -->
 			<div class="col-xs-0 col-md-12">
 			<div style="margin-left: 10px;">
-			<h2>최신 포스트</h2>
 			<ul class="nav nav-tabs" style="width: 950px;">
 			<li class="active"><a data-toggle="tab" href="#allList"><b>전체</b></a></li>
-			<li><a data-toggle="tab" href="#likeList"><b>구독</b></a></li>
+			<c:if test="${sessionScope.login ne null}">
+				<li><a data-toggle="tab" href="#likeList"><b>구독</b></a></li>
+			</c:if>
 			</ul>
 			</div>			
 			
@@ -265,13 +266,7 @@
 			
 			<!-- 구독 게시물 배치 -->
 			<div id="likeList" class="tab-pane fade">
-			<c:choose>
-			<c:when test="${sessionScope.login == null}">
-			<div align="center">
-				<div style="width:600px; margin-top: 10px;"><h1> 로그인 후에 이용 가능합니다.</h1></div>
-			</div>
-			</c:when>
-			<c:otherwise>
+
 			<c:choose>
 			<c:when test="${listLike.size() == 0}">
 			<div align="center">
@@ -279,7 +274,7 @@
 			</div>
 			</c:when>
 			<c:otherwise>
-			<c:forEach var="all" items="${listLike}" begin="0" end="${listLike.size() < 8 ? listLike.size() : 8}" varStatus="vs">
+			<c:forEach var="all" items="${listLike}" begin="0" end="${listLike.size() < 5 ? listLike.size() : 5}" varStatus="vs">
 				<div id="post" class="col-xs-0 col-md-4">
 				
 					<!-- head -->
@@ -332,8 +327,6 @@
 			</c:forEach>
 			</c:otherwise>
 			</c:choose>
-			</c:otherwise>
-			</c:choose>
 			
 			</div>
 
@@ -357,39 +350,29 @@
 		//좋아요 버튼 눌렀을때 마다 하트가 변하는 스크립트 
 		function likechange(){
 			var str = this.value;
-			if(this.classList.contains("glyphicon-heart-empty")){
+			var heart = this.classList.contains("glyphicon-heart-empty");
 				$.ajax({
 					url:"/postgood.mt",
 					method : "get",
 					data : {
 					"num" : str,
-					"type" : true,
+					"type" : heart,
 					}
 				}).done(function(result) {
 					var rst = JSON.parse(result);
 					if(rst.rst){
-						$("."+str).html(parseInt($("."+str).html())+1);
-						$(".o"+str).removeClass("glyphicon-heart-empty");
-						$(".o"+str).addClass("glyphicon-heart");
+						if(heart){
+							$("."+str).html(parseInt($("."+str).html())+1);
+							$(".o"+str).removeClass("glyphicon-heart-empty");
+							$(".o"+str).addClass("glyphicon-heart");
+							
+						}else{
+							$("."+str).html(parseInt($("."+str).html())-1);
+							$(".o"+str).removeClass("glyphicon-heart");
+							$(".o"+str).addClass("glyphicon-heart-empty");
+						}
 					}
 				});
-			}else{
-				$.ajax({
-					url:"/postgood.mt",
-					method : "get",
-					data : {
-					"num" : str,
-					"type" : false,
-					}
-				}).done(function(result) {
-					var rst = JSON.parse(result);
-					if(rst.rst){
-						$("."+str).html(parseInt($("."+str).html())-1);
-						$(".o"+str).removeClass("glyphicon-heart");
-						$(".o"+str).addClass("glyphicon-heart-empty");
-					}
-				});
-			}
 		}
 		$(".like").on("click", likechange);
 	</script>

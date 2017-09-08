@@ -64,7 +64,6 @@ public class MyController {
 			if(email != null){
 				mav.addObject("list",pointDao.selectpoint(email));
 				mav.addObject("pointsum",pointDao.selectpointsum(email));
-				System.out.println(mav);
 			}
 		return mav;
 	}
@@ -124,7 +123,6 @@ public class MyController {
 			if(session.getAttribute("login") != null){
 				String email = (String)session.getAttribute("login");
 				mav.addObject("list",pointDao.selectdeposit(email));
-				System.out.println(mav);
 			}
 			
 		return mav;
