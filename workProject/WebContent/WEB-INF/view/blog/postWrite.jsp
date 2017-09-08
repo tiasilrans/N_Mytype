@@ -273,6 +273,7 @@ input[type=radio]:checked+label:before {
 						</div>
 					</div>
 					
+<<<<<<< HEAD
 
 					<div class="row" style="margin-top: 20px;">
 						<div class="col-xs-3" style="color: #4d4d4d;">댓글 쓰기 권한</div>
@@ -281,6 +282,55 @@ input[type=radio]:checked+label:before {
 							for="login">로그인 사용자</label> <input type="radio" id="buy"
 							class="radio-style" name="comment" /><label for="buy">구매자/후원자</label>
 						</div>
+=======
+	          	</div>
+	          	<div class="row">
+		          	<div class="col-xs-3">표시설정</div>
+		          	<div class="col-xs-9"><label for="notice"><input type="checkbox" id="notice" name="notice">공지</label>
+		          	<label for="adult"><input type="checkbox" id="adult" name="adult">성인물</label>
+	          	</div>
+	          	
+	          	<div class="row">
+		          	<div class="col-xs-3">공개설정</div>
+		          	<div class="col-xs-9"></div>
+		          	<label for="all"><input type="radio" id="all" name="all">전체 공개</label>
+		          	<label for="my"><input type="radio" id="my" name="my">나만 보기</label>
+		          	<label for="secret"><input type="radio" id="secret" name="secret">비밀글</label>
+	          	</div>
+	          	
+	          	<div class="row">
+		          	<div class="col-xs-3">댓글 쓰기 권한</div>
+		          	<div class="col-xs-9"></div>
+		          	<label for="login"><input type="radio" id="login" name="login">로그인 사용자</label>
+		          	<label for="buy"><input type="radio" id="buy" name="buy">구매자/후원자</label>
+	          	</div>
+	         
+	         
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="button button1" id="bt">발행하기</button>
+	        </div>
+	    </div>  		  		
+  	</div>
+  </div>	
+  	
+  	<section> 
+	  	<div align="center" class="row ">
+		<div class="col-xs-0 col-md-1"></div>
+		<div class="col-xs-12 col-md-10">
+		<article class="post">
+	        <div class="container">
+		       
+		            <div class="title-wrap">
+							<div class="form-group">
+								<input type="text" class="form-control" id="title" name="title"
+									placeholder="제목을 입력하세요" style="font-size: 32px;">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="subtitle" name="subtitle"
+									placeholder="부제목을 입력하세요" style="font-size: 16px;">
+							</div>
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 					</div>
 
 
