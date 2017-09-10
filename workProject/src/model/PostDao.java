@@ -13,6 +13,52 @@ import org.springframework.stereotype.Service;
 public class PostDao {	
 	@Autowired
 	SqlSessionFactory factory;
+	
+	public List<Map> sublist(List<Map> list){
+		for(Map map : list){
+			String fcontent = (String)map.get("FCONTENT");
+			if(fcontent.length() > 148){
+				fcontent = fcontent.substring(0, 148);
+				fcontent += "...";
+				map.put("FCONTENT", fcontent);
+			}
+		}
+		return list;
+	}
+	
+	public boolean postWrite(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			session.insert("post.write", map);
+			return true;
+		}catch(Exception e){
+			System.out.println("postWrite Error");
+			e.printStackTrace();
+			return false;
+		}finally{
+			session.close();
+		}
+		
+	}
+	
+	public List<Map> categoryList(Map map){		
+		List<Map> list = new ArrayList<>();
+		SqlSession session = factory.openSession();
+		try {
+			list = session.selectList("post.cate_list", map);			
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("categoryList ERROR : " + e.toString());
+			return list;
+		}finally {
+			session.close();
+		}		
+	}
+	
+	
+	
+	
 		
 	public List<Map> listAll(Map map){
 		SqlSession session = factory.openSession();

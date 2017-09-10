@@ -6,27 +6,60 @@
 <style>
 .logo-frame{
 	width:100%;
-	border-radius: 10px;
+	border-radius: 5px;
 }
 
 #secondlogo{
 	height: 350px;
-	width : 300px;
-	background-color: green;
-	border-radius: 10px;
+	width : 330px;
+	background-color: #F6F6F6;
+	border-radius: 5px;
 	margin: 10px;
 }
 
-.btn-primary{
-	background-color: green;
+.secondlogo-head{
+	padding-top : 15px;
+	padding-left : 8px;
+	font-weight: bold;
 }
 
+.secondlogo-body{
+	width : 100%;
+	height: 15%;
+}
+
+.secondlogo-body-profileimg{
+	float: left;
+	width:48px;
+	height:48px;
+	border-radius: 50%;
+	margin-right: 8px;
+}
+.secondlogo-body-title{
+	padding-top : 5px;
+}
+
+.secondlogo-body-title-name,.secondlogo-body-title-name:LINK,.secondlogo-body-title-name:ACTIVE{
+	font-size: 14;
+	color : black;
+	text-decoration: none;
+}
+
+.secondlogo-body-title-blog{
+	font-size: 12;
+	color : gray;
+}
+.secondlogo-body-content{
+	padding: 8px;
+	padding-top: 0px; 
+
+}
 
 #post{
 	height: 330px;
 	width : 300px;
 	background-color: #F6F6F6;
-	border-radius: 10px;
+	border-radius: 5px;
 	margin: 10px;
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -70,8 +103,9 @@
 	font-size: 12;
 }
 
-.conhead-title-blog{
+.conhead-title-blog, .conhead-title-blog:LINK, .conhead-title-blog:ACTIVE{
 	font-size: 12;
+	color: gray; 
 }
 .conbody{
 	height: 60%;
@@ -115,7 +149,7 @@
 
 </style>   
 
-<div class="container" style="margin-left: auto;">
+<div class="container" style="margin-left: auto; width: 65%">
 
 			<!-- 메인쪽 로고 부분 -->
 			  <div class="container col-md-4" style="width:620px; height: 350px;">
@@ -131,15 +165,15 @@
 			    <!-- Wrapper for slides -->
 			    <div class="carousel-inner">
 			      <div class="logo-frame item active">
-			        <img src="/images/mainimg/바다.jpg" alt="Los Angeles" style="width:100%; height: 350px; border-radius: 10px;">
+			        <img src="/images/mainimg/바다.jpg" alt="Los Angeles" style="width:100%; height: 350px; border-radius: 5px;">
 			      </div>
 			
 			      <div class="logo-frame item">
-			        <img src="/images/mainimg/겨울.jpg" alt="Chicago" style="width:100%; height: 350px; border-radius: 10px;">
+			        <img src="/images/mainimg/겨울.jpg" alt="Chicago" style="width:100%; height: 350px; border-radius: 5px;">
 			      </div>
 			    
 			      <div class="logo-frame item">
-			        <img src="/images/mainimg/봄.jpg" alt="New york" style="width:100%; height: 350px; border-radius: 10px;">
+			        <img src="/images/mainimg/봄.jpg" alt="New york" style="width:100%; height: 350px; border-radius: 5px;">
 			      </div>
 			    </div>
 			  </div>
@@ -147,15 +181,28 @@
 			
 
 			<!-- 메인쪽 로고 오른쪽 부분 -->
-			<div id="secondlogo" class="col-xs-0 col-md-4">3</div>
+			<div id="secondlogo" class="col-xs-0 col-md-4">
+				<div class="secondlogo-head">MyType 소식</div>
+					<div class="secondlogo-body">
+						<img class="secondlogo-body-profileimg" src="/images/blogMark.png">
+						<div class="secondlogo-body-title">
+							<span ><a href="/" class="secondlogo-body-title-name"><b>MyType 공식 블로그</b></a></span><br/>
+							<span class="secondlogo-body-title-blog">blog.mytypeblog.com</span>
+						</div>	
+					</div>
+				<div class="secondlogo-body-content"><span>공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용</span></div>
+			</div>
 			
 			<!-- 목록 nav -->
-			<div class="col-xs-0 col-md-12">			
-		
-			<ul class="nav nav-tabs" style="width: 970px;">
-			<li class="active"><a data-toggle="tab" href="#allList">전체</a></li>
-			<li><a data-toggle="tab" href="#likeList">구독</a></li>
+			<div class="col-xs-0 col-md-12">
+			<div style="margin-left: 10px;">
+			<ul class="nav nav-tabs" style="width: 950px;">
+			<li class="active"><a data-toggle="tab" href="#allList"><b>전체</b></a></li>
+			<c:if test="${sessionScope.login ne null}">
+				<li><a data-toggle="tab" href="#likeList"><b>구독</b></a></li>
+			</c:if>
 			</ul>
+			</div>			
 			
 			
 			<div class="tab-content">
@@ -171,7 +218,7 @@
 						<div class="conhead-title">
 							<span class="conhead-title-name"><b>${all.NICKNAME }</b></span><br/>
 							<span class="conhead-title-date">${all.PDATE } </span>|
-							<span class="conhead-title-blog"><a>${all.URL }</a></span>
+							<span><a class="conhead-title-blog">${all.URL }</a></span>
 						</div>	
 					</div>
 					
@@ -182,6 +229,7 @@
 						<span class="conbody-content">${all.FCONTENT }</span><br/><br/>
 						
 					</div>
+					
 					
 					
 					<c:set var="msg" value="${all.HASH }"/>
@@ -218,14 +266,15 @@
 			
 			<!-- 구독 게시물 배치 -->
 			<div id="likeList" class="tab-pane fade">
+
 			<c:choose>
-			<c:when test="${sessionScope.login == null}">
+			<c:when test="${listLike.size() == 0}">
 			<div align="center">
-				<div class="alert alert-warning" style="width:600px; margin-top: 10px;"><h1> 로그인 후에 이용 가능합니다.</h1></div>
+				<div style="width:600px; margin-top: 10px;"><h1>게시물이 없습니다.</h1></div>
 			</div>
 			</c:when>
 			<c:otherwise>
-			<c:forEach var="all" items="${listLike}" begin="0" end="${listLike.size() < 8 ? listLike.size() : 8}" varStatus="vs">
+			<c:forEach var="all" items="${listLike}" begin="0" end="${listLike.size() < 5 ? listLike.size() : 5}" varStatus="vs">
 				<div id="post" class="col-xs-0 col-md-4">
 				
 					<!-- head -->
@@ -234,7 +283,7 @@
 						<div class="conhead-title">
 							<span class="conhead-title-name"><b>${all.NICKNAME }</b></span><br/>
 							<span class="conhead-title-date">${all.PDATE } </span>|
-							<span class="conhead-title-blog"><a>${all.URL }</a></span>
+							<span><a class="conhead-title-blog">${all.URL }</a></span>
 						</div>	
 					</div>
 					
@@ -301,37 +350,29 @@
 		//좋아요 버튼 눌렀을때 마다 하트가 변하는 스크립트 
 		function likechange(){
 			var str = this.value;
-			if(this.classList.contains("glyphicon-heart-empty")){
+			var heart = this.classList.contains("glyphicon-heart-empty");
 				$.ajax({
-					url:"/postgoodAdd.mt",
+					url:"/postgood.mt",
 					method : "get",
 					data : {
 					"num" : str,
+					"type" : heart,
 					}
 				}).done(function(result) {
 					var rst = JSON.parse(result);
 					if(rst.rst){
-						$("."+str).html(parseInt($("."+str).html())+1);
-						$(".o"+str).removeClass("glyphicon-heart-empty");
-						$(".o"+str).addClass("glyphicon-heart");
+						if(heart){
+							$("."+str).html(parseInt($("."+str).html())+1);
+							$(".o"+str).removeClass("glyphicon-heart-empty");
+							$(".o"+str).addClass("glyphicon-heart");
+							
+						}else{
+							$("."+str).html(parseInt($("."+str).html())-1);
+							$(".o"+str).removeClass("glyphicon-heart");
+							$(".o"+str).addClass("glyphicon-heart-empty");
+						}
 					}
 				});
-			}else{
-				$.ajax({
-					url:"/postgoodRemove.mt",
-					method : "get",
-					data : {
-					"num" : str,
-					}
-				}).done(function(result) {
-					var rst = JSON.parse(result);
-					if(rst.rst){
-						$("."+str).html(parseInt($("."+str).html())-1);
-						$(".o"+str).removeClass("glyphicon-heart");
-						$(".o"+str).addClass("glyphicon-heart-empty");
-					}
-				});
-			}
 		}
 		$(".like").on("click", likechange);
 	</script>

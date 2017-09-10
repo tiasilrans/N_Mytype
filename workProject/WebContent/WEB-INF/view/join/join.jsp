@@ -12,17 +12,16 @@
 }
 
 #sbt,#cnbt{
-	width : 360px;
+	width : 80%;
 	height: 60px;
 }
 #email,#pw,#cn{
-	width : 360px;
+	width : 80%;
 	height: 40px;
 }
 
 
 </style>   
-
 <div align="center" class="row">
 	<div class="col-xs-0 col-md-4"></div>
 	<div class="col-xs-12 col-md-4">

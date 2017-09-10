@@ -2,154 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body {
-	margin: 0px;
-	padding: 0px;
-	min-height: 2500px;
-	background-color: #fff;
-}
-
-.navbar-info {
-	width: 100%;
-}
-
-.fixed-me {
-	transition: all 1s;
-}
-
-.fixed-me {
-	background-color: #fff !important;
-	padding: 0px !important;
-	margin-bottom: 5px;
-	position: fixed;
-	top: 0;
-	z-index: 888;
-	width: 100%;
-	border-bottom: 3px solid #00134d !important;
-}
-
-.navbar-me {
-	transition: all 1s;
-}
-
-.header-right-menu {
-	padding: 5px 15px !important;
-}
-
-.navbar-me {
-	padding: 10px 0px;
-	background-color: transparent;
-	top: 0px;
-	border: 0px;
-	border-radius: 0px;
-}
-
-.navbar-collapse {
-	text-align: center;
-	border-top-width: 0px;
-	padding-top: 10px;
-	margin-top: 5px;
-}
-
-.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover
-	{
-	background-color: transparent;
-}
-
-
-
-.menu-collapsed-button {
-	margin: 10px 15px 10px 15px !important;
-}
-
-@media ( max-width : 767px) {
-	.navbar-nav>li>a {
-		line-height: 20px;
-	}
-	.navbar-brand {
-		padding: 7px 15px;
-	}
-	.navbar-brand img {
-		width: 144px;
-	}
-}
-
-.navbar-form {
-	margin: 0;
-	margin-top: 5px;
-	padding: 8px 0px;
-}
-
-.navbar-form .search-box {
-	border: 1px solid rgba(0,0,0,.25);
-	height: 35px;
-	outline: none;
-	width: 320px;
-	padding-right: 3px;
-	padding-left: 15px;
-	margin: 4px;
-	-webkit-border-radius: 22px;
-	-moz-border-radius: 22px;
-	border-radius: 22px;
-}
-
-.navbar-form button {
-	border: 0;
-	background: none;
-	padding: 2px 5px;
-	margin-top: 2px;
-	position: relative;
-	left: -34px;
-	margin-bottom: 0;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-
-.search-box:focus+button {
-	z-index: 3;
-}
-
-@media ( min-width : 768px) {
-	.dropdown:hover {
-		background-color: #fff;
-		border-bottom-left-radius: 5px;
-		border-bottom-right-radius: 5px;
-		
-	}
-	.dropdown:hover .dropdown-menu {
-		display: block;
-	}
-	.navbar-form {
-		padding: 0px;
-	}
-	.navbar-form .search-box {
-		width: 260px;
-		height: 32px;
-	}
-	
-	
-}
-
-/* 로그인창 */
-#login-sbt,#login-alert{
-	width : 360px;
-	height: 60px;
-}
-#login-email,#login-pw{
-	width : 360px;
-	height: 40px;
-}
-
-</style>
+<!-- navCss -->
+<link rel="stylesheet" href="/css/navcss.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <!--navbar menu-->
-<section class="navbar-info">
-	<nav class="navbar navbar-default navbar-me">
+<section class="navbar-info ">
+	<nav class="navbar navbar-default" style="margin-bottom: 0px; ">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
+			<div class="navbar-header navbar-me">
 				<button type="button"
 					class="navbar-toggle collapsed menu-collapsed-button"
 					data-toggle="collapse" data-target="#navbar-primary-collapse"
@@ -158,8 +20,8 @@ body {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/"><img src="/images/title.png" width="110"; height="32";></a>
-				</div>
+				<a class="navbar-brand" href="/"><img src="/images/title.png" style="margin: 5px;"></a>
+				</div> 
 
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse">
@@ -171,29 +33,40 @@ body {
 					<li><a class="" href="">구독</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">내 블로그<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="/blog/create"><i class="glyphicon glyphicon-plus"  style="margin-right:7px;"></i> 새 블로그 만들기</a></li>
-						</ul></li>
-				</ul>
-			
+						<ul class="dropdown-menu">						
+						<!-- 블로그 리스트 -->				
+						<c:if test="${sessionScope.blog ne null }">
+						<c:forEach var="blog" items="${sessionScope.blog}" begin="0" end="${sessionScope.blog.size()}">
+							<li style="margin-left: 25px;"><a href="/blog/${blog.URL}">${blog.TITLE}</a></li>
+							<li style="margin-left: 25px;"><a href="">임시저장글 <i class="material-icons" style="margin-left: 10px; float: right; font-size: 23px;">mode_edit</i></a></li>
+							<li style="margin-left: 25px;"><a href="">발행글</a></li>  
+							<li style="margin-left: 25px;"><a href="/blog/${blog.URL}/categories">카테고리</a></li> 
+							<li style="margin-left: 25px;"><a href="">구독자</a></li>   
+							<li style="margin-left: 25px;"><a href="">설정</a></li> 
+						</c:forEach>  
+						</c:if>   
+							<li><a href="/blog/create"><i class="glyphicon glyphicon-plus" style="margin-right: 7px;"></i> 새 블로그 만들기</a></li>
+						</ul></li> 
+				</ul>   
+			   
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
 						<a id="account-toggler" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#" role="button" title="MY"
 													style="padding: 0px; margin: 6px;">
-                            <img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;">
+                            <img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px; margin: 2px;">
                             <span class="sr-only">계정</span></a>
-                            <ul class="dropdown-menu">
-                            	<li><a href=""><i class="glyphicon glyphicon-th-list"></i>　　MY홈</a></li>
-                            	<li><a href=""><i class="glyphicon glyphicon-heart"></i>　　좋아요</a></li>
-                            	<li><a href=""><i class="glyphicon glyphicon-save"></i>　　구매항목</a></li>
-                            	<li><a href=""><i class="fa fa-money"></i>　　포인트</a></li>
-                            	<li><a href=""><i class="glyphicon glyphicon-cog"></i>　　설정</a></li>
+                            <ul class="dropdown-menu">     
+                            	<li style="vertical-align: middle;"><a href="/my/home"><label class="material-icons" style="color: #999999; font-size: 23px; float: left;">dashboard</label>　　<font style="margin-top: 7px;">MY홈</font> </a></li>
+                            	<li><a href="/my/goods"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">favorite</i>　　좋아요</a></li>   
+                            	<li><a href="/my/purchases"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">get_app</i>　　구매항목 </a></li>
+                            	<li><a href="/my/point/plist"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">monetization_on</i>　　포인트</a></li> 
+                            	<li><a href="/my/settings/account"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">settings</i>　　설정</a></li>
                             	<li><a></a></li>
-                            	<li><a></a></li>
-                            	<li><a></a></li>
-                            	<li><a href="/logout.mt"><i class="glyphicon glyphicon-off "></i>　　로그아웃</a></li>
+                            	<li><a></a></li>     
+                            	<li><a></a></li>  
+                            	<li><a href="/logout.mt"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">power_settings_new</i>　　로그아웃</a></li>
                             </ul>
-					</li>
+					</li>   
 				</ul>
 				</c:when>
 				<c:otherwise>
@@ -203,6 +76,12 @@ body {
 				</ul>
 				</c:otherwise>
 			</c:choose>	
+			
+				<ul class="nav navbar-nav navbar-right">
+					<li style="margin: -7px;"><a href="/my/home"><i class="material-icons" style="color: #999999; font-size: 30px;">notifications_none</i></a></li>
+				</ul>
+				
+				
 				<ul class="nav navbar-nav navbar-right">
 					<li><form class="navbar-form form-horizontal" role="search">
 						<div class="input-group">
@@ -229,7 +108,6 @@ body {
 		}
 	});
 </script>
-
 
 
 <!-- 로그인창 modal  -->

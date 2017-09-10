@@ -5,7 +5,9 @@
 	<definition name="t_base" template="/WEB-INF/view/template.jsp">
 		<put-attribute name="title" value="Mytype" />
 		<put-attribute name="nav" value="/WEB-INF/view/nav.jsp" />
+		<put-attribute name="nav2" value="" />
 		<put-attribute name="footer" value="/WEB-INF/view/footer.jsp" />
+		
 	</definition>
 	<definition name="t_el" extends="t_base">
 		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp" />
@@ -15,6 +17,19 @@
 	</definition>
 	<definition name="t_*/*" extends="t_base">
 		<put-attribute name="section" value="/WEB-INF/view/{1}/{2}.jsp" />
+	</definition>
+	
+	<!-- Search -->
+	<definition name="search_*" extends="t_base">
+		<put-attribute name="section" value="/WEB-INF/view/search/{1}.jsp" />
+		<put-attribute name="nav2" value="/WEB-INF/view/search/nav.jsp" />
+	</definition>
+
+	
+	<!-- MYHome -->
+	<definition name="t_my" extends="t_base">
+		<put-attribute name="nav" value="/WEB-INF/view/my/mynav.jsp" />
+		<put-attribute name="section" expression="/WEB-INF/view/my/${section}.jsp" />
 	</definition>
 	
 	<!-- 블로그 타일 -->
@@ -31,6 +46,14 @@
 		<put-attribute name="header" value=""/>
 		<put-attribute name="nav" value="" />	
 	</definition>
+	
+	<!-- 블로그 세팅  -->
+	<definition name="blog_setting" extends="t_base">
+		<put-attribute name="title" expression="${title} 블로그 설정" />
+		<put-attribute name="nav" value="/WEB-INF/view/blog/settings/blogSettingNav.jsp" />
+		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp"/>	
+	</definition>
+	
 	
 	
 </tiles-definitions>
