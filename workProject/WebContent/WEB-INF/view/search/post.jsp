@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<link rel="stylesheet" href="/css/searchcss.css">  
+
+    
 <div align="center">
 
 <div style="width: 60%;" align="left">
@@ -12,7 +16,7 @@
 <div style="width: 59%;" align="left">
 <div class="row">
 <div align="left" style="width: 100%;">
-<c:forEach var="all" items="${plist}" begin="0" end="${plist.size() < 5 ? plist.size() : 5}" varStatus="vs">
+<c:forEach var="all" items="${plist}" begin="0" end="${plist.size() < 11 ? plist.size() : 11}" varStatus="vs">
 			<c:if test="(vs+1) % 3 = 0">
 			</c:if>
 			<div class="col-xs-0 col-md-4" style="padding-left: 0px; padding-right: 0px;">
@@ -70,4 +74,55 @@
 </div>
 </div>
 
+<ul class="pagination">
+	<c:forEach var="i" begin="1" end="${page}">
+		<li ${np == i? "class=\"active\"": ""}><a
+			href="/search/post.mt?np=${i}&keyword=${keyword}">${i}</a></li>
+	</c:forEach>
+</ul>
+
 </div>
+
+<c:choose>
+	<c:when test="${sessionScope.login == null}">
+	<script>
+	function likechange(){
+		window.alert("로그인후 이용 가능합니다.");
+	}
+	$(".like").on("click", likechange);
+	</script>
+	</c:when>
+	
+	<c:otherwise>
+	<script>
+		//좋아요 버튼 눌렀을때 마다 하트가 변하는 스크립트 
+		function likechange(){
+			var str = this.value;
+			var heart = this.classList.contains("glyphicon-heart-empty");
+				$.ajax({
+					url:"/postgood.mt",
+					method : "get",
+					data : {
+					"num" : str,
+					"type" : heart,
+					}
+				}).done(function(result) {
+					var rst = JSON.parse(result);
+					if(rst.rst){
+						if(heart){
+							$("."+str).html(parseInt($("."+str).html())+1);
+							$(".o"+str).removeClass("glyphicon-heart-empty");
+							$(".o"+str).addClass("glyphicon-heart");
+							
+						}else{
+							$("."+str).html(parseInt($("."+str).html())-1);
+							$(".o"+str).removeClass("glyphicon-heart");
+							$(".o"+str).addClass("glyphicon-heart-empty");
+						}
+					}
+				});
+		}
+		$(".like").on("click", likechange);
+	</script>
+	</c:otherwise>
+</c:choose>

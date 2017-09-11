@@ -1,5 +1,6 @@
 package model;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 import org.apache.ibatis.session.SqlSession;
@@ -153,4 +154,21 @@ public class PostDao {
 		}
 	}
 	
+	
+	//게시물 갯수 구하기(페이징)
+	public int selectcount(Map map){
+		SqlSession session = factory.openSession();
+		Map list = new HashMap<>();
+		try{
+			list = session.selectOne("post.selectcount", map);
+			int result = ((BigDecimal)list.get("COUNT")).intValue();
+			return result; 
+		}catch(Exception e){
+			System.out.println("postSelectCount Error");
+			e.printStackTrace();
+			return 0;
+		}finally{
+			session.close();
+		}
+	}
 }
