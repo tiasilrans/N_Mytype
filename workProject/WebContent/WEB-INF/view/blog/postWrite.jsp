@@ -228,7 +228,7 @@ input[type=radio]:checked+label:before {
 							<label class="form-control-label" style="color: #4d4d4d;">썸네일</label>
 						</div>
 						<div class="col-xs-12 col-sm-9" style="margin-left: -9px;">
-							<a class="btn btn-default" href="#" role="button" id="">썸네일
+							<a class="btn btn-default" href="#" role="button" id="">썸네일 
 								선택</a> <a class="btn btn-default" href="#" role="button" id=""
 								style="margin-left: -10px;">삭제</a>
 						</div>
