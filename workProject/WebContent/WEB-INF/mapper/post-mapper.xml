@@ -20,8 +20,18 @@
   	<!--(메인) 게시물 전체 불러오기 -->
 	<select id="listall" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select tmp3.*,p.nickname as heart from 
-		(select tmp2.* from (select rownum as r, tmp.* from (select * from post order by pdate desc)tmp)tmp2 where tmp2.r between 1 and 6
+		(select tmp2.* from (select rownum as r, tmp.* from (select * from post order by pdate desc)tmp)tmp2 where tmp2.r between #{first} and #{last}
+		<!-- 검색어 -->
+		<if test="keyword != null">
+		and 
+		<foreach item="keyword" collection="keyword" separator=" and " open="("
+			close=")">
+			title like #{keyword} or subtitle like #{keyword} or fcontent like #{keyword} or ccontent like #{keyword}
+		</foreach>
+		</if>
+		
 		)tmp3 left join (select pg.* from postgood pg left join (select nickname as nick from member
+		<!-- 좋아요에 하트표시 위한 이메일 검색 -->
 		<choose>
 		<when test="email != null">
 		 where email=#{email}
@@ -39,7 +49,7 @@
 		select tmp3.*,p.nickname as heart from (
 		select tmp2.* from (select rownum as r, tmp.* from
 		 (select * from (select p.*,s.EMAIL from post p left join (select * from subscribe where email=#{email}) s on p.url=s.address)tmp where email=#{email} order by pdate desc
-		 )tmp)tmp2 where tmp2.r between 1 and 6
+		 )tmp)tmp2 where tmp2.r between #{first} and #{last}
 		 )tmp3 left join (select pg.* from postgood pg left join (select nickname as nick from member where email=#{email})pf on pg.NICKNAME=pf.nick where pf.nick is not null) p on tmp3.num=p.pnum
 	</if>
 	</select>
@@ -59,6 +69,9 @@
 		delete from postgood where pnum=#{num} and nickname=(select nickname from member where email=#{email})
 	</delete>
   
+   <select id="selectHashtag" parameterType="java.lang.String" resultType="java.util.HashMap">
+ 	  select * from post where hash like #{keyword}
+   </select>
   
   
   </mapper>

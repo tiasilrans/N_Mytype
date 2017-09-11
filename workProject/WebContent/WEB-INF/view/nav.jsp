@@ -83,9 +83,9 @@
 				
 				
 				<ul class="nav navbar-nav navbar-right">
-					<li><form class="navbar-form form-horizontal" role="search">
+					<li><form class="navbar-form form-horizontal" role="search" action="/search/main.mt">
 						<div class="input-group">
-							<input type="text" class="search-box" placeholder="마이타입 검색">
+							<input type="text" class="search-box" placeholder="마이타입 검색" name="keyword">
 							<button type="submit" class="btn">
 								<span class="glyphicon glyphicon-search" style="margin-bottom: 7px;"></span>
 							</button>

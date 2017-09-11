@@ -1,7 +1,73 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 <div align="center">
-<div  style="width: 60%">
-포스트
-</div>    
+
+<div style="width: 60%;" align="left">
+포스트 <span style="font-weight: bold; font-size: 20;">'${keyword}'</span><br/>
+<hr style="margin-top: 10px;"/>
+</div>
+
+<div style="width: 59%;" align="left">
+<div class="row">
+<div align="left" style="width: 100%;">
+<c:forEach var="all" items="${plist}" begin="0" end="${plist.size() < 5 ? plist.size() : 5}" varStatus="vs">
+			<c:if test="(vs+1) % 3 = 0">
+			</c:if>
+			<div class="col-xs-0 col-md-4" style="padding-left: 0px; padding-right: 0px;">
+				<div id="post">
+				
+					<!-- head -->
+					<div class="conhead">
+						<img class="conhead-profileimg" src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png">
+						<div class="conhead-title">
+							<span class="conhead-title-name"><b>${all.NICKNAME }</b></span><br/>
+							<span class="conhead-title-date">${all.PDATE } </span>|
+							<span><a class="conhead-title-blog">${all.URL }</a></span>
+						</div>	
+					</div>
+					
+					
+					<!-- body -->
+					<div class="conbody">
+						<span class="conbody-title"><b>${all.TITLE }</b></span><br/>
+						<span class="conbody-content">${all.FCONTENT }</span><br/><br/>
+						
+					</div>
+					
+					
+					<c:set var="msg" value="${all.HASH }"/>
+					<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
+					<c:forEach items="${hashtag}" var="hash">
+					<span class="conbody-hashtag">
+						<a href="/"><span style="color: #909090;">#${hash}</span></a>
+					</span>
+					</c:forEach>
+						
+					
+					<br/>
+					<!-- footer -->
+					<div class="confooter">
+					<c:choose>
+					<c:when test="${all.HEART == null}">
+						<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
+					</c:otherwise>
+					</c:choose>
+						<span class="confooter-count heart-${all.NUM}">${all.GOOD }</span>
+					</div>
+				
+				</div>
+				</div>
+			
+			<c:if test="(vs+1) % 3 = 0">
+			</c:if>
+			</c:forEach>
+</div>
+</div>
+</div>
+
 </div>
