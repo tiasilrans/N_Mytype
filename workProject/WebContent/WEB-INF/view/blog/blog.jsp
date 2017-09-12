@@ -63,6 +63,11 @@
 }
 
 
+ a:link { color: white; text-decoration: none;}
+ a:visited { color: white; text-decoration: none;}
+ a:hover { color: white; text-decoration: none;}
+
+
 </style>
 
 <div class="row" align="center">
@@ -159,7 +164,7 @@
  		<div>
  			<div class="menu-header">
  				<div class="col-xs-8 px-0" style="margin-bottom: 5px; margin-top: 20px;">
- 					<a herf=""><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626;">사용자 이름</span></a>
+ 					<a herf=""><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">사용자 이름</span></a>
  					
  				</div>
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
@@ -167,12 +172,12 @@
  				</div>
  				
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
- 					<i class="material-icons" style="color: #a6a6a6; font-size: 26px;">power_settings_new</i></span>
+ 					<a href="/logout.mt"><i class="material-icons" style="color: #a6a6a6; font-size: 26px;">power_settings_new</i></a>
  				</div>
  				
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
  					<a class="home" href="/"
-						id="home"><label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">home</label></a><div class="home" style="display:inline; margin-left: 14px;">홈</div>
+						id="home"><label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">home</label></a><a href="/"><div class="home" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">홈</div></a>
  				</div>    
  				      
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-bottom: 30px;">
