@@ -279,16 +279,6 @@ input[type=radio]:checked+label:before {
 				<ul class="nav navbar-nav navbar-right">
 					<li><a class="bnt dropdown-toggle" data-toggle="modal"
 						data-target="#modalPublish"><span>발행</span></a></li>
-
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#"><span
-							class="glyphicon glyphicon-option-vertical"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="">Profile</a></li>
-							<li><a href="">Update</a></li>
-							<li><a href="">My Like</a></li>
-							<li><a href="">Logout</a></li>
-						</ul></li>
 				</ul>
 			</div>
 		</div>
