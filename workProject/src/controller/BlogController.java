@@ -69,15 +69,25 @@ public class BlogController {
 	
 	@RequestMapping("/postWrite")
 	public ModelAndView postWrite(@RequestParam Map m, HttpSession session){
-		String email = (String)session.getAttribute("login");
-			m.put("email", email);
-		List<Map> catelist = pDAO.categoryList(m);	
-		System.out.println(catelist);
+		// m= 타이틀, url 들어가 있음
+		Map writeMap = (Map)session.getAttribute("writeMap");
+		if(writeMap !=null){
+			String title = (String)writeMap.get("title");
+			String url = (String)writeMap.get("url");
+			if(title!=null){
+				m.put("title", title);
+				m.put("url", url);
+			}
+		}
+		
+		List<Map> catelist = pDAO.categoryList(m);		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("post");
 			mav.addObject("title", "포스트작성");
 			mav.addObject("map", m);
 			mav.addObject("catelist", catelist);
+			session.setAttribute("writeMap", m);
+			
 		return mav;
 	}
 	
@@ -170,14 +180,7 @@ public class BlogController {
  		return map;		
 	}
 	
-	@RequestMapping("test.mt")
-	public ModelAndView test(){
-		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_el");
-			mav.addObject("section", "blog/test");
-		
- 		return mav;			
-	}
+	
 	
 	
 

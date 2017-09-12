@@ -1,9 +1,11 @@
 package model;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.poi.util.SystemOutLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,19 @@ import org.springframework.stereotype.Service;
 public class PostDao {	
 	@Autowired
 	SqlSessionFactory factory;
+	
+	//내용이 길경우 적당히 자르기
+	public List<Map> sublist(List<Map> list){
+		for(Map map : list){
+			String fcontent = (String)map.get("FCONTENT");
+			if(fcontent.length() > 148){
+				fcontent = fcontent.substring(0, 148);
+				fcontent += "...";
+				map.put("FCONTENT", fcontent);
+			}
+		}
+		return list;
+	}
 	
 	public boolean postWrite(Map map){
 		SqlSession session = factory.openSession();
@@ -44,10 +59,13 @@ public class PostDao {
 		}		
 	}
 	
+
 	
 	
 	
-		
+	
+	
+	//전체 게시물 불러오기
 	public List<Map> listAll(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -63,6 +81,7 @@ public class PostDao {
 		}
 	}
 	
+	//구독한 게시물 불러오기
 	public List<Map> listLike(Map map){
 		SqlSession session = factory.openSession();
 		
@@ -76,7 +95,37 @@ public class PostDao {
 			session.close();
 		}
 	}
+	
+	// 태그가 들어간 포스트 리스트 불러오기
+	public List<Map> listTag(Map map){
+		SqlSession session = factory.openSession();
+		List<Map> list = new ArrayList<>();
+		List<Map> result = new ArrayList<>();
+		try{
+			String keyword = (String)map.get("keyword");
+			map.put("keyword", "%"+keyword+"%");
+			list = session.selectList("post.listall", map);
+			for(Map post : list){
+				String[] arr = ((String)post.get("HASH")).split("\\s");
+				System.out.println("arr : "+arr);
+				for(String str : arr){
+					if(str.equals(keyword)){
+						result.add(post);
+					}
+				}
+			}
+			System.out.println("result : " + result);
+			return result; 
+		}catch(Exception e){
+			System.out.println("PostlistTag Error");
+			e.printStackTrace();
+			return result;
+		}finally{
+			session.close();
+		}
+	}
 
+	//좋아요
 	public int postgoodAdd(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -93,6 +142,7 @@ public class PostDao {
 		}
 	}
 	
+	//좋아요 취소
 	public int postgoodRemove(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -109,4 +159,48 @@ public class PostDao {
 		}
 	}
 	
+	//해쉬태그 불러오기(검색바쪽)
+	public List hashlist(String keyword){
+		SqlSession session = factory.openSession();
+		List<Map> list = new ArrayList<>();
+		List result = new ArrayList<>();
+		try{
+			list = session.selectList("post.selectHashtag", keyword);
+			//가져온 해쉬태그 리스트 돌리면서 스플릿하고 겹치는지 확인후 result에 추가 
+			for(Map m : list){
+				String[] arr = ((String)m.get("HASH")).split("\\s");
+				
+				for(String ar : arr){
+					if(!result.contains(ar) && ar.contains(keyword.substring(1, keyword.length()-1) )){
+						result.add(ar);
+					}
+				}
+			}
+			return result; 
+		}catch(Exception e){
+			System.out.println("selectHashtag Error");
+			e.printStackTrace();
+			return result;
+		}finally{
+			session.close();
+		}
+	}
+	
+	
+	//게시물 갯수 구하기(페이징)
+	public int selectcount(Map map){
+		SqlSession session = factory.openSession();
+		Map list = new HashMap<>();
+		try{
+			list = session.selectOne("post.selectcount", map);
+			int result = ((BigDecimal)list.get("COUNT")).intValue();
+			return result; 
+		}catch(Exception e){
+			System.out.println("postSelectCount Error");
+			e.printStackTrace();
+			return 0;
+		}finally{
+			session.close();
+		}
+	}
 }

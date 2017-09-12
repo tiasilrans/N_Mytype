@@ -8,7 +8,7 @@
 
 <!--navbar menu-->
 <section class="navbar-info ">
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default" style="margin-bottom: 0px; ">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header navbar-me">
@@ -83,9 +83,9 @@
 				
 				
 				<ul class="nav navbar-nav navbar-right">
-					<li><form class="navbar-form form-horizontal" role="search">
+					<li><form class="navbar-form form-horizontal" role="search" action="/search/main.mt">
 						<div class="input-group">
-							<input type="text" class="search-box" placeholder="마이타입 검색">
+							<input type="text" class="search-box" placeholder="마이타입 검색" name="keyword">
 							<button type="submit" class="btn">
 								<span class="glyphicon glyphicon-search" style="margin-bottom: 7px; color: #999999;"></span>
 							</button>

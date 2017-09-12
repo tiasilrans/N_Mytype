@@ -35,10 +35,92 @@
 	crossorigin="anonymous"></script>
 
 <!-- css -->
-<link rel="stylesheet" href="/css/editorcss.css">
 <link rel="stylesheet" href="/css/blogViewcss.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style type="text/css">
+
+div#editor {
+	width: 81%;
+	margin: auto;
+	text-align: left;
+}
+
+.title-wrap {
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid rgba(0,0,0,.09);
+}
+@media (min-width: 576px)
+ .post {
+    padding: 2.5em 0;
+}
+
+.post .container {
+    padding: 0 20px;
+}
+
+.post .container {
+    padding: 0 20px;
+}
+
+.container {
+    width: 100%;
+}
+@media (min-width: 576px)
+
+.container {
+    width: 540px;
+    max-width: 100%;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.title-wrap input {
+    width: 100%;
+    border: 0;
+    padding: 0;
+    margin: 10px;
+    border-radius: 0;
+}
+
+textarea.autosize {
+    resize: none;
+}
+
+
+ .post {
+    width: 100%;
+    height: 100%;
+    padding: 1.5em 0;
+    margin: 20px;
+    font-size: 16px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+a.dropdown-toggle{
+	padding: 0px;
+	margin: 0px;
+	
+	
+}
+
+a{
+	margin: 10px;
+}
+
+@media (min-width: 576px){
+.col-sm-3 {
+    float: left;
+    width: 25%;
+}}
+
+
 
 input[type=checkbox] {
 	display: none;
@@ -146,6 +228,11 @@ input[type=radio]:checked+label:before {
    font-weight: bold; 
 }
 
+.payment-line{
+	background-color: gray;
+	
+}
+
 
 
 </style>
@@ -155,9 +242,11 @@ input[type=radio]:checked+label:before {
 
 
 
-<title>${title }</title>
+<title> ${title }</title>
 <body>
+
 	<header>
+
 
 		
 		<div class="navbar navbar-default navbar-fixed-top">
@@ -183,7 +272,7 @@ input[type=radio]:checked+label:before {
 							<li><a href="">임시저장글</a></li>
 							<li><a href="">카테고리</a></li>
 							<li><a href="">블로그 설정</a></li>
-							<li><a href="">마이타입 홈</a></li>
+							<li><a href="/">마이타입 홈</a></li>
 						</ul></li>
 				</ul>
 
@@ -215,15 +304,13 @@ input[type=radio]:checked+label:before {
 				<h4>발행</h4>
 			</div>
 			<div class="modal-body">
-
-
 				<div class="form-group">
 					<div class="row">
 						<div class="col-xs-12 col-sm-3">       
 							<label class="form-control-label" style="color: #4d4d4d;">썸네일</label>
 						</div>
 						<div class="col-xs-12 col-sm-9" style="margin-left: -9px;">
-							<a class="btn btn-default" href="#" role="button" id="">썸네일
+							<a class="btn btn-default" href="#" role="button" id="">썸네일 
 								선택</a> <a class="btn btn-default" href="#" role="button" id=""
 								style="margin-left: -10px;">삭제</a>
 						</div>
@@ -233,11 +320,14 @@ input[type=radio]:checked+label:before {
 				<div class="row" style="margin-top: 20px;">
 					<div class="col-xs-3" style="color: #4d4d4d;">카테고리</div>
 					<div class="col-xs-3">  
-						<select name="category" class="form-control">
+						<select id="category" class="form-control">
+							<option>카테고리 선택</option>								
 							<c:forEach var="obj" items="${catelist }">
-								<option>${obj.BLOG_TITLE }</option>
-								<option>${obj.CATEGORY_NAME }</option>
+							<c:if test="${obj.CATEGORY_NAME ne '전체 보기'}">				
+								<option>${obj.CATEGORY_NAME }</option>	
+							</c:if>															
 							</c:forEach>
+							
 						</select>
 					</div>
 				</div>
@@ -278,17 +368,14 @@ input[type=radio]:checked+label:before {
 							class="radio-style" name="comment" /><label for="buy">구매자/후원자</label>
 					</div>
 
-	          	</div>
-	          	
-	         
-	         
+	          	</div>	         
 	        </div>
-	        <div class="modal-footer">
-	          <button type="button" class="button button1" id="bt">발행하기</button>
-	        </div>
-	    </div>  		  		
-  	</div>
-  </div>	
+		        <div class="modal-footer">
+		          <button type="button" class="button button1" id="publisher">발행하기</button>
+		        </div>
+	    	</div>  		  		
+  		</div>
+ 	
   	
   	
 	
@@ -298,8 +385,7 @@ input[type=radio]:checked+label:before {
 			<div class="col-xs-0 col-md-1"></div>
 			<div class="col-xs-12 col-md-10">
 				<article class="post">
-					<div class="container">
-					
+					<div class="container">	
 					
 					
 						<div class="title-wrap">
@@ -315,14 +401,24 @@ input[type=radio]:checked+label:before {
 									name="subtitle" placeholder="부제목을 입력하세요."
 									style="font-size: 16px;"> 
 							</div>  
-						</div> 
-						<div class="editor" id="editor"></div>
+						</div>
+						
+						<div class="editor" id="editor">
+							<p></p>
+							<div class="payment-line" id="payline" align="center" contenteditable="false">
+								<i class="material-icons">attach_money</i>
+								<span class="payment-line-description" style="vertical-align: top;">— 이 선 아래쪽에 유료 콘텐츠를 작성하세요.</span>
+							</div>
+							<p></p>
+						
+						</div>
+						
 						<div class="tag-wrap" style="margin-top: 20px;"> 
 						<label class="material-icons" title="태그" style="float: left; margin-left: 120px;">bookmark</label>
 						<label for="post-tags" class="sr-only">태그</label>
 						
-						<input type="text" class="form-control" id="post-tags" 
-									name="tags" placeholder="여러 개의 태그는 공백(space)으로 구분하여 입력하세요." 
+						<input type="text" class="form-control" id="hash" 
+									name="hash" placeholder="여러 개의 태그는 공백(space)으로 구분하여 입력하세요." 
 							 	class="tagtext" style="width: 850px; margin-left: -300px; height: 25px;">    
 						</div>
     
@@ -360,8 +456,7 @@ input[type=radio]:checked+label:before {
 					fontFamilySelection : true,
 					fontSizeSelection : true,
 					paragraphFormatSelection : true,
-					heightMin : 100,
-					heightMax : 300
+					heightMin : 100
 				})
 		});
 	
@@ -369,20 +464,38 @@ input[type=radio]:checked+label:before {
 			$("[href='https://www.froala.com/wysiwyg-editor?k=u']").eq(0).remove();
 		}, 5);
 
-	$("#bt").on("click", function() {
-		$.post({
-			url : "/postWriter.mt",
-			data : {
-				"title" : $("#title").val(),
-				"subtitle" : $("#subtitle").val(),
-				"fcontent" : $("#editor").val()
-			}
-		}).done(function(result) {
-			if (result.result) {
-				location.href = "/blog/" + result.url;
-			}
-		})
-	});
+		$("#publisher").on("click", function() {
+			var prev = "";
+			var next = "";
+			$("#payline").prevAll().each(function(){
+				prev = "<p>" + $(this).html() +"</p>"+prev;
+			})			
+			$("#payline").nextAll().addClass("ccontent");
+			$("#payline").nextAll().each(function(){
+				next += "<p>" + $(this).html() +"</p>";
+			})			
+			$.ajax({
+				url : "/postWriter.mt",
+				data : {				
+					"category" : $("#category").val(),
+					"title" : $("#title").val(),
+					"subtitle" : $("#subtitle").val(),
+					"fcontent" : prev,
+					"ccontent" : next,
+					"hash" : $("#hash").val(),
+					"url" : "${map.url}"
+					
+				}
+			}).done(function(result) {				
+				if (result.result) {
+					window.alert("포스트 작성 완료");
+				//	location.href = "/blog/" + result.url;
+				}else{				
+					window.alert("포스트 작성 실패");
+				}
+			})
+		});
+
 		
 </script>
 </body>
