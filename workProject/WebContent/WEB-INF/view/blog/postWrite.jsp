@@ -293,7 +293,7 @@ input[type=radio]:checked+label:before {
 	        </div>
 	    </div>  		  		
   	</div>
-  </div>	
+ 	
   	
   	
 	
@@ -321,7 +321,17 @@ input[type=radio]:checked+label:before {
 									style="font-size: 16px;"> 
 							</div>  
 						</div> 
-						<div class="editor" id="editor"></div>
+						<div class="editor" id="editor">
+							<div class="free-content" id="fcontent">
+								이건 무료
+							</div>
+							<hr/>
+							<div class="charged-content" id="ccontent">
+								이건 유료
+							</div>
+						
+						</div>
+						
 						<div class="tag-wrap" style="margin-top: 20px;"> 
 						<label class="material-icons" title="태그" style="float: left; margin-left: 120px;">bookmark</label>
 						<label for="post-tags" class="sr-only">태그</label>
@@ -365,8 +375,7 @@ input[type=radio]:checked+label:before {
 					fontFamilySelection : true,
 					fontSizeSelection : true,
 					paragraphFormatSelection : true,
-					heightMin : 100,
-					heightMax : 300
+					heightMin : 100
 				})
 		});
 	
