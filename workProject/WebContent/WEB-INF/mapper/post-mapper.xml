@@ -13,8 +13,10 @@
   	
   	<!-- 카테고리 목록 가져오기 -->
   	<select id="cate_list" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-  		select *from blogcategory where email=#{email}
+  		select b.CATEGORY_NAME from blogcategory b where BLOG_TITLE=#{title}
   	</select>
+  	
+  	
   	  	
   	
   	<!--(메인) 게시물 전체 불러오기 -->
