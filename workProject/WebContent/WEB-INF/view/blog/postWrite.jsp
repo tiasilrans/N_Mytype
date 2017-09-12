@@ -245,10 +245,7 @@ input[type=radio]:checked+label:before {
 <title> ${title }</title>
 <body>
 
-	<header>
-
-
-		
+	<header>		
 		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="navbar-header">
 				<a class="navbar-toggle" style="float: left; border: 0px;"> <span
@@ -262,22 +259,14 @@ input[type=radio]:checked+label:before {
 			
 			<div class="collapse navbar-collapse" id="postNav">
 				<ul class="nav navbar-nav">
-					
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#" style=" margin: 0px; background-image: none; background-color: white;"><span><img
-								src="/images/mytype.png"></span><span class="caret"></span></a>
-						<ul class="dropdown-menu">  
-							<li><a>새 포스트 쓰기</a></li> 
-							<li><a href="">발행글</a></li>
-							<li><a href="">임시저장글</a></li>
-							<li><a href="">카테고리</a></li>
-							<li><a href="">블로그 설정</a></li>
-							<li><a href="/">마이타입 홈</a></li>
-						</ul></li>
+					<li class="back" style="margin-left: 200px;"><a href="/blog/${map.url }" style=" margin-right: 0px;"><i class="material-icons">keyboard_backspace</i></a>
+					<li class="home" style="margin-right: 15px;"><a href="/" style=" margin: 0px; padding-left:0px; background-image: none; background-color: white;"><span><img
+								src="/images/mytype.png"></span></a>
+						
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="bnt dropdown-toggle" data-toggle="modal"
+					<li style="margin-right: 200px; margin-top: 15px;"><a class="bnt dropdown-toggle" data-toggle="modal"
 						data-target="#modalPublish"><span>발행</span></a></li>
 				</ul>
 			</div>
@@ -329,8 +318,7 @@ input[type=radio]:checked+label:before {
 					</div>
 					<div class="col-xs-3" style="margin-left: -690px; margin-top: 7px;"> 
 						<span>포인트</span> 
-					</div>          
-  
+					</div>  
 				</div>
 				<div class="row" style="margin-top: 20px;">
 					<div class="col-xs-3" style="color: #4d4d4d;">표시설정</div>
@@ -375,17 +363,13 @@ input[type=radio]:checked+label:before {
 			<div class="col-xs-0 col-md-1"></div>
 			<div class="col-xs-12 col-md-10">
 				<article class="post">
-					<div class="container">	
-					
-					
+					<div class="container">				
 						<div class="title-wrap">
 							<div class="form-group" style="margin-top: 70px; margin-left: 112px;">
 								<input type="text" class="form-control" id="title" 
 									name="title" placeholder="제목을 입력하세요." 
 									style="font-size: 32px;">
-							</div> 
-						  
-							 
+							</div> 						 
 							<div class="form-group" style="margin-left: 112px;">
 								<input type="text" class="form-control" id="subtitle"
 									name="subtitle" placeholder="부제목을 입력하세요."
@@ -479,7 +463,7 @@ input[type=radio]:checked+label:before {
 			}).done(function(result) {				
 				if (result.result) {
 					window.alert("포스트 작성 완료");
-				//	location.href = "/blog/" + result.url;
+					location.href = "/blog/" + result.url;
 				}else{				
 					window.alert("포스트 작성 실패");
 				}
