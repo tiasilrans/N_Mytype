@@ -61,7 +61,7 @@
                             	<li><a href="/my/purchases"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">get_app</i>　　구매항목 </a></li>
                             	<li><a href="/my/point/plist"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">monetization_on</i>　　포인트</a></li> 
                             	<li><a href="/my/settings/account"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">settings</i>　　설정</a></li>
-                            	<li><a></a></li>
+                            	<li><a href="/mail/list.mt?type=send"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">mail</i>　　쪽지</a></li>
                             	<li><a></a></li>     
                             	<li><a></a></li>  
                             	<li><a href="/logout.mt"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">power_settings_new</i>　　로그아웃</a></li>

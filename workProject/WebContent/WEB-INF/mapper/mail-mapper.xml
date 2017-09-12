@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mail">
+
+	<select id="sendlist" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from sendmessage where email=#{email} order by mdate desc
+	</select>
+	
+	<select id="receivelist" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from receivemessage where email=#{email} order by mdate desc
+	</select>
+
+	<insert id="sendinsert" parameterType="java.util.HashMap">
+		insert into sendmessage(num,email,content,mdate) values(message_seq.nextval, #{sender}, #{content}, sysdate)
+	</insert>
+	
+	<insert id="receiveinsert" parameterType="java.util.HashMap">
+		insert into receivemessage(num,email,content,mdate) values(message_seq.currval, #{receiver}, #{content}, sysdate)
+	</insert>
+	
+	<select id="selectView" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from
+		
+		<choose>
+		 <when test="type == send">
+			 sendmessage
+		 </when>
+		 <otherwise>
+			 receivemessage
+		 </otherwise>
+		</choose> 
+		where num=#{num}
+	</select>
+</mapper>
