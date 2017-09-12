@@ -167,8 +167,8 @@
  		<div>
  			<div class="menu-header">
  				<div class="col-xs-8 px-0" style="margin-bottom: 5px; margin-top: 20px;">
- 					<a href=""><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">사용자 이름</span></a>
- 					
+ 					<a href="/blog/${map.url }"><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">사용자 이름</span></a>
+ 					 
  				</div>
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
  					<span><i class="material-icons" style="color: #a6a6a6; font-size: 26px;">notifications_none</i></span> 

@@ -259,17 +259,17 @@ input[type=radio]:checked+label:before {
 			
 			<div class="collapse navbar-collapse" id="postNav">
 				<ul class="nav navbar-nav">
-					<li class="back" style="margin-left: 200px;"><a href="/blog/${map.url }" style=" margin-right: 0px;"><i class="material-icons">keyboard_backspace</i></a>
+					<li class="back" style="margin-left: 200px; margin-top: 4px;"><a href="/blog/${map.url }" style=" margin-right: 0px;"><i class="material-icons">keyboard_backspace</i></a>
 					<li class="home" style="margin-right: 15px;"><a href="/" style=" margin: 0px; padding-left:0px; background-image: none; background-color: white;"><span><img
 								src="/images/mytype.png"></span></a>
-						
+						 
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
 					<li style="margin-right: 200px; margin-top: 15px;"><a class="bnt dropdown-toggle" data-toggle="modal"
-						data-target="#modalPublish"><span>발행</span></a></li>
+						data-target="#modalPublish"><span>발행 <i class="material-icons">keyboard_arrow_down</i></span></a></li>
 				</ul>
-			</div>
+			</div> 
 		</div>
 
 	</header>
@@ -380,12 +380,12 @@ input[type=radio]:checked+label:before {
 						<div class="editor" id="editor">
 							<p></p>
 							<div class="payment-line" id="payline" align="center" contenteditable="false">
-								<i class="material-icons">attach_money</i>
-								<span class="payment-line-description" style="vertical-align: top;">— 이 선 아래쪽에 유료 콘텐츠를 작성하세요.</span>
-							</div>
+								<i class="material-icons" style="color: white;">attach_money</i>
+								<span class="payment-line-description" style="vertical-align: top; color: white;">결제선</span> <span class="payment-line-description" style="vertical-align: top; color: #d9d9d9; font-size: 15px;"> — 이 선 아래쪽에 유료 콘텐츠를 작성하세요.</span>
+							</div> 
 							<p></p>
 						
-						</div>
+						</div> 
 						
 						<div class="tag-wrap" style="margin-top: 20px;"> 
 						<label class="material-icons" title="태그" style="float: left; margin-left: 120px;">bookmark</label>
