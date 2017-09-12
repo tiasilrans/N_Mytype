@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+#post{
+	height: 330px;
+	width : 300px;
+	background-color: #F6F6F6;
+	border-radius: 5px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 10px;
+    
+}
+#post:hover{
+	outline: 1px solid #EAEAEA;
+	border-radius: 5px;
+	
+}
+.conhead{
+	width : 100%;
+	height: 20%;
+}
+
+.conbody{
+	width : 100%;
+	height: 70%;
+}
+
+.confooter{
+	width : 100%;
+	height: 10%;
+}
+
+.conhead-profileimg{
+	float: left;
+	width:48px;
+	height:48px;
+	border-radius: 50%;
+	margin-right: 8px;
+}
+.conhead-title{
+	padding-top : 5px;
+}
+
+.conhead-title-name{
+	font-size: 14;
+}
+
+.conhead-title-date{
+	font-size: 12;
+}
+
+.conhead-title-blog, .conhead-title-blog:LINK, .conhead-title-blog:ACTIVE{
+	font-size: 12;
+	color: gray; 
+}
+.conbody{
+	height: 60%;
+}
+
+.conbody-title{
+	font-size: 23;
+}
+
+.conbody-content{
+	font-size: 13;
+	color : gray;
+}
+
+.conbody-hashtag{
+	font-size: 13;
+	background-color: #D8D8D8;
+	border-radius: 2px;
+	margin-right: 3px;
+	padding: 4px;
+	text-decoration: none;
+}
+
+.confooter{
+	padding-top: 7px;
+}
+
+.confooter-like, .confooter-like:focus, .confooter-like:hover{
+	font-size: 18;
+	color : red;
+	outline: none;
+	text-decoration: none;
+	padding: 0px;
+	border : 0px;
+}
+
+.confooter-count{
+	font-size: 17;
+	color : red;
+}

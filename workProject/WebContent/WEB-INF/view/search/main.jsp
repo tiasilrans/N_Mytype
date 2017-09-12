@@ -3,111 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 
-<style>
-#post{
-	height: 330px;
-	width : 300px;
-	background-color: #F6F6F6;
-	border-radius: 5px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin: 10px;
-    
-}
-#post:hover{
-	outline: 1px solid #EAEAEA;
-	border-radius: 5px;
-	
-}
-.conhead{
-	width : 100%;
-	height: 20%;
-}
+<link rel="stylesheet" href="/css/searchcss.css">   
 
-.conbody{
-	width : 100%;
-	height: 70%;
-}
-
-.confooter{
-	width : 100%;
-	height: 10%;
-}
-
-.conhead-profileimg{
-	float: left;
-	width:48px;
-	height:48px;
-	border-radius: 50%;
-	margin-right: 8px;
-}
-.conhead-title{
-	padding-top : 5px;
-}
-
-.conhead-title-name{
-	font-size: 14;
-}
-
-.conhead-title-date{
-	font-size: 12;
-}
-
-.conhead-title-blog, .conhead-title-blog:LINK, .conhead-title-blog:ACTIVE{
-	font-size: 12;
-	color: gray; 
-}
-.conbody{
-	height: 60%;
-}
-
-.conbody-title{
-	font-size: 23;
-}
-
-.conbody-content{
-	font-size: 13;
-	color : gray;
-}
-
-.conbody-hashtag{
-	font-size: 13;
-	background-color: #D8D8D8;
-	border-radius: 2px;
-	margin-right: 3px;
-	padding: 4px;
-	text-decoration: none;
-}
-
-.confooter{
-	padding-top: 7px;
-}
-
-.confooter-like, .confooter-like:focus, .confooter-like:hover{
-	font-size: 18;
-	color : red;
-	outline: none;
-	text-decoration: none;
-	padding: 0px;
-	border : 0px;
-}
-
-.confooter-count{
-	font-size: 17;
-	color : red;
-}
-</style>    
 <div align="center">
 
-<div style="width: 50%;" align="left">
-<h2>검색 메인</h2>
+<div style="width: 60%;" align="left">
+포스트 <span style="font-weight: bold; font-size: 20;">'${keyword}'</span><br/>
 <hr style="margin-top: 10px;"/>
 </div>
 
-<div style="width: 49%;" align="left">
+<div style="width: 59%;" align="left">
 <div class="row">
 <div align="left" style="width: 100%;">
 <c:forEach var="all" items="${plist}" begin="0" end="${plist.size() < 5 ? plist.size() : 5}" varStatus="vs">
@@ -167,17 +72,24 @@
 </div>
 </div>
 </div>
-<a class="btn btn-block " href="/search/post.mt?keyword=${keyword}" style="background-color: #F6F6F6; width: 50%; margin-bottom: 10px;">검색 결과 더 보기</a>
-<div class="row" style="width: 50%;">
+<a class="btn btn-block " href="/search/post.mt?keyword=${keyword}" style="background-color: #F6F6F6; width: 60%; margin-bottom: 10px;">검색 결과 더 보기</a>
+
+<div style="width: 60%;" align="left">
+태그 <span style="font-weight: bold; font-size: 20;">'${keyword}'</span><br/>
+<hr style="margin-top: 10px;"/>
+</div>
+
+<div class="row" style="width: 60%;">
 <c:forEach items="${hash}" var="tag">
 	<div class="col-md-3" style=" padding: 5px;">
-	<div style="background-color: #F6F6F6;">
-		# ${tag }
+	<div style="background-color: #F6F6F6; padding: 15px;" align="left">
+		<span style="font-size: 18px;">#${tag }</span>
 	</div>
 	</div>
 </c:forEach>
 
 </div>
+<a class="btn btn-block " href="/search/tag.mt?keyword=${keyword}" style="background-color: #F6F6F6; width: 60%; margin-bottom: 10px;">검색 결과 더 보기</a>
     
 </div>
    
