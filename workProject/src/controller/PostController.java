@@ -25,10 +25,15 @@ public class PostController {
 	@Autowired
 	PostDao pdao;
 	
-	@RequestMapping("postWriter.mt")
+	@RequestMapping("/postWriter.mt")
 	@ResponseBody
-	public Map posrWrite(@RequestParam Map m){
-		System.out.println(m);
+	public Map posrWrite(@RequestParam Map m,HttpSession session){
+		String email = (String)session.getAttribute("login");
+		String nickname = (String)m.get("nickname");
+		if(nickname==null){
+			m.put("nickname", email.split("@")[0]);
+		}
+		System.out.println("넘어온 값 : " + m);
 		Map map= new HashMap<>();
 		boolean f = pdao.postWrite(m);
 		if(f){			

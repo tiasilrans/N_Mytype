@@ -63,6 +63,11 @@
 }
 
 
+ a:link { color: white; text-decoration: none;}
+ a:visited { color: white; text-decoration: none;}
+ a:hover { color: white; text-decoration: none;}
+
+
 </style>
 
 <div class="row" align="center">
@@ -71,7 +76,11 @@
 		<div class="row">
 			<div class="col-xs-8" align="left" style="color: black;">
 				발행한 포스트가 없습니다.<br /> <br />
-				<a href="/blog/postWrite"><button class="button button1" title="새 포스트를 작성합니다.">새 포스트 쓰기</button></a>
+				<form action="/blog/postWrite" method="post">
+					<input type="hidden" name="title" value="${map.TITLE }"/>
+					<input type="hidden" name="url" value="${map.URL }"/>
+					<button class="button button1" type="submit" title="새 포스트를 작성합니다.">새 포스트 쓰기</button>
+				</form>
 			</div>
 			
 			<div class="col-xs-4">
@@ -93,8 +102,8 @@
 				<section class="section box">
 					<div class="media">
 						<div class="media-body" align="left">
-							<h5 class="media-heading" style="color: black; font-weight: bold;">${map.TITLE }</h5>
-							<div style="color: #a6a6a6;">
+							<h4 class="media-heading" style="color: black; font-family: sans-serif; font-size: 15px;">${map.TITLE }</h4>
+						 	<div style="color: #a6a6a6;">          
 								<span style="font-size: 12px;">구독자</span> 0 <span style="font-size: 12px;">포스트</span> 0
 							</div>
 							<button class="button button1" style="margin-top: 10px;">구독하기</button>
@@ -103,10 +112,9 @@
 						<div class="media-right">
 							<img
 								src="https://cdn.postype.com/assets/img/avatar/blog_blank_p.svg"
-								class="media-object" style="width: 60px">
+								class="media-object" style="width: 60px; border-radius: 5px;">      
 						</div>
-
-					</div>
+					</div> 
 				</section>
 
 
@@ -159,20 +167,20 @@
  		<div>
  			<div class="menu-header">
  				<div class="col-xs-8 px-0" style="margin-bottom: 5px; margin-top: 20px;">
- 					<a herf=""><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626;">사용자 이름</span></a>
- 					
+ 					<a href="/blog/${map.url }"><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">사용자 이름</span></a>
+ 					 
  				</div>
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
  					<span><i class="material-icons" style="color: #a6a6a6; font-size: 26px;">notifications_none</i></span> 
  				</div>
  				
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
- 					<i class="material-icons" style="color: #a6a6a6; font-size: 26px;">power_settings_new</i></span>
+ 					<a href="/logout.mt"><i class="material-icons" style="color: #a6a6a6; font-size: 26px;">power_settings_new</i></a>
  				</div>
  				
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
  					<a class="home" href="/"
-						id="home"><label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">home</label></a><div class="home" style="display:inline; margin-left: 14px;">홈</div>
+						id="home"><label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">home</label></a><a href="/"><div class="home" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">홈</div></a>
  				</div>    
  				      
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-bottom: 30px;">
@@ -197,6 +205,10 @@
 		}
 		
 	});
+	
+
+	
+	
 
 </script>
 

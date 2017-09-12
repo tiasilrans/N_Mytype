@@ -37,14 +37,14 @@
 						<!-- 블로그 리스트 -->				
 						<c:if test="${sessionScope.blog ne null }">
 						<c:forEach var="blog" items="${sessionScope.blog}" begin="0" end="${sessionScope.blog.size()}">
-							<li style="margin-left: 25px;"><a href="/blog/${blog.URL}">${blog.TITLE}</a></li>
+							<li style="margin-left: 25px;"><a style="font-weight: bold;" href="/blog/${blog.URL}">${blog.TITLE}</a></li>
 							<li style="margin-left: 25px;"><a href="">임시저장글 <i class="material-icons" style="margin-left: 10px; float: right; font-size: 23px;">mode_edit</i></a></li>
 							<li style="margin-left: 25px;"><a href="">발행글</a></li>  
 							<li style="margin-left: 25px;"><a href="/blog/${blog.URL}/categories">카테고리</a></li> 
 							<li style="margin-left: 25px;"><a href="">구독자</a></li>   
-							<li style="margin-left: 25px;"><a href="">설정</a></li> 
-						</c:forEach>  
-						</c:if>   
+							<li style="margin-left: 25px;"><a href="">설정</a></li>  
+						</c:forEach>   
+						</c:if>     
 							<li><a href="/blog/create"><i class="glyphicon glyphicon-plus" style="margin-right: 7px;"></i> 새 블로그 만들기</a></li>
 						</ul></li> 
 				</ul>   
@@ -87,7 +87,7 @@
 						<div class="input-group">
 							<input type="text" class="search-box" placeholder="마이타입 검색" name="keyword">
 							<button type="submit" class="btn">
-								<span class="glyphicon glyphicon-search" style="margin-bottom: 7px;"></span>
+								<span class="glyphicon glyphicon-search" style="margin-bottom: 7px; color: #999999;"></span>
 							</button>
 						</div>
 					</form></li>				
