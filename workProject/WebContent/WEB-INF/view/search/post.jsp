@@ -17,8 +17,6 @@
 <div class="row">
 <div align="left" style="width: 100%;">
 <c:forEach var="all" items="${plist}" begin="0" end="${plist.size() < 11 ? plist.size() : 11}" varStatus="vs">
-			<c:if test="(vs+1) % 3 = 0">
-			</c:if>
 			<div class="col-xs-0 col-md-4" style="padding-left: 0px; padding-right: 0px;">
 				<div id="post">
 				
@@ -67,8 +65,6 @@
 				</div>
 				</div>
 			
-			<c:if test="(vs+1) % 3 = 0">
-			</c:if>
 			</c:forEach>
 </div>
 </div>

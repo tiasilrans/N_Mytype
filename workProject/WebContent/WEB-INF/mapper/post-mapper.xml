@@ -25,7 +25,7 @@
 		(select tmp2.* from (select rownum as r, tmp.* from (select * from post
 		<!-- 태그 -->
 		<if test="tag != null">
-		where hash=#{keyword}
+		where hash like #{keyword}
 		</if>
 		
 		<!-- 검색어 -->
