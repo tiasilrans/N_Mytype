@@ -1,5 +1,6 @@
 package model;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 import org.apache.ibatis.session.SqlSession;
@@ -91,6 +92,35 @@ public class PostDao {
 			session.close();
 		}
 	}
+	
+	// 태그가 들어간 포스트 리스트 불러오기
+	public List<Map> listTag(Map map){
+		SqlSession session = factory.openSession();
+		List<Map> list = new ArrayList<>();
+		List<Map> result = new ArrayList<>();
+		try{
+			String keyword = (String)map.get("keyword");
+			map.put("keyword", "%"+keyword+"%");
+			list = session.selectList("post.listall", map);
+			for(Map post : list){
+				String[] arr = ((String)post.get("HASH")).split("\\s");
+				System.out.println("arr : "+arr);
+				for(String str : arr){
+					if(str.equals(keyword)){
+						result.add(post);
+					}
+				}
+			}
+			System.out.println("result : " + result);
+			return result; 
+		}catch(Exception e){
+			System.out.println("PostlistTag Error");
+			e.printStackTrace();
+			return result;
+		}finally{
+			session.close();
+		}
+	}
 
 	//좋아요
 	public int postgoodAdd(Map map){
@@ -153,4 +183,21 @@ public class PostDao {
 		}
 	}
 	
+	
+	//게시물 갯수 구하기(페이징)
+	public int selectcount(Map map){
+		SqlSession session = factory.openSession();
+		Map list = new HashMap<>();
+		try{
+			list = session.selectOne("post.selectcount", map);
+			int result = ((BigDecimal)list.get("COUNT")).intValue();
+			return result; 
+		}catch(Exception e){
+			System.out.println("postSelectCount Error");
+			e.printStackTrace();
+			return 0;
+		}finally{
+			session.close();
+		}
+	}
 }
