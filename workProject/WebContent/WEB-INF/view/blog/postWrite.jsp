@@ -259,20 +259,22 @@ input[type=radio]:checked+label:before {
 			
 			<div class="collapse navbar-collapse" id="postNav">
 				<ul class="nav navbar-nav">
-					<li class="back" style="margin-left: 200px;"><a href="/blog/${map.url }" style=" margin-right: 0px;"><i class="material-icons">keyboard_backspace</i></a>
+					<li class="back" style="margin-left: 200px; margin-top: 4px;"><a href="/blog/${map.url }" style=" margin-right: 0px;"><i class="material-icons">keyboard_backspace</i></a>
 					<li class="home" style="margin-right: 15px;"><a href="/" style=" margin: 0px; padding-left:0px; background-image: none; background-color: white;"><span><img
 								src="/images/mytype.png"></span></a>
-						
+						 
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li style="margin-right: 200px; margin-top: 15px;"><a class="bnt dropdown-toggle" data-toggle="modal"
+					<li style="margin-right: -25px; margin-top: 13px;"><a class="bnt dropdown-toggle" data-toggle="modal"
 						data-target="#modalPublish"><span>발행</span></a></li>
+					<li style="margin-right: 220px; margin-top: 13px;"><a class="bnt dropdown-toggle" data-toggle="modal"
+						data-target="#modalPublish"><span><i class="material-icons">keyboard_arrow_down</i></span></a></li>
 				</ul>
-			</div>
-		</div>
-
-	</header>
+			</div>    
+		</div>   
+  
+	</header> 
 
 
 
@@ -380,12 +382,12 @@ input[type=radio]:checked+label:before {
 						<div class="editor" id="editor">
 							<p></p>
 							<div class="payment-line" id="payline" align="center" contenteditable="false">
-								<i class="material-icons">attach_money</i>
-								<span class="payment-line-description" style="vertical-align: top;">— 이 선 아래쪽에 유료 콘텐츠를 작성하세요.</span>
-							</div>
+								<i class="material-icons" style="color: white;">attach_money</i>
+								<span class="payment-line-description" style="vertical-align: top; color: white;">결제선</span> <span class="payment-line-description" style="vertical-align: top; color: #d9d9d9; font-size: 15px;"> — 이 선 아래쪽에 유료 콘텐츠를 작성하세요.</span>
+							</div> 
 							<p></p>
 						
-						</div>
+						</div> 
 						
 						<div class="tag-wrap" style="margin-top: 20px;"> 
 						<label class="material-icons" title="태그" style="float: left; margin-left: 120px;">bookmark</label>
@@ -393,11 +395,11 @@ input[type=radio]:checked+label:before {
 						
 						<input type="text" class="form-control" id="hash" 
 									name="hash" placeholder="여러 개의 태그는 공백(space)으로 구분하여 입력하세요." 
-							 	class="tagtext" style="width: 850px; margin-left: -300px; height: 25px;">    
+							 	class="tagtext" style="width: 1020px; margin-left: -120px; height: 25px;">    
 						</div>
-    
-					</div> 
-				</article>
+        
+					</div>    
+				</article> 
  
 
 
