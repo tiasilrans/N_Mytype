@@ -1,21 +1,27 @@
 package controller;
 
+import java.io.File;
 import java.util.*;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.PageContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.MemberDao;
+import model.MyDao;
 import model.PointDao;
+import service.FileUpload;
 
 @Controller
 @RequestMapping("/my")
@@ -30,6 +36,13 @@ public class MyController {
 	@Autowired
 	MemberDao memberDao;
 	
+	@Autowired
+	MyDao myDao;
+	
+	@Autowired
+	ServletContext application;
+	
+	
 	@RequestMapping("/home")
 	public ModelAndView home() {
 		ModelAndView mav = new ModelAndView();
@@ -38,11 +51,11 @@ public class MyController {
 		return mav;
 	}
 	
-	@RequestMapping("/goods")
+	@RequestMapping("/postgood")
 	public ModelAndView goods() {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("t_my");
-			mav.addObject("section","goods");
+			mav.addObject("section","postgood");
 		return mav;
 	}
 	
@@ -201,19 +214,77 @@ public class MyController {
 	
 	// 설정 부분
 	@RequestMapping("/settings/account")
-	public ModelAndView settings() {
+	public ModelAndView settings(HttpSession session) {
+		Map info = myDao.info((String)session.getAttribute("login"));
+		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("t_my");
 			mav.addObject("section","settings/account");
+			mav.addObject("email",info.get("EMAIL"));
+			mav.addObject("certified",info.get("CERTIFIED"));
 		return mav;
 	}
-	@RequestMapping("/settings/profile")
-	public ModelAndView profile() {
+	@RequestMapping("/settings/certified1")
+	public ModelAndView certified1 () {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("t_my");
+			mav.addObject("section","settings/certified1");
+		return mav;
+	}
+	@RequestMapping("/settings/certified2")
+	public ModelAndView certified2() {
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("t_my");
+			mav.addObject("section","settings/certified2");
+		return mav;
+	}
+	
+	@RequestMapping("/settings/profile")
+	public ModelAndView profile(HttpSession session) {
+		Map info = myDao.info((String)session.getAttribute("login"));
+		
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("t_my");
+			mav.addObject("info",info);
 			mav.addObject("section","settings/profile");
 		return mav;
 	}
+	
+	@RequestMapping("/settings/profileExec")
+	public ModelAndView profilExec(@RequestParam Map map, @RequestParam(name = "image") MultipartFile f, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		
+		try {
+			String my =  (String)session.getAttribute("login");
+			
+			if(f.getOriginalFilename().length() > 0) {
+				File dir = new File(application.getRealPath("/images/profile"));
+				if(!dir.exists()) {
+					dir.mkdirs();
+				}
+					
+				File dst = new File(dir, my+".png");
+				f.transferTo(dst);
+				
+			}
+			
+			map.put("image", my+".png");
+			map.put("email", my);
+			
+			String str = myDao.profileUp(map);
+			
+			System.out.println("uploadExec = " + str);
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		mav.setViewName("redirect:/my/settings/profile");
+		return mav;
+	}
+	
+
+	
 	@RequestMapping("/settings/password")
 	public ModelAndView password() {
 		ModelAndView mav = new ModelAndView();
@@ -221,6 +292,7 @@ public class MyController {
 			mav.addObject("section","settings/password");
 		return mav;
 	}
+	
 	@RequestMapping("/settings/bank")
 	public ModelAndView bank() {
 		ModelAndView mav = new ModelAndView();
