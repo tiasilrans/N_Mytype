@@ -76,17 +76,7 @@
 	<div class="col-xs-12 col-md-10">
 		<div class="row">
 		<c:choose>
-			<c:when test="${sessionScope.login eq map.EMAIL }">
-				<div class="col-xs-8" align="left" style="color: black;">
-				발행한 포스트가 없습니다.<br /> <br />
-					<form action="/blog/postWrite" method="post">
-						<input type="hidden" name="title" value="${map.TITLE }"/>
-						<input type="hidden" name="url" value="${map.URL }"/>
-						<button class="button button1" type="submit" title="새 포스트를 작성합니다.">새 포스트 쓰기</button>
-					</form>
-				</div>
-			</c:when>
-			<c:otherwise>
+			<c:when test="${list ne null }">
 				<div class="col-xs-8 blog-post-list" align="left">
 					<div class="blog-post-list" style="color: black; border: 1px solid; border-radius: 5px;">
 						<c:forEach var="obj" items="${list }">
@@ -107,6 +97,18 @@
 							</ul>
 					</div>
 				</div>
+			</c:when>
+			<c:otherwise>			
+				<c:if test="${sessionScope.login eq map.EMAIL }">
+				<div class="col-xs-8" align="left" style="color: black;">
+				발행한 포스트가 없습니다.<br /> <br />
+					<form action="/blog/postWrite" method="post">
+						<input type="hidden" name="title" value="${map.TITLE }"/>
+						<input type="hidden" name="url" value="${map.URL }"/>
+						<button class="button button1" type="submit" title="새 포스트를 작성합니다.">새 포스트 쓰기</button>
+					</form>
+				</div>
+				</c:if>				
 			</c:otherwise>
 		</c:choose>
 			
