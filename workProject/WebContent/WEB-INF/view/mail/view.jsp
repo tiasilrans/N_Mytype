@@ -21,6 +21,7 @@ table.type07 td {
 
     
 <div align="center">
+<form action="/mail/delete.mt">
 	<div style="width: 35%;" align="left">
 	<h2>쪽지 상세보기</h2>
 	<hr style="margin-top: 10px;"/>
@@ -34,10 +35,14 @@ table.type07 td {
 		</li>
 	</ul>
 	<hr style="margin-top: 10px; width: 35%;"/>
+<input type="hidden" name="part" value="view"/>
+<input type="hidden" name="type" value="${type}"/>
+<input type="hidden" name="num" value="${view.NUM}"/>
 	<div style="width: 35%;" align="right">
-		<button type="button" class="btn btn-default" id="delete">삭제하기</button>
+		<button type="submit" class="btn btn-default" id="delete">삭제하기</button>
 		<c:if test="${type != 'send'}">
 			<a href="/mail/write.mt?reply=${view.EMAIL}"><button type="button" class="btn btn-primary" id="reply">답장하기</button></a>
 		</c:if>
 	</div>
+</form>	
 </div>

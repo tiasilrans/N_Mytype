@@ -30,7 +30,7 @@
 				<ul class="nav navbar-nav navbar-left">
 					<li class=""><a class="header" href="/"
 						id="home">홈</a></li>
-					<li><a class="" href="">구독</a></li>
+					<li><a class="" href="/subscribe/blog.mt">구독</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">내 블로그<span class="caret"></span></a>
 						<ul class="dropdown-menu">						
@@ -109,6 +109,21 @@
 	});
 </script>
 
+<!-- 쪽지왔을때 modal생성 -->
+<c:if test="${sessionScope.login ne null }">
+	<script>
+		var ws = new WebSocket("ws://${initParam.realip }/ws/mail.ws");
+
+		ws.onmessage = function(e) {
+			if(e.data == "mail"){
+			console.log(e.data);
+				$("#mailmodal").modal();
+			};
+		};
+	</script>
+</c:if>
+
+
 
 <!-- 로그인창 modal  -->
   <div class="modal fade" id="login-form" role="dialog">
@@ -140,6 +155,27 @@
 					<button id="login-sbt" type="submit" class="btn">로그인</button>
 				</div>
 			</form>
+		</div>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+ 
+ <!-- 쪽지왔을때 modal -->
+   <div class="modal fade" id="mailmodal" role="dialog">
+    <div class="modal-dialog modal-sm">
+    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">메일이 도착했습니다.</h4>
+        </div>
+        
+        <div class="modal-body">
+          		<div class="form-group row" align="center">
+          		<a href="/mail/list.mt?type=receive"><button type="button" class="btn btn-primary">쪽지함이동</button></a>
 		</div>
         </div>
 

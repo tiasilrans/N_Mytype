@@ -98,7 +98,13 @@ table.type07 td {
 		</c:choose>
 		</tbody>
 	</table>
-
+	
+	<ul class="pagination">
+	<c:forEach var="i" begin="1" end="${page}">
+		<li ${np == i? "class=\"active\"": ""}><a
+			href="/my/point/wlist.mt?np=${i}">${i}</a></li>
+	</c:forEach>
+	</ul>
 </div>
 
 <script>

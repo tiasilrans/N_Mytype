@@ -41,32 +41,37 @@ public class SearchController {
 	public ModelAndView main(@RequestParam Map map,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		String keyword = (String)map.get("keyword");
-		mav.addObject("keyword", keyword);
-		map.put("first", 1);
-		map.put("last", 6);
-		map.put("post", true);//포스트검색임을 알리기위함
-		String email = (String)session.getAttribute("login");
-		if(email != null){
-			map.put("email", email);
-		}
-		//빈칸 검색일수도있으니까
-		if(map.get("keyword") != null && keyword.length() > 0){
-			
-			String[] arr = (keyword).split("\\s");
-			if(arr.length > 0){
-				for(int i = 0 ; i < arr.length ; i++){
-					arr[i] = "%"+arr[i]+"%";
+		if(keyword.length() > 0){
+			mav.addObject("keyword", keyword);
+			map.put("first", 1);
+			map.put("last", 6);
+			map.put("post", true);//포스트검색임을 알리기위함
+			String email = (String)session.getAttribute("login");
+			if(email != null){
+				map.put("email", email);
+			}
+			//빈칸 검색일수도있으니까
+			if(map.get("keyword") != null && keyword.length() > 0){
+				
+				String[] arr = (keyword).split("\\s");
+				if(arr.length > 0){
+					for(int i = 0 ; i < arr.length ; i++){
+						arr[i] = "%"+arr[i]+"%";
+					}
+					map.put("keyword", arr);
+					mav.addObject("hash", pdao.hashlist("%"+keyword+"%"));
+					mav.addObject("plist", pdao.sublist((pdao.listAll(map))));
 				}
-				map.put("keyword", arr);
-				mav.addObject("hash", pdao.hashlist("%"+keyword+"%"));
+			}else{
+				map.put("keyword", null);
 				mav.addObject("plist", pdao.sublist((pdao.listAll(map))));
 			}
+			
+			mav.setViewName("search_main");
 		}else{
-			map.put("keyword", null);
-			mav.addObject("plist", pdao.sublist((pdao.listAll(map))));
+			mav.setViewName("redirect:/");
+
 		}
-		
-		mav.setViewName("search_main");
 		return mav;
 	}
 	
@@ -237,4 +242,6 @@ public class SearchController {
 		
 		return mav;
 	}
+	
+
 }

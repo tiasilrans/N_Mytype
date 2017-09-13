@@ -43,7 +43,7 @@
 					<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
 					<c:forEach items="${hashtag}" var="hash">
 					<span class="conbody-hashtag">
-						<a href="/"><span style="color: #909090;">#${hash}</span></a>
+						<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
 					</span>
 					</c:forEach>
 						

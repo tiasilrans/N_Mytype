@@ -107,14 +107,12 @@ public class PostDao {
 			list = session.selectList("post.listall", map);
 			for(Map post : list){
 				String[] arr = ((String)post.get("HASH")).split("\\s");
-				System.out.println("arr : "+arr);
 				for(String str : arr){
 					if(str.equals(keyword)){
 						result.add(post);
 					}
 				}
 			}
-			System.out.println("result : " + result);
 			return result; 
 		}catch(Exception e){
 			System.out.println("PostlistTag Error");
