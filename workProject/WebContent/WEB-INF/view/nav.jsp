@@ -53,11 +53,20 @@
 					<li class="dropdown">
 						<a id="account-toggler" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#" role="button" title="MY"
 													style="padding: 0px; margin: 6px;">
-                            <img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px; margin: 2px;">
+													
+                            <c:choose>
+								<c:when test="${info.IMAGE eq null }">
+									<img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px; margin: 2px;">
+								</c:when>
+								<c:otherwise>
+									<img src="/images/profile/${info.IMAGE}" style="border-radius: 50%; height: 32px; width: 32px; margin: 2px;">
+								</c:otherwise>
+							</c:choose>
+                            
                             <span class="sr-only">계정</span></a>
                             <ul class="dropdown-menu">     
                             	<li style="vertical-align: middle;"><a href="/my/home"><label class="material-icons" style="color: #999999; font-size: 23px; float: left;">dashboard</label>　　<font style="margin-top: 7px;">MY홈</font> </a></li>
-                            	<li><a href="/my/goods"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">favorite</i>　　좋아요</a></li>   
+                            	<li><a href="/my/postgood"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">favorite</i>　　좋아요</a></li>   
                             	<li><a href="/my/purchases"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">get_app</i>　　구매항목 </a></li>
                             	<li><a href="/my/point/plist"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">monetization_on</i>　　포인트</a></li> 
                             	<li><a href="/my/settings/account"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">settings</i>　　설정</a></li>

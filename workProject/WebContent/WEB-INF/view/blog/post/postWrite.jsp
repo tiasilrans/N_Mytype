@@ -266,13 +266,15 @@ input[type=radio]:checked+label:before {
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li style="margin-right: 200px; margin-top: 15px;"><a class="bnt dropdown-toggle" data-toggle="modal"
-						data-target="#modalPublish"><span>발행 <i class="material-icons">keyboard_arrow_down</i></span></a></li>
+					<li style="margin-right: -25px; margin-top: 13px;"><a class="bnt dropdown-toggle" data-toggle="modal"
+						data-target="#modalPublish"><span>발행</span></a></li>
+					<li style="margin-right: 220px; margin-top: 13px;"><a class="bnt dropdown-toggle" data-toggle="modal"
+						data-target="#modalPublish"><span><i class="material-icons">keyboard_arrow_down</i></span></a></li>
 				</ul>
-			</div> 
-		</div>
-
-	</header>
+			</div>    
+		</div>   
+  
+	</header> 
 
 
 
@@ -384,7 +386,7 @@ input[type=radio]:checked+label:before {
 								<span class="payment-line-description" style="vertical-align: top; color: white;">결제선</span> <span class="payment-line-description" style="vertical-align: top; color: #d9d9d9; font-size: 15px;"> — 이 선 아래쪽에 유료 콘텐츠를 작성하세요.</span>
 							</div> 
 							<p></p>
-						
+						 
 						</div> 
 						
 						<div class="tag-wrap" style="margin-top: 20px;"> 
@@ -393,11 +395,11 @@ input[type=radio]:checked+label:before {
 						
 						<input type="text" class="form-control" id="hash" 
 									name="hash" placeholder="여러 개의 태그는 공백(space)으로 구분하여 입력하세요." 
-							 	class="tagtext" style="width: 850px; margin-left: -300px; height: 25px;">    
+							 	class="tagtext" style="width: 1020px; margin-left: -120px; height: 25px;">    
 						</div>
-    
-					</div> 
-				</article>
+        
+					</div>    
+				</article> 
  
 
 

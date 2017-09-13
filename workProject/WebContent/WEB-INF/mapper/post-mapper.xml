@@ -16,8 +16,24 @@
   		select b.CATEGORY_NAME from blogcategory b where BLOG_TITLE=#{title}
   	</select>
   	
+  	<!-- 블로그 메인 뷰 -->
+  		<!-- 해당 블로그 총 포스트 수 -->
+  	<select id="post_count" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*) from post where url=#{url}
+	</select>
+  		<!-- 페이징 -->
+ 	<select id="main_page_view" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+ 		select * from (select rownum r, tmp.* from 
+ 							(select * from post where url=#{url} order by num desc)tmp 
+ 						) where r between #{start} and #{end}
+ 	</select>
+ 	
+ 	<!-- 포스트 불러오기 -->
+ 	<select id="one_post" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+ 		SELECT * FROM post where num=#{num}
+ 	</select>
+ 	
   	
-  	  	
   	
   	<!--(메인) 게시물 전체 불러오기 -->
 	<select id="listall" parameterType="java.util.HashMap" resultType="java.util.HashMap">

@@ -59,7 +59,55 @@ public class PostDao {
 		}		
 	}
 	
+	// 블로그 메인 포스트 목록
+		// 블로그 총 포스트 수	
+	public int postCount(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			int r = session.selectOne("post.post_count", map);
+			return r;
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("postCount ERROR : " + e.toString());
+			return 0;
+		}finally {
+			session.close();
+		}
+		
+	}
+	
+		// 블로그 페이징
+	public List<Map> blogPostList(Map map){		
+		List<Map> list = new ArrayList<>();
+		SqlSession session = factory.openSession();
+		try {
+			list = session.selectList("post.main_page_view", map);			
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("blogPostList ERROR : " + e.toString());
+			return list;
+		}finally {
+			session.close();
+		}		
+	}
+	
 
+	public HashMap onePost(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			HashMap r = session.selectOne("post.one_post", map);
+			return r;
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("onePost ERROR : " + e.toString());
+			return null;
+		}finally {
+			session.close();
+		}
+		
+	}
+	
 	
 	
 	

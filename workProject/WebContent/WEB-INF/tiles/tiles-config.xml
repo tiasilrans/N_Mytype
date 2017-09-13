@@ -66,6 +66,13 @@
 		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp"/>	
 	</definition>
 	
+	<!-- 포스트 뷰 -->
+	<definition name="post_view" template="/WEB-INF/view/blog/post/postViewTemp.jsp">
+		<put-attribute name="nav" value="/WEB-INF/view/blog/post/postViewNav.jsp" />
+		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/view/blog/footer.jsp"/>
+	</definition>
+	
 	
 	
 </tiles-definitions>
