@@ -7,9 +7,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -46,10 +48,18 @@ public class PostController {
 		return map;
 	}
 	
-	
-	
-	
-	
+	@RequestMapping("/{url}/post/{num}")
+	public ModelAndView postView(@PathVariable(value="url") String url,
+											@PathVariable(value="num") int num){
+		
+		
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("post_view");
+			mav.addObject("title", "포스트 제목이 들어갈거야");
+			mav.addObject("section", "blog/post/postView");
+		return mav;	
+	}
+		
 	
 	@RequestMapping("postgood.mt")
 	@ResponseBody
