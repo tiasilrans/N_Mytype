@@ -46,7 +46,7 @@
 			 
 			</div>
 			<div style="display: table-cell;">
-				<button class="btn" style="float: right;">후원하기</button>
+				<button class="button button1" style="float: right;">후원하기</button>
 			</div> 
 		</div> 
 		<footer class="post-footer">
