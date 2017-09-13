@@ -386,7 +386,7 @@ input[type=radio]:checked+label:before {
 								<span class="payment-line-description" style="vertical-align: top; color: white;">결제선</span> <span class="payment-line-description" style="vertical-align: top; color: #d9d9d9; font-size: 15px;"> — 이 선 아래쪽에 유료 콘텐츠를 작성하세요.</span>
 							</div> 
 							<p></p>
-						
+						 
 						</div> 
 						
 						<div class="tag-wrap" style="margin-top: 20px;"> 
