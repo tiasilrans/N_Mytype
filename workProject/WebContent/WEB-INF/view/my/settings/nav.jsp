@@ -12,9 +12,10 @@
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse" style="padding: 0px;">
 				<ul class="nav navbar-nav navbar-left">
-					<li class=""><a class="header" href="/search/main.mt?keyword=${keyword}" id="home" style="padding-top: 6px; height: 5px;">전체</a></li>
-					<li class=""><a class="header" href="/search/post.mt?keyword=${keyword}" id="home" style="padding-top: 6px; height: 5px;">포스트</a></li>
-					<li class=""><a class="header" href="/search/tagsearch.mt?keyword=${keyword}"  id="home" style="padding-top: 6px; height: 5px;">태그</a></li>
+					<li class=""><a class="header" href="/my/settings/account" id="home" style="padding-top: 6px; height: 5px;">계정</a></li>
+					<li class=""><a class="header" href="/my/settings/profile" id="home" style="padding-top: 6px; height: 5px;">프로필</a></li>
+					<li class=""><a class="header" href="/my/settings/password"  id="home" style="padding-top: 6px; height: 5px;">비밀번호</a></li>
+					<li class=""><a class="header" href="/my/settings/bank"  id="home" style="padding-top: 6px; height: 5px;">수익</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->

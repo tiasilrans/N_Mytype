@@ -12,9 +12,11 @@
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse" style="padding: 0px;">
 				<ul class="nav navbar-nav navbar-left">
-					<li class=""><a class="header" href="/search/main.mt?keyword=${keyword}" id="home" style="padding-top: 6px; height: 5px;">전체</a></li>
-					<li class=""><a class="header" href="/search/post.mt?keyword=${keyword}" id="home" style="padding-top: 6px; height: 5px;">포스트</a></li>
-					<li class=""><a class="header" href="/search/tagsearch.mt?keyword=${keyword}"  id="home" style="padding-top: 6px; height: 5px;">태그</a></li>
+					<li class=""><a class="header" href="/my/point/plist" id="home" style="padding-top: 6px; height: 5px;">포인트 내역</a></li>
+					<li class=""><a class="header" href="/my/point/charge" id="home" style="padding-top: 6px; height: 5px;">포인트 충전</a></li>
+					<li class=""><a class="header" href="/my/point/clist"  id="home" style="padding-top: 6px; height: 5px;">충전 내역</a></li>
+					<li class=""><a class="header" href="/my/point/withdraw"  id="home" style="padding-top: 6px; height: 5px;">출금 신청</a></li>
+					<li class=""><a class="header" href="/my/point/wlist"  id="home" style="padding-top: 6px; height: 5px;">출금 내역</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->

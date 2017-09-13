@@ -6,6 +6,7 @@
 		<put-attribute name="title" value="Mytype" />
 		<put-attribute name="nav" value="/WEB-INF/view/nav.jsp" />
 		<put-attribute name="nav2" value="" />
+		<put-attribute name="section" value="/WEB-INF/view/main.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/view/footer.jsp" />
 		
 	</definition>
@@ -24,12 +25,24 @@
 		<put-attribute name="section" value="/WEB-INF/view/search/{1}.jsp" />
 		<put-attribute name="nav2" value="/WEB-INF/view/search/nav.jsp" />
 	</definition>
+	
+	<!-- mail -->
+	<definition name="mail_*" extends="t_base">
+		<put-attribute name="section" value="/WEB-INF/view/mail/{1}.jsp" />
+		<put-attribute name="nav2" value="/WEB-INF/view/mail/nav.jsp" />
+	</definition>
 
 	
-	<!-- MYHome -->
-	<definition name="t_my" extends="t_base">
-		<put-attribute name="nav" value="/WEB-INF/view/my/mynav.jsp" />
-		<put-attribute name="section" expression="/WEB-INF/view/my/${section}.jsp" />
+	<!-- point -->
+	<definition name="point_*" extends="t_base">
+		<put-attribute name="nav2" value="/WEB-INF/view/my/point/nav.jsp" />
+		<put-attribute name="section" value="/WEB-INF/view/my/point/{1}.jsp" />
+	</definition>
+	
+	<!-- setting -->
+	<definition name="settings_*" extends="t_base">
+		<put-attribute name="nav2" value="/WEB-INF/view/my/settings/nav.jsp" />
+		<put-attribute name="section" value="/WEB-INF/view/my/settings/{1}.jsp" />
 	</definition>
 	
 	<!-- 블로그 타일 -->
@@ -52,6 +65,13 @@
 		<put-attribute name="title" expression="${title} 블로그 설정" />
 		<put-attribute name="nav" value="/WEB-INF/view/blog/settings/blogSettingNav.jsp" />
 		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp"/>	
+	</definition>
+	
+	<!-- 포스트 뷰 -->
+	<definition name="post_view" template="/WEB-INF/view/blog/post/postViewTemp.jsp">
+		<put-attribute name="nav" value="/WEB-INF/view/blog/post/postViewNav.jsp" />
+		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/view/blog/footer.jsp"/>
 	</definition>
 	
 	

@@ -12,12 +12,11 @@
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse" style="padding: 0px;">
 				<ul class="nav navbar-nav navbar-left">
-					<li class=""><a class="header" href="/search/main.mt?keyword=${keyword}" id="home" style="padding-top: 6px; height: 5px;">전체</a></li>
-					<li class=""><a class="header" href="/search/post.mt?keyword=${keyword}" id="home" style="padding-top: 6px; height: 5px;">포스트</a></li>
-					<li class=""><a class="header" href="/search/tagsearch.mt?keyword=${keyword}"  id="home" style="padding-top: 6px; height: 5px;">태그</a></li>
+					<li class=""><a class="header" href="/mail/write.mt" style="padding-top: 6px; height: 5px;">쪽지보내기</a></li>
+					<li class=""><a class="header" href="/mail/list.mt?type=send" style="padding-top: 6px; height: 5px;">보낸쪽지함</a></li>
+					<li class=""><a class="header" href="/mail/list.mt?type=receive" style="padding-top: 6px; height: 5px;">받은쪽지함</a></li>
 				</ul>
 			</div>
-			<!-- /.navbar-collapse -->
 		</div>
 	</nav>
 <!-- end of navbar-->

@@ -59,6 +59,57 @@ public class PostDao {
 		}		
 	}
 	
+	// 블로그 메인 포스트 목록
+		// 블로그 총 포스트 수	
+	public int postCount(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			int r = session.selectOne("post.post_count", map);
+			return r;
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("postCount ERROR : " + e.toString());
+			return 0;
+		}finally {
+			session.close();
+		}
+		
+	}
+	
+		// 블로그 페이징
+	public List<Map> blogPostList(Map map){		
+		List<Map> list = new ArrayList<>();
+		SqlSession session = factory.openSession();
+		try {
+			list = session.selectList("post.main_page_view", map);			
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("blogPostList ERROR : " + e.toString());
+			return list;
+		}finally {
+			session.close();
+		}		
+	}
+	
+
+	public HashMap onePost(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			HashMap r = session.selectOne("post.one_post", map);
+			return r;
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("onePost ERROR : " + e.toString());
+			return null;
+		}finally {
+			session.close();
+		}
+		
+	}
+	
+	
+	
 	
 	
 	
@@ -88,6 +139,35 @@ public class PostDao {
 			System.out.println("PostListLike Error");
 			e.printStackTrace();
 			return null;
+		}finally{
+			session.close();
+		}
+	}
+	
+	// 태그가 들어간 포스트 리스트 불러오기
+	public List<Map> listTag(Map map){
+		SqlSession session = factory.openSession();
+		List<Map> list = new ArrayList<>();
+		List<Map> result = new ArrayList<>();
+		try{
+			String keyword = (String)map.get("keyword");
+			map.put("keyword", "%"+keyword+"%");
+			list = session.selectList("post.listall", map);
+			for(Map post : list){
+				String[] arr = ((String)post.get("HASH")).split("\\s");
+				System.out.println("arr : "+arr);
+				for(String str : arr){
+					if(str.equals(keyword)){
+						result.add(post);
+					}
+				}
+			}
+			System.out.println("result : " + result);
+			return result; 
+		}catch(Exception e){
+			System.out.println("PostlistTag Error");
+			e.printStackTrace();
+			return result;
 		}finally{
 			session.close();
 		}

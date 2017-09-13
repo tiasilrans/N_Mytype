@@ -16,18 +16,23 @@
 <div class="row">
 <div align="left" style="width: 100%;">
 <c:forEach var="all" items="${plist}" begin="0" end="${plist.size() < 5 ? plist.size() : 5}" varStatus="vs">
-			<c:if test="(vs+1) % 3 = 0">
-			</c:if>
 			<div class="col-xs-0 col-md-4" style="padding-left: 0px; padding-right: 0px;">
 				<div id="post">
 				
 					<!-- head -->
 					<div class="conhead">
-						<img class="conhead-profileimg" src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png">
+						<c:choose>
+						<c:when test="${all.IMAGE eq null}">
+							<img class="conhead-profileimg" src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png">
+						</c:when>
+						<c:otherwise>
+							<img class="conhead-profileimg" src="/images/profile/${all.IMAGE}">
+						</c:otherwise>
+						</c:choose>
 						<div class="conhead-title">
 							<span class="conhead-title-name"><b>${all.NICKNAME }</b></span><br/>
 							<span class="conhead-title-date">${all.PDATE } </span>|
-							<span><a class="conhead-title-blog">${all.URL }</a></span>
+							<span><a class="conhead-title-blog" href="/blog/${all.URL }">${all.URL }</a></span>
 						</div>	
 					</div>
 					
@@ -66,8 +71,6 @@
 				</div>
 				</div>
 			
-			<c:if test="(vs+1) % 3 = 0">
-			</c:if>
 			</c:forEach>
 </div>
 </div>
@@ -83,13 +86,13 @@
 <c:forEach items="${hash}" var="tag">
 	<div class="col-md-3" style=" padding: 5px;">
 	<div style="background-color: #F6F6F6; padding: 15px;" align="left">
-		<span style="font-size: 18px;">#${tag }</span>
+		<a href="/search/tag.mt?keyword=${tag}"><span style="font-size: 18px;">#${tag }</span></a>
 	</div>
 	</div>
 </c:forEach>
 
 </div>
-<a class="btn btn-block " href="/search/tag.mt?keyword=${keyword}" style="background-color: #F6F6F6; width: 60%; margin-bottom: 10px;">검색 결과 더 보기</a>
+<a class="btn btn-block " href="/search/tagsearch.mt?keyword=${keyword}" style="background-color: #F6F6F6; width: 60%; margin-bottom: 10px;">검색 결과 더 보기</a>
     
 </div>
    

@@ -1,20 +1,25 @@
 package controller;
 
+import java.io.File;
 import java.util.*;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.PageContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.MemberDao;
+import model.MyDao;
 import model.PointDao;
 
 @Controller
@@ -30,26 +35,33 @@ public class MyController {
 	@Autowired
 	MemberDao memberDao;
 	
+	@Autowired
+	MyDao myDao;
+	
+	@Autowired
+	ServletContext application;
+	
+	
 	@RequestMapping("/home")
 	public ModelAndView home() {
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_my");
+			mav.setViewName("t_main");
 			mav.addObject("section","home");
 		return mav;
 	}
 	
-	@RequestMapping("/goods")
+	@RequestMapping("/postgood")
 	public ModelAndView goods() {
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_my");
-			mav.addObject("section","goods");
+			mav.setViewName("t_main");
+			mav.addObject("section","postgood");
 		return mav;
 	}
 	
 	@RequestMapping("/purchases")
 	public ModelAndView purchases() {
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_my");
+			mav.setViewName("t_main");
 			mav.addObject("section","purchases");
 		return mav;
 	}
@@ -59,8 +71,7 @@ public class MyController {
 	public ModelAndView plist(HttpSession session) {
 		String email = (String)session.getAttribute("login");
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_my");
-			mav.addObject("section","point/plist");
+			mav.setViewName("point_plist");
 			if(email != null){
 				mav.addObject("list",pointDao.selectpoint(email));
 				mav.addObject("pointsum",pointDao.selectpointsum(email));
@@ -71,8 +82,7 @@ public class MyController {
 	@RequestMapping("/point/charge")
 	public ModelAndView charge() {
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_my");
-			mav.addObject("section","point/charge");
+			mav.setViewName("point_charge");
 			String[] cards = "농협,국민은행,우리은행,하나은행,신한은행,외환은행,씨티은행,우체국,부산은행,SC은행".split(",");
 			String[] banks = "산업은행,기업은행,국민은행,외환은행,수협,농협,우리은행,SC은행,씨티은행,대구은행,부산은행,광주은행,제주은행,전분은행,경남은행,새마을금고,신협,우체국,하나은행,신한은행".split(",");
 			String[] telecoms = "SKT,KT,LGU+,LGU+(알뜰폰)".split(",");
@@ -85,13 +95,12 @@ public class MyController {
 	@RequestMapping("/point/chargeExec")
 	public ModelAndView chargeExec(@RequestParam Map map,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("t_my");
 		String point = ((String)map.get("point")).replace(",", "");
 		map.put("point", point);
+		mav.setViewName("point_charge");
 		if(session.getAttribute("login") != null){
 			String str = (String)map.get((String)map.get("pay"));
 			if(str.equals("null")){
-				mav.addObject("section","point/charge");
 				mav.addObject("alert",true);
 			}else{
 				mav.setViewName("redirect:/my/point/clist");
@@ -118,8 +127,7 @@ public class MyController {
 	@RequestMapping("/point/clist")
 	public ModelAndView clist(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_my");
-			mav.addObject("section","point/clist");
+			mav.setViewName("point_clist");
 			if(session.getAttribute("login") != null){
 				String email = (String)session.getAttribute("login");
 				mav.addObject("list",pointDao.selectdeposit(email));
@@ -153,8 +161,7 @@ public class MyController {
 	@RequestMapping("/point/withdraw")
 	public ModelAndView withdraw(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_my");
-			mav.addObject("section","point/withdraw");
+			mav.setViewName("point_withdraw");
 			String email = (String)session.getAttribute("login");
 			if(email != null){
 				Map map = new HashMap<>();
@@ -176,8 +183,7 @@ public class MyController {
 			if(result){
 				mav.setViewName("redirect:/my/point/wlist");
 			}else{
-				mav.setViewName("t_my");
-				mav.addObject("section","point/withdraw");
+				mav.setViewName("point_withdraw");
 				mav.addObject("alert", true);
 			}
 		}
@@ -188,8 +194,7 @@ public class MyController {
 	@RequestMapping("/point/wlist")
 	public ModelAndView wlist(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_my");
-			mav.addObject("section","point/wlist");
+			mav.setViewName("point_wlist");
 			String email = (String)session.getAttribute("login");
 			if(email != null){
 				mav.addObject("list", pointDao.selectwithdraw(email));
@@ -201,31 +206,84 @@ public class MyController {
 	
 	// 설정 부분
 	@RequestMapping("/settings/account")
-	public ModelAndView settings() {
+	public ModelAndView settings(HttpSession session) {
+		Map info = myDao.info((String)session.getAttribute("login"));
+		
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_my");
-			mav.addObject("section","settings/account");
+			mav.setViewName("settings_account");
+			mav.addObject("email",info.get("EMAIL"));
+			mav.addObject("certified",info.get("CERTIFIED"));
 		return mav;
 	}
+	@RequestMapping("/settings/certified1")
+	public ModelAndView certified1 () {
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("settings_certified1");
+		return mav;
+	}
+	@RequestMapping("/settings/certified2")
+	public ModelAndView certified2() {
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("settings_certified2");
+		return mav;
+	}
+	
 	@RequestMapping("/settings/profile")
-	public ModelAndView profile() {
+	public ModelAndView profile(HttpSession session) {
+		Map info = myDao.info((String)session.getAttribute("login"));
+		
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_my");
-			mav.addObject("section","settings/profile");
+			mav.setViewName("settings_profile");
+			mav.addObject("info",info);
 		return mav;
 	}
+	
+	@RequestMapping("/settings/profileExec")
+	public ModelAndView profilExec(@RequestParam Map map, @RequestParam(name = "image") MultipartFile f, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		
+		try {
+			String my =  (String)session.getAttribute("login");
+			
+			if(f.getOriginalFilename().length() > 0) {
+				File dir = new File(application.getRealPath("/images/profile"));
+				if(!dir.exists()) {
+					dir.mkdirs();
+				}
+					
+				File dst = new File(dir, my+".png");
+				f.transferTo(dst);
+				
+			}
+			
+			map.put("image", my+".png");
+			map.put("email", my);
+			
+			String str = myDao.profileUp(map);
+			
+			System.out.println("uploadExec = " + str);
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		mav.setViewName("redirect:/my/settings/profile");
+		return mav;
+	}
+	
+
+	
 	@RequestMapping("/settings/password")
 	public ModelAndView password() {
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_my");
-			mav.addObject("section","settings/password");
+			mav.setViewName("settings_password");
 		return mav;
 	}
+	
 	@RequestMapping("/settings/bank")
 	public ModelAndView bank() {
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_my");
-			mav.addObject("section","settings/bank");
+			mav.setViewName("settings_bank");
 		return mav;
 	}
 	

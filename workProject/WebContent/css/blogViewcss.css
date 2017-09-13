@@ -89,10 +89,11 @@ a:hover {
 	background-color: #000;
 }
 
-<<<<<<< HEAD
+
 .dropdown:hover .dropdown-menu {
 	display: block;
 }
+
 
 .navbar-form {
 	padding: 0px;
@@ -129,16 +130,7 @@ a:hover {
 .button1 {
 	background-color: #303030;
 }
-=======
-<<<<<<< HEAD
-}
 
-
-
-
-
-
-=======
 .dropdown:hover .dropdown-menu {
 	display: block;
 }
@@ -180,6 +172,3 @@ a:hover {
 	background-color: #303030;
 }
 
-
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
