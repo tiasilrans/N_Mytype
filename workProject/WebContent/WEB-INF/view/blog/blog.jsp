@@ -95,6 +95,8 @@
 								<h3>${obj.SUBTITLE }</h3>
 								<p>${obj.FCONTENT }</p>
 							</div>
+							<footer>
+							</footer>
 						</c:forEach>						
 					</div>
 					<div class="div-pagination">
