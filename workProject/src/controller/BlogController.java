@@ -30,7 +30,7 @@ public class BlogController {
 	public ModelAndView newBlog(){
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("t_el");
-	 	mav.addObject("section", "blog/create");
+	 	mav.addObject("section", "blog/settings/create");
 		return mav;
 	}
 	
@@ -116,7 +116,7 @@ public class BlogController {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("blog_setting");
 			mav.addObject("title", r.get("TITLE"));
-			mav.addObject("section", "blog/categories");
+			mav.addObject("section", "blog/settings/categories");
 	 		mav.addObject("url", url);
 	 		mav.addObject("map", r);
 	 		mav.addObject("list", list);

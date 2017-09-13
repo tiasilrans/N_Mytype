@@ -51,12 +51,13 @@ public class PostController {
 	@RequestMapping("/{url}/post/{num}")
 	public ModelAndView postView(@PathVariable(value="url") String url,
 											@PathVariable(value="num") int num){
-		
-		
+		Map map = new HashMap<>();
+			map.put("num", num);
+		HashMap post = pdao.onePost(map);
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("post_view");
-			mav.addObject("title", "포스트 제목이 들어갈거야");
 			mav.addObject("section", "blog/post/postView");
+			mav.addObject("post", post);
 		return mav;	
 	}
 		
