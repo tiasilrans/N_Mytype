@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -63,16 +64,67 @@
 }
 
 
-</style>
+ a:link { color: white; text-decoration: none;}
+ a:visited { color: white; text-decoration: none;}
+ a:hover { color: white; text-decoration: none;}
+
+.post-body{
+	background-color: white;
+	width: 100%;
+	padding: 30px; 
+ 	margin: 20px; 
+   
+}      
+
+</style> 
 
 <div class="row" align="center">
 	<div class="col-xs-0 col-md-1"></div>
 	<div class="col-xs-12 col-md-10">
 		<div class="row">
-			<div class="col-xs-8" align="left" style="color: black;">
+		<c:choose>
+			<c:when test="${list ne null }">
+				<div class="col-xs-8 blog-post-list" align="left">
+					<div class="blog-post-list">
+						<c:forEach var="obj" items="${list }">
+							<div class="post-body">
+								<a href="/${obj.URL }/post/${obj.NUM}" style="color: #0d0d0d; ">
+									<h2 style="color: #808080; font-family: sans-serif; font-size: 20px;">${obj.TITLE }</h2>								
+									<div class="subtitle" style="margin-top: -10px; margin-left: 3px;"> 
+										<h3 style="color: #1a1a1a; font-family: sans-serif; font-size: 13px;">${obj.SUBTITLE }</h3> 
+									</div>								  
+									 <div class="fcountent" style="margin-top: 20px; margin-left: 3px;">
+										${obj.FCONTENT }
+									</div>
+								</a>
+							</div>      
+							<footer>    
+							</footer>
+						</c:forEach>						
+					</div>  
+					<div class="div-pagination">
+							<ul class="pagination">
+								<c:forEach var="i" begin="1" end="${pNum }">				
+									<li><a href="/blog/${map.URL }?p=${i }">${i }</a>		
+								</c:forEach>
+							</ul>
+					</div>
+				</div>
+			</c:when>
+			<c:otherwise>			
+				<c:if test="${sessionScope.login eq map.EMAIL }">
+				<div class="col-xs-8" align="left" style="color: black;">
 				발행한 포스트가 없습니다.<br /> <br />
-				<a href="/blog/postWrite"><button class="button button1" title="새 포스트를 작성합니다.">새 포스트 쓰기</button></a>
-			</div>
+					<form action="/blog/postWrite" method="post">
+						<input type="hidden" name="title" value="${map.TITLE }"/>
+						<input type="hidden" name="url" value="${map.URL }"/>
+						<button class="button button1" type="submit" title="새 포스트를 작성합니다.">새 포스트 쓰기</button>
+					</form>
+				</div>
+				</c:if>				
+			</c:otherwise>
+		</c:choose>
+			
 			
 			<div class="col-xs-4">
 
@@ -93,8 +145,8 @@
 				<section class="section box">
 					<div class="media">
 						<div class="media-body" align="left">
-							<h5 class="media-heading" style="color: black; font-weight: bold;">${map.TITLE }</h5>
-							<div style="color: #a6a6a6;">
+							<h4 class="media-heading" style="color: black; font-family: sans-serif; font-size: 15px;">${map.TITLE }</h4>
+						 	<div style="color: #a6a6a6;">          
 								<span style="font-size: 12px;">구독자</span> 0 <span style="font-size: 12px;">포스트</span> 0
 							</div>
 							<button class="button button1" style="margin-top: 10px;">구독하기</button>
@@ -103,10 +155,9 @@
 						<div class="media-right">
 							<img
 								src="https://cdn.postype.com/assets/img/avatar/blog_blank_p.svg"
-								class="media-object" style="width: 60px">
+								class="media-object" style="width: 60px; border-radius: 5px;">      
 						</div>
-
-					</div>
+					</div> 
 				</section>
 
 
@@ -159,20 +210,20 @@
  		<div>
  			<div class="menu-header">
  				<div class="col-xs-8 px-0" style="margin-bottom: 5px; margin-top: 20px;">
- 					<a herf=""><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626;">사용자 이름</span></a>
- 					
+ 					<a href="/blog/${map.url }"><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">사용자 이름</span></a>
+ 					 
  				</div>
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
  					<span><i class="material-icons" style="color: #a6a6a6; font-size: 26px;">notifications_none</i></span> 
  				</div>
  				
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
- 					<i class="material-icons" style="color: #a6a6a6; font-size: 26px;">power_settings_new</i></span>
+ 					<a href="/logout.mt"><i class="material-icons" style="color: #a6a6a6; font-size: 26px;">power_settings_new</i></a>
  				</div>
  				
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
  					<a class="home" href="/"
-						id="home"><label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">home</label></a><div class="home" style="display:inline; margin-left: 14px;">홈</div>
+						id="home"><label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">home</label></a><a href="/"><div class="home" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">홈</div></a>
  				</div>    
  				      
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-bottom: 30px;">
@@ -197,6 +248,10 @@
 		}
 		
 	});
+	
+
+	
+	
 
 </script>
 

@@ -21,7 +21,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import model.MemberDao;
 import model.MyDao;
 import model.PointDao;
-import service.FileUpload;
 
 @Controller
 @RequestMapping("/my")

@@ -24,6 +24,12 @@
 		<put-attribute name="section" value="/WEB-INF/view/search/{1}.jsp" />
 		<put-attribute name="nav2" value="/WEB-INF/view/search/nav.jsp" />
 	</definition>
+	
+	<!-- mail -->
+	<definition name="mail_*" extends="t_base">
+		<put-attribute name="section" value="/WEB-INF/view/mail/{1}.jsp" />
+		<put-attribute name="nav2" value="/WEB-INF/view/mail/nav.jsp" />
+	</definition>
 
 	
 	<!-- MYHome -->
@@ -52,6 +58,13 @@
 		<put-attribute name="title" expression="${title} 블로그 설정" />
 		<put-attribute name="nav" value="/WEB-INF/view/blog/settings/blogSettingNav.jsp" />
 		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp"/>	
+	</definition>
+	
+	<!-- 포스트 뷰 -->
+	<definition name="post_view" template="/WEB-INF/view/blog/post/postViewTemp.jsp">
+		<put-attribute name="nav" value="/WEB-INF/view/blog/post/postViewNav.jsp" />
+		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/view/blog/footer.jsp"/>
 	</definition>
 	
 	

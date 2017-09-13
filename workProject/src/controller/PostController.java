@@ -7,9 +7,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,10 +27,15 @@ public class PostController {
 	@Autowired
 	PostDao pdao;
 	
-	@RequestMapping("postWriter.mt")
+	@RequestMapping("/postWriter.mt")
 	@ResponseBody
-	public Map posrWrite(@RequestParam Map m){
-		System.out.println(m);
+	public Map posrWrite(@RequestParam Map m,HttpSession session){
+		String email = (String)session.getAttribute("login");
+		String nickname = (String)m.get("nickname");
+		if(nickname==null){
+			m.put("nickname", email.split("@")[0]);
+		}
+		System.out.println("넘어온 값 : " + m);
 		Map map= new HashMap<>();
 		boolean f = pdao.postWrite(m);
 		if(f){			
@@ -41,10 +48,19 @@ public class PostController {
 		return map;
 	}
 	
-	
-	
-	
-	
+	@RequestMapping("/{url}/post/{num}")
+	public ModelAndView postView(@PathVariable(value="url") String url,
+											@PathVariable(value="num") int num){
+		Map map = new HashMap<>();
+			map.put("num", num);
+		HashMap post = pdao.onePost(map);
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("post_view");
+			mav.addObject("section", "blog/post/postView");
+			mav.addObject("post", post);
+		return mav;	
+	}
+		
 	
 	@RequestMapping("postgood.mt")
 	@ResponseBody

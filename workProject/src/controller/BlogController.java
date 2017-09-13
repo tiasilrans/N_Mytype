@@ -30,7 +30,7 @@ public class BlogController {
 	public ModelAndView newBlog(){
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("t_el");
-	 	mav.addObject("section", "blog/create");
+	 	mav.addObject("section", "blog/settings/create");
 		return mav;
 	}
 	
@@ -54,30 +54,54 @@ public class BlogController {
 	}	
 	
 	@RequestMapping("/{url}")
-	public ModelAndView BlogView(@PathVariable(value="url") String url, HttpSession session){		
+	public ModelAndView BlogView(@PathVariable(value="url") String url, 
+						@RequestParam(name="p", defaultValue="1") int p, HttpSession session){		
 		ModelAndView mav = new ModelAndView();
 		Map map = new HashMap();
 			map.put("url", url);
 		HashMap r = bDAO.blogView(map);
+		
+		Map pageMap = new HashMap<>();
+		int lc = pDAO.postCount(map);
+		int tp = lc%12==0 ? lc/12 : lc/12+1;
+		int start = (p-1)*12+1;
+		int end = start + 12 - 1;
+			pageMap.put("start", start);
+			pageMap.put("end", end);
+			pageMap.put("url", url);
+		List<Map> postList = pDAO.blogPostList(pageMap);
 			mav.setViewName("blog_base");
 			mav.addObject("section", "blog/blog");
 			mav.addObject("header", "blog/header");
-			mav.addObject("map", r);
+			mav.addObject("map", r); // 블로그 정보
 			mav.addObject("title", r.get("TITLE"));
+			mav.addObject("pNum", tp);
+			mav.addObject("list", postList); // 블로그 메인 포스트 리스트
+			
 		return mav;
 	}
 	
 	@RequestMapping("/postWrite")
 	public ModelAndView postWrite(@RequestParam Map m, HttpSession session){
-		String email = (String)session.getAttribute("login");
-			m.put("email", email);
-		List<Map> catelist = pDAO.categoryList(m);	
-		System.out.println(catelist);
+		// m= 타이틀, url 들어가 있음
+		Map writeMap = (Map)session.getAttribute("writeMap");
+		if(writeMap !=null){
+			String title = (String)writeMap.get("title");
+			String url = (String)writeMap.get("url");
+			if(title!=null){
+				m.put("title", title);
+				m.put("url", url);
+			}
+		}
+		
+		List<Map> catelist = pDAO.categoryList(m);		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("post");
 			mav.addObject("title", "포스트작성");
 			mav.addObject("map", m);
 			mav.addObject("catelist", catelist);
+			session.setAttribute("writeMap", m);
+			
 		return mav;
 	}
 	
@@ -92,7 +116,7 @@ public class BlogController {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("blog_setting");
 			mav.addObject("title", r.get("TITLE"));
-			mav.addObject("section", "blog/categories");
+			mav.addObject("section", "blog/settings/categories");
 	 		mav.addObject("url", url);
 	 		mav.addObject("map", r);
 	 		mav.addObject("list", list);
@@ -170,14 +194,7 @@ public class BlogController {
  		return map;		
 	}
 	
-	@RequestMapping("test.mt")
-	public ModelAndView test(){
-		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_el");
-			mav.addObject("section", "blog/test");
-		
- 		return mav;			
-	}
+	
 	
 	
 

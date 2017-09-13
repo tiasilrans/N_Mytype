@@ -17,7 +17,6 @@
 	<mvc:annotation-driven/>
 	<context:component-scan base-package="controller"/>
 	<context:component-scan base-package="model"/>
-	<context:component-scan base-package="service" />
 
 	<!-- websocket handler 등록-->
 <!--  <websocket:handlers>
@@ -76,6 +75,7 @@
 				<value>/WEB-INF/mapper/post-mapper.xml</value>
 				<value>/WEB-INF/mapper/point-mapper.xml</value>
 				<value>/WEB-INF/mapper/my-mapper.xml</value>
+				<value>/WEB-INF/mapper/mail-mapper.xml</value>
 			</list>
 		</property>
 	</bean>	
