@@ -88,15 +88,15 @@
 					<div class="blog-post-list">
 						<c:forEach var="obj" items="${list }">
 							<div class="post-body">
-								<h2 style="color: #808080; font-family: sans-serif; font-size: 20px;">${obj.TITLE }</h2>
-								
-								<div class="subtitle" style="margin-top: -10px; margin-left: 3px;"> 
-									<h3 style="color: #1a1a1a; font-family: sans-serif; font-size: 13px;">${obj.SUBTITLE }</h3> 
-								</div>	 
-								  
-								 <div class="fcountent" style="margin-top: 20px; margin-left: 3px;">
-								<p style="color: #0d0d0d; font-family: sans-serif; font-size: 17px;">${obj.FCONTENT }</p>
-								</div>
+								<a href="/${obj.URL }/post/${obj.NUM}" style="color: #0d0d0d; ">
+									<h2 style="color: #808080; font-family: sans-serif; font-size: 20px;">${obj.TITLE }</h2>								
+									<div class="subtitle" style="margin-top: -10px; margin-left: 3px;"> 
+										<h3 style="color: #1a1a1a; font-family: sans-serif; font-size: 13px;">${obj.SUBTITLE }</h3> 
+									</div>								  
+									 <div class="fcountent" style="margin-top: 20px; margin-left: 3px;">
+										${obj.FCONTENT }
+									</div>
+								</a>
 							</div>      
 							<footer>    
 							</footer>
