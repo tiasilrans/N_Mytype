@@ -72,8 +72,8 @@
 	background-color: white;
 	width: 100%;
 	padding: 30px; 
- 	margin: 20px; 
-   
+ 	margin: 20px;   
+    
 }      
 
 </style> 
