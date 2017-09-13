@@ -68,8 +68,15 @@
  a:visited { color: white; text-decoration: none;}
  a:hover { color: white; text-decoration: none;}
 
+.post-body{
+	background-color: white;
+	width: 100%;
+	padding: 30px; 
+ 	margin: 20px; 
+   
+}      
 
-</style>
+</style> 
 
 <div class="row" align="center">
 	<div class="col-xs-0 col-md-1"></div>
@@ -78,17 +85,23 @@
 		<c:choose>
 			<c:when test="${list ne null }">
 				<div class="col-xs-8 blog-post-list" align="left">
-					<div class="blog-post-list" style="color: black; border: 1px solid; border-radius: 5px;">
+					<div class="blog-post-list">
 						<c:forEach var="obj" items="${list }">
 							<div class="post-body">
-								<h2>${obj.TITLE }</h2>
-								<h3>${obj.SUBTITLE }</h3>
-								<p>${obj.FCONTENT }</p>
-							</div>
-							<footer>
+								<h2 style="color: #808080; font-family: sans-serif; font-size: 20px;">${obj.TITLE }</h2>
+								
+								<div class="subtitle" style="margin-top: -10px; margin-left: 3px;"> 
+									<h3 style="color: #1a1a1a; font-family: sans-serif; font-size: 13px;">${obj.SUBTITLE }</h3> 
+								</div>	 
+								  
+								 <div class="fcountent" style="margin-top: 20px; margin-left: 3px;">
+								<p style="color: #0d0d0d; font-family: sans-serif; font-size: 17px;">${obj.FCONTENT }</p>
+								</div>
+							</div>      
+							<footer>    
 							</footer>
 						</c:forEach>						
-					</div>
+					</div>  
 					<div class="div-pagination">
 							<ul class="pagination">
 								<c:forEach var="i" begin="1" end="${pNum }">				
