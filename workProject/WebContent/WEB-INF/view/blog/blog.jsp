@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -74,14 +75,39 @@
 	<div class="col-xs-0 col-md-1"></div>
 	<div class="col-xs-12 col-md-10">
 		<div class="row">
-			<div class="col-xs-8" align="left" style="color: black;">
+		<c:choose>
+			<c:when test="${sessionScope.login eq map.EMAIL }">
+				<div class="col-xs-8" align="left" style="color: black;">
 				발행한 포스트가 없습니다.<br /> <br />
-				<form action="/blog/postWrite" method="post">
-					<input type="hidden" name="title" value="${map.TITLE }"/>
-					<input type="hidden" name="url" value="${map.URL }"/>
-					<button class="button button1" type="submit" title="새 포스트를 작성합니다.">새 포스트 쓰기</button>
-				</form>
-			</div>
+					<form action="/blog/postWrite" method="post">
+						<input type="hidden" name="title" value="${map.TITLE }"/>
+						<input type="hidden" name="url" value="${map.URL }"/>
+						<button class="button button1" type="submit" title="새 포스트를 작성합니다.">새 포스트 쓰기</button>
+					</form>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="col-xs-8 blog-post-list" align="left">
+					<div class="blog-post-list" style="color: black; border: 1px solid; border-radius: 5px;">
+						<c:forEach var="obj" items="${list }">
+							<div class="post-body">
+								<h2>${obj.TITLE }</h2>
+								<h3>${obj.SUBTITLE }</h3>
+								<p>${obj.FCONTENT }</p>
+							</div>
+						</c:forEach>						
+					</div>
+					<div class="div-pagination">
+							<ul class="pagination">
+								<c:forEach var="i" begin="1" end="${pNum }">				
+									<li><a href="/blog/${map.URL }?p=${i }">${i }</a>		
+								</c:forEach>
+							</ul>
+					</div>
+				</div>
+			</c:otherwise>
+		</c:choose>
+			
 			
 			<div class="col-xs-4">
 
