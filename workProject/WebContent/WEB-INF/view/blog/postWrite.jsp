@@ -266,13 +266,15 @@ input[type=radio]:checked+label:before {
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li style="margin-right: 200px; margin-top: 15px;"><a class="bnt dropdown-toggle" data-toggle="modal"
-						data-target="#modalPublish"><span>발행 <i class="material-icons">keyboard_arrow_down</i></span></a></li>
+					<li style="margin-right: -25px; margin-top: 13px;"><a class="bnt dropdown-toggle" data-toggle="modal"
+						data-target="#modalPublish"><span>발행</span></a></li>
+					<li style="margin-right: 220px; margin-top: 13px;"><a class="bnt dropdown-toggle" data-toggle="modal"
+						data-target="#modalPublish"><span><i class="material-icons">keyboard_arrow_down</i></span></a></li>
 				</ul>
-			</div> 
-		</div>
-
-	</header>
+			</div>    
+		</div>   
+  
+	</header> 
 
 
 
