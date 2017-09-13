@@ -393,11 +393,11 @@ input[type=radio]:checked+label:before {
 						
 						<input type="text" class="form-control" id="hash" 
 									name="hash" placeholder="여러 개의 태그는 공백(space)으로 구분하여 입력하세요." 
-							 	class="tagtext" style="width: 850px; margin-left: -300px; height: 25px;">    
+							 	class="tagtext" style="width: 1020px; margin-left: -120px; height: 25px;">    
 						</div>
-    
-					</div> 
-				</article>
+        
+					</div>    
+				</article> 
  
 
 
