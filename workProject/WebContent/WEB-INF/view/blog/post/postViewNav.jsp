@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- navCss -->
-<link rel="stylesheet" href="/css/navcss.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="/css/postViewNavcss.css">
-
 <section class="navbar-info ">
 	<nav class="navbar navbar-default" style="margin-bottom: 0px; ">
 		<div class="container">
@@ -20,7 +14,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				</div> 
+			</div> 
 
 			
 				 <!-- 나브바 왼쪽 -->
@@ -53,35 +47,16 @@
 					<li class="dropdown" style="margin-right: -200px;"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#" style="background-image: none; background-color: white; margin: 0px;"><i class="material-icons">more_vert</i></a>
 						<ul class="dropdown-menu">		  		 		
-									  
-						<c:if test="${sessionScope.blog ne null }">
-						<c:forEach var="blog" items="${sessionScope.blog}" begin="0" end="${sessionScope.blog.size()}">
+						<div>		  
 						<li style="margin-top: 15px;"><label style="float: left; margin-left: 3px;" class="material-icons">bookmark_border</label><span style="margin-left: 5px;">읽기 목록에 추가</span></li>
 						<li><label style="float: left; margin-left: -22px;" class="material-icons">insert_link</label><span style="margin-left: 6px;">링크 복사</span></li>
 						<li><label style="float: left; margin-left: -25px;" class="material-icons">flag</label><span style="margin-left: 5px;">신고하기</span></li>
-	
-						</c:forEach>   
-						</c:if>         
+	        			</div>
 						</ul></li>   
 				</ul>		
 		</div>
 	</nav>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <script>

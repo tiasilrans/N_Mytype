@@ -14,47 +14,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 
-
-<style>
- .navbar-form {
-  margin:0;
-  margin-top: 5px;
-  padding:8px 0px;
-}
- 
-.navbar-form .search-box {
-  border:0px;
-  height:35px;
-  outline: none;
-  width:320px;
-  padding-right: 3px;
-  padding-left: 15px;
-  margin:4px;
-  -webkit-border-radius: 22px;
-  -moz-border-radius: 22px;
-  border-radius: 22px;
-}
- 
-.navbar-form button {
-  border: 0;
-  background: none;
-  padding: 2px 5px;
-  margin-top: 2px;
-  position: relative;
-  left: -34px;
-  margin-bottom: 0;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
- 
-.search-box:focus + button {
-  z-index: 3;   
-}
-
-</style>
-
-
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	
