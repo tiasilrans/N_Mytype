@@ -13,7 +13,7 @@
 					<li class=""><a class="" href="/my/home" style="padding: 5px; padding-left: 10px; padding-right:10px; height: 5px;">My 홈</a></li>
 					<li class="dropdown gd"><a class="dropdown-toggle" href="#" style="padding: 5px;">구독</a>
 						<ul class="dropdown-menu">						
-							<li><a href="/subscribe/blog.mt">(미완)구독한 블로그</a></li>
+							<li><a href="/subscribe/blog.mt">구독한 블로그</a></li>
 							<li><a href="/subscribe/tag.mt">(미완)구독한 태그</a></li>
 						</ul>
 					</li> 

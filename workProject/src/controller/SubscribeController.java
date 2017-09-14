@@ -13,8 +13,10 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.BlogDAO;
@@ -46,7 +48,7 @@ public class SubscribeController {
 		ModelAndView mav = new ModelAndView();
 		String type = (String) map.get("type");
 		// 목록에 표시할 포스트 수
-		int pc = 4;
+		int pc = 3;
 
 		// 현재 페이지
 		int np = 1;
@@ -84,10 +86,22 @@ public class SubscribeController {
 		mav.addObject("from", from);
 		mav.addObject("to", to);
 		mav.setViewName("subscribe_blog");
-		System.out.println(map);
-		System.out.println(subscribedao.blogList(map));
 		return mav;
 	}
 	
 
+	
+	@RequestMapping("update.mt")
+	@ResponseBody
+	public String update(@RequestParam Map map,HttpSession session) throws JsonProcessingException{
+		Map result = new HashMap<>();
+		map.put("email", (String)session.getAttribute("login"));
+		if(Boolean.parseBoolean(((String)map.get("type")))){
+			result.put("rst", subscribedao.deletesubscribe(map));
+		}else{
+			result.put("rst",  subscribedao.insertsubscribe(map));
+		}
+		String mz=objMapper.writeValueAsString(result);
+		return mz;
+	}
 }

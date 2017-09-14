@@ -6,7 +6,7 @@
 
 	<select id="list" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from (select tmp2.*, m.image from (select rownum as r, tmp.* from
-		(select blog.*,tmp.sdate from (select * from SUBSCRIBE where email=#{email})tmp left join blog on tmp.address=blog.url)tmp)tmp2 left join member m on m.email=tmp2.email)
+		(select blog.*,tmp.sdate, tmp.address from (select * from SUBSCRIBE where email=#{email})tmp left join blog on tmp.address=blog.url)tmp)tmp2 left join member m on m.email=tmp2.email)
 		tmp3 where tmp3.r between #{first} and #{last} order by sdate desc
 	</select>
 	
@@ -15,5 +15,13 @@
 		select count(*) as count from subscribe where email=#{email}
 	</select>
 	
+	<!-- 구독삭제 -->
+	<delete id="deletesubscribe" parameterType="java.util.HashMap">
+		delete from subscribe where email=#{email} and address=#{url}
+	</delete>	
 	
+	<!-- 구독하기 -->
+	<insert id="insertsubscribe" parameterType="java.util.HashMap">
+		insert into subscribe(email,address,sdate) values(#{email},#{url},sysdate)
+	</insert>	
 </mapper>
