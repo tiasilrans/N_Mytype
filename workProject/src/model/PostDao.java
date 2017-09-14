@@ -44,6 +44,25 @@ public class PostDao {
 		
 	}
 	
+	public boolean postCounter(Map map){
+		SqlSession session = factory.openSession();
+		try {
+			int update = session.update("post.counter", map);				
+			return true;			
+		} catch (Exception e) {
+			System.out.println("postCounter Error");
+			e.printStackTrace();
+			return false;
+		}finally {
+			session.close();
+		}
+		
+	}
+	
+	
+	
+	
+	
 	public List<Map> categoryList(Map map){		
 		List<Map> list = new ArrayList<>();
 		SqlSession session = factory.openSession();
@@ -155,14 +174,12 @@ public class PostDao {
 			list = session.selectList("post.listall", map);
 			for(Map post : list){
 				String[] arr = ((String)post.get("HASH")).split("\\s");
-				System.out.println("arr : "+arr);
 				for(String str : arr){
 					if(str.equals(keyword)){
 						result.add(post);
 					}
 				}
 			}
-			System.out.println("result : " + result);
 			return result; 
 		}catch(Exception e){
 			System.out.println("PostlistTag Error");

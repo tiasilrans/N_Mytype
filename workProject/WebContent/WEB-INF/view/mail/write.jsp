@@ -35,15 +35,16 @@ table.type07 td {
 					<td style="width: 70%">
 						<input class="form-control" type="text" name="receiver" id="receiver" value="${email}" ${email ne null ? 'readonly':''} required />
 					</td>
-					<td style="width: 10%; vertical-align: middle;">
-						<i class="fa fa-check-circle" id="emailtrue" style="font-size:23px; color:#14c880; display: none;"></i>
-						<i class="fa fa-times-circle" id="emailfalse" style="font-size:23px; color:red;"></i>
+					<td style="width: 5%; vertical-align: middle;">
+						<i class="fa fa-check-circle" id="emailtrue" style="font-size:23px; color:#14c880; ${email ne null ? 'display: block;':'display: none;'}"></i>
+						<i class="fa fa-times-circle" id="emailfalse" style="font-size:23px; color:red; ${email eq null ? 'display: block;':'display: none;'} "></i>
 					</td>
+					<td style="width: 5%"></td>
 					
 				</tr>
 				<tr>
 					<td style="vertical-align: middle; width: 20%;"><label>내용</label></td>
-					<td colspan="2" style="width: 80%"><textarea class="form-control" cols="50" rows="15" name="content" style="resize: none;" required></textarea></td>
+					<td colspan="3" style="width: 80%"><textarea class="form-control" cols="50" rows="15" name="content" style="resize: none;" required></textarea></td>
 				</tr>
 		</tbody>
 	</table>

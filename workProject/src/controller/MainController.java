@@ -55,7 +55,6 @@ public class MainController {
 		mav.addObject("listAll",pdao.sublist(pdao.listAll(str)));
 		if(session.getAttribute("login") != null){
 			mav.addObject("listLike",pdao.sublist(pdao.listLike(str)));
-			mav.addObject("info", myDao.info((String)session.getAttribute("login")));
 		}
 		return mav;
 	}
@@ -77,6 +76,9 @@ public class MainController {
 			mav.setViewName("redirect:/");
 			session.setAttribute("login", map.get("email"));
 			session.setAttribute("blog", bdao.mybloglist(map));
+			System.out.println(myDao.info((String)session.getAttribute("login")));
+			session.setAttribute("info", myDao.info((String)session.getAttribute("login")));
+			
 		}else{
 			mav.setViewName("t_login/login");
 			mav.addObject("flag",true);

@@ -72,8 +72,8 @@
 	background-color: white;
 	width: 100%;
 	padding: 30px; 
- 	margin: 20px; 
-   
+ 	margin: 20px;   
+    
 }      
 
 </style> 
@@ -169,12 +169,13 @@
 								href="/blog/blogView" style="color: black; font-weight :light;" align="left">
 									전체 보기 <span class="post-count">3</span>
 							</a></li>
+							<c:forEach var="obj" items="${category }">
+							<c:if test="${obj.CATEGORY_NAME ne \"전체 보기\"}">
 							<li class="Kategorie nav-item"><a class="nav-link" href=""
-								style="color: #8c8c8c;" align="left">일기<span
+								style="color: #8c8c8c;" align="left">${obj.CATEGORY_NAME }<span
 									class="post-count">3</span></a></li>
-							<li class="Kategorie nav-item"><a class="nav-link" href=""
-								style="color: #8c8c8c;" align="left">수필<span
-									class="post-count">3</span></a></li>
+							</c:if>
+							</c:forEach>
 
 						</ul>
 					</div>

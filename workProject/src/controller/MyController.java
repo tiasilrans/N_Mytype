@@ -45,37 +45,69 @@ public class MyController {
 	@RequestMapping("/home")
 	public ModelAndView home() {
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_main");
-			mav.addObject("section","home");
+			mav.setViewName("my_home");
 		return mav;
 	}
 	
-	@RequestMapping("/postgood")
+	@RequestMapping("/library/postgood")
 	public ModelAndView goods() {
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_main");
-			mav.addObject("section","postgood");
+			mav.setViewName("library_postgood");
 		return mav;
 	}
 	
-	@RequestMapping("/purchases")
+	@RequestMapping("/library/purchases")
 	public ModelAndView purchases() {
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_main");
-			mav.addObject("section","purchases");
+			mav.setViewName("library_purchases");
 		return mav;
 	}
 	
 	// 포인트부분
 	@RequestMapping("/point/plist")
-	public ModelAndView plist(HttpSession session) {
+	public ModelAndView plist(@RequestParam Map map,HttpSession session) {
 		String email = (String)session.getAttribute("login");
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("point_plist");
+			
+			//목록에 표시할 포스트 수
+			int pc = 5;
+			
+			//현재 페이지
+			int np = 1;
+			if(map.get("np") != null){
+				np = Integer.parseInt((String)map.get("np"));
+			}
+			mav.addObject("np", np);
+			
+			//불러올 리스트의 시작과 끝
+			int e = np*pc;
+			int s = e-pc+1;		
+			map.put("first", s);
+			map.put("last", e);
+			map.put("type", "point");
+			
 			if(email != null){
-				mav.addObject("list",pointDao.selectpoint(email));
+				map.put("email", email);
+				mav.addObject("list",pointDao.selectpoint(map));
 				mav.addObject("pointsum",pointDao.selectpointsum(email));
 			}
+			
+			//리스트 밑에 페이지수
+			int eSize = 5;
+			int p1 = pointDao.selectcount(map);
+			int p = p1 / pc;
+			p = p1 % pc != 0 ? p+1: p;
+			mav.addObject("page", p);
+			
+			//화살표
+			int from = (np-1)*eSize;
+			int to = np*eSize;
+			if(to > p){
+				to = p;
+			}
+			mav.addObject("from",from);
+			mav.addObject("to",to);
 		return mav;
 	}
 	
@@ -124,15 +156,52 @@ public class MyController {
 		return mav;
 	}
 	
+	//충전 신청 리스트
 	@RequestMapping("/point/clist")
-	public ModelAndView clist(HttpSession session) {
+	public ModelAndView clist(@RequestParam Map map,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("point_clist");
+			mav.addObject("section","point/clist");
+			
+			//목록에 표시할 포스트 수
+			int pc = 5;
+			
+			//현재 페이지
+			int np = 1;
+			if(map.get("np") != null){
+				np = Integer.parseInt((String)map.get("np"));
+			}
+			mav.addObject("np", np);
+			
+			//불러올 리스트의 시작과 끝
+			int e = np*pc;
+			int s = e-pc+1;		
+			map.put("first", s);
+			map.put("last", e);
+			map.put("type", "deposit");
+			
 			if(session.getAttribute("login") != null){
 				String email = (String)session.getAttribute("login");
-				mav.addObject("list",pointDao.selectdeposit(email));
+				map.put("email", email);
+				
+				mav.addObject("list",pointDao.selectdeposit(map));
 			}
 			
+			//리스트 밑에 페이지수
+			int eSize = 5;
+			int p1 = pointDao.selectcount(map);
+			int p = p1 / pc;
+			p = p1 % pc != 0 ? p+1: p;
+			mav.addObject("page", p);
+			
+			//화살표
+			int from = (np-1)*eSize;
+			int to = np*eSize;
+			if(to > p){
+				to = p;
+			}
+			mav.addObject("from",from);
+			mav.addObject("to",to);
 		return mav;
 	}
 	
@@ -177,7 +246,8 @@ public class MyController {
 	public ModelAndView withdrawExec(@RequestParam Map map, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		String email = (String)session.getAttribute("login");
-		map.put("email", email);
+		map.put("email", email);		
+		
 		if(session.getAttribute("login") != null){
 			boolean result = pointDao.withdraw(map);
 			if(result){
@@ -192,13 +262,48 @@ public class MyController {
 	
 	//출금 내역
 	@RequestMapping("/point/wlist")
-	public ModelAndView wlist(HttpSession session) {
+	public ModelAndView wlist(@RequestParam Map map,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("point_wlist");
 			String email = (String)session.getAttribute("login");
-			if(email != null){
-				mav.addObject("list", pointDao.selectwithdraw(email));
+			
+			//목록에 표시할 포스트 수
+			int pc = 5;
+			
+			//현재 페이지
+			int np = 1;
+			if(map.get("np") != null){
+				np = Integer.parseInt((String)map.get("np"));
 			}
+			mav.addObject("np", np);
+			
+			//불러올 리스트의 시작과 끝
+			int e = np*pc;
+			int s = e-pc+1;		
+			map.put("first", s);
+			map.put("last", e);
+			map.put("type", "withdraw");
+			
+			if(email != null){
+				map.put("email", email);
+				mav.addObject("list", pointDao.selectwithdraw(map));
+			}
+			
+			//리스트 밑에 페이지수
+			int eSize = 5;
+			int p1 = pointDao.selectcount(map);
+			int p = p1 / pc;
+			p = p1 % pc != 0 ? p+1: p;
+			mav.addObject("page", p);
+			
+			//화살표
+			int from = (np-1)*eSize;
+			int to = np*eSize;
+			if(to > p){
+				to = p;
+			}
+			mav.addObject("from",from);
+			mav.addObject("to",to);			
 			
 		return mav;
 	}
@@ -254,6 +359,8 @@ public class MyController {
 				File dst = new File(dir, my+".png");
 				f.transferTo(dst);
 				
+				System.out.println("realPath => "+dir);
+				
 			}
 			
 			map.put("image", my+".png");
@@ -281,9 +388,28 @@ public class MyController {
 	}
 	
 	@RequestMapping("/settings/bank")
-	public ModelAndView bank() {
+	public ModelAndView bank(HttpSession session) {
+		Map info = myDao.info((String)session.getAttribute("login"));
+		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("settings_bank");
+			mav.addObject("info",info);
+			
+		return mav;
+	}
+	@RequestMapping("/settings/bankExec")
+	public ModelAndView bankExec(@RequestParam Map map, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		
+		String my =  (String)session.getAttribute("login");
+		
+		map.put("email", my);
+		String str = myDao.bank(map);
+		
+		System.out.println("bankExec = " + str);
+		
+		mav.setViewName("redirect:/my/settings/bank");
+
 		return mav;
 	}
 	

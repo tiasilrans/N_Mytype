@@ -1,4 +1,39 @@
-@CHARSET "EUC-KR";
+@CHARSET "UTF-8";
+.navbar-form {
+  margin:0;
+  margin-top: 5px;
+  padding:8px 0px;
+}
+ 
+.navbar-form .search-box {
+  border:0px;
+  height:35px;
+  outline: none;
+  width:320px;
+  padding-right: 3px;
+  padding-left: 15px;
+  margin:4px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  border-radius: 22px;
+}
+ 
+.navbar-form button {
+  border: 0;
+  background: none;
+  padding: 2px 5px;
+  margin-top: 2px;
+  position: relative;
+  left: -34px;
+  margin-bottom: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+ 
+.search-box:focus + button {
+  z-index: 3;   
+}
 
 body {
 	margin: 0px;
@@ -23,7 +58,7 @@ body {
 	transition: all 1s;
 }
 
-HEAD
+
 .navbar-me{
     padding: 10px 0px;
     background-color: transparent;
@@ -47,7 +82,7 @@ HEAD
 
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover
 	{
-	background-color: transparent;
+	background-color: transparent;	
 }
 
 .menu-collapsed-button {
@@ -120,10 +155,19 @@ HEAD
 		height: 32px;
 	}
 	
+	.search-nav{
+		display: none;
+	}
+	
 	
 }
 
-/* ∑Œ±◊¿Œ√¢ */
+
+
+
+
+
+/* Î°úÍ∑∏Ïù∏Ï∞Ω */
 #login-sbt,#login-alert{
 	width : 360px;
 	height: 60px;
