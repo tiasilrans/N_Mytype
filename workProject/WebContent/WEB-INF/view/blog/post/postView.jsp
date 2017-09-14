@@ -16,12 +16,12 @@
 			<div class="subtitle" style="font-family: sans-serif; color: black; font-size: 18px; margin-left: 3px;">${post.SUBTITLE }</div>
 			<div class="profile" style="margin-top: 45px;">  
 				<div class="media-profile">   
-                	<div class="media-left" style="margin: 10px;"> 
+                	<div class="media-left" style="margin: 10px;  vertical-align: middle;"> 
      						<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 35px; height: 35px;">
    					</div>    
     				<div class="media-body">  
       					<h4 class="media-heading" style="font-family: sans-serif; color: black;">${post.NICKNAME }</h4>
-     					<h4 style="font-family: sans-serif; color: #808080;"><small>${post.PDATE }</small></h4> 
+     					<h4 style="font-family: sans-serif; color: #808080;"><small>${post.PDATE }</small> <small>조회 ${post.COUNT }</small></h4>
                 	</div> 
 				</div> 
 			</div>	
