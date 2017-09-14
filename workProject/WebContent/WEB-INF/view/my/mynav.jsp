@@ -47,11 +47,19 @@
 					<li class="dropdown">
 						<a id="account-toggler" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#" role="button" title="MY"
 													style="padding: 0px; margin: 6px;">
-                            <img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;">
+                            <c:choose>
+								<c:when test="${info.IMAGE eq null }">
+									<img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px; margin: 2px;">
+								</c:when>
+								<c:otherwise>
+									<img src="/images/profile/${info.IMAGE}" style="border-radius: 50%; height: 32px; width: 32px; margin: 2px;">
+								</c:otherwise>
+							</c:choose>
+							
                             <span class="sr-only">계정</span></a>
                             <ul class="dropdown-menu">
                             	<li><a href="/my/home"><i class="material-icons" style="color: #999999;">dashboard</i>　　MY홈</a></li>
-                            	<li><a href="/my/goods"><i class="material-icons" style="color: #999999;">favorite</i>　　좋아요</a></li>
+                            	<li><a href="/my/postgood"><i class="material-icons" style="color: #999999;">favorite</i>　　좋아요</a></li>
                             	<li><a href="/my/purchases"><i class="material-icons" style="color: #999999;">get_app</i>　　구매항목</a></li>
                             	<li><a href="/my/point/plist"><i class="material-icons" style="color: #999999;">monetization_on</i>　　포인트</a></li>
                             	<li><a href="/my/settings/account"><i class="material-icons" style="color: #999999;">settings</i>　　설정</a></li>
@@ -85,7 +93,7 @@
 						<a class="nav-link" href="/my/home">MY홈</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/my/goods">좋아요</a>
+						<a class="nav-link" href="/my/postgood">좋아요</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/my/purchases">구매 항목</a>
