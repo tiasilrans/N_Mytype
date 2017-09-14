@@ -6,6 +6,17 @@
 <!-- navCss -->
 <link rel="stylesheet" href="/css/navcss.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+
+@media ( max-width : 767px) {	
+	.search-nav{
+		display: none;
+	}	
+}
+
+</style>
+
+
 
 <!--navbar menu-->
 <section class="navbar-info ">
