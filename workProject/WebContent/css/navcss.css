@@ -162,6 +162,16 @@ body {
 	
 }
 
+@media ( max-width : 768px) {	
+	.search-nav{
+		display: none;
+	}	
+}
+
+
+
+
+
 /* 로그인창 */
 #login-sbt,#login-alert{
 	width : 360px;

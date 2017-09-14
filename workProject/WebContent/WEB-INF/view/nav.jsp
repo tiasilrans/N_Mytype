@@ -2,15 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-@media ( max-width : 768px) {	
-	.search-nav{
-		display: none;
-	}	
-}
-
-</style>
-
 
 <!-- navCss -->
 <link rel="stylesheet" href="/css/navcss.css">
