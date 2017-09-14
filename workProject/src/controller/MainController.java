@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.BlogDAO;
 import model.MemberDao;
+import model.MyDao;
 import model.PostDao;
 
 @Controller
@@ -40,6 +41,9 @@ public class MainController {
 	@Autowired
 	JavaMailSender sender;
 	
+	@Autowired
+	MyDao myDao;
+	
 	@RequestMapping({ "/", "/index.mt" })
 	public ModelAndView welcome(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -51,6 +55,7 @@ public class MainController {
 		mav.addObject("listAll",pdao.sublist(pdao.listAll(str)));
 		if(session.getAttribute("login") != null){
 			mav.addObject("listLike",pdao.sublist(pdao.listLike(str)));
+			mav.addObject("info", myDao.info((String)session.getAttribute("login")));
 		}
 		return mav;
 	}

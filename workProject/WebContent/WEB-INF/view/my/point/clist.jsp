@@ -5,28 +5,6 @@
 
 <link rel="stylesheet" href="/css/my.css">
 
-<nav id="tertiary-nav" class="tertiary-nav navbar scroll-x">
-    <div class="col-xs-offset-1 col-md-offset-1">
-        <ul class="nav navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link active" href="/my/point/plist">포인트 내역</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/my/point/charge">포인트 충전</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/my/point/clist"><b>충전 내역</b></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/my/point/withdraw">출금 신청</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/my/point/wlist">출금 내역</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
 <style>
   
 table.type07 {
@@ -105,6 +83,12 @@ table.type07 td {
 		</tbody>
 	</table>
 
+	<ul class="pagination">
+	<c:forEach var="i" begin="1" end="${page}">
+		<li ${np == i? "class=\"active\"": ""}><a
+			href="/my/point/clist.mt?np=${i}">${i}</a></li>
+	</c:forEach>
+	</ul>
 </div>
 
 

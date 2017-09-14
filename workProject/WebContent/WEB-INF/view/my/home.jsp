@@ -52,7 +52,7 @@
 		<div class="title">
 			<span style="float:left; font-size: 17px;"><b>좋아요</b></span>
 			<span style="font-size: 13px; float:right; padding-right:15px;">
-				<a style="text-decoration:none; color: #999999;" href="/my/goods"> 더 보기 > </a> 
+				<a style="text-decoration:none; color: #999999;" href="/my/postgood"> 더 보기 > </a> 
 			</span>
 			<br/><br/>
 			<div class="incard" style="float: left;" >

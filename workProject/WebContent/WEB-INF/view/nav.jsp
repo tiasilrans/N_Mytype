@@ -30,7 +30,7 @@
 				<ul class="nav navbar-nav navbar-left">
 					<li class=""><a class="header" href="/"
 						id="home">홈</a></li>
-					<li><a class="" href="">구독</a></li>
+					<li><a class="" href="/subscribe/blog.mt">구독</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">내 블로그<span class="caret"></span></a>
 						<ul class="dropdown-menu">						
@@ -53,11 +53,20 @@
 					<li class="dropdown">
 						<a id="account-toggler" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#" role="button" title="MY"
 													style="padding: 0px; margin: 6px;">
-                            <img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px; margin: 2px;">
+													
+                            <c:choose>
+								<c:when test="${info.IMAGE eq null }">
+									<img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px; margin: 2px;">
+								</c:when>
+								<c:otherwise>
+									<img src="/images/profile/${info.IMAGE}" style="border-radius: 50%; height: 32px; width: 32px; margin: 2px;">
+								</c:otherwise>
+							</c:choose>
+                            
                             <span class="sr-only">계정</span></a>
                             <ul class="dropdown-menu">     
                             	<li style="vertical-align: middle;"><a href="/my/home"><label class="material-icons" style="color: #999999; font-size: 23px; float: left;">dashboard</label>　　<font style="margin-top: 7px;">MY홈</font> </a></li>
-                            	<li><a href="/my/goods"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">favorite</i>　　좋아요</a></li>   
+                            	<li><a href="/my/postgood"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">favorite</i>　　좋아요</a></li>   
                             	<li><a href="/my/purchases"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">get_app</i>　　구매항목 </a></li>
                             	<li><a href="/my/point/plist"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">monetization_on</i>　　포인트</a></li> 
                             	<li><a href="/my/settings/account"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">settings</i>　　설정</a></li>
@@ -109,6 +118,21 @@
 	});
 </script>
 
+<!-- 쪽지왔을때 modal생성 -->
+<c:if test="${sessionScope.login ne null }">
+	<script>
+		var ws = new WebSocket("ws://${initParam.realip }/ws/mail.ws");
+
+		ws.onmessage = function(e) {
+			if(e.data == "mail"){
+			console.log(e.data);
+				$("#mailmodal").modal();
+			};
+		};
+	</script>
+</c:if>
+
+
 
 <!-- 로그인창 modal  -->
   <div class="modal fade" id="login-form" role="dialog">
@@ -140,6 +164,27 @@
 					<button id="login-sbt" type="submit" class="btn">로그인</button>
 				</div>
 			</form>
+		</div>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+ 
+ <!-- 쪽지왔을때 modal -->
+   <div class="modal fade" id="mailmodal" role="dialog">
+    <div class="modal-dialog modal-sm">
+    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">메일이 도착했습니다.</h4>
+        </div>
+        
+        <div class="modal-body">
+          		<div class="form-group row" align="center">
+          		<a href="/mail/list.mt?type=receive"><button type="button" class="btn btn-primary">쪽지함이동</button></a>
 		</div>
         </div>
 

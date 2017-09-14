@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="javax.servlet.*" %>
 
 <link href="/css/my.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -46,26 +48,8 @@ label{
 
 </style>
 
-<nav id="tertiary-nav" class="tertiary-nav navbar scroll-x">
-    <div class="col-xs-offset-1 col-md-offset-1">
-        <ul class="nav navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link active" href="/my/settings/account">계정</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/my/settings/profile">프로필</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/my/settings/password">비밀번호</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/my/settings/bank">수익</a>
-            </li>
-        </ul>
-    </div>
-</nav>
 
-<form class="form-inline form-horizontal">
+<form class="form-inline form-horizontal" action="/my/settings/profileExec" method="post" enctype="multipart/form-data">
 	<div class="scard col-xs-offset-1 col-md-offset-1">
 		<div class="title">
 			<span style="float:left; font-size: 17px; margin-left: 5px;"><b>프로필 편집</b></span>
@@ -74,22 +58,30 @@ label{
 		<div class="card-block">
 			<label style="color: #606060;" >프로필 사진</label>
 			<div class="input-group">
-				<img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 75px; width: 75px;">
+				<c:choose>
+					<c:when test="${info.IMAGE eq null }">
+						<img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 75px; width: 75px;">
+					</c:when>
+					<c:otherwise>
+						<img src="/images/profile/${info.IMAGE}" style="border-radius: 50%; height: 75px; width: 75px;">
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<div class="input-group">
-				<button class="w3-button w3-white w3-border w3-round-large" style="width:100%;" >파일 선택...</button>
+				<input type="file" name="image" class="w3-button w3-white w3-border w3-round-large" style="width:100%;" >
 				<p style="padding-top: 5px; margin-bottom:0; color:#909090; font-size: 13px;">최대 5MB의 이미지 파일</p>
-				<p><input class="w3-check" type="checkbox" style="width:15px; height:15px;">
-				<label style="font-size: 12px;">사진 삭제</label></p>
+				<p><input class="w3-check" type="checkbox" style="width:15px; height:15px;"> <label style="font-size: 12px;">사진 삭제</label></p>
 			</div>
 		</div>
 		<div class="card-block ">
 			<label style="color: #606060;">이름</label>
-			<input type="text" name="nickname" class="form-control" style="width:65%;" >
+			<input type="text" name="nickname" class="form-control" style="width:65%;" 
+			 <c:if test="${info.NICKNAME ne null }"> value="${info.NICKNAME }" </c:if> />
 		</div>
 		<div class="card-block">
 			<label style="color: #606060;">자기 소개</label>
-			<textarea name="introduce" class="form-control" style="width:65%;" rows="2"></textarea>
+			<input type="text" name="introduce" class="form-control" style="width:65%;"
+			 <c:if test="${info.INTRODUCE ne null}"> value="${info.INTRODUCE}" </c:if>/>
 		</div>
 		<hr style="margin: 0px;" />
 	    <div class="card-block ">
