@@ -5,9 +5,9 @@
 <mapper namespace="subscribe">
 
 	<select id="list" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from (select rownum as r, tmp.* from
-		(select blog.* from (select * from SUBSCRIBE where email='tmdxor66@naver.com')tmp left join blog on tmp.address=blog.url)tmp)
-		tmp2 where tmp2.r between #{first} and #{last}
+		select * from (select tmp2.*, m.image from (select rownum as r, tmp.* from
+		(select blog.*,tmp.sdate from (select * from SUBSCRIBE where email=#{email})tmp left join blog on tmp.address=blog.url)tmp)tmp2 left join member m on m.email=tmp2.email)
+		tmp3 where tmp3.r between #{first} and #{last} order by sdate desc
 	</select>
 	
 	<!-- 게시물 총 갯수 (페이징) -->

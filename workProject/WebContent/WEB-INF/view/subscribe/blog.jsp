@@ -38,8 +38,14 @@ table.type07 td {
 			<ul class="list-group" style="width: 50%; text-align: left">
 				<c:forEach var="blog" items="${slist}">
 					<li class="list-group-item" style="background-color: #F6F6F6;">
-						<img class="conhead-profileimg" src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png"
-						style="">
+					<c:choose>
+					<c:when test="${blog.IMAGE eq null}">
+						<img class="conhead-profileimg" src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png">
+					</c:when>
+					<c:otherwise>
+						<img class="conhead-profileimg" src="/images/profile/${blog.IMAGE}">
+					</c:otherwise>
+					</c:choose>
 						${blog.EMAIL} / ${blog.TITLE} / ${blog.INTRO} / ${blog.URL} 
 					</li>
 				</c:forEach>

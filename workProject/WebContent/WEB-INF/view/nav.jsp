@@ -55,11 +55,11 @@
 													style="padding: 0px; margin: 6px;">
 													
                             <c:choose>
-								<c:when test="${info.IMAGE eq null }">
+								<c:when test="${sessionScope.info.IMAGE eq null }">
 									<img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px; margin: 2px;">
 								</c:when>
 								<c:otherwise>
-									<img src="/images/profile/${info.IMAGE}" style="border-radius: 50%; height: 32px; width: 32px; margin: 2px;">
+									<img src="/images/profile/${sessionScope.info.IMAGE}" style="border-radius: 50%; height: 32px; width: 32px; margin: 2px;">
 								</c:otherwise>
 							</c:choose>
                             
