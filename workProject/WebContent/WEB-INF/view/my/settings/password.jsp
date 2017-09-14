@@ -74,7 +74,7 @@ label{
 		<br/><hr/>
 		<div class="card-block">
 			<label style="color: #606060;" >비밀번호</label>
-			<input type="text" name="pw" class="form-control" style="width:65%;" placeholder="비밀번호">
+			<input type="text" name="password" class="form-control" style="width:65%;" placeholder="비밀번호">
 		</div>
 		<div class="card-block ">
 			<label style="color: #606060;">새 비밀번호</label>

@@ -293,10 +293,29 @@ public class MyController {
 	}
 	
 	@RequestMapping("/settings/bank")
-	public ModelAndView bank() {
+	public ModelAndView bank(HttpSession session) {
+		Map info = myDao.info((String)session.getAttribute("login"));
+		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("t_my");
+			mav.addObject("info",info);
 			mav.addObject("section","settings/bank");
+			
+		return mav;
+	}
+	@RequestMapping("/settings/bankExec")
+	public ModelAndView bankExec(@RequestParam Map map, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		
+		String my =  (String)session.getAttribute("login");
+		
+		map.put("email", my);
+		String str = myDao.bank(map);
+		
+		System.out.println("bankExec = " + str);
+		
+		mav.setViewName("redirect:/my/settings/bank");
+			
 		return mav;
 	}
 	

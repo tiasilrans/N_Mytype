@@ -37,4 +37,35 @@ public class MyDao {
 			session.close();
 		}
 	}
+	
+	public String bank(Map map) {
+		SqlSession session = factory.openSession();
+		try{
+			session.update("my.bank",map);
+			session.commit();
+			return "Success";
+		}catch(Exception e){
+			e.printStackTrace();
+			return "Fail";
+		}finally{
+			session.close();
+		}
+	}
+	
+	public String pwchange(Map map) {
+		SqlSession session = factory.openSession();
+		try{
+			session.update("my.pwhchange",map);
+			session.commit();
+			return "Success";
+		}catch(Exception e){
+			e.printStackTrace();
+			return "Fail";
+		}finally{
+			session.close();
+		}
+	}
+	
+	
+	
 }
