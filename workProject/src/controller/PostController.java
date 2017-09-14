@@ -1,5 +1,6 @@
 package controller;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,13 +52,18 @@ public class PostController {
 	@RequestMapping("/{url}/post/{num}")
 	public ModelAndView postView(@PathVariable(value="url") String url,
 											@PathVariable(value="num") int num){
+		ModelAndView mav = new ModelAndView();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");		
 		Map map = new HashMap<>();
 			map.put("num", num);
-		HashMap post = pdao.onePost(map);
-		ModelAndView mav = new ModelAndView();
+		boolean c = pdao.postCounter(map);
+		if(c){
+			HashMap post = pdao.onePost(map);
+			post.put("PDATE", sdf.format(post.get("PDATE")));
 			mav.setViewName("post_view");
 			mav.addObject("section", "blog/post/postView");
 			mav.addObject("post", post);
+		}			
 		return mav;	
 	}
 		
