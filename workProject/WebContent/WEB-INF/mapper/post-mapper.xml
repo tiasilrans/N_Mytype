@@ -37,7 +37,8 @@
   	
   	<!--(메인) 게시물 전체 불러오기 -->
 	<select id="listall" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select tmp3.*,p.nickname as heart from 
+		select pp.*,m.image,m.email from 
+		(select tmp3.*,p.nickname as heart from 
 		(select tmp2.* from (select rownum as r, tmp.* from (select * from post
 		<!-- 태그 -->
 		<if test="tag != null">
@@ -53,7 +54,7 @@
 		</foreach>
 		</if>
 		
-		 order by pdate desc)tmp)tmp2 where tmp2.r between #{first} and #{last}
+		 order by num desc)tmp)tmp2 where tmp2.r between #{first} and #{last}
 		)tmp3 left join (select pg.* from postgood pg left join (select nickname as nick from member
 		<!-- 좋아요에 하트표시 위한 이메일 검색 -->
 		<choose>
@@ -64,17 +65,18 @@
 		 where email='널값을주기위한아무말'
 		</otherwise>
 		</choose>
-		 )pf on pg.NICKNAME=pf.nick where pf.nick is not null) p on tmp3.num=p.pnum
+		 )pf on pg.NICKNAME=pf.nick where pf.nick is not null) p on tmp3.num=p.pnum)pp left join member m on m.NICKNAME =pp.nickname ORDER BY num desc
 		</select>
 	
 	<!-- (메인) 게시물 구독한 게시물 불러오기 -->
 	<select id="listLike" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 	<if test="email != null">
-		select tmp3.*,p.nickname as heart from (
+		select pp.*,m.image,m.email from 
+		(select tmp3.*,p.nickname as heart from (
 		select tmp2.* from (select rownum as r, tmp.* from
-		 (select * from (select p.*,s.EMAIL from post p left join (select * from subscribe where email=#{email}) s on p.url=s.address)tmp where email=#{email} order by pdate desc
+		 (select * from (select p.*,s.EMAIL from post p left join (select * from subscribe where email=#{email}) s on p.url=s.address)tmp where email=#{email} order by num desc
 		 )tmp)tmp2 where tmp2.r between #{first} and #{last}
-		 )tmp3 left join (select pg.* from postgood pg left join (select nickname as nick from member where email=#{email})pf on pg.NICKNAME=pf.nick where pf.nick is not null) p on tmp3.num=p.pnum
+		 )tmp3 left join (select pg.* from postgood pg left join (select nickname as nick from member where email=#{email})pf on pg.NICKNAME=pf.nick where pf.nick is not null) p on tmp3.num=p.pnum)pp left join member m on m.NICKNAME =pp.nickname ORDER BY num desc
 	</if>
 	</select>
 	

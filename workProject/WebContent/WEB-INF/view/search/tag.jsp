@@ -22,11 +22,18 @@
 				
 					<!-- head -->
 					<div class="conhead">
-						<img class="conhead-profileimg" src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png">
+						<c:choose>
+						<c:when test="${all.IMAGE eq null}">
+							<img class="conhead-profileimg" src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png">
+						</c:when>
+						<c:otherwise>
+							<img class="conhead-profileimg" src="/images/profile/${all.IMAGE}">
+						</c:otherwise>
+						</c:choose>
 						<div class="conhead-title">
 							<span class="conhead-title-name"><b>${all.NICKNAME }</b></span><br/>
 							<span class="conhead-title-date">${all.PDATE } </span>|
-							<span><a class="conhead-title-blog">${all.URL }</a></span>
+							<span><a class="conhead-title-blog" href="/blog/${all.URL }">${all.URL }</a></span>
 						</div>	
 					</div>
 					
