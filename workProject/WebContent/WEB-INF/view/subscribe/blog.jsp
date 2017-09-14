@@ -41,6 +41,7 @@ table.type07 td {
 					style="width: 40%; text-align: left">
 					<div class="panel-body" style="background-color: #F6F6F6;">
 					<div class="col-md-2" style="padding : 0px;">
+					<a href="/blog/${blog.URL }" style="color: #616161;">
 						<c:choose>
 							<c:when test="${blog.IMAGE eq null}">
 								<img src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png" style="width: 65px; height: 65px; border-radius: 5px;">
@@ -49,10 +50,17 @@ table.type07 td {
 								<img src="/images/profile/${blog.IMAGE}" style="width: 65px; height: 65px; border-radius: 5px;">
 							</c:otherwise>
 						</c:choose>
+					</a>
 					</div>
-					<div class="col-md-10" style="padding : 0px;">
-						<div style="font-size: 20px; font-weight: bold;">${blog.TITLE}</div>
-						<span style="">${blog.INTRO}</span>
+					<div class="col-md-8" style="padding : 0px;">
+						<div style="font-size: 20px; font-weight: bold; padding-top: 5px;">
+						<a href="/blog/${blog.URL }" style="color: #616161; text-decoration: none;">
+						${blog.TITLE}</a></div>
+						<div style="padding: 5px; padding-left: 5px; padding-top: 0px;">${blog.INTRO}</div>
+					</div>
+					
+					<div class="col-md-2" style="padding : 0px;" style="vertical-align: middle;">
+						<button class="btn btn-dafault" type="button">구독취소</button>
 					</div>
 					</div>
 				</div>
