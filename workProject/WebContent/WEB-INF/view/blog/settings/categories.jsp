@@ -50,9 +50,7 @@ p {
 		<div align="right">
 			<button class="button button2" id="add">추가</button>
 		</div>
-		<br />
-
-
+		<br/>
 		<div class="form-group">
 			<input class="form-control" type="text" value="전체 보기"
 				readonly="readonly" />
@@ -85,14 +83,7 @@ p {
 					</div>
 				</c:if>
 			</c:forEach>
-
-
-
-
-
 		</div>
-
-
 		<div class="row">
 			<div class="col-md-6 form-group"></div>
 			<div class="col-md-6 form-group" align="right">
@@ -150,38 +141,52 @@ p {
 							$(this).parent().parent().before($(this).parent().parent().next());	
 						});
 
-					});
+	});
 
 	$("#bt").on("click", function() {
 		var cate_name_order = "";
 		var addcate_name = "";
 		var a1 = $('[name=addcate_name]');
+		var a2 = $('[name=cate_name]');
 		for (var i = 0; i < a1.length; i++) {
 			addcate_name += a1.eq(i).val() + ",";
 		}
 		$(".cate_name").each(function() {
 			cate_name_order += $(this).val() + ",";
 		});
-		console.log("순서 : " + cate_name_order)
-		console.log("추가 카테 이름  : " + addcate_name);
+	
 		
-		$.post({
-			url : "/blog/categoryUpdate.mt",
-			data : {
-				"cate_delete" : cate_delete,
-				"title" : "${title}",
-				"url" : "${url}",
-				"cate_name_order" : cate_name_order,
-				"addcate_name" : addcate_name
-			}
-		}).done(function(result) {
-			if(result.result){
-				location.href="/blog/"+result.url+"/categories";
-				window.alert("카테고리가 수정되었습니다.");
-			}
-		})
+			$.post({
+				url : "/blog/categoryUpdate.mt",
+				data : {
+					"cate_delete" : cate_delete,
+					"title" : "${title}",
+					"url" : "${url}",
+					"cate_name_order" : cate_name_order,
+					"addcate_name" : addcate_name
+				}
+			}).done(function(result) {
+				if(result.result){
+					location.href="/blog/"+result.url+"/categories";
+					window.alert("카테고리가 수정되었습니다.");
+				}else{
+					location.href="/blog/"+result.url+"/categories";
+					window.alert("카테고리 이름은 중복하여 사용할 수 없습니다.");
+				}
+			})
+		
 
 	});
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
 </script>
 
 
