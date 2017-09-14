@@ -31,7 +31,7 @@ table.type07 td {
 	<h2>충전 내역</h2>
 	<hr style="margin-top: 10px;"/>
 	</div>
-	<table class="table type07" style="width: 60%;">
+	<table class="table type07" style="width: 60%; float: left;">
 		<thead>
 			<tr style="background-color: #F6F6F6;">
 				<th>충전신청일</th>

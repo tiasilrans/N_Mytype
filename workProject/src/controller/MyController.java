@@ -50,19 +50,17 @@ public class MyController {
 		return mav;
 	}
 	
-	@RequestMapping("/postgood")
+	@RequestMapping("/library/postgood")
 	public ModelAndView goods() {
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_main");
-			mav.addObject("section","postgood");
+			mav.setViewName("library_postgood");
 		return mav;
 	}
 	
-	@RequestMapping("/purchases")
+	@RequestMapping("/library/purchases")
 	public ModelAndView purchases() {
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_main");
-			mav.addObject("section","purchases");
+			mav.setViewName("library_purchases");
 		return mav;
 	}
 	
@@ -72,7 +70,6 @@ public class MyController {
 		String email = (String)session.getAttribute("login");
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("point_plist");
-			mav.addObject("section","point/plist");
 			
 			//목록에 표시할 포스트 수
 			int pc = 5;
