@@ -214,11 +214,18 @@
 				
 					<!-- head -->
 					<div class="conhead">
+					<c:choose>
+					<c:when test="${all.IMAGE eq null}">
 						<img class="conhead-profileimg" src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png">
+					</c:when>
+					<c:otherwise>
+						<img class="conhead-profileimg" src="/images/profile/${all.IMAGE}">
+					</c:otherwise>
+					</c:choose>
 						<div class="conhead-title">
 							<span class="conhead-title-name"><b>${all.NICKNAME }</b></span><br/>
 							<span class="conhead-title-date">${all.PDATE } </span>|
-							<span><a class="conhead-title-blog">${all.URL }</a></span>
+							<span><a class="conhead-title-blog" href="/blog/${all.URL }">${all.URL }</a></span>
 						</div>	
 					</div>
 					
@@ -236,7 +243,7 @@
 					<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
 					<c:forEach items="${hashtag}" var="hash">
 					<span class="conbody-hashtag">
-						<a href="/"><span style="color: #909090;">#${hash}</span></a>
+						<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
 					</span>
 					</c:forEach>
 						
@@ -279,11 +286,18 @@
 				
 					<!-- head -->
 					<div class="conhead">
+					<c:choose>
+					<c:when test="${all.IMAGE eq null}">
 						<img class="conhead-profileimg" src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png">
+					</c:when>
+					<c:otherwise>
+						<img class="conhead-profileimg" src="/images/profile/${all.IMAGE}">
+					</c:otherwise>
+					</c:choose>
 						<div class="conhead-title">
 							<span class="conhead-title-name"><b>${all.NICKNAME }</b></span><br/>
 							<span class="conhead-title-date">${all.PDATE } </span>|
-							<span><a class="conhead-title-blog">${all.URL }</a></span>
+							<span><a class="conhead-title-blog" href="/blog/${all.URL }">${all.URL }</a></span>
 						</div>	
 					</div>
 					
@@ -300,7 +314,7 @@
 					<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
 					<c:forEach items="${hashtag}" var="hash">
 					<span class="conbody-hashtag">
-						<a href="/"><span style="color: #909090;">#${hash}</span></a>
+						<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
 					</span>
 					</c:forEach>
 						

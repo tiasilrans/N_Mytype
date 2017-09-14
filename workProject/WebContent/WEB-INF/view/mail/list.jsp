@@ -35,10 +35,13 @@ table.type07 td {
 	<hr style="margin-top: 10px;"/>
 	</div>
 
+<form action="/mail/delete.mt">
+	<input type="hidden" name="part" value="list"/>
+	<input type="hidden" name="type" value="${type}"/>
 	<table class="table type07" style="width: 50%;">
 		<thead>
 			<tr style="background-color: #F6F6F6;">
-				<th width="5%"></th>
+				<th width="5%"><input type="checkbox" id="allcheck"/></th>
 				<th width="20%">${type == 'send' ? '받은': '보낸'}사람</th>
 				<th width="55%">내용</th>
 				<th width="20%">${type == 'send' ? '보낸': '받은'}날짜</th>
@@ -46,10 +49,10 @@ table.type07 td {
 		</thead>
 		<tbody style="font-size: 14px;">
 		<c:choose>
-		<c:when test="${mlist ne null}">
+		<c:when test="${mlist.size() > 0}">
 			<c:forEach var="mail" items="${mlist}">
 				<tr>
-					<td style="vertical-align: middle; height: 50px;"><input type="checkbox" class="cb" value="${mail.NUM}" style="vertical-align: middle;"/></td>
+					<td style="vertical-align: middle; height: 50px;"><input type="checkbox" name="num" value="${mail.NUM}" style="vertical-align: middle;"/></td>
 					<td style="vertical-align: middle; height: 50px;">${mail.EMAIL}</td>
 					<td style="vertical-align: middle; height: 50px;"><a href="/mail/view.mt?num=${mail.NUM}&type=${type}">${mail.CONTENT}</a></td>
 					<td style="vertical-align: middle;">
@@ -69,7 +72,25 @@ table.type07 td {
 
 	<div style="width: 50%;" align="left">
 	<hr style="margin-top: 10px;"/>
-	<button class="btn btn-default" type="button" id="delete">삭제하기</button>
+	<button class="btn btn-default" type="submit" id="delete" >삭제하기</button>
 	</div>
+	<div style="width: 50%;" align="center">
+	<ul class="pagination">
+	<c:forEach var="i" begin="1" end="${page}">
+		<li ${np == i? "class=\"active\"": ""}><a
+			href="/mail/list.mt?np=${i}&type=${type}">${i}</a></li>
+	</c:forEach>
+	</ul>
+	</div>
+</form>
 
 </div>
+
+<script>
+$("#allcheck").click(function() {
+	$("input[name=num]:checkbox").each(function() {
+			$(this).attr("checked",true);
+		}
+	});
+});
+</script>
