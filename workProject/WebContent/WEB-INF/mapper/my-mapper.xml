@@ -4,7 +4,8 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="my">
-
+	
+	<!-- 나의정보 가져오기 -->
 	<select id="info" resultType="java.util.HashMap">
 		select * from member where email=#{email}
 	</select>
@@ -13,4 +14,15 @@
 	<update id="profileUp" parameterType="java.util.HashMap">
 		update member set nickname=#{nickname}, image=#{image} , introduce=#{introduce} where email=#{email}
 	</update>
+	
+	<!-- 비밀번호 업데이트 -->
+	<update id="pwchange" parameterType="java.lang.String">
+		update member set password=#{newpw} where email=#{email} and password=#{password}
+	</update>
+	
+	<!-- 은행계좌 업데이트 -->
+	<update id="bank" parameterType="java.util.HashMap">
+		update member set bank=#{bank}, account=#{account}, holder=#{holder} where email=#{email}
+	</update>
+	
 </mapper>

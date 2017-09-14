@@ -123,9 +123,6 @@ public class BlogDAO {
 	}
 	
 	
-	
-	
-	
 	public List<Map> cate_List(Map map){
 		List<Map> list = new ArrayList<>();
 		SqlSession session = factory.openSession();

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link href="/css/my.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -57,7 +57,7 @@ select {
 </style>
 
 
-<form class="form-inline form-horizontal">
+<form class="form-inline form-horizontal" action="/my/settings/bankExec">
 	<div class="scard col-xs-offset-1 col-md-offset-1">
 		<div class="title">
 			<span style="float:left; font-size: 17px; margin-left: 5px;"><b>프로필 편집</b></span>
@@ -69,9 +69,8 @@ select {
 		</div>
 		<div class="card-block">
 			<label style="color: #606060;">은행</label>
-				<select >
+				<select name="bank">
 					<option>은행을 선택해주세요.</option>
-					<option value="">은행을 선택해주세요.</option>
 					<option value="기업은행">기업은행</option>
 					<option value="국민은행">국민은행</option>
 					<option value="농협은행">농협은행</option>
@@ -88,11 +87,13 @@ select {
 		</div>
 		<div class="card-block ">
 			<label style="color: #606060;">계좌번호</label>
-			<input type="text" name="nickname" class="form-control" style="width:65%" >
+			<input type="text" name="account" class="form-control" style="width:65%;" 
+			 <c:if test="${info.ACCOUNT ne null }"> value="${info.ACCOUNT }" </c:if> />
 		</div>
 		<div class="card-block">
 			<label style="color: #606060; padding-right: 0">예금주명</label>
-			<input type="text" name="nickname" class="form-control" style="width:65%" >
+			<input type="text" name="holder" class="form-control" style="width:65%;" 
+			 <c:if test="${info.HOLDER ne null }"> value="${info.HOLDER }" </c:if> />
 		</div>
 		<hr style="margin: 0px;" />
 	    <div class="card-block">
