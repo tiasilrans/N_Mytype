@@ -36,7 +36,7 @@
 	<!-- mail -->
 	<definition name="mail_*" extends="t_base">
 		<put-attribute name="section" value="/WEB-INF/view/mail/{1}.jsp" />
-		<put-attribute name="nav2" value="/WEB-INF/view/mail/nav.jsp" />
+		<put-attribute name="nav2" value="/WEB-INF/view/my/nav.jsp" />
 	</definition>
 
 	

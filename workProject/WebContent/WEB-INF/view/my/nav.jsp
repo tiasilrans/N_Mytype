@@ -43,6 +43,13 @@
 							<li><a href="/my/settings/bank">수익</a></li>
 						</ul>
 					</li> 
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding: 5px; padding-left: 10px; padding-right:10px;">쪽지</a>
+						<ul class="dropdown-menu">						
+							<li><a href="/mail/write.mt">쪽지보내기</a></li>
+							<li><a href="/mail/list.mt?type=send">보낸쪽지함</a></li>
+							<li><a href="/mail/list.mt?type=receive">받은쪽지함</a></li>
+						</ul>
+					</li> 
 				</ul>
 			</div>
 		</div>
