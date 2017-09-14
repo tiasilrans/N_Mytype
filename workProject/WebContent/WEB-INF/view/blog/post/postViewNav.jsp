@@ -56,10 +56,9 @@
 									  
 						<c:if test="${sessionScope.blog ne null }">
 						<c:forEach var="blog" items="${sessionScope.blog}" begin="0" end="${sessionScope.blog.size()}">
-						<li style="margin-top: 15px;"><label style="float: left; margin-left: 3px;" class="material-icons">bookmark_border</label><span style="margin-left: 5px;">읽기 목록에 추가</span></li>
-						<li><label style="float: left; margin-left: -22px;" class="material-icons">insert_link</label><span style="margin-left: 6px;">링크 복사</span></li>
-						<li><label style="float: left; margin-left: -25px;" class="material-icons">flag</label><span style="margin-left: 5px;">신고하기</span></li>
-	
+						<li style="margin-top: 15px;"><label style="float: left; margin-left: -3px;" class="material-icons">bookmark_border</label><span style="margin-left: 5px;">읽기 목록에 추가</span></li>
+						<li><label style=" margin-left: -22px;" class="material-icons">insert_link</label><span style="margin-left: 6px;">링크 복사</span></li>
+						<li><label style=" margin-left: -22px;" class="material-icons">flag</label><span style="margin-left: 5px;">신고하기</span></li>
 						</c:forEach>   
 						</c:if>         
 						</ul></li>   
