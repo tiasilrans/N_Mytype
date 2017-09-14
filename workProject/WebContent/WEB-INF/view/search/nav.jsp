@@ -12,12 +12,12 @@
 
 
 <!-- search navbar menu-->
-	<nav class="navbar navbar-default search-navbar" style="border-top-style: none; min-height: 45px; padding-left: 150px;">
+	<nav class="navbar navbar-default search-navbar" style="border-top-style: none; min-height: 45px; padding-left: 147px;">
 		<div>		
 		<ul class="nav navbar-nav navbar-left">
-			<li class=""><a class="header" href="/search/main.mt?keyword=${keyword}" id="home" style="padding-top: 15px; height: 5px;">전체</a></li>
-			<li class=""><a class="header" href="/search/post.mt?keyword=${keyword}" id="home" style="padding-top: 15px; height: 5px;">포스트</a></li>
-			<li class=""><a class="header" href="/search/tagsearch.mt?keyword=${keyword}"  id="home" style="padding-top: 15px; height: 5px;">태그</a></li>
+			<li class=""><a class="header" href="/search/main.mt?keyword=${keyword}" id="home" style="padding-top: 12px; height: 5px;">전체</a></li>
+			<li class=""><a class="header" href="/search/post.mt?keyword=${keyword}" id="home" style="padding-top: 12px; height: 5px;">포스트</a></li>
+			<li class=""><a class="header" href="/search/tagsearch.mt?keyword=${keyword}"  id="home" style="padding-top: 12px; height: 5px;">태그</a></li>
 		</ul></div>		
 	</nav>
 <!-- end of navbar-->

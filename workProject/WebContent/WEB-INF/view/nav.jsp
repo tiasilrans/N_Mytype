@@ -30,7 +30,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/"><img src="/images/title.png" style="margin: 5px;"></a>
+				<a class="navbar-brand" href="/"><img src="/images/title.png"></a>
 				</div> 
 
 			<div class="collapse navbar-collapse header-right-menu"
