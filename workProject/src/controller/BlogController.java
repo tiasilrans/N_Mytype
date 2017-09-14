@@ -59,8 +59,8 @@ public class BlogController {
 		ModelAndView mav = new ModelAndView();
 		Map map = new HashMap();
 			map.put("url", url);
-		HashMap r = bDAO.blogView(map);
-		
+			map.put("email", (String)session.getAttribute("login"));			
+		HashMap r = bDAO.blogView(map);		
 		Map pageMap = new HashMap<>();
 		int lc = pDAO.postCount(map);
 		int tp = lc%12==0 ? lc/12 : lc/12+1;
@@ -69,14 +69,15 @@ public class BlogController {
 			pageMap.put("start", start);
 			pageMap.put("end", end);
 			pageMap.put("url", url);
-		List<Map> postList = pDAO.blogPostList(pageMap);
+			
 			mav.setViewName("blog_base");
 			mav.addObject("section", "blog/blog");
 			mav.addObject("header", "blog/header");
 			mav.addObject("map", r); // 블로그 정보
 			mav.addObject("title", r.get("TITLE"));
 			mav.addObject("pNum", tp);
-			mav.addObject("list", postList); // 블로그 메인 포스트 리스트
+			mav.addObject("list", pDAO.blogPostList(pageMap)); // 블로그 메인 포스트 리스트
+			mav.addObject("category", bDAO.cate_List(map));
 			
 		return mav;
 	}
@@ -139,7 +140,9 @@ public class BlogController {
 		String addName = (String)m.get("addcate_name");
 		String[] addcate_name = addName.split(",");
 		String uuid = "";	
-		boolean f = false;
+		boolean add = false;
+		boolean orderadd = false;
+		boolean order = false;
 		
 		List<Map> before = bDAO.cateAfterList(m);
 		for(String d : arr){// 삭제해야 할 경우			
@@ -161,8 +164,8 @@ public class BlogController {
 				uuid += UUID.randomUUID().toString().substring(0, 11) + ",";
 				m.put("addcate_id", uuid.split(",")[i]);
 				m.put("addcate_name", addcate_name[i]);
-				bDAO.categoryAdd(m);
-				bDAO.categoryAddOrder(m);				
+				add = bDAO.categoryAdd(m);
+				orderadd = bDAO.categoryAddOrder(m);				
 			}
 		}
 				
@@ -180,15 +183,16 @@ public class BlogController {
 				Map orderMap = new HashMap();
 					orderMap.put("cate_index", idx);
 					orderMap.put("cate_id", id);
-				f = bDAO.cateOrderUpdate(orderMap);				
+				order = bDAO.cateOrderUpdate(orderMap);				
 			}			
 		}		
 				
-		if(f){			
+		if(add){			
 			map.put("result", true);
 			map.put("url", m.get("url"));
 		}else{
 			map.put("result", false);
+			map.put("url", m.get("url"));
 		}
 	 		
  		return map;		
