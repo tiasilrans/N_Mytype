@@ -35,21 +35,29 @@ table.type07 td {
 
 		<c:choose>
 		<c:when test="${slist ne null}">
-			<ul class="list-group" style="width: 50%; text-align: left">
 				<c:forEach var="blog" items="${slist}">
-					<li class="list-group-item" style="background-color: #F6F6F6;">
-					<c:choose>
-					<c:when test="${blog.IMAGE eq null}">
-						<img class="conhead-profileimg" src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png">
-					</c:when>
-					<c:otherwise>
-						<img class="conhead-profileimg" src="/images/profile/${blog.IMAGE}">
-					</c:otherwise>
-					</c:choose>
-						${blog.EMAIL} / ${blog.TITLE} / ${blog.INTRO} / ${blog.URL} 
-					</li>
-				</c:forEach>
-			</ul>
+				
+				<div class="panel panel-default"
+					style="width: 40%; text-align: left">
+					<div class="panel-body" style="background-color: #F6F6F6;">
+					<div class="col-md-2" style="padding : 0px;">
+						<c:choose>
+							<c:when test="${blog.IMAGE eq null}">
+								<img src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png" style="width: 65px; height: 65px; border-radius: 5px;">
+							</c:when>
+							<c:otherwise>
+								<img src="/images/profile/${blog.IMAGE}" style="width: 65px; height: 65px; border-radius: 5px;">
+							</c:otherwise>
+						</c:choose>
+					</div>
+					<div class="col-md-10" style="padding : 0px;">
+						<div style="font-size: 20px; font-weight: bold;">${blog.TITLE}</div>
+						<span style="">${blog.INTRO}</span>
+					</div>
+					</div>
+				</div>
+				
+			</c:forEach>
 		</c:when>
 		<c:otherwise>
 			<ul class="list-group" style="width: 50%; text-align: left">

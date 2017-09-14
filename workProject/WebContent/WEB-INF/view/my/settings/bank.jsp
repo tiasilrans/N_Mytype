@@ -60,7 +60,7 @@ select {
 <form class="form-inline form-horizontal" action="/my/settings/bankExec">
 	<div class="scard col-xs-offset-1 col-md-offset-1">
 		<div class="title">
-			<span style="float:left; font-size: 17px; margin-left: 5px;"><b>프로필 편집</b></span>
+			<span style="float:left; font-size: 17px; margin-left: 5px;"><b>출금계좌 설정</b></span>
 		</div>
 		<br/><hr/>
 		<div class="card-block" style="padding-bottom: 0;">

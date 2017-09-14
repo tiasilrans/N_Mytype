@@ -45,8 +45,7 @@ public class MyController {
 	@RequestMapping("/home")
 	public ModelAndView home() {
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_main");
-			mav.addObject("section","home");
+			mav.setViewName("my_home");
 		return mav;
 	}
 	
