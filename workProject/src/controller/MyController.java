@@ -359,6 +359,8 @@ public class MyController {
 				File dst = new File(dir, my+".png");
 				f.transferTo(dst);
 				
+				System.out.println("realPath => "+dir);
+				
 			}
 			
 			map.put("image", my+".png");

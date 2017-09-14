@@ -48,10 +48,10 @@
 						data-toggle="dropdown" href="#" style="background-image: none; background-color: white; margin: 0px;"><i class="material-icons">more_vert</i></a>
 						<ul class="dropdown-menu">		  		 		
 						<div>		  
-						<li style="margin-top: 15px;"><label style="float: left; margin-left: 3px;" class="material-icons">bookmark_border</label><span style="margin-left: 5px;">읽기 목록에 추가</span></li>
-						<li><label style="float: left; margin-left: -22px;" class="material-icons">insert_link</label><span style="margin-left: 6px;">링크 복사</span></li>
-						<li><label style="float: left; margin-left: -25px;" class="material-icons">flag</label><span style="margin-left: 5px;">신고하기</span></li>
-	        			</div>
+						<li style="margin-top: 15px;"><label style="float: left; margin-left: -3px;" class="material-icons">bookmark_border</label><span style="margin-left: 5px;">읽기 목록에 추가</span></li>
+						<li><label style=" margin-left: -22px;" class="material-icons">insert_link</label><span style="margin-left: 6px;">링크 복사</span></li>
+						<li><label style=" margin-left: -22px;" class="material-icons">flag</label><span style="margin-left: 5px;">신고하기</span></li>
+					      
 						</ul></li>   
 				</ul>		
 		</div>

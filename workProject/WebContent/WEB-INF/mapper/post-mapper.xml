@@ -6,10 +6,15 @@
   	<!-- 포스트 쓰기 -->
   	<insert id="write" parameterType="java.util.HashMap">
   		insert into post(num, category, nickname, title, subtitle, fcontent, ccontent, good, 
-  					hash, report, pdate, url) 
+  					hash, report, pdate, url, count) 
  					values(post_seq.nextval, #{category}, #{nickname}, #{title}, #{subtitle},
- 						#{fcontent}, #{ccontent}, 0, #{hash}, 0, sysdate, #{url})
+ 						#{fcontent}, #{ccontent}, 0, #{hash}, 0, sysdate, #{url}, 0)
   	</insert>
+  	
+  	<!-- 조회수 증가 -->
+  	<update id="counter" parameterType="java.util.HashMap">
+  		update post set count = count+1 where num = #{num}
+  	</update> 	
   	
   	<!-- 카테고리 목록 가져오기 -->
   	<select id="cate_list" parameterType="java.util.HashMap" resultType="java.util.HashMap">
