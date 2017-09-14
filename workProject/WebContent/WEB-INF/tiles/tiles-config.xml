@@ -6,6 +6,7 @@
 		<put-attribute name="title" value="Mytype" />
 		<put-attribute name="nav" value="/WEB-INF/view/nav.jsp" />
 		<put-attribute name="nav2" value="" />
+		<put-attribute name="nav3" value="" />
 		<put-attribute name="section" value="/WEB-INF/view/main.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/view/footer.jsp" />
 		
@@ -41,13 +42,13 @@
 	
 	<!-- point -->
 	<definition name="point_*" extends="t_base">
-		<put-attribute name="nav2" value="/WEB-INF/view/my/point/nav.jsp" />
+		<put-attribute name="nav2" value="/WEB-INF/view/my/nav.jsp" />
 		<put-attribute name="section" value="/WEB-INF/view/my/point/{1}.jsp" />
 	</definition>
 	
 	<!-- setting -->
 	<definition name="settings_*" extends="t_base">
-		<put-attribute name="nav2" value="/WEB-INF/view/my/settings/nav.jsp" />
+		<put-attribute name="nav2" value="/WEB-INF/view/my/nav.jsp" />
 		<put-attribute name="section" value="/WEB-INF/view/my/settings/{1}.jsp" />
 	</definition>
 	
