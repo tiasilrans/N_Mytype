@@ -69,12 +69,26 @@
  a:hover { color: white; text-decoration: none;}
 
 .post-body{
-	background-color: white;
+	background-color:black;
 	width: 100%;
-	padding: 30px; 
- 	margin: 20px;   
-    
-}      
+	padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;   
+ 	margin: 20px;  
+ 	margin-top: -1.3px;
+}   
+ 
+footer {
+	background-color:black;
+	width: 100%;
+	padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+	margin: 20px;
+	margin-top: -20px;  
+}   
 
 </style> 
 
@@ -127,12 +141,12 @@
 							</footer>
 						</c:forEach>				
 					</div>  
-					<div class="div-pagination">
+					<div class="div-pagination" style="margin-left: 400px;">
 							<ul class="pagination">
 								<c:forEach var="i" begin="1" end="${pNum }">				
 									<li><a href="/blog/${map.URL }?p=${i }">${i }</a>		
 								</c:forEach>
-							</ul>
+							</ul> 
 					</div>
 				</div>
 			</c:when>
@@ -203,14 +217,6 @@
 							</c:forEach>
 
 						</ul>
-					</div>
-				</section>
-				
-				<section class="section box">
-					<h6 align="left" style="color: black; font-family: sans-serif;">태그</h6>
-					<div align="left">
-						<a class="label hashtag" href="/">혼잣말</a> 
-						
 					</div>
 				</section>
 			</div>
