@@ -5,7 +5,7 @@
 
 
 <!--navbar menu-->
-	<nav class="navbar navbar-default" style="border-top-style: none; min-height: 45px; margin-top: 90px;">
+	<nav class="navbar navbar-default" style="border-top-style: none; min-height: 45px;">
 		<div class="container">
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse" style="padding: 0px;">
@@ -52,3 +52,13 @@
 		</div>
 	</nav>
 
+<script>
+	$(window).scroll(function() {
+		if ($(this).scrollTop() > 5) {
+			$(".navbar-default").addClass("fixed-me");
+		} else {
+			$(".navbar-default").removeClass("fixed-me");
+			
+		}
+	});
+</script>

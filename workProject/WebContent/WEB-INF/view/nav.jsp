@@ -12,7 +12,6 @@
 <!--navbar menu-->
 <section class="navbar-info ">
 	<nav class="navbar navbar-default navbar-me" style="margin-bottom: 0px; ">
-		<div class="">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button"
@@ -89,7 +88,7 @@
 				</ul>
 				</c:otherwise>
 			</c:choose>	
-			<ul class="nav navbar-nav navbar-right search-nav">
+			<ul class="nav navbar-nav navbar-right">
 				<li><form class="navbar-form form-horizontal" role="search" action="/search/main.mt">
 					<div class="input-group">
 						<input type="text" class="search-box" placeholder="마이타입 검색" name="keyword">
@@ -101,7 +100,6 @@
 			</ul>		
 			</div>
 			<!-- /.navbar-collapse -->			
-		</div>
 	</nav>
 </section>
 <!-- end of navbar-->
