@@ -254,7 +254,18 @@ footer {
  				</div>    
  				      
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-bottom: 30px;">
- 					<label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="home" style="display:inline; margin-left: 14px;">구독</div>
+ 					<c:choose>
+	 					<c:when test="${sessionScope.login eq map.EMAIL }">
+		 					<form action="/blog/postWrite" method="post">
+								<input type="hidden" name="title" value="${map.TITLE }"/>
+								<input type="hidden" name="url" value="${map.URL }"/>
+								<button class="button button1" type="submit" title="새 포스트를 작성합니다.">새 포스트 쓰기</button>
+							</form>
+	 					</c:when>
+	 					<c:otherwise>
+	 						<label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="home" style="display:inline; margin-left: 14px;">구독</div>
+	 					</c:otherwise>
+ 					</c:choose>
  				</div>
  			
  				       
