@@ -185,12 +185,7 @@
 					<h6 align="left" style="color: black; font-family: sans-serif;">태그</h6>
 					<div align="left">
 						<a class="label hashtag" href="/">혼잣말</a> 
-						<a class="label hashtag" href="/">일상</a> 
-						<a class="label hashtag" href="/">테스트</a> 
-						<a class="label hashtag" href="/">일기</a> 
-						<a class="label hashtag" href="/">소설</a> 
-						<a class="label hashtag" href="/">수필</a> 
-						<a class="label hashtag" href="/">하루</a>
+						
 					</div>
 				</section>
 			</div>
