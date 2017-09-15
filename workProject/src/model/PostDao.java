@@ -268,4 +268,10 @@ public class PostDao {
 			session.close();
 		}
 	}
+	
+	
+	
+	
+	
+	
 }

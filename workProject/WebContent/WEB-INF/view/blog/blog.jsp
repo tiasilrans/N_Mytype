@@ -147,7 +147,7 @@
 						<div class="media-body" align="left">
 							<h4 class="media-heading" style="color: black; font-family: sans-serif; font-size: 15px;">${map.TITLE }</h4>
 						 	<div style="color: #a6a6a6;">          
-								<span style="font-size: 12px;">구독자</span> 0 <span style="font-size: 12px;">포스트</span> 0
+								<span style="font-size: 12px;">구독자</span> 0 <span style="font-size: 12px;">포스트</span> <span style="font-size: 12px;">${map.totalPostCnt }</span>
 							</div>
 							<button class="button button1" style="margin-top: 10px;">구독하기</button>
 
@@ -167,13 +167,13 @@
 						<ul class="Kategorie nav row">
 							<li class="Kategorie nav-item"><a class="Kategorie nav-link"
 								href="/blog/blogView" style="color: black; font-weight :light;" align="left">
-									전체 보기 <span class="post-count">3</span>
+									전체 보기 <span class="post-count">${map.totalPostCnt }</span>
 							</a></li>
 							<c:forEach var="obj" items="${category }">
 							<c:if test="${obj.CATEGORY_NAME ne \"전체 보기\"}">
 							<li class="Kategorie nav-item"><a class="nav-link" href=""
 								style="color: #8c8c8c;" align="left">${obj.CATEGORY_NAME }<span
-									class="post-count">3</span></a></li>
+									class="post-count"> ${obj.cnt }</span></a></li>
 							</c:if>
 							</c:forEach>
 
