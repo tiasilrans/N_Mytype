@@ -99,29 +99,31 @@
 								</a>
 							</div>      
 							<footer>
-								    <div class="media">
-									  <div class="media-left">
-									  <img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px;">
+								   <div class="media">
+								    	<div class="media-left">
+										 	<div class="media-left" style="vertical-align: middle;">
+										 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px;">
+										 	</div>
+										  	<div class="media-body"> 
+										  		<span style="font-size: 12px; color: black;">닉네임</span>										 	
+										  		<span style="font-size: 12px; color: #808080;">시간</span>
+										 	</div>
 									  </div>
-									   <div class="media-left"> 
-									  	<span style="font-size: 12px; color: black;">닉네임</span>
-									  </div>
-									  <div class="media-left">
-									  	<span style="font-size: 12px; color: #808080;">시간</span>
-									  </div>
-									  <div class="media-right">
-									 <i class="material-icons" style="font-size: 15px; color: #808080; float: left;">favorite_border</i> <span style="color: #808080; font-size: 12px; margin-left: 2px;">0</span>
-									  </div>
-									   <div class="media-right">
-									 <i class="material-icons" style="font-size: 15px; color: #808080; float: left;">chat_bubble_outline</i> <span style="color: #808080; font-size: 12px; margin-left: 2px;">0</span>
-									  </div>
-									  
-                        
-									
-									  
-									  
-									  
-									</div>
+									  <div class="media-right" style="width: 100px;">
+										  <div class="media-left">
+										 		<i class="material-icons" style="font-size: 15px; color: #808080; float: left;">favorite_border</i>
+										 		<div class="media-body"> 
+										 			<span style="color: #808080; font-size: 12px; margin-left: 2px;">0</span>
+										 		</div>
+										  </div>
+											<div class="media-left" >
+											 	<i class="material-icons" style="font-size: 15px; color: #808080; float: left;">chat_bubble_outline</i>
+											 	<div class="media-body">
+											 		<span style="color: #808080; font-size: 12px; margin-left: 2px;">0</span>
+												</div>
+											</div>
+										</div>						
+								</div>
 							</footer>
 						</c:forEach>				
 					</div>  
