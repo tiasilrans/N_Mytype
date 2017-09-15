@@ -46,17 +46,7 @@ body {
 	width: 100%;
 }
 
-.fixed-me {
-	background-color: #fff !important;
-	padding: 0px !important;
-	margin-bottom: 5px;
-	position: fixed;
-	top: 0;
-	z-index: 888;
-	width: 100%;
-	border-bottom: 3px solid #00134d !important;
-	transition: all 1s;
-}
+
 
 
 .navbar-me{
