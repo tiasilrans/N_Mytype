@@ -5,13 +5,10 @@
 <mapper namespace="library">
 	<!-- 구매한 게시물 리스트 -->
 	<select id="buylist" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select pp.*,m.image,m.email from 
-		(select tmp3.*,p.nickname as heart from (
-		select tmp2.* from (select rownum as r, tmp.* from
-		 (select * from (select p.*, s.EMAIL as myemail from post p left join (select * from buy where email=#{email}) s on p.num=s.pnum)tmp where myemail=#{email} order by num desc
-		 )tmp)tmp2 where tmp2.r between #{first} and #{last}
-		 )tmp3 left join (select pg.* from postgood pg left join (select nickname as nick from member where email=#{email})pf on pg.NICKNAME=pf.nick where pf.nick is not null) p
-         on tmp3.num=p.pnum)pp left join member m on m.NICKNAME =pp.nickname ORDER BY num desc
+         select pl.*,pg.email as heart from (select tmp3.*, m.nickname from (select tmp2.* from (select rownum as r, tmp.* from (select * from 
+         (select post.*,sc.email as sc from post left join (select * from buy where email=#{email})sc on post.num=sc.pnum) where sc is not null        
+		 order by num desc)tmp)tmp2 where tmp2.r between #{first} and #{last})tmp3 left join member m on m.email=tmp3.email)pl left join
+         (select * from postgood where email=#{email})pg on pl.num=pg.pnum
 	</select>
 	
 	<!-- 구매한 게시물 총 갯수 (페이징) -->
@@ -20,18 +17,15 @@
 	</select>
 	
 	<!-- 좋아요누른 게시물 리스트(미완) -->
-<!-- 	<select id="likelist" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select pp.*,m.image,m.email from 
-		(select tmp3.*,p.nickname as heart from (
-		select tmp2.* from (select rownum as r, tmp.* from
-		 (select * from (select p.*, s.EMAIL as myemail from post p left join (select * from postgood where email=#{email}) s on p.num=s.pnum)tmp where myemail=#{email} order by num desc
-		 )tmp)tmp2 where tmp2.r between #{first} and #{last}
-		 )tmp3 left join (select pg.* from postgood pg left join (select nickname as nick from member where email=#{email})pf on pg.NICKNAME=pf.nick where pf.nick is not null) p
-         on tmp3.num=p.pnum)pp left join member m on m.NICKNAME =pp.nickname ORDER BY num desc
-	</select> -->
+	<select id="likelist" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+         select pl.*,pg.email as heart from (select tmp3.*, m.nickname from (select tmp2.* from (select rownum as r, tmp.* from (select * from 
+         (select post.*,sc.email as sc from post left join (select * from postgood where email=#{email})sc on post.num=sc.pnum) where sc is not null        
+		 order by num desc)tmp)tmp2 where tmp2.r between #{first} and #{last})tmp3 left join member m on m.email=tmp3.email)pl left join
+         (select * from postgood where email=#{email})pg on pl.num=pg.pnum
+	</select>
 	
 	<!-- 좋아한 게시물 총 갯수 (페이징) -->
-	<select id="selectbuycount" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	<select id="selectlikecount" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select count(*) as count from postgood where email=#{email}
 	</select>
 
