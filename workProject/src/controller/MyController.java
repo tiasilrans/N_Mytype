@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import model.MemberDao;
 import model.MyDao;
 import model.PointDao;
+import model.LibraryDAO;
 
 @Controller
 @RequestMapping("/my")
@@ -34,6 +35,9 @@ public class MyController {
 	
 	@Autowired
 	MemberDao memberDao;
+	
+	@Autowired
+	LibraryDAO lDao;
 	
 	@Autowired
 	MyDao myDao;
@@ -50,16 +54,97 @@ public class MyController {
 	}
 	
 	@RequestMapping("/library/postgood")
-	public ModelAndView goods() {
+	public ModelAndView goods(@RequestParam Map map,HttpSession session) {
+		String email = (String)session.getAttribute("login");
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("library_postgood");
+			map.put("type", "like");
+			
+			//목록에 표시할 포스트 수
+			int pc = 12;
+			
+			//현재 페이지
+			int np = 1;
+			if(map.get("np") != null){
+				np = Integer.parseInt((String)map.get("np"));
+			}
+			mav.addObject("np", np);
+			
+			//불러올 리스트의 시작과 끝
+			int e = np*pc;
+			int s = e-pc+1;		
+			map.put("first", s);
+			map.put("last", e);
+			
+			if(email != null){
+				map.put("email", email);
+				System.out.println(map);
+				mav.addObject("list",lDao.List(map));
+			}
+			
+			//리스트 밑에 페이지수
+			int eSize = 5;
+			int p1 = lDao.selectcount(map);
+			int p = p1 / pc;
+			p = p1 % pc != 0 ? p+1: p;
+			mav.addObject("page", p);
+			
+			//화살표
+			int from = (np-1)*eSize;
+			int to = np*eSize;
+			if(to > p){
+				to = p;
+			}
+			mav.addObject("from",from);
+			mav.addObject("to",to);
 		return mav;
 	}
 	
 	@RequestMapping("/library/purchases")
-	public ModelAndView purchases() {
+	public ModelAndView purchases(@RequestParam Map map,HttpSession session) {
+		String email = (String)session.getAttribute("login");
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("library_purchases");
+			map.put("type", "buy");
+			
+			//목록에 표시할 포스트 수
+			int pc = 12;
+			
+			//현재 페이지
+			int np = 1;
+			if(map.get("np") != null){
+				np = Integer.parseInt((String)map.get("np"));
+			}
+			mav.addObject("np", np);
+			
+			//불러올 리스트의 시작과 끝
+			int e = np*pc;
+			int s = e-pc+1;		
+			map.put("first", s);
+			map.put("last", e);
+			
+			if(email != null){
+				map.put("email", email);
+				System.out.println(map);
+				mav.addObject("list",lDao.List(map));
+			}
+			
+			//리스트 밑에 페이지수
+			int eSize = 5;
+			int p1 = lDao.selectcount(map);
+			int p = p1 / pc;
+			p = p1 % pc != 0 ? p+1: p;
+			mav.addObject("page", p);
+			
+			//화살표
+			int from = (np-1)*eSize;
+			int to = np*eSize;
+			if(to > p){
+				to = p;
+			}
+			mav.addObject("from",from);
+			mav.addObject("to",to);
+			
 		return mav;
 	}
 	

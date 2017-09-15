@@ -42,7 +42,7 @@
   	
   	<!--(메인) 게시물 전체 불러오기 -->
 	<select id="listall" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		 select pl.*,pg.email as heart from (select tmp3.*, m.nickname as nick from (select tmp2.* from (select rownum as r, tmp.* from (select * from post
+		 select pl.*,pg.email as heart from (select tmp3.*, m.nickname from (select tmp2.* from (select rownum as r, tmp.* from (select * from post
 		<!-- 태그 -->
 		<if test="tag != null">
 		where hash like #{keyword}
@@ -73,7 +73,7 @@
 	<!-- (메인) 게시물 구독한 게시물 불러오기 -->
 	<select id="listLike" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 	<if test="email != null">
-         select pl.*,pg.email as heart from (select tmp3.*, m.nickname as nick from (select tmp2.* from (select rownum as r, tmp.* from (select * from 
+         select pl.*,pg.email as heart from (select tmp3.*, m.nickname from (select tmp2.* from (select rownum as r, tmp.* from (select * from 
          (select post.*,sc.address as sc from post left join (select * from subscribe where email=#{email})sc on post.url=sc.address) where sc is not null         
 		 order by num desc)tmp)tmp2 where tmp2.r between #{first} and #{last})tmp3 left join member m on m.email=tmp3.email)pl left join
          (select * from postgood where email=#{email})pg on pl.num=pg.pnum

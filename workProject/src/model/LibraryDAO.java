@@ -12,21 +12,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class libraryDAO {
+public class LibraryDAO {
 	@Autowired
 	SqlSessionFactory factory;	
 		
-	public List<Map> blogList(Map map){
+	public List<Map> List(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
 		try{
 			String type = (String)map.get("type");
-			if(type.equals("blog")){
-				list = session.selectList("subscribe.list", map);
+			if(type.equals("buy")){
+				list = session.selectList("library.buylist", map);
+			}else{
+				list = session.selectList("library.likelist", map);
 			}
 			return list;
 		}catch(Exception e){
-			System.out.println("SubscribeList Error");
+			System.out.println("LibraryList Error");
 			e.printStackTrace();
 			return list;
 		}finally{
@@ -40,11 +42,16 @@ public class libraryDAO {
 		SqlSession session = factory.openSession();
 		Map list = new HashMap<>();
 		try{
-			list = session.selectOne("subscribe.selectcount", map);
+			String type = (String)map.get("type");
+			if(type.equals("buy")){
+				list = session.selectOne("library.selectbuycount", map);
+			}else{
+				list = session.selectOne("library.selectlikecount", map);
+			}
 			int result = ((BigDecimal)list.get("COUNT")).intValue();
 			return result; 
 		}catch(Exception e){
-			System.out.println("Subscribeselectcount Error");
+			System.out.println("Libraryselectcount Error");
 			e.printStackTrace();
 			return 0;
 		}finally{
@@ -53,33 +60,4 @@ public class libraryDAO {
 	}
 	
 	
-	//구독삭제
-	public boolean deletesubscribe(Map map){
-		SqlSession session = factory.openSession();
-		try{
-			int i = session.delete("subscribe.deletesubscribe", map);
-			return true; 
-		}catch(Exception e){
-			System.out.println("SubscribeDelete Error");
-			e.printStackTrace();
-			return false;
-		}finally{
-			session.close();
-		}
-	}
-
-	//구독하기
-	public boolean insertsubscribe(Map map){
-		SqlSession session = factory.openSession();
-		try{
-			int i = session.insert("subscribe.insertsubscribe", map);
-			return true; 
-		}catch(Exception e){
-			System.out.println("SubscribeInsert Error");
-			e.printStackTrace();
-			return false;
-		}finally{
-			session.close();
-		}
-	}
 }
