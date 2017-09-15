@@ -101,27 +101,29 @@
 							<footer>
 								    <div class="media">
 									  <div class="media-left">
-									  <img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 30px; height: 30px;">
+									  <img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px;">
 									  </div>
-									   <div class="media-left">
-									  	<span>닉네임</span>
+									   <div class="media-left"> 
+									  	<span style="font-size: 12px; color: black;">닉네임</span>
 									  </div>
 									  <div class="media-left">
-									  	<span>시간</span>
+									  	<span style="font-size: 12px; color: #808080;">시간</span>
 									  </div>
 									  <div class="media-right">
-									 <i class="material-icons">favorite_border</i>
+									 <i class="material-icons" style="font-size: 15px; color: #808080; float: left;">favorite_border</i> <span style="color: #808080; font-size: 12px; margin-left: 2px;">0</span>
 									  </div>
 									   <div class="media-right">
-									 <i class="material-icons">chat_bubble_outline</i>
+									 <i class="material-icons" style="font-size: 15px; color: #808080; float: left;">chat_bubble_outline</i> <span style="color: #808080; font-size: 12px; margin-left: 2px;">0</span>
 									  </div>
+									  
+                        
 									
 									  
 									  
 									  
 									</div>
 							</footer>
-						</c:forEach>						
+						</c:forEach>				
 					</div>  
 					<div class="div-pagination">
 							<ul class="pagination">
