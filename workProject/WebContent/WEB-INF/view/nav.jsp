@@ -17,8 +17,9 @@
 
 
 <!--navbar menu-->
-<section class="navbar-info ">
-	<nav class="navbar navbar-default" style="margin-bottom: 0px; ">
+<div>
+<section class="navbar-info " style="position: fixed;z-index: 888;">
+	<nav class="navbar navbar-default" style="margin-bottom: 0px;">
 		<div class="navbar-me">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -112,17 +113,10 @@
 		</div>
 	</nav>
 </section>
+</div>
 <!-- end of navbar-->
 
-<script>
-	$(window).scroll(function() {
-		if ($(this).scrollTop() > 5) {
-			$(".navbar-me").addClass("fixed-me");
-		} else {
-			$(".navbar-me").removeClass("fixed-me");
-		}
-	});
-</script>
+
 
 <!-- 쪽지왔을때 modal생성 -->
 <c:if test="${sessionScope.login ne null }">
