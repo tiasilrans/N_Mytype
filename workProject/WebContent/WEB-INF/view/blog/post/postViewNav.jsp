@@ -60,11 +60,14 @@
 
 
 <script>
-	$(window).scroll(function() {
-		if ($(this).scrollTop() > 5) {
-			$(".navbar-me").addClass("fixed-me");
-		} else {
-			$(".navbar-me").removeClass("fixed-me");
-		}
-	});
+$(window).scroll(function() {
+	if ($(this).scrollTop() > 5) {
+		$(".navbar-me").addClass("fixed-me");
+		$(".fixed-me").removeClass("navbar-me");
+	} else {
+		$(".fixed-me").addClass("navbar-me");
+		$(".navbar-me").removeClass("fixed-me");
+		
+	}
+});
 </script>
