@@ -147,7 +147,7 @@
 						<div class="media-body" align="left">
 							<h4 class="media-heading" style="color: black; font-family: sans-serif; font-size: 15px;">${map.TITLE }</h4>
 						 	<div style="color: #a6a6a6;">          
-								<span style="font-size: 12px;">구독자</span> 0 <span style="font-size: 12px;">포스트</span> 0
+								<span style="font-size: 12px;">구독자</span> 0 <span style="font-size: 12px;">포스트</span> <span style="font-size: 12px;">${map.totalPostCnt }</span>
 							</div>
 							<button class="button button1" style="margin-top: 10px;">구독하기</button>
 
