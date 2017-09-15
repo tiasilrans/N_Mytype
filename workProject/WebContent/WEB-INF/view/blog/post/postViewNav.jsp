@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+
 <section class="navbar-info ">
 	<nav class="navbar navbar-default" style="margin-bottom: 0px; ">
-		<div class="container">
+		<div>
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header navbar-me">
 				<button type="button"
@@ -19,7 +22,7 @@
 			
 				 <!-- 나브바 왼쪽 -->
 				<ul class="nav navbar-nav navbar-left">
-				<li class="dropdown" style="margin-left: -210px;"><a class="dropdown-toggle"
+				<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#" style="background-image: none; background-color: white; margin: 0px;"><i class="material-icons" style="font-size: 30px; color: black;">menu</i></a>
 						<ul class="dropdown-menu">		  				
 									  
@@ -38,19 +41,19 @@
 				</ul>       
 				
 				<ul class="nav navbar-nav navbar-left">
-					<li style="margin-top: 3px; margin-left: -150px;"><a href="/blog/${post.url }"><i class="material-icons" style="color: black;">arrow_back</i></a></li>
+					<li style="margin-top: 3px;"><a href="/blog/${post.url}"><i class="material-icons" style="color: black;">arrow_back</i></a></li>
 				</ul>    
 				       
 				
 			   <!-- 나브바 오른쪽 -->
 				<ul class="nav navbar-nav navbar-right"> 
-					<li class="dropdown" style="margin-right: -200px;"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#" style="background-image: none; background-color: white; margin: 0px;"><i class="material-icons">more_vert</i></a>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#" style="background-image: none; background-color: white; margin: 0px;"><i class="material-icons" style="color: black;">more_vert</i></a>
 						<ul class="dropdown-menu">		  		 		
-						<div>		  
-						<li style="margin-top: 15px;"><label style="float: left; margin-left: -3px;" class="material-icons">bookmark_border</label><span style="margin-left: 5px;">읽기 목록에 추가</span></li>
-						<li><label style=" margin-left: -22px;" class="material-icons">insert_link</label><span style="margin-left: 6px;">링크 복사</span></li>
-						<li><label style=" margin-left: -22px;" class="material-icons">flag</label><span style="margin-left: 5px;">신고하기</span></li>
+								  
+						<li><i class="material-icons" style="float: left;">bookmark_border</i><span>읽기 목록에 추가</span></li>
+						<li><i class="material-icons" style="float: left; margin-left: -24px;">insert_link</i><span>링크 복사</span></li>
+						<li><i class="material-icons" style="float: left; margin-left: -22px;">flag</i><span>신고하기</span></li>
 					      
 						</ul></li>   
 				</ul>		
