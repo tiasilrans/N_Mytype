@@ -44,23 +44,23 @@ table.type07 td {
 					<a href="/blog/${blog.URL }" style="color: #616161;">
 						<c:choose>
 							<c:when test="${blog.IMAGE eq null}">
-								<img src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png" style="width: 65px; height: 65px; border-radius: 5px;">
+								<img src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png" style="width: 100px; height: 100px; border-radius: 5px;">
 							</c:when>
 							<c:otherwise>
-								<img src="/images/profile/${blog.IMAGE}" style="width: 65px; height: 65px; border-radius: 5px;">
+								<img src="/images/profile/${blog.IMAGE}" style="width: 100px; height: 100px; border-radius: 5px;">
 							</c:otherwise>
 						</c:choose>
 					</a>
 					</div>
-					<div class="col-md-8" style="padding : 0px;">
-						<div style="font-size: 20px; font-weight: bold; padding-top: 5px;">
+					<div class="col-md-7" style="padding : 0px;">
+						<div style="font-size: 20px; font-weight: bold; padding-top: 10px;">
 						<a href="/blog/${blog.URL }" style="color: #616161; text-decoration: none;">
 						${blog.TITLE}</a></div>
-						<div style="padding: 5px; padding-left: 5px; padding-top: 0px;">${blog.INTRO}</div>
+						<div style="padding: 5px; padding-left: 5px; padding-top: 5px;">${blog.INTRO}</div>
 					</div>
 					
-					<div class="col-md-2" style="padding : 0px;" style="vertical-align: middle;">
-						<button class="btn btn-dafault" type="button">구독취소</button>
+					<div class="col-md-3" style="padding : 0px; padding-top: 25px;" align="center">
+						<button class="btn btn-default subscribe" id="${blog.URL}" value="${blog.URL}" type="button" style="width: 60%; height: 50px; font-size: 15;"><b class="${blog.URL }" style="color: #616161;">구독취소</b></button>
 					</div>
 					</div>
 				</div>
@@ -83,3 +83,35 @@ table.type07 td {
 	</c:forEach>
 	</ul>
 </div>
+
+<script>
+function subscribe(){
+	var url = this.value;
+	var v = this.classList.contains("subscribe");
+		$.ajax({
+			url:"/subscribe/update.mt",
+			method : "get",
+			data : {
+			"url" : url,
+			"type" : v,
+			}
+		}).done(function(result) {
+			var rst = JSON.parse(result);
+			if(rst.rst){
+				if(v){
+					$("."+url).html("구독하기");
+					$("#"+url).removeClass("subscribe");
+				}else{
+					$("."+url).html("구독취소");
+					$("#"+url).addClass("subscribe");
+				}
+			}
+		});
+}
+$(".btn").on("click", subscribe);
+</script>
+
+
+
+
+

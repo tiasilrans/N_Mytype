@@ -5,9 +5,9 @@
   <mapper namespace="post">
   	<!-- 포스트 쓰기 -->
   	<insert id="write" parameterType="java.util.HashMap">
-  		insert into post(num, category, nickname, title, subtitle, fcontent, ccontent, good, 
+  		insert into post(num, category, email, title, subtitle, fcontent, ccontent, good, 
   					hash, report, pdate, url, count) 
- 					values(post_seq.nextval, #{category}, #{nickname}, #{title}, #{subtitle},
+ 					values(post_seq.nextval, #{category}, #{email}, #{title}, #{subtitle},
  						#{fcontent}, #{ccontent}, 0, #{hash}, 0, sysdate, #{url}, 0)
   	</insert>
   	

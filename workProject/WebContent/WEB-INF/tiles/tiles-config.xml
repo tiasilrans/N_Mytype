@@ -34,13 +34,13 @@
 	
 	<!-- Subscribe -->
 	<definition name="subscribe_*" extends="t_base">
-		<put-attribute name="section" value="/WEB-INF/view/subscribe/{1}.jsp" />
+		<put-attribute name="section" value="/WEB-INF/view/my/subscribe/{1}.jsp" />
 		<put-attribute name="nav2" value="/WEB-INF/view/my/nav.jsp" />
 	</definition>
 	
 	<!-- mail -->
 	<definition name="mail_*" extends="t_base">
-		<put-attribute name="section" value="/WEB-INF/view/mail/{1}.jsp" />
+		<put-attribute name="section" value="/WEB-INF/view/my/mail/{1}.jsp" />
 		<put-attribute name="nav2" value="/WEB-INF/view/my/nav.jsp" />
 	</definition>
 
