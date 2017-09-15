@@ -49,14 +49,14 @@
 				<ul class="nav navbar-nav navbar-right"> 
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#" style="background-image: none; background-color: white; margin: 0px;"><i class="material-icons" style="color: black;">more_vert</i></a>
-						<ul class="dropdown-menu">		  		 		
-								  
-						<li><i class="material-icons" style="float: left;">bookmark_border</i><span>읽기 목록에 추가</span></li>
-						<li><i class="material-icons" style="float: left; margin-left: -24px;">insert_link</i><span>링크 복사</span></li>
-						<li><i class="material-icons" style="float: left; margin-left: -22px;">flag</i><span>신고하기</span></li>
-					      
-						</ul></li>   
-				</ul>		
+						  <ul class="dropdown-menu">     
+                            	<li><a href=""><i class="material-icons" style="color: #1a1a1a; font-size: 23px; float: left;">bookmark_border</i>　　<span style="margin-left: -20px;">읽기 목록에 추가</span></a></li>   
+                            	<li><a href=""><i class="material-icons" style="color: #1a1a1a; font-size: 23px; float: left;">insert_link</i>　　<span style="margin-left: -20px;">링크 복사</span> </a></li>
+                            	<li><a href=""><i class="material-icons" style="color: #1a1a1a; font-size: 23px; float: left;">flag</i>　　<span style="margin-left: -20px;">신고하기</span> </a></li> 
+
+                          </ul>
+                          </li>
+   				</ul>
 		</div>
 	</nav>
 </section>
