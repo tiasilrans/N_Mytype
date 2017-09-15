@@ -1,10 +1,7 @@
 package model;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LibraryDao {
+public class LibraryDAO {
    @Autowired
    SqlSessionFactory factory;   
       
    public List<Map> List(Map map){
       SqlSession session = factory.openSession();
-      List<Map> list = new ArrayList<>();
+      List<Map> list = new ArrayList();
       try{
          String type = (String)map.get("type");
          if(type.equals("buy")){

@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import model.MemberDao;
 import model.MyDao;
 import model.PointDao;
-import model.LibraryDao;
+import model.LibraryDAO;
 
 @Controller
 @RequestMapping("/my")
@@ -37,7 +37,7 @@ public class MyController {
 	MemberDao memberDao;
 	
 	@Autowired
-	LibraryDao lDao;
+	LibraryDAO ldao;
 	
 	@Autowired
 	MyDao myDao;
@@ -53,7 +53,7 @@ public class MyController {
 		return mav;
 	}
 	
-	@RequestMapping("/library/postgood")
+/*	@RequestMapping("/library/postgood")
 	public ModelAndView goods(@RequestParam Map map,HttpSession session) {
 		String email = (String)session.getAttribute("login");
 		ModelAndView mav = new ModelAndView();
@@ -146,7 +146,7 @@ public class MyController {
 			mav.addObject("to",to);
 			
 		return mav;
-	}
+	}*/
 	
 	// 포인트부분
 	@RequestMapping("/point/plist")
