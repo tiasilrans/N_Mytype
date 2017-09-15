@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import model.MemberDao;
 import model.MyDao;
 import model.PointDao;
-import model.LibraryDAO;
+import model.LibraryDao;
 
 @Controller
 @RequestMapping("/my")
@@ -37,7 +37,7 @@ public class MyController {
 	MemberDao memberDao;
 	
 	@Autowired
-	LibraryDAO lDao;
+	LibraryDao lDao;
 	
 	@Autowired
 	MyDao myDao;
