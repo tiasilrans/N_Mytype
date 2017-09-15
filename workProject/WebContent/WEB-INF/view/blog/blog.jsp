@@ -98,9 +98,34 @@
 									</div>
 								</a>
 							</div>      
-							<footer>    
+							<footer>
+								   <div class="media">
+								    	<div class="media-left">
+										 	<div class="media-left" style="vertical-align: middle;">
+										 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px;">
+										 	</div>
+										  	<div class="media-body"> 
+										  		<span style="font-size: 12px; color: black;">닉네임</span>										 	
+										  		<span style="font-size: 12px; color: #808080;">시간</span>
+										 	</div>
+									  </div>
+									  <div class="media-right" style="width: 100px;">
+										  <div class="media-left">
+										 		<i class="material-icons" style="font-size: 15px; color: #808080; float: left;">favorite_border</i>
+										 		<div class="media-body"> 
+										 			<span style="color: #808080; font-size: 12px; margin-left: 2px;">0</span>
+										 		</div>
+										  </div>
+											<div class="media-left" >
+											 	<i class="material-icons" style="font-size: 15px; color: #808080; float: left;">chat_bubble_outline</i>
+											 	<div class="media-body">
+											 		<span style="color: #808080; font-size: 12px; margin-left: 2px;">0</span>
+												</div>
+											</div>
+										</div>						
+								</div>
 							</footer>
-						</c:forEach>						
+						</c:forEach>				
 					</div>  
 					<div class="div-pagination">
 							<ul class="pagination">
@@ -147,7 +172,7 @@
 						<div class="media-body" align="left">
 							<h4 class="media-heading" style="color: black; font-family: sans-serif; font-size: 15px;">${map.TITLE }</h4>
 						 	<div style="color: #a6a6a6;">          
-								<span style="font-size: 12px;">구독자</span> 0 <span style="font-size: 12px;">포스트</span> <span style="font-size: 12px;">${map.totalPostCnt }</span>
+								<span style="font-size: 12px;">구독자</span> <span style="font-size: 12px;">0</span> <span style="font-size: 12px;">포스트</span> <span style="font-size: 12px;">${map.totalPostCnt }</span>
 							</div>
 							<button class="button button1" style="margin-top: 10px;">구독하기</button>
 
@@ -185,12 +210,7 @@
 					<h6 align="left" style="color: black; font-family: sans-serif;">태그</h6>
 					<div align="left">
 						<a class="label hashtag" href="/">혼잣말</a> 
-						<a class="label hashtag" href="/">일상</a> 
-						<a class="label hashtag" href="/">테스트</a> 
-						<a class="label hashtag" href="/">일기</a> 
-						<a class="label hashtag" href="/">소설</a> 
-						<a class="label hashtag" href="/">수필</a> 
-						<a class="label hashtag" href="/">하루</a>
+						
 					</div>
 				</section>
 			</div>
@@ -228,7 +248,18 @@
  				</div>    
  				      
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-bottom: 30px;">
- 					<label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="home" style="display:inline; margin-left: 14px;">구독</div>
+ 					<c:choose>
+	 					<c:when test="${sessionScope.login eq map.EMAIL }">
+		 					<form action="/blog/postWrite" method="post">
+								<input type="hidden" name="title" value="${map.TITLE }"/>
+								<input type="hidden" name="url" value="${map.URL }"/>
+								<button class="button button1" type="submit" title="새 포스트를 작성합니다.">새 포스트 쓰기</button>
+							</form>
+	 					</c:when>
+	 					<c:otherwise>
+	 						<label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="home" style="display:inline; margin-left: 14px;">구독</div>
+	 					</c:otherwise>
+ 					</c:choose>
  				</div>
  			
  				       
