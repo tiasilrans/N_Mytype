@@ -98,7 +98,28 @@
 									</div>
 								</a>
 							</div>      
-							<footer>    
+							<footer>
+								    <div class="media">
+									  <div class="media-left">
+									  <img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 30px; height: 30px;">
+									  </div>
+									   <div class="media-left">
+									  	<span>닉네임</span>
+									  </div>
+									  <div class="media-left">
+									  	<span>시간</span>
+									  </div>
+									  <div class="media-right">
+									 <i class="material-icons">favorite_border</i>
+									  </div>
+									   <div class="media-right">
+									 <i class="material-icons">chat_bubble_outline</i>
+									  </div>
+									
+									  
+									  
+									  
+									</div>
 							</footer>
 						</c:forEach>						
 					</div>  
@@ -147,7 +168,7 @@
 						<div class="media-body" align="left">
 							<h4 class="media-heading" style="color: black; font-family: sans-serif; font-size: 15px;">${map.TITLE }</h4>
 						 	<div style="color: #a6a6a6;">          
-								<span style="font-size: 12px;">구독자</span> 0 <span style="font-size: 12px;">포스트</span> <span style="font-size: 12px;">${map.totalPostCnt }</span>
+								<span style="font-size: 12px;">구독자</span> <span style="font-size: 12px;">0</span> <span style="font-size: 12px;">포스트</span> <span style="font-size: 12px;">${map.totalPostCnt }</span>
 							</div>
 							<button class="button button1" style="margin-top: 10px;">구독하기</button>
 
