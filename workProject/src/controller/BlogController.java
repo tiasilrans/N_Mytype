@@ -1,5 +1,6 @@
 package controller;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.servlet.http.HttpSession;
@@ -55,7 +56,8 @@ public class BlogController {
 	
 	@RequestMapping("/{url}")
 	public ModelAndView BlogView(@PathVariable(value="url") String url, 
-						@RequestParam(name="p", defaultValue="1") int p, HttpSession session){		
+						@RequestParam(name="p", defaultValue="1") int p, HttpSession session){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 		ModelAndView mav = new ModelAndView();
 		Map map = new HashMap();
 			map.put("url", url);
