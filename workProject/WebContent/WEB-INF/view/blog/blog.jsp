@@ -167,13 +167,13 @@
 						<ul class="Kategorie nav row">
 							<li class="Kategorie nav-item"><a class="Kategorie nav-link"
 								href="/blog/blogView" style="color: black; font-weight :light;" align="left">
-									전체 보기 <span class="post-count">3</span>
+									전체 보기 <span class="post-count">${map.totalPostCnt }</span>
 							</a></li>
 							<c:forEach var="obj" items="${category }">
 							<c:if test="${obj.CATEGORY_NAME ne \"전체 보기\"}">
 							<li class="Kategorie nav-item"><a class="nav-link" href=""
 								style="color: #8c8c8c;" align="left">${obj.CATEGORY_NAME }<span
-									class="post-count">3</span></a></li>
+									class="post-count"> ${obj.cnt }</span></a></li>
 							</c:if>
 							</c:forEach>
 

@@ -12,10 +12,8 @@
  		insert into blogcategory(email, category_name, create_date, BLOG_TITLE, cate_id)
 					values(#{email}, '전체 보기', sysdate, #{title}, #{cate_id})
  	</insert>
- 	
- 	
- 	
-	<!-- 카테고리 생성 --> 
+ 	<!-- 카테고리 세팅 -->
+		<!-- 카테고리 생성 --> 
 	<insert id="category_add" parameterType="java.util.HashMap">
 		insert into blogcategory(email, category_name, create_date, BLOG_TITLE, cate_id)
 					values(#{email}, #{addcate_name}, sysdate, #{title}, #{addcate_id}) 
@@ -26,32 +24,30 @@
  	
  	<insert id="cate_order" parameterType="java.util.HashMap">
  		insert into cateorder(cate_id, cate_index) values(#{addcate_id}, 0)
- 	</insert>
- 	
- 	<!-- 카테고리 순서 수정 -->
+ 	</insert> 	
+ 		<!-- 카테고리 순서 수정 -->
  	<update id="cate_order_update" parameterType="java.util.HashMap">
  		update cateorder set cate_index = #{cate_index}
   						where cate_id = #{cate_id}
- 	</update>
- 	
- 	<!-- 카테고리 삭제 -->
+ 	</update> 	
+ 		<!-- 카테고리 삭제 -->
  	<delete id="cate_delete" parameterType="java.util.Iterator">
- 		delete from BLOGCATEGORY where cate_id=#{cate_id}
-		
+ 		delete from BLOGCATEGORY where cate_id=#{cate_id}		
  	</delete>
- 	
- 	
- 	
- 	<!-- 해당 블로그의 카테고리 목록 -->
- 	<select id="oneBlog_cList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
- 		select a.*, o.CATE_INDEX from (select * from BLOGCATEGORY where email=#{email}) a 
- 				left join CATEORDER o on a.cate_id=o.cate_id order by o.CATE_INDEX asc
- 	</select>
  	
  	
  	<!-- 블로그 뷰 -->
  	<select id="view" parameterType="java.util.HashMap" resultType="java.util.HashMap">
  		select * from blog where url=#{url}
+ 	</select> 	
+ 		<!-- 해당 블로그의 카테고리 목록 -->
+ 	<select id="oneBlog_cList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+ 		select a.*, o.CATE_INDEX from (select * from BLOGCATEGORY where BLOG_TITLE=#{title}) a 
+ 				left join CATEORDER o on a.cate_id=o.cate_id order by o.CATE_INDEX asc
+ 	</select>
+ 		<!-- 각 카테고리 포스트 수  -->
+ 	<select id="oneCate_count" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+ 		SELECT COUNT(*) FROM (SELECT post.CATEGORY FROM post where url=#{url})p where p.CATEGORY=#{category}
  	</select>
  	
  	

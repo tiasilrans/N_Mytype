@@ -60,9 +60,11 @@ public class BlogController {
 		Map map = new HashMap();
 			map.put("url", url);
 			map.put("email", (String)session.getAttribute("login"));			
-		HashMap r = bDAO.blogView(map);		
+		HashMap r = bDAO.blogView(map);
+			map.put("title", r.get("TITLE"));
 		Map pageMap = new HashMap<>();
 		int lc = pDAO.postCount(map);
+			r.put("totalPostCnt", lc);
 		int tp = lc%12==0 ? lc/12 : lc/12+1;
 		int start = (p-1)*12+1;
 		int end = start + 12 - 1;
@@ -70,6 +72,14 @@ public class BlogController {
 			pageMap.put("end", end);
 			pageMap.put("url", url);
 			
+		List<Map> list = bDAO.cate_List(map);
+		for(Map m : list){
+			String cn = (String)m.get("CATEGORY_NAME");
+				map.put("category", cn);
+			int cnt = bDAO.oneCateCnt(map);
+				m.put("cnt", cnt);
+		}
+	
 			mav.setViewName("blog_base");
 			mav.addObject("section", "blog/blog");
 			mav.addObject("header", "blog/header");
@@ -77,7 +87,7 @@ public class BlogController {
 			mav.addObject("title", r.get("TITLE"));
 			mav.addObject("pNum", tp);
 			mav.addObject("list", pDAO.blogPostList(pageMap)); // 블로그 메인 포스트 리스트
-			mav.addObject("category", bDAO.cate_List(map));
+			mav.addObject("category", list);
 			
 		return mav;
 	}
