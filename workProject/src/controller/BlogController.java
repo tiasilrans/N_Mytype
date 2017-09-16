@@ -1,5 +1,6 @@
 package controller;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.servlet.http.HttpSession;
@@ -30,7 +31,7 @@ public class BlogController {
 	public ModelAndView newBlog(){
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("t_el");
-	 	mav.addObject("section", "blog/create");
+	 	mav.addObject("section", "blog/settings/create");
 		return mav;
 	}
 	
@@ -54,30 +55,66 @@ public class BlogController {
 	}	
 	
 	@RequestMapping("/{url}")
-	public ModelAndView BlogView(@PathVariable(value="url") String url, HttpSession session){		
+	public ModelAndView BlogView(@PathVariable(value="url") String url, 
+						@RequestParam(name="p", defaultValue="1") int p, HttpSession session){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 		ModelAndView mav = new ModelAndView();
 		Map map = new HashMap();
 			map.put("url", url);
+			map.put("email", (String)session.getAttribute("login"));			
 		HashMap r = bDAO.blogView(map);
+			map.put("title", r.get("TITLE"));
+		Map pageMap = new HashMap<>();
+		int lc = pDAO.postCount(map);
+			r.put("totalPostCnt", lc);
+		int tp = lc%12==0 ? lc/12 : lc/12+1;
+		int start = (p-1)*12+1;
+		int end = start + 12 - 1;
+			pageMap.put("start", start);
+			pageMap.put("end", end);
+			pageMap.put("url", url);
+			
+		List<Map> list = bDAO.cate_List(map);
+		for(Map m : list){
+			String cn = (String)m.get("CATEGORY_NAME");
+				map.put("category", cn);
+			int cnt = bDAO.oneCateCnt(map);
+				m.put("cnt", cnt);
+		}
+	
 			mav.setViewName("blog_base");
 			mav.addObject("section", "blog/blog");
 			mav.addObject("header", "blog/header");
-			mav.addObject("map", r);
+			mav.addObject("map", r); // 블로그 정보
 			mav.addObject("title", r.get("TITLE"));
+			mav.addObject("pNum", tp);
+			mav.addObject("list", pDAO.blogPostList(pageMap)); // 블로그 메인 포스트 리스트
+			mav.addObject("category", list);
+			
 		return mav;
 	}
 	
 	@RequestMapping("/postWrite")
 	public ModelAndView postWrite(@RequestParam Map m, HttpSession session){
-		String email = (String)session.getAttribute("login");
-			m.put("email", email);
-		List<Map> catelist = pDAO.categoryList(m);	
-		System.out.println(catelist);
+		// m= 타이틀, url 들어가 있음
+		Map writeMap = (Map)session.getAttribute("writeMap");
+		if(writeMap !=null){
+			String title = (String)writeMap.get("title");
+			String url = (String)writeMap.get("url");
+			if(title!=null){
+				m.put("title", title);
+				m.put("url", url);
+			}
+		}
+		
+		List<Map> catelist = pDAO.categoryList(m);		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("post");
 			mav.addObject("title", "포스트작성");
 			mav.addObject("map", m);
 			mav.addObject("catelist", catelist);
+			session.setAttribute("writeMap", m);
+			
 		return mav;
 	}
 	
@@ -92,7 +129,7 @@ public class BlogController {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("blog_setting");
 			mav.addObject("title", r.get("TITLE"));
-			mav.addObject("section", "blog/categories");
+			mav.addObject("section", "blog/settings/categories");
 	 		mav.addObject("url", url);
 	 		mav.addObject("map", r);
 	 		mav.addObject("list", list);
@@ -115,7 +152,9 @@ public class BlogController {
 		String addName = (String)m.get("addcate_name");
 		String[] addcate_name = addName.split(",");
 		String uuid = "";	
-		boolean f = false;
+		boolean add = false;
+		boolean orderadd = false;
+		boolean order = false;
 		
 		List<Map> before = bDAO.cateAfterList(m);
 		for(String d : arr){// 삭제해야 할 경우			
@@ -137,8 +176,8 @@ public class BlogController {
 				uuid += UUID.randomUUID().toString().substring(0, 11) + ",";
 				m.put("addcate_id", uuid.split(",")[i]);
 				m.put("addcate_name", addcate_name[i]);
-				bDAO.categoryAdd(m);
-				bDAO.categoryAddOrder(m);				
+				add = bDAO.categoryAdd(m);
+				orderadd = bDAO.categoryAddOrder(m);				
 			}
 		}
 				
@@ -156,28 +195,22 @@ public class BlogController {
 				Map orderMap = new HashMap();
 					orderMap.put("cate_index", idx);
 					orderMap.put("cate_id", id);
-				f = bDAO.cateOrderUpdate(orderMap);				
+				order = bDAO.cateOrderUpdate(orderMap);				
 			}			
 		}		
 				
-		if(f){			
+		if(add){			
 			map.put("result", true);
 			map.put("url", m.get("url"));
 		}else{
 			map.put("result", false);
+			map.put("url", m.get("url"));
 		}
 	 		
  		return map;		
 	}
 	
-	@RequestMapping("test.mt")
-	public ModelAndView test(){
-		ModelAndView mav = new ModelAndView();
-			mav.setViewName("t_el");
-			mav.addObject("section", "blog/test");
-		
- 		return mav;			
-	}
+	
 	
 	
 

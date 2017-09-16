@@ -48,10 +48,10 @@ public class PointDao {
 	}
 	
 	//포인트 충전 신청 내역 불러오기
-	public List<Map> selectdeposit(String email){
+	public List<Map> selectdeposit(Map map){
 		SqlSession session = factory.openSession();
 		try{
-			return session.selectList("point.selectdeposit", email);
+			return session.selectList("point.selectdeposit", map);
 		}catch(Exception e){
 			System.out.println("selectDeposit Error");
 			e.printStackTrace();
@@ -62,10 +62,10 @@ public class PointDao {
 	}
 	
 	//포인트 사용 신청 내역 불러오기
-	public List<Map> selectpoint(String email){
+	public List<Map> selectpoint(Map map){
 		SqlSession session = factory.openSession();
 		try{
-			return session.selectList("point.selectpoint", email);
+			return session.selectList("point.selectpoint", map);
 		}catch(Exception e){
 			System.out.println("Selectpoint Error");
 			e.printStackTrace();
@@ -76,10 +76,10 @@ public class PointDao {
 	}
 	
 	//출금 내역 불러오기
-	public List<Map> selectwithdraw(String email){
+	public List<Map> selectwithdraw(Map map){
 		SqlSession session = factory.openSession();
 		try{
-			return session.selectList("point.selectwithdraw", email);
+			return session.selectList("point.selectwithdraw", map);
 		}catch(Exception e){
 			System.out.println("selectWithdraw Error");
 			e.printStackTrace();
@@ -146,4 +146,22 @@ public class PointDao {
 			session.close();
 		}
 	}
+	
+	//갯수 구하기(페이징)
+	public int selectcount(Map map){
+		SqlSession session = factory.openSession();
+		Map list = new HashMap<>();
+		try{
+			list = session.selectOne("point.selectcount", map);
+			int result = ((BigDecimal)list.get("COUNT")).intValue();
+			return result; 
+		}catch(Exception e){
+			System.out.println("PointSelectCount Error");
+			e.printStackTrace();
+			return 0;
+		}finally{
+			session.close();
+		}
+	}
+	
 }

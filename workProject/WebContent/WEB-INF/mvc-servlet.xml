@@ -17,16 +17,15 @@
 	<mvc:annotation-driven/>
 	<context:component-scan base-package="controller"/>
 	<context:component-scan base-package="model"/>
+	<context:component-scan base-package="handler"/>
 
 	<!-- websocket handler 등록-->
-<!--  <websocket:handlers>
-		<websocket:mapping handler="ws" path="/ws/chat.ws"/>
-		<websocket:mapping handler="alertWs" path="/ws/alert.ws"/>
+	<websocket:handlers>
+		<websocket:mapping handler="ws" path="/ws/mail.ws"/>
 		<websocket:handshake-interceptors>
 			<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
 		</websocket:handshake-interceptors>
 	</websocket:handlers>	
--->	
 
 
 	<!-- view Resolver -->
@@ -74,6 +73,10 @@
 				<value>/WEB-INF/mapper/blog-mapper.xml</value>
 				<value>/WEB-INF/mapper/post-mapper.xml</value>
 				<value>/WEB-INF/mapper/point-mapper.xml</value>
+				<value>/WEB-INF/mapper/my-mapper.xml</value>
+				<value>/WEB-INF/mapper/mail-mapper.xml</value>
+				<value>/WEB-INF/mapper/subscribe-mapper.xml</value>
+				<value>/WEB-INF/mapper/library-mapper.xml</value>
 			</list>
 		</property>
 	</bean>	

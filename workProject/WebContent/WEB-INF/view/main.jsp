@@ -149,7 +149,7 @@
 
 </style>   
 
-<div class="container" style="margin-left: auto;">
+<div class="container" style="margin-left: auto; width: 65%">
 
 			<!-- 메인쪽 로고 부분 -->
 			  <div class="container col-md-4" style="width:620px; height: 350px;">
@@ -196,10 +196,11 @@
 			<!-- 목록 nav -->
 			<div class="col-xs-0 col-md-12">
 			<div style="margin-left: 10px;">
-			<h2>최신 포스트</h2>
 			<ul class="nav nav-tabs" style="width: 950px;">
 			<li class="active"><a data-toggle="tab" href="#allList"><b>전체</b></a></li>
-			<li><a data-toggle="tab" href="#likeList"><b>구독</b></a></li>
+			<c:if test="${sessionScope.login ne null}">
+				<li><a data-toggle="tab" href="#likeList"><b>구독</b></a></li>
+			</c:if>
 			</ul>
 			</div>			
 			
@@ -213,19 +214,26 @@
 				
 					<!-- head -->
 					<div class="conhead">
+					<c:choose>
+					<c:when test="${all.IMAGE eq null}">
 						<img class="conhead-profileimg" src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png">
+					</c:when>
+					<c:otherwise>
+						<img class="conhead-profileimg" src="/images/profile/${all.IMAGE}">
+					</c:otherwise>
+					</c:choose>
 						<div class="conhead-title">
 							<span class="conhead-title-name"><b>${all.NICKNAME }</b></span><br/>
-							<span class="conhead-title-date">${all.PDATE } </span>|
-							<span><a class="conhead-title-blog">${all.URL }</a></span>
+							<span class="conhead-title-date"><fmt:formatDate value="${all.PDATE }" pattern="yyyy-MM-dd"/></span> |
+							<span><a class="conhead-title-blog" href="/blog/${all.URL }">${all.URL }</a></span>
 						</div>	
 					</div>
 					
 					
 					<!-- body -->
 					<div class="conbody">
-						<span class="conbody-title"><b>${all.TITLE }</b></span><br/>
-						<span class="conbody-content">${all.FCONTENT }</span><br/><br/>
+						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: #333333;"><span class="conbody-title"><b>${all.TITLE }</b></span></a><br/>
+						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: gray;"><span class="conbody-content">${all.FCONTENT }</span></a><br/><br/>
 						
 					</div>
 					
@@ -235,7 +243,7 @@
 					<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
 					<c:forEach items="${hashtag}" var="hash">
 					<span class="conbody-hashtag">
-						<a href="/"><span style="color: #909090;">#${hash}</span></a>
+						<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
 					</span>
 					</c:forEach>
 						
@@ -265,13 +273,7 @@
 			
 			<!-- 구독 게시물 배치 -->
 			<div id="likeList" class="tab-pane fade">
-			<c:choose>
-			<c:when test="${sessionScope.login == null}">
-			<div align="center">
-				<div style="width:600px; margin-top: 10px;"><h1> 로그인 후에 이용 가능합니다.</h1></div>
-			</div>
-			</c:when>
-			<c:otherwise>
+
 			<c:choose>
 			<c:when test="${listLike.size() == 0}">
 			<div align="center">
@@ -279,24 +281,31 @@
 			</div>
 			</c:when>
 			<c:otherwise>
-			<c:forEach var="all" items="${listLike}" begin="0" end="${listLike.size() < 8 ? listLike.size() : 8}" varStatus="vs">
+			<c:forEach var="all" items="${listLike}" begin="0" end="${listLike.size() < 5 ? listLike.size() : 5}" varStatus="vs">
 				<div id="post" class="col-xs-0 col-md-4">
 				
 					<!-- head -->
 					<div class="conhead">
+					<c:choose>
+					<c:when test="${all.IMAGE eq null}">
 						<img class="conhead-profileimg" src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png">
+					</c:when>
+					<c:otherwise>
+						<img class="conhead-profileimg" src="/images/profile/${all.IMAGE}">
+					</c:otherwise>
+					</c:choose>
 						<div class="conhead-title">
 							<span class="conhead-title-name"><b>${all.NICKNAME }</b></span><br/>
 							<span class="conhead-title-date">${all.PDATE } </span>|
-							<span><a class="conhead-title-blog">${all.URL }</a></span>
+							<span><a class="conhead-title-blog" href="/blog/${all.URL }">${all.URL }</a></span>
 						</div>	
 					</div>
 					
 					
 					<!-- body -->
 					<div class="conbody">
-						<span class="conbody-title"><b>${all.TITLE }</b></span><br/>
-						<span class="conbody-content">${all.FCONTENT }</span><br/><br/>
+						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: #333333;"><span class="conbody-title"><b>${all.TITLE }</b></span></a><br/>
+						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: gray;"><span class="conbody-content">${all.FCONTENT }</span></a><br/><br/>
 						
 					</div>
 					
@@ -305,7 +314,7 @@
 					<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
 					<c:forEach items="${hashtag}" var="hash">
 					<span class="conbody-hashtag">
-						<a href="/"><span style="color: #909090;">#${hash}</span></a>
+						<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
 					</span>
 					</c:forEach>
 						
@@ -332,8 +341,6 @@
 			</c:forEach>
 			</c:otherwise>
 			</c:choose>
-			</c:otherwise>
-			</c:choose>
 			
 			</div>
 
@@ -357,39 +364,29 @@
 		//좋아요 버튼 눌렀을때 마다 하트가 변하는 스크립트 
 		function likechange(){
 			var str = this.value;
-			if(this.classList.contains("glyphicon-heart-empty")){
+			var heart = this.classList.contains("glyphicon-heart-empty");
 				$.ajax({
 					url:"/postgood.mt",
 					method : "get",
 					data : {
 					"num" : str,
-					"type" : true,
+					"type" : heart,
 					}
 				}).done(function(result) {
 					var rst = JSON.parse(result);
 					if(rst.rst){
-						$("."+str).html(parseInt($("."+str).html())+1);
-						$(".o"+str).removeClass("glyphicon-heart-empty");
-						$(".o"+str).addClass("glyphicon-heart");
+						if(heart){
+							$("."+str).html(parseInt($("."+str).html())+1);
+							$(".o"+str).removeClass("glyphicon-heart-empty");
+							$(".o"+str).addClass("glyphicon-heart");
+							
+						}else{
+							$("."+str).html(parseInt($("."+str).html())-1);
+							$(".o"+str).removeClass("glyphicon-heart");
+							$(".o"+str).addClass("glyphicon-heart-empty");
+						}
 					}
 				});
-			}else{
-				$.ajax({
-					url:"/postgood.mt",
-					method : "get",
-					data : {
-					"num" : str,
-					"type" : false,
-					}
-				}).done(function(result) {
-					var rst = JSON.parse(result);
-					if(rst.rst){
-						$("."+str).html(parseInt($("."+str).html())-1);
-						$(".o"+str).removeClass("glyphicon-heart");
-						$(".o"+str).addClass("glyphicon-heart-empty");
-					}
-				});
-			}
 		}
 		$(".like").on("click", likechange);
 	</script>

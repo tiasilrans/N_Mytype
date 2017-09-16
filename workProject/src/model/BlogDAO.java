@@ -1,5 +1,6 @@
 package model;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 import org.apache.ibatis.session.SqlSession;
@@ -47,6 +48,20 @@ public class BlogDAO {
 		}		
 	}
 	
+	public int oneCateCnt(Map map){
+		SqlSession session = factory.openSession();		
+		try{
+			int r = session.selectOne("blog.oneCate_count", map);			
+			return r; 
+		}catch(Exception e){
+			System.out.println("oneCateCnt Error");
+			e.printStackTrace();
+			return 0;
+		}finally{
+			session.close();
+		}
+	}
+		
 	public boolean categoryAdd(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -121,9 +136,6 @@ public class BlogDAO {
 			session.close();
 		}
 	}
-	
-	
-	
 	
 	
 	public List<Map> cate_List(Map map){
