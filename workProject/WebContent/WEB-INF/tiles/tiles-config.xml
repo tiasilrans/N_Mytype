@@ -6,6 +6,7 @@
 		<put-attribute name="title" value="Mytype" />
 		<put-attribute name="nav" value="/WEB-INF/view/nav.jsp" />
 		<put-attribute name="nav2" value=""/>
+		<put-attribute name="sidebar" value=""/>
 		<put-attribute name="section" value="/WEB-INF/view/main.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/view/footer.jsp" />
 		
@@ -61,6 +62,12 @@
 	<definition name="library_*" extends="t_base">
 		<put-attribute name="nav2" value="/WEB-INF/view/my/nav.jsp" />
 		<put-attribute name="section" value="/WEB-INF/view/my/library/{1}.jsp" />
+	</definition>
+	
+	<!-- 관리자 페이지 -->
+	<definition name="admin_*" extends="t_base">
+		<put-attribute name="sidebar" value="/WEB-INF/view/admin/sidebar.jsp" />
+		<put-attribute name="section" value="/WEB-INF/view/admin/{1}.jsp" />
 	</definition>
 	
 	<!-- 블로그 타일 -->
