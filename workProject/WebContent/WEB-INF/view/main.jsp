@@ -224,7 +224,7 @@
 					</c:choose>
 						<div class="conhead-title">
 							<span class="conhead-title-name"><b>${all.NICKNAME }</b></span><br/>
-							<span class="conhead-title-date">${all.PDATE } </span>|
+							<span class="conhead-title-date"><fmt:formatDate value="${all.PDATE }" pattern="yyyy-MM-dd"/></span> |
 							<span><a class="conhead-title-blog" href="/blog/${all.URL }">${all.URL }</a></span>
 						</div>	
 					</div>
@@ -232,8 +232,8 @@
 					
 					<!-- body -->
 					<div class="conbody">
-						<span class="conbody-title"><b>${all.TITLE }</b></span><br/>
-						<span class="conbody-content">${all.FCONTENT }</span><br/><br/>
+						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: #333333;"><span class="conbody-title"><b>${all.TITLE }</b></span></a><br/>
+						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: gray;"><span class="conbody-content">${all.FCONTENT }</span></a><br/><br/>
 						
 					</div>
 					
@@ -304,8 +304,8 @@
 					
 					<!-- body -->
 					<div class="conbody">
-						<span class="conbody-title"><b>${all.TITLE }</b></span><br/>
-						<span class="conbody-content">${all.FCONTENT }</span><br/><br/>
+						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: #333333;"><span class="conbody-title"><b>${all.TITLE }</b></span></a><br/>
+						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: gray;"><span class="conbody-content">${all.FCONTENT }</span></a><br/><br/>
 						
 					</div>
 					

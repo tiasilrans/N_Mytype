@@ -233,8 +233,6 @@ input[type=radio]:checked+label:before {
 	
 }
 
-
-
 </style>
 
 
@@ -388,15 +386,6 @@ input[type=radio]:checked+label:before {
 							<p></p>
 						 
 						</div> 
-						
-						<div class="tag-wrap" style="margin-top: 20px;"> 
-						<label class="material-icons" title="태그" style="float: left; margin-left: 120px;">bookmark</label>
-						<label for="post-tags" class="sr-only">태그</label>
-						
-						<input type="text" class="form-control" id="hash" 
-									name="hash" placeholder="여러 개의 태그는 공백(space)으로 구분하여 입력하세요." 
-							 	class="tagtext" style="width: 1020px; margin-left: -120px; height: 25px;">    
-						</div>
         
 					</div>    
 				</article> 

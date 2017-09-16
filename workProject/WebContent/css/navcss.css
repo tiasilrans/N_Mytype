@@ -35,12 +35,6 @@
   z-index: 3;   
 }
 
-body {
-	margin: 0px;
-	padding: 0px;
-	min-height: 2500px;
-	background-color: #fff;
-}
 
 .navbar-info {
 	width: 100%;

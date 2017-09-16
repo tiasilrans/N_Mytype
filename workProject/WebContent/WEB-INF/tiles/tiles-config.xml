@@ -72,7 +72,7 @@
 	</definition>
 	
 	<!-- 포스트 작성 -->
-	<definition name="post" template="/WEB-INF/view/blog/postWrite.jsp">
+	<definition name="post" template="/WEB-INF/view/blog/post/postWrite.jsp">
 		<put-attribute name="title" expression="${title}" />
 		<put-attribute name="header" value=""/>
 		<put-attribute name="nav" value="" />	

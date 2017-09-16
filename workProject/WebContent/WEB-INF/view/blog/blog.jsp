@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -69,12 +70,26 @@
  a:hover { color: white; text-decoration: none;}
 
 .post-body{
-	background-color: white;
+	background-color:white;
 	width: 100%;
-	padding: 30px; 
- 	margin: 20px;   
-    
-}      
+	padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;   
+ 	margin: 20px;  
+ 	margin-top: -1.3px;
+}   
+ 
+footer {
+	background-color:white;
+	width: 100%;
+	padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+	margin: 20px;
+	margin-top: -20px;  
+}   
 
 </style> 
 
@@ -89,7 +104,7 @@
 						<c:forEach var="obj" items="${list }">
 							<div class="post-body">
 								<a href="/${obj.URL }/post/${obj.NUM}" style="color: #0d0d0d; ">
-									<h2 style="color: #808080; font-family: sans-serif; font-size: 20px;">${obj.TITLE }</h2>								
+									<h2 style="color: #808080; font-family: sans-serif; font-size: 20px; margin: 0px;">${obj.TITLE }</h2>								
 									<div class="subtitle" style="margin-top: -10px; margin-left: 3px;"> 
 										<h3 style="color: #1a1a1a; font-family: sans-serif; font-size: 13px;">${obj.SUBTITLE }</h3> 
 									</div>								  
@@ -98,16 +113,42 @@
 									</div>
 								</a>
 							</div>      
-							<footer>    
+							<footer>
+								   <div class="media">
+								    	<div class="media-left">
+										 	<div class="media-left" style="vertical-align: middle;">
+										 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px;">
+										 	</div>
+										  	<div class="media-body"> 
+										  		<span style="font-size: 12px; color: black;">닉네임</span>										 	
+										  		<span style="font-size: 12px; color: #808080;">
+										  		<fmt:formatDate value="${obj.PDATE }" pattern="yyyy.MM.dd"/></span>
+										 	</div>
+									  </div>
+									  <div class="media-right" style="width: 100px;">
+										  <div class="media-left">
+										 		<i class="material-icons" style="font-size: 15px; color: #808080; float: left;">favorite_border</i>
+										 		<div class="media-body"> 
+										 			<span style="color: #808080; font-size: 12px; margin-left: 2px;">0</span>
+										 		</div>
+										  </div>
+											<div class="media-left" >
+											 	<i class="material-icons" style="font-size: 15px; color: #808080; float: left;">chat_bubble_outline</i>
+											 	<div class="media-body">
+											 		<span style="color: #808080; font-size: 12px; margin-left: 2px;">0</span>
+												</div>
+											</div>
+										</div>						
+								</div>
 							</footer>
-						</c:forEach>						
+						</c:forEach>				
 					</div>  
-					<div class="div-pagination">
+					<div class="div-pagination" style="margin-left: 400px;">
 							<ul class="pagination">
 								<c:forEach var="i" begin="1" end="${pNum }">				
 									<li><a href="/blog/${map.URL }?p=${i }">${i }</a>		
 								</c:forEach>
-							</ul>
+							</ul> 
 					</div>
 				</div>
 			</c:when>
@@ -147,7 +188,7 @@
 						<div class="media-body" align="left">
 							<h4 class="media-heading" style="color: black; font-family: sans-serif; font-size: 15px;">${map.TITLE }</h4>
 						 	<div style="color: #a6a6a6;">          
-								<span style="font-size: 12px;">구독자</span> 0 <span style="font-size: 12px;">포스트</span> 0
+								<span style="font-size: 12px;">구독자</span> <span style="font-size: 12px;">0</span> <span style="font-size: 12px;">포스트</span> <span style="font-size: 12px;">${map.totalPostCnt }</span>
 							</div>
 							<button class="button button1" style="margin-top: 10px;">구독하기</button>
 
@@ -167,30 +208,17 @@
 						<ul class="Kategorie nav row">
 							<li class="Kategorie nav-item"><a class="Kategorie nav-link"
 								href="/blog/blogView" style="color: black; font-weight :light;" align="left">
-									전체 보기 <span class="post-count">3</span>
+									전체 보기 <span class="post-count">${map.totalPostCnt }</span>
 							</a></li>
 							<c:forEach var="obj" items="${category }">
 							<c:if test="${obj.CATEGORY_NAME ne \"전체 보기\"}">
 							<li class="Kategorie nav-item"><a class="nav-link" href=""
 								style="color: #8c8c8c;" align="left">${obj.CATEGORY_NAME }<span
-									class="post-count">3</span></a></li>
+									class="post-count"> ${obj.cnt }</span></a></li>
 							</c:if>
 							</c:forEach>
 
 						</ul>
-					</div>
-				</section>
-				
-				<section class="section box">
-					<h6 align="left" style="color: black; font-family: sans-serif;">태그</h6>
-					<div align="left">
-						<a class="label hashtag" href="/">혼잣말</a> 
-						<a class="label hashtag" href="/">일상</a> 
-						<a class="label hashtag" href="/">테스트</a> 
-						<a class="label hashtag" href="/">일기</a> 
-						<a class="label hashtag" href="/">소설</a> 
-						<a class="label hashtag" href="/">수필</a> 
-						<a class="label hashtag" href="/">하루</a>
 					</div>
 				</section>
 			</div>
@@ -228,7 +256,18 @@
  				</div>    
  				      
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-bottom: 30px;">
- 					<label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="home" style="display:inline; margin-left: 14px;">구독</div>
+ 					<c:choose>
+	 					<c:when test="${sessionScope.login eq map.EMAIL }">
+		 					<form action="/blog/postWrite" method="post">
+								<input type="hidden" name="title" value="${map.TITLE }"/>
+								<input type="hidden" name="url" value="${map.URL }"/>
+								<button class="button button1" type="submit" title="새 포스트를 작성합니다.">새 포스트 쓰기</button>
+							</form>
+	 					</c:when>
+	 					<c:otherwise>
+	 						<label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="home" style="display:inline; margin-left: 14px;">구독</div>
+	 					</c:otherwise>
+ 					</c:choose>
  				</div>
  			
  				       

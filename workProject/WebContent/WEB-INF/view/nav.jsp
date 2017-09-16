@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- navCss -->
 <link rel="stylesheet" href="/css/navcss.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 @media ( max-width : 767px) {	
 	.search-nav{
@@ -13,13 +9,9 @@
 	}	
 }
 </style>
-
-
-
 <!--navbar menu-->
 <section class="navbar-info ">
-	<nav class="navbar navbar-default" style="margin-bottom: 0px; ">
-		<div class="navbar-me">
+	<nav class="navbar navbar-default navbar-me" style="margin-bottom: 0px; ">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button"
@@ -96,7 +88,7 @@
 				</ul>
 				</c:otherwise>
 			</c:choose>	
-			<ul class="nav navbar-nav navbar-right search-nav">
+			<ul class="nav navbar-nav navbar-right">
 				<li><form class="navbar-form form-horizontal" role="search" action="/search/main.mt">
 					<div class="input-group">
 						<input type="text" class="search-box" placeholder="마이타입 검색" name="keyword">
@@ -107,9 +99,7 @@
 				</form></li>				
 			</ul>		
 			</div>
-			<!-- /.navbar-collapse -->
-			
-		</div>
+			<!-- /.navbar-collapse -->			
 	</nav>
 </section>
 <!-- end of navbar-->
@@ -118,11 +108,15 @@
 	$(window).scroll(function() {
 		if ($(this).scrollTop() > 5) {
 			$(".navbar-me").addClass("fixed-me");
+			$(".fixed-me").removeClass("navbar-me");
 		} else {
+			$(".fixed-me").addClass("navbar-me");
 			$(".navbar-me").removeClass("fixed-me");
+			
 		}
 	});
 </script>
+
 
 <!-- 쪽지왔을때 modal생성 -->
 <c:if test="${sessionScope.login ne null }">
