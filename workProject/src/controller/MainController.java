@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.BlogDAO;
 import model.MemberDao;
+import model.MyDao;
 import model.PostDao;
 
 @Controller
@@ -40,16 +41,20 @@ public class MainController {
 	@Autowired
 	JavaMailSender sender;
 	
+	@Autowired
+	MyDao myDao;
+	
 	@RequestMapping({ "/", "/index.mt" })
 	public ModelAndView welcome(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("t_main");
-		//내가 누른 게시물의 하트표시를 표시하기위한 string 비로그인일때는 null널을 넣어서 안나오게끔 유도
 		Map str = new HashMap<>();
 		str.put("email",(String)session.getAttribute("login"));
-		mav.addObject("listAll",pdao.listAll(str));
+		str.put("first", 1);
+		str.put("last", 6);
+		mav.addObject("listAll",pdao.sublist(pdao.listAll(str)));
 		if(session.getAttribute("login") != null){
-			mav.addObject("listLike",pdao.listLike(str));
+			mav.addObject("listLike",pdao.sublist(pdao.listLike(str)));
 		}
 		return mav;
 	}
@@ -66,14 +71,16 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 		
 		Map result = mdao.Login(map);
-		System.out.println(result);
 		if(result != null){
-			mav.setViewName("redirect:/");//메인으로 돌아감
+			mav.setViewName("redirect:/");
 			session.setAttribute("login", map.get("email"));
 			session.setAttribute("blog", bdao.mybloglist(map));
+			System.out.println(myDao.info((String)session.getAttribute("login")));
+			session.setAttribute("info", myDao.info((String)session.getAttribute("login")));
+			
 		}else{
 			mav.setViewName("t_login/login");
-			mav.addObject("flag",true);//로그인창으로 돌아가서 경고창 띄우기위함
+			mav.addObject("flag",true);
 		}
 		
 		return mav;
@@ -88,7 +95,6 @@ public class MainController {
 		return mav;
 	}
 	
-	//회원가입시 이메일로 전송
 	@RequestMapping("emailUuidSend.mt")
 	public void emailUuidSend(@RequestParam Map map, HttpSession session){
 		try{
@@ -97,7 +103,7 @@ public class MainController {
 			msg.setTo((String)map.get("email"));
 			msg.setFrom("admin");	
 			
-			msg.setSubject("[Mytype] 이메일 인증값");
+			msg.setSubject("[Mytype] 이메일 인증");
 			String text = UUID.randomUUID().toString().substring(0,4);	
 			System.out.println(text);
 			msg.setText(text);

@@ -1,5 +1,6 @@
 package controller;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.servlet.http.HttpSession;
@@ -30,20 +31,23 @@ public class BlogController {
 	public ModelAndView newBlog(){
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("t_el");
-	 	mav.addObject("section", "blog/create");
+	 	mav.addObject("section", "blog/settings/create");
 		return mav;
 	}
 	
 	@RequestMapping("/ctrateBlog.mt")
 	@ResponseBody
 	public Map createBlog(@RequestParam Map m, HttpSession session){
+		String uuid = UUID.randomUUID().toString().substring(0, 11);
 		Map map = new HashMap();
 		m.put("email", session.getAttribute("login"));
+		m.put("cate_id", uuid);
 		System.out.println(m);
 		boolean f = bDAO.blogCreate(m);
 		if(f){			
 			map.put("result", true);
 			map.put("url", m.get("url"));
+			session.setAttribute("blog", bDAO.mybloglist(m));
 		}else{
 			map.put("result", false);
 		}
@@ -51,65 +55,162 @@ public class BlogController {
 	}	
 	
 	@RequestMapping("/{url}")
-	public ModelAndView BlogView(@PathVariable(value="url") String url, HttpSession session){		
+	public ModelAndView BlogView(@PathVariable(value="url") String url, 
+						@RequestParam(name="p", defaultValue="1") int p, HttpSession session){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 		ModelAndView mav = new ModelAndView();
 		Map map = new HashMap();
 			map.put("url", url);
+			map.put("email", (String)session.getAttribute("login"));			
 		HashMap r = bDAO.blogView(map);
+			map.put("title", r.get("TITLE"));
+		Map pageMap = new HashMap<>();
+		int lc = pDAO.postCount(map);
+			r.put("totalPostCnt", lc);
+		int tp = lc%12==0 ? lc/12 : lc/12+1;
+		int start = (p-1)*12+1;
+		int end = start + 12 - 1;
+			pageMap.put("start", start);
+			pageMap.put("end", end);
+			pageMap.put("url", url);
+			
+		List<Map> list = bDAO.cate_List(map);
+		for(Map m : list){
+			String cn = (String)m.get("CATEGORY_NAME");
+				map.put("category", cn);
+			int cnt = bDAO.oneCateCnt(map);
+				m.put("cnt", cnt);
+		}
+	
 			mav.setViewName("blog_base");
 			mav.addObject("section", "blog/blog");
 			mav.addObject("header", "blog/header");
-			mav.addObject("map", r);
+			mav.addObject("map", r); // ∫Ì∑Œ±◊ ¡§∫∏
 			mav.addObject("title", r.get("TITLE"));
+			mav.addObject("pNum", tp);
+			mav.addObject("list", pDAO.blogPostList(pageMap)); // ∫Ì∑Œ±◊ ∏ﬁ¿Œ ∆˜Ω∫∆Æ ∏ÆΩ∫∆Æ
+			mav.addObject("category", list);
+			
 		return mav;
 	}
 	
 	@RequestMapping("/postWrite")
 	public ModelAndView postWrite(@RequestParam Map m, HttpSession session){
-		String email = (String)session.getAttribute("login");
-			m.put("email", email);
-		List<Map> catelist = pDAO.categoryList(m);	
-		System.out.println(catelist);
+		// m= ≈∏¿Ã∆≤, url µÈæÓ∞° ¿÷¿Ω
+		Map writeMap = (Map)session.getAttribute("writeMap");
+		if(writeMap !=null){
+			String title = (String)writeMap.get("title");
+			String url = (String)writeMap.get("url");
+			if(title!=null){
+				m.put("title", title);
+				m.put("url", url);
+			}
+		}
+		
+		List<Map> catelist = pDAO.categoryList(m);		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("post");
-			mav.addObject("title", "Ìè¨Ïä§Ìä∏ÏûëÏÑ±");
+			mav.addObject("title", "∆˜Ω∫∆Æ¿€º∫");
 			mav.addObject("map", m);
 			mav.addObject("catelist", catelist);
+			session.setAttribute("writeMap", m);
+			
 		return mav;
 	}
 	
 	@RequestMapping("/{url}/categories")
-	public ModelAndView categories(@PathVariable(value="url") String url){
+	public ModelAndView categories(@PathVariable(value="url") String url, HttpSession session){
+		String email = (String)session.getAttribute("login");
 		Map map = new HashMap();
 			map.put("url", url);
+			map.put("email", email);
 		HashMap r = bDAO.blogView(map);
+		List<Map> list = bDAO.cate_List(map);
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("blog_setting");
 			mav.addObject("title", r.get("TITLE"));
-			mav.addObject("section", "blog/categories");
+			mav.addObject("section", "blog/settings/categories");
 	 		mav.addObject("url", url);
 	 		mav.addObject("map", r);
-	 		System.out.println(mav);
+	 		mav.addObject("list", list);
 		return mav;
 		
 	}
 	
-	@RequestMapping("/categoryAdd.mt")
+	@RequestMapping("/categoryUpdate.mt")
 	@ResponseBody
-	public Map categoryAdd(@RequestParam Map m, HttpSession session){
+	public Map categoryAdd(@RequestParam Map m, 
+				 HttpSession session){
+			m.put("email", session.getAttribute("login"));
+		System.out.println("≥—æÓø¬ ∞™ : " + m);
+		
 		Map map = new HashMap();
-		m.put("email", session.getAttribute("login"));
-		System.out.println(m);
-		boolean f = bDAO.categoryAdd(m);
-		if(f){			
+		String delete = (String)m.get("cate_delete");
+		String[] arr = delete.split(",");
+		String cate_name_order = (String)m.get("cate_name_order");
+		String[] orderArr = cate_name_order.split(",");
+		String addName = (String)m.get("addcate_name");
+		String[] addcate_name = addName.split(",");
+		String uuid = "";	
+		boolean add = false;
+		boolean orderadd = false;
+		boolean order = false;
+		
+		List<Map> before = bDAO.cateAfterList(m);
+		for(String d : arr){// ªË¡¶«ÿæﬂ «“ ∞ÊøÏ			
+			for(Map li : before){
+				String id = (String)li.get("CATE_ID");
+				if(id.equals(d)){
+					System.out.println( " ID >> "+  d + "¿« ªË¡¶∏¶ Ω√¿€«—¥Ÿ");
+					Map deleteMap = new HashMap();					
+					deleteMap.put("cate_id", d);
+					bDAO.cateRemover(deleteMap);
+				}
+			}					
+			System.out.println("ªË¡¶ øœ∑·");
+		}
+		
+		
+		for(int i = 0; i<addcate_name.length; i++){
+			if(addcate_name[i]!=""){ // ƒ´≈◊∞Ì∏Æ √ﬂ∞° «ÿæﬂ «“ ∞ÊøÏ -------------------------------------*
+				uuid += UUID.randomUUID().toString().substring(0, 11) + ",";
+				m.put("addcate_id", uuid.split(",")[i]);
+				m.put("addcate_name", addcate_name[i]);
+				add = bDAO.categoryAdd(m);
+				orderadd = bDAO.categoryAddOrder(m);				
+			}
+		}
+				
+			
+		List<Map> list = bDAO.cateAfterList(m);		
+		Map cateNameOrder = new HashMap();
+		for(int i = 0; i<orderArr.length; i++ ){// ƒ´≈◊∞Ì∏Æ º¯º≠ º≥¡§
+			cateNameOrder.put(orderArr[i], i); // ≈∞ : ƒ´≈◊∞Ì∏Æ ¿Ã∏ß  - ∞™ : ƒ´≈◊∞Ì∏Æ ¿Œµ¶Ω∫			
+		}		
+		for(Map li : list){
+			String key = (String)li.get("CATEGORY_NAME");
+			String id = (String)li.get("CATE_ID");
+			if(!key.equals("¿¸√º ∫∏±‚")){
+				Integer idx = (Integer)cateNameOrder.get(key);				
+				Map orderMap = new HashMap();
+					orderMap.put("cate_index", idx);
+					orderMap.put("cate_id", id);
+				order = bDAO.cateOrderUpdate(orderMap);				
+			}			
+		}		
+				
+		if(add){			
 			map.put("result", true);
 			map.put("url", m.get("url"));
 		}else{
 			map.put("result", false);
+			map.put("url", m.get("url"));
 		}
 	 		
  		return map;		
 	}
+	
+	
 	
 	
 

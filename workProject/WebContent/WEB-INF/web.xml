@@ -41,6 +41,6 @@
 		${initParam.realip}으로 불러올수 있음 -->
 	<context-param>
 		<param-name>realip</param-name>
-		<param-value>192.168.10.89</param-value>
+		<param-value>192.168.10.82</param-value>
 	</context-param>
 </web-app>

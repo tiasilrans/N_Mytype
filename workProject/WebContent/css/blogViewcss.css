@@ -79,7 +79,7 @@ a:hover {
 	z-index: 3;
 }
 
-.section {
+.section { 
 	padding: 15px;
 	margin-bottom: 16px;
 	background-color: #fff;
@@ -89,10 +89,11 @@ a:hover {
 	background-color: #000;
 }
 
-<<<<<<< HEAD
+
 .dropdown:hover .dropdown-menu {
 	display: block;
 }
+
 
 .navbar-form {
 	padding: 0px;
@@ -129,16 +130,7 @@ a:hover {
 .button1 {
 	background-color: #303030;
 }
-=======
-<<<<<<< HEAD
-}
 
-
-
-
-
-
-=======
 .dropdown:hover .dropdown-menu {
 	display: block;
 }
@@ -175,8 +167,8 @@ a:hover {
 	border-radius: 5px;
 }
 
+
 .button1 {
 	background-color: #303030;
 }
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
+
