@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
+
 <style>
 .logo-frame{
 	width:100%;
@@ -120,17 +121,37 @@
 	color : gray;
 }
 
+.confooter{
+	padding-top: 7px;
+}
+
+.confooter-count{
+	font-size: 17;
+	color : red;
+}
+
+.title{
+	padding-top :15px;
+	margin-left: 10px;
+}
+
+.incard {
+    float: left;
+    width : 280px;
+	height: 28%;
+	margin: 8px;
+    border-radius : 5px;
+    border : 1px solid silver;
+}
+
 .conbody-hashtag{
 	font-size: 13;
 	background-color: #D8D8D8;
 	border-radius: 2px;
-	margin-right: 3px;
+	margin-left: 12px;
 	padding: 4px;
+	padding-bottom:5px;
 	text-decoration: none;
-}
-
-.confooter{
-	padding-top: 7px;
 }
 
 .confooter-like, .confooter-like:focus, .confooter-like:hover{
@@ -138,13 +159,9 @@
 	color : red;
 	outline: none;
 	text-decoration: none;
-	padding: 0px;
+	margin-top: 10px;
+	padding-left: 12px;
 	border : 0px;
-}
-
-.confooter-count{
-	font-size: 17;
-	color : red;
 }
 
 </style>   
@@ -209,64 +226,48 @@
 			
 			<!-- 전체 게시글 배치 -->
 			<div id="allList" class="tab-pane fade in active">
-			<c:forEach var="all" items="${listAll}" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
-				<div id="post" class="col-xs-0 col-md-4">
-				
-					<!-- head -->
-					<div class="conhead">
-					<c:choose>
-					<c:when test="${all.IMAGE eq null}">
-						<img class="conhead-profileimg" src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png">
-					</c:when>
-					<c:otherwise>
-						<img class="conhead-profileimg" src="/images/profile/${all.IMAGE}">
-					</c:otherwise>
-					</c:choose>
-						<div class="conhead-title">
-							<span class="conhead-title-name"><b>${all.NICKNAME }</b></span><br/>
-							<span class="conhead-title-date"><fmt:formatDate value="${all.PDATE }" pattern="yyyy-MM-dd"/></span> |
-							<span><a class="conhead-title-blog" href="/blog/${all.URL }">${all.URL }</a></span>
-						</div>	
+				<c:forEach var="all" items="${listAll }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
+				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
+					<div class="title">
+						<a style="float:left; padding-right: 10px;"><img src="/images/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
+						<div>${all.NICKNAME }</div>
+						<div style="color:#909090; font-size: 11px;">6일전 · ${all.URL }</div>
 					</div>
-					
-					
-					<!-- body -->
-					<div class="conbody">
-						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: #333333;"><span class="conbody-title"><b>${all.TITLE }</b></span></a><br/>
-						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: gray;"><span class="conbody-content">${all.FCONTENT }</span></a><br/><br/>
-						
-					</div>
-					
-					
-					
-					<c:set var="msg" value="${all.HASH }"/>
-					<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
-					<c:forEach items="${hashtag}" var="hash">
-					<span class="conbody-hashtag">
-						<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
-					</span>
-					</c:forEach>
-						
-					
-					<br/>
-					<!-- footer -->
+	                <div style="height:50px; margin:12px; padding-bottom: 3px;">
+	                	<div style="font-size: 15px; padding-bottom: 5px; ">제목 없음</div>
+	                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
+	                		${all.FCONTENT }
+	                	</div>
+	                </div> <br/><br/><br/>
+	                
+	                <div>
+		                <c:set var="msg" value="${all.HASH }"/>
+						<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
+						<c:forEach items="${hashtag}" var="hash">
+						<span class="conbody-hashtag">
+							<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
+						</span>
+						</c:forEach>
+	                </div>
+	                
+	                <!-- footer -->
 					<div class="confooter">
-					<c:choose>
-					<c:when test="${all.HEART == null}">
-						<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
-					</c:when>
-					<c:otherwise>
-						<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
-					</c:otherwise>
-					</c:choose>
-						<span class="confooter-count heart-${all.NUM}">${all.GOOD }</span>
+						<c:choose>
+						<c:when test="${all.HEART == null}">
+							<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
+						</c:otherwise>
+						</c:choose>
+							<span class="confooter-count heart-${all.NUM}">${all.GOOD }</span>
 					</div>
-				
 				</div>
 			
-			<c:if test="(vs+1) % 3 = 0">
-				<br/>
-			</c:if>
+				<c:if test="(vs+1) % 3 = 0">
+					<br/>
+				</c:if>
+				
 			</c:forEach>
 			</div>
 			
