@@ -19,7 +19,7 @@
 	<hr style="margin-top: 10px;"/>
 	</div>
 
-<div align="left" style="margin-left: 100px; margin-top: 50px;">
+<div align="left" style="margin-left: 180px; margin-top: 50px;">
 	<table class="table scrolltbody" style="width: 730px; border-collapse: collapse; display: block; border: 1px solid #ccc;">
 		<thead>
 			<tr style="background-color: #F6F6F6;">

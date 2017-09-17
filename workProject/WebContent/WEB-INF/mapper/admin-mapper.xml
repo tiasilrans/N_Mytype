@@ -51,13 +51,23 @@
 	</insert>
 
 	<!-- 포인트 충전 신청 내역 -->
-	<select id="selectDeposit" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from deposit where accept="N" order by ddate desc
+	<select id="selectDepositApply" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from deposit where accept='N' order by ddate desc
 	</select>
 	
 	<!-- 출금 신청 내역 -->
+	<select id="selectWithdrawApply" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from withdraw where accept='N' order by wdate desc
+	</select>
+	
+	<!-- (개인정보)포인트 충전 내역 -->
+	<select id="selectDeposit" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from deposit where email=#{email} order by ddate desc
+	</select>
+	
+	<!-- (개인정보)출금 내역 -->
 	<select id="selectWithdraw" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from withdraw where accept="N" order by wdate desc
+		select * from withdraw where email=#{email} order by wdate desc
 	</select>
 	
 </mapper>

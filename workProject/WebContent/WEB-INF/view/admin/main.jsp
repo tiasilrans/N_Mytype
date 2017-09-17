@@ -20,7 +20,7 @@
 	<hr style="margin-top: 10px;"/>
 	</div>
 
-<div align="left" style="margin-left: 100px;">
+<div align="left" style="margin-left: 180px;">
 	<!-- 검색바 -->
 	<div class="navbar-form form-horizontal" role="search" style="margin-bottom: 10px;">
 					<div class="input-group">

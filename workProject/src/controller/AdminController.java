@@ -60,11 +60,13 @@ public class AdminController {
 		return mav;
 	}
 	
-	//댓글 관리
+	//충전 / 출금 신청 관리
 	@RequestMapping("cwapply")
 	public ModelAndView cwapply(@RequestParam Map map,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("admin_cwapply");
+		mav.addObject("clist",adminDAO.selectDepositApply());
+		mav.addObject("wlist",adminDAO.selectWithdrawApply());
 		return mav;
 	}
 
@@ -74,7 +76,7 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("admin_reply");
 		List<Map> list = adminDAO.replyList(map);
-		list = adminDAO.sublistReply(list, 16);
+		list = adminDAO.sublistReply(list, 16, "CONTENT", "SUBCONTENT");
 		mav.addObject("list", list);
 		return mav;
 	}
@@ -92,11 +94,15 @@ public class AdminController {
 	@RequestMapping("mailsendExec")
 	public ModelAndView mailsendExec(@RequestParam Map map,@RequestParam(name="email", required=false) String[] email,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("admin_mailsend");
-		mav.addObject("mlist", adminDAO.memberList(new HashMap()));
-		mav.addObject("exec", true);
-		map.put("email", email);
-		adminDAO.sendmessage(map);
+		if(email == null){
+			mav.setViewName("redirect:/admin/mailsend");
+		}else{
+			mav.setViewName("admin_mailsend");
+			mav.addObject("mlist", adminDAO.memberList(new HashMap()));
+			mav.addObject("exec", true);
+			map.put("email", email);
+			adminDAO.sendmessage(map);
+		}
 		return mav;
 	}
 	

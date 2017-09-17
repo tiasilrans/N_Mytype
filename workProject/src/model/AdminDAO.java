@@ -13,14 +13,15 @@ public class AdminDAO {
 	@Autowired
 	SqlSessionFactory factory;	
 	
-	// 댓글 내용이 길경우 적당히 자르기
-	public List<Map> sublistReply(List<Map> list, int size){
+	// 리스트중 내용이 길경우 적당히 자르기
+	public List<Map> sublistReply(List<Map> list, int size, String con, String subcon){
+		//con : 자를 내용 / subcon : 자르고 저장할때 지정할 이름
 		for(Map map : list){
-			String fcontent = (String)map.get("CONTENT");
+			String fcontent = (String)map.get(con);
 			if(fcontent.length() > size){
 				fcontent = fcontent.substring(0, size);
 				fcontent += "...";
-				map.put("SUBCONTENT", fcontent);
+				map.put(subcon, fcontent);
 			}
 		}
 		return list;
@@ -93,6 +94,38 @@ public class AdminDAO {
 			System.out.println("AdminDeleteReply Error");
 			e.printStackTrace();
 			return false;
+		}finally{
+			session.close();
+		}
+	}
+	
+	//충전 신청 내역
+	public List<Map> selectDepositApply(){
+		SqlSession session = factory.openSession();
+		List<Map> list = new ArrayList<>();
+		try{
+			list  = session.selectList("admin.selectDepositApply");
+			return list;
+		}catch(Exception e){
+			System.out.println("AdminSelectDepositApply Error");
+			e.printStackTrace();
+			return list;
+		}finally{
+			session.close();
+		}
+	}
+	
+	//출금 신청 내역
+	public List<Map> selectWithdrawApply(){
+		SqlSession session = factory.openSession();
+		List<Map> list = new ArrayList<>();
+		try{
+			list  = session.selectList("admin.selectWithdrawApply");
+			return list;
+		}catch(Exception e){
+			System.out.println("AdminSelectWithdrawApply Error");
+			e.printStackTrace();
+			return list;
 		}finally{
 			session.close();
 		}
