@@ -64,9 +64,15 @@
 		<put-attribute name="section" value="/WEB-INF/view/my/library/{1}.jsp" />
 	</definition>
 	
-	<!-- 관리자 페이지 -->
+	<!-- 관리자 메인 페이지 -->
 	<definition name="admin_*" extends="t_base">
-		<put-attribute name="sidebar" value="/WEB-INF/view/admin/sidebar.jsp" />
+		<put-attribute name="sidebar" value="/WEB-INF/view/admin/mainside.jsp" />
+		<put-attribute name="section" value="/WEB-INF/view/admin/{1}.jsp" />
+	</definition>
+	
+	<!-- 관리자 회원 조회 페이지 -->
+	<definition name="admin2_*" extends="t_base">
+		<put-attribute name="sidebar" value="/WEB-INF/view/admin/secondside.jsp" />
 		<put-attribute name="section" value="/WEB-INF/view/admin/{1}.jsp" />
 	</definition>
 	

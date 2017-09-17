@@ -1,22 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-<style>
-.scrolltbody th:nth-of-type(1), .scrolltbody td:nth-of-type(1) { width: 230px; }
-.scrolltbody th:nth-of-type(2), .scrolltbody td:nth-of-type(2) { width: 100px; }
-.scrolltbody th:nth-of-type(3), .scrolltbody td:nth-of-type(3) { width: 100px; }
-.scrolltbody th:nth-of-type(4), .scrolltbody td:nth-of-type(4) { width: 150px; }
-.scrolltbody th:nth-of-type(5), .scrolltbody td:nth-of-type(5) { width: 90px; }
-.scrolltbody th:nth-of-type(6), .scrolltbody td:nth-of-type(6) { width: 90px; }
-.scrolltbody th:last-child { width: 90px; }
-.scrolltbody td:last-child { width: calc( 90px - 18px ); }
-</style>
+    
 <div class="col-md-10"style="margin-top: 20px;">
 	<div style="width: 80%;" align="left">
-	<h2>회원 정보 조회</h2>
+	<h2>충전 출금 신청 관리</h2>
 	<hr style="margin-top: 10px;"/>
 	</div>
 
@@ -67,39 +57,4 @@
 	</table>
 	
 </div>
-	
 </div>
-<script>
-function membersearch(e){
-	if(e.keyCode == 13){
-		var email = this.value;
-		$.ajax({
-			url:"/admin/membersearch",
-			method : "get",
-			data : {
-			"email" : email,
-			}
-		}).done(function(result){
-			var rst = JSON.parse(result);
-			if(rst.rst){
-				$("#mlist").html(rst.content);
-			}else{
-				window.alert("해당 회원을 찾을 수 없습니다.");
-			}
-			});
-		}
-	};
-
-	$("#msearch").keyup(membersearch);
-</script>
-
-
-
-
-
-
-
-
-
-
-
