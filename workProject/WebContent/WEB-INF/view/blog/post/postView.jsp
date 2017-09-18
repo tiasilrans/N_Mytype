@@ -51,6 +51,67 @@
 		</div> 
 		<footer class="post-footer">
 		
-		</footer>		
+		</footer>				
 	</div> 
 </div>
+
+
+<!-- 본문 아래 블로그 포스트 목록 * 댓글 -->
+
+<aside class="container aside">
+	<!-- 블로그 소개 섹션 -->
+	<section class="">
+		<div class="body blog-info">
+			<div class="media"> 
+		
+			</div>
+			<div class="media-body">
+			</div>		
+		</div>
+	</section>
+	<!-- 블로그 포스트 리스트 섹션 -->
+	<section class="">
+	
+	</section>
+	<!-- 포스트 댓글 섹션 -->
+	<section class="comments">
+		<div class="body">
+			<h4>댓글</h4>
+			<div class="comments" id="comments">
+				<form action="">
+					<input type="hidden" value="" id="postNum">
+					<textarea class="form-control autosize" name="content" id="mention" data-autosize-on="true"
+						style="overflow: hidden; word-wrap: break-word; height: 60px;"></textarea>
+					<div class="clearfix">
+	            		<div class="checkbox-wrap" style="float: left;">
+		                	<label class="custom-control custom-checkbox">
+		                    <input type="checkbox" class="custom-control-input" name="is_secret" value="1">
+		                    <span class="custom-control-indicator"></span>
+		                    <span class="custom-control-description">비밀 댓글</span>
+		                	</label>
+	            		</div>
+		            		<div style="float: right;">
+		                	<button class="btn btn-primary btn-create-comment">댓글 남기기</button>
+	           			</div>
+        			</div>
+				</form>
+			</div>	
+		</div>
+	
+	</section>
+
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
