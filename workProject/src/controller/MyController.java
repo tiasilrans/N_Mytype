@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import model.MemberDao;
 import model.MyDao;
 import model.PointDao;
+import model.PostDao;
 import model.LibraryDAO;
 
 @Controller
@@ -37,6 +38,9 @@ public class MyController {
 	MemberDao memberDao;
 	
 	@Autowired
+	PostDao postDao;
+	
+	@Autowired
 	LibraryDAO lDao;
 	
 	@Autowired
@@ -47,9 +51,15 @@ public class MyController {
 	
 	
 	@RequestMapping("/home")
-	public ModelAndView home() {
+	public ModelAndView home(@RequestParam Map map, HttpSession session) {
+			map.put("email", (String)session.getAttribute("login"));
+			map.put("first", 1);
+			map.put("last", 2);
+		List<Map> listAll = lDao.likelist(map);
+		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("my_home");
+			mav.addObject("listAll", postDao.sublist(listAll));
 		return mav;
 	}
 	
@@ -430,8 +440,6 @@ public class MyController {
 	
 	@RequestMapping("/settings/profileExec")
 	public ModelAndView profilExec(@RequestParam Map map, @RequestParam(name = "image") MultipartFile f, HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		
 		try {
 			String my =  (String)session.getAttribute("login");
 			
@@ -459,7 +467,8 @@ public class MyController {
 			e.printStackTrace();
 		}
 		
-		mav.setViewName("redirect:/my/settings/profile");
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("redirect:/my/settings/profile");
 		return mav;
 	}
 	
@@ -472,6 +481,23 @@ public class MyController {
 		return mav;
 	}
 	
+	@RequestMapping("/settings/passwordExec")
+	public ModelAndView passwordExec(@RequestParam Map map, HttpSession session) {
+		Map info = myDao.info((String)session.getAttribute("login"));
+		String my =  (String)session.getAttribute("login");
+		String dbpw = (String)info.get("PASSWORD");
+		
+		if(dbpw.equals(map.get("password")) && map.get("newpw").equals(map.get("newpw_ck")) ) {
+			map.put("email", my);
+			String str = myDao.pwchange(map);
+			System.out.println("pwchange => "+str);
+		}
+		
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("redirect:/my/settings/password");
+		return mav;
+	}
+	
 	@RequestMapping("/settings/bank")
 	public ModelAndView bank(HttpSession session) {
 		Map info = myDao.info((String)session.getAttribute("login"));
@@ -479,27 +505,35 @@ public class MyController {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("settings_bank");
 			mav.addObject("info",info);
-			
 		return mav;
 	}
+	
 	@RequestMapping("/settings/bankExec")
 	public ModelAndView bankExec(@RequestParam Map map, HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		
 		String my =  (String)session.getAttribute("login");
 		
 		map.put("email", my);
 		String str = myDao.bank(map);
-		
 		System.out.println("bankExec = " + str);
 		
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("redirect:/my/settings/bank");
 		mav.setViewName("redirect:/my/settings/bank");
 
 		return mav;
 	}
 	
+	@RequestMapping("/settings/drop")
+	public ModelAndView drop( ) {
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("settings_drop");
+		return mav;
+	}
 	
 }
+
+
+
 
 
 

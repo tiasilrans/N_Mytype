@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin">
+	<!-- 회원 정보 리스트-->
+	<select id="selectMember" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select m.*, reply.reply from
+		(select m.*,post.post from
+		(select m.*,blog.blog from
+		(select m.*,point.point from
+		<choose>
+		<when test="email == null">
+		 (select * from member where power=0) m
+		</when>
+		<otherwise>
+		 (select * from member where email=#{email} and power=0) m
+		</otherwise>
+		</choose>
+		left join (select NVL(sum(charge),0)-NVL(sum(use),0) as point, email from point group by email)point on m.email=point.email)m
+		left join (select NVL(count(url),0) as blog, email from blog group by email)blog on m.email=blog.email)m
+		left join (select NVL(count(num),0) as post, email from post group by email)post on m.email=post.email)m
+		left join (select NVL(count(num),0) as reply, email from reply group by email)reply on m.email=reply.email
+	</select>
+	
+	<!-- 블로그 리스트 -->
+	<select id="selectBlog" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from blog
+		<if test="email != null">
+			where email=#{email}
+		</if>
+		order by bdate desc
+	</select>
+	
+	<!-- 포스트 리스트 -->
+	<select id="selectPost" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from post
+		<if test="email != null">
+			where email=#{email}
+		</if>
+		order by pdate desc
+	</select>
+
+	<!-- 댓글 리스트 -->
+	<select id="selectReply" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select r.*,p.url,p.title from
+		<choose>
+		<when test="email == null">
+		reply r
+		</when>
+		<otherwise>
+		(select * from reply where email=#{email}) r
+		</otherwise>
+		</choose>
+			left join (select num,url,title from post) p on r.pnum=p.num
+	</select>
+	
+	<!-- 포스트 삭제 -->
+	<delete id="deletePost" parameterType="java.util.HashMap">
+		delete from post where num=#{num}
+	</delete>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReply" parameterType="java.util.HashMap">
+		delete from reply where num=#{num}
+	</delete>
+
+	<!-- 쪽지 보내기 -->
+	<insert id="sendinsert" parameterType="java.util.HashMap">
+		insert into sendmessage(num,email,content,mdate) values(message_seq.nextval, #{admin}, #{content}, sysdate)
+	</insert>
+	<insert id="receiveinsert" parameterType="java.util.HashMap">
+		insert into receivemessage(num,email,content,mdate) values(message_seq.currval, #{email}, #{content}, sysdate)
+	</insert>
+
+	<!-- 포인트 충전 신청 내역 -->
+	<select id="selectDepositApply" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from deposit where accept='N' order by ddate desc
+	</select>
+	
+	<!-- 출금 신청 내역 -->
+	<select id="selectWithdrawApply" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from withdraw where accept='N' order by wdate desc
+	</select>
+	
+	<!-- (개인정보)포인트 충전 내역 -->
+	<select id="selectDeposit" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from deposit where email=#{email} order by ddate desc
+	</select>
+	
+	<!-- (개인정보)출금 내역 -->
+	<select id="selectWithdraw" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from withdraw where email=#{email} order by wdate desc
+	</select>
+	
+	<!-- 충전 승인 -->
+	<update id="applyCharge" parameterType="java.util.HashMap">
+		update deposit set accept='Y' where num=#{num}
+	</update>
+	
+	<!-- 충전 승인 후 로그에 추가 -->
+	<insert id="Charge" parameterType="java.util.HashMap">
+		insert into point(num,email,charge,cause,ptdate) values(point_seq.nextval, #{email}, #{point}, '포인트 충전', sysdate)
+	</insert>
+	
+	<!-- 출금 승인 -->
+	<update id="applyWithdraw" parameterType="java.util.HashMap">
+		update withdraw set accept='Y' where num=#{num}
+	</update>
+</mapper>
+
+
+
+
+
+
+
