@@ -55,10 +55,8 @@
 <script>
 	$(window).scroll(function() {
 		if ($(this).scrollTop() > 1) {
-			$(".navbar-default").addClass("fixed-me");
 			$(".nav-sub").css("margin-top","70px");
 		} else {
-			$(".navbar-default").removeClass("fixed-me");
 			$(".nav-sub").css("margin-top","0px");
 			
 		}
