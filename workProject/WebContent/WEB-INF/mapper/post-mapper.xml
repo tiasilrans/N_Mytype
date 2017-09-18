@@ -40,8 +40,13 @@
  	</select>
  	
  	<!-- 포스트 불러오기 -->
+ 		<!-- 포스트 번호로 하나의 포스트 불러오기 -->
  	<select id="one_post" parameterType="java.util.HashMap" resultType="java.util.HashMap">
  		SELECT * FROM post where num=#{num}
+ 	</select>
+ 		<!-- 블로그 관리자 모드 - 해당 블로그 포스트 전부 불러오기 -->
+ 	<select id="admin_postList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+ 		SELECT p.num, p.title, p.CATEGORY, p.PDATE, p.COUNT FROM post p where url=#{url} order by num desc
  	</select>
  	
   	

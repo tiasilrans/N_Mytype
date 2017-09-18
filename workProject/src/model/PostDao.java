@@ -137,8 +137,20 @@ public class PostDao {
 		
 	}
 	
-	
-	
+	public List<Map> ad_postList(Map map){		
+		List<Map> list = new ArrayList<>();
+		SqlSession session = factory.openSession();
+		try {
+			list = session.selectList("post.admin_postList", map);			
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("ad_postList ERROR : " + e.toString());
+			return list;
+		}finally {
+			session.close();
+		}		
+	}
 	
 	
 	
