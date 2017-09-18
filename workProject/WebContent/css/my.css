@@ -6,7 +6,7 @@ a { color: black;}
     position: relative;
     display: block;
     width : 80%;
-	height: 40%;
+	height: 50%;
     margin-bottom: .75rem;
     background-color: #fff;
     border-radius: .25rem;
@@ -30,8 +30,8 @@ a { color: black;}
 
 .incard {
     float: left;
-    width : 280px;
-	height: 70%;
+    width : 270px;
+	height: 260px;
     border-radius : 5px;
     border : 1px solid silver;
 }

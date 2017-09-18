@@ -55,11 +55,11 @@ public class MyController {
 			map.put("email", (String)session.getAttribute("login"));
 			map.put("first", 1);
 			map.put("last", 2);
-		List<Map> listAll = lDao.likelist(map);
+		List<Map> listLike = lDao.likelist(map);
 		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("my_home");
-			mav.addObject("listAll", postDao.sublist(listAll));
+			mav.addObject("listLike", postDao.sublist(listLike));
 		return mav;
 	}
 	
@@ -70,17 +70,17 @@ public class MyController {
 			mav.setViewName("library_postgood");
 			map.put("type", "like");
 			
-			//목록에 표시할 포스트 수
+			//紐⑸줉�뿉 �몴�떆�븷 �룷�뒪�듃 �닔
 			int pc = 12;
 			
-			//현재 페이지
+			//�쁽�옱 �럹�씠吏�
 			int np = 1;
 			if(map.get("np") != null){
 				np = Integer.parseInt((String)map.get("np"));
 			}
 			mav.addObject("np", np);
 			
-			//불러올 리스트의 시작과 끝
+			//遺덈윭�삱 由ъ뒪�듃�쓽 �떆�옉怨� �걹
 			int e = np*pc;
 			int s = e-pc+1;		
 			map.put("first", s);
@@ -89,17 +89,17 @@ public class MyController {
 			if(email != null){
 				map.put("email", email);
 				System.out.println(map);
-				mav.addObject("list",lDao.List(map));
+				mav.addObject("list",postDao.sublist(lDao.likelist(map)));
 			}
 			
-			//리스트 밑에 페이지수
+			//由ъ뒪�듃 諛묒뿉 �럹�씠吏��닔
 			int eSize = 5;
 			int p1 = lDao.selectcount(map);
 			int p = p1 / pc;
 			p = p1 % pc != 0 ? p+1: p;
 			mav.addObject("page", p);
 			
-			//화살표
+			//�솕�궡�몴
 			int from = (np-1)*eSize;
 			int to = np*eSize;
 			if(to > p){
@@ -117,17 +117,17 @@ public class MyController {
 			mav.setViewName("library_purchases");
 			map.put("type", "buy");
 			
-			//목록에 표시할 포스트 수
+			//紐⑸줉�뿉 �몴�떆�븷 �룷�뒪�듃 �닔
 			int pc = 12;
 			
-			//현재 페이지
+			//�쁽�옱 �럹�씠吏�
 			int np = 1;
 			if(map.get("np") != null){
 				np = Integer.parseInt((String)map.get("np"));
 			}
 			mav.addObject("np", np);
 			
-			//불러올 리스트의 시작과 끝
+			//遺덈윭�삱 由ъ뒪�듃�쓽 �떆�옉怨� �걹
 			int e = np*pc;
 			int s = e-pc+1;		
 			map.put("first", s);
@@ -139,14 +139,14 @@ public class MyController {
 				mav.addObject("list",lDao.List(map));
 			}
 			
-			//리스트 밑에 페이지수
+			//由ъ뒪�듃 諛묒뿉 �럹�씠吏��닔
 			int eSize = 5;
 			int p1 = lDao.selectcount(map);
 			int p = p1 / pc;
 			p = p1 % pc != 0 ? p+1: p;
 			mav.addObject("page", p);
 			
-			//화살표
+			//�솕�궡�몴
 			int from = (np-1)*eSize;
 			int to = np*eSize;
 			if(to > p){
@@ -158,24 +158,24 @@ public class MyController {
 		return mav;
 	}
 	
-	// 포인트부분
+	// �룷�씤�듃遺�遺�
 	@RequestMapping("/point/plist")
 	public ModelAndView plist(@RequestParam Map map,HttpSession session) {
 		String email = (String)session.getAttribute("login");
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("point_plist");
 			
-			//목록에 표시할 포스트 수
+			//紐⑸줉�뿉 �몴�떆�븷 �룷�뒪�듃 �닔
 			int pc = 5;
 			
-			//현재 페이지
+			//�쁽�옱 �럹�씠吏�
 			int np = 1;
 			if(map.get("np") != null){
 				np = Integer.parseInt((String)map.get("np"));
 			}
 			mav.addObject("np", np);
 			
-			//불러올 리스트의 시작과 끝
+			//遺덈윭�삱 由ъ뒪�듃�쓽 �떆�옉怨� �걹
 			int e = np*pc;
 			int s = e-pc+1;		
 			map.put("first", s);
@@ -188,14 +188,14 @@ public class MyController {
 				mav.addObject("pointsum",pointDao.selectpointsum(email));
 			}
 			
-			//리스트 밑에 페이지수
+			//由ъ뒪�듃 諛묒뿉 �럹�씠吏��닔
 			int eSize = 5;
 			int p1 = pointDao.selectcount(map);
 			int p = p1 / pc;
 			p = p1 % pc != 0 ? p+1: p;
 			mav.addObject("page", p);
 			
-			//화살표
+			//�솕�궡�몴
 			int from = (np-1)*eSize;
 			int to = np*eSize;
 			if(to > p){
@@ -210,9 +210,9 @@ public class MyController {
 	public ModelAndView charge() {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("point_charge");
-			String[] cards = "농협,국민은행,우리은행,하나은행,신한은행,외환은행,씨티은행,우체국,부산은행,SC은행".split(",");
-			String[] banks = "산업은행,기업은행,국민은행,외환은행,수협,농협,우리은행,SC은행,씨티은행,대구은행,부산은행,광주은행,제주은행,전분은행,경남은행,새마을금고,신협,우체국,하나은행,신한은행".split(",");
-			String[] telecoms = "SKT,KT,LGU+,LGU+(알뜰폰)".split(",");
+			String[] cards = "�냽�삊,援�誘쇱��뻾,�슦由ъ��뻾,�븯�굹���뻾,�떊�븳���뻾,�쇅�솚���뻾,�뵪�떚���뻾,�슦泥닿뎅,遺��궛���뻾,SC���뻾".split(",");
+			String[] banks = "�궛�뾽���뻾,湲곗뾽���뻾,援�誘쇱��뻾,�쇅�솚���뻾,�닔�삊,�냽�삊,�슦由ъ��뻾,SC���뻾,�뵪�떚���뻾,��援ъ��뻾,遺��궛���뻾,愿묒＜���뻾,�젣二쇱��뻾,�쟾遺꾩��뻾,寃쎈궓���뻾,�깉留덉쓣湲덇퀬,�떊�삊,�슦泥닿뎅,�븯�굹���뻾,�떊�븳���뻾".split(",");
+			String[] telecoms = "SKT,KT,LGU+,LGU+(�븣�쑑�룿)".split(",");
 			mav.addObject("cards",cards);
 			mav.addObject("banks",banks);
 			mav.addObject("telecoms",telecoms);
@@ -235,13 +235,13 @@ public class MyController {
 				map.put("paymentoption", str);
 				switch ((String)map.get("pay")) {
 				case "card":
-					map.put("pay", "카드결제");
+					map.put("pay", "移대뱶寃곗젣");
 					break;
 				case "untouched":
-					map.put("pay", "무통장입금");
+					map.put("pay", "臾댄넻�옣�엯湲�");
 					break;
 				case "phone":
-					map.put("pay", "휴대폰결제");
+					map.put("pay", "�쑕���룿寃곗젣");
 					break;
 				}
 				pointDao.pointcharge(map);
@@ -251,24 +251,24 @@ public class MyController {
 		return mav;
 	}
 	
-	//충전 신청 리스트
+	//異⑹쟾 �떊泥� 由ъ뒪�듃
 	@RequestMapping("/point/clist")
 	public ModelAndView clist(@RequestParam Map map,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("point_clist");
 			mav.addObject("section","point/clist");
 			
-			//목록에 표시할 포스트 수
+			//紐⑸줉�뿉 �몴�떆�븷 �룷�뒪�듃 �닔
 			int pc = 5;
 			
-			//현재 페이지
+			//�쁽�옱 �럹�씠吏�
 			int np = 1;
 			if(map.get("np") != null){
 				np = Integer.parseInt((String)map.get("np"));
 			}
 			mav.addObject("np", np);
 			
-			//불러올 리스트의 시작과 끝
+			//遺덈윭�삱 由ъ뒪�듃�쓽 �떆�옉怨� �걹
 			int e = np*pc;
 			int s = e-pc+1;		
 			map.put("first", s);
@@ -282,14 +282,14 @@ public class MyController {
 				mav.addObject("list",pointDao.selectdeposit(map));
 			}
 			
-			//리스트 밑에 페이지수
+			//由ъ뒪�듃 諛묒뿉 �럹�씠吏��닔
 			int eSize = 5;
 			int p1 = pointDao.selectcount(map);
 			int p = p1 / pc;
 			p = p1 % pc != 0 ? p+1: p;
 			mav.addObject("page", p);
 			
-			//화살표
+			//�솕�궡�몴
 			int from = (np-1)*eSize;
 			int to = np*eSize;
 			if(to > p){
@@ -300,7 +300,7 @@ public class MyController {
 		return mav;
 	}
 	
-	//포인트 결제 취소
+	//�룷�씤�듃 寃곗젣 痍⑥냼
 	@RequestMapping("/point/delete")
 	@ResponseBody
 	public String delete(@RequestParam Map map,HttpSession session) throws JsonProcessingException {
@@ -321,7 +321,7 @@ public class MyController {
 		return mz;
 	}
 	
-	//출금 신청 
+	//異쒓툑 �떊泥� 
 	@RequestMapping("/point/withdraw")
 	public ModelAndView withdraw(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -336,7 +336,7 @@ public class MyController {
 		return mav;
 	}
 	
-	//출금 신청 실행
+	//異쒓툑 �떊泥� �떎�뻾
 	@RequestMapping("/point/withdrawExec")
 	public ModelAndView withdrawExec(@RequestParam Map map, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -355,24 +355,24 @@ public class MyController {
 		return mav;
 	}
 	
-	//출금 내역
+	//異쒓툑 �궡�뿭
 	@RequestMapping("/point/wlist")
 	public ModelAndView wlist(@RequestParam Map map,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("point_wlist");
 			String email = (String)session.getAttribute("login");
 			
-			//목록에 표시할 포스트 수
+			//紐⑸줉�뿉 �몴�떆�븷 �룷�뒪�듃 �닔
 			int pc = 5;
 			
-			//현재 페이지
+			//�쁽�옱 �럹�씠吏�
 			int np = 1;
 			if(map.get("np") != null){
 				np = Integer.parseInt((String)map.get("np"));
 			}
 			mav.addObject("np", np);
 			
-			//불러올 리스트의 시작과 끝
+			//遺덈윭�삱 由ъ뒪�듃�쓽 �떆�옉怨� �걹
 			int e = np*pc;
 			int s = e-pc+1;		
 			map.put("first", s);
@@ -384,14 +384,14 @@ public class MyController {
 				mav.addObject("list", pointDao.selectwithdraw(map));
 			}
 			
-			//리스트 밑에 페이지수
+			//由ъ뒪�듃 諛묒뿉 �럹�씠吏��닔
 			int eSize = 5;
 			int p1 = pointDao.selectcount(map);
 			int p = p1 / pc;
 			p = p1 % pc != 0 ? p+1: p;
 			mav.addObject("page", p);
 			
-			//화살표
+			//�솕�궡�몴
 			int from = (np-1)*eSize;
 			int to = np*eSize;
 			if(to > p){
@@ -404,7 +404,7 @@ public class MyController {
 	}
 	
 	
-	// 설정 부분
+	// �꽕�젙 遺�遺�
 	@RequestMapping("/settings/account")
 	public ModelAndView settings(HttpSession session) {
 		Map info = myDao.info((String)session.getAttribute("login"));

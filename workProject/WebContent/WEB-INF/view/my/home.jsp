@@ -10,13 +10,13 @@
 %>
 
 <link rel="stylesheet" href="/css/my.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+
 <style>
 .card {
     position: relative;
     display: block;
     width : 630px;
-	height: 40%;
+	height: 330px;
     margin-bottom: .75rem;
     background-color: #fff;
     border-radius: .25rem;
@@ -25,7 +25,7 @@
 
 .conbody-hashtag{
 	font-size: 13;
-	background-color: #D8D8D8;
+	background-color: #ebebeb;
 	border-radius: 2px;
 	margin-left: 12px;
 	padding: 4px;
@@ -100,22 +100,22 @@
 			</span>
 			<br/><br/>
 			
-			<c:forEach var="all" items="${listAll }" varStatus="vs">
+			<c:forEach var="like" items="${listLike }" varStatus="vs">
 				<div class="incard" style="<c:if test="${vs.last}">margin-left:15px;</c:if> clear: right;" >
 					<div class="title">
-						<a style="float:left; padding-right: 10px;"><img src="/images/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
-						<div>${all.NICKNAME }</div>
-						<div style="color:#909090; font-size: 11px;">6일전 · ${all.URL }</div>
+						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
+						<div>${like.NICKNAME }</div>
+						<div style="color:#909090; font-size: 11px;">6일전 · ${like.URL }</div>
 					</div>
 	                <div style="height:50px; margin:12px; padding-bottom: 3px;">
 	                	<div style="font-size: 15px; padding-bottom: 5px; ">제목 없음</div>
 	                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
-	                		${all.FCONTENT }
+	                		${like.FCONTENT }
 	                	</div>
 	                </div> <br/><br/><br/>
 	                
 	                <div>
-		                <c:set var="msg" value="${all.HASH }"/>
+		                <c:set var="msg" value="${like.HASH }"/>
 						<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
 						<c:forEach items="${hashtag}" var="hash">
 						<span class="conbody-hashtag">
@@ -127,14 +127,14 @@
 	                <!-- footer -->
 					<div class="confooter">
 						<c:choose>
-						<c:when test="${all.HEART == null}">
-							<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
+						<c:when test="${like.HEART == null}">
+							<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
 						</c:when>
 						<c:otherwise>
-							<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
+							<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
 						</c:otherwise>
 						</c:choose>
-							<span class="confooter-count heart-${all.NUM}">${all.GOOD }</span>
+							<span class="confooter-count heart-${like.NUM}">${like.GOOD }</span>
 					</div>
 				</div>
 			</c:forEach>

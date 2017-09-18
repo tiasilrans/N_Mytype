@@ -53,8 +53,10 @@ public class MainController {
 		str.put("first", 1);
 		str.put("last", 6);
 		mav.addObject("listAll",pdao.sublist(pdao.listAll(str)));
+		
 		if(session.getAttribute("login") != null){
-			mav.addObject("listLike",pdao.sublist(pdao.listLike(str)));
+			mav.addObject("listLike", pdao.sublist(pdao.listLike(str)));
+			System.out.println("listLike => "+pdao.listLike(str));
 		}
 		return mav;
 	}
