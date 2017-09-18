@@ -56,7 +56,6 @@ public class MainController {
 		
 		if(session.getAttribute("login") != null){
 			mav.addObject("listLike", pdao.sublist(pdao.listLike(str)));
-			System.out.println("listLike => "+pdao.listLike(str));
 		}
 		return mav;
 	}
