@@ -125,6 +125,7 @@ public class BlogController {
 			map.put("url", url);
 			map.put("email", email);
 		HashMap r = bDAO.blogView(map);
+			map.put("title", r.get("TITLE"));
 		List<Map> list = bDAO.cate_List(map);
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("blog_setting");

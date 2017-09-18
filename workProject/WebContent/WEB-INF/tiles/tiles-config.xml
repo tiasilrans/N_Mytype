@@ -93,7 +93,7 @@
 	<!-- 블로그 세팅  -->
 	<definition name="blog_setting" extends="t_base">
 		<put-attribute name="title" expression="${title} 블로그 설정" />
-		<put-attribute name="nav" value="/WEB-INF/view/blog/settings/blogSettingNav.jsp" />
+		<put-attribute name="nav2" value="/WEB-INF/view/blog/settings/blogSettingNav.jsp" />
 		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp"/>	
 	</definition>
 	
