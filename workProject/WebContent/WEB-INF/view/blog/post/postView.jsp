@@ -90,7 +90,8 @@ input[type=checkbox]:checked+label:before {
 			</div> 
 		</div> 
 		<footer class="post-footer">
-		
+		<i class="material-icons" style="font-size: 20px; color: #0d0d0d; float: left; font-weight: bold;">favorite_border</i><span style="margin-left: 3px; color: #0d0d0d; font-size: 15px;">0</span>
+		<i class="material-icons" title="링크복사" style="font-size: 25px; color: #0d0d0d; float: right; margin-right: 390px;">insert_link</i> 
 		</footer>				
 	</div> 
 </div>
