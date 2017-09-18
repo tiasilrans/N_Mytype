@@ -75,8 +75,8 @@
 	</section>
 	<!-- 포스트 댓글 섹션 -->
 	<section class="comments">
-		<div class="body">
-			<h4>댓글</h4>
+		<div class="body" style="margin-left: 48px;"> 
+			<h5>댓글</h5>
 			<div class="comments" id="comments">
 				<form action="">
 					<input type="hidden" value="" id="postNum">
@@ -84,14 +84,11 @@
 						style="overflow: hidden; word-wrap: break-word; height: 60px;"></textarea>
 					<div class="clearfix">
 	            		<div class="checkbox-wrap" style="float: left;">
-		                	<label class="custom-control custom-checkbox">
-		                    <input type="checkbox" class="custom-control-input" name="is_secret" value="1">
-		                    <span class="custom-control-indicator"></span>
-		                    <span class="custom-control-description">비밀 댓글</span>
-		                	</label>
+		                <input type="checkbox" id="notice" class="checkbox-style" />
+						<label for="notice">비밀댓글</label>
 	            		</div>
 		            		<div style="float: right;">
-		                	<button class="btn btn-primary btn-create-comment">댓글 남기기</button>
+		                	<button class="button button1">댓글 남기기</button>
 	           			</div>
         			</div>
 				</form>
