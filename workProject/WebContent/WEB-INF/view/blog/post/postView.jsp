@@ -70,13 +70,21 @@ input[type=checkbox]:checked+label:before {
 			<div class="free-content">
 				${post.FCONTENT }
 			</div> 
-			<c:choose> 
-				<c:when test="${post.CCONTENT ne ''}">
+		<!-- 유료 컨텐츠 부분 -->
+			<c:choose>
+			<c:when test="${sessionScope.login eq post.EMAIL }">
+				<div class="charged-content">
+					${post.CCONTENT }
+				</div>
+			</c:when>
+				<!-- 유료 컨텐츠 구매 -->
+			<c:otherwise>
+				<c:if test="${post.CCONTENT ne ''}">
 					<div class="charged-content">
 						${post.CCONTENT }
 					</div>
-				</c:when>			
-			
+				</c:if>
+			</c:otherwise>			
 			</c:choose>
 		</div>
 		<div class="support" style="display: table; width: 100%;">
