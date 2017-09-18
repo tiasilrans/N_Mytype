@@ -89,7 +89,7 @@ input[type=checkbox]:checked+label:before {
 				<button class="button button1" style="float: right;">후원하기</button>
 			</div> 
 		</div> 
-		<footer class="post-footer">
+		<footer class="post-footer" style="margin-top: 40px;">
 		<i class="material-icons" style="font-size: 20px; color: #0d0d0d; float: left; font-weight: bold;">favorite_border</i><span style="margin-left: 3px; color: #0d0d0d; font-size: 15px;">0</span>
 		<i class="material-icons" title="링크복사" style="font-size: 25px; color: #0d0d0d; float: right; margin-right: 390px;">insert_link</i> 
 		</footer>				
@@ -102,17 +102,21 @@ input[type=checkbox]:checked+label:before {
 <aside class="container aside">
 	<!-- 블로그 소개 섹션 -->
 	<section class="">
-		<div class="body blog-info">
-			<div class="media"> 
-		
+		<div class="body blog-info" style="margin-bottom: 30px; margin-top: 30px;">
+			<div class="media" style="margin-left: 50px;"> 
+				<img src="/images/avatar_yellow.png" style="border-radius: 15%; height: 70px; width: 70px;">
 			</div>
 			<div class="media-body">
-			</div>		
+				
+			</div>	
+			<button class="btn btn-default" style="float: right; margin-right: 340px; margin-top: -45px;">구독하기</button> 
 		</div>
 	</section>
-	<!-- 블로그 포스트 리스트 섹션 -->
+	<!-- 블로그 포스트 리스트 섹션 --> 
 	<section class="">
-	
+	<div style="margin-left: 48px; margin-bottom: 30px;">
+	<h5>이 블로그의 다른 포스트</h5>
+	</div>
 	</section>
 	<!-- 포스트 댓글 섹션 -->
 	<section class="comments">
