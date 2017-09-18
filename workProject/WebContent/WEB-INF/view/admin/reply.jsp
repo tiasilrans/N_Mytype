@@ -61,6 +61,8 @@ $(document).ready(function(){
 
 
 $("#delete").on("click",function(){
+	var rst = window.confirm("삭제하시겠습니까?");
+	if(rst){
 		var num = this.value;
 		$.ajax({
 			url:"/admin/deleteReply",
@@ -76,5 +78,6 @@ $("#delete").on("click",function(){
 				window.alert("댓글 삭제에 실패하였습니다.");
 			}
 			});
+	}
 });
 </script>
