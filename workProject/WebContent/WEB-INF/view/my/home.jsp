@@ -1,16 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">    
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.*, java.text.SimpleDateFormat" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>   
 <%
 	SimpleDateFormat ft = new SimpleDateFormat("yyyy.MM.dd");
 	String today = ft.format(new java.util.Date());
 %>
 
 <link rel="stylesheet" href="/css/my.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+<style>
+.card {
+    position: relative;
+    display: block;
+    width : 630px;
+	height: 40%;
+    margin-bottom: .75rem;
+    background-color: #fff;
+    border-radius: .25rem;
+    border: 1px solid rgba(0,0,0,.125);
+}
 
-<div class="col-xs-offset-1 col-md-offset-1 container-fluid">
+.conbody-hashtag{
+	font-size: 13;
+	background-color: #D8D8D8;
+	border-radius: 2px;
+	margin-left: 12px;
+	padding: 4px;
+	padding-bottom:5px;
+	text-decoration: none;
+}
+
+.confooter-like, .confooter-like:focus, .confooter-like:hover{
+	font-size: 18;
+	color : red;
+	outline: none;
+	text-decoration: none;
+	margin-top: 10px;
+	padding-left: 12px;
+	border : 0px;
+}
+
+.confooter{
+	padding-top: 7px;
+}
+
+.confooter-count{
+	font-size: 17;
+	color : red;
+}
+
+</style>
+
+<div class="col-xs-offset-2 col-md-offset-2 container-fluid">
 	<div class="card col-xs-6 col-md-6 col-lg-4">
 		<div class="title">
 			<span style="float:left; font-size: 17px; margin-left: 5px;"><b>오늘</b></span>
@@ -52,52 +96,48 @@
 		<div class="title">
 			<span style="float:left; font-size: 17px;"><b>좋아요</b></span>
 			<span style="font-size: 13px; float:right; padding-right:15px;">
-				<a style="text-decoration:none; color: #999999;" href="/my/postgood"> 더 보기 > </a> 
+				<a style="text-decoration:none; color: #999999;" href="/library/postgood"> 더 보기 > </a> 
 			</span>
 			<br/><br/>
-			<div class="incard" style="float: left;" >
-				<div class="title">
-					<a style="float:left; padding-right: 10px;"><img src="/images/avatar_yellow.png" style="border-radius: 50%;" width="40px" height="40px" /></a>
-					<div>소히</div>
-					<div style="color:#909090; font-size: 11px;">6일전 · TEST</div>
-				</div>
-                <div style="height:50px; margin:12px; padding-bottom: 3px;">
-                	<div style="font-size: 15px; padding-bottom: 5px; ">제목 없음</div>
-                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
-                		테스트글입니다.
-                		
-						데이터 보호 및 정보 관리 전문 기업 컴볼트가 '클라우드 도입 시에 기업 경영진의 고려사항' 
-						
-						주제로 실행한 설문조사 결과를 8월25일 발표했다.
-						
-                	</div>
-                </div>
-                <div style="margin:12px; padding-top: 17%;" >
-                	<span class="glyphicon glyphicon-heart"></span>
-                </div>
-			</div>
 			
-			<div class="incard" style=" margin-left: 20px; clear: right;" >
-				<div class="title">
-					<a style="float:left; padding-right: 10px;"><img src="/images/avatar_yellow.png" style="border-radius: 50%;" width="40px" height="40px" /></a>
-					<div>소히</div>
-					<div style="color:#909090; font-size: 11px;">6일전 · TEST</div>
+			<c:forEach var="all" items="${listAll }" varStatus="vs">
+				<div class="incard" style="<c:if test="${vs.last}">margin-left:15px;</c:if> clear: right;" >
+					<div class="title">
+						<a style="float:left; padding-right: 10px;"><img src="/images/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
+						<div>${all.NICKNAME }</div>
+						<div style="color:#909090; font-size: 11px;">6일전 · ${all.URL }</div>
+					</div>
+	                <div style="height:50px; margin:12px; padding-bottom: 3px;">
+	                	<div style="font-size: 15px; padding-bottom: 5px; ">제목 없음</div>
+	                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
+	                		${all.FCONTENT }
+	                	</div>
+	                </div> <br/><br/><br/>
+	                
+	                <div>
+		                <c:set var="msg" value="${all.HASH }"/>
+						<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
+						<c:forEach items="${hashtag}" var="hash">
+						<span class="conbody-hashtag">
+							<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
+						</span>
+						</c:forEach>
+	                </div>
+	                
+	                <!-- footer -->
+					<div class="confooter">
+						<c:choose>
+						<c:when test="${all.HEART == null}">
+							<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
+						</c:otherwise>
+						</c:choose>
+							<span class="confooter-count heart-${all.NUM}">${all.GOOD }</span>
+					</div>
 				</div>
-                <div style="height:50px; margin:12px; padding-bottom: 3px;">
-                	<div>~제목 없음~</div>
-                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
-                		테스트글입니다.
-                		
-						데이터 보호 및 정보 관리 전문 기업 컴볼트가 '클라우드 도입 시에 기업 경영진의 고려사항' 
-						
-						주제로 실행한 설문조사 결과를 8월25일 발표했다.
-						
-                	</div>
-                </div>
-                <div style="margin:12px; padding-top: 17%;" >
-                	<span class="glyphicon glyphicon-heart"></span>
-                </div>
-			</div>
+			</c:forEach>
 			
 		</div>
 	</div>
@@ -112,6 +152,51 @@
 	</div>
 	
 </div>
+
+
+<c:choose>
+	<c:when test="${sessionScope.login == null}">
+	<script>
+	function likechange(){
+		window.alert("로그인후 이용 가능합니다.");
+	}
+	$(".like").on("click", likechange);
+	</script>
+	</c:when>
+	
+	<c:otherwise>
+	<script>
+		//좋아요 버튼 눌렀을때 마다 하트가 변하는 스크립트 
+		function likechange(){
+			var str = this.value;
+			var heart = this.classList.contains("glyphicon-heart-empty");
+				$.ajax({
+					url:"/postgood.mt",
+					method : "get",
+					data : {
+					"num" : str,
+					"type" : heart,
+					}
+				}).done(function(result) {
+					var rst = JSON.parse(result);
+					if(rst.rst){
+						if(heart){
+							$("."+str).html(parseInt($("."+str).html())+1);
+							$(".o"+str).removeClass("glyphicon-heart-empty");
+							$(".o"+str).addClass("glyphicon-heart");
+							
+						}else{
+							$("."+str).html(parseInt($("."+str).html())-1);
+							$(".o"+str).removeClass("glyphicon-heart");
+							$(".o"+str).addClass("glyphicon-heart-empty");
+						}
+					}
+				});
+		}
+		$(".like").on("click", likechange);
+	</script>
+	</c:otherwise>
+</c:choose>
 
 
 

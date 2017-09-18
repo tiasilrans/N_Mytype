@@ -16,12 +16,12 @@ public class PostDao {
 	@Autowired
 	SqlSessionFactory factory;
 	
-	//³»¿ëÀÌ ±æ°æ¿ì Àû´çÈ÷ ÀÚ¸£±â
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½
 	public List<Map> sublist(List<Map> list){
 		for(Map map : list){
 			String fcontent = (String)map.get("FCONTENT");
-			if(fcontent.length() > 148){
-				fcontent = fcontent.substring(0, 148);
+			if(fcontent.length() > 75){
+				fcontent = fcontent.substring(0, 75);
 				fcontent += "...";
 				map.put("FCONTENT", fcontent);
 			}
@@ -78,8 +78,8 @@ public class PostDao {
 		}		
 	}
 	
-	// ºí·Î±× ¸ÞÀÎ Æ÷½ºÆ® ¸ñ·Ï
-		// ºí·Î±× ÃÑ Æ÷½ºÆ® ¼ö	
+	// ï¿½ï¿½Î±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½
+		// ï¿½ï¿½Î±ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½	
 	public int postCount(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -95,7 +95,7 @@ public class PostDao {
 		
 	}
 	
-		// ºí·Î±× ÆäÀÌÂ¡
+		// ï¿½ï¿½Î±ï¿½ ï¿½ï¿½ï¿½ï¿½Â¡
 	public List<Map> blogPostList(Map map){		
 		List<Map> list = new ArrayList<>();
 		SqlSession session = factory.openSession();
@@ -132,7 +132,7 @@ public class PostDao {
 	
 	
 	
-	//ÀüÃ¼ °Ô½Ã¹° ºÒ·¯¿À±â
+	//ï¿½ï¿½Ã¼ ï¿½Ô½Ã¹ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<Map> listAll(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -148,7 +148,7 @@ public class PostDao {
 		}
 	}
 	
-	//±¸µ¶ÇÑ °Ô½Ã¹° ºÒ·¯¿À±â
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<Map> listLike(Map map){
 		SqlSession session = factory.openSession();
 		
@@ -163,7 +163,7 @@ public class PostDao {
 		}
 	}
 	
-	// ÅÂ±×°¡ µé¾î°£ Æ÷½ºÆ® ¸®½ºÆ® ºÒ·¯¿À±â
+	// ï¿½Â±×°ï¿½ ï¿½ï¿½î°£ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<Map> listTag(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -190,7 +190,7 @@ public class PostDao {
 		}
 	}
 
-	//ÁÁ¾Æ¿ä
+	//ï¿½ï¿½ï¿½Æ¿ï¿½
 	public int postgoodAdd(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -207,7 +207,7 @@ public class PostDao {
 		}
 	}
 	
-	//ÁÁ¾Æ¿ä Ãë¼Ò
+	//ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½
 	public int postgoodRemove(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -224,14 +224,14 @@ public class PostDao {
 		}
 	}
 	
-	//ÇØ½¬ÅÂ±× ºÒ·¯¿À±â(°Ë»ö¹ÙÂÊ)
+	//ï¿½Ø½ï¿½ï¿½Â±ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½)
 	public List hashlist(String keyword){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
 		List result = new ArrayList<>();
 		try{
 			list = session.selectList("post.selectHashtag", keyword);
-			//°¡Á®¿Â ÇØ½¬ÅÂ±× ¸®½ºÆ® µ¹¸®¸é¼­ ½ºÇÃ¸´ÇÏ°í °ãÄ¡´ÂÁö È®ÀÎÈÄ result¿¡ Ãß°¡ 
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½ï¿½Â±ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½é¼­ ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ resultï¿½ï¿½ ï¿½ß°ï¿½ 
 			for(Map m : list){
 				String[] arr = ((String)m.get("HASH")).split("\\s");
 				
@@ -252,7 +252,7 @@ public class PostDao {
 	}
 	
 	
-	//°Ô½Ã¹° °¹¼ö ±¸ÇÏ±â(ÆäÀÌÂ¡)
+	//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½(ï¿½ï¿½ï¿½ï¿½Â¡)
 	public int selectcount(Map map){
 		SqlSession session = factory.openSession();
 		Map list = new HashMap<>();
