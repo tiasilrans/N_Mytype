@@ -128,7 +128,7 @@ input[type=checkbox]:checked+label:before {
 					<textarea class="form-control autosize" name="content" id="mention" data-autosize-on="true"
 						style="overflow: hidden; word-wrap: break-word; height: 60px; width: 750px; resize: none;"></textarea>
 					<div class="clearfix">
-	            		<div class="checkbox-wrap" style="float: left; margin-top: 20px;">
+	            		<div class="checkbox-wrap" style="float: left; margin-top: 20px; margin-left: 2px;">
 		                <input type="checkbox" id="notice" class="checkbox-style"/>
 						<label for="notice">비밀댓글</label> 
 	            		</div>
