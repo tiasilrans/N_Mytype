@@ -68,7 +68,7 @@
                             
                             <span class="sr-only">계정</span></a>
                             <ul class="dropdown-menu">     
-                            	<li style="vertical-align: middle;"><a href="/my/home"><label class="material-icons" style="color: #999999; font-size: 23px; float: left;">dashboard</label><font style="margin-top: 7px;">MY홈</font></a></li>
+                            	<li><a href="/my/home"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">dashboard</i>　　MY홈</a></li>  
                             	<li><a href="/subscribe/blog.mt"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">turned_in</i>　　구독</a></li>   
                             	<li><a href="/my/library/postgood"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">subject</i>　　라이브러리 </a></li>
                             	<li><a href="/my/point/plist"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">monetization_on</i>　　포인트</a></li> 

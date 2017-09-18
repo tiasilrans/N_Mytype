@@ -6,15 +6,21 @@
   	<!-- 포스트 쓰기 -->
   	<insert id="write" parameterType="java.util.HashMap">
   		insert into post(num, category, email, title, subtitle, fcontent, ccontent, good, 
-  					report, pdate, url, count) 
+  					report, pdate, url, count, notice, adult) 
  					values(post_seq.nextval, #{category}, #{email}, #{title}, #{subtitle},
- 						#{fcontent}, #{ccontent}, 0, 0, sysdate, #{url}, 0)
+ 						#{fcontent}, #{ccontent}, 0, 0, sysdate, #{url}, 0, #{notice}, #{adult})
   	</insert>
   	
   	<!-- 조회수 증가 -->
   	<update id="counter" parameterType="java.util.HashMap">
   		update post set count = count+1 where num = #{num}
-  	</update> 	
+  	</update>
+  	<!-- 포스트 삭제 -->
+  	<delete id="delete" parameterType="java.util.HashMap">
+  		delete from post where num=#{num}
+  	</delete>
+  	
+  		
   	
   	<!-- 카테고리 목록 가져오기 -->
   	<select id="cate_list" parameterType="java.util.HashMap" resultType="java.util.HashMap">
@@ -34,8 +40,13 @@
  	</select>
  	
  	<!-- 포스트 불러오기 -->
+ 		<!-- 포스트 번호로 하나의 포스트 불러오기 -->
  	<select id="one_post" parameterType="java.util.HashMap" resultType="java.util.HashMap">
  		SELECT * FROM post where num=#{num}
+ 	</select>
+ 		<!-- 블로그 관리자 모드 - 해당 블로그 포스트 전부 불러오기 -->
+ 	<select id="admin_postList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+ 		SELECT p.num, p.title, p.CATEGORY, p.PDATE, p.COUNT FROM post p where url=#{url} order by num desc
  	</select>
  	
   	
