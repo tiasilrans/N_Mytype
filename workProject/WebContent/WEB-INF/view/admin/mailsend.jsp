@@ -17,7 +17,7 @@
 
 <form action="/admin/mailsendExec">
 <div style="margin-left: 100px;">
-	<div class="col-md-3">
+	<div class="col-md-4">
 	<!-- 회원 리스트 -->
 	<table class="table scrolltbody" style="width: 360px; border-collapse: collapse; display: block; border: 1px solid #ccc;">
 		<thead>
@@ -30,7 +30,7 @@
 		<tbody style="font-size: 14px; max-height: 380px; overflow: auto; display: block;" id="mlist">
 		<c:forEach var="m" items="${mlist}">
 			<tr>
-			<td><input type="checkbox" name="email" value="${m.EMAIL}" style="vertical-align: middle;"/></td>
+			<td><input class="ch" type="checkbox" name="email" value="${m.EMAIL}" style="vertical-align: middle;"/></td>
 			<td>${m.EMAIL}</td>
 			<td>
 			<c:choose>
@@ -48,7 +48,7 @@
 	</table>
 	</div>
 	
-	<div class="col-md-9">
+	<div class="col-md-8">
 	<table class="table" style="width: 35%; background-color: #F6F6F6; border: 1px solid #ccc;">
 		<tbody style="font-size: 14px;">
 				<tr>
@@ -69,3 +69,14 @@
 	window.alert("보내기 완료");
 </script>
 </c:if>
+
+<script>
+	$("#all").on("click",function(){
+		var v = $(this).prop("checked");
+		
+		$(".ch").each(function() {
+			$(this).prop("checked", v);
+		})
+	});
+
+</script>

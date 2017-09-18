@@ -22,7 +22,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/"><img src="/images/title.png"></a>
+				<a class="navbar-brand" href="/"><img src="/images/title.png" style="margin: 5px;"></a>
 				</div> 
 
 			<div class="collapse navbar-collapse header-right-menu"
@@ -68,13 +68,15 @@
                             
                             <span class="sr-only">계정</span></a>
                             <ul class="dropdown-menu">     
-                            	<li style="vertical-align: middle;"><a href="/my/home"><label class="material-icons" style="color: #999999; font-size: 23px; float: left;">dashboard</label><font style="margin-top: 7px;">MY홈</font></a></li>
+                            	<li><a href="/my/home"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">dashboard</i>　　MY홈</a></li>  
                             	<li><a href="/subscribe/blog.mt"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">turned_in</i>　　구독</a></li>   
                             	<li><a href="/my/library/postgood"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">subject</i>　　라이브러리 </a></li>
                             	<li><a href="/my/point/plist"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">monetization_on</i>　　포인트</a></li> 
                             	<li><a href="/my/settings/account"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">settings</i>　　설정</a></li>
                             	<li><a href="/mail/list.mt?type=send"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">mail</i>　　쪽지</a></li>
-                            	<li><a></a></li>     
+                            	<c:if test="${sessionScope.info.POWER eq 1}">
+	                            	<li><a href="/admin/main"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">vpn_key</i>　　관리자페이지</a></li>     
+                            	</c:if>
                             	<li><a></a></li>  
                             	<li><a href="/logout.mt"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">power_settings_new</i>　　로그아웃</a></li>
                             </ul>
@@ -147,7 +149,7 @@
           		<div class="form-group row" align="center">		
 			<form action="/loginExec.mt" method="post">					
 				<div class="form-group row">
-						<input class="form-control" type="email"
+						<input class="form-control" type="text"
 							placeholder="e-mail" name="email" id="login-email" required />
 				</div>
 				

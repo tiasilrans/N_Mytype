@@ -52,7 +52,7 @@ table.type07 td {
 		<c:when test="${mlist.size() > 0}">
 			<c:forEach var="mail" items="${mlist}">
 				<tr>
-					<td style="vertical-align: middle; height: 50px;"><input type="checkbox" name="num" value="${mail.NUM}" style="vertical-align: middle;"/></td>
+					<td style="vertical-align: middle; height: 50px;"><input class="ch" type="checkbox" name="num" value="${mail.NUM}" style="vertical-align: middle;"/></td>
 					<td style="vertical-align: middle; height: 50px;">${mail.EMAIL}</td>
 					<td style="vertical-align: middle; height: 50px;"><a href="/mail/view.mt?num=${mail.NUM}&type=${type}">${mail.CONTENT}</a></td>
 					<td style="vertical-align: middle;">
@@ -87,10 +87,13 @@ table.type07 td {
 </div>
 
 <script>
-$("#allcheck").click(function() {
-	$("input[name=num]:checkbox").each(function() {
-			$(this).attr("checked",true);
-		}
-	});
+$("#allcheck").on("click",function(){
+	var v = $(this).prop("checked");
+	
+	$(".ch").each(function() {
+		$(this).prop("checked", v);
+	})
 });
+
+
 </script>
