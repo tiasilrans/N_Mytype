@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -16,22 +16,24 @@
 </style>
 <style>
 .scrolltbody2 th:nth-of-type(1), .scrolltbody2 td:nth-of-type(1) { width: 230px; }
-.scrolltbody2 th:nth-of-type(2), .scrolltbody2 td:nth-of-type(2) { width: 100px; }
+.scrolltbody2 th:nth-of-type(2), .scrolltbody2 td:nth-of-type(2) { width: 150px; }
 .scrolltbody2 th:nth-of-type(3), .scrolltbody2 td:nth-of-type(3) { width: 100px; }
-.scrolltbody2 th:nth-of-type(4), .scrolltbody2 td:nth-of-type(4) { width: 150px; }
-.scrolltbody2 th:nth-of-type(5), .scrolltbody2 td:nth-of-type(5) { width: 90px; }
-.scrolltbody2 th:nth-of-type(6), .scrolltbody2 td:nth-of-type(6) { width: 90px; }
-.scrolltbody2 th:last-child { width: 90px; }
-.scrolltbody2 td:last-child { width: calc( 90px - 18px ); }
+.scrolltbody2 th:nth-of-type(4), .scrolltbody2 td:nth-of-type(4) { width: 100px; }
+.scrolltbody2 th:nth-of-type(5), .scrolltbody2 td:nth-of-type(5) { width: 180px; }
+.scrolltbody2 th:nth-of-type(6), .scrolltbody2 td:nth-of-type(6) { width: 100px; }
+.scrolltbody2 th:last-child { width: 100px; }
+.scrolltbody2 td:last-child { width: calc( 100px - 18px ); }
 </style>
    
-<div class="col-md-10"style="margin-top: 20px;">
+<div class="col-md-10"style="margin-top: 20px; margin-bottom: 150px;">
 	<div style="width: 80%;" align="left">
 	<h2>충전 / 출금 신청 관리</h2>
 	<hr style="margin-top: 10px;"/>
 	</div>
 
 <div align="left" style="margin-left: 100px;">
+	<h4>충전 신청 관리</h4>
+	<hr style="margin-top: 10px;"/>
 	<!-- 충전 리스트 -->
 	<table class="table scrolltbody1" style="width: 960px; border-collapse: collapse; display: block; border: 1px solid #ccc;">
 		<thead>
@@ -52,20 +54,88 @@
 					<td style="vertical-align: middle;">
 					<fmt:formatDate value="${c.DDATE }" pattern="yyyy-MM-dd HH:mm"/>
 					</td>
-					<td style="vertical-align: middle; height: 50px;"><fmt:formatNumber pattern="#,###">${c.POINT }</fmt:formatNumber>P</td>
-					<td style="vertical-align: middle; v">
+					<td style="vertical-align: middle; height: 50px; text-align: center;"><fmt:formatNumber pattern="#,###">${c.POINT }</fmt:formatNumber>P</td>
+					<td style="vertical-align: middle; text-align: center;">
 					<fmt:formatNumber pattern="#,###">
 					${c.POINT + c.POINT/10}
 					</fmt:formatNumber>원</td>
 					<td style="vertical-align: middle; height: 50px;">${c.PAYMENT }</td>
 					<td style="vertical-align: middle; height: 50px;">${c.PAYMENTOPTION }</td>
 					<td style="vertical-align: middle; height: 50px;">
-						<button class="btn btn-default" type="button" id="charge" value="${c.NUM}">충전 승인</button>
+						<button class="btn btn-link" type="button" id="charge" value="${c.NUM}&charge&${c.EMAIL}&${c.POINT }">충전 승인</button>
 					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+
+	<h4>출금 신청 관리</h4>
+	<hr style="margin-top: 10px;"/>
 	
+	<!-- 출금 리스트 -->
+	<table class="table scrolltbody2" style="width: 960px; border-collapse: collapse; display: block; border: 1px solid #ccc;">
+		<thead>
+			<tr style="background-color: #F6F6F6;">
+				<th>이메일</th>
+				<th>출금 신청일</th>
+				<th>신청포인트</th>
+				<th>은행명</th>
+				<th>계좌번호</th>
+				<th>예금주</th>
+				<th>출금 승인</th>
+			</tr>
+		</thead>
+		<tbody style="font-size: 14px; max-height: 250px; overflow: auto; display: block;">
+			<c:forEach var="w" items="${wlist}">
+				<tr>
+					<td style="vertical-align: middle;">${w.EMAIL}</td>
+					<td style="vertical-align: middle;">
+					<fmt:formatDate value="${w.WDATE }" pattern="yyyy-MM-dd HH:mm"/>
+					</td>
+					<td style="vertical-align: middle; height: 50px; text-align: center;"><fmt:formatNumber pattern="#,###">${w.MONEY }</fmt:formatNumber>P</td>
+					<td style="vertical-align: middle; height: 50px; text-align: center;">${w.BANK}</td>
+					<td style="vertical-align: middle; height: 50px;">${w.ACCOUNT}</td>
+					<td style="vertical-align: middle; height: 50px;">${w.HOLDER}</td>
+					<td style="vertical-align: middle; height: 50px;">
+						<button class="btn btn-link" type="button" id="withdraw" value="${w.NUM}&withdraw">출금 승인</button>
+					</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>	
 </div>
 </div>
+
+<script>
+	//승인누르는 스크립트
+	function apply(){
+		var rst = window.confirm("승인하시겠습니까?");
+		if(rst){
+			var v = this.value;
+			$.ajax({
+				"url" : "/admin/cwapplyExec",
+				"method" : "get",
+				"data" : {
+					"num" : v,
+				}
+			}).done(function(result){
+				var rst = JSON.parse(result);
+				if(rst.rst){
+					location.reload();
+				}else{
+					window.alert("승인 실패!");
+				}
+				
+			});
+		}
+	}
+	$("#withdraw").on("click", apply);
+	$("#charge").on("click", apply);
+
+</script>
+
+
+
+
+
+

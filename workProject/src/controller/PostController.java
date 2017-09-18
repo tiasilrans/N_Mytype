@@ -53,7 +53,8 @@ public class PostController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");		
 		Map map = new HashMap<>();
 			map.put("num", num);
-		boolean c = pdao.postCounter(map);
+			map.put("url", url);
+		boolean c = pdao.postCounter(map); // 조회수 증가
 		if(c){
 			HashMap post = pdao.onePost(map);
 			post.put("PDATE", sdf.format(post.get("PDATE")));
@@ -61,9 +62,27 @@ public class PostController {
 			mav.setViewName("post_view");
 			mav.addObject("section", "blog/post/postView");
 			mav.addObject("post", post);
-		}			
+		}
+			mav.addObject("totalpost", pdao.postCount(map));// 해당 블로그의 총 포스트 수 
 		return mav;	
 	}
+	
+	
+	@RequestMapping("/postdelete.mt")
+	@ResponseBody
+	public Map postDelete(@RequestParam Map m){
+		Map map = new HashMap();
+		boolean f = pdao.postDelete(m);		
+		if(f){			
+			map.put("result", true);
+			map.put("url", m.get("url"));
+		}else{
+			map.put("result", false);
+		}	 		
+ 		return map;	
+	}
+	
+	
 		
 	
 	@RequestMapping("postgood.mt")

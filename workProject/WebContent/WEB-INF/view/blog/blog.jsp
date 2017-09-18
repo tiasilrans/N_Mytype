@@ -89,9 +89,28 @@ footer {
     padding-left: 20px;
 	margin: 20px;
 	margin-top: -20px;  
-}   
+}
 
-</style> 
+
+.div-pagination a {
+    color: #0d0d0d;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #0d0d0d;
+    border-color: #ffffff;
+}
+
+.div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
+
+</style>  
 
 <div class="row" align="center">
 	<div class="col-xs-0 col-md-1"></div>
@@ -122,8 +141,8 @@ footer {
 								   <div class="media">
 								    	<div class="media-left">
 										 	<div class="media-left" style="vertical-align: middle;">
-										 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px;">
-										 	</div>
+										 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+										 	</div> 
 										  	<div class="media-body"> 
 										  		<span style="font-size: 12px; color: black;">닉네임</span>										 	
 										  		<span style="font-size: 12px; color: #808080;">
@@ -148,10 +167,10 @@ footer {
 							</footer>
 						</c:forEach>				
 					</div>  
-					<div class="div-pagination" style="margin-left: 400px;">
+					<div class="div-pagination" style="text-align: center;" > 
 							<ul class="pagination">
 								<c:forEach var="i" begin="1" end="${pNum }">				
-									<li><a href="/blog/${map.URL }?p=${i }">${i }</a>		
+									<li class="active"><a href="/blog/${map.URL }?p=${i }">${i }</a>		
 								</c:forEach>
 							</ul> 
 					</div>
@@ -263,10 +282,11 @@ footer {
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-bottom: 30px;">
  					<c:choose>
 	 					<c:when test="${sessionScope.login eq map.EMAIL }">
-							<a class="home" href="/blog/postWrite"
-								id="home"><label class="material-icons" 
-								style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">mode_edit</label></a>
-							<a href="/blog/postWrite"><div class="newpost" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">새 포스트 쓰기</div></a>
+							<form action="/blog/postWrite" method="post">
+								<input type="hidden" name="title" value="${map.TITLE }"/>
+								<input type="hidden" name="url" value="${map.URL }"/>
+								<button class="button button1" type="submit" title="새 포스트를 작성합니다.">새 포스트 쓰기</button>
+							</form>
 	 					</c:when>
 	 					<c:otherwise>
 	 						<label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="home" style="display:inline; margin-left: 14px;">구독</div>

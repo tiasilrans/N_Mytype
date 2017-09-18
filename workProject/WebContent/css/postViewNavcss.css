@@ -14,3 +14,10 @@
 	border-color: #dbdbdb;
 	border-color: #ccc;
 }
+
+
+@media (min-width: 768px)
+.navbar-right .dropdown-menu {
+    right: 20;
+    left: auto;
+}
