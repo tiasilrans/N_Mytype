@@ -6,7 +6,7 @@
 	
 	<!-- 회원가입 -->
 	<insert id="join" parameterType="java.util.HashMap">
-		insert into member(EMAIL,PASSWORD,CERTIFIED,JOINDATE,NICKNAME,IMAGE,BANK,ACCOUNT,HOLDER) values(#{email}, #{pw}, 'N', sysdate, #{nickname}, null, null, null, null)
+		insert into member(EMAIL,PASSWORD,CERTIFIED,JOINDATE,NICKNAME,IMAGE,BANK,ACCOUNT,HOLDER,INTRODUCE,POWER) values(#{email}, #{pw}, 'N', sysdate, #{nickname}, null, null, null, null, null, 0)
 	</insert>
 	
 	

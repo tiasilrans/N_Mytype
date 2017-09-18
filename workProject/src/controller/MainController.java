@@ -71,7 +71,6 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 		
 		Map result = mdao.Login(map);
-		System.out.println(result);
 		if(result != null){
 			mav.setViewName("redirect:/");
 			session.setAttribute("login", map.get("email"));

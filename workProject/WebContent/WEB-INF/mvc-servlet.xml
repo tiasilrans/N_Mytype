@@ -77,6 +77,7 @@
 				<value>/WEB-INF/mapper/mail-mapper.xml</value>
 				<value>/WEB-INF/mapper/subscribe-mapper.xml</value>
 				<value>/WEB-INF/mapper/library-mapper.xml</value>
+				<value>/WEB-INF/mapper/admin-mapper.xml</value>
 			</list>
 		</property>
 	</bean>	
@@ -105,10 +106,18 @@
 	<!-- json 사용 설정 -->
 	<bean class="com.fasterxml.jackson.databind.ObjectMapper" id="objMapper"/>
 	
-	
-	
-	
-	
+	<mvc:annotation-driven>
+    <mvc:message-converters>
+        <!-- @ResponseBody로 String 처리할때 한글처리 -->
+        <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+            <property name="supportedMediaTypes">
+                <list>
+                    <value>text/html;charset=UTF-8</value>
+                </list>
+            </property>
+        </bean>
+    </mvc:message-converters>
+</mvc:annotation-driven>
 	
 
 </beans>
