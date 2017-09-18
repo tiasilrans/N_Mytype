@@ -109,11 +109,11 @@ footer {
 							</c:if>
 							<div class="post-body">
 								<a href="/${obj.URL }/post/${obj.NUM}" style="color: #0d0d0d;">
-									<h2 style="color: #808080; font-family: sans-serif; font-size: 20px; margin: 0px;">${obj.TITLE }</h2>								
+									<h2 style="color: black; font-family: sans-serif; font-size: 20px; margin: 0px;">${obj.TITLE }</h2>								
 									<div class="subtitle" style="margin-top: -10px; margin-left: 3px;"> 
-										<h3 style="color: #1a1a1a; font-family: sans-serif; font-size: 13px;">${obj.SUBTITLE }</h3> 
+										<h3 style="color: #0d0d0d; font-family: sans-serif; font-size: 13px;">${obj.SUBTITLE }</h3> 
 									</div>								  
-									 <div class="fcountent" style="margin-top: 20px; margin-left: 3px;">
+									 <div class="fcountent" style="margin-top: 20px; margin-left: 3px; color: #808080;">
 										${obj.FCONTENT }
 									</div>
 								</a>
@@ -252,7 +252,7 @@ footer {
  				</div>
  				
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
- 					<a href="/logout.mt"><i class="material-icons" style="color: #a6a6a6; font-size: 26px;">power_settings_new</i></a>
+ 					<a href="/logout.mt"><i class="material-icons" title="로그아웃" style="color: #a6a6a6; font-size: 26px;">power_settings_new</i></a>
  				</div>
  				
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
