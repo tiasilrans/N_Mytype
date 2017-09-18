@@ -32,7 +32,7 @@
 				<h3 align="left">로그인 </h3>
 				<br/>				
 				<div class="form-group row">
-						<input class="form-control" type="email"
+						<input class="form-control" type="text"
 							placeholder="e-mail" name="email" id="login-email" required />
 				</div>
 				

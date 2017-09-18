@@ -77,7 +77,6 @@ input[type=checkbox]:checked+label:before {
 					${post.CCONTENT }
 				</div>
 			</c:when>
-				<!-- 유료 컨텐츠 구매 -->
 			<c:otherwise>
 				<c:if test="${post.CCONTENT ne ''}">
 					<div class="charged-content">

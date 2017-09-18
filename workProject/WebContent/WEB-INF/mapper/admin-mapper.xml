@@ -23,19 +23,42 @@
 		left join (select NVL(count(num),0) as reply, email from reply group by email)reply on m.email=reply.email
 	</select>
 	
+	<!-- 블로그 리스트 -->
+	<select id="selectBlog" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from blog
+		<if test="email != null">
+			where email=#{email}
+		</if>
+		order by createdate desc
+	</select>
+	
+	<!-- 포스트 리스트 -->
+	<select id="selectPost" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from post
+		<if test="email != null">
+			where email=#{email}
+		</if>
+		order by pdate desc
+	</select>
+
 	<!-- 댓글 리스트 -->
 	<select id="selectReply" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select r.*,p.url,p.title from reply r left join 
+		select r.*,p.url,p.title from
 		<choose>
 		<when test="email == null">
-		(select num,url,title from post) p
+		reply r
 		</when>
 		<otherwise>
-		(select num,url,title from post where email=#{email}) p
+		(select * from reply where email=#{email}) r
 		</otherwise>
 		</choose>
-		on r.pnum=p.num
+			left join (select num,url,title from post) p on r.pnum=p.num
 	</select>
+	
+	<!-- 포스트 삭제 -->
+	<delete id="deletePost" parameterType="java.util.HashMap">
+		delete from post where num=#{num}
+	</delete>
 	
 	<!-- 댓글 삭제 -->
 	<delete id="deleteReply" parameterType="java.util.HashMap">
@@ -70,6 +93,20 @@
 		select * from withdraw where email=#{email} order by wdate desc
 	</select>
 	
+	<!-- 충전 승인 -->
+	<update id="applyCharge" parameterType="java.util.HashMap">
+		update deposit set accept='Y' where num=#{num}
+	</update>
+	
+	<!-- 충전 승인 후 로그에 추가 -->
+	<insert id="Charge" parameterType="java.util.HashMap">
+		insert into point(num,email,charge,cause,ptdate) values(point_seq.nextval, #{email}, #{point}, '포인트 충전', sysdate)
+	</insert>
+	
+	<!-- 출금 승인 -->
+	<update id="applyWithdraw" parameterType="java.util.HashMap">
+		update withdraw set accept='Y' where num=#{num}
+	</update>
 </mapper>
 
 

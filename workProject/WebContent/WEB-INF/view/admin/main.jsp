@@ -8,7 +8,7 @@
 .scrolltbody th:nth-of-type(1), .scrolltbody td:nth-of-type(1) { width: 230px; }
 .scrolltbody th:nth-of-type(2), .scrolltbody td:nth-of-type(2) { width: 100px; }
 .scrolltbody th:nth-of-type(3), .scrolltbody td:nth-of-type(3) { width: 100px; }
-.scrolltbody th:nth-of-type(4), .scrolltbody td:nth-of-type(4) { width: 150px; }
+.scrolltbody th:nth-of-type(4), .scrolltbody td:nth-of-type(4) { width: 110px; }
 .scrolltbody th:nth-of-type(5), .scrolltbody td:nth-of-type(5) { width: 90px; }
 .scrolltbody th:nth-of-type(6), .scrolltbody td:nth-of-type(6) { width: 90px; }
 .scrolltbody th:last-child { width: 90px; }
@@ -32,7 +32,7 @@
 		</div>
 
 	<!-- 회원 리스트 -->
-	<table class="table scrolltbody" style="width: 800px; border-collapse: collapse; display: block; border: 1px solid #ccc;">
+	<table class="table scrolltbody" style="width: 760px; border-collapse: collapse; display: block; border: 1px solid #ccc;">
 		<thead>
 			<tr style="background-color: #F6F6F6;">
 				<th>이메일</th>
@@ -46,7 +46,7 @@
 		</thead>
 		<tbody style="font-size: 14px; max-height: 250px; overflow: auto; display: block;" id="mlist">
 		<c:forEach var="m" items="${list}">
-			<tr><td>${m.EMAIL}</td>
+			<tr><td><a href="/admin/detail?target=${m.EMAIL}" style="color:black;">${m.EMAIL}</a></td>
 			<td>
 			<c:choose>
 			<c:when test="${m.NICKNAME eq null}">
@@ -58,7 +58,7 @@
 			</c:choose>
 			</td>
 			<td><fmt:formatDate value="${m.JOINDATE}" pattern="yyyy-MM-dd"/></td>
-			<td><fmt:formatNumber value="${m.POINT eq null ? 0 : m.POINT}" pattern="#,###"/>P</td>
+			<td style="text-align: center"><fmt:formatNumber value="${m.POINT eq null ? 0 : m.POINT}" pattern="#,###"/>P</td>
 			<td>${m.BLOG eq null ? 0 : m.BLOG}</td>
 			<td>${m.POST eq null ? 0 : m.POST}</td>
 			<td>${m.REPLY eq null ? 0 : m.REPLY}</td></tr>

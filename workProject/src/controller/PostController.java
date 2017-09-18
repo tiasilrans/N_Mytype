@@ -2,6 +2,7 @@ package controller;
 
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -81,6 +82,31 @@ public class PostController {
 		}	 		
  		return map;	
 	}
+	
+	@RequestMapping("/blog/update/{num }")
+	public ModelAndView postUpdate(@RequestParam Map m, HttpSession session,
+												@PathVariable(value="num") int num){
+		// m= 타이틀, url 들어가 있음
+		Map updateMap = (Map)session.getAttribute("writeMap");
+		if(updateMap !=null){
+			String title = (String)updateMap.get("title");
+			String url = (String)updateMap.get("url");
+			if(title!=null){
+				m.put("title", title);
+				m.put("url", url);
+			}
+		}		
+		List<Map> catelist = pdao.categoryList(m);		
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("post");
+			mav.addObject("title", "포스트편집");
+			mav.addObject("map", m);
+			mav.addObject("catelist", catelist);
+			session.setAttribute("updateMap", m);
+			
+		return mav;
+	}
+	
 	
 	
 		

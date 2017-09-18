@@ -7,7 +7,7 @@
 				<a class="list-group-item" style="background-color: #F6F6F6;">관리</a>
 				<a class="list-group-item" style="padding-left: 20px;" href="/admin/main">회원 정보 조회</a>
 				<a class="list-group-item" style="padding-left: 20px;" href="/admin/cwapply">충전 / 출금 신청 관리</a>
-				<a class="list-group-item" style="padding-left: 20px;">포스트 관리</a>
+				<a class="list-group-item" style="padding-left: 20px;" href="/admin/post">포스트 관리</a>
 				<a class="list-group-item" style="padding-left: 20px;" href="/admin/reply">댓글 관리</a>
 				<a class="list-group-item" style="padding-left: 20px;" href="/admin/mailsend">관리자 쪽지 보내기</a>
 		</div>

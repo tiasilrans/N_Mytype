@@ -89,7 +89,6 @@ public class PostDao {
 	}
 	
 	// 占쏙옙慣占� 占쏙옙占쏙옙 占쏙옙占쏙옙트 占쏙옙占�
-		// 占쏙옙慣占� 占쏙옙 占쏙옙占쏙옙트 占쏙옙	
 	public int postCount(Map map){
 		SqlSession session = factory.openSession();
 		try{
