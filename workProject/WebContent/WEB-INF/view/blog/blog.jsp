@@ -104,7 +104,7 @@ footer {
 						<c:forEach var="obj" items="${list }">
 							<c:if test="${obj.NOTICE}">
 								<header class="post-header">
-									공지사항
+									<img src="/images/notice.png" style="margin-left: 40px;">
 								</header>
 							</c:if>
 							<div class="post-body">
