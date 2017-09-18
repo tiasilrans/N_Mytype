@@ -61,9 +61,9 @@ label{
 				<c:choose>
 					<c:when test="${info.IMAGE eq null }">
 						<img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 75px; width: 75px; margin-top: -20px;">
-					</c:when>
+					</c:when>  
 					<c:otherwise>
-						<img src="/images/profile/${info.IMAGE}" style="border-radius: 50%; height: 75px; width: 75px;">
+						<img src="/images/profile/${info.IMAGE}" style="border-radius: 50%; height: 75px; width: 75px; margin-top: -20px;">
 					</c:otherwise>
 				</c:choose>
 			</div>
