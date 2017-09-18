@@ -14,7 +14,13 @@
   	<!-- 조회수 증가 -->
   	<update id="counter" parameterType="java.util.HashMap">
   		update post set count = count+1 where num = #{num}
-  	</update> 	
+  	</update>
+  	<!-- 포스트 삭제 -->
+  	<delete id="delete" parameterType="java.util.HashMap">
+  		delete from post where num=#{num}
+  	</delete>
+  	
+  		
   	
   	<!-- 카테고리 목록 가져오기 -->
   	<select id="cate_list" parameterType="java.util.HashMap" resultType="java.util.HashMap">

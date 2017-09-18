@@ -139,8 +139,7 @@ public class BlogController {
 	
 	@RequestMapping("/categoryUpdate.mt")
 	@ResponseBody
-	public Map categoryAdd(@RequestParam Map m, 
-				 HttpSession session){
+	public Map categoryAdd(@RequestParam Map m, HttpSession session){
 			m.put("email", session.getAttribute("login"));
 		System.out.println("넘어온 값 : " + m);
 		
