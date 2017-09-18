@@ -2,6 +2,46 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="/css/postviewcss.css">
+<style>
+input[type=checkbox] {
+	display: none;
+}
+
+input[type=checkbox]+label {
+	display: inline-block;
+	cursor: pointer;
+	position: relative;
+	padding-left: 25px;
+	margin-right: 15px;
+	font-size: 13px;
+}
+
+input[type=checkbox]+label:before {
+	content: "";
+	display: inline-block;
+	width: 17px;
+	height: 17px;
+	margin-right: 10px;
+	position: absolute;
+	left: 0;
+	bottom: 1px;
+	background-color: #ccc;
+	border-radius: 2px;
+	box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px
+		rgba(255, 255, 255, .8);
+}
+
+input[type=checkbox]:checked+label:before {
+	content: "\2714"; /* 체크모양 */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+	font-size: 15px;
+	font-weight: 800;
+	color: #fff;
+	background: #1a1a1a;
+	text-align: center;
+	line-height: 18px;
+}
+</style>
 
 <div class="content" style="margin-top: 100px; margin-left: 100px; padding: 0px;">
 	<div class="container">
@@ -81,14 +121,14 @@
 				<form action="">
 					<input type="hidden" value="" id="postNum">
 					<textarea class="form-control autosize" name="content" id="mention" data-autosize-on="true"
-						style="overflow: hidden; word-wrap: break-word; height: 60px;"></textarea>
+						style="overflow: hidden; word-wrap: break-word; height: 60px; width: 750px; resize: none;"></textarea>
 					<div class="clearfix">
-	            		<div class="checkbox-wrap" style="float: left;">
-		                <input type="checkbox" id="notice" class="checkbox-style" />
-						<label for="notice">비밀댓글</label>
+	            		<div class="checkbox-wrap" style="float: left; margin-top: 20px;">
+		                <input type="checkbox" id="notice" class="checkbox-style"/>
+						<label for="notice">비밀댓글</label> 
 	            		</div>
-		            		<div style="float: right;">
-		                	<button class="button button1">댓글 남기기</button>
+		            	<div style="float: right; margin-top: 7px; margin-right: 340px;">
+		                	<button class="button button1">댓글 남기기</button> 
 	           			</div>
         			</div>
 				</form>
