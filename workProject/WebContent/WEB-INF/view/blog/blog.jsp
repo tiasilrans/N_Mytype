@@ -89,9 +89,10 @@ footer {
     padding-left: 20px;
 	margin: 20px;
 	margin-top: -20px;  
-}   
+}
 
-</style> 
+
+</style>  
 
 <div class="row" align="center">
 	<div class="col-xs-0 col-md-1"></div>
@@ -122,8 +123,8 @@ footer {
 								   <div class="media">
 								    	<div class="media-left">
 										 	<div class="media-left" style="vertical-align: middle;">
-										 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px;">
-										 	</div>
+										 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+										 	</div> 
 										  	<div class="media-body"> 
 										  		<span style="font-size: 12px; color: black;">닉네임</span>										 	
 										  		<span style="font-size: 12px; color: #808080;">
@@ -148,7 +149,7 @@ footer {
 							</footer>
 						</c:forEach>				
 					</div>  
-					<div class="div-pagination" style="margin-left: 400px;">
+					<div class="div-pagination" style="text-align: center;"> 
 							<ul class="pagination">
 								<c:forEach var="i" begin="1" end="${pNum }">				
 									<li><a href="/blog/${map.URL }?p=${i }">${i }</a>		
