@@ -323,9 +323,10 @@ input[type=radio]:checked+label:before {
 				<div class="row" style="margin-top: 20px;">
 					<div class="col-xs-3" style="color: #4d4d4d;">표시설정</div>
 					<div class="col-xs-9">
-						<input type="checkbox" id="notice" class="checkbox-style" /><label
-							for="notice">공지</label> <input type="checkbox" id="adult"
-							class="checkbox-style" /><label for="adult">성인물</label>
+						<input type="checkbox" id="notice" class="checkbox-style" />
+						<label for="notice">공지</label>
+						<input type="checkbox" id="adult" class="checkbox-style" />
+						<label for="adult">성인물</label>
 					</div>
 				</div>
 					<div class="row" style="margin-top: 20px;">
@@ -410,8 +411,14 @@ input[type=radio]:checked+label:before {
 <script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
 
+
+
+
+
+
 <!-- Initialize the editor. -->
 <script>
+
 	$(function() {
 		$("#editor").froalaEditor(
 				{
@@ -448,6 +455,8 @@ input[type=radio]:checked+label:before {
 					"fcontent" : prev,
 					"ccontent" : next,
 					"hash" : $("#hash").val(),
+					"notice" : $("#notice").prop("checked"),
+					"adult" : $("#adult").prop("checked"),
 					"url" : "${map.url}"
 					
 				}

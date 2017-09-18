@@ -6,9 +6,9 @@
   	<!-- 포스트 쓰기 -->
   	<insert id="write" parameterType="java.util.HashMap">
   		insert into post(num, category, email, title, subtitle, fcontent, ccontent, good, 
-  					report, pdate, url, count) 
+  					report, pdate, url, count, notice, adult) 
  					values(post_seq.nextval, #{category}, #{email}, #{title}, #{subtitle},
- 						#{fcontent}, #{ccontent}, 0, 0, sysdate, #{url}, 0)
+ 						#{fcontent}, #{ccontent}, 0, 0, sysdate, #{url}, 0, #{notice}, #{adult})
   	</insert>
   	
   	<!-- 조회수 증가 -->

@@ -102,8 +102,13 @@ footer {
 				<div class="col-xs-8 blog-post-list" align="left">
 					<div class="blog-post-list">
 						<c:forEach var="obj" items="${list }">
+							<c:if test="${obj.NOTICE}">
+								<header class="post-header">
+									공지사항
+								</header>
+							</c:if>
 							<div class="post-body">
-								<a href="/${obj.URL }/post/${obj.NUM}" style="color: #0d0d0d; ">
+								<a href="/${obj.URL }/post/${obj.NUM}" style="color: #0d0d0d;">
 									<h2 style="color: #808080; font-family: sans-serif; font-size: 20px; margin: 0px;">${obj.TITLE }</h2>								
 									<div class="subtitle" style="margin-top: -10px; margin-left: 3px;"> 
 										<h3 style="color: #1a1a1a; font-family: sans-serif; font-size: 13px;">${obj.SUBTITLE }</h3> 

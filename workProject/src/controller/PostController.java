@@ -32,10 +32,7 @@ public class PostController {
 	@ResponseBody
 	public Map posrWrite(@RequestParam Map m,HttpSession session){
 		String email = (String)session.getAttribute("login");
-		String nickname = (String)m.get("nickname");
-		if(nickname==null){
-			m.put("nickname", email.split("@")[0]);
-		}
+			m.put("email", email);
 		System.out.println("넘어온 값 : " + m);
 		Map map= new HashMap<>();
 		boolean f = pdao.postWrite(m);
@@ -60,6 +57,7 @@ public class PostController {
 		if(c){
 			HashMap post = pdao.onePost(map);
 			post.put("PDATE", sdf.format(post.get("PDATE")));
+			post.put("nickname", ((String)post.get("EMAIL")).split("@")[0]);
 			mav.setViewName("post_view");
 			mav.addObject("section", "blog/post/postView");
 			mav.addObject("post", post);

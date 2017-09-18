@@ -42,7 +42,7 @@
 		<div class="support" style="display: table; width: 100%;">
 			<div class="message" style="display: table-cell; vertical-align: middle; padding-right: .75rem; line-height: 1.25;
 			font-family: sans-serif; color: black; font-weight: 800px;">
-				${post.NICKNAME }님의 창작활동을 응원하고 싶으세요? 
+				${post.nickname }님의 창작활동을 응원하고 싶으세요? 
 			 
 			</div>
 			<div style="display: table-cell;">
