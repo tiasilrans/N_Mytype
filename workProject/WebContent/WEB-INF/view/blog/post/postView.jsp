@@ -63,10 +63,9 @@
 	<section class="">
 		<div class="body blog-info">
 			<div class="media"> 
-		
-			</div>
-			<div class="media-body">
-			</div>		
+				<div class="media-body">
+				</div>
+			</div>					
 		</div>
 	</section>
 	<!-- 블로그 포스트 리스트 섹션 -->
@@ -90,7 +89,7 @@
 		                    <span class="custom-control-description">비밀 댓글</span>
 		                	</label>
 	            		</div>
-		            		<div style="float: right;">
+		            	<div style="float: right;">
 		                	<button class="btn btn-primary btn-create-comment">댓글 남기기</button>
 	           			</div>
         			</div>

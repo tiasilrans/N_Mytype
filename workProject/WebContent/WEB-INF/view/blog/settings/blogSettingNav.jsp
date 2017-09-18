@@ -14,7 +14,7 @@
 				<a class="nav-link" href="/blog/${url}">${title}</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="">포스트</a>
+				<a class="nav-link" href="/blog/admin/${url }/posts">포스트</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="/blog/${url} /categories">카테고리</a>
@@ -28,6 +28,37 @@
 		</ul>
 	</div>
 </nav>
+
+
+<script>
+function postSet(){    	
+    	$.post({
+			url : "/blog/admin/posts",
+			data : {
+				"num" : "${post.NUM }",
+				"url" : "${post.URL}"
+			}
+		}).done(function(result) {
+			if(result.result){
+				location.replace("")
+				window.alert("삭제가 완료되었습니다.");
+			}else{
+				window.alert("포스트 삭제에 실패하였습니다.");
+			}
+		});
+
+};
+
+
+
+
+
+
+
+
+
+
+</script>
 
 
 
