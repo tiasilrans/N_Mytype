@@ -84,6 +84,7 @@ public class AdminController {
 			//블로그
 			list = adminDAO.blogList(map);
 			mav.addObject("blist", list);
+			mav.addObject("plist", adminDAO. sublistReply(list, 25, "INTRO", "SUBINTRO"));
 			
 			//포스트
 			list = adminDAO.selectPost(map);

@@ -30,7 +30,7 @@
 		<tbody style="font-size: 14px; max-height: 380px; overflow: auto; display: block;" id="mlist">
 		<c:forEach var="m" items="${mlist}">
 			<tr>
-			<td><input type="checkbox" name="email" value="${m.EMAIL}" style="vertical-align: middle;"/></td>
+			<td><input class="ch" type="checkbox" name="email" value="${m.EMAIL}" style="vertical-align: middle;"/></td>
 			<td>${m.EMAIL}</td>
 			<td>
 			<c:choose>
@@ -69,3 +69,14 @@
 	window.alert("보내기 완료");
 </script>
 </c:if>
+
+<script>
+	$("#all").on("click",function(){
+		var v = $(this).prop("checked");
+		
+		$(".ch").each(function() {
+			$(this).prop("checked", v);
+		})
+	});
+
+</script>

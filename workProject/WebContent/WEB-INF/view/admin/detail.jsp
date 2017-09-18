@@ -15,11 +15,17 @@
 .member td:last-child { width: calc( 90px - 18px ); }
 </style>
 <style>
+.blog th:nth-of-type(1), .blog td:nth-of-type(1) { width: 200px; vertical-align: middle; text-align: center}
+.blog th:nth-of-type(2), .blog td:nth-of-type(2) { width: 320px; vertical-align: middle; text-align: center}
+.blog th:last-child { width: 130px;  text-align: center}
+.blog td:last-child { width: calc( 130px - 18px );  text-align: center}
+</style>
+<style>
 .post th:nth-of-type(1), .post td:nth-of-type(1) { width: 190px; vertical-align: middle; text-align: center}
 .post th:nth-of-type(2), .post td:nth-of-type(2) { width: 100px; vertical-align: middle; text-align: center}
-.post th:nth-of-type(3), .post td:nth-of-type(3) { width: 100px;  text-align: center}
-.post th:nth-of-type(4), .post td:nth-of-type(4) { width: 130px;  text-align: center}
-.post th:nth-of-type(5), .post td:nth-of-type(5) { width: 110px;  text-align: center}
+.post th:nth-of-type(3), .post td:nth-of-type(3) { width: 100px; vertical-align: middle; text-align: center}
+.post th:nth-of-type(4), .post td:nth-of-type(4) { width: 130px; vertical-align: middle; text-align: center}
+.post th:nth-of-type(5), .post td:nth-of-type(5) { width: 110px; vertical-align: middle;  text-align: center}
 .post th:last-child { width: 100px;  text-align: center}
 .post td:last-child { width: calc( 100px - 18px );  text-align: center}
 </style>
@@ -97,7 +103,7 @@
 <div align="left" style="margin-left: 100px; margin-bottom: 50px;">
 	<h4><b>'${sessionScope.target}'</b>님의 블로그</h4>
 	<hr style="margin-top: 10px; width: 80%;" align="left"/>
-		<table class="table reply" style="margin-left: 80px ;width: 530px; border-collapse: collapse; display: block; border: 1px solid #ccc;">
+		<table class="table blog" style="width: 650px; border-collapse: collapse; display: block; border: 1px solid #ccc;">
 		<thead>
 			<tr style="background-color: #F6F6F6;">
 				<th>블로그명</th>
@@ -106,18 +112,20 @@
 			</tr>
 		</thead>
 		<tbody style="font-size: 14px; max-height: 150px; overflow: auto; display: block; font-size: 13;" id="mlist">
-		<c:forEach var="r" items="${blist}">
-			<tr><td>
+		<c:forEach var="b" items="${blist}">
+			<tr>
+			<td><a href="/blog/${b.URL }" style="color: black;">${b.TITLE}</a></td>
+			<td>
 			<c:choose>
-			<c:when test="${r.SUBCONTENT eq null}">
-			${r.CONTENT}
+			<c:when test="${b.SUBINTRO eq null}">
+			${b.INTRO}
 			</c:when>
 			<c:otherwise>
-			<a href="#" data-toggle="popoverr" data-trigger="hover" data-content="${r.CONTENT}" style="color: black; text-decoration: none;">	${r.SUBCONTENT}</a>
+			<a href="#" data-toggle="popoverb" data-trigger="hover" data-content="${b.INTRO}" style="color: black; text-decoration: none;">	${b.SUBINTRO}</a>
 			</c:otherwise>
 			</c:choose>
 			</td>
-
+			<td><fmt:formatDate value="${b.CREATEDATE}" pattern="yyyy-MM-dd"/></td>
 			</tr>
 		</c:forEach>
 		</tbody>
@@ -277,6 +285,7 @@
 $(document).ready(function(){
     $('[data-toggle="popoverr"]').popover();   
     $('[data-toggle="popoverp"]').popover();   
+    $('[data-toggle="popoverb"]').popover();   
 });
 
 //댓글 삭제

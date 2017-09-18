@@ -29,7 +29,7 @@
 		<if test="email != null">
 			where email=#{email}
 		</if>
-		order by bdate desc
+		order by createdate desc
 	</select>
 	
 	<!-- 포스트 리스트 -->
