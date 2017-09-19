@@ -124,7 +124,7 @@ input[type=checkbox]:checked+label:before {
 					style="margin-bottom: 30px; margin-top: 30px;">
 					<div class="media" style="margin-left: 95px;">
 						<img src="/images/avatar_yellow.png"
-							style="border-radius: 15%; height: 70px; width: 70px;">
+							style="border-radius: 17%; height: 70px; width: 70px;">
 					</div>
 					<div class="media-body"></div>
 					<button class="btn btn-default"
