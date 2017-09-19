@@ -72,24 +72,20 @@ input[type=checkbox]:checked+label:before {
 			</div> 
 		<!-- 유료 컨텐츠 부분 -->
 			<c:choose>
-			<c:when test="${sessionScope.login eq post.EMAIL }">
+			<c:when test="${buy || sessionScope.login eq post.EMAIL }">
 				<div class="charged-content">
 					${post.CCONTENT }
 				</div>
 			</c:when>
 			<c:otherwise>
-				<c:if test="${post.CCONTENT ne ''}">
-					<div class="charged-content">
-						${post.CCONTENT }
-					</div>
-				</c:if>
+				구매하여 나머지 보기
 			</c:otherwise>			
 			</c:choose>
 		</div>
 		<div class="support" style="display: table; width: 100%;">
 			<div class="message" style="display: table-cell; vertical-align: middle; padding-right: .75rem; line-height: 1.25;
 			font-family: sans-serif; color: black; font-weight: 800px;">
-				${post.nickname }님의 창작활동을 응원하고 싶으세요? 
+				${post.NICKNAME }님의 창작활동을 응원하고 싶으세요? 
 			 
 			</div>
 			<div style="display: table-cell;">
@@ -116,7 +112,7 @@ input[type=checkbox]:checked+label:before {
 			<div class="media-body">
 				
 			</div>	
-			<button class="btn btn-default" style="float: right; margin-right: 340px; margin-top: -45px;">구독하기</button> 
+			<button class="btn btn-default" style="float: right; margin-right: 345px; margin-top: -45px;">구독하기</button> 
 		</div>
 	</section>
 	<!-- 블로그 포스트 리스트 섹션 --> 
@@ -139,7 +135,7 @@ input[type=checkbox]:checked+label:before {
 		                <input type="checkbox" id="notice" class="checkbox-style"/>
 						<label for="notice">비밀댓글</label> 
 	            		</div>
-		            	<div style="float: right; margin-top: 7px; margin-right: 345px;">
+		            	<div style="float: right; margin-top: 7px; margin-right: 343px;">
 		                	<button class="button button1">댓글 남기기</button>
 	           			</div>
         			</div>

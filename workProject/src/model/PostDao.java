@@ -28,6 +28,28 @@ public class PostDao {
 		}
 		return list;
 	}
+	//fcontent에서 이미지 따로 빼서 IMG으로 map.put / fcontent는 글만 적용 
+	public List<Map> imgRedefinition(List<Map> list){
+		for(Map m :list){
+			String[] arr = ((String)m.get("FCONTENT")).split("</p>");
+			String fc = "";//글만
+			String img = "";//사진만
+			for(String ar : arr){
+				ar += "</p>";
+				if(ar.indexOf("froala") > -1){
+					if(img.length() == 0){
+						ar = ar.replaceAll("<br>", "");
+						img+=ar;
+					}
+				}else{
+					fc+=ar;
+				}
+			}
+			m.put("FCONTENT", fc);
+			m.put("IMG", img);
+		}
+		return list;
+	}
 	
 	public boolean postWrite(Map map){
 		SqlSession session = factory.openSession();
@@ -159,6 +181,7 @@ public class PostDao {
 		List<Map> list = new ArrayList<>();
 		try{
 			list = session.selectList("post.listall", map);
+			list = this.imgRedefinition(list);
 			return list; 
 		}catch(Exception e){
 			System.out.println("PostListAll Error");
@@ -172,13 +195,15 @@ public class PostDao {
 	//占쏙옙占쏙옙占쏙옙 占쌉시뱄옙 占쌀뤄옙占쏙옙占쏙옙
 	public List<Map> listLike(Map map){
 		SqlSession session = factory.openSession();
-		
+		List<Map> list = new ArrayList<>();
 		try{
-			return session.selectList("post.listLike", map);
+			list = session.selectList("post.listLike", map);
+			list = this.imgRedefinition(list);
+			return list;
 		}catch(Exception e){
 			System.out.println("PostListLike Error");
 			e.printStackTrace();
-			return null;
+			return list;
 		}finally{
 			session.close();
 		}
@@ -201,6 +226,7 @@ public class PostDao {
 					}
 				}
 			}
+			list = this.imgRedefinition(list);
 			return result; 
 		}catch(Exception e){
 			System.out.println("PostlistTag Error");
@@ -290,7 +316,24 @@ public class PostDao {
 		}
 	}
 	
-	
+	public boolean buyCheck(Map map){
+		SqlSession session = factory.openSession();
+		List<Map> list = new ArrayList<>();
+		boolean buy = false;
+		try{
+			list = session.selectList("post.buyCheck", map);
+			if(list.size() > 0){
+				buy =true;
+			}
+			return buy; 
+		}catch(Exception e){
+			System.out.println("PostBuyCheck Error");
+			e.printStackTrace();
+			return buy;
+		}finally{
+			session.close();
+		}
+	}
 	
 	
 	
