@@ -1,4 +1,4 @@
-@CHARSET "EUC-KR";
+@CHARSET "utf-8";
 
 
 .button {
@@ -60,7 +60,7 @@ input[type=checkbox]+label:before {
 }
 
 input[type=checkbox]:checked+label:before {
-	content: "\2714"; /* üũ��� */
+	content: "\2714"; /* 체크모양 */
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
 	font-size: 18px;
 	font-weight: 800;
