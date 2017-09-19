@@ -252,21 +252,13 @@ section{
 						<div>${all.NICKNAME }</div>
 						<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${all.URL }">${all.URL }</a></div>
 					</div>
-<<<<<<< HEAD
 					
 	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
-	                	<c:if test="${all.IMG.length() > 10}">
-=======
-	                <div style="height:50px; margin:12px; padding-bottom: 3px;">
-	                	<div style="font-size: 15px; padding-bottom: 5px; ">제목 없음</div>
-	                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
-	                	<c:choose>
-	                	<c:when test="${all.IMG.length() > 10}">
-	                		<div class="nailthumb-column-metadata" id="thumbnail">
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
-	                		${all.IMG }
-<<<<<<< HEAD
-	                	</c:if>
+		                	<c:if test="${all.IMG.length() > 10}">
+		                		<div class="nailthumb-column-metadata" id="thumbnail">
+		                			${all.IMG }
+		                		</div>
+	                		</c:if>
 						<a href="/${all.URL}/post/${all.NUM}" style="font-size: 15px; text-decoration: none; color: #333333;padding-bottom: 5px;">
 							${all.TITLE }
 						</a>
@@ -274,16 +266,6 @@ section{
 							${all.FCONTENT }
 						</a>
 					</div> <br/><br/><br/>
-=======
-	                		</div>
-	                	</c:when>
-	                	<c:otherwise>
-	                		${all.FCONTENT }
-	                	</c:otherwise>
-	                	</c:choose>
-	                	</div>
-	                </div> <br/><br/><br/>
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 	                
 	                <div>
 		                <c:set var="msg" value="${all.HASH }"/>
