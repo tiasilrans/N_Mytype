@@ -43,6 +43,8 @@ input[type=checkbox]:checked+label:before {
 }
 </style>
 
+<div class="col-xs-0 col-md-2"></div>
+<div class="col-xs-6 col-md-6">
 <div class="content" style="margin-top: 100px; margin-left: 100px; padding: 0px;">
 	<div class="container">
 		<div class="header">
@@ -57,11 +59,13 @@ input[type=checkbox]:checked+label:before {
 			<div class="profile" style="margin-top: 45px;">  
 				<div class="media-profile">   
                 	<div class="media-left" style="margin: 10px;  vertical-align: middle;"> 
-     						<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 35px; height: 35px;">
+     						<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 32px; height: 32px; margin-top:-5px;">
    					</div>    
     				<div class="media-body">  
-      					<h4 class="media-heading" style="font-family: sans-serif; color: black;">${post.NICKNAME }</h4>
+      					<h4 class="media-heading" style="font-family: sans-serif; color: black; font-size: 17px;">${post.NICKNAME }</h4>
+     					<div style="margin-top: -10px;">
      					<h4 style="font-family: sans-serif; color: #808080;"><small>${post.PDATE }</small> <small>조회 ${post.COUNT }</small></h4>
+                		</div>
                 	</div> 
 				</div> 
 			</div>	
@@ -85,7 +89,7 @@ input[type=checkbox]:checked+label:before {
 		<div class="support" style="display: table; width: 100%;">
 			<div class="message" style="display: table-cell; vertical-align: middle; padding-right: .75rem; line-height: 1.25;
 			font-family: sans-serif; color: black; font-weight: 800px;">
-				${post.NICKNAME }님의 창작활동을 응원하고 싶으세요? 
+				<span style="font-family: sans-serif; color: black; font-size: 15px;">${post.NICKNAME }님의 창작활동을 응원하고 싶으세요?</span> 
 			 
 			</div>
 			<div style="display: table-cell;">
@@ -146,6 +150,9 @@ input[type=checkbox]:checked+label:before {
 	</section>
 
 </aside>
+</div>
+<div class="col-xs-0 col-md-2"></div>
+
 
 
 
