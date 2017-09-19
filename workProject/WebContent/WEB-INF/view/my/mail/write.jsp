@@ -21,7 +21,7 @@ table.type07 td {
 
     
 <div align="center">
-	<div style="width: 40%;" align="left">
+	<div style="width: 40%; margin-top: 130px;" align="left">
 	<h2>쪽지쓰기</h2>
 	<hr style="margin-top: 10px;"/>
 	</div>

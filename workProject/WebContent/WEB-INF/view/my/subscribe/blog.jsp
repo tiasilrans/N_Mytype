@@ -27,8 +27,8 @@ table.type07 td {
 </style>
 
 
-<div align="center">
-	<div style="width: 50%;" align="left">
+<div align="center" style="margin-top: 130px;">
+	<div style="width: 50%;" align="left" >
 	<h2>구독중인 블로그</h2>
 	<hr style="margin-top: 10px;"/>
 	</div>

@@ -172,7 +172,7 @@
 </style>   
 <div class="row">
 <div class="col-md-2" style="margin-left: 40px;"></div>
-<div class="col-md-8" style="margin-left: auto; margin-bottom: 100px;">
+<div class="col-md-7" style="margin-left: auto; margin-bottom: 100px;">
 
 			<!-- 메인쪽 로고 부분 -->
 			  <div class="container col-md-4" style="width:620px; height: 350px;">

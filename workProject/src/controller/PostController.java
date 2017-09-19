@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import model.PointDao;
 import model.PostDao;
 import model.ReplyDAO;
 
@@ -32,6 +33,10 @@ public class PostController {
 	
 	@Autowired
 	ReplyDAO rDAO;
+	
+	@Autowired
+	PointDao ptdao;
+
 	
 	@RequestMapping("/postWriter.mt")
 	@ResponseBody
@@ -74,6 +79,7 @@ public class PostController {
 				map.put("email", email);
 				boolean buy = pdao.buyCheck(map);
 				mav.addObject("buy", buy);
+				mav.addObject("mypoint", ptdao.selectpointsum(email));
 			}else{
 				mav.addObject("buy", false);
 			}
@@ -157,6 +163,18 @@ public class PostController {
 		}
 		String mz=objMapper.writeValueAsString(result);
 		return mz;
+	}
+	
+	@RequestMapping("buypost.mt")
+	public ModelAndView buypost(@RequestParam Map map,HttpSession session) throws JsonProcessingException{
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/"+(String)map.get("url")+"/post/"+(String)map.get("num"));
+		map.put("myemail", session.getAttribute("login"));
+		String title = (String)map.get("title");
+		map.put("btitle", "["+title+"]포인트 구매");
+		map.put("stitle", "["+title+"]포인트 판매");
+		pdao.buyPost(map);
+		return mav;
 	}
 	
 }

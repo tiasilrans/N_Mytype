@@ -29,7 +29,7 @@ table.type07 td {
 </style>
 
 
-<div align="center">
+<div align="center" style="margin-top: 130px;">
 	<div style="width: 50%;" align="left">
 	<h2>${type == 'send' ? '보낸': '받은'}쪽지함</h2>
 	<hr style="margin-top: 10px;"/>

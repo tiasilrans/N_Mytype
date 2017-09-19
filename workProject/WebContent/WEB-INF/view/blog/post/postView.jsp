@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <link rel="stylesheet" href="/css/postviewcss.css">
 <style>
 input[type=checkbox] {
@@ -88,22 +89,44 @@ input[type=checkbox]:checked+label:before {
 							<div class="charged-content">${post.CCONTENT }</div>
 						</c:when>
 						<c:otherwise>
-				구매하여 나머지 보기
-			</c:otherwise>
+							<div class="support" style="display: table; width: 100%;">
+								<div class="message"
+									style="display: table-cell; vertical-align: middle; padding-right: .75rem; line-height: 1.25; font-family: sans-serif; color: black; font-weight: 800px; width: 55%;">
+									<span style="font-family: sans-serif; color: black; font-size: 15px;">
+									<span style="font-weight: bold ;font-family: sans-serif; color: red; font-size: 18px;" id="price">
+									${post.PRICE}</span> point 구매하여 나머지 내용 보기
+									</span>
+								</div>
+								
+								<div style="display: table-cell;">
+								<c:choose>
+								<c:when test="${sessionScope.login eq null }">
+									<button class="button button1" data-toggle="modal" data-target="#login-form">로그인</button>
+								</c:when>
+								<c:otherwise>
+									<button class="button button1" id="buybtn" data-toggle="modal" data-target="#buy-form">구매하기</button>
+								</c:otherwise>
+								</c:choose>
+								</div>
+								
+							</div>
+						</c:otherwise>
 					</c:choose>
 				</div>
+				<c:if test="${ sessionScope.login ne post.EMAIL }">
 				<div class="support" style="display: table; width: 100%;">
 					<div class="message"
-						style="display: table-cell; vertical-align: middle; padding-right: .75rem; line-height: 1.25; font-family: sans-serif; color: black; font-weight: 800px;">
+						style="display: table-cell; vertical-align: middle; padding-right: .75rem; line-height: 1.25; font-family: sans-serif; color: black; font-weight: 800px; width: 55%;">
 						<span
 							style="font-family: sans-serif; color: black; font-size: 15px;">${post.NICKNAME }님의
 							창작활동을 응원하고 싶으세요?</span>
-
 					</div>
 					<div style="display: table-cell;">
-						<button class="button button1" style="float: right;">후원하기</button>
+						<button class="button button1">후원하기</button>
 					</div>
 				</div>
+				</c:if>
+				
 				<footer class="post-footer" style="margin-top: 40px;">
 					<i class="material-icons"
 						style="font-size: 20px; color: #0d0d0d; float: left; font-weight: bold;">favorite_border</i><span
@@ -168,9 +191,101 @@ input[type=checkbox]:checked+label:before {
 	</div>
 </div>
 
+
+<!-- 구매하기 modal  -->
+<form action="/buypost.mt">
+<input type="hidden" name="price" value="${post.PRICE}" />
+<input type="hidden" name="num" value="${post.NUM}" />
+<input type="hidden" name="email" value="${post.EMAIL}" />
+<input type="hidden" name="url" value="${post.URL}" />
+<input type="hidden" name="title" value="${post.TITLE}" />
+  <div class="modal fade" id="buy-form" role="dialog">
+    <div class="modal-dialog" style="width: 450px;">
+	    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">구매하기 - <span style="color: blue;">${post.TITLE}</span></h4>
+        </div>
+        
+        <div class="modal-body">
+				<div class="row"><div class="col-md-6" style="vertical-align: middle;">보유 포인트</div><div class="col-md-6" style="vertical-align: middle;"><span style="font-size: 15 ;"><fmt:formatNumber value="${mypoint.SUM}" pattern="#,###"/></span></div></div>
+				<hr/>
+				<div class="row"><div class="col-md-6">사용할 포인트</div><div class="col-md-6"><span style="font-size: 15 ;"><fmt:formatNumber value="${post.PRICE}" pattern="#,###"/></span></div></div>
+				<hr/>
+				<div class="row"><div class="col-md-6">남은 포인트</div><div class="col-md-6"><span style="font-size: 15 ;"><fmt:formatNumber value="${(mypoint.SUM-post.PRICE)}" pattern="#,###"/></span></div></div>
+				<c:if  test="${(mypoint.SUM-post.PRICE) < 0}">
+					<hr/>
+					<div class="row"><div class="col-md-12">※포인트가 부족합니다. 충전하러 가시겠습니까 ?</div></div>
+				</c:if>
+        </div>
+        <div class="modal-footer">
+          		<div class="form-group row" align="center">
+				<div align="center" class="row">
+				<c:choose>
+				<c:when test="${(mypoint.SUM-post.PRICE) < 0}">
+					<button class="button button1" type="button" style="width: 360px; height: 60px;" onclick="location.href='/my/point/charge' ">포인트 충전</button>
+				</c:when>
+				<c:otherwise>
+					<button class="button button1" id="login-sbt" type="submit"  style="width: 360px; height: 60px;">구매하기</button>
+				</c:otherwise>
+				</c:choose>
+				</div>
+		</div>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+  </form>
+  
+<!-- 로그인창 modal  -->
+  <div class="modal fade" id="login-form" role="dialog">
+    <div class="modal-dialog" style="width: 450px;">
+    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">로그인</h4>
+        </div>
+        
+        <div class="modal-body">
+          		<div class="form-group row" align="center">		
+			<form action="/loginExec.mt?post=post" method="post">		
+			<input type="hidden" name="num" value="${post.NUM}" />
+			<input type="hidden" name="url" value="${post.URL}" />			
+				<div class="form-group row">
+						<input class="form-control" type="text"
+							placeholder="e-mail" name="email" id="login-email" required />
+				</div>
+				
+				<div class="form-group row">
+					 <input class="form-control" type="password"
+						placeholder="비밀번호" name="pw" id="login-pw" required />
+				</div>
+				<div align="center" class="row">
+
+					<div class="form-group row" align="right" style="width: 360px;">
+					<a>비밀번호 찾기</a>｜<a href="join.mt">회원가입</a>
+					</div>
+					<button id="login-sbt" type="submit" class="btn">로그인</button>
+				</div>
+			</form>
+		</div>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+
+
+
+
+
 <script>
 $("#sub").on("click", function() {
-
 	
 	$.ajax({
 		url : "/${post.NUM }/peply.mt",

@@ -59,7 +59,7 @@
 
 </style>
     
-<div align="center">
+<div align="center" style="margin-top: 130px;">
 
 <div style="width: 60%;" align="left">
 <h2>좋아요</h2>

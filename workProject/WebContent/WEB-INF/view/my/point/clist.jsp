@@ -27,7 +27,7 @@ table.type07 td {
 }
 </style>
 <div align="center">
-	<div style="width: 60%;" align="left">
+	<div style="width: 60%; margin-top: 130px;" align="left">
 	<h2>충전 내역</h2>
 	<hr style="margin-top: 10px;"/>
 	</div>
