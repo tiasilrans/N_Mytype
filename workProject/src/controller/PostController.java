@@ -49,7 +49,7 @@ public class PostController {
 	
 	@RequestMapping("/{url}/post/{num}")
 	public ModelAndView postView(@PathVariable(value="url") String url,
-											@PathVariable(value="num") int num){
+											@PathVariable(value="num") int num, HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");		
 		Map map = new HashMap<>();
@@ -59,10 +59,24 @@ public class PostController {
 		if(c){
 			HashMap post = pdao.onePost(map);
 			post.put("PDATE", sdf.format(post.get("PDATE")));
-			post.put("nickname", ((String)post.get("EMAIL")).split("@")[0]);
 			mav.setViewName("post_view");
 			mav.addObject("section", "blog/post/postView");
 			mav.addObject("post", post);
+			
+			//num이랑 email 가지고 buy 에서 내가 구매한 항목인지 확인
+			//구매했으면 true 터지거나 구매기록이 없거나 비로그인 = false
+			String email = (String)session.getAttribute("login");
+			if(email != null){
+				map.put("email", email);
+				boolean buy = pdao.buyCheck(map);
+				mav.addObject("buy", buy);
+			}else{
+				mav.addObject("buy", false);
+			}
+			
+			
+			
+			
 		}
 			mav.addObject("totalpost", pdao.postCount(map));// 해당 블로그의 총 포스트 수 
 		return mav;	
