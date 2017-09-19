@@ -1,6 +1,10 @@
 package controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
+
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import model.BlogDAO;
 import model.PostDao;
@@ -16,6 +21,9 @@ import model.SubscribeDAO;
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class BlogAdminController {
+	
+	@Autowired
+	ServletContext application;
 	
 	@Autowired
 	BlogDAO bDAO;
@@ -68,6 +76,15 @@ public class BlogAdminController {
 		HashMap blogTitle = bDAO.blogTitle(map);	
 		Map m = bDAO.blogView(map);
 		ModelAndView mav = new ModelAndView();
+		
+		String path = "/images/blogImg/"+url;
+		String rPath = application.getRealPath(path);
+		File dir = new File(rPath);
+		if(dir.exists()) {
+			mav.addObject("imgPath", path);
+		}else {
+			mav.addObject("imgPath", "/images/avatar_yellow.png");
+		}		
 			mav.setViewName("blog_setting");
 			mav.addObject("title", "블로그");
 		 	mav.addObject("section", "blog/settings/setting");		 	
@@ -76,6 +93,30 @@ public class BlogAdminController {
 		 	mav.addObject("map", m);
 		return mav;
 	}
+	
+	@RequestMapping("/blogSetting.mt")
+	public ModelAndView blogSettingUp(@RequestParam(name="file") MultipartFile f, 
+			HttpSession session, @RequestParam Map map) throws IllegalStateException, IOException{
+		System.out.println("블로그 설정 넘어온 값 : " + map);
+		String path = application.getRealPath("/images/blogImg");
+		File dir = new File(path);
+		if(!dir.exists()) {
+			dir.mkdirs();
+		}
+		boolean rst = false;
+		if(f.getContentType().startsWith("image")) {
+			File dst = new File(dir, (String)map.get("url"));
+			if(dst.exists())
+				dst.delete();
+			f.transferTo(dst);
+			rst = true;
+		}		
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("redirect:/blog/"+(String)map.get("url")+"/setting");
+			mav.addObject("r", rst);
+		return mav;
+	}
+	
 	
 	
 	@RequestMapping("/blog/{url}/categories")
