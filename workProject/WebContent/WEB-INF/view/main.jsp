@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+<script src="/module/nailthumb/jquery.nailthumb.1.1.min.js"></script>
+<link rel="stylesheet" href="/module/nailthumb/jquery.nailthumb.1.1.min.css">
 
 <style>
 .logo-frame{
@@ -165,6 +167,8 @@
 	border : 0px;
 }
 
+
+
 </style>   
 
 <div class="container" style="margin-left: auto;">
@@ -247,7 +251,9 @@
 	                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
 	                	<c:choose>
 	                	<c:when test="${all.IMG.length() > 10}">
+	                		<div class="nailthumb-column-metadata" id="thumbnail">
 	                		${all.IMG }
+	                		</div>
 	                	</c:when>
 	                	<c:otherwise>
 	                		${all.FCONTENT }
@@ -413,8 +419,21 @@
 	imgsize();
 </script>
 
+<!-- 메인 썸네일 이미지 조정 
+<script>
+
+$(document).ready(function() {
+	$("#thumbnail").children().addClass("nailthumb-container");
+	
+	$('.nailthumb-column-metadata .nailthumb-container').nailthumb({width:220,height:74,fitDirection:'center center'});
+	
+	
+	
+    
+  });
 
 
+</script>-->
 
 
 
