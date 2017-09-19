@@ -281,7 +281,7 @@ footer {
 							<form action="/blog/postWrite" method="post">
 								<input type="hidden" name="title" value="${map.TITLE }"/>
 								<input type="hidden" name="url" value="${map.URL }"/>
-								<button type="submit" title="새 포스트를 작성합니다.">
+								<button type="submit" title="새 포스트를 작성합니다." style="border: 0px; background-color: white; padding-left: 0px; ">
 									<a class="newpost" href="/blog/postWrite" id="newpost">
 									<label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">mode_edit</label></a>
 									<a href="/blog/postWrite">
