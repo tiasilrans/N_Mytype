@@ -12,6 +12,53 @@
 <link rel="stylesheet" href="/css/my.css">
 
 <style>
+#secondlogo{
+	height: 260px;
+	width : 260px;
+	border-radius: 5px;
+	margin: 10px;
+	border-radius : 5px;
+    border : 1px solid silver;
+}
+
+.secondlogo-head{
+	padding-top : 5px;
+	padding-left : 0px;
+	font-weight: bold;
+}
+
+.secondlogo-body{
+	width : 100%;
+	height: 15%;
+}
+
+.secondlogo-body-profileimg{
+	float: left;
+	width:32px;
+	height:32px;
+	border-radius: 50%;
+	margin-right: 8px;
+}
+.secondlogo-body-title{
+	padding-top : 5px;
+}
+
+.secondlogo-body-title-name,.secondlogo-body-title-name:LINK,.secondlogo-body-title-name:ACTIVE{
+	font-size: 12;
+	color : black;
+	text-decoration: none;
+}
+
+.secondlogo-body-title-blog{
+	font-size: 10;
+	color : gray;
+}
+.secondlogo-body-content{
+	padding: 8px;
+	padding-top: 0px; 
+
+}
+
 .card {
     position: relative;
     display: block;
@@ -53,8 +100,9 @@
 }
 
 </style>
-
 <div class="col-xs-offset-2 col-md-offset-2 container-fluid">
+<div class="row">
+	<div class="col-xs-2 col-md-2 col-lg-2"></div>
 	<div class="card col-xs-6 col-md-6 col-lg-4">
 		<div class="title">
 			<span style="float:left; font-size: 17px; margin-left: 5px;"><b>오늘</b></span>
@@ -63,15 +111,23 @@
 		<br/><hr/>
 		<div align="left">
 			<div class="lbox" >
-				<a style="text-decoration: none;">
+				<a href="/my/point/plist" style="text-decoration: none;">
 					<span class="boxsp">포인트 잔액</span> <br/>
-					<span style="margin-left: 13px; color: #999999; float: left;"><label class="material-icons">monetization_on</label></span> 0p
+					<span style="margin-left: 13px; color: #999999; float: left;"><label class="material-icons">monetization_on</label></span>
+					<span style="font-size: 18px;">
+					<fmt:formatNumber value="${pointsum.SUM}" pattern="#,###"/>
+					 p
+					 </span>
 				</a>
             </div>
             <div class="rbox" > 
-            	<a style="text-decoration: none;">
+            	<a href="/my/point/withdraw" style="text-decoration: none;">
 					<span class="boxsp">출금 가능 금액</span> <br/>
-					<span style="margin-left: 15px; color: #999999; float: left;"><label class="material-icons">account_balance</label></span>0p 
+					<span style="margin-left: 15px; color: #999999; float: left;"><label class="material-icons">account_balance</label></span>
+					<span style="font-size: 18px;">
+					<fmt:formatNumber value="${pointsum.SUM}" pattern="#,###"/>
+					 p
+					 </span>
 				</a>
 			
             </div>
@@ -79,78 +135,66 @@
             <div class="lbox" >
             <a style="text-decoration: none;">
             	<span class="boxsp">수익</span> <br/>
-            	<span style="margin-left: 13px; color: #999999; float: left;"><label class="material-icons">store</label></span> 0p
+            	<span style="margin-left: 13px; color: #999999; float: left;"><label class="material-icons">store</label></span> 
+					<span style="font-size: 18px;">
+					<fmt:formatNumber value="${revenue}" pattern="#,###"/>
+					 p
+					 </span>
             </a>
             </div>  
             <div class="rbox">
             	<a style="text-decoration: none;">
             		<span class="boxsp">구매/후원</span> <br/>
-            		<span style="margin-left: 15px; color: #999999; float: left;"><label class="material-icons">card_giftcard</label></span> <span>0p</span> 
+            		<span style="margin-left: 15px; color: #999999; float: left;"><label class="material-icons">card_giftcard</label></span> <span>
+					<span style="font-size: 18px;">
+					<fmt:formatNumber value="${use}" pattern="#,###"/>
+					 p
+            		</span> 
+					 </span>
             	</a>
             
             </div>  
 		</div>
 	</div>
-	
-	<div class="card col-xs-6 col-md-6 col-lg-4">
-		<div class="title">
-			<span style="float:left; font-size: 17px;"><b>좋아요</b></span>
-			<span style="font-size: 13px; float:right; padding-right:15px;">
-				<a style="text-decoration:none; color: #999999;" href="/library/postgood"> 더 보기 > </a> 
-			</span>
-			<br/><br/>
-			
-			<c:forEach var="like" items="${listLike }" varStatus="vs">
-				<div class="incard" style="<c:if test="${vs.last}">margin-left:15px;</c:if> clear: right;" >
-					<div class="title">
-						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
-						<div>${like.NICKNAME }</div>
-						<div style="color:#909090; font-size: 11px;">6일전 · ${like.URL }</div>
-					</div>
-	                <div style="height:50px; margin:12px; padding-bottom: 3px;">
-	                	<div style="font-size: 15px; padding-bottom: 5px; ">제목 없음</div>
-	                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
-	                		${like.FCONTENT }
-	                	</div>
-	                </div> <br/><br/><br/>
-	                
-	                <div>
-		                <c:set var="msg" value="${like.HASH }"/>
-						<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
-						<c:forEach items="${hashtag}" var="hash">
-						<span class="conbody-hashtag">
-							<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
-						</span>
-						</c:forEach>
-	                </div>
-	                
-	                <!-- footer -->
-					<div class="confooter">
-						<c:choose>
-						<c:when test="${like.HEART == null}">
-							<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
-						</c:when>
-						<c:otherwise>
-							<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
-						</c:otherwise>
-						</c:choose>
-							<span class="confooter-count heart-${like.NUM}">${like.GOOD }</span>
-					</div>
-				</div>
-			</c:forEach>
-			
-		</div>
 	</div>
+	
 
+<div class="row">
+	<div class="col-xs-2 col-md-2 col-lg-2"></div>
     <div class="card col-xs-3 col-md-3 col-lg-2">
-		<div class="title">
+		<div class="title row">
           <span style="float:left; font-size: 17px;"><b>공지사항</b></span>
           <span style="font-size: 13px; float:right; padding-right:15px;">
 				<a style="text-decoration:none; color: #999999;"> 더 보기 > </a> 
 			</span>
         </div>
-	</div>
-	
+        <div class="row" style="padding-left: 25px;">
+        <c:forEach var="n" items="${notice}" begin="0" end="${notice.size() < 2 ? notice.size() : 2}">
+			<div id="secondlogo" class="col-xs-0 col-md-4">
+				<div class="secondlogo-head">MyType 소식</div>
+					<div class="secondlogo-body">
+						<img class="secondlogo-body-profileimg" src="/images/blogMark.png">
+						<div class="secondlogo-body-title">
+							<span ><a href="/" class="secondlogo-body-title-name"><b>MyType 공식 블로그</b></a></span><br/>
+							<span class="secondlogo-body-title-blog">blog.mytypeblog.com</span>
+						</div>	
+					</div>
+						<div class="secondlogo-body-content"><span>
+						<c:choose>
+						<c:when test="${n.SUBCONTENT ne null}">
+							${n.SUBCONTENT}
+						</c:when>
+						<c:otherwise>
+							${n.CONTENT}
+						</c:otherwise>
+						</c:choose>
+						</span></div>
+			</div>
+        </c:forEach>
+			
+        </div>
+</div>
+</div>
 </div>
 
 

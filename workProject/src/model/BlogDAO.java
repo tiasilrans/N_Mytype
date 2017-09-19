@@ -35,6 +35,20 @@ public class BlogDAO {
 		}
 	}
 	
+	public HashMap blogTitle(Map map){
+		SqlSession session = factory.openSession();
+		try {
+			HashMap r = session.selectOne("blog.blogTitle", map);
+			return r;
+		} catch (Exception e) {
+			System.out.println("blogTitle : " + e.toString());
+			return null;
+		}finally {
+			session.close();
+		}	
+	}
+	
+	
 	public HashMap blogView(Map map){
 		SqlSession session = factory.openSession();				
 		try {

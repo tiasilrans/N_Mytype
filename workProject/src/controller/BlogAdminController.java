@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import model.BlogDAO;
 import model.PostDao;
+import model.SubscribeDAO;
 
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -22,22 +23,59 @@ public class BlogAdminController {
 	@Autowired
 	PostDao pDAO;
 	
+	@Autowired
+	SubscribeDAO sDAO;
+	
 	
 	@RequestMapping("/blog/admin/{url}/posts")
-	public ModelAndView newBlog(@PathVariable(value="url") String url, HttpSession session){
+	public ModelAndView blogPosts(@PathVariable(value="url") String url, HttpSession session){
 		Map map = new HashMap();
 			map.put("url", url);
+		HashMap blogTitle = bDAO.blogTitle(map);
 		List<Map> list = pDAO.ad_postList(map);
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("blog_setting");
+			mav.addObject("title", "포스트");
 		 	mav.addObject("section", "blog/settings/posts");
-		 	mav.addObject("title", "포스트");
+		 	mav.addObject("blogTitle", blogTitle);
 		 	mav.addObject("url", url);
 		 	mav.addObject("list", list);
 		return mav;
 	}
 	
 	
+	@RequestMapping("/blog/{url}/subscribers")
+	public ModelAndView blogSubscribers(@PathVariable(value="url") String url, HttpSession session){
+		Map map = new HashMap();
+			map.put("url", url);
+		HashMap blogTitle = bDAO.blogTitle(map);
+		List<Map> list = sDAO.blogSubscribers(map);
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("blog_setting");
+			mav.addObject("title", "구독자");
+		 	mav.addObject("section", "blog/settings/subscribers");		 	
+		 	mav.addObject("blogTitle", blogTitle);
+		 	mav.addObject("url", url);
+		 	mav.addObject("list", list);
+		return mav;
+	}
+	
+	
+	@RequestMapping("/blog/{url}/setting")
+	public ModelAndView blogSetting(@PathVariable(value="url") String url, HttpSession session){
+		Map map = new HashMap();
+			map.put("url", url);
+		HashMap blogTitle = bDAO.blogTitle(map);	
+		Map m = bDAO.blogView(map);
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("blog_setting");
+			mav.addObject("title", "블로그");
+		 	mav.addObject("section", "blog/settings/setting");		 	
+		 	mav.addObject("blogTitle", blogTitle);
+		 	mav.addObject("url", url);
+		 	mav.addObject("map", m);
+		return mav;
+	}
 	
 	
 	@RequestMapping("/blog/{url}/categories")
@@ -46,6 +84,7 @@ public class BlogAdminController {
 		Map map = new HashMap();
 			map.put("url", url);
 			map.put("email", email);
+		HashMap blogTitle = bDAO.blogTitle(map);
 		HashMap r = bDAO.blogView(map);
 			map.put("title", r.get("TITLE"));
 		List<Map> list = bDAO.cate_List(map);
@@ -53,6 +92,7 @@ public class BlogAdminController {
 			mav.setViewName("blog_setting");
 			mav.addObject("title", r.get("TITLE"));
 			mav.addObject("section", "blog/settings/categories");
+			mav.addObject("blogTitle", blogTitle);
 	 		mav.addObject("url", url);
 	 		mav.addObject("map", r);
 	 		mav.addObject("list", list);

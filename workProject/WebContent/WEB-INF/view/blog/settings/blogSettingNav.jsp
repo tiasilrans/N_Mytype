@@ -11,19 +11,19 @@
 	<div class="col-xs-offset-1 col-md-offset-1">
 		<ul class="nav navbar-nav">
 			<li class="nav-item">
-				<a class="nav-link" href="/blog/${url}">${title}</a>
+				<a class="nav-link" href="/blog/${url}">${blogTitle.TITLE}</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/blog/admin/${url }/posts">포스트</a>
+				<a class="nav-link" href="/blog/admin/${url}/posts">포스트</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/blog/${url} /categories">카테고리</a>
+				<a class="nav-link" href="/blog/${url}/categories">카테고리</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="">구독자</a>
+				<a class="nav-link" href="/blog/${url}/subscribers">구독자</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="">설정</a>
+				<a class="nav-link" href="/blog/${url}/setting">설정</a>
 			</li>
 		</ul>
 	</div>

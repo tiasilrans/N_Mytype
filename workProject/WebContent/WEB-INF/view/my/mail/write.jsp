@@ -49,7 +49,7 @@ table.type07 td {
 		</tbody>
 	</table>
 	<div style="width: 35%;" align="right">
-		<input class="btn btn-default" type="submit" value="보내기"/>
+		<input class="btn btn-default" type="submit" value="보내기" id="sbtn" disabled/>
 	</div>
 </form>
 
@@ -71,9 +71,11 @@ table.type07 td {
 				if(!rst.rst){
 					$("#emailtrue").css("display", "block");
 					$("#emailfalse").css("display", "none");
+					$("#sbtn").prop("disabled", false);
 				}else{
 					$("#emailtrue").css("display", "none");
 					$("#emailfalse").css("display", "block");
+					$("#sbtn").prop("disabled", true);
 				}
 			});
 		}

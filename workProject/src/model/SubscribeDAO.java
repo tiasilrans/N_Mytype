@@ -82,4 +82,29 @@ public class SubscribeDAO {
 			session.close();
 		}
 	}
+	
+	// 해당 블로그의 구독자 리스트
+	public List<Map> blogSubscribers(Map map){		
+		List<Map> list = new ArrayList<>();
+		SqlSession session = factory.openSession();
+		try {
+			list = session.selectList("subscribe.subscribers", map);			
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("blogSubscribers ERROR : " + e.toString());
+			return list;
+		}finally {
+			session.close();
+		}		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
