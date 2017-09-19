@@ -11,7 +11,7 @@
 </style>
 <!--navbar menu-->
 <section class="navbar-info ">
-	<nav class="navbar navbar-default navbar-me" style="margin-bottom: 0px; ">
+	<nav class="navbar navbar-default fixed-me" style="margin-bottom: 0px; ">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button"
@@ -105,7 +105,7 @@
 </section>
 <!-- end of navbar-->
 
-<script>
+<!-- <script>
 	$(window).scroll(function() {
 		if ($(this).scrollTop() > 5) {
 			$(".navbar-me").addClass("fixed-me");
@@ -116,7 +116,7 @@
 			
 		}
 	});
-</script>
+</script> -->
 
 
 <!-- 쪽지왔을때 modal생성 -->

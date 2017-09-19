@@ -44,7 +44,8 @@ table.type07 td {
 				</tr>
 				<tr>
 					<td style="vertical-align: middle; width: 20%;"><label>내용</label></td>
-					<td colspan="3" style="width: 80%"><textarea class="form-control" cols="50" rows="15" name="content" style="resize: none;" required></textarea></td>
+					<td colspan="2" style="width: 60%"><textarea class="form-control" cols="40" rows="15" name="content" style="resize: none;" required></textarea></td>
+					<td style="width: 20%"></td>
 				</tr>
 		</tbody>
 	</table>
