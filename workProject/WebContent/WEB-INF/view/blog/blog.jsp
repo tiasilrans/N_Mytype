@@ -123,7 +123,7 @@ footer {
 						<c:forEach var="obj" items="${list }">
 							<c:if test="${obj.NOTICE}">
 								<header class="post-header" style="margin-bottom: -20px;">
-									<img src="/images/notice.png" style="margin-left: 40px;">
+									<img src="/images/notice.png" style="margin-left: 40px; ">
 								</header>
 							</c:if>
 							<div class="post-body">

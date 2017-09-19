@@ -208,9 +208,17 @@
 							<span class="secondlogo-body-title-blog">blog.mytypeblog.com</span>
 						</div>	
 					</div>
-				<div class="secondlogo-body-content"><span>공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용</span></div>
+						<div class="secondlogo-body-content"><span>
+						<c:choose>
+						<c:when test="${notice.get(0).SUBCONTENT ne null}">
+							${notice.get(0).SUBCONTENT}
+						</c:when>
+						<c:otherwise>
+							${notice.get(0).CONTENT}
+						</c:otherwise>
+						</c:choose>
+						</span></div>
 			</div>
-			
 			<!-- 목록 nav -->
 			<div class="col-xs-0 col-md-12">
 			<div style="margin-left: 10px;">
@@ -400,7 +408,7 @@
 	function imgsize(){
 		$(".fr-fic").css("width","220px");
 		$(".fr-fic").css("height","74px");
-		$(".fr-fic").css("border-radius","5px");
+		$(".fr-fic").css("border-radius","2px");
 	}
 	imgsize();
 </script>
