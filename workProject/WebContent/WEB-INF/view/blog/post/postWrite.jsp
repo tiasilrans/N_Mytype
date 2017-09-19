@@ -145,7 +145,7 @@ input[type=checkbox]+label:before {
 	left: 0;
 	bottom: 1px;
 	background-color: #ccc;
-	border-radius: 2px;
+	border-radius: 3px;
 	box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px
 		rgba(255, 255, 255, .8);
 }
