@@ -51,8 +51,9 @@ input[type=checkbox]:checked+label:before {
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="">
-					<div class="header">
-						
+					<div class="header" style="margin-left: 17px; margin-bottom: 40px;">
+						<input type="checkbox" id="postck" class="checkbox-style"/>
+						<label for="postck"></label> 
 					</div>
 					<!-- 포스트 검색창 -->
 					<div class="admin-search">
