@@ -257,7 +257,7 @@ section{
 		                	<c:if test="${all.IMG.length() > 10}">
 		                		<div class="nailthumb-column-metadata" id="thumbnail">
 		                			${all.IMG }
-		                		</div>
+		                		</div>  
 	                		</c:if>
 						<a href="/${all.URL}/post/${all.NUM}" style="font-size: 15px; text-decoration: none; color: #333333;padding-bottom: 5px;">
 							${all.TITLE }
