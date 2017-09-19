@@ -61,8 +61,8 @@ input[type=checkbox]:checked+label:before {
 					</div>
 					<!-- 포스트 리스트 -->
 				<c:forEach var="obj" items="${list }">
-					<div class="post-list-proup" style="padding: 1rem 1.75rem;">
-						<label class="" style="float: left;">
+					<div class="post-list-proup" style="padding: 1rem 1.75rem; margin-top: -40px;">
+						<label class="" style="float: left; left: 0.8rem; position: absolute; top:8rem;">
 							<input type="checkbox" value="${obj.NUM }" id="postck" class="checkbox-style"/>
 							<label for="postck"></label> 
 						</label>
