@@ -28,5 +28,5 @@
 	<select id="selectlikecount" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select count(*) as count from postgood where email=#{email}
 	</select>
-
+	
 </mapper>

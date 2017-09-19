@@ -72,24 +72,20 @@ input[type=checkbox]:checked+label:before {
 			</div> 
 		<!-- 유료 컨텐츠 부분 -->
 			<c:choose>
-			<c:when test="${sessionScope.login eq post.EMAIL }">
+			<c:when test="${buy || sessionScope.login eq post.EMAIL }">
 				<div class="charged-content">
 					${post.CCONTENT }
 				</div>
 			</c:when>
 			<c:otherwise>
-				<c:if test="${post.CCONTENT ne ''}">
-					<div class="charged-content">
-						${post.CCONTENT }
-					</div>
-				</c:if>
+				구매하여 나머지 보기
 			</c:otherwise>			
 			</c:choose>
 		</div>
 		<div class="support" style="display: table; width: 100%;">
 			<div class="message" style="display: table-cell; vertical-align: middle; padding-right: .75rem; line-height: 1.25;
 			font-family: sans-serif; color: black; font-weight: 800px;">
-				${post.nickname }님의 창작활동을 응원하고 싶으세요? 
+				${post.NICKNAME }님의 창작활동을 응원하고 싶으세요? 
 			 
 			</div>
 			<div style="display: table-cell;">

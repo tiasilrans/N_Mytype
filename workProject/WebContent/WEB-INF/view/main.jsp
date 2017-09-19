@@ -208,9 +208,17 @@
 							<span class="secondlogo-body-title-blog">blog.mytypeblog.com</span>
 						</div>	
 					</div>
-				<div class="secondlogo-body-content"><span>공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용</span></div>
+						<div class="secondlogo-body-content"><span>
+						<c:choose>
+						<c:when test="${notice.get(0).SUBCONTENT ne null}">
+							${notice.get(0).SUBCONTENT}
+						</c:when>
+						<c:otherwise>
+							${notice.get(0).CONTENT}
+						</c:otherwise>
+						</c:choose>
+						</span></div>
 			</div>
-			
 			<!-- 목록 nav -->
 			<div class="col-xs-0 col-md-12">
 			<div style="margin-left: 10px;">
@@ -223,7 +231,7 @@
 			</div>			
 			
 			
-			<div class="tab-content">
+			<div class="tab-content" >
 			
 			<!-- 전체 게시글 배치 -->
 			<div id="allList" class="tab-pane fade in active">
@@ -237,7 +245,14 @@
 	                <div style="height:50px; margin:12px; padding-bottom: 3px;">
 	                	<div style="font-size: 15px; padding-bottom: 5px; ">제목 없음</div>
 	                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
+	                	<c:choose>
+	                	<c:when test="${all.IMG.length() > 10}">
+	                		${all.IMG }
+	                	</c:when>
+	                	<c:otherwise>
 	                		${all.FCONTENT }
+	                	</c:otherwise>
+	                	</c:choose>
 	                	</div>
 	                </div> <br/><br/><br/>
 	                
@@ -295,7 +310,15 @@
 	                <div style="height:50px; margin:12px; padding-bottom: 3px;">
 	                	<div style="font-size: 15px; padding-bottom: 5px; ">제목 없음</div>
 	                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
+	                	<c:choose>
+	                	<c:when test="${all.IMG.length() > 10}">
+	                		<%-- <p style="width: 224px; height: 72px;">${all.IMG }<p> --%>
+	                		${like.IMG }
+	                	</c:when>
+	                	<c:otherwise>
 	                		${like.FCONTENT }
+	                	</c:otherwise>
+	                	</c:choose>
 	                	</div>
 	                </div> <br/><br/><br/>
 	                
@@ -381,7 +404,14 @@
 	</c:otherwise>
 </c:choose>
 
-
+<script>
+	function imgsize(){
+		$(".fr-fic").css("width","220px");
+		$(".fr-fic").css("height","74px");
+		$(".fr-fic").css("border-radius","2px");
+	}
+	imgsize();
+</script>
 
 
 

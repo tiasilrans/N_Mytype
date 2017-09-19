@@ -42,7 +42,7 @@
  	<!-- 포스트 불러오기 -->
  		<!-- 포스트 번호로 하나의 포스트 불러오기 -->
  	<select id="one_post" parameterType="java.util.HashMap" resultType="java.util.HashMap">
- 		SELECT * FROM post where num=#{num}
+ 		select * from(SELECT * FROM post where num=#{num})p left join member m on m.email=p.email
  	</select>
  		<!-- 블로그 관리자 모드 - 해당 블로그 포스트 전부 불러오기 -->
  	<select id="admin_postList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
@@ -129,4 +129,7 @@
    </select>
   
   
+	<select id="buyCheck" parameterType="java.util.HashMap" resultType="java.util.HashMap"> 
+		select * from buy where email=#{email} and pnum=#{num}
+	</select>
   </mapper>
