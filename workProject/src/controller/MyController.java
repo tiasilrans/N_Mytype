@@ -22,6 +22,7 @@ import model.MemberDao;
 import model.MyDao;
 import model.PointDao;
 import model.PostDao;
+import model.AdminDAO;
 import model.LibraryDAO;
 
 @Controller
@@ -47,19 +48,31 @@ public class MyController {
 	MyDao myDao;
 	
 	@Autowired
-	ServletContext application;
+	AdminDAO adminDao;
 	
+	@Autowired
+	ServletContext application;
 	
 	@RequestMapping("/home")
 	public ModelAndView home(@RequestParam Map map, HttpSession session) {
-			map.put("email", (String)session.getAttribute("login"));
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("my_home");
+		if (session.getAttribute("login") != null) {
+			map.put("email", (String) session.getAttribute("login"));
 			map.put("first", 1);
 			map.put("last", 2);
-		List<Map> listAll = lDao.likelist(map);
-		
-		ModelAndView mav = new ModelAndView();
-			mav.setViewName("my_home");
-			mav.addObject("listAll", postDao.sublist(listAll));
+
+			Map rvn = new HashMap();
+			rvn.put("email", (String) session.getAttribute("login"));
+			rvn.put("sysdate", true);
+
+			List<Map> listAll = lDao.likelist(map);
+			mav.addObject("listlike", postDao.sublist(listAll));
+			mav.addObject("revenue", myDao.revenue(rvn));
+			mav.addObject("use", myDao.usepoint(rvn));
+			mav.addObject("notice", adminDao.sublistReply(adminDao.noticeList("main"), 120, "SUBCONTENT", "SUBCONTENT"));
+			mav.addObject("pointsum", pointDao.selectpointsum((String) session.getAttribute("login")));
+		}
 		return mav;
 	}
 	

@@ -5,7 +5,7 @@
 
 
 <!--navbar menu-->
-	<nav class="navbar navbar-default nav-sub" style="border-top-style: none; min-height: 45px;">
+	<nav class="navbar navbar-default" id="gg" style="border-top-style: none; min-height: 45px; position: fixed; top: 67px; z-index: 887; width: 100%;">
 		<div class="container">
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse" style="padding: 0px;">
@@ -51,13 +51,13 @@
 		</div>
 	</nav>
 
-<script>
+<!-- <script>
 	$(window).scroll(function() {
 		if ($(this).scrollTop() > 1) {
-			$(".nav-sub").css("margin-top","70px");
+			$("#gg").css("top","270px");
 		} else {
-			$(".nav-sub").css("margin-top","0px");
+			$("#gg").css("top","67px");
 			
 		}
 	});
-</script>
+</script> -->

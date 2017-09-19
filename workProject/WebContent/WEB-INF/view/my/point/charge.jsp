@@ -6,7 +6,7 @@
 
 <link rel="stylesheet" href="/css/my.css">
 
-<div align="center">
+<div align="center" style="margin-top: 130px;">
 	<div style="width: 50%;" align="left">
 	<h2>포인트 충전</h2>
 	<hr style="margin-top: 10px;"/>

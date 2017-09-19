@@ -335,6 +335,22 @@ public class PostDao {
 		}
 	}
 	
+	public boolean buyPost(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			int i = session.insert("point.buypostlog", map);
+			i = session.insert("point.salespostlog", map);
+			i = session.insert("point.buypost", map);
+			return true; 
+		}catch(Exception e){
+			System.out.println("PostBuyPost Error");
+			e.printStackTrace();
+			return false;
+		}finally{
+			session.close();
+		}
+	}
+	
 	
 	
 	

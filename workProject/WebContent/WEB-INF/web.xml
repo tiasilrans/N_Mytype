@@ -37,6 +37,24 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
+	<filter>
+		<filter-name>notLogin</filter-name>
+		<filter-class>filter.login</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>notLogin</filter-name>
+		<url-pattern>/my/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>admin</filter-name>
+		<filter-class>filter.admin</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>admin</filter-name>
+		<url-pattern>/admin/*</url-pattern>
+	</filter-mapping>
+	
 	<!-- 뷰쪽에서 아이피를 설정하는 곳이 있으면
 		${initParam.realip}으로 불러올수 있음 -->
 	<context-param>

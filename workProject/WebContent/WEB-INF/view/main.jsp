@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+<script src="/module/nailthumb/jquery.nailthumb.1.1.min.js"></script>
+<link rel="stylesheet" href="/module/nailthumb/jquery.nailthumb.1.1.min.css">
 
 <style>
 .logo-frame{
@@ -165,9 +167,12 @@
 	border : 0px;
 }
 
-</style>   
 
-<div class="container" style="margin-left: auto;">
+
+</style>   
+<div class="row">
+<div class="col-md-2" style="margin-left: 40px;"></div>
+<div class="col-md-7" style="margin-left: auto; margin-bottom: 100px;">
 
 			<!-- 메인쪽 로고 부분 -->
 			  <div class="container col-md-4" style="width:620px; height: 350px;">
@@ -208,9 +213,17 @@
 							<span class="secondlogo-body-title-blog">blog.mytypeblog.com</span>
 						</div>	
 					</div>
-				<div class="secondlogo-body-content"><span>공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용</span></div>
+						<div class="secondlogo-body-content"><span>
+						<c:choose>
+						<c:when test="${notice.get(0).SUBCONTENT ne null}">
+							${notice.get(0).SUBCONTENT}
+						</c:when>
+						<c:otherwise>
+							${notice.get(0).CONTENT}
+						</c:otherwise>
+						</c:choose>
+						</span></div>
 			</div>
-			
 			<!-- 목록 nav -->
 			<div class="col-xs-0 col-md-12">
 			<div style="margin-left: 10px;">
@@ -239,7 +252,9 @@
 	                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
 	                	<c:choose>
 	                	<c:when test="${all.IMG.length() > 10}">
+	                		<div class="nailthumb-column-metadata" id="thumbnail">
 	                		${all.IMG }
+	                		</div>
 	                	</c:when>
 	                	<c:otherwise>
 	                		${all.FCONTENT }
@@ -352,6 +367,8 @@
 </div>
 </div>
 
+</div>
+
 <c:choose>
 	<c:when test="${sessionScope.login == null}">
 	<script>
@@ -400,13 +417,26 @@
 	function imgsize(){
 		$(".fr-fic").css("width","220px");
 		$(".fr-fic").css("height","74px");
-		$(".fr-fic").css("border-radius","5px");
+		$(".fr-fic").css("border-radius","2px");
 	}
 	imgsize();
 </script>
 
+<!-- 메인 썸네일 이미지 조정 
+<script>
+
+$(document).ready(function() {
+	$("#thumbnail").children().addClass("nailthumb-container");
+	
+	$('.nailthumb-column-metadata .nailthumb-container').nailthumb({width:220,height:74,fitDirection:'center center'});
+	
+	
+	
+    
+  });
 
 
+</script>-->
 
 
 

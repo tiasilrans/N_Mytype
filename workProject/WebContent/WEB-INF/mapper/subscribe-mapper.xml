@@ -23,5 +23,15 @@
 	<!-- 구독하기 -->
 	<insert id="insertsubscribe" parameterType="java.util.HashMap">
 		insert into subscribe(email,address,sdate) values(#{email},#{url},sysdate)
-	</insert>	
+	</insert>
+	
+	<!-- 해당 블로그의 구독자 리스트 -->
+	<select id="subscribers" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT b.email, b.title, b.INTRO, b.url FROM 
+				(SELECT EMAIL FROM subscribe where ADDRESS=#{url}) s 
+			join blog b on b.EMAIL=s.EMAIL
+	</select>
+	
+	
+	
 </mapper>

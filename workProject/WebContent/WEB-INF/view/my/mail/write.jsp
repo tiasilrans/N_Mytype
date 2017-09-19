@@ -21,7 +21,7 @@ table.type07 td {
 
     
 <div align="center">
-	<div style="width: 40%;" align="left">
+	<div style="width: 40%; margin-top: 130px;" align="left">
 	<h2>쪽지쓰기</h2>
 	<hr style="margin-top: 10px;"/>
 	</div>
@@ -44,12 +44,13 @@ table.type07 td {
 				</tr>
 				<tr>
 					<td style="vertical-align: middle; width: 20%;"><label>내용</label></td>
-					<td colspan="3" style="width: 80%"><textarea class="form-control" cols="50" rows="15" name="content" style="resize: none;" required></textarea></td>
+					<td colspan="2" style="width: 60%"><textarea class="form-control" cols="40" rows="15" name="content" style="resize: none;" required></textarea></td>
+					<td style="width: 20%"></td>
 				</tr>
 		</tbody>
 	</table>
 	<div style="width: 35%;" align="right">
-		<input class="btn btn-default" type="submit" value="보내기"/>
+		<input class="btn btn-default" type="submit" value="보내기" id="sbtn" disabled/>
 	</div>
 </form>
 
@@ -71,9 +72,11 @@ table.type07 td {
 				if(!rst.rst){
 					$("#emailtrue").css("display", "block");
 					$("#emailfalse").css("display", "none");
+					$("#sbtn").prop("disabled", false);
 				}else{
 					$("#emailtrue").css("display", "none");
 					$("#emailfalse").css("display", "block");
+					$("#sbtn").prop("disabled", true);
 				}
 			});
 		}

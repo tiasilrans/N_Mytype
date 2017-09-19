@@ -1,6 +1,6 @@
 package model;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import org.apache.ibatis.session.SqlSession;
@@ -241,4 +241,29 @@ public class AdminDAO {
 		}
 	}
 	
+	//공지사항 리스트
+	public List<Map> noticeList(String type){
+		SqlSession session = factory.openSession();
+		List<Map> list = new ArrayList<>();
+		try{
+			if(type.equals("main")){
+				Map map = new HashMap();
+				long first = System.currentTimeMillis()-(1000*60*60*24*7); 
+				long last = System.currentTimeMillis()+(1000*60*60*24*7); 
+				SimpleDateFormat week = new SimpleDateFormat("yy-MM-dd");
+				map.put("type", "main");
+				map.put("first", week.format(first));
+				map.put("last", week.format(last));
+				list = session.selectList("admin.noticeList", map);
+				list = this.sublistReply(list, 180, "CONTENT", "SUBCONTENT");
+			}
+			return list;
+		}catch(Exception e){
+			System.out.println("AdminNoticeList Error");
+			e.printStackTrace();
+			return list;
+		}finally{
+			session.close();
+		}
+	}
 }

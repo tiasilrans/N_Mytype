@@ -50,8 +50,8 @@ label{
 </style>
 
   
-<form class="form-inline form-horizontal" method="post">
-	<div class="scard col-xs-offset-1 col-md-offset-1">
+<form class="form-inline form-horizontal" method="post" >
+	<div class="scard col-xs-offset-1 col-md-offset-1" style="margin-top: 130px;">
 		<div class="title">
 			<span style="float:left; font-size: 17px; margin-left: 5px;"><b>계정 설정</b></span>
 		</div>

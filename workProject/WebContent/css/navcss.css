@@ -48,7 +48,7 @@
 	top: 0;
 	z-index: 888;
 	width: 100%;
-	border-bottom: 3px solid #00134d !important;
+/* 	border-bottom: 0px solid #00134d !important; */
 	transition: all 1s;
 }
 

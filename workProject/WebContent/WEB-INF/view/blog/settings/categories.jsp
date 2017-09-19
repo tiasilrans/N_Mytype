@@ -47,7 +47,7 @@ p {
 <div class="col-xs-12 col-md-8">
 	<div class="form-group box">
 		<h3 align="left" style="color: #262626">카테고리 편집</h3>
-		<div align="right">
+		<div align="right" style="margin-top: -40px;">
 			<button class="button button2" id="add">추가</button>
 		</div>
 		<br/>

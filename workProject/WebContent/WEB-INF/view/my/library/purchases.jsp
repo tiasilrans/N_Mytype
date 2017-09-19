@@ -9,7 +9,7 @@
     
 <div align="center">
 
-<div style="width: 60%;" align="left">
+<div style="width: 60%; margin-top: 130px;" align="left">
 <h2>구매한 항목</h2>
 <hr style="margin-top: 10px;"/>
 </div>

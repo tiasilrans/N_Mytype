@@ -12,6 +12,10 @@
  		insert into blogcategory(email, category_name, create_date, BLOG_TITLE, cate_id)
 					values(#{email}, '전체 보기', sysdate, #{title}, #{cate_id})
  	</insert>
+ 	<!-- 블로그 타이틀 -->
+ 	<select id="blogTitle" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+ 		select title from blog where url=#{url}
+ 	</select>
  	<!-- 카테고리 세팅 -->
 		<!-- 카테고리 생성 --> 
 	<insert id="category_add" parameterType="java.util.HashMap">
