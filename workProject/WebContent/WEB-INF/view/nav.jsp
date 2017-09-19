@@ -38,12 +38,11 @@
 						<c:if test="${sessionScope.blog ne null }">
 						<c:forEach var="blog" items="${sessionScope.blog}" begin="0" end="${sessionScope.blog.size()}">
 							<li style="margin-left: 25px;"><a style="font-weight: bold;" href="/blog/${blog.URL}">${blog.TITLE}</a></li>
-							<li style="margin-left: 25px;"><a href="">임시저장글 <i class="material-icons" style="margin-left: 10px; float: right; font-size: 23px;">mode_edit</i></a></li>
-							<li style="margin-left: 25px;"><a href="">발행글</a></li>  
+							<li style="margin-left: 25px;"><a href="/blog/admin/${blog.URL }/posts">포스트 <i class="material-icons" style="margin-left: 10px; float: right; font-size: 23px;">mode_edit</i></a></li>  
 							<li style="margin-left: 25px;"><a href="/blog/${blog.URL}/categories">카테고리</a></li> 
-							<li style="margin-left: 25px;"><a href="">구독자</a></li>   
-							<li style="margin-left: 25px;"><a href="">설정</a></li>  
-						</c:forEach>   
+							<li style="margin-left: 25px;"><a href="/blog/${blog.URL}/subscribers">구독자</a></li>   
+							<li style="margin-left: 25px;"><a href="/blog/${blog.URL}/setting">설정</a></li>  
+						</c:forEach>
 						</c:if>     
 							<li><a href="/blog/create"><i class="glyphicon glyphicon-plus" style="margin-right: 7px;"></i> 새 블로그 만들기</a></li>
 						</ul></li> 
