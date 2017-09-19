@@ -51,8 +51,9 @@ input[type=checkbox]:checked+label:before {
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="">
-					<div class="header">
-						
+					<div class="header" style="margin-left: 17px; margin-bottom: 40px;">
+						<input type="checkbox" id="postck" class="checkbox-style"/>
+						<label for="postck"></label> 
 					</div>
 					<!-- 포스트 검색창 -->
 					<div class="admin-search">
@@ -60,9 +61,9 @@ input[type=checkbox]:checked+label:before {
 					</div>
 					<!-- 포스트 리스트 -->
 				<c:forEach var="obj" items="${list }">
-					<div class="post-list-proup" style="padding: 1rem 1.75rem;">
-						<label class="" style="float: left;">
-							<input type="checkbox" value="${obj.NUM }" id="postck" class="checkbox-style"/>
+					<div class="post-list-proup" style="padding: 1rem 1.75rem; margin-top: -40px;">
+						<label class="" style="float: left; left: 0.8rem; position: absolute; top:8rem;">
+							<input type="checkbox" value="${obj.NUM }"id="postck" class="checkbox-style"/>
 							<label for="postck"></label> 
 						</label>
 						<div class="media"> 
