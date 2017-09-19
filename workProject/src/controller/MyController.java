@@ -70,17 +70,17 @@ public class MyController {
 			mav.setViewName("library_postgood");
 			map.put("type", "like");
 			
-			//¸ñ·Ï¿¡ Ç¥½ÃÇÒ Æ÷½ºÆ® ¼ö
+			//ëª©ë¡ì— í‘œì‹œí•  í¬ìŠ¤íŠ¸ ìˆ˜
 			int pc = 12;
 			
-			//ÇöÀç ÆäÀÌÁö
+			//í˜„ìž¬ íŽ˜ì´ì§€
 			int np = 1;
 			if(map.get("np") != null){
 				np = Integer.parseInt((String)map.get("np"));
 			}
 			mav.addObject("np", np);
 			
-			//ºÒ·¯¿Ã ¸®½ºÆ®ÀÇ ½ÃÀÛ°ú ³¡
+			//ë¶ˆëŸ¬ì˜¬ ë¦¬ìŠ¤íŠ¸ì˜ ì‹œìž‘ê³¼ ë
 			int e = np*pc;
 			int s = e-pc+1;		
 			map.put("first", s);
@@ -92,14 +92,14 @@ public class MyController {
 				mav.addObject("list",lDao.List(map));
 			}
 			
-			//¸®½ºÆ® ¹Ø¿¡ ÆäÀÌÁö¼ö
+			//ë¦¬ìŠ¤íŠ¸ ë°‘ì— íŽ˜ì´ì§€ìˆ˜
 			int eSize = 5;
 			int p1 = lDao.selectcount(map);
 			int p = p1 / pc;
 			p = p1 % pc != 0 ? p+1: p;
 			mav.addObject("page", p);
 			
-			//È­»ìÇ¥
+			//í™”ì‚´í‘œ
 			int from = (np-1)*eSize;
 			int to = np*eSize;
 			if(to > p){
@@ -117,17 +117,17 @@ public class MyController {
 			mav.setViewName("library_purchases");
 			map.put("type", "buy");
 			
-			//¸ñ·Ï¿¡ Ç¥½ÃÇÒ Æ÷½ºÆ® ¼ö
+			//ëª©ë¡ì— í‘œì‹œí•  í¬ìŠ¤íŠ¸ ìˆ˜
 			int pc = 12;
 			
-			//ÇöÀç ÆäÀÌÁö
+			//í˜„ìž¬ íŽ˜ì´ì§€
 			int np = 1;
 			if(map.get("np") != null){
 				np = Integer.parseInt((String)map.get("np"));
 			}
 			mav.addObject("np", np);
 			
-			//ºÒ·¯¿Ã ¸®½ºÆ®ÀÇ ½ÃÀÛ°ú ³¡
+			//ë¶ˆëŸ¬ì˜¬ ë¦¬ìŠ¤íŠ¸ì˜ ì‹œìž‘ê³¼ ë
 			int e = np*pc;
 			int s = e-pc+1;		
 			map.put("first", s);
@@ -139,14 +139,14 @@ public class MyController {
 				mav.addObject("list",lDao.List(map));
 			}
 			
-			//¸®½ºÆ® ¹Ø¿¡ ÆäÀÌÁö¼ö
+			//ë¦¬ìŠ¤íŠ¸ ë°‘ì— íŽ˜ì´ì§€ìˆ˜
 			int eSize = 5;
 			int p1 = lDao.selectcount(map);
 			int p = p1 / pc;
 			p = p1 % pc != 0 ? p+1: p;
 			mav.addObject("page", p);
 			
-			//È­»ìÇ¥
+			//í™”ì‚´í‘œ
 			int from = (np-1)*eSize;
 			int to = np*eSize;
 			if(to > p){
@@ -158,24 +158,24 @@ public class MyController {
 		return mav;
 	}
 	
-	// Æ÷ÀÎÆ®ºÎºÐ
+	// í¬ì¸íŠ¸ë¶€ë¶„
 	@RequestMapping("/point/plist")
 	public ModelAndView plist(@RequestParam Map map,HttpSession session) {
 		String email = (String)session.getAttribute("login");
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("point_plist");
 			
-			//¸ñ·Ï¿¡ Ç¥½ÃÇÒ Æ÷½ºÆ® ¼ö
+			//ëª©ë¡ì— í‘œì‹œí•  í¬ìŠ¤íŠ¸ ìˆ˜
 			int pc = 5;
 			
-			//ÇöÀç ÆäÀÌÁö
+			//í˜„ìž¬ íŽ˜ì´ì§€
 			int np = 1;
 			if(map.get("np") != null){
 				np = Integer.parseInt((String)map.get("np"));
 			}
 			mav.addObject("np", np);
 			
-			//ºÒ·¯¿Ã ¸®½ºÆ®ÀÇ ½ÃÀÛ°ú ³¡
+			//ë¶ˆëŸ¬ì˜¬ ë¦¬ìŠ¤íŠ¸ì˜ ì‹œìž‘ê³¼ ë
 			int e = np*pc;
 			int s = e-pc+1;		
 			map.put("first", s);
@@ -188,14 +188,14 @@ public class MyController {
 				mav.addObject("pointsum",pointDao.selectpointsum(email));
 			}
 			
-			//¸®½ºÆ® ¹Ø¿¡ ÆäÀÌÁö¼ö
+			//ë¦¬ìŠ¤íŠ¸ ë°‘ì— íŽ˜ì´ì§€ìˆ˜
 			int eSize = 5;
 			int p1 = pointDao.selectcount(map);
 			int p = p1 / pc;
 			p = p1 % pc != 0 ? p+1: p;
 			mav.addObject("page", p);
 			
-			//È­»ìÇ¥
+			//í™”ì‚´í‘œ
 			int from = (np-1)*eSize;
 			int to = np*eSize;
 			if(to > p){
@@ -210,9 +210,9 @@ public class MyController {
 	public ModelAndView charge() {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("point_charge");
-			String[] cards = "³óÇù,±¹¹ÎÀºÇà,¿ì¸®ÀºÇà,ÇÏ³ªÀºÇà,½ÅÇÑÀºÇà,¿ÜÈ¯ÀºÇà,¾¾Æ¼ÀºÇà,¿ìÃ¼±¹,ºÎ»êÀºÇà,SCÀºÇà".split(",");
-			String[] banks = "»ê¾÷ÀºÇà,±â¾÷ÀºÇà,±¹¹ÎÀºÇà,¿ÜÈ¯ÀºÇà,¼öÇù,³óÇù,¿ì¸®ÀºÇà,SCÀºÇà,¾¾Æ¼ÀºÇà,´ë±¸ÀºÇà,ºÎ»êÀºÇà,±¤ÁÖÀºÇà,Á¦ÁÖÀºÇà,ÀüºÐÀºÇà,°æ³²ÀºÇà,»õ¸¶À»±Ý°í,½ÅÇù,¿ìÃ¼±¹,ÇÏ³ªÀºÇà,½ÅÇÑÀºÇà".split(",");
-			String[] telecoms = "SKT,KT,LGU+,LGU+(¾Ë¶ãÆù)".split(",");
+			String[] cards = "ë†í˜‘,êµ­ë¯¼ì€í–‰,ìš°ë¦¬ì€í–‰,í•˜ë‚˜ì€í–‰,ì‹ í•œì€í–‰,ì™¸í™˜ì€í–‰,ì”¨í‹°ì€í–‰,ìš°ì²´êµ­,ë¶€ì‚°ì€í–‰,SCì€í–‰".split(",");
+			String[] banks = "ì‚°ì—…ì€í–‰,ê¸°ì—…ì€í–‰,êµ­ë¯¼ì€í–‰,ì™¸í™˜ì€í–‰,ìˆ˜í˜‘,ë†í˜‘,ìš°ë¦¬ì€í–‰,SCì€í–‰,ì”¨í‹°ì€í–‰,ëŒ€êµ¬ì€í–‰,ë¶€ì‚°ì€í–‰,ê´‘ì£¼ì€í–‰,ì œì£¼ì€í–‰,ì „ë¶„ì€í–‰,ê²½ë‚¨ì€í–‰,ìƒˆë§ˆì„ê¸ˆê³ ,ì‹ í˜‘,ìš°ì²´êµ­,í•˜ë‚˜ì€í–‰,ì‹ í•œì€í–‰".split(",");
+			String[] telecoms = "SKT,KT,LGU+,LGU+(ì•Œëœ°í°)".split(",");
 			mav.addObject("cards",cards);
 			mav.addObject("banks",banks);
 			mav.addObject("telecoms",telecoms);
@@ -235,13 +235,13 @@ public class MyController {
 				map.put("paymentoption", str);
 				switch ((String)map.get("pay")) {
 				case "card":
-					map.put("pay", "Ä«µå°áÁ¦");
+					map.put("pay", "ì¹´ë“œê²°ì œ");
 					break;
 				case "untouched":
-					map.put("pay", "¹«ÅëÀåÀÔ±Ý");
+					map.put("pay", "ë¬´í†µìž¥ìž…ê¸ˆ");
 					break;
 				case "phone":
-					map.put("pay", "ÈÞ´ëÆù°áÁ¦");
+					map.put("pay", "íœ´ëŒ€í°ê²°ì œ");
 					break;
 				}
 				pointDao.pointcharge(map);
@@ -251,24 +251,24 @@ public class MyController {
 		return mav;
 	}
 	
-	//ÃæÀü ½ÅÃ» ¸®½ºÆ®
+	//ì¶©ì „ ì‹ ì²­ ë¦¬ìŠ¤íŠ¸
 	@RequestMapping("/point/clist")
 	public ModelAndView clist(@RequestParam Map map,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("point_clist");
 			mav.addObject("section","point/clist");
 			
-			//¸ñ·Ï¿¡ Ç¥½ÃÇÒ Æ÷½ºÆ® ¼ö
+			//ëª©ë¡ì— í‘œì‹œí•  í¬ìŠ¤íŠ¸ ìˆ˜
 			int pc = 5;
 			
-			//ÇöÀç ÆäÀÌÁö
+			//í˜„ìž¬ íŽ˜ì´ì§€
 			int np = 1;
 			if(map.get("np") != null){
 				np = Integer.parseInt((String)map.get("np"));
 			}
 			mav.addObject("np", np);
 			
-			//ºÒ·¯¿Ã ¸®½ºÆ®ÀÇ ½ÃÀÛ°ú ³¡
+			//ë¶ˆëŸ¬ì˜¬ ë¦¬ìŠ¤íŠ¸ì˜ ì‹œìž‘ê³¼ ë
 			int e = np*pc;
 			int s = e-pc+1;		
 			map.put("first", s);
@@ -282,14 +282,14 @@ public class MyController {
 				mav.addObject("list",pointDao.selectdeposit(map));
 			}
 			
-			//¸®½ºÆ® ¹Ø¿¡ ÆäÀÌÁö¼ö
+			//ë¦¬ìŠ¤íŠ¸ ë°‘ì— íŽ˜ì´ì§€ìˆ˜
 			int eSize = 5;
 			int p1 = pointDao.selectcount(map);
 			int p = p1 / pc;
 			p = p1 % pc != 0 ? p+1: p;
 			mav.addObject("page", p);
 			
-			//È­»ìÇ¥
+			//í™”ì‚´í‘œ
 			int from = (np-1)*eSize;
 			int to = np*eSize;
 			if(to > p){
@@ -300,7 +300,7 @@ public class MyController {
 		return mav;
 	}
 	
-	//Æ÷ÀÎÆ® °áÁ¦ Ãë¼Ò
+	//í¬ì¸íŠ¸ ê²°ì œ ì·¨ì†Œ
 	@RequestMapping("/point/delete")
 	@ResponseBody
 	public String delete(@RequestParam Map map,HttpSession session) throws JsonProcessingException {
@@ -321,7 +321,7 @@ public class MyController {
 		return mz;
 	}
 	
-	//Ãâ±Ý ½ÅÃ» 
+	//ì¶œê¸ˆ ì‹ ì²­ 
 	@RequestMapping("/point/withdraw")
 	public ModelAndView withdraw(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -336,7 +336,7 @@ public class MyController {
 		return mav;
 	}
 	
-	//Ãâ±Ý ½ÅÃ» ½ÇÇà
+	//ì¶œê¸ˆ ì‹ ì²­ ì‹¤í–‰
 	@RequestMapping("/point/withdrawExec")
 	public ModelAndView withdrawExec(@RequestParam Map map, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -355,24 +355,24 @@ public class MyController {
 		return mav;
 	}
 	
-	//Ãâ±Ý ³»¿ª
+	//ì¶œê¸ˆ ë‚´ì—­
 	@RequestMapping("/point/wlist")
 	public ModelAndView wlist(@RequestParam Map map,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("point_wlist");
 			String email = (String)session.getAttribute("login");
 			
-			//¸ñ·Ï¿¡ Ç¥½ÃÇÒ Æ÷½ºÆ® ¼ö
+			//ëª©ë¡ì— í‘œì‹œí•  í¬ìŠ¤íŠ¸ ìˆ˜
 			int pc = 5;
 			
-			//ÇöÀç ÆäÀÌÁö
+			//í˜„ìž¬ íŽ˜ì´ì§€
 			int np = 1;
 			if(map.get("np") != null){
 				np = Integer.parseInt((String)map.get("np"));
 			}
 			mav.addObject("np", np);
 			
-			//ºÒ·¯¿Ã ¸®½ºÆ®ÀÇ ½ÃÀÛ°ú ³¡
+			//ë¶ˆëŸ¬ì˜¬ ë¦¬ìŠ¤íŠ¸ì˜ ì‹œìž‘ê³¼ ë
 			int e = np*pc;
 			int s = e-pc+1;		
 			map.put("first", s);
@@ -384,14 +384,14 @@ public class MyController {
 				mav.addObject("list", pointDao.selectwithdraw(map));
 			}
 			
-			//¸®½ºÆ® ¹Ø¿¡ ÆäÀÌÁö¼ö
+			//ë¦¬ìŠ¤íŠ¸ ë°‘ì— íŽ˜ì´ì§€ìˆ˜
 			int eSize = 5;
 			int p1 = pointDao.selectcount(map);
 			int p = p1 / pc;
 			p = p1 % pc != 0 ? p+1: p;
 			mav.addObject("page", p);
 			
-			//È­»ìÇ¥
+			//í™”ì‚´í‘œ
 			int from = (np-1)*eSize;
 			int to = np*eSize;
 			if(to > p){
@@ -404,7 +404,7 @@ public class MyController {
 	}
 	
 	
-	// ¼³Á¤ ºÎºÐ
+	// ì„¤ì • ë¶€ë¶„
 	@RequestMapping("/settings/account")
 	public ModelAndView settings(HttpSession session) {
 		Map info = myDao.info((String)session.getAttribute("login"));
@@ -531,8 +531,6 @@ public class MyController {
 	}
 	
 }
-
-
 
 
 
