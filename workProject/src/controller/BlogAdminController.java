@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import model.BlogDAO;
 import model.PostDao;
+import model.SubscribeDAO;
 
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -22,9 +23,12 @@ public class BlogAdminController {
 	@Autowired
 	PostDao pDAO;
 	
+	@Autowired
+	SubscribeDAO sDAO;
+	
 	
 	@RequestMapping("/blog/admin/{url}/posts")
-	public ModelAndView newBlog(@PathVariable(value="url") String url, HttpSession session){
+	public ModelAndView blogPosts(@PathVariable(value="url") String url, HttpSession session){
 		Map map = new HashMap();
 			map.put("url", url);
 		List<Map> list = pDAO.ad_postList(map);
@@ -36,6 +40,23 @@ public class BlogAdminController {
 		 	mav.addObject("list", list);
 		return mav;
 	}
+	
+	
+	@RequestMapping("/blog/{url}/subscribers")
+	public ModelAndView blogSubscribers(@PathVariable(value="url") String url, HttpSession session){
+		Map map = new HashMap();
+			map.put("url", url);
+		List<Map> list = sDAO.blogSubscribers(map);
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("blog_setting");
+		 	mav.addObject("section", "blog/settings/subscribers");
+		 	mav.addObject("title", "±¸µ¶ÀÚ");
+		 	mav.addObject("url", url);
+		 	mav.addObject("list", list);
+		return mav;
+	}
+	
+	
 	
 	
 	
