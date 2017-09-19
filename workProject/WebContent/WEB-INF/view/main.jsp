@@ -5,6 +5,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 
 <style>
+section{
+	background: whitesmoke;
+}
+
 .logo-frame{
 	width:100%;
 	border-radius: 5px;
@@ -17,6 +21,7 @@
 	margin: 10px;
 	border-radius : 5px;
     border : 1px solid silver;
+    background-color: white;
 }
 
 .secondlogo-head{
@@ -123,7 +128,7 @@
 }
 
 .confooter{
-	padding-top: 7px;
+	padding-top: 5px;
 }
 
 .confooter-count{
@@ -143,6 +148,7 @@
 	margin: 8px;
     border-radius : 5px;
     border : 1px solid silver;
+    background: white;
 }
 
 .conbody-hashtag{
@@ -191,7 +197,7 @@
 			      </div>
 			    
 			      <div class="logo-frame item">
-			        <img src="/images/mainimg/3.png" alt="New york" style="width:100%; height: 350px; border-radius: 5px;">
+			        <img src="/images/mainimg/33.png" alt="New york" style="width:100%; height: 350px; border-radius: 5px;">
 			      </div>
 			    </div>
 			  </div>
@@ -240,21 +246,20 @@
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
 						<div>${all.NICKNAME }</div>
-						<div style="color:#909090; font-size: 11px;">6일전 · ${all.URL }</div>
+						<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${all.URL }">${all.URL }</a></div>
 					</div>
-	                <div style="height:50px; margin:12px; padding-bottom: 3px;">
-	                	<div style="font-size: 15px; padding-bottom: 5px; ">제목 없음</div>
-	                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
-	                	<c:choose>
-	                	<c:when test="${all.IMG.length() > 10}">
+					
+	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
+	                	<c:if test="${all.IMG.length() > 10}">
 	                		${all.IMG }
-	                	</c:when>
-	                	<c:otherwise>
-	                		${all.FCONTENT }
-	                	</c:otherwise>
-	                	</c:choose>
-	                	</div>
-	                </div> <br/><br/><br/>
+	                	</c:if>
+						<a href="/${all.URL}/post/${all.NUM}" style="font-size: 15px; text-decoration: none; color: #333333;padding-bottom: 5px;">
+							${all.TITLE }
+						</a>
+						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
+							${all.FCONTENT }
+						</a>
+					</div> <br/><br/><br/>
 	                
 	                <div>
 		                <c:set var="msg" value="${all.HASH }"/>
