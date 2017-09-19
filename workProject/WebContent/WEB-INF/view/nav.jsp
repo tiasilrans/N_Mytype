@@ -48,7 +48,7 @@
 						</ul></li> 
 				</ul>  
 			   
-				<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav navbar-right" style="margin-right: 13px;">
 				<!-- 알림 -->				
 					<li style="margin: -7px;"><a href="/my/home"><i class="material-icons" style="color: #999999; font-size: 30px;">notifications_none</i></a></li>
 				<!-- 알림끝 -->				
