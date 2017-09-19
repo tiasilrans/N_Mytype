@@ -53,7 +53,6 @@ public class MyController {
 	@Autowired
 	ServletContext application;
 	
-	
 	@RequestMapping("/home")
 	public ModelAndView home(@RequestParam Map map, HttpSession session) {
 		ModelAndView mav = new ModelAndView();

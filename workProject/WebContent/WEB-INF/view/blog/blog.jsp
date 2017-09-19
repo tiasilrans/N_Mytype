@@ -220,7 +220,7 @@ footer {
 						<div class="media-right">
 							<img
 								src="${imgPath }"
-								class="media-object" style="width: 60px; height:60px; overflow: hidden; border-radius: 5px;">      
+								class="media-object" style="width: 60px; height:60px; overflow: hidden; border-radius: 8px;">      
 						</div>
 					</div> 
 				</section>
