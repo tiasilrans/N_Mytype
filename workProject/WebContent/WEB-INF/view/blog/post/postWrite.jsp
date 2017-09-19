@@ -454,7 +454,6 @@ input[type=radio]:checked+label:before {
 					"subtitle" : $("#subtitle").val(),
 					"fcontent" : prev,
 					"ccontent" : next,
-					"hash" : $("#hash").val(),
 					"notice" : $("#notice").prop("checked"),
 					"adult" : $("#adult").prop("checked"),
 					"url" : "${map.url}"

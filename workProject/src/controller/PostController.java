@@ -19,6 +19,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.PostDao;
+import model.ReplyDAO;
 
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -28,6 +29,9 @@ public class PostController {
 	
 	@Autowired
 	PostDao pdao;
+	
+	@Autowired
+	ReplyDAO rDAO;
 	
 	@RequestMapping("/postWriter.mt")
 	@ResponseBody
@@ -73,10 +77,6 @@ public class PostController {
 			}else{
 				mav.addObject("buy", false);
 			}
-			
-			
-			
-			
 		}
 			mav.addObject("totalpost", pdao.postCount(map));// 해당 블로그의 총 포스트 수 
 		return mav;	
@@ -119,6 +119,25 @@ public class PostController {
 			session.setAttribute("updateMap", m);
 			
 		return mav;
+	}
+	
+	@RequestMapping("/{num}/peply.mt")
+	@ResponseBody
+	public Map reply(@PathVariable(value="num") int num, @RequestParam Map m, HttpSession session){
+		m.put("email", (String)session.getAttribute("login"));
+		m.put("num", num);
+		System.out.println(m);
+		boolean f = rDAO.replyWrite(m);
+		Map map = new HashMap<>();
+		if(f){
+			map.put("result", f);
+			map.put("url", (String)m.get("url"));
+			System.out.println("댓글 달기 성공");
+		}else{
+			map.put("result", f);
+			System.out.println("댓글 달기 실패");
+		}
+		return map;
 	}
 	
 	

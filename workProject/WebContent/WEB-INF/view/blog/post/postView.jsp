@@ -142,22 +142,20 @@ input[type=checkbox]:checked+label:before {
 				<div class="body" style="margin-left: 95px;">
 					<h5>댓글</h5>
 					<div class="comments" id="comments">
-						<form action="">
-							<input type="hidden" value="" id="postNum">
 							<textarea class="form-control autosize" name="content"
-								id="mention" data-autosize-on="true"
-								style="overflow: hidden; word-wrap: break-word; height: 60px; width: 750px; resize: none;"></textarea>
+								id="mention" data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; 
+								height: 60px; width: 750px; resize: none;" ${sessionScope.login eq null ? "readonly" : "" }></textarea>
 							<div class="clearfix">
 								<div class="checkbox-wrap"
 									style="float: left; margin-top: 20px; margin-left: 2px;">
-									<input type="checkbox" id="notice" class="checkbox-style" /> <label
-										for="notice">비밀댓글</label>
+									<input type="checkbox" id="secret" class="checkbox-style"/> <label
+										for="secret">비밀댓글</label>
 								</div>
 								<div style="float: right; margin-top: 7px; margin-right: 293px;">
-									<button class="button button1">댓글 남기기</button>
+									<button type="button" class="button button1" id="sub">댓글 남기기</button>
 								</div>
 							</div>
-						</form>
+						
 					</div>
 				</div>
 
@@ -170,7 +168,32 @@ input[type=checkbox]:checked+label:before {
 	</div>
 </div>
 
+<script>
+$("#sub").on("click", function() {
 
+	
+	$.ajax({
+		url : "/${post.NUM }/peply.mt",
+		data : {			
+			"content" : $("#mention").val(),			
+			"secret" : $("#secret").prop("checked"),
+			"url" : "${post.URL}"			
+		}
+	}).done(function(result) {				
+		if (result.result) {
+			window.alert("댓글 작성 완료");
+			location.href = "/"+result.url+"/post/${post.NUM }";
+		}else{				
+			window.alert("댓글 작성 실패");
+		}
+	})
+	
+	
+	
+	
+	
+});
+</script>
 
 
 
