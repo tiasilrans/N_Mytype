@@ -163,8 +163,54 @@ input[type=checkbox]:checked+label:before {
 			<!-- 포스트 댓글 섹션 -->
 			<section class="comments">
 				<div class="body" style="margin-left: 95px;">
-					<h5>댓글</h5>
+					<h6>댓글</h6>
+					
 					<div class="comments" id="comments">
+					<c:forEach var="obj" items="${list }">
+					<div class="comment-list">
+						<div class="media">
+							<div class="media-left">
+								<a><img src=""></a>
+							</div>
+							<div class="media-body">
+								<div class="comment-header">
+									<a>${obj.EMAIL }</a>
+									<time>${obj.CDATE }</time>
+								</div>
+								<div class="comment-content">
+									${obj.CONTENT }
+								</div>
+								<div class="comment-action">
+									<button>답글</button>
+									<button>편집</button>
+									<button>삭제</button>
+								</div>
+								<div class="comment-editor">
+									<div style="float: left;">
+										<textarea class="form-control autosize"
+											id="comment-editor-content" data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; 
+											height: 60px; width: 750px; resize: none;" ${sessionScope.login eq null ? "readonly" : "" }></textarea>
+										<div class="clearfix">
+											<div class="checkbox-wrap"
+												style="float: left; margin-top: 20px; margin-left: 2px;">
+												<input type="checkbox" id="comment-editor-secret" class="checkbox-style"/> <label
+													for="secret">비밀댓글</label>
+											</div>
+											<div style="float: right; margin-top: 7px; margin-right: 293px;">
+												<button type="button" class="button button1" id="editor-bt">댓글 남기기</button>
+											</div>
+										</div>										
+									</div>
+									<div style="float: right;">
+										<button>취소</button>
+										<button>저장</button>
+									</div>
+								</div>
+							</div>					
+						</div>
+					</div>					
+					</c:forEach>
+					<h5>댓글</h5>
 							<textarea class="form-control autosize" name="content"
 								id="mention" data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; 
 								height: 60px; width: 750px; resize: none;" ${sessionScope.login eq null ? "readonly" : "" }></textarea>

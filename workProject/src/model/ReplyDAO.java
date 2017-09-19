@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -27,5 +29,31 @@ public class ReplyDAO {
 			session.close();
 		}
 	}
+	
+	public List<Map> replyList(Map map){
+		List<Map> list = new ArrayList<>();
+		SqlSession session = factory.openSession();
+		try {
+			list = session.selectList("reply.list", map);			
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("replyList ERROR : " + e.toString());
+			return list;
+		}finally {
+			session.close();
+		}			
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
