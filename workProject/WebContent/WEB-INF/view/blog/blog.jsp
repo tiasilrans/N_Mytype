@@ -219,8 +219,8 @@ footer {
 						</div>
 						<div class="media-right">
 							<img
-								src="https://cdn.postype.com/assets/img/avatar/blog_blank_p.svg"
-								class="media-object" style="width: 60px; border-radius: 5px;">      
+								src="${imgPath }"
+								class="media-object" style="width: 60px; height:60px; overflow: hidden; border-radius: 8px;">      
 						</div>
 					</div> 
 				</section>

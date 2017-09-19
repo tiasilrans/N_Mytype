@@ -1,8 +1,10 @@
 package controller;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ import model.PostDao;
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class BlogController {
+	
+	@Autowired
+	ServletContext application;
 	
 	@Autowired
 	BlogDAO bDAO;
@@ -58,6 +63,14 @@ public class BlogController {
 						@RequestParam(name="p", defaultValue="1") int p, HttpSession session){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 		ModelAndView mav = new ModelAndView();
+		String path = "/images/blogImg/"+url;
+		String rPath = application.getRealPath(path);
+		File dir = new File(rPath);
+		if(dir.exists()) {
+			mav.addObject("imgPath", path);
+		}else {
+			mav.addObject("imgPath", "/images/avatar_yellow.png");
+		}
 		Map map = new HashMap();
 			map.put("url", url);
 			map.put("email", (String)session.getAttribute("login"));			
