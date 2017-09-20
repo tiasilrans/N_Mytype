@@ -25,7 +25,6 @@ body {
 	padding: 20px;
 }
 
-
 </style>
 
 
@@ -40,7 +39,7 @@ body {
 		
 	<div>
 		<div style="width: 50%; float: left;">
-			<label style="width:105px; margin-top:10px; margin-left: 15px;">
+			<label style="width:105px; margin-top:10px; margin-left: 15px; margin-right: 15px;">
 				<b>보유 포인트 &nbsp;&nbsp;&nbsp;&nbsp; : </b>
 			</label>
 			<span id="pointsum" style="color:gray; font-weight: bold; font-size: 30px;">
@@ -51,8 +50,8 @@ body {
 		</div>
 			
 		<div style="width: 40%;">
-			<label style="width:105x; margin-top:10px; margin-left: 15px;">
-				<b>출금 후 포인트   :&nbsp; </b>
+			<label style="width:105x; margin-top:10px; margin-left: 15px; margin-right: 15px;">
+				<b>출금 후 포인트 &nbsp; :&nbsp; </b>
 			</label>
 			<span id="rpoint" style="color:gray; font-weight: bold; font-size: 30px;">
 				<fmt:formatNumber pattern="#,###">		
@@ -63,20 +62,21 @@ body {
 	</div>
 	<hr/>
 
-		<div align="left" style="padding-right: 15px; line-height: 2.4">
-			<div style="width: 300px; float: left;">
-				<label style="width:150x; margin-top:10px; margin-left: 15px;">출금 은행</label>
-				<span style="font-weight: bold; font-size: 16px;">${info.BANK}</span>
-			</div>
-			<div style="width: 30%; float: left;">
-				<label style="width:105x; margin-top:10px; margin-left: 15px;">계좌번호</label>
-				<div><span style="font-weight: bold; font-size: 16px;">${info.ACCOUNT}</span></div>
-			</div>
-			<div style="width: 30%; float: left;">
-				<label style="width:105x; margin-top:10px; margin-left: 15px;">예금주</label>
-				<div><span style="font-weight: bold; font-size: 16px;">${info.HOLDER}</span></div>
-			</div>
+	<div align="left" style=" height:200px; padding-right: 15px; line-height: 2.4">
+		<div style="width: 300px; float: left; margin-right: 80%; ">
+			<label style="width:150x; margin-top:10px; margin: 15px;">출금 은행</label>
+			<span style="font-weight: bold; font-size: 16px;">${info.BANK}</span>
 		</div>
+		<div style="width: 30%; float: left; margin-right: 80%;">
+			<label style="width:105x; margin-top:10px; margin: 15px;">계좌번호</label>
+			<span style="font-weight: bold; font-size: 16px;">${info.ACCOUNT}</span>
+		</div>
+		<div style="width: 30%; float: left; margin-right: 80%;">
+			<label style="width:105x; margin-top:10px; margin: 15px;">예금주</label>
+			<span style="font-weight: bold; font-size: 16px;">${info.HOLDER}</span>
+		</div>
+	</div>
+	<hr/>
 		
 	
 	<form action="/my/point/withdrawExec">
@@ -85,13 +85,13 @@ body {
 			<input type="hidden" name="account" value="${info.ACCOUNT}"/>
 			<input type="hidden" name="holder" value="${info.HOLDER}"/>
 			
-			<h5><b>출금하실 금액을 설정해 주세요.</b></h5>
-			<div class="form-inline">
-				<span style="padding-right: 15px;" >출금 금액</span><input class="form-control number" type="text" name="money" id="tval" style="width: 30%;" required/>
+			<div class="form-inline" style="margin-left: 15px;">
+				<h5 style="font-size: 15px;"><b>출금하실 금액을 설정해 주세요.</b></h5>
+				<span style="padding-right: 15px;" >출금 금액</span>
+				<input class="form-control number" type="text" name="money" id="tval" style="width: 40%;" required/>
+				<button id="sbtn" type="submit" class="btn button button1" style="float:right;">출금신청</button>
 			</div>
-			<div align="right">
-				<button id="sbtn" type="submit" class="btn button button1">출금신청</button>
-			</div>
+		
 		</div>
 	</form>
 </div>

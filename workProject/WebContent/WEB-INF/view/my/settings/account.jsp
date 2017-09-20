@@ -83,7 +83,9 @@ label{
 	    <hr style="margin: 0px;" />
 	    <div class="card-block ">
 	    	<a href="#" style="color:#909090; font-size: 12px">계정 삭제</a>
+	    	<!-- 
 	    	<button class="w3-button w3-black w3-round" style="float:right">변경 내용 저장</button>
+	    	-->
 	    </div>
 	</div>
 </form>
