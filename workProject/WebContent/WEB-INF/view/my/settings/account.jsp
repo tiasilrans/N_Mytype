@@ -33,7 +33,7 @@ label{
     position: relative;
     display: block;
     width : 850px;
-	height: 53%;
+	height: 390px;
     margin-bottom: .75rem;
     background-color: #fff;
     border-radius: .25rem;
@@ -51,7 +51,7 @@ label{
 
   
 <form class="form-inline form-horizontal" method="post" >
-	<div class="scard col-xs-offset-1 col-md-offset-1" style="margin-top: 130px;">
+	<div class="scard col-xs-offset-2 col-md-offset-2" >
 		<div class="title">
 			<span style="float:left; font-size: 17px; margin-left: 5px;"><b>계정 설정</b></span>
 		</div>

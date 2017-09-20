@@ -11,7 +11,7 @@
 </style>
 <!--navbar menu-->
 <section class="navbar-info ">
-	<nav class="navbar navbar-default navbar-me">
+	<nav class="navbar navbar-default navbar-me" style="margin-bottom: 0px;">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button"
@@ -22,7 +22,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/"><img src="/images/title.png" style="margin: 5px;"></a>
+				<a class="navbar-brand" href="/"><img src="/images/MTtitle.png" style="margin-top: -5px;"></a>
 			</div>
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse">
@@ -82,7 +82,7 @@
 				</ul>
 				</c:when>
 				<c:otherwise>
-				<ul class="nav navbar-nav navbar-right">											
+				<ul class="nav navbar-nav navbar-right" style="margin-right: 13px;">											
 					<li><a class="bnt" href="/join.mt" id="join">회원가입</a></li>
 					<li><a class="bnt" id="login" data-toggle="modal" data-target="#login-form">로그인</a></li>				
 				</ul>

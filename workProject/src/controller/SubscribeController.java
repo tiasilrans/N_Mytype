@@ -43,20 +43,42 @@ public class SubscribeController {
 	@Autowired
 	SubscribeDAO subscribedao;
 	
+	
+	@RequestMapping("/subscribe.mt")
+	@ResponseBody
+	public Map subscribe(@RequestParam Map m, HttpSession session){
+			m.put("email", (String) session.getAttribute("login"));
+		boolean f = subscribedao.insertsubscribe(m);
+		Map map = new HashMap();
+			map.put("result", f);
+		return map;
+	}
+	
+	@RequestMapping("/cancel.mt")	
+	@ResponseBody
+	public Map cancel(@RequestParam Map m, HttpSession session){
+			m.put("email", (String) session.getAttribute("login"));
+		boolean f = subscribedao.deletesubscribe(m);
+		Map map = new HashMap();
+			map.put("result", f);
+		return map;
+	}
+	
+	
 	@RequestMapping("blog.mt")
 	public ModelAndView blog(@RequestParam Map map,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		// ¸ñ·Ï¿¡ Ç¥½ÃÇÒ Æ÷½ºÆ® ¼ö
+		// ï¿½ï¿½Ï¿ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½
 		int pc = 3;
 
-		// ÇöÀç ÆäÀÌÁö
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		int np = 1;
 		if (map.get("np") != null) {
 			np = Integer.parseInt((String) map.get("np"));
 		}
 		mav.addObject("np", np);
 
-		// ºÒ·¯¿Ã ¸®½ºÆ®ÀÇ ½ÃÀÛ°ú ³¡
+		// ï¿½Ò·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Û°ï¿½ ï¿½ï¿½
 		int e = np * pc;
 		int s = e - pc + 1;
 		map.put("first", s);
@@ -69,14 +91,14 @@ public class SubscribeController {
 
 		mav.addObject("slist", subscribedao.blogList(map));
 
-		// ¸®½ºÆ® ¹Ø¿¡ ÆäÀÌÁö¼ö
+		// ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ø¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		int eSize = 5;
 		int p1 = subscribedao.selectcount(map);
 		int p = p1 / pc;
 		p = p1 % pc != 0 ? p + 1 : p;
 		mav.addObject("page", p);
 
-		// È­»ìÇ¥
+		// È­ï¿½ï¿½Ç¥
 		int from = (np - 1) * eSize;
 		int to = np * eSize;
 		if (to > p) {
@@ -91,17 +113,17 @@ public class SubscribeController {
 	@RequestMapping("tag.mt")
 	public ModelAndView tag(@RequestParam Map map,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		// ¸ñ·Ï¿¡ Ç¥½ÃÇÒ Æ÷½ºÆ® ¼ö
+		// ï¿½ï¿½Ï¿ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½
 		int pc = 12;
 		
-		// ÇöÀç ÆäÀÌÁö
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		int np = 1;
 		if (map.get("np") != null) {
 			np = Integer.parseInt((String) map.get("np"));
 		}
 		mav.addObject("np", np);
 		
-		// ºÒ·¯¿Ã ¸®½ºÆ®ÀÇ ½ÃÀÛ°ú ³¡
+		// ï¿½Ò·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Û°ï¿½ ï¿½ï¿½
 		int e = np * pc;
 		int s = e - pc + 1;
 		map.put("first", s);
@@ -112,16 +134,16 @@ public class SubscribeController {
 			map.put("email", email);
 		}
 		
-		//mav.addObject("slist", ¸®½ºÆ®);
+		//mav.addObject("slist", ï¿½ï¿½ï¿½ï¿½Æ®);
 		
-		// ¸®½ºÆ® ¹Ø¿¡ ÆäÀÌÁö¼ö
+		// ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ø¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 /*		int eSize = 5;
 		int p1 = subscribedao.selectcount(map);
 		int p = p1 / pc;
 		p = p1 % pc != 0 ? p + 1 : p;
 		mav.addObject("page", p);
 		
-		// È­»ìÇ¥
+		// È­ï¿½ï¿½Ç¥
 		int from = (np - 1) * eSize;
 		int to = np * eSize;
 		if (to > p) {

@@ -3,8 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <style>
 .joinbox{
-	border: 1px solid;
-	border-color: #d9d9d9;
+	background-color :#f2f2f2;
 	margin: 20px;
 	width: auto%;
 	height: auto;
@@ -20,19 +19,38 @@
 	height: 40px;
 }
 
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.button1 {
+	background-color: #303030;
+}
 
 </style>   
 <div align="center" class="row">
 	<div class="col-xs-0 col-md-4"></div>
 	<div class="col-xs-12 col-md-4">
 		
- <div class="form-group joinbox row" >
-			<form action="/joinExec.mt" method="post">					
-				<h3 align="left">회원가입 </h3>
+ <div class="form-group joinbox row">
+			<form action="/joinExec.mt" method="post">	
+				<div style="margin-left: 30px;">				
+				<h6 align="left" style="color: #999999;">회원가입 </h6>
+				</div>
 				<br/>				
 				<div class="form-group row">
 						<input class="form-control" type="email"
-							placeholder="e-mail" name="email" id="email" required />
+							placeholder="이메일" name="email" id="email" required />
 						
 						<div id="emailtrue" style="display: none;">
 						<br/><b>해당 이메일을 사용할 수 있습니다.사용하시겠습니까 ?<br/>
@@ -56,7 +74,7 @@
 				
 				
 				<div align="center" class="row">
-					<button id="cnbt" type="button" class="btn" style="display: block;" disabled>이메일인증</button>
+					<button id="cnbt" type="button" class="button button1" style="display: block;" disabled>이메일인증</button>
 					<button id="sbt" type="submit" class="btn" style="display: none;" disabled>회원가입</button>
 				</div>
 			</form>

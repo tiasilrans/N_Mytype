@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- el_support -->
+	<definition name="t_base" template="/WEB-INF/view/template.jsp">
+		<put-attribute name="title" value="Mytype" />
+		<put-attribute name="nav" value="/WEB-INF/view/nav.jsp" />
+		<put-attribute name="nav2" value=""/>
+		<put-attribute name="section" value="/WEB-INF/view/main.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/view/footer.jsp" />
+		
+	</definition>
+	<definition name="t_el" extends="t_base">
+		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp" />
+	</definition>
+	<definition name="t_*" extends="t_base">
+		<put-attribute name="section" value="/WEB-INF/view/{1}.jsp" />
+	</definition>
+	<definition name="t_*/*" extends="t_base">
+		<put-attribute name="section" value="/WEB-INF/view/{1}/{2}.jsp" />
+	</definition>
+	
+	<!-- Search -->
+	<definition name="search_*" extends="t_base">
+		<put-attribute name="section" value="/WEB-INF/view/search/{1}.jsp" />
+		<put-attribute name="nav2" value="/WEB-INF/view/search/nav.jsp" />
+	</definition>
+	
+	<!-- myhome -->
+	<definition name="my_*" extends="t_base">
+		<put-attribute name="section" value="/WEB-INF/view/my/{1}.jsp" />
+		<put-attribute name="nav2" value="/WEB-INF/view/my/nav.jsp" />
+	</definition>
+	
+	<!-- Subscribe -->
+	<definition name="subscribe_*" extends="t_base">
+		<put-attribute name="section" value="/WEB-INF/view/my/subscribe/{1}.jsp" />
+		<put-attribute name="nav2" value="/WEB-INF/view/my/nav.jsp" />
+	</definition>
+	
+	<!-- mail -->
+	<definition name="mail_*" extends="t_base">
+		<put-attribute name="section" value="/WEB-INF/view/my/mail/{1}.jsp" />
+		<put-attribute name="nav2" value="/WEB-INF/view/my/nav.jsp" />
+	</definition>
+
+	
+	<!-- point -->
+	<definition name="point_*" extends="t_base">
+		<put-attribute name="nav2" value="/WEB-INF/view/my/nav.jsp" />
+		<put-attribute name="section" value="/WEB-INF/view/my/point/{1}.jsp" />
+	</definition>
+	
+	<!-- setting -->
+	<definition name="settings_*" extends="t_base">
+		<put-attribute name="nav2" value="/WEB-INF/view/my/nav.jsp" />
+		<put-attribute name="section" value="/WEB-INF/view/my/settings/{1}.jsp" />
+	</definition>
+	
+	<!-- library -->
+	<definition name="library_*" extends="t_base">
+		<put-attribute name="nav2" value="/WEB-INF/view/my/nav.jsp" />
+		<put-attribute name="section" value="/WEB-INF/view/my/library/{1}.jsp" />
+	</definition>
+	
+	<!-- 블로그 타일 -->
+	<definition name="blog_base" template="/WEB-INF/view/blog/template.jsp">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="header" expression="/WEB-INF/view/${header}.jsp"/>
+		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/view/blog/footer.jsp" />	
+	</definition>
+	
+	<!-- 포스트 작성 -->
+	<definition name="post" template="/WEB-INF/view/blog/post/postWrite.jsp">
+		<put-attribute name="title" expression="${title}" />
+		<put-attribute name="header" value=""/>
+		<put-attribute name="nav" value="" />	
+	</definition>
+	
+	<!-- 블로그 세팅  -->
+	<definition name="blog_setting" extends="t_base">
+		<put-attribute name="title" expression="${title} 블로그 설정" />
+		<put-attribute name="nav" value="/WEB-INF/view/blog/settings/blogSettingNav.jsp" />
+		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp"/>	
+	</definition>
+	
+	<!-- 포스트 뷰 -->
+	<definition name="post_view" template="/WEB-INF/view/blog/post/postViewTemp.jsp">
+		<put-attribute name="nav" value="/WEB-INF/view/blog/post/postViewNav.jsp" />
+		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/view/blog/footer.jsp"/>
+	</definition>
+	
+	
+	
+</tiles-definitions>
+
+

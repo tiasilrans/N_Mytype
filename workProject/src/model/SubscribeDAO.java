@@ -14,7 +14,24 @@ import org.springframework.stereotype.Service;
 @Service
 public class SubscribeDAO {
 	@Autowired
-	SqlSessionFactory factory;	
+	SqlSessionFactory factory;
+	
+	
+	public HashMap subCheck(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			HashMap r = session.selectOne("subscribe.sub_check", map);
+			return r;
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("subCheck ERROR : " + e.toString());
+			return null;
+		}finally {
+			session.close();
+		}
+		
+	}
+	
 		
 	public List<Map> blogList(Map map){
 		SqlSession session = factory.openSession();
@@ -35,7 +52,7 @@ public class SubscribeDAO {
 	}
 	
 	
-	//°Ô½Ã¹° °¹¼ö ±¸ÇÏ±â(ÆäÀÌÂ¡)
+	//ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½(ï¿½ï¿½ï¿½ï¿½Â¡)
 	public int selectcount(Map map){
 		SqlSession session = factory.openSession();
 		Map list = new HashMap<>();
@@ -53,7 +70,7 @@ public class SubscribeDAO {
 	}
 	
 	
-	//±¸µ¶»èÁ¦
+	//êµ¬ë…ì·¨ì†Œ
 	public boolean deletesubscribe(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -68,7 +85,7 @@ public class SubscribeDAO {
 		}
 	}
 
-	//±¸µ¶ÇÏ±â
+	//êµ¬ë…í•˜ê¸°
 	public boolean insertsubscribe(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -83,7 +100,7 @@ public class SubscribeDAO {
 		}
 	}
 	
-	// ÇØ´ç ºí·Î±×ÀÇ ±¸µ¶ÀÚ ¸®½ºÆ®
+	// ï¿½Ø´ï¿½ ï¿½ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<Map> blogSubscribers(Map map){		
 		List<Map> list = new ArrayList<>();
 		SqlSession session = factory.openSession();

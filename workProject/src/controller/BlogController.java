@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import model.BlogDAO;
 import model.PostDao;
+import model.SubscribeDAO;
 
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -30,6 +31,9 @@ public class BlogController {
 	
 	@Autowired
 	PostDao pDAO;
+	
+	@Autowired
+	SubscribeDAO sDAO;
 	
 	@RequestMapping("/blog/create")
 	public ModelAndView newBlog(){
@@ -97,18 +101,19 @@ public class BlogController {
 			mav.setViewName("blog_base");
 			mav.addObject("section", "blog/blog");
 			mav.addObject("header", "blog/header");
-			mav.addObject("map", r); // ºí·Î±× Á¤º¸
+			mav.addObject("map", r); // ë¸”ë¡œê·¸ ì •ë³´
 			mav.addObject("title", r.get("TITLE"));
 			mav.addObject("pNum", tp);
-			mav.addObject("list", pDAO.blogPostList(pageMap)); // ºí·Î±× ¸ŞÀÎ Æ÷½ºÆ® ¸®½ºÆ®
+			mav.addObject("list", pDAO.blogPostList(pageMap)); // ë¸”ë¡œê·¸ ë©”ì¸ í¬ìŠ¤íŠ¸ ë¦¬ìŠ¤íŠ¸
 			mav.addObject("category", list);
+			mav.addObject("subCk", sDAO.subCheck(map));
 			
 		return mav;
 	}
 	
 	@RequestMapping("/blog/postWrite")
 	public ModelAndView postWrite(@RequestParam Map m, HttpSession session){
-		// m= Å¸ÀÌÆ², url µé¾î°¡ ÀÖÀ½
+		// m= íƒ€ì´í‹€, url ë“¤ì–´ê°€ ìˆìŒ
 		Map writeMap = (Map)session.getAttribute("writeMap");
 		if(writeMap !=null){
 			String title = (String)writeMap.get("title");
@@ -122,7 +127,7 @@ public class BlogController {
 		List<Map> catelist = pDAO.categoryList(m);		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("post");
-			mav.addObject("title", "Æ÷½ºÆ®ÀÛ¼º");
+			mav.addObject("title", "í¬ìŠ¤íŠ¸ì‘ì„±");
 			mav.addObject("map", m);
 			mav.addObject("catelist", catelist);
 			session.setAttribute("writeMap", m);
@@ -130,6 +135,64 @@ public class BlogController {
 		return mav;
 	}
 	
+	
+	@RequestMapping("/blog/{url}/search")
+	public ModelAndView blogSearch(@RequestParam Map m, @PathVariable(value="url") String url,
+									HttpSession session, @RequestParam(name="p", defaultValue="1") int p){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+		ModelAndView mav = new ModelAndView();
+		// ë¸”ë¡œê·¸ ì•„ë°”íƒ€ ê°€ì ¸ì˜¤ê¸°
+		String path = "/images/blogImg/"+url;
+		String rPath = application.getRealPath(path);
+		File dir = new File(rPath);
+		if(dir.exists()) {
+			mav.addObject("imgPath", path);
+		}else {
+			mav.addObject("imgPath", "/images/avatar_yellow.png");
+		}
+		
+		
+		 HashMap map = new HashMap();
+		 	map.put("url", url);
+		 	map.put("email", (String)session.getAttribute("login"));
+		 HashMap blogInfo = bDAO.blogView(map);	
+		 	map.put("title", blogInfo.get("TITLE"));
+		 int lc = pDAO.postCount(map);
+		 	blogInfo.put("totalPostCnt", lc);	
+		 List<Map> list = bDAO.cate_List(map);
+			for(Map cateMap : list){
+				String cn = (String)cateMap.get("CATEGORY_NAME");
+					map.put("category", cn);
+				int cnt = bDAO.oneCateCnt(map);
+					cateMap.put("cnt", cnt);
+			}
+		 
+		 
+		 System.out.println("search map = " + m);
+		 String a = "";	
+		 String keyword = (String)m.get("keyword");
+		 String[] keys = keyword.split("\\s");
+		 for(String msg : keys){
+			 a += "%"+msg+"%&";
+		 }
+		 String[] arr = a.split("&");
+		 	map.put("arr", arr);		 	
+		 
+		 m = bDAO.blogView(map);
+		
+		 	mav.setViewName("blog_base");
+		 	mav.addObject("section", "blog/blog");
+		 	mav.addObject("header", "blog/header"); // ë¸”ë¡œê·¸ ì œëª©, ì†Œê°œ ë“¤ì–´ê°€ì•¼ í•¨
+		 	mav.addObject("title", keyword + "ì˜ ê²€ìƒ‰ ê²°ê³¼");
+		 	mav.addObject("list", pDAO.blogSearch(map));
+		 	mav.addObject("category", list);
+		 	mav.addObject("map", blogInfo);
+		 	mav.addObject("subCk", sDAO.subCheck(map));
+		 	mav.addObject("searchMode", true);
+		 	mav.addObject("keyword", keyword);
+		 return mav;  	 
+		
+	}
 	
 	
 	

@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<div class="content" style="margin-top: 100px; margin-left: 100px; padding: 0px;">
+	<div class="container">
+		<div class="header">
+			<div class="category" style="margin-bottom: 100px;">
+				<a href="">${post.CATEGORY }</a>
+			</div>
+			<h1 class="title">${post.TITLE }</h1>
+			<div class="subtitle">${post.SUBTITLE }</div>
+			<div class="profile">
+				<div class="media-profile">
+                	<div class="media-left">
+     						<img src="/images/avatar_yellow.png" class="media-object" style="width:45px;">
+   					</div>
+    				<div class="media-body">
+      					<h4 class="media-heading">${post.NICKNAME }</h4>
+     					<h4><small><i>${post.PDATE }</i></small></h4>
+                	</div>
+				</div>
+			</div>	
+		</div>
+		<div class="post-content">
+		
+		
+		</div>
+		<footer class="post-footer">
+		
+		</footer>
+		
+		
+		
+		
+	</div>
+</div>
