@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<section class="main">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="">
+					<div class="header">
+						
+					</div>
+					<div class="admin-search">
+					
+					</div>
+				<c:forEach var="obj" items="${list }">
+					<div class="post-list-proup">
+						<label class="">
+							<input type="checkbox" value="${obj. }">
+						</label>
+					</div>
+				</c:forEach>
+				</div>
+				<div class="pagination">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

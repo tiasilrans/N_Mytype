@@ -3,6 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<link rel="stylesheet" href="/css/postviewcss.css">
     
 <style>
   
@@ -27,7 +28,7 @@ table.type07 td {
 </style>
 
 
-<div align="center" style="margin-top: 130px;">
+<div align="center" >
 	<div style="width: 50%;" align="left" >
 	<h2>구독중인 블로그</h2>
 	<hr style="margin-top: 10px;"/>
@@ -60,7 +61,7 @@ table.type07 td {
 					</div>
 					
 					<div class="col-md-3" style="padding : 0px; padding-top: 25px;" align="center">
-						<button class="btn btn-default subscribe" id="${blog.URL}" value="${blog.URL}" type="button" style="width: 60%; height: 50px; font-size: 15;"><b class="${blog.URL }" style="color: #616161;">구독취소</b></button>
+						<button class="btn subscribe" id="${blog.URL}" value="${blog.URL}" type="button" style="width: 60%; height: 50px; font-size: 15; background-color: black;"><b class="${blog.URL }" style="color: white;">구독취소</b></button>
 					</div>
 					</div>
 				</div>

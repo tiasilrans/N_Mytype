@@ -5,139 +5,162 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <link rel="stylesheet" href="/css/my.css">
+<link rel="stylesheet" href="/css/postviewcss.css">
 
-<div align="center" style="margin-top: 130px;">
-	<div style="width: 50%;" align="left">
-	<h2>포인트 충전</h2>
-	<hr style="margin-top: 10px;"/>
-	</div>
-<form action="/my/point/chargeExec">
-<ul class="list-group" style="width: 50%; text-align: left">
-<li class="list-group-item" style="background-color: #F6F6F6;">
-<h5><b>1. 충전할 포인트의 양을 선택해 주세요.</b></h5>
-</li>
+<style>
 
-<li class="list-group-item">
-  <table class="table table-hover" style="margin-bottom: 0px;">
-    <thead>
-      <tr>
-        <th width="50%">충전할 포인트</th>
-        <th width="50%">결제할 금액</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><input type="radio" name="point" value="3,000" required/> 3,000P</td>
-        <td>3,300원 <small class="text-muted">(부가가치세 10% 포함)</small></td>
-      </tr>
-      <tr>
-        <td><input type="radio" name="point" value="5,000"/> 5,000P</td>
-        <td>5,500원 <small class="text-muted">(부가가치세 10% 포함)</small></td>
-      </tr>
-      <tr>
-        <td><input type="radio" name="point" value="10,000"/> 10,000P</td>
-        <td>11,000원 <small class="text-muted">(부가가치세 10% 포함)</small></td>
-      </tr>
-      <tr>
-        <td><input type="radio" name="point" value="20,000"/> 20,000P</td>
-        <td>22,000원 <small class="text-muted">(부가가치세 10% 포함)</small></td>
-      </tr>
-      <tr>
-        <td><input type="radio" name="point" value="30,000"/> 30,000P</td>
-        <td>33,000원 <small class="text-muted">(부가가치세 10% 포함)</small></td>
-      </tr>
-    </tbody>
-  </table></li>
+body {
+	background: whitesmoke;
+}
 
-<li class="list-group-item" style="background-color: #F6F6F6;">
-<h5><b>2. 결제 정보를 입력해 주세요.</b></h5>
-</li>
+label{
+	margin-bottom: 2%;
+	width: 80px;
+}
 
-<li class="list-group-item">
-<table class="table table-condensed">
-<tbody >
-	<tr>
-	<td style="width: 50%; border-top-color: white;">
-			<div class="form-inline" style="margin: 10px;">
-				<label for="name" style="margin-right: 5px;">이　름 : </label>
-				<input type="text" class="form-control" id="name" placeholder="이름" name="name" required>
-			</div>
-			<div class="form-inline" style="margin: 10px;">
-				<label for="phonenumber" style="margin-right: 5px;">연락처 : </label>
-				<input type="text" class="form-control" id="phonenumber" placeholder="연락처" name="phonenumber" required>
-			</div>
-	</td>
-	<td style="width: 50%; border-top-color: white;">
-		<div class="panel panel-info">
-			<div class="panel-heading" style="  background-image: linear-gradient(to bottom,#F6F6F6 0,#F6F6F6 100%);">
+.scard {
+    position: relative;
+    display: block;
+    width : 800px;
+	height: 700px;
+    margin-bottom: .75rem;
+    background-color: #fff;
+    border-radius: .25rem;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.card-block {
+	margin-left: 15px;
+    position: relative;
+    vertical-align: middle;
+}
+
+.title{
+	padding-top :20px;
+	margin-left: 15px;
+	margin-bottom:25;
+}
+
+.ptable{
+	margin-left: 20px;
+	margin-right:100%;
+	margin-bottom: 5%;
+	width: 80%;
+}
+
+</style>
+
+<form class="form-inline form-horizontal" action="/my/point/chargeExec">
+	<div class="scard col-xs-offset-2 col-md-offset-2">
+		<div class="title" style="margin-bottom: 40px;">
+			<span style="float:left; font-size: 18px; margin-left: 5px;"><b>충전하기</b></span>
+		</div><hr/>
+		
+		<div class="title">
+			<span style="float:left; font-size: 17px; margin-left: 5px;">1. 충전할 포인트의 양을 선택해 주세요.</span>
+		</div><br/>
+		
+		<table class="card-block table ptable">
+		<thead>
+			<tr>
+	        	<th width="30%">충전포인트</th>
+	        	<th width="30%">결제하실금액</th>
+	        </tr>
+		</thead>
+        <tbody>
+        	<tr>
+        		<td><input type="radio" name="point" value="3,000" required/> 3,000P</td>
+        		<td>3,300원 <small class="text-muted">(VAT 10% 포함)</small></td>
+        	</tr>
+        	<tr>
+        		<td><input type="radio" name="point" value="5,000"/> 5,000P</td>
+        		<td>5,500원 <small class="text-muted">(VAT 10% 포함)</small></td>
+        	</tr>
+        	<tr>
+        		<td><input type="radio" name="point" value="10,000"/> 10,000P</td>
+        		<td>11,000원 <small class="text-muted">(VAT 10% 포함)</small></td>
+        	</tr>
+        	<tr>
+        		<td><input type="radio" name="point" value="20,000"/> 20,000P</td>
+        		<td>22,000원 <small class="text-muted">(VAT 10% 포함)</small></td>
+        	</tr>
+        	<tr>
+        		<td><input type="radio" name="point" value="30,000"/> 30,000P</td>
+        		<td>33,000원 <small class="text-muted">(VAT 10% 포함)</small></td>
+        	</tr>
+        </tbody>
+		</table>
+  
+		<div class="title">
+			<span style="float:left; font-size: 17px; margin-left: 5px; margin-right: 70%;">2. 결제 정보를 입력해 주세요.</span>
+		</div> <br/><br/>
+		
+		<div class="card-block" style="float:left; padding-left:0; padding-right:60px;">
+			<label style="color: #606060;">이름</label>
+			<input type="text" name="name" class="form-control" style="width:70%;" 
+			 <c:if test="${info.NICKNAME ne null }"> value="${info.NICKNAME }" </c:if> /> <br/>
+		
+			<label style="color: #606060;">연락처</label>
+			<input type="text" name="phonenumber" class="form-control" style="width:70%;" />
+		</div><br/>
+			
+		<div >			
+			<div>
 				<input type="radio" name="pay" value="card" style="margin: 5px;" checked/><b>카드 결제</b>
 				<input type="radio" name="pay" value="untouched" style="margin: 5px;"/><b>무통장입금</b>
 				<input type="radio" name="pay" value="phone" style="margin: 5px;"/><b>휴대폰 결제</b>
 			</div>
-			
+				
 			<div class="panel-body form-inline" id="cardpanel">
-			<b>카드 선택 : </b>
-			<select class="form-control" name="card" style="width: 45%;">
-				<option value="null">카드를 선택해주세요.</option>
-			<c:forEach var="card" items="${cards}">
-				<option value="${card}">${card}</option>
-			</c:forEach>
-			</select>	
+				<b>카드 선택 : </b>
+				<select class="form-control" name="card" style="width: 45%;">
+					<option value="null">카드를 선택해주세요.</option>
+					<c:forEach var="card" items="${cards}">
+						<option value="${card}">${card}</option>
+					</c:forEach>
+				</select>	
 			</div>
 			
 			<div class="panel-body form-inline" id="untouchedpanel">
-			<b>은행 선택 : </b>
-			<select class="form-control" name="untouched" style="width: 45%;">
-				<option value="null">은행을 선택해주세요.</option>
-			<c:forEach var="bank" items="${banks}">
-				<option value="${bank}">${bank}</option>
-			</c:forEach>
-			</select>	
+				<b>은행 선택 : </b>
+				<select class="form-control" name="untouched" style="width: 45%;">
+					<option value="null">은행을 선택해주세요.</option>
+				<c:forEach var="bank" items="${banks}">
+					<option value="${bank}">${bank}</option>
+				</c:forEach>
+				</select>	
 			</div>
-			
+				
 			<div class="panel-body form-inline" id="phonepanel">
-			<b>통신사 선택 : </b>
-			<select class="form-control" name="phone" style="width: 45%;">
-				<option value="null">통신사를 선택해주세요.</option>
-			<c:forEach var="telecom" items="${telecoms}">
-				<option value="${telecom}">${telecom}</option>
-			</c:forEach>
-			</select>
+				<b>통신사 선택 : </b>
+				<select class="form-control" name="phone" style="width: 45%;">
+					<option value="null">통신사를 선택해주세요.</option>
+				<c:forEach var="telecom" items="${telecoms}">
+					<option value="${telecom}">${telecom}</option>
+				</c:forEach>
+				</select>
 			</div>
+		</div> <br/>
+	
+		<div class="card-blcok " style="margin-bottom: 0px;">
+			<span>
+				<label style="width:100px; margin-top:10px; margin-left: 15px;">
+					<b>충전 포인트 : </b>
+				</label>
+				<label>
+					<span id="chargepoint" style="font-size: 25px;"></span>
+				</label>
+			</span>
+			
+			<span style="float:right; margin-right:10px;">
+				<a href="/"><button type="button" class="btn btn-default">취소</button></a>
+				<button type="submit" class="btn button button1">결제하기</button>
+			</span>
 		</div>
-	</td>
-	</tr>
-</tbody>
-</table>
-</li>
-<li class="list-group-item" >
-<table class="table table-condensed" style="margin-bottom: 0px;">
-<tbody >
-	<tr>
-	<td style="width: 15%; border-top-color: white; vertical-align: middle;">
-	<b>충전 포인트    :</b>
-	</td>
-	<td style="width: 35%; border-top-color: white;">
-	<span id="chargepoint" style="color: red; font-size: 30px;"></span>
-	</td>
-	<td style="width: 50%; border-top-color: white;">
-	<div align="right" style="margin: 10px;">
-		<a href="/"><button type="button" class="btn btn-default">취소</button></a>
-		<button type="submit" class="btn btn-primary">결제하기</button>
-	</div>
 		
-	</td>
-	</tr>
-</tbody>
-</table>
-
-
-</li>
-
-</ul>
+	</div>
 </form>
-
-</div>
+	
 
 
 

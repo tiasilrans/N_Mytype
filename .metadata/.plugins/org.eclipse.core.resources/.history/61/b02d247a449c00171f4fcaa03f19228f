@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+.btn-default {
+	text-shadow: 0 1px 0 #fff;
+	background-image: -webkit-linear-gradient(top, #fff 0, #ffffffff 100%);
+	background-image: -o-linear-gradient(top, #fff 0, #ffffffff 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff),
+		to(#e0e0e0));
+	background-image: linear-gradient(to bottom, #fff 0, #ffffff 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',
+		endColorstr='#ffffffff', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+	background-repeat: repeat-x;
+	border-color: #dbdbdb;
+	border-color: #ccc;
+}
+
+
+@media (min-width: 768px)
+.navbar-right .dropdown-menu {
+    right: 20;
+    left: auto;
+}

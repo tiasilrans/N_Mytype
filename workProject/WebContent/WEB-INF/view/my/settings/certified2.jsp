@@ -9,6 +9,7 @@ body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
+    background: whitesmoke;
 }
 
 a:hover {
@@ -46,7 +47,7 @@ label{
 </style>
 
 <form class="form-inline form-horizontal">
-	<div class="scard col-xs-offset-1 col-md-offset-1">
+	<div class="scard col-xs-offset-2 col-md-offset-2">
 		<div class="card-block col-xs-10" style="padding-top: 3%; font-size: 15px;">
 			<p style="color:#909090; font-size: 13px;">성인 콘텐츠를 보거나 게시하기 위해서는 본인 확인이 필요합니다.</p>
 			<label>신분증으로 본인 확인하기</label>

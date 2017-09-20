@@ -5,7 +5,7 @@
 
 
 <!--navbar menu-->
-	<nav class="navbar navbar-default" id="gg" style="border-top-style: none; min-height: 45px; position: fixed; top: 67px; z-index: 887; width: 100%;">
+	<nav class="navbar navbar-default" id="gg" >
 		<div class="container">
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse" style="padding: 0px;">
@@ -37,6 +37,7 @@
 							<li><a href="/my/settings/profile">프로필 편집</a></li>
 							<li><a href="/my/settings/password">비밀번호 변경</a></li>
 							<li><a href="/my/settings/bank">출금계좌 설정</a></li>
+							<li><a href="/my/settings/memberdelete">회원 탈퇴</a></li>
 						</ul>
 					</li> 
 					<li class="dropdown gd"><a class="dropdown-toggle" href="#" style="padding: 5px; padding-left: 10px; padding-right:10px;">쪽지</a>
@@ -51,7 +52,7 @@
 		</div>
 	</nav>
 
-<script>
+<!-- <script>
 	$(window).scroll(function() {
 		if ($(this).scrollTop() > 1) {
 			$("#gg").css("top","270px");
@@ -60,4 +61,4 @@
 			
 		}
 	});
-</script>
+</script> -->

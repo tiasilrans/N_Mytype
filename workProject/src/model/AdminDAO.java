@@ -13,9 +13,7 @@ public class AdminDAO {
 	@Autowired
 	SqlSessionFactory factory;	
 	
-	// 리스트중 내용이 길경우 적당히 자르기
 	public List<Map> sublistReply(List<Map> list, int size, String con, String subcon){
-		//con : 자를 내용 / subcon : 자르고 저장할때 지정할 이름
 		for(Map map : list){
 			String fcontent = (String)map.get(con);
 			if(fcontent.length() > size){
@@ -27,7 +25,6 @@ public class AdminDAO {
 		return list;
 	}
 	
-	//멤버리스트
 	public List<Map> memberList(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -43,7 +40,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//블로그 리스트
 	public List<Map> blogList(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -59,7 +55,6 @@ public class AdminDAO {
 		}
 	}
 	
-	// 포스트 리스트
 	public List<Map> selectPost(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -76,7 +71,6 @@ public class AdminDAO {
 	}
 	
 	
-	//댓글 리스트
 	public List<Map> replyList(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -92,7 +86,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//쪽지 보내기
 	public boolean sendmessage(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -116,7 +109,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//포스트 삭제
 	public boolean deletePost(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -131,7 +123,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//댓글 삭제
 	public boolean deleteReply(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -146,7 +137,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//충전 신청 내역
 	public List<Map> selectDepositApply(){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -162,7 +152,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//출금 신청 내역
 	public List<Map> selectWithdrawApply(){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -178,7 +167,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//(개인)충전 신청 내역
 	public List<Map> selectDeposit(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -194,7 +182,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//(개인)출금 신청 내역
 	public List<Map> selectWithdraw(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -210,7 +197,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//충전 승인
 	public boolean applyCharge(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -226,7 +212,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//출금 승인
 	public boolean applyWithdraw(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -241,12 +226,11 @@ public class AdminDAO {
 		}
 	}
 	
-	//공지사항 리스트
 	public List<Map> noticeList(String type){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
 		try{
-			if(type.equals("main")){
+/*			if(type.equals("main")){
 				Map map = new HashMap();
 				long first = System.currentTimeMillis()-(1000*60*60*24*7); 
 				long last = System.currentTimeMillis()+(1000*60*60*24*7); 
@@ -256,7 +240,9 @@ public class AdminDAO {
 				map.put("last", week.format(last));
 				list = session.selectList("admin.noticeList", map);
 				list = this.sublistReply(list, 180, "CONTENT", "SUBCONTENT");
-			}
+			}*/
+			list = session.selectList("admin.noticeList");
+			list = this.sublistReply(list, 180, "FCONTENT", "SUBCONTENT");
 			return list;
 		}catch(Exception e){
 			System.out.println("AdminNoticeList Error");

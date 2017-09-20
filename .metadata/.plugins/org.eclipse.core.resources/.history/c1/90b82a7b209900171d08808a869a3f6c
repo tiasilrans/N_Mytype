@@ -1,0 +1,204 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<style>
+.box {
+	border: 1px solid;
+	border-color: #d9d9d9;
+	margin: 20px;
+	width: 90%;
+	padding: 20px;
+}
+
+p {
+	color: #a6a6a6;
+}
+
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.button1 {
+	background-color: #303030;
+}
+
+.button2 {
+	background-color: #cccccc;
+}
+
+.cate-bt {
+	margin: 0px;
+	border: 0px;
+}
+</style>
+
+<div class="col-xs-0 col-md-2"></div>
+<div class="col-xs-12 col-md-8">
+	<div class="form-group box">
+		<h3 align="left" style="color: #262626">카테고리 편집</h3>
+		<div align="right">
+			<button class="button button2" id="add">추가</button>
+		</div>
+		<br/>
+		<div class="form-group">
+			<input class="form-control" type="text" value="전체 보기"
+				readonly="readonly" />
+		</div>
+		<div class="form-group" id="catelist">
+			<c:forEach var="obj" items="${list }">
+				<c:if test="${obj.CATEGORY_NAME ne \"전체 보기\"}">
+					<div class="category-row row">
+						<div class="col-xs-9 col-md-9 form-group">
+							<input class="form-control cate_name" type="text"
+								name="cate_name" value="${obj.CATEGORY_NAME }" /> <input
+								type="hidden" name="cate_id" class="cate_id"
+								value="${obj.CATE_ID}" />
+						</div>
+						<div class="col-xs-1 col-md-1 form-group">
+							<button class="form-control cate-bt cate_up">
+								<i class="glyphicon glyphicon-chevron-up"></i>
+							</button>
+						</div>
+						<div class="col-xs-1 col-md-1 form-group">
+							<button class="form-control cate-bt cate_down">
+								<i class="glyphicon glyphicon-chevron-down"></i>
+							</button>
+						</div>
+						<div class="col-xs-1 col-md-1 form-group">
+							<button class="form-control cate-bt cate_delete">
+								<i class="glyphicon glyphicon-remove"></i>
+							</button>
+						</div>
+					</div>
+				</c:if>
+			</c:forEach>
+		</div>
+		<div class="row">
+			<div class="col-md-6 form-group"></div>
+			<div class="col-md-6 form-group" align="right">
+				<button type="button" class="button button1" id="bt">변경 내용
+					저장</button>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<div class="col-xs-0 col-md-2"></div>
+
+
+
+<script>
+	var cate_delete = "";
+
+	$(".cate_up").on("click", function() {
+		$(this).parent().parent().after($(this).parent().parent().prev());	
+		
+	});
+	
+	$(".cate_down").on("click", function() {
+		$(this).parent().parent().before($(this).parent().parent().next());	
+	});
+	
+	
+	$(".cate_delete").on("click", function() {	
+		cate_delete += $(this).parent().prev().prev().prev().children('[type="hidden"]').val()+ ",";
+		$(this).parent().parent().remove();		
+	});
+	
+	
+	
+	$("#add").on("click", function() {
+						var add = "<div class=\"category-row row\"><div class=\"col-xs-9 col-md-9 form-group\">"
+								+ "<input class=\"form-control cate_name\" type=\"text\" name=\"addcate_name\"/>"
+								+ "<input type=\"hidden\" name=\"addcate_id\" class=\"cate_id\" />"
+								+ "</div><div class=\"col-xs-1 col-md-1 form-group\">"
+								+ "<button class=\"form-control cate-bt cate_up\"><i class=\"glyphicon glyphicon-chevron-up\"></i></button>"
+								+ "</div><div class=\"col-xs-1 col-md-1 form-group\"><button class=\"form-control cate-bt cate_down\"><i class=\"glyphicon glyphicon-chevron-down\"></i></button>"
+								+ "</div><div class=\"col-xs-1 col-md-1 form-group\"><button class=\"form-control cate-bt cate_delete\"><i class=\"glyphicon glyphicon-remove\"></i></button></div></div>";
+						$("#catelist").append(add);
+						$(".cate_up").attr('onclick', '').unbind('click');
+						$(".cate_delete").attr('onclick', '').unbind('click');
+						$(".cate_delete").on("click", function() {
+							cate_delete += $(this).parent().prev().prev().prev().children('[type="hidden"]').val() + ",";
+							$(this).parent().parent().remove();		
+						});
+						$(".cate_up").on("click", function() {
+							$(this).parent().parent().after($(this).parent().parent().prev());
+						});
+						$(".cate_down").on("click", function() {
+							$(this).parent().parent().before($(this).parent().parent().next());	
+						});
+
+	});
+
+	$("#bt").on("click", function() {
+		var cate_name_order = "";
+		var addcate_name = "";
+		var a1 = $('[name=addcate_name]');
+		var a2 = $('[name=cate_name]');
+		for (var i = 0; i < a1.length; i++) {
+			addcate_name += a1.eq(i).val() + ",";
+		}
+		$(".cate_name").each(function() {
+			cate_name_order += $(this).val() + ",";
+		});
+		
+		// 카테고리 이름 중복 필터
+		var c = 0;
+		for(var i = 0; i < a1.length; i++){
+			var e1 = a1.eq(i).val();
+			for(var n = 0; n < a2.length; n++){
+				if(e1 == a2.eq(n).val()){
+					c++;
+				}
+			}
+		}
+		
+		
+		if(c != 1){
+			window.alert("카테고리 이름은 중복하여 사용할 수 없습니다.");
+		}else{	
+		
+			$.post({
+				url : "/blog/categoryUpdate.mt",
+				data : {
+					"cate_delete" : cate_delete,
+					"title" : "${title}",
+					"url" : "${url}",
+					"cate_name_order" : cate_name_order,
+					"addcate_name" : addcate_name
+				}
+			}).done(function(result) {
+				if(result.result){
+					location.href="/blog/"+result.url+"/categories";
+					window.alert("카테고리가 수정되었습니다.");
+				}
+			})
+		}
+
+	});
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+</script>
+
+

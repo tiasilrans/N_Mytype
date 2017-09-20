@@ -32,6 +32,10 @@
 			join blog b on b.EMAIL=s.EMAIL
 	</select>
 	
+	<!-- 블로그 뷰 / 해당 블로그 구독 중인지 확인 -->
+	<select id="sub_check"  parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT * FROM SUBSCRIBE where address=#{url} and EMAIL=#{email}
+	</select>
 	
 	
 </mapper>

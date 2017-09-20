@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mail">
+
+	<select id="sendlist" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from (select rownum as r, tmp.* from
+		(select * from sendmessage where email=#{email} order by mdate desc)tmp)
+		tmp2 where tmp2.r between #{first} and #{last}
+	</select>
+	
+	<select id="receivelist" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from (select rownum as r, tmp.* from
+		(select * from receivemessage where email=#{email} order by mdate desc)tmp)
+		tmp2 where tmp2.r between #{first} and #{last}
+	</select>
+
+	<insert id="sendinsert" parameterType="java.util.HashMap">
+		insert into sendmessage(num,email,content,mdate) values(message_seq.nextval, #{sender}, #{content}, sysdate)
+	</insert>
+	
+	<insert id="receiveinsert" parameterType="java.util.HashMap">
+		insert into receivemessage(num,email,content,mdate) values(message_seq.currval, #{receiver}, #{content}, sysdate)
+	</insert>
+	
+	<!-- 뷰에 표시될 메일 -->
+	<select id="selectView" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from
+		
+		<choose>
+		 <when test="type == send">
+			 sendmessage
+		 </when>
+		 <otherwise>
+			 receivemessage
+		 </otherwise>
+		</choose> 
+		where num=#{num}
+	</select>
+	
+	<!-- 메일 삭제 -->
+	<delete id="deletemail" parameterType="java.util.HashMap">
+		delete from 
+		<choose>
+		<when test="type == 'send'">
+			sendmessage
+		</when>
+		<otherwise>
+			receivemessage
+		</otherwise>
+		</choose>
+		 where
+		<foreach item="num" collection="num" separator=" or ">
+			num=#{num}
+		</foreach>
+	</delete>
+	
+	<!-- 게시물 총 갯수 (페이징) -->
+	<select id="selectcount" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select count(*) as count from 
+		<choose>
+		<when test="type == 'send'">
+			sendmessage
+		</when>
+		<otherwise>
+			receivemessage
+		</otherwise>
+		</choose>
+		
+		where email=#{email}
+	</select>
+	
+	
+</mapper>

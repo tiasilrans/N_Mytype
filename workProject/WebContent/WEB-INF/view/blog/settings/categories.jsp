@@ -4,8 +4,9 @@
 
 <style>
 .box {
-	border: 1px solid;
-	border-color: #d9d9d9;
+
+	background-color:white;
+	border-radius:10px;
 	margin: 20px;
 	width: 90%;
 	padding: 20px;

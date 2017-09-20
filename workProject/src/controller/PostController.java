@@ -43,7 +43,7 @@ public class PostController {
 	public Map posrWrite(@RequestParam Map m,HttpSession session){
 		String email = (String)session.getAttribute("login");
 			m.put("email", email);
-		System.out.println("³Ñ¾î¿Â °ª : " + m);
+		System.out.println("ê°€ì ¸ì˜¨ ê°’ : " + m);
 		Map map= new HashMap<>();
 		boolean f = pdao.postWrite(m);
 		if(f){			
@@ -64,7 +64,7 @@ public class PostController {
 		Map map = new HashMap<>();
 			map.put("num", num);
 			map.put("url", url);
-		boolean c = pdao.postCounter(map); // Á¶È¸¼ö Áõ°¡
+		boolean c = pdao.postCounter(map); 
 		if(c){
 			HashMap post = pdao.onePost(map);
 			post.put("PDATE", sdf.format(post.get("PDATE")));
@@ -72,8 +72,7 @@ public class PostController {
 			mav.addObject("section", "blog/post/postView");
 			mav.addObject("post", post);
 			mav.addObject("list", rDAO.replyList(map));
-			//numÀÌ¶û email °¡Áö°í buy ¿¡¼­ ³»°¡ ±¸¸ÅÇÑ Ç×¸ñÀÎÁö È®ÀÎ
-			//±¸¸ÅÇßÀ¸¸é true ÅÍÁö°Å³ª ±¸¸Å±â·ÏÀÌ ¾ø°Å³ª ºñ·Î±×ÀÎ = false
+			
 			String email = (String)session.getAttribute("login");
 			if(email != null){
 				map.put("email", email);
@@ -84,7 +83,7 @@ public class PostController {
 				mav.addObject("buy", false);
 			}
 		}
-			mav.addObject("totalpost", pdao.postCount(map));// ÇØ´ç ºí·Î±×ÀÇ ÃÑ Æ÷½ºÆ® ¼ö 
+			mav.addObject("totalpost", pdao.postCount(map)); 
 		return mav;	
 	}
 	
@@ -106,7 +105,6 @@ public class PostController {
 	@RequestMapping("/blog/update/{num }")
 	public ModelAndView postUpdate(@RequestParam Map m, HttpSession session,
 												@PathVariable(value="num") int num){
-		// m= Å¸ÀÌÆ², url µé¾î°¡ ÀÖÀ½
 		Map updateMap = (Map)session.getAttribute("writeMap");
 		if(updateMap !=null){
 			String title = (String)updateMap.get("title");
@@ -119,7 +117,7 @@ public class PostController {
 		List<Map> catelist = pdao.categoryList(m);		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("post");
-			mav.addObject("title", "Æ÷½ºÆ®ÆíÁı");
+			mav.addObject("title", "ì „ì œ ë³´ê¸°");
 			mav.addObject("map", m);
 			mav.addObject("catelist", catelist);
 			session.setAttribute("updateMap", m);
@@ -138,17 +136,14 @@ public class PostController {
 		if(f){
 			map.put("result", f);
 			map.put("url", (String)m.get("url"));
-			System.out.println("´ñ±Û ´Ş±â ¼º°ø");
+			
 		}else{
 			map.put("result", f);
-			System.out.println("´ñ±Û ´Ş±â ½ÇÆĞ");
+			
 		}
 		return map;
 	}
 	
-	
-	
-		
 	
 	@RequestMapping("postgood.mt")
 	@ResponseBody
@@ -171,8 +166,8 @@ public class PostController {
 		mav.setViewName("redirect:/"+(String)map.get("url")+"/post/"+(String)map.get("num"));
 		map.put("myemail", session.getAttribute("login"));
 		String title = (String)map.get("title");
-		map.put("btitle", "["+title+"]Æ÷ÀÎÆ® ±¸¸Å");
-		map.put("stitle", "["+title+"]Æ÷ÀÎÆ® ÆÇ¸Å");
+		map.put("btitle", "["+title+"]í¬ì¸íŠ¸ êµ¬ë§¤");
+		map.put("stitle", "["+title+"]í¬ì¸íŠ¸ íŒë§¤");
 		pdao.buyPost(map);
 		return mav;
 	}

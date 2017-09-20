@@ -2,6 +2,10 @@
 
 a { color: black;}
 
+body {
+	background: whitesmoke;
+}
+
 .card {
     position: relative;
     display: block;

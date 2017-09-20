@@ -41,6 +41,39 @@ input[type=checkbox]:checked+label:before {
 	background: #1a1a1a;
 	text-align: center;
 	line-height: 18px;
+	
+}	
+	
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.button1 {
+		background-color: black;
+}
+
+.button2 {
+	background-color: black;
+	padding: 6px 17px;
+	font-size: 12px;
+}
+
+.button3 {
+	background-color: gray;
+	padding: 6px 17px;
+	font-size: 12px;
+}
+	
 }
 </style>
 <div class="row">
@@ -167,43 +200,36 @@ input[type=checkbox]:checked+label:before {
 					
 					<div class="comments" id="comments">
 					<c:forEach var="obj" items="${list }">
-					<div class="comment-list">
+					<div class="comment-list" style="margin-top: 30px; margin-bottom: 30px;">
 						<div class="media">
 							<div class="media-left">
-								<a><img src=""></a>
+								<a><img src="/images/avatar_yellow.png" style="border-radius: 40px; width: 40px; height: 40px; margin-top:5px;"></a>
 							</div>
 							<div class="media-body">
 								<div class="comment-header">
-									<a>${obj.EMAIL }</a>
-									<time>${obj.CDATE }</time>
+									<a style="color: black; font-family: sans-serif; font-size: 15px;">${obj.EMAIL }</a>
+									<time style="color: #999999; font-family: sans-serif; font-size: 12px;">${obj.CDATE }</time>
 								</div>
-								<div class="comment-content">
-									${obj.CONTENT }
+								<div class="comment-content" style="color: black; font-family: sans-serif;">
+									<p style="display: block;">${obj.CONTENT }</p>
 								</div>
-								<div class="comment-action">
-									<button>답글</button>
-									<button>편집</button>
-									<button>삭제</button>
+
+								<div class="comment-action" style="border: none; float: right; margin-right: 240px; margin-top: -55px;">
+									<button class="re-reply-write" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
+									<button class="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
+									<button class="reply-delete" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">삭제</button>
 								</div>
-								<div class="comment-editor">
-									<div style="float: left;">
-										<textarea class="form-control autosize"
-											id="comment-editor-content" data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; 
-											height: 60px; width: 750px; resize: none;" ${sessionScope.login eq null ? "readonly" : "" }></textarea>
-										<div class="clearfix">
-											<div class="checkbox-wrap"
+								<div class="comment-editor" style="display: none;">
+									<div style="float: left;">				
+										<div class="checkbox-wrap"
 												style="float: left; margin-top: 20px; margin-left: 2px;">
-												<input type="checkbox" id="comment-editor-secret" class="checkbox-style"/> <label
+											<input type="checkbox" id="comment-editor-secret" class="checkbox-style"/> <label
 													for="secret">비밀댓글</label>
-											</div>
-											<div style="float: right; margin-top: 7px; margin-right: 293px;">
-												<button type="button" class="button button1" id="editor-bt">댓글 남기기</button>
-											</div>
-										</div>										
+										</div>																				
 									</div>
-									<div style="float: right;">
-										<button>취소</button>
-										<button>저장</button>
+									<div class="edit-bt" style="float: right; margin-right: 295px; margin-top: 10px;">
+										<button class="button button3" style="margin-top: -10px;">취소</button>
+										<button class="button button2">저장</button>
 									</div>
 								</div>
 							</div>					
@@ -331,6 +357,17 @@ input[type=checkbox]:checked+label:before {
 
 
 <script>
+
+// disply f
+function disply(target) {	
+	if(target.css("display") == "none"){   
+		target.css("display", "block");        
+	} else {  
+		target.css("display", "none"); 
+	}	
+};
+
+
 $("#sub").on("click", function() {
 	
 	$.ajax({
@@ -349,11 +386,36 @@ $("#sub").on("click", function() {
 		}
 	})
 	
+});
+
+// reply edit
+$(".reply-edit").on("click", function(){	
+	var p = $(this).parent().prev().children('p');	
+	var editor = $(this).parent().next();
+	console.log(editor);
+	disply(p);
+	disply(editor);
+	var c = p.html();
+	var add_editor = "<textarea class=\"form-control\" data-autosize-on=\"true\" style=\"overflow: hidden; resize: none;" 
+						+ "word-wrap: break-word; height: 80px; width: 700px; margin-top: 8px;\">"+ c.replace(/<br>/gi, "\r\n") +"</textarea>";
 	
+
+	$(this).parent().prev().append(add_editor);
+
+	
+});
+
+
+
+// re-reply-write
+$(".re-reply-write").on("click", function(){
+	var add = "";
 	
 	
 	
 });
+
+
 </script>
 
 
