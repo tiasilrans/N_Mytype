@@ -3,11 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <link rel="stylesheet" href="/css/searchcss.css">  
 <link rel="stylesheet" href="/css/my.css">
+<script src="/module/nailthumb/jquery.nailthumb.1.1.min.js"></script>
+<link rel="stylesheet" href="/module/nailthumb/jquery.nailthumb.1.1.min.css">
 
 <style>
+
+a{text-decoration: none;}
+
 .card {
     position: relative;
     display: block;
@@ -49,7 +53,7 @@
 }
 
 .confooter{
-	padding-top: 7px;
+	padding-top: 5px;
 }
 
 .confooter-count{
@@ -59,32 +63,40 @@
 
 </style>
     
-<div align="center" style="margin-top: 130px;">
+<div align="center">
 
 <div style="width: 60%;" align="left">
-<h2>좋아요</h2>
-<hr style="margin-top: 10px;"/>
+	<h2>좋아요</h2>
+	<hr style="margin-top: 10px;"/>
 </div>
 
 <div style="width: 59%;" align="left">
-<div class="row container">
-<div align="left" style="width: 100%;">
-<c:forEach var="like" items="${list}" begin="0" end="${list.size() < 11 ? list.size() : 11}" varStatus="vs">
-			<div class="incard" style="clear: right;" >
+	<div class="row">
+		<div align="left" style="width: 100%;">
+			<c:forEach var="all" items="${list }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
+				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
 					<div class="title">
-						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
-						<div>${like.NICKNAME }</div>
-						<div style="color:#909090; font-size: 11px;">6일전 · ${like.URL }</div>
+						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
+						<div>${all.NICKNAME }</div>
+						<div style="color:#909090; font-size: 12px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" style="text-decoration: none; color:#909090" href="/blog/${all.URL }">${all.URL }</a></div>
 					</div>
-	                <div style="height:50px; margin:12px; padding-bottom: 3px;">
-	                	<div style="font-size: 15px; padding-bottom: 5px; ">제목 없음</div>
-	                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
-	                		${like.FCONTENT }
-	                	</div>
-	                </div> <br/><br/><br/>
+					
+	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
+						<a href="/${all.URL}/post/${all.NUM}" style="font-size: 15px; text-decoration: none; color: #333333; padding-bottom: 5px;">
+							${all.TITLE }
+								<c:if test="${all.IMG.length() > 10}">
+				                		<div class="nailthumb-column-metadata" id="thumbnail">
+				                			${all.IMG }
+				                		</div>  
+			                	</c:if>
+	                	</a>
+						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
+							${all.FCONTENT }
+						</a>
+					</div> <br/><br/><br/>
 	                
 	                <div>
-		                <c:set var="msg" value="${like.HASH }"/>
+		                <c:set var="msg" value="${all.HASH }"/>
 						<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
 						<c:forEach items="${hashtag}" var="hash">
 						<span class="conbody-hashtag">
@@ -96,19 +108,24 @@
 	                <!-- footer -->
 					<div class="confooter">
 						<c:choose>
-						<c:when test="${like.HEART == null}">
-							<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
+						<c:when test="${all.HEART == null}">
+							<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
 						</c:when>
 						<c:otherwise>
-							<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
+							<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
 						</c:otherwise>
 						</c:choose>
-							<span class="confooter-count heart-${like.NUM}">${like.GOOD }</span>
+							<span class="confooter-count heart-${all.NUM}">${all.GOOD }</span>
 					</div>
 				</div>
+			
+				<c:if test="(vs+1) % 3 = 0">
+					<br/>
+				</c:if>
+				
 			</c:forEach>
-</div>
-</div>
+		</div>
+	</div>
 </div>
 
 <ul class="pagination">
@@ -163,3 +180,13 @@
 	</script>
 	</c:otherwise>
 </c:choose>
+
+<script>
+	function imgsize(){
+		$(".fr-fic").css("width","220px");
+		$(".fr-fic").css("height","74px");
+		$(".fr-fic").css("border-radius","2px");
+	}
+	imgsize();
+</script>
+

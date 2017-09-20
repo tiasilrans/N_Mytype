@@ -51,7 +51,7 @@
 		</div>
 	</nav>
 
-<!-- <script>
+<script>
 	$(window).scroll(function() {
 		if ($(this).scrollTop() > 1) {
 			$("#gg").css("top","270px");
@@ -60,4 +60,4 @@
 			
 		}
 	});
-</script> -->
+</script>
