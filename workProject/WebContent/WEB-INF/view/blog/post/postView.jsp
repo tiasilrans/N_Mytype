@@ -382,7 +382,7 @@ $("#sub").on("click", function() {
 	$.ajax({
 		url : "/${post.NUM }/peply.mt",
 		data : {			
-			"content" : $("#mention").val(),			
+			"content" : $("#mention").val().replace(/\n/g, "<br>"),			
 			"secret" : $("#secret").prop("checked"),
 			"url" : "${post.URL}"			
 		}
@@ -460,7 +460,22 @@ $(".edit-cancel").on("click", function(){
 
 //edit-update
 $(".edit-update").on("click", function(){
-	 
+	var num = $(this).parent().parent().prev().children('[type="hidden"]').attr("value");
+	var content = $(this).parent().parent().prev().prev().children('textarea').val().replace(/\n/g, "<br>");
+	console.log(content);
+	$.ajax({
+		url : "/"+num+"/peplyEdit.mt",
+		data : {			
+			"content" : content,			
+			"secret" : $(this).parent().prev().children().children('[type="checkbox"]').prop("checked"),
+			"url" : "${post.URL}"			
+		}
+	}).done(function(result) {				
+		if (result.result) {
+			window.alert("댓글 수정 완료");
+			location.reload();
+		}
+	})
 	
 	
 	

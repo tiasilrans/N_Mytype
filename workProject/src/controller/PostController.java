@@ -161,6 +161,27 @@ public class PostController {
 		return map;
 	}
 	
+	@RequestMapping("/{num}/peplyEdit.mt")
+	@ResponseBody
+	public Map peplyEdit(@PathVariable(value="num") int num, @RequestParam Map m){
+		m.put("num", num);
+		System.out.println(m);
+		boolean f = rDAO.replyEdit(m);
+		Map map = new HashMap<>();
+		if(f){
+			map.put("result", f);
+			map.put("url", (String)m.get("url"));
+			
+		}else{
+			map.put("result", f);
+			
+		}
+		return map;
+	}
+	
+	
+	
+	
 	@RequestMapping("/replyDelete.mt")
 	@ResponseBody
 	public Map replyDelete(@RequestParam Map m){	

@@ -9,6 +9,12 @@
  			values(reply_seq.nextval, #{num}, reply_seq.currval, #{email}, #{content},
  					#{secret}, sysdate)
  	</insert>
+ 	
+ 	<!-- 댓글 수정 -->
+ 	<update id="edit" parameterType="java.util.HashMap">
+ 		update reply set content=#{content} where num=#{num}
+ 	</update>
+ 	
  	<!-- 댓글 삭제 -->
  	<delete id="delete" parameterType="java.util.HashMap">
  		delete from reply where num=#{num}

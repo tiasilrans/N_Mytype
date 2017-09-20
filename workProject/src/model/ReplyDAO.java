@@ -30,6 +30,23 @@ public class ReplyDAO {
 		}
 	}
 	
+	public boolean replyEdit(Map map){
+		SqlSession session = factory.openSession();
+		try {
+			int update = session.update("reply.edit", map);				
+			return true;			
+		} catch (Exception e) {
+			System.out.println("replyEdit Error");
+			e.printStackTrace();
+			return false;
+		}finally {
+			session.close();
+		}
+		
+	}
+	
+	
+	
 	public List<Map> replyList(Map map){
 		List<Map> list = new ArrayList<>();
 		SqlSession session = factory.openSession();
