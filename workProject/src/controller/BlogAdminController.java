@@ -176,8 +176,8 @@ public class BlogAdminController {
 			
 		List<Map> list = bDAO.cateAfterList(m);		
 		Map cateNameOrder = new HashMap();
-		for(int i = 0; i<orderArr.length; i++ ){// 移댄뀒怨좊━ �닚�꽌 �꽕�젙
-			cateNameOrder.put(orderArr[i], i); // �궎 : 移댄뀒怨좊━ �씠由�  - 媛� : 移댄뀒怨좊━ �씤�뜳�뒪			
+		for(int i = 0; i<orderArr.length; i++ ){
+			cateNameOrder.put(orderArr[i], i); 			
 		}		
 		for(Map li : list){
 			String key = (String)li.get("CATEGORY_NAME");
@@ -191,7 +191,7 @@ public class BlogAdminController {
 			}			
 		}		
 				
-		if(add){			
+		if(add || order){			
 			map.put("result", true);
 			map.put("url", m.get("url"));
 		}else{

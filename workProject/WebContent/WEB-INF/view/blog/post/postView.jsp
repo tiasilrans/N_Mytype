@@ -178,15 +178,13 @@ input[type=checkbox]:checked+label:before {
 									<time style="color: #999999; font-family: sans-serif; font-size: 12px;">${obj.CDATE }</time>
 								</div>
 								<div class="comment-content" style="color: black; font-family: sans-serif;">
-									${obj.CONTENT }
+									<p style="display: block;">${obj.CONTENT }<p>
+									<!-- 편집 텍스트창 여기에 추가됨 -->
 								</div>
-
 								<div class="comment-action" style="border: none; float: right; margin-right: 240px; margin-top: -20px;">
-									<button style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
-									<button style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
-									<button style="border: 0px; background-color: white; color: #999999; font-size: 12px;">삭제</button>
-
-
+									<button id="re-reply-write" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
+									<button id="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
+									<button id="reply-delete" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">삭제</button>
 								</div>
 								<div class="comment-editor">
 									<div style="float: left;">
@@ -334,12 +332,14 @@ input[type=checkbox]:checked+label:before {
 
 
 <script>
+
+// reply write
 $("#sub").on("click", function() {
 	
 	$.ajax({
 		url : "/${post.NUM }/peply.mt",
 		data : {			
-			"content" : $("#mention").val(),			
+			"content" : $("#mention").html(),			
 			"secret" : $("#secret").prop("checked"),
 			"url" : "${post.URL}"			
 		}
@@ -352,11 +352,22 @@ $("#sub").on("click", function() {
 		}
 	})
 	
-	
-	
+});
+
+// reply edit
+$("#reply-edit").on("click", function(){	
+	var p = $(this).parent().prev().children('p');
+	console.log($(this).parent().prev().children('p').html());
+	var add_editor = "<textarea class=\"form-control\" data-autosize-on=\"true\" style=\"overflow: hidden; resize: none;" 
+						+ "word-wrap: break-word; height: 80px;\">"+ "갹" +"</textarea>";
 	
 	
 });
+
+
+
+
+
 </script>
 
 

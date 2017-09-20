@@ -64,7 +64,7 @@ public class PostController {
 		Map map = new HashMap<>();
 			map.put("num", num);
 			map.put("url", url);
-		boolean c = pdao.postCounter(map); // 조회수 증가
+		boolean c = pdao.postCounter(map); 
 		if(c){
 			HashMap post = pdao.onePost(map);
 			post.put("PDATE", sdf.format(post.get("PDATE")));
@@ -72,8 +72,7 @@ public class PostController {
 			mav.addObject("section", "blog/post/postView");
 			mav.addObject("post", post);
 			mav.addObject("list", rDAO.replyList(map));
-			//num이랑 email 가지고 buy 에서 내가 구매한 항목인지 확인
-			//구매했으면 true 터지거나 구매기록이 없거나 비로그인 = false
+			
 			String email = (String)session.getAttribute("login");
 			if(email != null){
 				map.put("email", email);
@@ -84,7 +83,7 @@ public class PostController {
 				mav.addObject("buy", false);
 			}
 		}
-			mav.addObject("totalpost", pdao.postCount(map));// 해당 블로그의 총 포스트 수 
+			mav.addObject("totalpost", pdao.postCount(map));// 블로그 총 포스트 수 
 		return mav;	
 	}
 	
@@ -106,7 +105,6 @@ public class PostController {
 	@RequestMapping("/blog/update/{num }")
 	public ModelAndView postUpdate(@RequestParam Map m, HttpSession session,
 												@PathVariable(value="num") int num){
-		// m= 타이틀, url 들어가 있음
 		Map updateMap = (Map)session.getAttribute("writeMap");
 		if(updateMap !=null){
 			String title = (String)updateMap.get("title");
@@ -119,7 +117,7 @@ public class PostController {
 		List<Map> catelist = pdao.categoryList(m);		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("post");
-			mav.addObject("title", "포스트편집");
+			mav.addObject("title", "포스트 편집");
 			mav.addObject("map", m);
 			mav.addObject("catelist", catelist);
 			session.setAttribute("updateMap", m);
@@ -138,10 +136,10 @@ public class PostController {
 		if(f){
 			map.put("result", f);
 			map.put("url", (String)m.get("url"));
-			System.out.println("댓글 달기 성공");
+			
 		}else{
 			map.put("result", f);
-			System.out.println("댓글 달기 실패");
+			
 		}
 		return map;
 	}
@@ -171,8 +169,8 @@ public class PostController {
 		mav.setViewName("redirect:/"+(String)map.get("url")+"/post/"+(String)map.get("num"));
 		map.put("myemail", session.getAttribute("login"));
 		String title = (String)map.get("title");
-		map.put("btitle", "["+title+"]포인트 구매");
-		map.put("stitle", "["+title+"]포인트 판매");
+		map.put("btitle", "["+title+"]�룷�씤�듃 援щℓ");
+		map.put("stitle", "["+title+"]�룷�씤�듃 �뙋留�");
 		pdao.buyPost(map);
 		return mav;
 	}
