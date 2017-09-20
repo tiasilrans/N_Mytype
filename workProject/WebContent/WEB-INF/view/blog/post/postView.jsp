@@ -180,10 +180,13 @@ input[type=checkbox]:checked+label:before {
 								<div class="comment-content" style="color: black; font-family: sans-serif;">
 									${obj.CONTENT }
 								</div>
+
 								<div class="comment-action" style="border: none; float: right; margin-right: 240px; margin-top: -20px;">
 									<button style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
 									<button style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
 									<button style="border: 0px; background-color: white; color: #999999; font-size: 12px;">삭제</button>
+
+
 								</div>
 								<div class="comment-editor">
 									<div style="float: left;">
