@@ -39,13 +39,11 @@
 
 </style>   
 <div align="center" class="row">
-	<div class="col-xs-0 col-md-4"></div>
-	<div class="col-xs-12 col-md-4">
-
-<div class="first" style= "position: relative; padding: 4rem 3rem; background-image: url('/images/img.jpg');
-    background-size: 1500px 500px;">
-	
- <div class="form-group joinbox row">
+<div class="col-xs-0 col-md-4"></div>
+<div class="col-xs-12 col-md-4">
+	<div class="first" style= "position: relative; padding: 4rem 3rem; background-image: url('/images/img.jpg');
+    background-size: 1500px 500px;">	
+ 	<div class="form-group joinbox row">
 			<form action="/joinExec.mt" method="post">	
 				<div style="margin-left: 30px;">				
 				<h6 align="left" style="color: #999999;">회원가입 </h6>
@@ -83,19 +81,19 @@
 			</form>
 		</div>
 		
-</div>	
-		
+</div>
+	</div>		
 		<div class="section">
-			<div class="container">
-				<div align="center";>
-			<img src="/images/first.png">
+			<div class="">
+				<div align="center">
+			<img src="/images/first.png" >
 				</div>
 			</div>
 		</div>
 		
 		<div class="section">
 			<div class="container">
-				<div align="center";>
+				<div align="center">
 			<img src="/images/Second.png">
 				</div>
 			</div>
@@ -103,7 +101,7 @@
 		
 		<div class="section">
 			<div class="container">
-				<div align="center";>
+				<div align="center">
 			<img src="/images/third.png">
 				</div>
 			</div>
@@ -118,7 +116,7 @@
 			</div>
 		</div>
 		
-	</div>
+
 	
 	<div class="col-xs-0 col-md-4"></div>
 </div>
