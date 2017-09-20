@@ -45,10 +45,12 @@ public class SubscribeController {
 	
 	
 	@RequestMapping("/subscribe.mt")
-	public Map subscribe(){
-		
+	@ResponseBody
+	public Map subscribe(@RequestParam Map m, HttpSession session){
+			m.put("email", (String) session.getAttribute("login"));
+		boolean f = subscribedao.insertsubscribe(m);
 		Map map = new HashMap();
-		
+			map.put("result", f);
 		return map;
 	}
 	
