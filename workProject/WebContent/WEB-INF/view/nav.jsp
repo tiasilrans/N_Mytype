@@ -160,7 +160,7 @@
 					<div class="form-group row" align="right" style="width: 360px;">
 					<a>비밀번호 찾기</a>｜<a href="join.mt">회원가입</a>
 					</div>
-					<button id="login-sbt" type="submit" class="btn">로그인</button>
+					<button id="login-sbt" type="submit" class="btn" style="background-color: black; color: white; ">로그인</button>
 				</div>
 			</form>
 		</div>
