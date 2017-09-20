@@ -7,7 +7,7 @@
 
 <c:choose>
 <c:when test="${info.BANK ne null || info.ACCOUNT ne null || info.HOLDER ne null}">
-<div align="center">
+<div align="center" >
 	<div style="width: 40%;" align="left">
 	<h2>출금 신청</h2>
 	<hr style="margin-top: 10px;"/>

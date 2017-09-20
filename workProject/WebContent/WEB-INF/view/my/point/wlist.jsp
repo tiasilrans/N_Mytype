@@ -28,7 +28,7 @@ table.type07 td {
 </style>
 
 
-<div align="center">
+<div align="center" >
 	<div style="width: 40%;" align="left">
 	<h2>출금 내역</h2>
 	<hr style="margin-top: 10px;"/>

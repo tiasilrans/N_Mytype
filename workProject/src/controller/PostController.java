@@ -18,7 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import model.PointDao;
 import model.PostDao;
+import model.ReplyDAO;
 
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -28,6 +30,13 @@ public class PostController {
 	
 	@Autowired
 	PostDao pdao;
+	
+	@Autowired
+	ReplyDAO rDAO;
+	
+	@Autowired
+	PointDao ptdao;
+
 	
 	@RequestMapping("/postWriter.mt")
 	@ResponseBody
@@ -62,7 +71,7 @@ public class PostController {
 			mav.setViewName("post_view");
 			mav.addObject("section", "blog/post/postView");
 			mav.addObject("post", post);
-			
+			mav.addObject("list", rDAO.replyList(map));
 			//num이랑 email 가지고 buy 에서 내가 구매한 항목인지 확인
 			//구매했으면 true 터지거나 구매기록이 없거나 비로그인 = false
 			String email = (String)session.getAttribute("login");
@@ -70,13 +79,10 @@ public class PostController {
 				map.put("email", email);
 				boolean buy = pdao.buyCheck(map);
 				mav.addObject("buy", buy);
+				mav.addObject("mypoint", ptdao.selectpointsum(email));
 			}else{
 				mav.addObject("buy", false);
 			}
-			
-			
-			
-			
 		}
 			mav.addObject("totalpost", pdao.postCount(map));// 해당 블로그의 총 포스트 수 
 		return mav;	
@@ -121,6 +127,25 @@ public class PostController {
 		return mav;
 	}
 	
+	@RequestMapping("/{num}/peply.mt")
+	@ResponseBody
+	public Map reply(@PathVariable(value="num") int num, @RequestParam Map m, HttpSession session){
+		m.put("email", (String)session.getAttribute("login"));
+		m.put("num", num);
+		System.out.println(m);
+		boolean f = rDAO.replyWrite(m);
+		Map map = new HashMap<>();
+		if(f){
+			map.put("result", f);
+			map.put("url", (String)m.get("url"));
+			System.out.println("댓글 달기 성공");
+		}else{
+			map.put("result", f);
+			System.out.println("댓글 달기 실패");
+		}
+		return map;
+	}
+	
 	
 	
 		
@@ -138,6 +163,18 @@ public class PostController {
 		}
 		String mz=objMapper.writeValueAsString(result);
 		return mz;
+	}
+	
+	@RequestMapping("buypost.mt")
+	public ModelAndView buypost(@RequestParam Map map,HttpSession session) throws JsonProcessingException{
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/"+(String)map.get("url")+"/post/"+(String)map.get("num"));
+		map.put("myemail", session.getAttribute("login"));
+		String title = (String)map.get("title");
+		map.put("btitle", "["+title+"]포인트 구매");
+		map.put("stitle", "["+title+"]포인트 판매");
+		pdao.buyPost(map);
+		return mav;
 	}
 	
 }
