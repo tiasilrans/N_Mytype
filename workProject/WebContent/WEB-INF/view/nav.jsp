@@ -82,7 +82,7 @@
 				</ul>
 				</c:when>
 				<c:otherwise>
-				<ul class="nav navbar-nav navbar-right">											
+				<ul class="nav navbar-nav navbar-right" style="margin-right: 13px;">											
 					<li><a class="bnt" href="/join.mt" id="join">회원가입</a></li>
 					<li><a class="bnt" id="login" data-toggle="modal" data-target="#login-form">로그인</a></li>				
 				</ul>
