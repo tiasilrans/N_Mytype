@@ -34,6 +34,20 @@
 	</select>
 	
 	
+	<!-- ================포스트 구매 관련 SQL======================= -->
+	<!-- 포인트 구매시 포인트 로그에 추가-->
+	<insert id="buypostlog" parameterType="java.util.HashMap">
+		insert into point(num, email, use, cause, ptdate) values(point_seq.nextval, #{myemail}, #{price}, #{btitle}, sysdate)
+	</insert>
+	<insert id="salespostlog" parameterType="java.util.HashMap">
+		insert into point(num, email, charge, cause, ptdate) values(point_seq.nextval, #{email}, #{price}, #{stitle}, sysdate)
+	</insert>
+	
+	<insert id="buypost" parameterType="java.util.HashMap">
+		insert into buy(email, pnum, bdate, point) values(#{myemail}, #{num}, sysdate, #{price})
+	</insert>
+	
+	
 	<!-- ================출금 관련 SQL======================= -->
 	
 	<!-- 출금 내역 -->

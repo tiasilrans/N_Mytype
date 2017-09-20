@@ -16,7 +16,7 @@ public class PostDao {
 	@Autowired
 	SqlSessionFactory factory;
 	
-	//������ ���� ������ �ڸ���
+	//占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쌘몌옙占쏙옙
 	public List<Map> sublist(List<Map> list){
 		for(Map map : list){
 			String fcontent = (String)map.get("FCONTENT");
@@ -25,6 +25,28 @@ public class PostDao {
 				fcontent += "...";
 				map.put("FCONTENT", fcontent);
 			}
+		}
+		return list;
+	}
+	//fcontent에서 이미지 따로 빼서 IMG으로 map.put / fcontent는 글만 적용 
+	public List<Map> imgRedefinition(List<Map> list){
+		for(Map m :list){
+			String[] arr = ((String)m.get("FCONTENT")).split("</p>");
+			String fc = "";//글만
+			String img = "";//사진만
+			for(String ar : arr){
+				ar += "</p>";
+				if(ar.indexOf("froala") > -1){
+					if(img.length() == 0){
+						ar = ar.replaceAll("<br>", "");
+						img+=ar;
+					}
+				}else{
+					fc+=ar;
+				}
+			}
+			m.put("FCONTENT", fc);
+			m.put("IMG", img);
 		}
 		return list;
 	}
@@ -59,9 +81,19 @@ public class PostDao {
 		
 	}
 	
-	
-	
-	
+	public boolean postDelete(Map map){
+		SqlSession session = factory.openSession();
+		try {
+			session.delete("post.delete", map);			
+			return true;
+		} catch (Exception e) {
+			System.out.println("postDelete ERROR .." + e.toString());
+			e.printStackTrace();
+			return false;
+		}finally {
+			session.close();
+		}
+	}
 	
 	public List<Map> categoryList(Map map){		
 		List<Map> list = new ArrayList<>();
@@ -78,8 +110,7 @@ public class PostDao {
 		}		
 	}
 	
-	// ��α� ���� ����Ʈ ���
-		// ��α� �� ����Ʈ ��	
+	// 占쏙옙慣占� 占쏙옙占쏙옙 占쏙옙占쏙옙트 占쏙옙占�
 	public int postCount(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -95,7 +126,7 @@ public class PostDao {
 		
 	}
 	
-		// ��α� ����¡
+		// 占쏙옙慣占� 占쏙옙占쏙옙징
 	public List<Map> blogPostList(Map map){		
 		List<Map> list = new ArrayList<>();
 		SqlSession session = factory.openSession();
@@ -127,17 +158,30 @@ public class PostDao {
 		
 	}
 	
+	public List<Map> ad_postList(Map map){		
+		List<Map> list = new ArrayList<>();
+		SqlSession session = factory.openSession();
+		try {
+			list = session.selectList("post.admin_postList", map);			
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("ad_postList ERROR : " + e.toString());
+			return list;
+		}finally {
+			session.close();
+		}		
+	}
 	
 	
 	
-	
-	
-	//��ü �Խù� �ҷ�����
+	//占쏙옙체 占쌉시뱄옙 占쌀뤄옙占쏙옙占쏙옙
 	public List<Map> listAll(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
 		try{
 			list = session.selectList("post.listall", map);
+			list = this.imgRedefinition(list);
 			return list; 
 		}catch(Exception e){
 			System.out.println("PostListAll Error");
@@ -148,22 +192,24 @@ public class PostDao {
 		}
 	}
 	
-	//������ �Խù� �ҷ�����
+	//占쏙옙占쏙옙占쏙옙 占쌉시뱄옙 占쌀뤄옙占쏙옙占쏙옙
 	public List<Map> listLike(Map map){
 		SqlSession session = factory.openSession();
-		
+		List<Map> list = new ArrayList<>();
 		try{
-			return session.selectList("post.listLike", map);
+			list = session.selectList("post.listLike", map);
+			list = this.imgRedefinition(list);
+			return list;
 		}catch(Exception e){
 			System.out.println("PostListLike Error");
 			e.printStackTrace();
-			return null;
+			return list;
 		}finally{
 			session.close();
 		}
 	}
 	
-	// �±װ� �� ����Ʈ ����Ʈ �ҷ�����
+	// 占승그곤옙 占쏙옙載� 占쏙옙占쏙옙트 占쏙옙占쏙옙트 占쌀뤄옙占쏙옙占쏙옙
 	public List<Map> listTag(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -180,6 +226,7 @@ public class PostDao {
 					}
 				}
 			}
+			list = this.imgRedefinition(list);
 			return result; 
 		}catch(Exception e){
 			System.out.println("PostlistTag Error");
@@ -190,7 +237,7 @@ public class PostDao {
 		}
 	}
 
-	//���ƿ�
+	//占쏙옙占싣울옙
 	public int postgoodAdd(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -207,7 +254,7 @@ public class PostDao {
 		}
 	}
 	
-	//���ƿ� ���
+	//占쏙옙占싣울옙 占쏙옙占�
 	public int postgoodRemove(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -224,14 +271,14 @@ public class PostDao {
 		}
 	}
 	
-	//�ؽ��±� �ҷ�����(�˻�����)
+	//占쌔쏙옙占승깍옙 占쌀뤄옙占쏙옙占쏙옙(占싯삼옙占쏙옙占쏙옙)
 	public List hashlist(String keyword){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
 		List result = new ArrayList<>();
 		try{
 			list = session.selectList("post.selectHashtag", keyword);
-			//������ �ؽ��±� ����Ʈ �����鼭 ���ø��ϰ� ��ġ���� Ȯ���� result�� �߰� 
+			//占쏙옙占쏙옙占쏙옙 占쌔쏙옙占승깍옙 占쏙옙占쏙옙트 占쏙옙占쏙옙占썽서 占쏙옙占시몌옙占싹곤옙 占쏙옙치占쏙옙占쏙옙 확占쏙옙占쏙옙 result占쏙옙 占쌩곤옙 
 			for(Map m : list){
 				String[] arr = ((String)m.get("HASH")).split("\\s");
 				
@@ -252,7 +299,7 @@ public class PostDao {
 	}
 	
 	
-	//�Խù� ���� ���ϱ�(����¡)
+	//占쌉시뱄옙 占쏙옙占쏙옙 占쏙옙占싹깍옙(占쏙옙占쏙옙징)
 	public int selectcount(Map map){
 		SqlSession session = factory.openSession();
 		Map list = new HashMap<>();
@@ -269,7 +316,40 @@ public class PostDao {
 		}
 	}
 	
+	public boolean buyCheck(Map map){
+		SqlSession session = factory.openSession();
+		List<Map> list = new ArrayList<>();
+		boolean buy = false;
+		try{
+			list = session.selectList("post.buyCheck", map);
+			if(list.size() > 0){
+				buy =true;
+			}
+			return buy; 
+		}catch(Exception e){
+			System.out.println("PostBuyCheck Error");
+			e.printStackTrace();
+			return buy;
+		}finally{
+			session.close();
+		}
+	}
 	
+	public boolean buyPost(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			int i = session.insert("point.buypostlog", map);
+			i = session.insert("point.salespostlog", map);
+			i = session.insert("point.buypost", map);
+			return true; 
+		}catch(Exception e){
+			System.out.println("PostBuyPost Error");
+			e.printStackTrace();
+			return false;
+		}finally{
+			session.close();
+		}
+	}
 	
 	
 	

@@ -2,9 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+<script src="/module/nailthumb/jquery.nailthumb.1.1.min.js"></script>
+<link rel="stylesheet" href="/module/nailthumb/jquery.nailthumb.1.1.min.css">
 
 <style>
+
+a{ text-decoration: none; }
+
 .logo-frame{
 	width:100%;
 	border-radius: 5px;
@@ -12,10 +17,11 @@
 
 #secondlogo{
 	height: 350px;
-	width : 330px;
-	background-color: #F6F6F6;
+	width : 300px;
 	border-radius: 5px;
 	margin: 10px;
+	border-radius : 5px;
+    border : 1px solid silver;
 }
 
 .secondlogo-head{
@@ -70,65 +76,6 @@
 	border-radius: 5px;
 	
 }
-.conhead{
-	width : 100%;
-	height: 20%;
-}
-
-.conbody{
-	width : 100%;
-	height: 70%;
-}
-
-.confooter{
-	width : 100%;
-	height: 10%;
-}
-
-.conhead-profileimg{
-	float: left;
-	width:48px;
-	height:48px;
-	border-radius: 50%;
-	margin-right: 8px;
-}
-.conhead-title{
-	padding-top : 5px;
-}
-
-.conhead-title-name{
-	font-size: 14;
-}
-
-.conhead-title-date{
-	font-size: 12;
-}
-
-.conhead-title-blog, .conhead-title-blog:LINK, .conhead-title-blog:ACTIVE{
-	font-size: 12;
-	color: gray; 
-}
-.conbody{
-	height: 60%;
-}
-
-.conbody-title{
-	font-size: 23;
-}
-
-.conbody-content{
-	font-size: 13;
-	color : gray;
-}
-
-.confooter{
-	padding-top: 7px;
-}
-
-.confooter-count{
-	font-size: 17;
-	color : red;
-}
 
 .title{
 	padding-top :15px;
@@ -138,15 +85,28 @@
 .incard {
     float: left;
     width : 280px;
-	height: 28%;
+	height: 270px;
 	margin: 8px;
     border-radius : 5px;
     border : 1px solid silver;
 }
 
+.conhead-profileimg{
+	float: left;
+	width:48px;
+	height:48px;
+	border-radius: 50%;
+	margin-right: 8px;
+}
+
+.conhead-title-blog, .conhead-title-blog:LINK, .conhead-title-blog:ACTIVE{
+	font-size: 12;
+	color: gray; 
+}
+
 .conbody-hashtag{
 	font-size: 13;
-	background-color: #D8D8D8;
+	background-color: #ebebeb;
 	border-radius: 2px;
 	margin-left: 12px;
 	padding: 4px;
@@ -164,13 +124,30 @@
 	border : 0px;
 }
 
-</style>   
+.confooter{
+	width : 100%;
+	height: 10%;
+}
 
-<div class="container" style="margin-left: auto; width: 65%">
+.confooter{
+	padding-top: 7px;
+}
+
+.confooter-count{
+	font-size: 17;
+	color : red;
+}
+
+
+
+</style>   
+<div class="row">
+<div class="col-md-2" style="margin-left: 40px;"></div>
+<div class="col-md-7" style="margin-left: auto; margin-bottom: 100px;">
 
 			<!-- 메인쪽 로고 부분 -->
-			  <div class="container col-md-4" style="width:620px; height: 350px;">
-			  <div id="myCarousel" class="carousel" data-ride="carousel" style="width:580px; margin: 10px;">
+			  <div class="container col-md-4" style="width:600px; height: 350px; " >
+			  <div id="myCarousel" class="carousel" data-ride="carousel" style="width:580px; margin: 10px; border:1px solid silver;border-radius:5px;">
 			  
 			    <!-- Indicators -->
 			    <ol class="carousel-indicators">
@@ -182,15 +159,15 @@
 			    <!-- Wrapper for slides -->
 			    <div class="carousel-inner">
 			      <div class="logo-frame item active">
-			        <img src="/images/mainimg/바다.jpg" alt="Los Angeles" style="width:100%; height: 350px; border-radius: 5px;">
+			        <img src="/images/mainimg/1.png" alt="Los Angeles" style="width:100%; height: 350px; border-radius: 5px;">
 			      </div>
 			
 			      <div class="logo-frame item">
-			        <img src="/images/mainimg/겨울.jpg" alt="Chicago" style="width:100%; height: 350px; border-radius: 5px;">
+			        <img src="/images/mainimg/2.png" alt="Chicago" style="width:100%; height: 350px; border-radius: 5px;">
 			      </div>
 			    
 			      <div class="logo-frame item">
-			        <img src="/images/mainimg/봄.jpg" alt="New york" style="width:100%; height: 350px; border-radius: 5px;">
+			        <img src="/images/mainimg/3.png" alt="New york" style="width:100%; height: 350px; border-radius: 5px;">
 			      </div>
 			    </div>
 			  </div>
@@ -207,9 +184,17 @@
 							<span class="secondlogo-body-title-blog">blog.mytypeblog.com</span>
 						</div>	
 					</div>
-				<div class="secondlogo-body-content"><span>공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용</span></div>
+						<div class="secondlogo-body-content"><span>
+						<c:choose>
+						<c:when test="${notice.get(0).SUBCONTENT ne null}">
+							${notice.get(0).SUBCONTENT}
+						</c:when>
+						<c:otherwise>
+							${notice.get(0).CONTENT}
+						</c:otherwise>
+						</c:choose>
+						</span></div>
 			</div>
-			
 			<!-- 목록 nav -->
 			<div class="col-xs-0 col-md-12">
 			<div style="margin-left: 10px;">
@@ -222,23 +207,32 @@
 			</div>			
 			
 			
-			<div class="tab-content">
+			<div class="tab-content" >
 			
 			<!-- 전체 게시글 배치 -->
 			<div id="allList" class="tab-pane fade in active">
 				<c:forEach var="all" items="${listAll }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
 				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
 					<div class="title">
-						<a style="float:left; padding-right: 10px;"><img src="/images/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
+						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
 						<div>${all.NICKNAME }</div>
-						<div style="color:#909090; font-size: 11px;">6일전 · ${all.URL }</div>
+						<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="-title-blog" href="/blog/${all.URL }">${all.URL }</a></div>
 					</div>
-	                <div style="height:50px; margin:12px; padding-bottom: 3px;">
-	                	<div style="font-size: 15px; padding-bottom: 5px; ">제목 없음</div>
-	                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
-	                		${all.FCONTENT }
-	                	</div>
-	                </div> <br/><br/><br/>
+					
+	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
+						<a href="/${all.URL}/post/${all.NUM}" style="font-size: 15px; text-decoration: none; color: #333333; padding-bottom: 5px;">
+							${all.TITLE }
+						
+						<c:if test="${all.IMG.length() > 10}">
+		                		<div class="nailthumb-column-metadata" id="thumbnail">
+		                			${all.IMG }
+		                		</div>  
+	                	</c:if>
+	                	</a>
+						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
+							${all.FCONTENT }
+						</a>
+					</div> <br/><br/><br/>
 	                
 	                <div>
 		                <c:set var="msg" value="${all.HASH }"/>
@@ -282,63 +276,57 @@
 			</div>
 			</c:when>
 			<c:otherwise>
-			<c:forEach var="all" items="${listLike}" begin="0" end="${listLike.size() < 5 ? listLike.size() : 5}" varStatus="vs">
-				<div id="post" class="col-xs-0 col-md-4">
-				
-					<!-- head -->
-					<div class="conhead">
-					<c:choose>
-					<c:when test="${all.IMAGE eq null}">
-						<img class="conhead-profileimg" src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png">
-					</c:when>
-					<c:otherwise>
-						<img class="conhead-profileimg" src="/images/profile/${all.IMAGE}">
-					</c:otherwise>
-					</c:choose>
-						<div class="conhead-title">
-							<span class="conhead-title-name"><b>${all.NICKNAME }</b></span><br/>
-							<span class="conhead-title-date">${all.PDATE } </span>|
-							<span><a class="conhead-title-blog" href="/blog/${all.URL }">${all.URL }</a></span>
-						</div>	
+			<c:forEach var="like" items="${listLike }" begin="0" end="${listLike.size() < 5 ? listLike.size() : 5}" varStatus="vs">
+				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
+					<div class="title">
+						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
+						<div>${like.NICKNAME }</div>
+						<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${like.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${like.URL }">${like.URL }</a></div>
 					</div>
 					
-					
-					<!-- body -->
-					<div class="conbody">
-						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: #333333;"><span class="conbody-title"><b>${all.TITLE }</b></span></a><br/>
-						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: gray;"><span class="conbody-content">${all.FCONTENT }</span></a><br/><br/>
+	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
+						<a href="/${like.URL}/post/${like.NUM}" style="font-size: 15px; text-decoration: none; color: #333333;padding-bottom: 5px;">
+							${like.TITLE }
 						
-					</div>
-					
-					
-					<c:set var="msg" value="${all.HASH }"/>
-					<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
-					<c:forEach items="${hashtag}" var="hash">
-					<span class="conbody-hashtag">
-						<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
-					</span>
-					</c:forEach>
-						
-					
-					<br/>
-					<!-- footer -->
+						<c:if test="${like.IMG.length() > 10}">
+		                		<div class="nailthumb-column-metadata" id="thumbnail">
+		                			${like.IMG }
+		                		</div>  
+	                	</c:if>
+	                	</a>
+						<a href="/${like.URL}/post/${like.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
+							${like.FCONTENT }
+						</a>
+					</div> <br/><br/><br/>
+	                
+	                <div>
+		                <c:set var="msg" value="${like.HASH }"/>
+						<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
+						<c:forEach items="${hashtag}" var="hash">
+						<span class="conbody-hashtag">
+							<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
+						</span>
+						</c:forEach>
+	                </div>
+	                
+	                <!-- footer -->
 					<div class="confooter">
-					<c:choose>
-					<c:when test="${all.HEART == null}">
-						<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
-					</c:when>
-					<c:otherwise>
-						<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
-					</c:otherwise>
-					</c:choose>
-						<span class="confooter-count heart-${all.NUM}">${all.GOOD }</span>
+						<c:choose>
+						<c:when test="${like.HEART == null}">
+							<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
+						</c:otherwise>
+						</c:choose>
+							<span class="confooter-count heart-${like.NUM}">${like.GOOD }</span>
 					</div>
-				
 				</div>
 			
-			<c:if test="(vs+1) % 3 = 0">
-				<br/>
-			</c:if>
+				<c:if test="(vs+1) % 3 = 0">
+					<br/>
+				</c:if>
+				
 			</c:forEach>
 			</c:otherwise>
 			</c:choose>
@@ -348,6 +336,8 @@
 			
 			</div>
 </div>
+</div>
+
 </div>
 
 <c:choose>
@@ -394,10 +384,30 @@
 	</c:otherwise>
 </c:choose>
 
+<script>
+	function imgsize(){
+		$(".fr-fic").css("width","220px");
+		$(".fr-fic").css("height","74px");
+		$(".fr-fic").css("border-radius","2px");
+	}
+	imgsize();
+</script>
+
+<!-- 메인 썸네일 이미지 조정 
+<script>
+
+$(document).ready(function() {
+	$("#thumbnail").children().addClass("nailthumb-container");
+	
+	$('.nailthumb-column-metadata .nailthumb-container').nailthumb({width:220,height:74,fitDirection:'center center'});
+	
+	
+	
+    
+  });
 
 
-
-
+</script>-->
 
 
 

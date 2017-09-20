@@ -11,7 +11,7 @@
 </style>
 <!--navbar menu-->
 <section class="navbar-info ">
-	<nav class="navbar navbar-default navbar-me" style="margin-bottom: 0px; ">
+	<nav class="navbar navbar-default navbar-me">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button"
@@ -22,9 +22,8 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/"><img src="/images/title.png"></a>
-				</div> 
-
+				<a class="navbar-brand" href="/"><img src="/images/title.png" style="margin: 5px;"></a>
+			</div>
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse">
 				<c:choose>
@@ -38,18 +37,17 @@
 						<c:if test="${sessionScope.blog ne null }">
 						<c:forEach var="blog" items="${sessionScope.blog}" begin="0" end="${sessionScope.blog.size()}">
 							<li style="margin-left: 25px;"><a style="font-weight: bold;" href="/blog/${blog.URL}">${blog.TITLE}</a></li>
-							<li style="margin-left: 25px;"><a href="">임시저장글 <i class="material-icons" style="margin-left: 10px; float: right; font-size: 23px;">mode_edit</i></a></li>
-							<li style="margin-left: 25px;"><a href="">발행글</a></li>  
+							<li style="margin-left: 25px;"><a href="/blog/admin/${blog.URL }/posts">포스트 <i class="material-icons" style="margin-left: 10px; float: right; font-size: 23px;">mode_edit</i></a></li>  
 							<li style="margin-left: 25px;"><a href="/blog/${blog.URL}/categories">카테고리</a></li> 
-							<li style="margin-left: 25px;"><a href="">구독자</a></li>   
-							<li style="margin-left: 25px;"><a href="">설정</a></li>  
-						</c:forEach>   
+							<li style="margin-left: 25px;"><a href="/blog/${blog.URL}/subscribers">구독자</a></li>   
+							<li style="margin-left: 25px;"><a href="/blog/${blog.URL}/setting">설정</a></li>  
+						</c:forEach>
 						</c:if>     
 							<li><a href="/blog/create"><i class="glyphicon glyphicon-plus" style="margin-right: 7px;"></i> 새 블로그 만들기</a></li>
 						</ul></li> 
 				</ul>  
 			   
-				<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav navbar-right" style="margin-right: 13px;">
 				<!-- 알림 -->				
 					<li style="margin: -7px;"><a href="/my/home"><i class="material-icons" style="color: #999999; font-size: 30px;">notifications_none</i></a></li>
 				<!-- 알림끝 -->				
@@ -68,13 +66,15 @@
                             
                             <span class="sr-only">계정</span></a>
                             <ul class="dropdown-menu">     
-                            	<li style="vertical-align: middle;"><a href="/my/home"><label class="material-icons" style="color: #999999; font-size: 23px; float: left;">dashboard</label><font style="margin-top: 7px;">MY홈</font></a></li>
+                            	<li><a href="/my/home"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">dashboard</i>　　MY홈</a></li>  
                             	<li><a href="/subscribe/blog.mt"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">turned_in</i>　　구독</a></li>   
                             	<li><a href="/my/library/postgood"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">subject</i>　　라이브러리 </a></li>
                             	<li><a href="/my/point/plist"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">monetization_on</i>　　포인트</a></li> 
                             	<li><a href="/my/settings/account"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">settings</i>　　설정</a></li>
                             	<li><a href="/mail/list.mt?type=send"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">mail</i>　　쪽지</a></li>
-                            	<li><a></a></li>     
+                            	<c:if test="${sessionScope.info.POWER eq 1}">
+	                            	<li><a href="/admin/main"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">vpn_key</i>　　관리자페이지</a></li>     
+                            	</c:if>
                             	<li><a></a></li>  
                             	<li><a href="/logout.mt"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">power_settings_new</i>　　로그아웃</a></li>
                             </ul>
@@ -147,7 +147,7 @@
           		<div class="form-group row" align="center">		
 			<form action="/loginExec.mt" method="post">					
 				<div class="form-group row">
-						<input class="form-control" type="email"
+						<input class="form-control" type="text"
 							placeholder="e-mail" name="email" id="login-email" required />
 				</div>
 				

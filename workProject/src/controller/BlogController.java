@@ -1,8 +1,10 @@
 package controller;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +20,10 @@ import model.PostDao;
 
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
-@RequestMapping("/blog")
 public class BlogController {
+	
+	@Autowired
+	ServletContext application;
 	
 	@Autowired
 	BlogDAO bDAO;
@@ -27,7 +31,7 @@ public class BlogController {
 	@Autowired
 	PostDao pDAO;
 	
-	@RequestMapping("/create")
+	@RequestMapping("/blog/create")
 	public ModelAndView newBlog(){
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("t_el");
@@ -35,7 +39,7 @@ public class BlogController {
 		return mav;
 	}
 	
-	@RequestMapping("/ctrateBlog.mt")
+	@RequestMapping("/blog/ctrateBlog.mt")
 	@ResponseBody
 	public Map createBlog(@RequestParam Map m, HttpSession session){
 		String uuid = UUID.randomUUID().toString().substring(0, 11);
@@ -54,11 +58,19 @@ public class BlogController {
 		return map;
 	}	
 	
-	@RequestMapping("/{url}")
+	@RequestMapping("/blog/{url}")
 	public ModelAndView BlogView(@PathVariable(value="url") String url, 
 						@RequestParam(name="p", defaultValue="1") int p, HttpSession session){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 		ModelAndView mav = new ModelAndView();
+		String path = "/images/blogImg/"+url;
+		String rPath = application.getRealPath(path);
+		File dir = new File(rPath);
+		if(dir.exists()) {
+			mav.addObject("imgPath", path);
+		}else {
+			mav.addObject("imgPath", "/images/avatar_yellow.png");
+		}
 		Map map = new HashMap();
 			map.put("url", url);
 			map.put("email", (String)session.getAttribute("login"));			
@@ -94,7 +106,7 @@ public class BlogController {
 		return mav;
 	}
 	
-	@RequestMapping("/postWrite")
+	@RequestMapping("/blog/postWrite")
 	public ModelAndView postWrite(@RequestParam Map m, HttpSession session){
 		// m= 타이틀, url 들어가 있음
 		Map writeMap = (Map)session.getAttribute("writeMap");
@@ -117,103 +129,6 @@ public class BlogController {
 			
 		return mav;
 	}
-	
-	@RequestMapping("/{url}/categories")
-	public ModelAndView categories(@PathVariable(value="url") String url, HttpSession session){
-		String email = (String)session.getAttribute("login");
-		Map map = new HashMap();
-			map.put("url", url);
-			map.put("email", email);
-		HashMap r = bDAO.blogView(map);
-		List<Map> list = bDAO.cate_List(map);
-		ModelAndView mav = new ModelAndView();
-			mav.setViewName("blog_setting");
-			mav.addObject("title", r.get("TITLE"));
-			mav.addObject("section", "blog/settings/categories");
-	 		mav.addObject("url", url);
-	 		mav.addObject("map", r);
-	 		mav.addObject("list", list);
-		return mav;
-		
-	}
-	
-	@RequestMapping("/categoryUpdate.mt")
-	@ResponseBody
-	public Map categoryAdd(@RequestParam Map m, 
-				 HttpSession session){
-			m.put("email", session.getAttribute("login"));
-		System.out.println("넘어온 값 : " + m);
-		
-		Map map = new HashMap();
-		String delete = (String)m.get("cate_delete");
-		String[] arr = delete.split(",");
-		String cate_name_order = (String)m.get("cate_name_order");
-		String[] orderArr = cate_name_order.split(",");
-		String addName = (String)m.get("addcate_name");
-		String[] addcate_name = addName.split(",");
-		String uuid = "";	
-		boolean add = false;
-		boolean orderadd = false;
-		boolean order = false;
-		
-		List<Map> before = bDAO.cateAfterList(m);
-		for(String d : arr){// 삭제해야 할 경우			
-			for(Map li : before){
-				String id = (String)li.get("CATE_ID");
-				if(id.equals(d)){
-					System.out.println( " ID >> "+  d + "의 삭제를 시작한다");
-					Map deleteMap = new HashMap();					
-					deleteMap.put("cate_id", d);
-					bDAO.cateRemover(deleteMap);
-				}
-			}					
-			System.out.println("삭제 완료");
-		}
-		
-		
-		for(int i = 0; i<addcate_name.length; i++){
-			if(addcate_name[i]!=""){ // 카테고리 추가 해야 할 경우 -------------------------------------*
-				uuid += UUID.randomUUID().toString().substring(0, 11) + ",";
-				m.put("addcate_id", uuid.split(",")[i]);
-				m.put("addcate_name", addcate_name[i]);
-				add = bDAO.categoryAdd(m);
-				orderadd = bDAO.categoryAddOrder(m);				
-			}
-		}
-				
-			
-		List<Map> list = bDAO.cateAfterList(m);		
-		Map cateNameOrder = new HashMap();
-		for(int i = 0; i<orderArr.length; i++ ){// 카테고리 순서 설정
-			cateNameOrder.put(orderArr[i], i); // 키 : 카테고리 이름  - 값 : 카테고리 인덱스			
-		}		
-		for(Map li : list){
-			String key = (String)li.get("CATEGORY_NAME");
-			String id = (String)li.get("CATE_ID");
-			if(!key.equals("전체 보기")){
-				Integer idx = (Integer)cateNameOrder.get(key);				
-				Map orderMap = new HashMap();
-					orderMap.put("cate_index", idx);
-					orderMap.put("cate_id", id);
-				order = bDAO.cateOrderUpdate(orderMap);				
-			}			
-		}		
-				
-		if(add){			
-			map.put("result", true);
-			map.put("url", m.get("url"));
-		}else{
-			map.put("result", false);
-			map.put("url", m.get("url"));
-		}
-	 		
- 		return map;		
-	}
-	
-	
-	
-	
-
 	
 	
 	

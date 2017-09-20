@@ -25,4 +25,52 @@
 		update member set bank=#{bank}, account=#{account}, holder=#{holder} where email=#{email}
 	</update>
 	
+	
+	<!-- 수익 계산 (판매포스트)-->
+	<select id="postRevenue" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select NVL(sum(point), 0) as sum from
+		(select b.*,p.email as myemail from 
+		(select * from buy
+		<if test="sysdate != null">
+		 where bdate <![CDATA[ >= ]]> #{first} and bdate <![CDATA[ < ]]> #{last}
+		</if>
+		 ) b left join post p on b.pnum=p.num)
+		  where myemail=#{email}
+	</select>
+	
+	<!-- 수익 계산 (받은 후원)-->
+	<select id="supportRevenue" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select NVL(sum(point), 0) as sum from
+		(select * from support	 where
+		<if test="sysdate != null">
+			 sdate <![CDATA[ >= ]]> #{first} and sdate <![CDATA[ < ]]> #{last} and
+		</if>		
+		  supported=#{email} )
+	</select>
+	
+	<!-- 후원 총 사용 계산 -->
+	<select id="supportUse" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select NVL(sum(point), 0) as sum from
+		(select * from support	 where
+		<if test="sysdate != null">
+			 sdate <![CDATA[ >= ]]> #{first} and sdate <![CDATA[ < ]]> #{last} and
+		</if>		
+		  support=#{email} )
+	</select>
+	
+	<!-- 구매한 포인트 총 사용 계산 -->
+	<select id="buyUse" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select NVL(sum(point), 0) as sum from
+		(select * from buy	 where
+		<if test="sysdate != null">
+			 bdate <![CDATA[ >= ]]> #{first} and bdate <![CDATA[ < ]]> #{last} and
+		</if>		
+		  email=#{email} )
+	</select>
+	
+	
 </mapper>
+
+
+
+

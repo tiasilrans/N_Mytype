@@ -1,5 +1,7 @@
 package controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import model.AdminDAO;
 import model.BlogDAO;
 import model.MemberDao;
 import model.MyDao;
@@ -43,6 +46,9 @@ public class MainController {
 	
 	@Autowired
 	MyDao myDao;
+
+	@Autowired
+	AdminDAO adminDao;
 	
 	@RequestMapping({ "/", "/index.mt" })
 	public ModelAndView welcome(HttpSession session) {
@@ -53,8 +59,9 @@ public class MainController {
 		str.put("first", 1);
 		str.put("last", 6);
 		mav.addObject("listAll",pdao.sublist(pdao.listAll(str)));
+		mav.addObject("notice", adminDao.noticeList("main"));
 		if(session.getAttribute("login") != null){
-			mav.addObject("listLike",pdao.sublist(pdao.listLike(str)));
+			mav.addObject("listLike", pdao.sublist(pdao.listLike(str)));
 		}
 		return mav;
 	}
@@ -73,6 +80,9 @@ public class MainController {
 		Map result = mdao.Login(map);
 		if(result != null){
 			mav.setViewName("redirect:/");
+			if(map.get("post") != null){
+				mav.setViewName("redirect:/"+(String)map.get("url")+"/post/"+(String)map.get("num"));
+			}
 			session.setAttribute("login", map.get("email"));
 			session.setAttribute("blog", bdao.mybloglist(map));
 			System.out.println(myDao.info((String)session.getAttribute("login")));

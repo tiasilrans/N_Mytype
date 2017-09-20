@@ -5,7 +5,7 @@
 
 
 <!--navbar menu-->
-	<nav class="navbar navbar-default nav-sub" style="border-top-style: none; min-height: 45px;">
+	<nav class="navbar navbar-default" id="gg" style="border-top-style: none; min-height: 45px; position: fixed; top: 67px; z-index: 887; width: 100%;">
 		<div class="container">
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse" style="padding: 0px;">
@@ -14,13 +14,12 @@
 					<li class="dropdown gd"><a class="dropdown-toggle" href="#" style="padding: 5px;">구독</a>
 						<ul class="dropdown-menu">						
 							<li><a href="/subscribe/blog.mt">구독한 블로그</a></li>
-							<li><a href="/subscribe/tag.mt">(미완)구독한 태그</a></li>
 						</ul>
 					</li> 
 					<li class="dropdown gd"><a class="dropdown-toggle" href="#" style="padding: 5px; padding-left: 10px; padding-right:10px;">라이브러리</a>
 						<ul class="dropdown-menu">						
-							<li><a href="/my/library/postgood">(미완)좋아요</a></li>
-							<li><a href="/my/library/purchases">(미완)구매 항목</a></li>
+							<li><a href="/my/library/postgood">좋아요</a></li>
+							<li><a href="/my/library/purchases">구매 항목</a></li>
 						</ul>
 					</li> 
 					<li class="dropdown gd"><a class="dropdown-toggle" href="#" style="padding: 5px; padding-left: 10px; padding-right:10px;">포인트</a>
@@ -55,11 +54,9 @@
 <script>
 	$(window).scroll(function() {
 		if ($(this).scrollTop() > 1) {
-			$(".navbar-default").addClass("fixed-me");
-			$(".nav-sub").css("margin-top","70px");
+			$("#gg").css("top","270px");
 		} else {
-			$(".navbar-default").removeClass("fixed-me");
-			$(".nav-sub").css("margin-top","0px");
+			$("#gg").css("top","67px");
 			
 		}
 	});

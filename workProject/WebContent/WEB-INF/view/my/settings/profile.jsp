@@ -50,7 +50,7 @@ label{
 
 
 <form class="form-inline form-horizontal" action="/my/settings/profileExec" method="post" enctype="multipart/form-data">
-	<div class="scard col-xs-offset-1 col-md-offset-1">
+	<div class="scard col-xs-offset-2 col-md-offset-2">
 		<div class="title">
 			<span style="float:left; font-size: 17px; margin-left: 5px;"><b>프로필 편집</b></span>
 		</div>
@@ -60,10 +60,10 @@ label{
 			<div class="input-group">
 				<c:choose>
 					<c:when test="${info.IMAGE eq null }">
-						<img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 75px; width: 75px;">
-					</c:when>
+						<img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 75px; width: 75px; margin-top: -20px;">
+					</c:when>  
 					<c:otherwise>
-						<img src="/images/profile/${info.IMAGE}" style="border-radius: 50%; height: 75px; width: 75px;">
+						<img src="/images/profile/${info.IMAGE}" style="border-radius: 50%; height: 75px; width: 75px; margin-top: -20px;">
 					</c:otherwise>
 				</c:choose>
 			</div>
