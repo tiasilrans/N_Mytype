@@ -18,11 +18,6 @@
 				<a class="nav-link" href="/blog/${url}" style="background-image: none; padding: 0px; background-color:opacity;"><span style="color: white; font-family: sans-serif;"">${blogTitle.TITLE}</span></a>
 			</li>
 			
-			
-			<li class="nav-item" style="margin-left: 40px;">
-				<a class="nav-link" href="/blog/admin/${url}/posts" style="background-image: none; padding: 0px; background-color:opacity;"><span style="color: white; font-family: sans-serif;">포스트</span></a>
-			</li>
-			
 			<li class="nav-item" style="margin-left: 30px; margin-top: -2px;">
 				<i class="material-icons"  style="color: white; float: left; font-size: 25px;">toc</i>
 			</li>
