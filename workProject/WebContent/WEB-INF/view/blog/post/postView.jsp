@@ -181,7 +181,7 @@ input[type=checkbox]:checked+label:before {
 									<p style="display: block;">${obj.CONTENT }</p>
 								</div>
 
-								<div class="comment-action" style="border: none; float: right; margin-right: 240px; margin-top: -20px;">
+								<div class="comment-action" style="border: none; float: right; margin-right: 240px; margin-top: -55px;">
 									<button class="re-reply-write" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
 									<button class="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
 									<button class="reply-delete" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">삭제</button>
@@ -351,7 +351,7 @@ $(".reply-edit").on("click", function(){
 	console.log(editor);
 	var c = p.html();
 	var add_editor = "<textarea class=\"form-control\" data-autosize-on=\"true\" style=\"overflow: hidden; resize: none;" 
-						+ "word-wrap: break-word; height: 80px;\">"+ c.replace(/<br>/gi, "\r\n") +"</textarea>";
+						+ "word-wrap: break-word; height: 80px; width: 700px;\">"+ c.replace(/<br>/gi, "\r\n") +"</textarea>";
 	if(p.css("display") == "none"){   
 	        p.css("display", "block");
 	        editor.css("display", "block");
