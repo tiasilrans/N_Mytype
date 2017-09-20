@@ -52,10 +52,6 @@
  	<select id="one_post" parameterType="java.util.HashMap" resultType="java.util.HashMap">
  		select * from(SELECT * FROM post where num=#{num})p left join member m on m.email=p.email
  	</select>
- 		<!-- 블로그 관리자 모드 - 해당 블로그 포스트 전부 불러오기 -->
- 	<select id="admin_postList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
- 		SELECT p.num, p.title, p.CATEGORY, p.PDATE, p.COUNT FROM post p where url=#{url} order by num desc
- 	</select>
  	
  	
  	<!-- 블로그 내 검색  / 타이틀, 서브타이틀만 검색 / 조회수 정렬 -->

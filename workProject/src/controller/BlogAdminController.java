@@ -32,23 +32,7 @@ public class BlogAdminController {
 	
 	@Autowired
 	SubscribeDAO sDAO;
-	
-	
-	@RequestMapping("/blog/admin/{url}/posts")
-	public ModelAndView blogPosts(@PathVariable(value="url") String url, HttpSession session){
-		Map map = new HashMap();
-			map.put("url", url);
-		HashMap blogTitle = bDAO.blogTitle(map);
-		List<Map> list = pDAO.ad_postList(map);
-		ModelAndView mav = new ModelAndView();
-			mav.setViewName("blog_setting");
-			mav.addObject("title", "포스트");
-		 	mav.addObject("section", "blog/settings/posts");
-		 	mav.addObject("blogTitle", blogTitle);
-		 	mav.addObject("url", url);
-		 	mav.addObject("list", list);
-		return mav;
-	}	
+
 	
 	@RequestMapping("/blog/{url}/subscribers")
 	public ModelAndView blogSubscribers(@PathVariable(value="url") String url, HttpSession session){
