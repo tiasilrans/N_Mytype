@@ -7,7 +7,8 @@
 <link rel="stylesheet" href="/module/nailthumb/jquery.nailthumb.1.1.min.css">
 
 <style>
-section{
+
+body {
 	background: whitesmoke;
 }
 

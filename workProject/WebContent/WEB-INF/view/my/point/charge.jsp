@@ -9,6 +9,10 @@
 
 <style>
 
+body {
+	background: whitesmoke;
+}
+
 label{
 	margin-bottom: 2%;
 	width: 80px;
