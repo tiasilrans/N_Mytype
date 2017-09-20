@@ -324,6 +324,17 @@ input[type=checkbox]:checked+label:before {
 
 
 <script>
+
+// disply f
+function disply(target) {	
+	if(target.css("display") == "none"){   
+		target.css("display", "block");        
+	} else {  
+		target.css("display", "none"); 
+	}	
+};
+
+
 $("#sub").on("click", function() {
 	
 	$.ajax({
@@ -349,16 +360,12 @@ $(".reply-edit").on("click", function(){
 	var p = $(this).parent().prev().children('p');	
 	var editor = $(this).parent().next();
 	console.log(editor);
+	disply(p);
+	disply(editor);
 	var c = p.html();
 	var add_editor = "<textarea class=\"form-control\" data-autosize-on=\"true\" style=\"overflow: hidden; resize: none;" 
 						+ "word-wrap: break-word; height: 80px; width: 700px;\">"+ c.replace(/<br>/gi, "\r\n") +"</textarea>";
-	if(p.css("display") == "none"){   
-	        p.css("display", "block");
-	        editor.css("display", "block");
-	} else {  
-	        p.css("display", "none"); 
-	        editor.css("display", "none");
-	}  
+	
 
 	$(this).parent().prev().append(add_editor);
 
