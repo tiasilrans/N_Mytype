@@ -214,7 +214,16 @@ footer {
 						 	<div style="color: #a6a6a6;">          
 								<span style="font-size: 12px;">구독자</span> <span style="font-size: 12px;">0</span> <span style="font-size: 12px;">포스트</span> <span style="font-size: 12px;">${map.totalPostCnt }</span>
 							</div>
-							<a href="#" onclick="subscribe();"><button class="button button1 subscribe-bt" style="margin-top: 10px;">구독하기</button></a>
+							<c:if test="${sessionScope.login ne map.EMAIL }">
+							<c:choose>
+							<c:when test="${subCk.ADDRESS ne map.URL }">
+								<a href="#" onclick="subscribe();" id="s-bt"><button class="button button1 subscribe-bt" style="margin-top: 10px;">구독하기</button></a>
+							</c:when>
+							<c:otherwise>	
+								<a href="#" onclick="cancel();" id="s-cbt"><button class="button button1 subscribe-cbt" style="margin-top: 10px;">구독취소</button></a>
+							</c:otherwise>
+							</c:choose>
+							</c:if>
 						</div>
 						<div class="media-right">
 							<img
@@ -303,6 +312,16 @@ footer {
  </div>
   
 <script>
+	// disply
+	function disply(target) {	
+		if(target.css("display") == "none"){   
+			target.css("display", "block");        
+		} else {  
+			target.css("display", "none"); 
+		}	
+	};
+
+
 	//app-menu-disply
 	$("#app-menu-toggler").on("click", function(){
 		var menu = $("#app-menu");
@@ -325,14 +344,37 @@ footer {
 		}).done(function(result) {
 			if(result.result){
 				window.alert("구독 목록에 추가되었습니다.");
+				location.reload();
 			}
 		});
 		
         return true;
-    } else {
-        return false;
-    }
-};
+	    } else {
+	        return false;
+	    }
+	};
+	
+	
+	//subscribe-cbt
+	function cancel(){
+    if(confirm("이 블로그를 구독취소 하시겠습니까?")){    	
+    	$.post({
+			url : "/subscribe/cancel.mt",
+			data : {
+				"url" : "${map.URL}"
+			}
+		}).done(function(result) {
+			if(result.result){
+				window.alert("구독취소 되었습니다.");
+				location.reload();
+			}
+		});
+		
+        return true;
+	    } else {
+	        return false;
+	    }
+	};
 	
 	
 
