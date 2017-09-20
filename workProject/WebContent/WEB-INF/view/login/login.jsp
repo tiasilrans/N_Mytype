@@ -21,6 +21,24 @@
 	height: 40px;
 }
 
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.button1 {
+	background-color: #303030;
+}
+
 
 </style>   
 
@@ -33,7 +51,7 @@
 				<br/>				
 				<div class="form-group row">
 						<input class="form-control" type="text"
-							placeholder="e-mail" name="email" id="login-email" required />
+							placeholder="이메일" name="email" id="login-email" required />
 				</div>
 				
 				<div class="form-group row">
@@ -48,9 +66,9 @@
 				<div align="center" class="row">
 
 					<div class="form-group" align="right" style="margin-right: 45px;">
-					<a>비밀번호 찾기</a>｜<a href="join.mt">회원가입</a>
+					<a style="color: black;">비밀번호 찾기</a>｜<a style="color: black; href="join.mt">회원가입</a>
 					</div>
-					<button id="login-sbt" type="submit" class="btn">로그인</button>
+					<button id="login-sbt" type="submit" class="button button1">로그인</button>
 				</div>
 			</form>
 		</div>

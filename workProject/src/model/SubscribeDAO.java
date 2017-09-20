@@ -100,7 +100,7 @@ public class SubscribeDAO {
 		}
 	}
 	
-	// �ش� ��α��� ������ ����Ʈ
+	// 블로그 설정 구독자들
 	public List<Map> blogSubscribers(Map map){		
 		List<Map> list = new ArrayList<>();
 		SqlSession session = factory.openSession();

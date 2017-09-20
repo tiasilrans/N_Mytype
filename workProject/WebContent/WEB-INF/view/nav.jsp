@@ -22,7 +22,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/"><img src="/images/MTtitle.png" style="margin-top: -5px;"></a>
+				<a class="navbar-brand" href="/"><img src="/images/MTtitle.png" style="margin-top: -3px;"></a>
 			</div>
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse">
@@ -36,15 +36,15 @@
 						<!-- 블로그 리스트 -->				
 						<c:if test="${sessionScope.blog ne null }">
 						<c:forEach var="blog" items="${sessionScope.blog}" begin="0" end="${sessionScope.blog.size()}">
-							<li style="margin-left: 25px;"><a style="font-weight: bold;" href="/blog/${blog.URL}">${blog.TITLE}</a></li>
-							<li style="margin-left: 25px;"><a href="/blog/admin/${blog.URL }/posts">포스트 <i class="material-icons" style="margin-left: 10px; float: right; font-size: 23px;">mode_edit</i></a></li>  
-							<li style="margin-left: 25px;"><a href="/blog/${blog.URL}/categories">카테고리</a></li> 
-							<li style="margin-left: 25px;"><a href="/blog/${blog.URL}/subscribers">구독자</a></li>   
-							<li style="margin-left: 25px;"><a href="/blog/${blog.URL}/setting">설정</a></li>  
+							<li><a style="font-weight: bold; background-color: #80c1ff; color: white;" href="/blog/${blog.URL}">${blog.TITLE}</a></li>
+							<li><a href="/blog/admin/${blog.URL }/posts"> <i class="material-icons" style="color: #999999; font-size: 23px; float: left;">mode_edit</i> 포스트</a></li>  
+							<li><a href="/blog/${blog.URL}/categories"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">toc</i>  카테고리</a></li> 
+							<li><a href="/blog/${blog.URL}/subscribers"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">face</i>  구독자</a></li>   
+							<li><a href="/blog/${blog.URL}/setting"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">settings</i>  설정</a></li>  
 						</c:forEach>
 						</c:if>     
-							<li><a href="/blog/create"><i class="glyphicon glyphicon-plus" style="margin-right: 7px;"></i> 새 블로그 만들기</a></li>
-						</ul></li> 
+							<li><a href="/blog/create"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">add</i>  새 블로그 만들기</a></li>
+						</ul></li>
 				</ul>  
 			   
 				<ul class="nav navbar-nav navbar-right" style="margin-right: 13px;">
