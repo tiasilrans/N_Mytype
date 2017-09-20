@@ -110,15 +110,22 @@ footer {
 
 .div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
 
+.srbox {
+	border: 1px solid;
+	border-color: #d9d9d9;
+	width: 60%;
+	padding: 0px;     
+}
+
 </style>  
 
 <div class="row" align="center">
 	<div class="col-xs-0 col-md-1"></div>
 	<div class="col-xs-12 col-md-10">
 	<c:if test="${searchMode}">
-			<div class="search-result" align="left" style="padding: 1.75rem; margin-top: .5rem;">
-				<div style="font-size: 14;">검색결과</div>
-				<div style="font-size: 20;">${keyword }</div>
+			<div class="search-result srbox" align="left" style="padding: 1.75rem; margin-top: .5rem; margin-left: -550px; margin-bottom: 40px;">
+				<div style="font-size: 12; font-family: sans-serif; color: #999999;">검색결과</div>
+				<div style="font-size: 20; font-family: sans-serif;">${keyword }</div>
 			</div>
 		</c:if>
 		<div class="row">

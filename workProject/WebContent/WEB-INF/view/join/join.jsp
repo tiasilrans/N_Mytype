@@ -6,7 +6,7 @@
 	background-color :#fcfcfc;
 	margin: 20px;
 	width: auto%;
-	height: auto;
+	height: auto%;
 	padding: 20px;
 }
 
