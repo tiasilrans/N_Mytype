@@ -119,7 +119,7 @@ public class PostController {
 		List<Map> catelist = pdao.categoryList(m);		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("post");
-			mav.addObject("title", "����Ʈ����");
+			mav.addObject("title", "asdas");
 			mav.addObject("map", m);
 			mav.addObject("catelist", catelist);
 			session.setAttribute("updateMap", m);
