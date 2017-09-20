@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import model.BlogDAO;
 import model.PostDao;
+import model.SubscribeDAO;
 
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -30,6 +31,9 @@ public class BlogController {
 	
 	@Autowired
 	PostDao pDAO;
+	
+	@Autowired
+	SubscribeDAO sDAO;
 	
 	@RequestMapping("/blog/create")
 	public ModelAndView newBlog(){
@@ -102,6 +106,7 @@ public class BlogController {
 			mav.addObject("pNum", tp);
 			mav.addObject("list", pDAO.blogPostList(pageMap)); // 블로그 메인 포스트 리스트
 			mav.addObject("category", list);
+			mav.addObject("subCk", sDAO.subCheck(map));
 			
 		return mav;
 	}
