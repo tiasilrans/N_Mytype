@@ -84,8 +84,11 @@
 	</div>
 </div>		
 		<div class="section">
+		
+		
+		
 
-			<div class="">
+			<div class="section" style="margin-bottom: 60px; margin-left: 40px;">
 				<div align="center">
 			<img src="/images/first.png" >
 				</div>
