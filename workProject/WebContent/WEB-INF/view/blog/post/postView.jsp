@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <link rel="stylesheet" href="/css/postviewcss.css">
+
 <style>
 input[type=checkbox] {
 	display: none;
@@ -122,12 +123,14 @@ input[type=checkbox]:checked+label:before {
 							<div class="charged-content">${post.CCONTENT }</div>
 						</c:when>
 						<c:otherwise>
+						<c:if test="${ post.PRICE ne null || post.PRICE > 0}">
 							<div class="support" style="display: table; width: 100%;">
 								<div class="message"
 									style="display: table-cell; vertical-align: middle; padding-right: .75rem; line-height: 1.25; font-family: sans-serif; color: black; font-weight: 800px; width: 55%;">
 									<span style="font-family: sans-serif; color: black; font-size: 15px;">
 									<span style="font-weight: bold ;font-family: sans-serif; color: red; font-size: 18px;" id="price">
-									${post.PRICE}</span> point 구매하여 나머지 내용 보기
+									${post.PRICE}</span>
+									 point 구매하여 나머지 내용 보기
 									</span>
 								</div>
 								
@@ -143,10 +146,11 @@ input[type=checkbox]:checked+label:before {
 								</div>
 								
 							</div>
+						</c:if>
 						</c:otherwise>
 					</c:choose>
 				</div>
-				<c:if test="${ sessionScope.login ne post.EMAIL }">
+				<c:if test="${ sessionScope.login ne post.EMAIL && post.EMAIL ne 'MyType' }">
 				<div class="support" style="display: table; width: 100%;">
 					<div class="message"
 						style="display: table-cell; vertical-align: middle; padding-right: .75rem; line-height: 1.25; font-family: sans-serif; color: black; font-weight: 800px; width: 55%;">
@@ -155,7 +159,7 @@ input[type=checkbox]:checked+label:before {
 							창작활동을 응원하고 싶으세요?</span>
 					</div>
 					<div style="display: table-cell;">
-						<button class="button button1">후원하기</button>
+						<button class="button button1" id="sptbtn" data-toggle="modal" data-target="#spt-form">후원하기</button>
 					</div>
 				</div>
 				</c:if>
@@ -312,6 +316,42 @@ input[type=checkbox]:checked+label:before {
     </div>
   </div>
   </form>
+
+<!-- 후원 modal  -->
+<form action="/support.mt" onsubmit="return nbcheck();">
+<input type="hidden" name="num" value="${post.NUM}" />
+<input type="hidden" name="email" value="${post.EMAIL}" />
+<input type="hidden" name="url" value="${post.URL}" />
+<input type="hidden" name="title" value="${post.TITLE}" />
+  <div class="modal fade" id="spt-form" role="dialog">
+    <div class="modal-dialog" style="width: 450px;">
+	    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">후원하기 - <span style="color: blue;">${post.TITLE}</span></h4>
+        </div>
+        
+        <div class="modal-body">
+				<div class="row"><div class="col-md-6" style="vertical-align: middle;">보유 포인트</div><div class="col-md-6" style="vertical-align: middle;"><span style="font-size: 15 ;"><fmt:formatNumber value="${mypoint.SUM}" pattern="#,###"/></span></div></div>
+				<hr/>
+				<div class="row"><div class="col-md-6">후원할 포인트</div><div class="col-md-6"><span style="font-size: 15 ;"><input name="price" id="nb" type="number" min="1" max="9999999"/></span></div></div>
+				<hr/>
+				<div class="row"><div class="col-md-6">남은 포인트</div><div class="col-md-6"><span id="ap" style="font-size: 15 ;"><fmt:formatNumber value="${mypoint.SUM}" pattern="#,###"/></span></div></div>
+        </div>
+        <div class="modal-footer">
+          		<div class="form-group row" align="center">
+				<div align="center" class="row">
+					<button class="button button1" id="login-sbt" type="submit"  style="width: 360px; height: 60px;">후원하기</button>
+				</div>
+		</div>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+  </form>
   
 <!-- 로그인창 modal  -->
   <div class="modal fade" id="login-form" role="dialog">
@@ -353,10 +393,41 @@ input[type=checkbox]:checked+label:before {
     </div>
   </div>
 
+<script>
+Number.prototype.format = function(){
+    if(this==0) return 0;
+ 
+    var reg = /(^[+-]?\d+)(\d{3})/;
+    var n = (this + '');
+ 
+    while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2');
+ 
+    return n;
+};
+</script>
 
+<script>
+function nbcheck(){
+	var nb = $("#nb").val();
+	var p = '${mypoint.SUM}';
+	if(nb == null){
+		return false;
+	}
+	else if( nb > 0 && p-nb >= 0 ){
+		return true;
+	}else{
+		window.alert('정확한 값을 입력하시오');
+		return false;
+	}
+}
 
-
-
+$("#nb").on("keyup", function(){
+	var nb = $("#nb").val();
+	var p = '${mypoint.SUM}';
+	$("#ap").html((p-nb).format());
+	
+});
+</script>
 <script>
 
 // disply f

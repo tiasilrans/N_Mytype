@@ -380,6 +380,22 @@ public class PostDao {
 		}
 	}
 	
+	public boolean surpport(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			int i = session.insert("point.support", map);
+			i = session.insert("point.supportlog", map);
+			i = session.insert("point.supportedlog", map);
+			return true; 
+		}catch(Exception e){
+			System.out.println("PostSupport Error");
+			e.printStackTrace();
+			return false;
+		}finally{
+			session.close();
+		}
+	}
+	
 	public List<Map> blogSearch(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();

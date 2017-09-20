@@ -35,7 +35,7 @@
 	
 	
 	<!-- ================포스트 구매 관련 SQL======================= -->
-	<!-- 포인트 구매시 포인트 로그에 추가-->
+	<!-- 포스트 구매시 포인트 로그에 추가-->
 	<insert id="buypostlog" parameterType="java.util.HashMap">
 		insert into point(num, email, use, cause, ptdate) values(point_seq.nextval, #{myemail}, #{price}, #{btitle}, sysdate)
 	</insert>
@@ -45,6 +45,19 @@
 	
 	<insert id="buypost" parameterType="java.util.HashMap">
 		insert into buy(email, pnum, bdate, point) values(#{myemail}, #{num}, sysdate, #{price})
+	</insert>
+	
+	<!-- ================포스트 후원 관련 SQL======================= -->
+	<!-- 포스트 후원시 포인트 로그에 추가-->
+	<insert id="supportlog" parameterType="java.util.HashMap">
+		insert into point(num, email, use, cause, ptdate) values(point_seq.nextval, #{myemail}, #{price}, #{support}, sysdate)
+	</insert>
+	<insert id="supportedlog" parameterType="java.util.HashMap">
+		insert into point(num, email, charge, cause, ptdate) values(point_seq.nextval, #{email}, #{price}, #{supported}, sysdate)
+	</insert>
+	
+	<insert id="support" parameterType="java.util.HashMap">
+		insert into support(num, support, supported, point, sdate) values(support_seq.nextval,#{myemail}, #{email}, #{price},sysdate)
 	</insert>
 	
 	
