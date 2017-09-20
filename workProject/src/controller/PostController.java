@@ -55,7 +55,7 @@ public class PostController {
 		
 		return map;
 	}
-	 
+	
 	@RequestMapping("/{url}/post/{num}")
 	public ModelAndView postView(@PathVariable(value="url") String url,
 											@PathVariable(value="num") int num, HttpSession session){
