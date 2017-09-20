@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<div class="content" style="margin-top: 100px; margin-left: 100px; padding: 0px;">
+	<div class="container">
+		<div class="header">
+			<div class="category" style="margin-bottom: 100px;">
+				<a href="">${post.CATEGORY }</a>
+			</div>
+			<h1 class="title">${post.TITLE }</h1>
+			<div class="subtitle">${post.SUBTITLE }</div>
+			<div class="profile">
+				<div class="media-profile">
+                        <a class="user-avatar-sm" href="#" data-user-modal="1" data-user-id="512379" data-image="https://cdn.postype.com/assets/img/avatar/avatar_pink.png" data-title="${post.NICKNAME }" data-content="">
+                            <img class="user-avatar-sm" src="https://cdn.postype.com/assets/img/avatar/avatar_pink.png" alt="${post.NICKNAME }">
+                        </a>
+                        <div class="media-body">
+                            <a class="media-title" href="#" data-user-modal="1" data-user-id="512379" data-image="https://cdn.postype.com/assets/img/avatar/avatar_pink.png" data-title="${post.NICKNAME }" data-content="">
+                                노와키                            </a>
+                            <div class="media-text">
+                                <time class="mr-2">2017.09.12</time>
+                                <span class="view-count">조회 <span class="number">17</span></span>
+                            </div>
+                        </div>
+                    </div>
+			</div>
+		</div>
+	
+	</div>
+
+
+</div>
