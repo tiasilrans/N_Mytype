@@ -5,14 +5,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <link rel="stylesheet" href="/css/searchcss.css">  
 <link rel="stylesheet" href="/css/my.css">
-<<<<<<< HEAD
-=======
 <script src="/module/nailthumb/jquery.nailthumb.1.1.min.js"></script>
 <link rel="stylesheet" href="/module/nailthumb/jquery.nailthumb.1.1.min.css">
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 
 <style>
-<<<<<<< HEAD
+
 .card {
     position: relative;
     display: block;
@@ -55,7 +52,7 @@
 
 .confooter{
 	padding-top: 7px;
-=======
+}
 
 .card {
     position: relative;
@@ -99,7 +96,6 @@
 
 .confooter{
 	padding-top: 5px;
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 }
 
 .confooter-count{
@@ -116,25 +112,16 @@
 	<hr style="margin-top: 10px;"/>
 </div>
 
-<div style="width: 59%;" align="left">
-<<<<<<< HEAD
 <div class="row">
 <div align="left" style="width: 100%;">
-<c:forEach var="all" items="${list}" begin="0" end="${list.size() < 11 ? list.size() : 11}" varStatus="vs">
-			<div class="incard" style="clear: right;" >
-				<div id="post">
-				
-					<!-- head -->
-					<div class="conhead">
-=======
 	<div class="row">
 		<div align="left" style="width: 100%;">
-			<c:forEach var="all" items="${list }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
+			<c:forEach var="all" items="${list }" begin="0" end="${list.size() < 8 ? list.size() : 8}" varStatus="vs">
 				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
 						<div>${all.NICKNAME }</div>
-						<div style="color:#909090; font-size: 12px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" style="text-decoration: none; color:#909090" href="/blog/${all.URL }">${all.URL }</a></div>
+						<div style="color:#909090; font-size: 12px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="-title-blog" style="text-decoration: none; color:#909090" href="/blog/${all.URL }">${all.URL }</a></div>
 					</div>
 					
 	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
@@ -164,7 +151,6 @@
 	                
 	                <!-- footer -->
 					<div class="confooter">
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 						<c:choose>
 						<c:when test="${all.HEART == null}">
 							<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
@@ -173,15 +159,7 @@
 							<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
 						</c:otherwise>
 						</c:choose>
-<<<<<<< HEAD
-						<div class="conhead-title">
-							<span class="conhead-title-name"><b>${all.NICKNAME }</b></span><br/>
-							<span class="conhead-title-date"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/></span> |
-							<span><a class="conhead-title-blog" href="/blog/${all.URL }">${all.URL }</a></span>
-						</div>	
-=======
 							<span class="confooter-count heart-${all.NUM}">${all.GOOD }</span>
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 					</div>
 				</div>
 			
@@ -192,6 +170,7 @@
 			</c:forEach>
 		</div>
 	</div>
+</div>
 </div>
 
 <ul class="pagination">

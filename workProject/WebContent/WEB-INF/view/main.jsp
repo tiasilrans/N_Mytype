@@ -7,14 +7,11 @@
 <link rel="stylesheet" href="/module/nailthumb/jquery.nailthumb.1.1.min.css">
 
 <style>
-<<<<<<< HEAD
 section{
 	background: whitesmoke;
 }
-=======
 
 a{ text-decoration: none; }
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 
 .logo-frame{
 	width:100%;
@@ -83,7 +80,7 @@ a{ text-decoration: none; }
 	border-radius: 5px;
 	
 }
-<<<<<<< HEAD
+
 .conhead{
 	width : 100%;
 	height: 20%;
@@ -143,8 +140,6 @@ a{ text-decoration: none; }
 	font-size: 17;
 	color : red;
 }
-=======
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 
 .title{
 	padding-top :15px;
@@ -213,7 +208,7 @@ a{ text-decoration: none; }
 </style>   
 <div class="row">
 <div class="col-md-2" style="margin-left: 40px;"></div>
-<div class="col-md-7" style="margin-left: auto; margin-bottom: 100px;">
+<div class="col-md-8" style="margin-left: auto; margin-bottom: 100px;">
 
 			<!-- 메인쪽 로고 부분 -->
 			  <div class="container col-md-4" style="width:600px; height: 350px; " >
@@ -286,24 +281,10 @@ a{ text-decoration: none; }
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
 						<div>${all.NICKNAME }</div>
-<<<<<<< HEAD
-						<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${all.URL }">${all.URL }</a></div>
-=======
 						<div style="color:#909090; font-size: 12px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="-title-blog" style="text-decoration: none; color:#909090" href="/blog/${all.URL }">${all.URL }</a></div>
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 					</div>
 					
 	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
-<<<<<<< HEAD
-		                	<c:if test="${all.IMG.length() > 10}">
-		                		<div class="nailthumb-column-metadata" id="thumbnail">
-		                			${all.IMG }
-		                		</div>  
-	                		</c:if>
-						<a href="/${all.URL}/post/${all.NUM}" style="font-size: 15px; text-decoration: none; color: #333333;padding-bottom: 5px;">
-							${all.TITLE }
-						</a>
-=======
 						<a href="/${all.URL}/post/${all.NUM}" style="font-size: 15px; text-decoration: none; color: #333333; padding-bottom: 5px;">
 							${all.TITLE }
 						
@@ -313,7 +294,6 @@ a{ text-decoration: none; }
 		                		</div>  
 	                	</c:if>
 	                	</a>
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
 							${all.FCONTENT }
 						</a>
