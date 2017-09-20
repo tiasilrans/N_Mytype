@@ -228,8 +228,8 @@ input[type=checkbox]:checked+label:before {
 										</div>																				
 									</div>
 									<div class="edit-bt" style="float: right; margin-right: 295px; margin-top: 10px;">
-										<button class="button button3" style="margin-top: -10px;">취소</button>
-										<button class="button button2">저장</button>
+										<button class="button button3 edit-cancel" style="margin-top: -10px;">취소</button>
+										<button class="button button2 edit-update">저장</button>
 									</div>
 								</div>
 							</div>					
@@ -367,6 +367,15 @@ function disply(target) {
 	}	
 };
 
+// comment-action margin
+function margin_change(target) {
+	if(target.css("margin-top") == "-55px"){   
+		target.css("margin-top", "-105px");        
+	} else {  
+		target.css("margin-top", "-55px"); 
+	}		
+};
+
 
 $("#sub").on("click", function() {
 	
@@ -392,9 +401,11 @@ $("#sub").on("click", function() {
 $(".reply-edit").on("click", function(){	
 	var p = $(this).parent().prev().children('p');	
 	var editor = $(this).parent().next();
+	var action = $(this).parent();
 	console.log(editor);
 	disply(p);
 	disply(editor);
+	margin_change(action);
 	var c = p.html();
 	var add_editor = "<textarea class=\"form-control\" data-autosize-on=\"true\" style=\"overflow: hidden; resize: none;" 
 						+ "word-wrap: break-word; height: 80px; width: 700px; margin-top: 8px;\">"+ c.replace(/<br>/gi, "\r\n") +"</textarea>";
@@ -414,6 +425,30 @@ $(".re-reply-write").on("click", function(){
 	
 	
 });
+
+
+//edit-cancel
+$(".edit-cancel").on("click", function(){
+	$(this).parent().parent().prev().prev().children('textarea').remove();
+	var p = $(this).parent().parent().prev().prev().children('p');	
+	var editor = $(this).parent().parent();
+	var action = $(this).parent().parent().prev();
+	disply(p);
+	disply(editor);
+	margin_change(action);
+});
+
+
+//edit-update
+$(".edit-update").on("click", function(){
+	 
+	
+	
+	
+});
+
+
+
 
 
 </script>
