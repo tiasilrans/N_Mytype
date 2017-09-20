@@ -76,11 +76,11 @@
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
 						<div>${all.NICKNAME }</div>
-						<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${all.URL }">${all.URL }</a></div>
+						<div style="color:#909090; font-size: 12px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" style="text-decoration: none; color:#909090" href="/blog/${all.URL }">${all.URL }</a></div>
 					</div>
 					
 	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
-						<a href="/${all.URL}/post/${all.NUM}" style="font-size: 15px; text-decoration: none; color: #333333;padding-bottom: 5px;">
+						<a href="/${all.URL}/post/${all.NUM}" style="font-size: 15px; text-decoration: none; color: #333333; padding-bottom: 5px;">
 							${all.TITLE }
 						
 						<c:if test="${all.IMG.length() > 10}">
