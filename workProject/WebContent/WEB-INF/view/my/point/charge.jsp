@@ -75,11 +75,11 @@ body {
 		</div> <br/><br/>
 		
 		<div class="card-block" style="float:left; padding-left:0; padding-right:60px;">
-			<label style="color: #606060;">이름</label>
+			<label style="color: #606060; width: 42px;">이름</label>
 			<input type="text" name="name" class="form-control" style="width:70%;" 
-			 <c:if test="${info.NICKNAME ne null }"> value="${info.NICKNAME }" </c:if> /> <br/>
-		
-			<label style="color: #606060;">연락처</label>
+			 <c:if test="${info.NICKNAME ne null }"> value="${info.NICKNAME }" </c:if> />
+			 <br/>
+			<label style="color: #606060; padding-top: 3px;">연락처</label>
 			<input type="text" name="phonenumber" class="form-control" style="width:70%;" />
 		</div><br/>
 			
@@ -121,7 +121,7 @@ body {
 			</div>
 		</div> <br/>
 	
-		<div class="card-blcok " style="margin-bottom: 0px;">
+		<div>
 			<span>
 				<label style="width:100px; margin-top:10px; margin-left: 15px;">
 					<b>충전 포인트 : </b>
