@@ -172,7 +172,7 @@ footer {
 											<div class="media-left" >
 											 	<i class="material-icons" style="font-size: 15px; color: #808080; float: left;">chat_bubble_outline</i>
 											 	<div class="media-body">
-											 		<span style="color: #808080; font-size: 12px; margin-left: 2px;">0</span>
+											 		<span style="color: #808080; font-size: 12px; margin-left: 2px;">${obj.replyCount }</span>
 												</div>
 											</div>
 										</div>						
@@ -252,7 +252,7 @@ footer {
 						<h6 align="left" style="color: black;">카테고리</h6>
 						<ul class="Kategorie nav row">
 							<li class="Kategorie nav-item"><a class="Kategorie nav-link"
-								href="/blog/blogView" style="color: black; font-weight :light;" align="left">
+								href="/blog/${map.URL }" style="color: black; font-weight :light;" align="left">
 									전체 보기 <span class="post-count">${map.totalPostCnt }</span>
 							</a></li>
 							<c:forEach var="obj" items="${category }">

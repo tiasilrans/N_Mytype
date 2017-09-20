@@ -46,7 +46,20 @@ public class ReplyDAO {
 	}
 	
 	
-	
+	public int postReplyCount(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			int r = session.selectOne("reply.post_reply_count", map);
+			return r;
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("postReplyCount ERROR : " + e.toString());
+			return 0;
+		}finally {
+			session.close();
+		}
+		
+	}
 	
 	
 	

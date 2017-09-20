@@ -17,5 +17,11 @@
   		SELECT * FROM(SELECT * FROM reply where pnum=#{num} order by PGNUM desc)r 
   				order by r.num asc
   	</select>
+  	
+  	<!-- 블로그 메인 뷰 / 해당 포스트의 댓글 수 -->
+  	<select id="post_reply_count" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+  		SELECT COUNT(*) FROM reply where pnum=#{num}
+  	</select>
+  	
   
   </mapper>
