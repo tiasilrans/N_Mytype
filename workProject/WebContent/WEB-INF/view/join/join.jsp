@@ -39,8 +39,8 @@
 
 </style>   
 <div align="center" class="row">
-<div class="col-xs-0 col-md-4"></div>
-<div class="col-xs-12 col-md-4">
+<div class="col-xs-0 col-sm-1 col-md-3 col-lg-3"></div>
+<div class="col-xs-12 col-sm-10 col-md-6 col-lg-6">
 	<div class="first" style= "position: relative; padding: 4rem 3rem; background-image: url('/images/img.jpg');
     background-size: 1500px 500px;">	
  	<div class="form-group joinbox row">
@@ -79,11 +79,18 @@
 					<button id="sbt" type="submit" class="btn" style="display: none;" disabled>회원가입</button>
 				</div>
 			</form>
+<<<<<<< HEAD
 		</div>
 		
 </div>
 	</div>		
 		<div class="section" style="margin-bottom: 60px; margin-left: 40px;">
+=======
+		</div>		
+	</div>
+</div>		
+		<div class="section">
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 			<div class="">
 				<div align="center">
 			<img src="/images/first.png" >
@@ -128,7 +135,7 @@
 		
 
 	
-	<div class="col-xs-0 col-md-4"></div>
+	<div class="col-xs-0 col-sm-1 col-md-3 col-lg-3"></div>
 </div>
 
 <c:if test="${uuid ne null }">
