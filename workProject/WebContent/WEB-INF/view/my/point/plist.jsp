@@ -15,15 +15,13 @@ label{
 	width: 90px;
 }
 
-.scard {
-    position: relative;
-    display: block;
-    width : 800px;
-	height: 450px;
-    margin-bottom: .75rem;
-    background-color: #fff;
-    border-radius: .25rem;
-    border: 1px solid rgba(0,0,0,.125);
+.box {
+
+	background-color:white;
+	border-radius:10px;
+	margin: 20px;
+	width: 70%;
+	padding: 20px;
 }
 
 .card-block {
@@ -64,8 +62,10 @@ ul li a:hover, ul li a:focus {
 
 </style>
 
-<form class="form-inline form-horizontal">
-	<div class="scard col-xs-offset-2 col-md-offset-2">
+
+<div align="center">
+	<div class="col-xs-0 col-md-2"></div>
+	<div class="box col-xs-12 col-md-8 col-lg-12">
 		<div class="title" style="margin-bottom: 40px;">
 			<span style="float:left; font-size: 18px; margin-left: 5px;"><b>사용내역</b></span>
 			<span class="col-md-6" style="float:right;">
@@ -77,7 +77,7 @@ ul li a:hover, ul li a:focus {
 					${pointsum.SUM }
 				</fmt:formatNumber></label> <b>Point</b>
 			</span>
-		</div><hr/>
+		</div>
 		
 		<div align="center" style="min-height: 227px;">
 			<table class="table type07" style="width: 80%;">
@@ -133,7 +133,7 @@ ul li a:hover, ul li a:focus {
 		</div>
 	
 	</div>
-</form>
+</div>
 
 
 
