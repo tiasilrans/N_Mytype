@@ -20,7 +20,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
-<body style="background-color: gray;">
+<body style="background-color: #cce6ff;"> 
 	<nav>
 		<tiles:insertAttribute name="nav"/>
 		<tiles:insertAttribute name="nav2"/>
