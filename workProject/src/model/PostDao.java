@@ -126,6 +126,23 @@ public class PostDao {
 	}
 	
 	
+	public int postLikeCount(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			int r = session.selectOne("post.post_Like_count", map);
+			return r;
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("postLikeCount ERROR : " + e.toString());
+			return 0;
+		}finally {
+			session.close();
+		}
+		
+	}
+	
+	
+	
 	public List<Map> blogPostList(Map map){		
 		List<Map> list = new ArrayList<>();
 		SqlSession session = factory.openSession();
@@ -345,6 +362,21 @@ public class PostDao {
 			System.out.println("PostBuyPost Error");
 			e.printStackTrace();
 			return false;
+		}finally{
+			session.close();
+		}
+	}
+	
+	public List<Map> blogSearch(Map map){
+		SqlSession session = factory.openSession();
+		List<Map> list = new ArrayList<>();
+		try{
+			list = session.selectList("post.search", map);
+			return list; 
+		}catch(Exception e){
+			System.out.println("blogSearch Error");
+			e.printStackTrace();
+			return list;
 		}finally{
 			session.close();
 		}

@@ -179,7 +179,7 @@ input[type=checkbox]:checked+label:before {
 				<div class="body blog-info"
 					style="margin-bottom: 30px; margin-top: 30px;">
 					<div class="media" style="margin-left: 95px;">
-						<img src="/images/avatar_yellow.png"
+						<img src="${imgPath }"
 							style="border-radius: 17%; height: 70px; width: 70px;">
 					</div>
 					<div class="media-body"></div>
@@ -218,6 +218,7 @@ input[type=checkbox]:checked+label:before {
 									<button class="re-reply-write" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
 									<button class="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
 									<button class="reply-delete" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">삭제</button>
+									<input type="hidden" value="${obj.NUM }" />
 								</div>
 								<div class="comment-editor" style="display: none;">
 									<div style="float: left;">				
@@ -228,8 +229,8 @@ input[type=checkbox]:checked+label:before {
 										</div>																				
 									</div>
 									<div class="edit-bt" style="float: right; margin-right: 295px; margin-top: 10px;">
-										<button class="button button3" style="margin-top: -10px;">취소</button>
-										<button class="button button2">저장</button>
+										<button class="button button3 edit-cancel" style="margin-top: -10px;">취소</button>
+										<button class="button button2 edit-update">저장</button>
 									</div>
 								</div>
 							</div>					
@@ -326,7 +327,7 @@ input[type=checkbox]:checked+label:before {
           		<div class="form-group row" align="center">		
 			<form action="/loginExec.mt?post=post" method="post">		
 			<input type="hidden" name="num" value="${post.NUM}" />
-			<input type="hidden" name="url" value="${post.URL}" />			
+			<input type="hidden" name="url" value="${post.URL}" />
 				<div class="form-group row">
 						<input class="form-control" type="text"
 							placeholder="e-mail" name="email" id="login-email" required />
@@ -367,20 +368,28 @@ function disply(target) {
 	}	
 };
 
+// comment-action margin
+function margin_change(target) {
+	if(target.css("margin-top") == "-55px"){   
+		target.css("margin-top", "-105px");        
+	} else {  
+		target.css("margin-top", "-55px"); 
+	}		
+};
 
-$("#sub").on("click", function() {
-	
+
+$("#sub").on("click", function() {	
 	$.ajax({
 		url : "/${post.NUM }/peply.mt",
 		data : {			
-			"content" : $("#mention").val(),			
+			"content" : $("#mention").val().replace(/\n/g, "<br>"),			
 			"secret" : $("#secret").prop("checked"),
 			"url" : "${post.URL}"			
 		}
 	}).done(function(result) {				
 		if (result.result) {
 			window.alert("댓글 작성 완료");
-			location.href = "/"+result.url+"/post/${post.NUM }";
+			location.reload();
 		}else{				
 			window.alert("댓글 작성 실패");
 		}
@@ -392,9 +401,11 @@ $("#sub").on("click", function() {
 $(".reply-edit").on("click", function(){	
 	var p = $(this).parent().prev().children('p');	
 	var editor = $(this).parent().next();
+	var action = $(this).parent();
 	console.log(editor);
 	disply(p);
 	disply(editor);
+	margin_change(action);
 	var c = p.html();
 	var add_editor = "<textarea class=\"form-control\" data-autosize-on=\"true\" style=\"overflow: hidden; resize: none;" 
 						+ "word-wrap: break-word; height: 80px; width: 700px; margin-top: 8px;\">"+ c.replace(/<br>/gi, "\r\n") +"</textarea>";
@@ -414,6 +425,64 @@ $(".re-reply-write").on("click", function(){
 	
 	
 });
+
+
+//reply-delete
+$(".reply-delete").on("click", function(){
+	var num = $(this).next().attr("value");
+	console.log(num);
+	$.ajax({
+		url : "/replyDelete.mt",
+		data : {			
+			"num" : num		
+		}
+	}).done(function(result) {				
+		if (result.result) {			
+			location.reload();
+		}
+	})	
+	
+});
+
+
+
+//edit-cancel
+$(".edit-cancel").on("click", function(){
+	$(this).parent().parent().prev().prev().children('textarea').remove();
+	var p = $(this).parent().parent().prev().prev().children('p');	
+	var editor = $(this).parent().parent();
+	var action = $(this).parent().parent().prev();
+	disply(p);
+	disply(editor);
+	margin_change(action);
+});
+
+
+//edit-update
+$(".edit-update").on("click", function(){
+	var num = $(this).parent().parent().prev().children('[type="hidden"]').attr("value");
+	var content = $(this).parent().parent().prev().prev().children('textarea').val().replace(/\n/g, "<br>");
+	console.log(content);
+	$.ajax({
+		url : "/"+num+"/peplyEdit.mt",
+		data : {			
+			"content" : content,			
+			"secret" : $(this).parent().prev().children().children('[type="checkbox"]').prop("checked"),
+			"url" : "${post.URL}"			
+		}
+	}).done(function(result) {				
+		if (result.result) {
+			window.alert("댓글 수정 완료");
+			location.reload();
+		}
+	})
+	
+	
+	
+});
+
+
+
 
 
 </script>

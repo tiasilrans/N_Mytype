@@ -1,10 +1,12 @@
 package controller;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,10 @@ import model.ReplyDAO;
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class PostController {
+	
+	@Autowired
+	ServletContext application;
+	
 	@Autowired
 	ObjectMapper objMapper;
 	
@@ -60,7 +66,18 @@ public class PostController {
 	public ModelAndView postView(@PathVariable(value="url") String url,
 											@PathVariable(value="num") int num, HttpSession session){
 		ModelAndView mav = new ModelAndView();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+		// 블로그 아바타 가져오기
+				String path = "/images/blogImg/"+url;
+				String rPath = application.getRealPath(path);
+				File dir = new File(rPath);
+				if(dir.exists()) {
+					mav.addObject("imgPath", path);
+				}else {
+					mav.addObject("imgPath", "/images/avatar_yellow.png");
+				}
+		
+		
 		Map map = new HashMap<>();
 			map.put("num", num);
 			map.put("url", url);
@@ -143,6 +160,71 @@ public class PostController {
 		}
 		return map;
 	}
+	
+	@RequestMapping("/{num}/peplyEdit.mt")
+	@ResponseBody
+	public Map peplyEdit(@PathVariable(value="num") int num, @RequestParam Map m){
+		m.put("num", num);
+		System.out.println(m);
+		boolean f = rDAO.replyEdit(m);
+		Map map = new HashMap<>();
+		if(f){
+			map.put("result", f);
+			map.put("url", (String)m.get("url"));
+			
+		}else{
+			map.put("result", f);
+			
+		}
+		return map;
+	}
+	
+	
+	
+	
+	@RequestMapping("/replyDelete.mt")
+	@ResponseBody
+	public Map replyDelete(@RequestParam Map m){	
+		System.out.println(m);
+		boolean f = rDAO.replyDelete(m);
+		Map map = new HashMap<>();
+		if(f){
+			map.put("result", f);
+			
+		}else{
+			map.put("result", f);
+			
+		}
+		return map;
+	}
+	
+	
+	
+	@RequestMapping("like.mt")
+	@ResponseBody
+	public Map postLike(@RequestParam Map m, HttpSession session){
+		m.put("email", (String)session.getAttribute("login"));
+		System.out.println("포스트 좋아요 넘어온 값 :" + m);
+		int rst = pdao.postgoodAdd(m);
+		Map map = new HashMap<>();
+		if(rst == 1){
+			map.put("result", true);
+		}else{
+			map.put("result", false);
+		}
+		return map;
+	}
+	
+	@RequestMapping("unlike.mt")
+	@ResponseBody
+	public Map postUnLike(@RequestParam Map m, HttpSession session){
+		System.out.println("포스트 좋아요 취소 넘어온 값 :" + m);
+		
+		Map map = new HashMap<>();
+		return map;
+	}
+	
+	
 	
 	
 	@RequestMapping("postgood.mt")
