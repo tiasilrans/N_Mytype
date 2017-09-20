@@ -218,6 +218,7 @@ input[type=checkbox]:checked+label:before {
 									<button class="re-reply-write" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
 									<button class="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
 									<button class="reply-delete" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">삭제</button>
+									<input type="hidden" value="${obj.NUM }" />
 								</div>
 								<div class="comment-editor" style="display: none;">
 									<div style="float: left;">				
@@ -326,7 +327,7 @@ input[type=checkbox]:checked+label:before {
           		<div class="form-group row" align="center">		
 			<form action="/loginExec.mt?post=post" method="post">		
 			<input type="hidden" name="num" value="${post.NUM}" />
-			<input type="hidden" name="url" value="${post.URL}" />			
+			<input type="hidden" name="url" value="${post.URL}" />
 				<div class="form-group row">
 						<input class="form-control" type="text"
 							placeholder="e-mail" name="email" id="login-email" required />
@@ -377,8 +378,7 @@ function margin_change(target) {
 };
 
 
-$("#sub").on("click", function() {
-	
+$("#sub").on("click", function() {	
 	$.ajax({
 		url : "/${post.NUM }/peply.mt",
 		data : {			
@@ -425,6 +425,25 @@ $(".re-reply-write").on("click", function(){
 	
 	
 });
+
+
+//reply-delete
+$(".reply-delete").on("click", function(){
+	var num = $(this).next().attr("value");
+	console.log(num);
+	$.ajax({
+		url : "/replyDelete.mt",
+		data : {			
+			"num" : num		
+		}
+	}).done(function(result) {				
+		if (result.result) {			
+			location.reload();
+		}
+	})	
+	
+});
+
 
 
 //edit-cancel

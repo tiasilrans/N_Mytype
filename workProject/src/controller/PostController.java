@@ -161,6 +161,23 @@ public class PostController {
 		return map;
 	}
 	
+	@RequestMapping("/replyDelete.mt")
+	@ResponseBody
+	public Map replyDelete(@RequestParam Map m){	
+		System.out.println(m);
+		boolean f = rDAO.replyDelete(m);
+		Map map = new HashMap<>();
+		if(f){
+			map.put("result", f);
+			
+		}else{
+			map.put("result", f);
+			
+		}
+		return map;
+	}
+	
+	
 	
 	@RequestMapping("like.mt")
 	@ResponseBody

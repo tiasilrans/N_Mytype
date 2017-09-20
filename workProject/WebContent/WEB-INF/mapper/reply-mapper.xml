@@ -9,8 +9,10 @@
  			values(reply_seq.nextval, #{num}, reply_seq.currval, #{email}, #{content},
  					#{secret}, sysdate)
  	</insert>
- 	
- 	
+ 	<!-- 댓글 삭제 -->
+ 	<delete id="delete" parameterType="java.util.HashMap">
+ 		delete from reply where num=#{num}
+ 	</delete>
  	
  	<!-- 댓글 리스트 가져오기 -->
   	<select id="list" parameterType="java.util.HashMap" resultType="java.util.HashMap">

@@ -61,6 +61,20 @@ public class ReplyDAO {
 		
 	}
 	
+	public boolean replyDelete(Map map){
+		SqlSession session = factory.openSession();
+		try {
+			session.delete("reply.delete", map);			
+			return true;
+		} catch (Exception e) {
+			System.out.println("replyDelete ERROR .." + e.toString());
+			e.printStackTrace();
+			return false;
+		}finally {
+			session.close();
+		}
+	}
+	
 	
 	
 	
