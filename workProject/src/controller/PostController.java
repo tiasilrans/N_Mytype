@@ -1,10 +1,12 @@
 package controller;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,10 @@ import model.ReplyDAO;
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class PostController {
+	
+	@Autowired
+	ServletContext application;
+	
 	@Autowired
 	ObjectMapper objMapper;
 	
@@ -60,7 +66,18 @@ public class PostController {
 	public ModelAndView postView(@PathVariable(value="url") String url,
 											@PathVariable(value="num") int num, HttpSession session){
 		ModelAndView mav = new ModelAndView();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+		// 블로그 아바타 가져오기
+				String path = "/images/blogImg/"+url;
+				String rPath = application.getRealPath(path);
+				File dir = new File(rPath);
+				if(dir.exists()) {
+					mav.addObject("imgPath", path);
+				}else {
+					mav.addObject("imgPath", "/images/avatar_yellow.png");
+				}
+		
+		
 		Map map = new HashMap<>();
 			map.put("num", num);
 			map.put("url", url);

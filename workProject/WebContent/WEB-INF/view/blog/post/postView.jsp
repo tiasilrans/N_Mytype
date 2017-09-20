@@ -179,7 +179,7 @@ input[type=checkbox]:checked+label:before {
 				<div class="body blog-info"
 					style="margin-bottom: 30px; margin-top: 30px;">
 					<div class="media" style="margin-left: 95px;">
-						<img src="/images/avatar_yellow.png"
+						<img src="${imgPath }"
 							style="border-radius: 17%; height: 70px; width: 70px;">
 					</div>
 					<div class="media-body"></div>
