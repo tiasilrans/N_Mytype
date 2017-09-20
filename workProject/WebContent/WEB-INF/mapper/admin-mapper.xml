@@ -110,10 +110,7 @@
 	
 	<!--공지사항 리스트 -->
 	<select id="noticeList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from notice
-		<if test="type == main">
-			 where ndate <![CDATA[ > ]]> #{first} and ndate <![CDATA[ < ]]> #{last}
-		</if>
+		select * from post where notice='MyType'
 	</select>
 	
 	

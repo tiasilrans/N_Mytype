@@ -1,9 +1,8 @@
-=\=\=\=\=\=\=
-<<<<<<<=HEAD
->>>>>>>=branch 'test' of https\://github.com/HongSeungTaek/mytype.git
 eclipse.preferences.version=1
 encoding//src/controller/AdminController.java=UTF-8
-encoding//src/controller/BlogAdminController.java=UTF-8
 encoding//src/controller/MainController.java=UTF-8
+<<<<<<< HEAD
 encoding//src/controller/MyController.java=UTF-8
+=======
 encoding//src/model/PostDao.java=UTF-8
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git

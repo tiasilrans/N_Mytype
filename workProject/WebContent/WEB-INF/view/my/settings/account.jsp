@@ -33,7 +33,7 @@ label{
     position: relative;
     display: block;
     width : 850px;
-	height: 53%;
+	height: 390px;
     margin-bottom: .75rem;
     background-color: #fff;
     border-radius: .25rem;

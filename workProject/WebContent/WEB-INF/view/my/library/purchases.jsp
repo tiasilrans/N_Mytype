@@ -51,6 +51,50 @@
 }
 
 .confooter{
+	padding-top: 7px;
+}
+
+.card {
+    position: relative;
+    display: block;
+    width : 630px;
+	height: 330px;
+    margin-bottom: .75rem;
+    background-color: #fff;
+    border-radius: .25rem;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.incard {
+    float: left;
+    width : 280px;
+	height: 270px;
+	margin: 8px;
+    border-radius : 5px;
+    border : 1px solid silver;
+}
+
+.conbody-hashtag{
+	font-size: 13;
+	background-color: #ebebeb;
+	border-radius: 2px;
+	margin-left: 12px;
+	padding: 4px;
+	padding-bottom:5px;
+	text-decoration: none;
+}
+
+.confooter-like, .confooter-like:focus, .confooter-like:hover{
+	font-size: 18;
+	color : red;
+	outline: none;
+	text-decoration: none;
+	margin-top: 10px;
+	padding-left: 12px;
+	border : 0px;
+}
+
+.confooter{
 	padding-top: 5px;
 }
 
@@ -68,15 +112,16 @@
 	<hr style="margin-top: 10px;"/>
 </div>
 
-<div style="width: 59%;" align="left">
+<div class="row">
+<div align="left" style="width: 100%;">
 	<div class="row">
 		<div align="left" style="width: 100%;">
-			<c:forEach var="all" items="${list }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
+			<c:forEach var="all" items="${list }" begin="0" end="${list.size() < 8 ? list.size() : 8}" varStatus="vs">
 				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
 						<div>${all.NICKNAME }</div>
-						<div style="color:#909090; font-size: 12px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" style="text-decoration: none; color:#909090" href="/blog/${all.URL }">${all.URL }</a></div>
+						<div style="color:#909090; font-size: 12px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="-title-blog" style="text-decoration: none; color:#909090" href="/blog/${all.URL }">${all.URL }</a></div>
 					</div>
 					
 	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
@@ -125,6 +170,7 @@
 			</c:forEach>
 		</div>
 	</div>
+</div>
 </div>
 
 <ul class="pagination">

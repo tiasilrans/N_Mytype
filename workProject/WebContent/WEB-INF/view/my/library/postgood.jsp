@@ -70,25 +70,25 @@ a{text-decoration: none;}
 	<hr style="margin-top: 10px;"/>
 </div>
 
-<div style="width: 59%;" align="left">
 	<div class="row">
 		<div align="left" style="width: 100%;">
-			<c:forEach var="all" items="${list }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
+			<c:forEach var="all" items="${list }" begin="0" end="${list.size() < 8 ? list.size() : 8}" varStatus="vs">
 				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
 						<div>${all.NICKNAME }</div>
-						<div style="color:#909090; font-size: 12px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" style="text-decoration: none; color:#909090" href="/blog/${all.URL }">${all.URL }</a></div>
+						<div style="color:#909090; font-size: 12px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="-title-blog" style="text-decoration: none; color:#909090" href="/blog/${all.URL }">${all.URL }</a></div>
 					</div>
 					
 	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
 						<a href="/${all.URL}/post/${all.NUM}" style="font-size: 15px; text-decoration: none; color: #333333; padding-bottom: 5px;">
 							${all.TITLE }
-								<c:if test="${all.IMG.length() > 10}">
-				                		<div class="nailthumb-column-metadata" id="thumbnail">
-				                			${all.IMG }
-				                		</div>  
-			                	</c:if>
+						
+						<c:if test="${all.IMG.length() > 10}">
+		                		<div class="nailthumb-column-metadata" id="thumbnail">
+		                			${all.IMG }
+		                		</div>  
+	                	</c:if>
 	                	</a>
 						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
 							${all.FCONTENT }
@@ -126,7 +126,6 @@ a{text-decoration: none;}
 			</c:forEach>
 		</div>
 	</div>
-</div>
 
 <ul class="pagination">
 	<c:forEach var="i" begin="1" end="${page}">

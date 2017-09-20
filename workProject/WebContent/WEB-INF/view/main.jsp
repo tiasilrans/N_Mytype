@@ -8,6 +8,10 @@
 
 <style>
 
+body {
+	background: whitesmoke;
+}
+
 a{ text-decoration: none; }
 
 .logo-frame{
@@ -22,6 +26,7 @@ a{ text-decoration: none; }
 	margin: 10px;
 	border-radius : 5px;
     border : 1px solid silver;
+    background-color: white;
 }
 
 .secondlogo-head{
@@ -77,6 +82,66 @@ a{ text-decoration: none; }
 	
 }
 
+.conhead{
+	width : 100%;
+	height: 20%;
+}
+
+.conbody{
+	width : 100%;
+	height: 70%;
+}
+
+.confooter{
+	width : 100%;
+	height: 10%;
+}
+
+.conhead-profileimg{
+	float: left;
+	width:48px;
+	height:48px;
+	border-radius: 50%;
+	margin-right: 8px;
+}
+.conhead-title{
+	padding-top : 5px;
+}
+
+.conhead-title-name{
+	font-size: 14;
+}
+
+.conhead-title-date{
+	font-size: 12;
+}
+
+.conhead-title-blog, .conhead-title-blog:LINK, .conhead-title-blog:ACTIVE{
+	font-size: 12;
+	color: gray; 
+}
+.conbody{
+	height: 60%;
+}
+
+.conbody-title{
+	font-size: 23;
+}
+
+.conbody-content{
+	font-size: 13;
+	color : gray;
+}
+
+.confooter{
+	padding-top: 5px;
+}
+
+.confooter-count{
+	font-size: 17;
+	color : red;
+}
+
 .title{
 	padding-top :15px;
 	margin-left: 10px;
@@ -89,6 +154,7 @@ a{ text-decoration: none; }
 	margin: 8px;
     border-radius : 5px;
     border : 1px solid silver;
+    background: white;
 }
 
 .conhead-profileimg{
@@ -167,7 +233,7 @@ a{ text-decoration: none; }
 			      </div>
 			    
 			      <div class="logo-frame item">
-			        <img src="/images/mainimg/3.png" alt="New york" style="width:100%; height: 350px; border-radius: 5px;">
+			        <img src="/images/mainimg/33.png" alt="New york" style="width:100%; height: 350px; border-radius: 5px;">
 			      </div>
 			    </div>
 			  </div>
@@ -185,14 +251,6 @@ a{ text-decoration: none; }
 						</div>	
 					</div>
 						<div class="secondlogo-body-content"><span>
-						<c:choose>
-						<c:when test="${notice.get(0).SUBCONTENT ne null}">
-							${notice.get(0).SUBCONTENT}
-						</c:when>
-						<c:otherwise>
-							${notice.get(0).CONTENT}
-						</c:otherwise>
-						</c:choose>
 						</span></div>
 			</div>
 			<!-- 목록 nav -->
@@ -272,7 +330,7 @@ a{ text-decoration: none; }
 			<c:choose>
 			<c:when test="${listLike.size() == 0}">
 			<div align="center">
-				<div style="width:600px; margin-top: 10px;"><h1>게시물이 없습니다.</h1></div>
+				<div style="width:600px; margin-top: 10px; margin-top: 50px;"><h4 style="color: gray;">게시물이 없습니다.</h4></div>
 			</div>
 			</c:when>
 			<c:otherwise>
