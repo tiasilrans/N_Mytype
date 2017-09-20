@@ -145,9 +145,6 @@ public class PostController {
 	}
 	
 	
-	
-		
-	
 	@RequestMapping("postgood.mt")
 	@ResponseBody
 	public String postgood(@RequestParam Map map,HttpSession session) throws JsonProcessingException{
