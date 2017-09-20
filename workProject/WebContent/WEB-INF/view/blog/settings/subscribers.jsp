@@ -39,7 +39,7 @@
 				<div class="subscriber-list">					
 					<!-- 구독자 리스트 -->
 				<c:choose>
-				<c:when test="${listempty}">
+				<c:when test="${!listempty}">
 				<c:forEach var="obj" items="${list }">
 					<div class="subscriber" style="padding: 1rem 1.75rem;">
 						<a class="list-group-item media" data-toggle="modal" data-target="#sub-info" data-image="https://cdn.postype.com/assets/img/avatar/avatar_yellow.png" data-title="${obj.EMAIL }">
