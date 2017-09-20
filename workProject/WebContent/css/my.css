@@ -44,19 +44,6 @@ body {
 	padding-top :15px;
 	margin-left: 10px;
 }
-
-.lbox{
-  float:left;
-  width:50%;
-  height:35%;
-}
-  
-.rbox{
-  clear:right;
-  float:right;
-  width:50%;
-  height:35%;
-}
   
 .boxsp{
   padding: 15px;

@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="/css/my.css">
 
 <style>
+
 #secondlogo{
 	height: 260px;
 	width : 260px;
@@ -59,15 +60,34 @@
 
 }
 
-.card {
-    position: relative;
-    display: block;
-    width : 630px;
-	height: 330px;
-    margin-bottom: .75rem;
-    background-color: #fff;
-    border-radius: .25rem;
-    border: 1px solid rgba(0,0,0,.125);
+body {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+	background: whitesmoke;
+}
+
+.box {
+	position: relative;
+	display: block;
+	background-color:white;
+	border-radius:10px;
+	margin: 20px;
+	width: 70%;
+	padding: 20px;
+}
+
+.lbox{
+  float:left;
+  width:50%;
+  height: 80px;
+}
+  
+.rbox{
+  clear:right;
+  float:right;
+  width:50%;
+  height: 80px;
 }
 
 .conbody-hashtag{
@@ -100,9 +120,10 @@
 }
 
 </style>
-<div class="row" style="margin-top: 60px;">
-	<div class="col-xs-2 col-md-2 col-lg-2"></div>
-	<div class="card col-xs-6 col-md-6 col-lg-4">
+
+<section style="min-height: 75%;">
+<div class="col-xs-0 col-md-2"></div>
+<div class="box col-xs-12 col-md-8 col-lg-12" style="margin-bottom: 0;">
 		<div class="title">
 			<span style="float:left; font-size: 17px; margin-left: 5px;"><b>오늘</b></span>
 			<span style="float:right; font-size: 13px; padding-right:15px; color: #999999;" ><%=today %></span>
@@ -155,12 +176,10 @@
             </div>  
 		</div>
 	</div>
-	</div>
 	
 
-<div class="row">
-	<div class="col-xs-2 col-md-2 col-lg-2"></div>
-    <div class="card col-xs-3 col-md-3 col-lg-2">
+<div class="col-xs-0 col-md-2"></div>
+<div class="box col-xs-12 col-md-8 col-lg-12">
 		<div class="title row">
           <span style="float:left; font-size: 17px;"><b>공지사항</b></span>
           <span style="font-size: 13px; float:right; padding-right:15px;">
@@ -193,7 +212,7 @@
 			
         </div>
 </div>
-</div>
+</section>
 
 
 <c:choose>
