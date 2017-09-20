@@ -86,10 +86,12 @@
 	</definition>
 	
 	<!-- 블로그 세팅  -->
-	<definition name="blog_setting" extends="t_base">
+	<definition name="blog_setting" template="/WEB-INF/view/blog/settings/blogSettingTemp.jsp">
 		<put-attribute name="title" expression="${title} 설정" />
+		<put-attribute name="nav" value="/WEB-INF/view/nav.jsp" />
 		<put-attribute name="nav2" value="/WEB-INF/view/blog/settings/blogSettingNav.jsp" />
-		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp"/>	
+		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/view/footer.jsp" />
 	</definition>
 	
 	<!-- 포스트 뷰 -->
