@@ -278,7 +278,7 @@ a{ text-decoration: none; }
 			
 			<!-- 전체 게시글 배치 -->
 			<div id="allList" class="tab-pane fade in active">
-				<c:forEach var="all" items="${listAll }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
+			<c:forEach var="all" items="${listAll }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
 				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
