@@ -199,7 +199,7 @@ public class MyController {
 				mav.addObject("list",pointDao.selectpoint(map));
 				mav.addObject("pointsum",pointDao.selectpointsum(email));
 			}
-			System.out.println("pmap => "+pointDao.selectpoint(map));
+			//System.out.println("pmap => "+pointDao.selectpoint(map));
 			
 			//리스트 밑에 페이지수
 			int eSize = 5;

@@ -32,7 +32,7 @@ label{
 .card-block {
 	margin-left: 15px;
     position: relative;
-    vertical-align:middle;
+    vertical-align: middle;
 }
 
 .title{
@@ -91,7 +91,7 @@ label{
 		<div class="title">
 			<span style="float:left; font-size: 17px; margin-left: 5px; margin-right: 70%;"><b>2. 결제 정보를 입력해 주세요.</b></span>
 		</div> <br/><br/>
-	
+		
 		<div class="card-block" style="float:left; padding-left:0; padding-right:60px;">
 			<label style="color: #606060;">이름</label>
 			<input type="text" name="name" class="form-control" style="width:70%;" 
