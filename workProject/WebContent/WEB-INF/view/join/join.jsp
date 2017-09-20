@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <style>
 .joinbox{
-	background-color :#f2f2f2;
+	background-color :#fcfcfc;
 	margin: 20px;
 	width: auto%;
 	height: auto;
@@ -41,7 +41,10 @@
 <div align="center" class="row">
 	<div class="col-xs-0 col-md-4"></div>
 	<div class="col-xs-12 col-md-4">
-		
+
+<div class="first" style= "position: relative; padding: 4rem 3rem; background-image: url('/images/img.jpg');
+    background-size: 1500px 500px;">
+	
  <div class="form-group joinbox row">
 			<form action="/joinExec.mt" method="post">	
 				<div style="margin-left: 30px;">				
@@ -78,6 +81,41 @@
 					<button id="sbt" type="submit" class="btn" style="display: none;" disabled>회원가입</button>
 				</div>
 			</form>
+		</div>
+		
+</div>	
+		
+		<div class="section">
+			<div class="container">
+				<div align="center";>
+			<img src="/images/first.png">
+				</div>
+			</div>
+		</div>
+		
+		<div class="section">
+			<div class="container">
+				<div align="center";>
+			<img src="/images/Second.png">
+				</div>
+			</div>
+		</div>
+		
+		<div class="section">
+			<div class="container">
+				<div align="center";>
+			<img src="/images/third.png">
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="section">
+			<div class="container">
+				<div align="center";>
+			<img src="/images/end.png">
+				</div>
+			</div>
 		</div>
 		
 	</div>
