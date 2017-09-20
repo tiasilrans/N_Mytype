@@ -25,7 +25,7 @@
 		<tiles:insertAttribute name="nav"/>
 		<tiles:insertAttribute name="nav2"/>
 	</nav>
-	<section style="min-height: 70%; margin-top: 90px;">
+	<section style="min-height: 70%;">
 		<tiles:insertAttribute name="sidebar"/>
 		<tiles:insertAttribute name="section"/>
 	</section>

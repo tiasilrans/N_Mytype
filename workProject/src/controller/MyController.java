@@ -101,8 +101,7 @@ public class MyController {
 			
 			if(email != null){
 				map.put("email", email);
-				System.out.println(map);
-				mav.addObject("list",postDao.sublist(lDao.List(map)));
+				mav.addObject("list",postDao.sublist(postDao.imgRedefinition(lDao.List(map))));
 			}
 			
 			//리스트 밑에 페이지수
@@ -148,8 +147,7 @@ public class MyController {
 			
 			if(email != null){
 				map.put("email", email);
-				System.out.println(map);
-				mav.addObject("list",postDao.sublist(lDao.List(map)));
+				mav.addObject("list",postDao.sublist(postDao.imgRedefinition(lDao.List(map))));
 			}
 			
 			//리스트 밑에 페이지수

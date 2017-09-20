@@ -5,7 +5,7 @@
 
 
 <!--navbar menu-->
-	<nav class="navbar navbar-default" id="gg" style="border-top-style: none; min-height: 45px; position: fixed; top: 67px; z-index: 887; width: 100%;">
+	<nav class="navbar navbar-default" id="gg" >
 		<div class="container">
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse" style="padding: 0px;">
@@ -51,7 +51,7 @@
 		</div>
 	</nav>
 
-<script>
+<!-- <script>
 	$(window).scroll(function() {
 		if ($(this).scrollTop() > 1) {
 			$("#gg").css("top","270px");
@@ -60,4 +60,4 @@
 			
 		}
 	});
-</script>
+</script> -->
