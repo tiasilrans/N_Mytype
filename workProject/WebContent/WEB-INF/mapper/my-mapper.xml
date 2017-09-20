@@ -16,7 +16,7 @@
 	</update>
 	
 	<!-- 비밀번호 업데이트 -->
-	<update id="pwchange" parameterType="java.lang.String">
+	<update id="pwchange" parameterType="java.util.HashMap">
 		update member set password=#{newpw} where email=#{email} and password=#{password}
 	</update>
 	
