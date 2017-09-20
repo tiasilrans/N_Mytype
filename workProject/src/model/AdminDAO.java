@@ -226,10 +226,9 @@ public class AdminDAO {
 		}
 	}
 	
-	public Map noticeList(String type){
+	public List<Map> noticeList(String type){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
-		Map map = new HashMap();
 		try{
 /*			if(type.equals("main")){
 				Map map = new HashMap();
@@ -242,18 +241,13 @@ public class AdminDAO {
 				list = session.selectList("admin.noticeList", map);
 				list = this.sublistReply(list, 180, "CONTENT", "SUBCONTENT");
 			}*/
-			session.selectOne("admin.noticeList");
-			String fcontent = (String)map.get("CONTENT");
-			if(fcontent.length() > 180){
-				fcontent = fcontent.substring(0, 180);
-				fcontent += "...";
-				map.put("SUBCONTENT", fcontent);
-			}
-			return map;
+			list = session.selectList("admin.noticeList");
+			list = this.sublistReply(list, 180, "FCONTENT", "SUBCONTENT");
+			return list;
 		}catch(Exception e){
 			System.out.println("AdminNoticeList Error");
 			e.printStackTrace();
-			return map;
+			return list;
 		}finally{
 			session.close();
 		}
