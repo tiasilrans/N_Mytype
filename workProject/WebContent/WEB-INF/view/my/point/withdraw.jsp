@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
  
 <link rel="stylesheet" href="/css/my.css">
+<link rel="stylesheet" href="/css/postviewcss.css">
 
 <c:choose>
 <c:when test="${info.BANK ne null || info.ACCOUNT ne null || info.HOLDER ne null}">
@@ -69,7 +70,7 @@
 	</li>
 	<li class="list-group-item" >
 	<div align="right">
-		<button id="sbtn" type="submit" class="btn btn-primary">출금신청</button>
+		<button id="sbtn" type="submit" class="btn button button1">출금신청</button>
 	</div>
 	</li>
 	
