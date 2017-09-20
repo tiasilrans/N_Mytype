@@ -2,7 +2,7 @@
 
 
 .button {
-	background-color: white; /*Green */
+	background-color: #4CAF50; /* Green */
 	border: none;
 	color: white;
 	padding: 8px 20px;
@@ -16,9 +16,8 @@
 }
 
 .button1 {
-	background-color: black;
+	background-color: #303030;
 }
-
 
 
  a:link { color: white; text-decoration: none;}
