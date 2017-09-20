@@ -43,6 +43,15 @@ public class SubscribeController {
 	@Autowired
 	SubscribeDAO subscribedao;
 	
+	
+	@RequestMapping("/subscribe.mt")
+	public Map subscribe(){
+		
+		Map map = new HashMap();
+		
+		return map;
+	}
+	
 	@RequestMapping("blog.mt")
 	public ModelAndView blog(@RequestParam Map map,HttpSession session) {
 		ModelAndView mav = new ModelAndView();

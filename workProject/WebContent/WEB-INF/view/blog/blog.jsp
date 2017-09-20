@@ -214,7 +214,7 @@ footer {
 						 	<div style="color: #a6a6a6;">          
 								<span style="font-size: 12px;">구독자</span> <span style="font-size: 12px;">0</span> <span style="font-size: 12px;">포스트</span> <span style="font-size: 12px;">${map.totalPostCnt }</span>
 							</div>
-							<button class="button button1" style="margin-top: 10px;">구독하기</button>
+							<button class="button button1 subscribe-bt" style="margin-top: 10px;">구독하기</button>
 
 						</div>
 						<div class="media-right">
@@ -304,6 +304,7 @@ footer {
  </div>
   
 <script>
+	//app-menu-disply
 	$("#app-menu-toggler").on("click", function(){
 		var menu = $("#app-menu");
 		if(menu.css("display") == "none"){
@@ -313,6 +314,31 @@ footer {
 		}
 		
 	});
+	
+	//subscribe-bt
+	function subscribe(){
+    if(confirm("이 블로그를 구독하시겠습니까?")){    	
+    	$.post({
+			url : "/postdelete.mt",
+			data : {
+				"num" : "${post.NUM }",
+				"url" : "${post.URL}"
+			}
+		}).done(function(result) {
+			if(result.result){
+				location.href="/blog/"+result.url;
+				window.alert("삭제가 완료되었습니다.");
+			}else{
+				window.alert("포스트 삭제에 실패하였습니다.");
+			}
+		});
+		
+        return true;
+    } else {
+        return false;
+    }
+};
+	
 	
 
 	
