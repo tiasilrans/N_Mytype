@@ -178,9 +178,7 @@ input[type=checkbox]:checked+label:before {
 									<time style="color: #999999; font-family: sans-serif; font-size: 12px;">${obj.CDATE }</time>
 								</div>
 								<div class="comment-content" style="color: black; font-family: sans-serif;">
-									<p style="display: block;">
-										${obj.CONTENT }
-									</p>
+									<p style="display: block;">${obj.CONTENT }</p>
 								</div>
 
 								<div class="comment-action" style="border: none; float: right; margin-right: 240px; margin-top: -20px;">
@@ -351,7 +349,6 @@ $(".reply-edit").on("click", function(){
 	var p = $(this).parent().prev().children('p');	
 	var editor = $(this).parent().next();
 	console.log(editor);
-	console.log(p.html());
 	var c = p.html();
 	var add_editor = "<textarea class=\"form-control\" data-autosize-on=\"true\" style=\"overflow: hidden; resize: none;" 
 						+ "word-wrap: break-word; height: 80px;\">"+ c.replace(/<br>/gi, "\r\n") +"</textarea>";
@@ -371,7 +368,6 @@ $(".reply-edit").on("click", function(){
 
 
 // re-reply-write
-
 $(".re-reply-write").on("click", function(){
 	var add = "";
 	
