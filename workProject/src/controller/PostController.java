@@ -165,9 +165,15 @@ public class PostController {
 	@RequestMapping("like.mt")
 	@ResponseBody
 	public Map postLike(@RequestParam Map m, HttpSession session){
+		m.put("email", (String)session.getAttribute("login"));
 		System.out.println("포스트 좋아요 넘어온 값 :" + m);
-		
+		int rst = pdao.postgoodAdd(m);
 		Map map = new HashMap<>();
+		if(rst == 1){
+			map.put("result", true);
+		}else{
+			map.put("result", false);
+		}
 		return map;
 	}
 	
