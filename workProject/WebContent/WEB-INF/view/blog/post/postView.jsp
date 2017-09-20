@@ -150,7 +150,7 @@ input[type=checkbox]:checked+label:before {
 						</c:otherwise>
 					</c:choose>
 				</div>
-				<c:if test="${ sessionScope.login ne post.EMAIL }">
+				<c:if test="${ sessionScope.login ne post.EMAIL && post.EMAIL ne 'MyType' }">
 				<div class="support" style="display: table; width: 100%;">
 					<div class="message"
 						style="display: table-cell; vertical-align: middle; padding-right: .75rem; line-height: 1.25; font-family: sans-serif; color: black; font-weight: 800px; width: 55%;">
@@ -318,7 +318,6 @@ input[type=checkbox]:checked+label:before {
 
 <!-- 후원 modal  -->
 <form action="/support.mt" onsubmit="return nbcheck();">
-<input type="hidden" name="price" value="${post.PRICE}" />
 <input type="hidden" name="num" value="${post.NUM}" />
 <input type="hidden" name="email" value="${post.EMAIL}" />
 <input type="hidden" name="url" value="${post.URL}" />
@@ -335,25 +334,14 @@ input[type=checkbox]:checked+label:before {
         <div class="modal-body">
 				<div class="row"><div class="col-md-6" style="vertical-align: middle;">보유 포인트</div><div class="col-md-6" style="vertical-align: middle;"><span style="font-size: 15 ;"><fmt:formatNumber value="${mypoint.SUM}" pattern="#,###"/></span></div></div>
 				<hr/>
-				<div class="row"><div class="col-md-6">후원할 포인트</div><div class="col-md-6"><span style="font-size: 15 ;"><input id="nb" type="number" min="1" max="9999999"/></span></div></div>
+				<div class="row"><div class="col-md-6">후원할 포인트</div><div class="col-md-6"><span style="font-size: 15 ;"><input name="price" id="nb" type="number" min="1" max="9999999"/></span></div></div>
 				<hr/>
-				<div class="row"><div class="col-md-6">남은 포인트</div><div class="col-md-6"><span style="font-size: 15 ;"><fmt:formatNumber value="${(mypoint.SUM-post.PRICE)}" pattern="#,###"/></span></div></div>
-				<c:if  test="${(mypoint.SUM-post.PRICE) < 0}">
-					<hr/>
-					<div class="row"><div class="col-md-12">※포인트가 부족합니다. 충전하러 가시겠습니까 ?</div></div>
-				</c:if>
+				<div class="row"><div class="col-md-6">남은 포인트</div><div class="col-md-6"><span id="ap" style="font-size: 15 ;"><fmt:formatNumber value="${mypoint.SUM}" pattern="#,###"/></span></div></div>
         </div>
         <div class="modal-footer">
           		<div class="form-group row" align="center">
 				<div align="center" class="row">
-				<c:choose>
-				<c:when test="${(mypoint.SUM-post.PRICE) < 0}">
-					<button class="button button1" type="button" style="width: 360px; height: 60px;" onclick="location.href='/my/point/charge' ">포인트 충전</button>
-				</c:when>
-				<c:otherwise>
 					<button class="button button1" id="login-sbt" type="submit"  style="width: 360px; height: 60px;">후원하기</button>
-				</c:otherwise>
-				</c:choose>
 				</div>
 		</div>
         </div>
@@ -404,11 +392,23 @@ input[type=checkbox]:checked+label:before {
     </div>
   </div>
 
+<script>
+Number.prototype.format = function(){
+    if(this==0) return 0;
+ 
+    var reg = /(^[+-]?\d+)(\d{3})/;
+    var n = (this + '');
+ 
+    while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2');
+ 
+    return n;
+};
+</script>
 
 <script>
 function nbcheck(){
 	var nb = $("#nb").val();
-	var p = '${mypoint.SUM}'
+	var p = '${mypoint.SUM}';
 	if(nb == null){
 		return false;
 	}
@@ -419,6 +419,13 @@ function nbcheck(){
 		return false;
 	}
 }
+
+$("#nb").on("keyup", function(){
+	var nb = $("#nb").val();
+	var p = '${mypoint.SUM}';
+	$("#ap").html((p-nb).format());
+	
+});
 </script>
 <script>
 

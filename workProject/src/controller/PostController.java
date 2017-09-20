@@ -166,9 +166,22 @@ public class PostController {
 		mav.setViewName("redirect:/"+(String)map.get("url")+"/post/"+(String)map.get("num"));
 		map.put("myemail", session.getAttribute("login"));
 		String title = (String)map.get("title");
-		map.put("btitle", "["+title+"]포인트 구매");
-		map.put("stitle", "["+title+"]포인트 판매");
+		map.put("btitle", "["+title+"]포스트 구매");
+		map.put("stitle", "["+title+"]포스트 판매");
 		pdao.buyPost(map);
+		return mav;
+	}
+	
+	@RequestMapping("support.mt")
+	public ModelAndView support(@RequestParam Map map,HttpSession session) throws JsonProcessingException{
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/"+(String)map.get("url")+"/post/"+(String)map.get("num"));
+		String myemail = (String)session.getAttribute("login");
+		map.put("myemail", myemail);
+		String title = (String)map.get("title");
+		map.put("support", "["+title+"]포스트 후원");
+		map.put("supported", "["+title+"] 포스트에서 "+myemail+"님이 후원하셨습니다.");
+		pdao.surpport(map);
 		return mav;
 	}
 	
