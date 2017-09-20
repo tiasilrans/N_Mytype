@@ -251,7 +251,6 @@ a{ text-decoration: none; }
 						</div>	
 					</div>
 						<div class="secondlogo-body-content"><span>
-
 						</span></div>
 			</div>
 			<!-- 목록 nav -->

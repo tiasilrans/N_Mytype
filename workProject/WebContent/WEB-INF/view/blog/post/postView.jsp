@@ -182,29 +182,19 @@ input[type=checkbox]:checked+label:before {
 								</div>
 
 								<div class="comment-action" style="border: none; float: right; margin-right: 240px; margin-top: -20px;">
-									<button style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
-									<button style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
-									<button style="border: 0px; background-color: white; color: #999999; font-size: 12px;">삭제</button>
-
-
+									<button class="re-reply-write" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
+									<button class="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
+									<button class="reply-delete" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">삭제</button>
 								</div>
-								<div class="comment-editor">
-									<div style="float: left;">
-										<textarea class="form-control autosize"
-											id="comment-editor-content" data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; 
-											height: 60px; width: 750px; resize: none;" ${sessionScope.login eq null ? "readonly" : "" }></textarea>
-										<div class="clearfix">
-											<div class="checkbox-wrap"
+								<div class="comment-editor" style="display: none;">
+									<div style="float: left;">				
+										<div class="checkbox-wrap"
 												style="float: left; margin-top: 20px; margin-left: 2px;">
-												<input type="checkbox" id="comment-editor-secret" class="checkbox-style"/> <label
+											<input type="checkbox" id="comment-editor-secret" class="checkbox-style"/> <label
 													for="secret">비밀댓글</label>
-											</div>
-											<div style="float: right; margin-top: 7px; margin-right: 293px;">
-												<button type="button" class="button button1" id="editor-bt">댓글 남기기</button>
-											</div>
-										</div>										
+										</div>																				
 									</div>
-									<div style="float: right;">
+									<div class="edit-bt" style="float: right;">
 										<button class="button button1">취소</button>
 										<button class="button">저장</button>
 									</div>
@@ -352,11 +342,41 @@ $("#sub").on("click", function() {
 		}
 	})
 	
+});
+
+// reply edit
+$(".reply-edit").on("click", function(){	
+	var p = $(this).parent().prev().children('p');
+	var editor = $(this).parent().next();
+	console.log($(this).parent().prev().children('p').html());
+	var c = $(this).parent().prev().children('p').html();
+	var add_editor = "<textarea class=\"form-control\" data-autosize-on=\"true\" style=\"overflow: hidden; resize: none;" 
+						+ "word-wrap: break-word; height: 80px;\">"+ c.replace(/<br>/gi, "\r\n") +"</textarea>";
+	if(p.css("display") == "none"){   
+	        p.css("display", "block");
+	        editor.css("display", "block");
+	} else {  
+	        p.css("display", "none"); 
+	        editor.css("display", "none");
+	}  
+
+	$(this).parent().prev().append(add_editor);
+
 	
+});
+
+
+
+// re-reply-write
+
+$(".re-reply-write").on("click", function(){
+	var add = "";
 	
 	
 	
 });
+
+
 </script>
 
 
