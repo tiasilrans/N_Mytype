@@ -338,7 +338,7 @@ a{ text-decoration: none; }
 			<c:choose>
 			<c:when test="${listLike.size() == 0}">
 			<div align="center">
-				<div style="width:600px; margin-top: 10px;"><h1>게시물이 없습니다.</h1></div>
+				<div style="width:600px; margin-top: 10px; margin-top: 50px;"><h4 style="color: gray;">게시물이 없습니다.</h4></div>
 			</div>
 			</c:when>
 			<c:otherwise>

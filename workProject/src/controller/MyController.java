@@ -70,7 +70,7 @@ public class MyController {
 			mav.addObject("listlike", postDao.sublist(listAll));
 			mav.addObject("revenue", myDao.revenue(rvn));
 			mav.addObject("use", myDao.usepoint(rvn));
-			mav.addObject("notice", adminDao.sublistReply(adminDao.noticeList("main"), 120, "SUBCONTENT", "SUBCONTENT"));
+			mav.addObject("notice", adminDao.noticeList("main"));
 			mav.addObject("pointsum", pointDao.selectpointsum((String) session.getAttribute("login")));
 		}
 		return mav;
@@ -494,18 +494,15 @@ public class MyController {
 	
 	@RequestMapping("/settings/passwordExec")
 	public ModelAndView passwordExec(@RequestParam Map map, HttpSession session) {
-		Map info = myDao.info((String)session.getAttribute("login"));
-		String my =  (String)session.getAttribute("login");
-		String dbpw = (String)info.get("PASSWORD");
-		
-		if(dbpw.equals(map.get("password")) && map.get("newpw").equals(map.get("newpw_ck")) ) {
-			map.put("email", my);
-			String str = myDao.pwchange(map);
-			System.out.println("pwchange => "+str);
-		}
-		
+		map.put("email", (String)session.getAttribute("login"));
+		System.out.println(map);
+		boolean str = myDao.pwchange(map);
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("redirect:/my/settings/password");
+		mav.setViewName("settings_password");
+		mav.addObject("change", str);
+		if(str){
+			session.setAttribute("info", myDao.info((String)session.getAttribute("login")));
+		}
 		return mav;
 	}
 	
