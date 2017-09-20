@@ -27,6 +27,7 @@
 <div align="center" class="row">
 	<div class="col-xs-0 col-md-4"></div>
 	<div class="col-xs-12 col-md-4">
+	<div class="container">
 		<div class="form-group loginbox row">		
 			<form action="/loginExec.mt" method="post">					
 				<h3 align="left">로그인 </h3>
@@ -54,8 +55,27 @@
 				</div>
 			</form>
 		</div>
+		<div>
+		
+		<div class="section">
+			<div class="container">
+				<div>
+			<img src="/images/first.png">
+			
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		</div>
+		
+		
+		
+		
+		
+		</div>
 		
 	</div>
-	
 	<div class="col-xs-0 col-md-4"></div>
 </div>
