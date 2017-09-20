@@ -106,7 +106,9 @@ public class BlogController {
 		for(Map m : mainPostList){
 			map.put("num", m.get("NUM"));
 			int count = rDAO.postReplyCount(map);
+			int like = pDAO.postLikeCount(map);
 			m.put("replyCount", count);
+			m.put("likeCount", like);
 		}
 	
 			mav.setViewName("blog_base");

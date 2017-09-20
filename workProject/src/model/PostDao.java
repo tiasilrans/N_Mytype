@@ -126,6 +126,23 @@ public class PostDao {
 	}
 	
 	
+	public int postLikeCount(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			int r = session.selectOne("post.post_Like_count", map);
+			return r;
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("postLikeCount ERROR : " + e.toString());
+			return 0;
+		}finally {
+			session.close();
+		}
+		
+	}
+	
+	
+	
 	public List<Map> blogPostList(Map map){		
 		List<Map> list = new ArrayList<>();
 		SqlSession session = factory.openSession();

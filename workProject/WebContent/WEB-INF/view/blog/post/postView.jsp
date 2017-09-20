@@ -380,7 +380,7 @@ $("#sub").on("click", function() {
 	}).done(function(result) {				
 		if (result.result) {
 			window.alert("댓글 작성 완료");
-			location.href = "/"+result.url+"/post/${post.NUM }";
+			location.reload();
 		}else{				
 			window.alert("댓글 작성 실패");
 		}
