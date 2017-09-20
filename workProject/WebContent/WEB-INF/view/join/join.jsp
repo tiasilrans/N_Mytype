@@ -83,7 +83,7 @@
 		
 </div>
 	</div>		
-		<div class="section">
+		<div class="section" style="margin-bottom: 60px; margin-left: 40px;">
 			<div class="">
 				<div align="center">
 			<img src="/images/first.png" >
@@ -91,7 +91,17 @@
 			</div>
 		</div>
 		
-		<div class="section">
+		
+		<div class="section" style="margin-bottom: 60px; margin-left: 40px;">
+			<div class="">
+				<div align="center">
+			<img src="/images/first2.png" >
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="section" style="margin-bottom: 60px; margin-left: 60px">
 			<div class="container">
 				<div align="center">
 			<img src="/images/Second.png">
@@ -99,7 +109,7 @@
 			</div>
 		</div>
 		
-		<div class="section">
+		<div class="section" style="margin-bottom: 60px; margin-left: 80px;">
 			<div class="container">
 				<div align="center">
 			<img src="/images/third.png">
@@ -108,7 +118,7 @@
 		</div>
 		
 		
-		<div class="section">
+		<div class="section" style="margin-bottom: 150px;">
 			<div class="container">
 				<div align="center";>
 			<img src="/images/end.png">
