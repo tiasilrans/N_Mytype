@@ -47,7 +47,7 @@ label{
 </style>
 
 
-<form class="form-inline form-horizontal" action="/my/settings/profileExec" method="post" enctype="multipart/form-data">
+<form class="form-inline form-horizontal" action="/my/settings/profile.mt" method="post" enctype="multipart/form-data">
 	<div class="col-xs-0 col-md-2"></div>
 	<div class="box col-xs-12 col-md-8 col-lg-12">
 		<div class="title">
@@ -62,12 +62,12 @@ label{
 						<img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 75px; width: 75px; margin-top: -20px;">
 					</c:when>  
 					<c:otherwise>
-						<img src="/images/profile/${info.IMAGE}" style="border-radius: 50%; height: 75px; width: 75px; margin-top: -20px;">
+						<img src="/images/profile/${info.IMAGE}" id="profile-img" src="${info.IMAGE }" style="border-radius: 50%; height: 75px; width: 75px; margin-top: -20px;">
 					</c:otherwise>
 				</c:choose>
 			</div>
 			<div class="input-group">
-				<input type="file" name="image" class="w3-button w3-white w3-border w3-round-large" style="width:100%;" >
+				<input type="file" name="image" id="upload-profile-photo" class="w3-button w3-white w3-border w3-round-large" style="width:100%;" >
 				<p style="padding-top: 5px; margin-bottom:0; color:#909090; font-size: 13px;">최대 5MB의 이미지 파일</p>
 				<p><input class="w3-check" type="checkbox" style="width:15px; height:15px;"> <label style="font-size: 12px;">사진 삭제</label></p>
 			</div>
@@ -84,8 +84,21 @@ label{
 		</div>
 		<hr style="margin: 0px;" />
 	    <div class="card-block ">
-	    	<a href="#" style="color:#909090; font-size: 12px">계정 삭제</a>
+	    	<a href="/my/settings/memberdelete" style="color:#909090; font-size: 12px">계정 삭제</a>
 	    	<button class="w3-button w3-black w3-round" style="float:right">변경 내용 저장</button>
 	    </div>
 	</div>
 </form>
+
+<script>
+	$("#upload-profile-photo").on("change", function(){
+		console.log(this.files[0]);
+		var reader = new FileReader();
+		reader.onload = function(e){
+			$("#profile-img").attr("src", e.target.result);
+		}
+		reader.readAsDataURL(this.files[0]);
+		
+	});
+	
+</script>
