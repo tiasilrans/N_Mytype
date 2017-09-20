@@ -183,7 +183,7 @@ input[type=checkbox]:checked+label:before {
 								</div>
 								<div class="comment-action" style="border: none; float: right; margin-right: 240px; margin-top: -20px;">
 									<button id="re-reply-write" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
-									<button id="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
+									<button class="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
 									<button id="reply-delete" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">삭제</button>
 								</div>
 								<div class="comment-editor">
@@ -355,12 +355,19 @@ $("#sub").on("click", function() {
 });
 
 // reply edit
-$("#reply-edit").on("click", function(){	
+$(".reply-edit").on("click", function(){	
 	var p = $(this).parent().prev().children('p');
 	console.log($(this).parent().prev().children('p').html());
+	var c = $(this).parent().prev().children('p').html();
 	var add_editor = "<textarea class=\"form-control\" data-autosize-on=\"true\" style=\"overflow: hidden; resize: none;" 
-						+ "word-wrap: break-word; height: 80px;\">"+ "갹" +"</textarea>";
-	
+						+ "word-wrap: break-word; height: 80px;\">"+ c.replace(/<br>/gi, "\r\n") +"</textarea>";
+	if(p.css("display") == "none"){   
+	        p.css("display", "block");   
+	} else {  
+	        p.css("display", "none");   
+	}  
+
+	$(this).parent().prev().append(add_editor);
 	
 });
 
