@@ -170,20 +170,20 @@ input[type=checkbox]:checked+label:before {
 					<div class="comment-list">
 						<div class="media">
 							<div class="media-left">
-								<a><img src=""></a>
+								<a><img src="/images/avatar_yellow.png" style="border-radius: 40px; width: 40px; height: 40px; margin-top:5px;"></a>
 							</div>
 							<div class="media-body">
 								<div class="comment-header">
-									<a>${obj.EMAIL }</a>
-									<time>${obj.CDATE }</time>
+									<a style="color: black; font-family: sans-serif; font-size: 15px;">${obj.EMAIL }</a>
+									<time style="color: #999999; font-family: sans-serif; font-size: 12px;">${obj.CDATE }</time>
 								</div>
-								<div class="comment-content">
+								<div class="comment-content" style="color: black; font-family: sans-serif;">
 									${obj.CONTENT }
 								</div>
-								<div class="comment-action">
-									<button>답글</button>
-									<button>편집</button>
-									<button>삭제</button>
+								<div class="comment-action" style="border: none; float: right; margin-right: 240px; margin-top: -20px;">
+									<button style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
+									<button style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
+									<button style="border: 0px; background-color: white; color: #999999; font-size: 12px;">삭제</button>
 								</div>
 								<div class="comment-editor">
 									<div style="float: left;">
@@ -202,8 +202,8 @@ input[type=checkbox]:checked+label:before {
 										</div>										
 									</div>
 									<div style="float: right;">
-										<button>취소</button>
-										<button>저장</button>
+										<button class="button button1">취소</button>
+										<button class="button">저장</button>
 									</div>
 								</div>
 							</div>					

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="post">
+  	<!-- 포스트 쓰기 -->
+  	<insert id="write" parameterType="java.util.HashMap">
+  		insert into post(num, category, email, title, subtitle, fcontent, ccontent, good, 
+  					report, pdate, url, count, notice, adult) 
+ 					values(post_seq.nextval, #{category}, #{email}, #{title}, #{subtitle},
+ 						#{fcontent}, #{ccontent}, 0, 0, sysdate, #{url}, 0, #{notice}, #{adult})
+  	</insert>
+  	
+  	<!-- 조회수 증가 -->
+  	<update id="counter" parameterType="java.util.HashMap">
+  		update post set count = count+1 where num = #{num}
+  	</update>
+  	<!-- 포스트 삭제 -->
+  	<delete id="delete" parameterType="java.util.HashMap">
+  		delete from post where num=#{num}
+  	</delete>
+  	
+  		
+  	
+  	<!-- 카테고리 목록 가져오기 -->
+  	<select id="cate_list" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+  		select b.CATEGORY_NAME from blogcategory b where BLOG_TITLE=#{title}
+  	</select>
+  	
+  	<!-- 블로그 메인 뷰 -->
+  		<!-- 해당 블로그 총 포스트 수 -->
+  	<select id="post_count" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*) from post where url=#{url}
+	</select>
+  		<!-- 페이징 -->
+ 	<select id="main_page_view" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+ 		select * from (select rownum r, tmp.* from 
+ 							(select * from post where url=#{url} order by num desc)tmp 
+ 						) where r between #{start} and #{end}
+ 	</select>
+ 	
+ 	<!-- 포스트 불러오기 -->
+ 		<!-- 포스트 번호로 하나의 포스트 불러오기 -->
+ 	<select id="one_post" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+ 		SELECT * FROM post where num=#{num}
+ 	</select>
+ 		<!-- 블로그 관리자 모드 - 해당 블로그 포스트 전부 불러오기 -->
+ 	<select id="">
+ 		SELECT p.title, p.CATEGORY, p.PDATE, p.COUNT FROM post p where url=#{url}
+ 	</select>
+ 	
+  	
+  	
+  	<!--(메인) 게시물 전체 불러오기 -->
+	<select id="listall" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		 select pl.*,pg.email as heart from (select tmp3.*, m.nickname, m.image from (select tmp2.* from (select rownum as r, tmp.* from (select * from post
+		<!-- 태그 -->
+		<if test="tag != null">
+		where hash like #{keyword}
+		</if>
+		
+		<!-- 검색어 -->
+		<if test="post != null">
+		where 
+		<foreach item="keyword" collection="keyword" separator=" and " open="("
+			close=")">
+			title like #{keyword} or subtitle like #{keyword} or fcontent like #{keyword} or ccontent like #{keyword}
+		</foreach>
+		</if>
+		
+		 order by num desc)tmp)tmp2 where tmp2.r between 1 and 9)tmp3 left join member m on m.email=tmp3.email)pl left join (select * from postgood where
+		<!-- 좋아요에 하트표시 위한 이메일 검색 -->
+		<choose>
+		<when test="email != null">
+		 email=#{email}
+		</when>
+		<otherwise>
+		 email='널값을주기위한아무말'
+		</otherwise>
+		</choose>
+		)pg on pl.num=pg.pnum
+		</select>
+	
+	<!-- (메인) 게시물 구독한 게시물 불러오기 -->
+	<select id="listLike" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	<if test="email != null">
+         select pl.*,pg.email as heart from (select tmp3.*, m.nickname, m.image from (select tmp2.* from (select rownum as r, tmp.* from (select * from 
+         (select post.*,sc.address as sc from post left join (select * from subscribe where email=#{email})sc on post.url=sc.address) where sc is not null         
+		 order by num desc)tmp)tmp2 where tmp2.r between #{first} and #{last})tmp3 left join member m on m.email=tmp3.email)pl left join
+         (select * from postgood where email=#{email})pg on pl.num=pg.pnum
+	</if>
+	</select>
+	
+	<!-- 검색페이지에서 게시물 총 갯수 (페이징) -->
+	<select id="selectcount" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select count(*) as count from post
+		
+		<if test="tag != null">
+			where hash=#{keyword}
+		</if>
+		
+		<if test="post != null">
+			where 
+		<foreach item="keyword" collection="keyword" separator=" and " open="("
+			close=")">
+			title like #{keyword} or subtitle like #{keyword} or fcontent like #{keyword} or ccontent like #{keyword}
+		</foreach>
+		</if>
+		
+	</select>
+	
+	<!-- 게시글 좋아요(게시글좋아요 update) -->
+	<update id="postgoodPlus" parameterType="java.util.HashMap">
+		update post set good=good+1 where num=#{num}
+	</update>
+	<insert id="postgoodAdd" parameterType="java.util.HashMap">
+		insert into postgood(num, pnum, email, pgdate) values(postgood_seq.nextval, #{num}, #{email}, sysdate)
+	</insert>
+	
+	<update id="postgoodMinus" parameterType="java.util.HashMap">
+		update post set good=good-1 where num=#{num}
+	</update>
+	<delete id="postgoodRemove" parameterType="java.util.HashMap">
+		delete from postgood where pnum=#{num} and email=#{email}
+	</delete>
+  
+   <select id="selectHashtag" parameterType="java.lang.String" resultType="java.util.HashMap">
+ 	  select * from post where hash like #{keyword}
+   </select>
+  
+  
+  </mapper>

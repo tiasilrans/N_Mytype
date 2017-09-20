@@ -2,7 +2,7 @@
 
 
 .button {
-	background-color: #4CAF50; /* Green */
+	background-color: white; /*Green */
 	border: none;
 	color: white;
 	padding: 8px 20px;
@@ -16,8 +16,10 @@
 }
 
 .button1 {
-	background-color: #303030;
+	background-color: black;
 }
+
+
 
  a:link { color: white; text-decoration: none;}
  a:visited { color: white; text-decoration: none;}
