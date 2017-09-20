@@ -100,7 +100,6 @@
 }
 
 </style>
-<div class="col-xs-offset-2 col-md-offset-2 container-fluid">
 <div class="row" style="margin-top: 60px;">
 	<div class="col-xs-2 col-md-2 col-lg-2"></div>
 	<div class="card col-xs-6 col-md-6 col-lg-4">
@@ -193,7 +192,6 @@
         </c:forEach>
 			
         </div>
-</div>
 </div>
 </div>
 

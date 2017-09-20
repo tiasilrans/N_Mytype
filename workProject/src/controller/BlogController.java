@@ -97,10 +97,10 @@ public class BlogController {
 			mav.setViewName("blog_base");
 			mav.addObject("section", "blog/blog");
 			mav.addObject("header", "blog/header");
-			mav.addObject("map", r); // ºí·Î±× Á¤º¸
+			mav.addObject("map", r); // ë¸”ë¡œê·¸ ì •ë³´
 			mav.addObject("title", r.get("TITLE"));
 			mav.addObject("pNum", tp);
-			mav.addObject("list", pDAO.blogPostList(pageMap)); // ºí·Î±× ¸ŞÀÎ Æ÷½ºÆ® ¸®½ºÆ®
+			mav.addObject("list", pDAO.blogPostList(pageMap)); // ë¸”ë¡œê·¸ ë©”ì¸ í¬ìŠ¤íŠ¸ ë¦¬ìŠ¤íŠ¸
 			mav.addObject("category", list);
 			
 		return mav;
@@ -108,7 +108,7 @@ public class BlogController {
 	
 	@RequestMapping("/blog/postWrite")
 	public ModelAndView postWrite(@RequestParam Map m, HttpSession session){
-		// m= Å¸ÀÌÆ², url µé¾î°¡ ÀÖÀ½
+		// m= íƒ€ì´í‹€, url ë“¤ì–´ê°€ ìˆìŒ
 		Map writeMap = (Map)session.getAttribute("writeMap");
 		if(writeMap !=null){
 			String title = (String)writeMap.get("title");
@@ -122,7 +122,7 @@ public class BlogController {
 		List<Map> catelist = pDAO.categoryList(m);		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("post");
-			mav.addObject("title", "Æ÷½ºÆ®ÀÛ¼º");
+			mav.addObject("title", "í¬ìŠ¤íŠ¸ì‘ì„±");
 			mav.addObject("map", m);
 			mav.addObject("catelist", catelist);
 			session.setAttribute("writeMap", m);

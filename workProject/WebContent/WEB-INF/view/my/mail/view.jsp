@@ -20,7 +20,7 @@ table.type07 td {
 </style>
 
     
-<div align="center" style="margin-top: 130px;">
+<div align="center">
 <form action="/mail/delete.mt">
 	<div style="width: 35%;" align="left">
 	<h2>쪽지 상세보기</h2>

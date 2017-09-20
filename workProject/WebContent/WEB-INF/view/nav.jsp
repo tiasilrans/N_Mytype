@@ -11,7 +11,7 @@
 </style>
 <!--navbar menu-->
 <section class="navbar-info ">
-	<nav class="navbar navbar-default navbar-me">
+	<nav class="navbar navbar-default navbar-me" style="margin-bottom: 0px;">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button"
