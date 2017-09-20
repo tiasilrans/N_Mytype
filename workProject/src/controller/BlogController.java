@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import model.BlogDAO;
 import model.PostDao;
+import model.ReplyDAO;
 import model.SubscribeDAO;
 
 @Controller
@@ -34,6 +35,9 @@ public class BlogController {
 	
 	@Autowired
 	SubscribeDAO sDAO;
+	
+	@Autowired
+	ReplyDAO rDAO;
 	
 	@RequestMapping("/blog/create")
 	public ModelAndView newBlog(){
@@ -97,6 +101,15 @@ public class BlogController {
 			int cnt = bDAO.oneCateCnt(map);
 				m.put("cnt", cnt);
 		}
+		
+		List<Map> mainPostList = pDAO.blogPostList(pageMap);
+		for(Map m : mainPostList){
+			map.put("num", m.get("NUM"));
+			int count = rDAO.postReplyCount(map);
+			int like = pDAO.postLikeCount(map);
+			m.put("replyCount", count);
+			m.put("likeCount", like);
+		}
 	
 			mav.setViewName("blog_base");
 			mav.addObject("section", "blog/blog");
@@ -104,7 +117,7 @@ public class BlogController {
 			mav.addObject("map", r); // 블로그 정보
 			mav.addObject("title", r.get("TITLE"));
 			mav.addObject("pNum", tp);
-			mav.addObject("list", pDAO.blogPostList(pageMap)); // 블로그 메인 포스트 리스트
+			mav.addObject("list", mainPostList); // 블로그 메인 포스트 리스트
 			mav.addObject("category", list);
 			mav.addObject("subCk", sDAO.subCheck(map));
 			

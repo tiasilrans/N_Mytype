@@ -38,6 +38,10 @@
  							(select * from post where url=#{url} order by num desc)tmp 
  						) where r between #{start} and #{end}
  	</select>
+ 		<!-- 해당 포스트 좋아요 수 -->
+ 	<select id="post_Like_count" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+ 		SELECT COUNT(*) FROM postgood where pnum=#{num}
+ 	</select>	
  	
  	<!-- 포스트 불러오기 -->
  		<!-- 포스트 번호로 하나의 포스트 불러오기 -->

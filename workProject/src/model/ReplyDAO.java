@@ -30,6 +30,23 @@ public class ReplyDAO {
 		}
 	}
 	
+	public boolean replyEdit(Map map){
+		SqlSession session = factory.openSession();
+		try {
+			int update = session.update("reply.edit", map);				
+			return true;			
+		} catch (Exception e) {
+			System.out.println("replyEdit Error");
+			e.printStackTrace();
+			return false;
+		}finally {
+			session.close();
+		}
+		
+	}
+	
+	
+	
 	public List<Map> replyList(Map map){
 		List<Map> list = new ArrayList<>();
 		SqlSession session = factory.openSession();
@@ -46,7 +63,34 @@ public class ReplyDAO {
 	}
 	
 	
+	public int postReplyCount(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			int r = session.selectOne("reply.post_reply_count", map);
+			return r;
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("postReplyCount ERROR : " + e.toString());
+			return 0;
+		}finally {
+			session.close();
+		}
+		
+	}
 	
+	public boolean replyDelete(Map map){
+		SqlSession session = factory.openSession();
+		try {
+			session.delete("reply.delete", map);			
+			return true;
+		} catch (Exception e) {
+			System.out.println("replyDelete ERROR .." + e.toString());
+			e.printStackTrace();
+			return false;
+		}finally {
+			session.close();
+		}
+	}
 	
 	
 	

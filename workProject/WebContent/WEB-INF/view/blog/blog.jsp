@@ -110,15 +110,22 @@ footer {
 
 .div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
 
+.srbox {
+	border: 1px solid;
+	border-color: #d9d9d9;
+	width: 60%;
+	padding: 0px;     
+}
+
 </style>  
 
 <div class="row" align="center">
 	<div class="col-xs-0 col-md-1"></div>
 	<div class="col-xs-12 col-md-10">
 	<c:if test="${searchMode}">
-			<div class="search-result" align="left" style="padding: 1.75rem; margin-top: .5rem;">
-				<div style="font-size: 14;">검색결과</div>
-				<div style="font-size: 20;">${keyword }</div>
+			<div class="search-result srbox" align="left" style="padding: 1.75rem; margin-top: .5rem; margin-left: -550px; margin-bottom: 40px;">
+				<div style="font-size: 12; font-family: sans-serif; color: #999999;">검색결과</div>
+				<div style="font-size: 20; font-family: sans-serif;">${keyword }</div>
 			</div>
 		</c:if>
 		<div class="row">
@@ -157,15 +164,17 @@ footer {
 									  </div>
 									  <div class="media-right" style="width: 100px;">
 										  <div class="media-left">
-										 		<i class="material-icons" style="font-size: 15px; color: #808080; float: left;">favorite_border</i>
+										  		<div class="like">									
+										 			<a href="#" onclick="like(this);" post-num="${obj.NUM }"><i class="material-icons" style="font-size: 15px; color: #808080; float: left;">favorite_border</i></a>
+										 		</div>
 										 		<div class="media-body"> 
-										 			<span style="color: #808080; font-size: 12px; margin-left: 2px;">0</span>
+										 			<span style="color: #808080; font-size: 12px; margin-left: 2px;">${obj.likeCount }</span>
 										 		</div>
 										  </div>
 											<div class="media-left" >
 											 	<i class="material-icons" style="font-size: 15px; color: #808080; float: left;">chat_bubble_outline</i>
 											 	<div class="media-body">
-											 		<span style="color: #808080; font-size: 12px; margin-left: 2px;">0</span>
+											 		<span style="color: #808080; font-size: 12px; margin-left: 2px;">${obj.replyCount }</span>
 												</div>
 											</div>
 										</div>						
@@ -245,7 +254,7 @@ footer {
 						<h6 align="left" style="color: black;">카테고리</h6>
 						<ul class="Kategorie nav row">
 							<li class="Kategorie nav-item"><a class="Kategorie nav-link"
-								href="/blog/blogView" style="color: black; font-weight :light;" align="left">
+								href="/blog/${map.URL }" style="color: black; font-weight :light;" align="left">
 									전체 보기 <span class="post-count">${map.totalPostCnt }</span>
 							</a></li>
 							<c:forEach var="obj" items="${category }">
@@ -319,7 +328,7 @@ footer {
   
 <script>
 	// disply
-	function disply(target) {	
+	function like_change(target) {	
 		if(target.css("display") == "none"){   
 			target.css("display", "block");        
 		} else {  
@@ -382,6 +391,21 @@ footer {
 	    }
 	};
 	
+	//like
+	function like(obj) {
+		var num = $(obj).attr('post-num');
+		$.post({
+			url : "/like.mt",
+			data : {				
+				"num" : num
+			}
+		}).done(function(result) {
+			if(result.result){
+				location.reload();
+			}
+		});
+		
+	};
 	
 
 	
