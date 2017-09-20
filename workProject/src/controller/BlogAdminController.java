@@ -49,12 +49,18 @@ public class BlogAdminController {
 		 	mav.addObject("list", list);
 		return mav;
 	}	
+	
 	@RequestMapping("/blog/{url}/subscribers")
 	public ModelAndView blogSubscribers(@PathVariable(value="url") String url, HttpSession session){
 		Map map = new HashMap();
 			map.put("url", url);
 		HashMap blogTitle = bDAO.blogTitle(map);
+		System.out.println(" blogTitle? " + blogTitle);
 		List<Map> list = sDAO.blogSubscribers(map);
+		System.out.println(list.isEmpty());
+		for(Map li : list){
+			System.out.println(li);
+		}
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("blog_setting");
 			mav.addObject("title", "구독자");
@@ -62,6 +68,7 @@ public class BlogAdminController {
 		 	mav.addObject("blogTitle", blogTitle);
 		 	mav.addObject("url", url);
 		 	mav.addObject("list", list);
+		 	mav.addObject("listempty", list.isEmpty());
 		return mav;
 	}
 	

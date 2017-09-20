@@ -28,6 +28,10 @@
   	</select>
   	
   	<!-- 블로그 메인 뷰 -->
+  		<!-- 각 카테고리의 포스트 리스트 -->
+ 	<select id="category_post_list" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+ 		SELECT * FROM post where CATEGORY=#{categoryname} and url=#{url}
+ 	</select>
   		<!-- 해당 블로그 총 포스트 수 -->
   	<select id="post_count" parameterType="java.util.HashMap" resultType="java.lang.Integer">
 		select count(*) from post where url=#{url}

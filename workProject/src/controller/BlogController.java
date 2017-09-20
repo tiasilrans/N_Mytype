@@ -149,6 +149,50 @@ public class BlogController {
 	}
 	
 	
+	// 블로그 카테고리 내 포스트 리스트 뷰
+	@RequestMapping("/blog/{url}/category/{categoryname}")
+	public ModelAndView categoryView(@PathVariable(value="url") String url, 
+				@PathVariable(value="categoryname") String categoryname, HttpSession session){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+		Map map = new HashMap<>();
+			map.put("url", url);
+			map.put("categoryname", categoryname);
+			map.put("email", (String)session.getAttribute("login"));
+		HashMap blogInfo = bDAO.blogView(map);
+			map.put("title", blogInfo.get("TITLE"));
+		int lc = pDAO.postCount(map);
+		 	blogInfo.put("totalPostCnt", lc);
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("blog_base");
+			mav.addObject("section", "blog/blog");
+			mav.addObject("header", "blog/header"); // 블로그 제목, 소개 들어가야 함
+			mav.addObject("title", blogInfo.get("TITLE"));
+		// 블로그 아바타 가져오기
+				String path = "/images/blogImg/"+url;
+				String rPath = application.getRealPath(path);
+				File dir = new File(rPath);
+				if(dir.exists()) {
+					mav.addObject("imgPath", path);
+				}else {
+					mav.addObject("imgPath", "/images/avatar_yellow.png");
+				}
+		List<Map> list = bDAO.cate_List(map);
+		for(Map cateMap : list){
+			String cn = (String)cateMap.get("CATEGORY_NAME");
+				map.put("category", cn);
+			int cnt = bDAO.oneCateCnt(map);
+				cateMap.put("cnt", cnt);
+		}		
+		
+		mav.addObject("category", list);
+		mav.addObject("map", blogInfo);
+		mav.addObject("subCk", sDAO.subCheck(map));
+		mav.addObject("searchMode", false);		
+		mav.addObject("list", pDAO.categoryPostList(map));
+		return mav;  
+	}
+	
+	
 	@RequestMapping("/blog/{url}/search")
 	public ModelAndView blogSearch(@RequestParam Map m, @PathVariable(value="url") String url,
 									HttpSession session, @RequestParam(name="p", defaultValue="1") int p){
@@ -190,8 +234,7 @@ public class BlogController {
 		 }
 		 String[] arr = a.split("&");
 		 	map.put("arr", arr);		 	
-		 
-		 m = bDAO.blogView(map);
+		
 		
 		 	mav.setViewName("blog_base");
 		 	mav.addObject("section", "blog/blog");
