@@ -157,9 +157,11 @@ footer {
 									  </div>
 									  <div class="media-right" style="width: 100px;">
 										  <div class="media-left">
-										 		<i class="material-icons" style="font-size: 15px; color: #808080; float: left;">favorite_border</i>
+										  		<div class="like">
+										 			<i class="material-icons" style="font-size: 15px; color: #808080; float: left;">favorite_border</i>
+										 		</div>
 										 		<div class="media-body"> 
-										 			<span style="color: #808080; font-size: 12px; margin-left: 2px;">0</span>
+										 			<span style="color: #808080; font-size: 12px; margin-left: 2px;">${obj.likeCount }</span>
 										 		</div>
 										  </div>
 											<div class="media-left" >
