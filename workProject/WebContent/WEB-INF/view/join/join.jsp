@@ -79,18 +79,12 @@
 					<button id="sbt" type="submit" class="btn" style="display: none;" disabled>회원가입</button>
 				</div>
 			</form>
-<<<<<<< HEAD
-		</div>
-		
-</div>
-	</div>		
-		<div class="section" style="margin-bottom: 60px; margin-left: 40px;">
-=======
+
 		</div>		
 	</div>
 </div>		
 		<div class="section">
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
+
 			<div class="">
 				<div align="center">
 			<img src="/images/first.png" >
