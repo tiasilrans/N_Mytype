@@ -42,7 +42,7 @@ public class BlogAdminController {
 		List<Map> list = pDAO.ad_postList(map);
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("blog_setting");
-			mav.addObject("title", "�룷�뒪�듃");
+			mav.addObject("title", "포스트");
 		 	mav.addObject("section", "blog/settings/posts");
 		 	mav.addObject("blogTitle", blogTitle);
 		 	mav.addObject("url", url);
@@ -57,7 +57,7 @@ public class BlogAdminController {
 		List<Map> list = sDAO.blogSubscribers(map);
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("blog_setting");
-			mav.addObject("title", "援щ룆�옄");
+			mav.addObject("title", "구독자");
 		 	mav.addObject("section", "blog/settings/subscribers");		 	
 		 	mav.addObject("blogTitle", blogTitle);
 		 	mav.addObject("url", url);
@@ -83,7 +83,7 @@ public class BlogAdminController {
 			mav.addObject("imgPath", "/images/avatar_yellow.png");
 		}		
 			mav.setViewName("blog_setting");
-			mav.addObject("title", "釉붾줈洹�");
+			mav.addObject("title", "블로그");
 		 	mav.addObject("section", "blog/settings/setting");		 	
 		 	mav.addObject("blogTitle", blogTitle);
 		 	mav.addObject("url", url);
@@ -94,7 +94,7 @@ public class BlogAdminController {
 	@RequestMapping("/blogSetting.mt")
 	public ModelAndView blogSettingUp(@RequestParam(name="file") MultipartFile f, 
 			HttpSession session, @RequestParam Map map) throws IllegalStateException, IOException{
-		System.out.println("釉붾줈洹� �꽕�젙 �꽆�뼱�삩 媛� : " + map);
+		System.out.println("블로그 설정 넘어온 값 : " + map);
 		String path = application.getRealPath("/images/blogImg");
 		File dir = new File(path);
 		if(!dir.exists()) {
@@ -152,20 +152,21 @@ public class BlogAdminController {
 		boolean orderadd = false;
 		boolean order = false;		
 		List<Map> before = bDAO.cateAfterList(m);
-		for(String d : arr){		
+		for(String d : arr){// 삭제해야 할 경우			
 			for(Map li : before){
 				String id = (String)li.get("CATE_ID");
 				if(id.equals(d)){
-					System.out.println( " ID >> "+  d);
+					System.out.println( " ID >> "+  d + "의 삭제를 시작한다");
 					Map deleteMap = new HashMap();					
 					deleteMap.put("cate_id", d);
 					bDAO.cateRemover(deleteMap);
 				}
 			}					
+			System.out.println("삭제 완료");
 		}		
 		
 		for(int i = 0; i<addcate_name.length; i++){
-			if(addcate_name[i]!=""){ // 移댄뀒怨좊━ 異붽� �빐�빞 �븷 寃쎌슦 -------------------------------------*
+			if(addcate_name[i]!=""){ // 카테고리 추가 해야 할 경우 -------------------------------------*
 				uuid += UUID.randomUUID().toString().substring(0, 11) + ",";
 				m.put("addcate_id", uuid.split(",")[i]);
 				m.put("addcate_name", addcate_name[i]);
@@ -176,8 +177,8 @@ public class BlogAdminController {
 			
 		List<Map> list = bDAO.cateAfterList(m);		
 		Map cateNameOrder = new HashMap();
-		for(int i = 0; i<orderArr.length; i++ ){
-			cateNameOrder.put(orderArr[i], i); 			
+		for(int i = 0; i<orderArr.length; i++ ){// 카테고리 순서 설정
+			cateNameOrder.put(orderArr[i], i); // 키 : 카테고리 이름  - 값 : 카테고리 인덱스			
 		}		
 		for(Map li : list){
 			String key = (String)li.get("CATEGORY_NAME");
@@ -191,7 +192,7 @@ public class BlogAdminController {
 			}			
 		}		
 				
-		if(add || order){			
+		if(add){			
 			map.put("result", true);
 			map.put("url", m.get("url"));
 		}else{

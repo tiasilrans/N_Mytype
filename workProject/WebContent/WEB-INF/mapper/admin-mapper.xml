@@ -109,12 +109,11 @@
 	</update>
 	
 	<!--공지사항 리스트 -->
-<!-- 		select * from notice
+	<select id="noticeList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from notice
 		<if test="type == main">
 			 where ndate <![CDATA[ > ]]> #{first} and ndate <![CDATA[ < ]]> #{last}
-		</if> -->
-	<select id="noticeList" resultType="java.util.HashMap">
-		select * from post where email='MyType' order by pdate desc
+		</if>
 	</select>
 	
 	

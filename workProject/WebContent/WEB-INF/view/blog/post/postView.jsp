@@ -178,9 +178,9 @@ input[type=checkbox]:checked+label:before {
 									<time style="color: #999999; font-family: sans-serif; font-size: 12px;">${obj.CDATE }</time>
 								</div>
 								<div class="comment-content" style="color: black; font-family: sans-serif;">
-									<p style="display: block;">${obj.CONTENT }<p>
-									<!-- 편집 텍스트창 여기에 추가됨 -->
+									${obj.CONTENT }
 								</div>
+
 								<div class="comment-action" style="border: none; float: right; margin-right: 240px; margin-top: -20px;">
 									<button class="re-reply-write" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
 									<button class="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
@@ -204,7 +204,7 @@ input[type=checkbox]:checked+label:before {
 					</div>					
 					</c:forEach>
 					<h5>댓글</h5>
-							<textarea class="form-control autosize content" name="content"
+							<textarea class="form-control autosize" name="content"
 								id="mention" data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; 
 								height: 60px; width: 750px; resize: none;" ${sessionScope.login eq null ? "readonly" : "" }></textarea>
 							<div class="clearfix">
@@ -324,14 +324,12 @@ input[type=checkbox]:checked+label:before {
 
 
 <script>
-
-// reply write
 $("#sub").on("click", function() {
-
+	
 	$.ajax({
 		url : "/${post.NUM }/peply.mt",
 		data : {			
-			"content" : $("#mention").val().replace(/\n/g, "<br>"),			
+			"content" : $("#mention").val(),			
 			"secret" : $("#secret").prop("checked"),
 			"url" : "${post.URL}"			
 		}
@@ -363,8 +361,10 @@ $(".reply-edit").on("click", function(){
 	}  
 
 	$(this).parent().prev().append(add_editor);
+
 	
 });
+
 
 
 // re-reply-write
@@ -375,8 +375,6 @@ $(".re-reply-write").on("click", function(){
 	
 	
 });
-
-
 
 
 </script>

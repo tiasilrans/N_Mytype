@@ -19,7 +19,7 @@
 	width : 80%;
 	height: 40px;
 }
-  
+
 
 </style>   
 <div align="center" class="row">

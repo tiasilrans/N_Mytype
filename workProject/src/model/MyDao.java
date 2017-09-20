@@ -57,7 +57,7 @@ public class MyDao {
 	public boolean pwchange(Map map) {
 		SqlSession session = factory.openSession();
 		try{
-			session.update("my.pwchange",map);
+			session.update("my.pwhchange",map);
 			session.commit();
 			return true;
 		}catch(Exception e){

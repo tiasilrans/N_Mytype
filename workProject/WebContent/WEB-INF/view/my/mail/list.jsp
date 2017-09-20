@@ -5,25 +5,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <link rel="stylesheet" href="/css/my.css">
+<link rel="stylesheet" href="/css/postviewcss.css">
 
 <style>
-.button {
-	background-color: white; /*Green */
-	border: none;
-	color: white;
-	padding: 8px 20px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 14px;
-	margin: 4px 2px;
-	cursor: pointer;
-	border-radius: 5px;
-}
-
-.button1 {
-	background-color: black;
-}  
+  
 table.type07 {
     line-height: 1.5;
     border: 1px solid #ccc;

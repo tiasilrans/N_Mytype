@@ -193,11 +193,13 @@ public class MyController {
 			map.put("last", e);
 			map.put("type", "point");
 			
+			
 			if(email != null){
 				map.put("email", email);
 				mav.addObject("list",pointDao.selectpoint(map));
 				mav.addObject("pointsum",pointDao.selectpointsum(email));
 			}
+			System.out.println("pmap => "+pointDao.selectpoint(map));
 			
 			//리스트 밑에 페이지수
 			int eSize = 5;

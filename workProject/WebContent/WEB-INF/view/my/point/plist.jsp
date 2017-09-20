@@ -24,7 +24,6 @@ table.type07 td {
 	text-align: center;
     padding: 7px;
 }
-
 </style>
 <div align="center">
 	<div style="width: 40%;" align="left">
