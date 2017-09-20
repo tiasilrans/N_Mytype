@@ -43,6 +43,17 @@ public class SubscribeController {
 	@Autowired
 	SubscribeDAO subscribedao;
 	
+	
+	@RequestMapping("/subscribe.mt")
+	@ResponseBody
+	public Map subscribe(@RequestParam Map m, HttpSession session){
+			m.put("email", (String) session.getAttribute("login"));
+		boolean f = subscribedao.insertsubscribe(m);
+		Map map = new HashMap();
+			map.put("result", f);
+		return map;
+	}
+	
 	@RequestMapping("blog.mt")
 	public ModelAndView blog(@RequestParam Map map,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
