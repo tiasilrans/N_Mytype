@@ -43,10 +43,21 @@ input[type=checkbox]:checked+label:before {
 	text-align: center;
 	line-height: 18px;
 }
+
+
+.box {
+
+	background-color:white;
+	border-radius:10px;
+	margin: 20px;
+	width: 70%;
+	padding: 20px;
+}
+
 </style>
 
  
-<section class="main">
+<section class="main box" style="margin-left: 280px;">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
