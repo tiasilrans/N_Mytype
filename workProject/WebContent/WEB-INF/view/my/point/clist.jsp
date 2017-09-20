@@ -66,9 +66,12 @@ ul li a:hover, ul li a:focus {
 
 </style>
 
-<form class="form-inline form-horizontal">
 	<div class="scard col-xs-offset-2 col-md-offset-2">
-		<div align="center" style="margin-top:30px; min-height: 227px;">
+		<div align="center" style="min-height: 227px;">
+			<div class="title" style="margin-bottom: 40px;">
+				<span style="float:left; font-size: 18px; margin-left: 5px;"><b>충전내역</b></span>
+			</div><hr/>
+			
 			<table class="table type07">
 				<thead>
 					<tr>
@@ -131,7 +134,6 @@ ul li a:hover, ul li a:focus {
 			</ul>
 		</div>
 	</div>
-</form>
 
 
 <script>

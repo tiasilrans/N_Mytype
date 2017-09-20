@@ -30,6 +30,7 @@ a{text-decoration: none;}
 	margin: 8px;
     border-radius : 5px;
     border : 1px solid silver;
+    background: white;
 }
 
 .conbody-hashtag{
@@ -70,7 +71,7 @@ a{text-decoration: none;}
 	<hr style="margin-top: 10px;"/>
 </div>
 
-	<div class="row">
+	<div class="row" style="width:60%;">
 		<div align="left" style="width: 100%;">
 			<c:forEach var="all" items="${list }" begin="0" end="${list.size() < 8 ? list.size() : 8}" varStatus="vs">
 				<div class="incard col-xs-0 col-md-3" style="clear: right;" >

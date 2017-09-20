@@ -12,7 +12,7 @@ body {
  
 label{
 	margin-bottom: 2%;
-	width: 80px;
+	width: 90px;
 }
 
 .scard {
@@ -35,7 +35,7 @@ label{
 .title{
 	padding-top :20px;
 	margin-left: 15px;
-	margin-bottom:25;
+	margin-bottom: 40px;
 }
  
 
@@ -66,15 +66,18 @@ ul li a:hover, ul li a:focus {
 
 <form class="form-inline form-horizontal">
 	<div class="scard col-xs-offset-2 col-md-offset-2">
-		<div>
-			<label style="width:100px; margin-top:10px; margin-left: 80px;">
-				잔여 포인트 : 
-			</label>
-			<label style=" color:#909090; font-weight: bold; font-size: 25px; margin-right: 7px;">
-			<br/><fmt:formatNumber pattern="#,###">		
-				${pointsum.SUM }
-			</fmt:formatNumber></label> <b>Point</b>
-		</div>
+		<div class="title" style="margin-bottom: 40px;">
+			<span style="float:left; font-size: 18px; margin-left: 5px;"><b>사용내역</b></span>
+			<span class="col-md-6" style="float:right;">
+				<label>
+					잔여 포인트 : 
+				</label>
+				<label style=" color:#909090; font-weight: bold; font-size: 25px; margin-right: 7px;">
+				<br/><fmt:formatNumber pattern="#,###">		
+					${pointsum.SUM }
+				</fmt:formatNumber></label> <b>Point</b>
+			</span>
+		</div><hr/>
 		
 		<div align="center" style="min-height: 227px;">
 			<table class="table type07" style="width: 80%;">
