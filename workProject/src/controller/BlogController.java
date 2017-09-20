@@ -136,6 +136,64 @@ public class BlogController {
 	}
 	
 	
+	@RequestMapping("/blog/{url}/search")
+	public ModelAndView blogSearch(@RequestParam Map m, @PathVariable(value="url") String url,
+									HttpSession session, @RequestParam(name="p", defaultValue="1") int p){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+		ModelAndView mav = new ModelAndView();
+		// 블로그 아바타 가져오기
+		String path = "/images/blogImg/"+url;
+		String rPath = application.getRealPath(path);
+		File dir = new File(rPath);
+		if(dir.exists()) {
+			mav.addObject("imgPath", path);
+		}else {
+			mav.addObject("imgPath", "/images/avatar_yellow.png");
+		}
+		
+		
+		 HashMap map = new HashMap();
+		 	map.put("url", url);
+		 	map.put("email", (String)session.getAttribute("login"));
+		 HashMap blogInfo = bDAO.blogView(map);	
+		 	map.put("title", blogInfo.get("TITLE"));
+		 int lc = pDAO.postCount(map);
+		 	blogInfo.put("totalPostCnt", lc);	
+		 List<Map> list = bDAO.cate_List(map);
+			for(Map cateMap : list){
+				String cn = (String)cateMap.get("CATEGORY_NAME");
+					map.put("category", cn);
+				int cnt = bDAO.oneCateCnt(map);
+					cateMap.put("cnt", cnt);
+			}
+		 
+		 
+		 System.out.println("search map = " + m);
+		 String a = "";	
+		 String keyword = (String)m.get("keyword");
+		 String[] keys = keyword.split("\\s");
+		 for(String msg : keys){
+			 a += "%"+msg+"%&";
+		 }
+		 String[] arr = a.split("&");
+		 	map.put("arr", arr);		 	
+		 
+		 m = bDAO.blogView(map);
+		
+		 	mav.setViewName("blog_base");
+		 	mav.addObject("section", "blog/blog");
+		 	mav.addObject("header", "blog/header"); // 블로그 제목, 소개 들어가야 함
+		 	mav.addObject("title", keyword + "의 검색 결과");
+		 	mav.addObject("list", pDAO.blogSearch(map));
+		 	mav.addObject("category", list);
+		 	mav.addObject("map", blogInfo);
+		 	mav.addObject("subCk", sDAO.subCheck(map));
+		 	mav.addObject("searchMode", true);
+		 	mav.addObject("keyword", keyword);
+		 return mav;  	 
+		
+	}
+	
 	
 	
 	
