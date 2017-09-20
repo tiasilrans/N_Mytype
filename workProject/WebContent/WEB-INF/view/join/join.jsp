@@ -26,7 +26,7 @@
 	<div class="col-xs-0 col-md-4"></div>
 	<div class="col-xs-12 col-md-4">
 		
- <div class="form-group joinbox row" style="float: right;">
+ <div class="form-group joinbox row">
 			<form action="/joinExec.mt" method="post">					
 				<h5 align="left">회원가입 </h5>
 				<br/>				
