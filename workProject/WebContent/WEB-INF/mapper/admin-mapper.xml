@@ -49,7 +49,7 @@
 		reply r
 		</when>
 		<otherwise>
-		(select * from reply where email=#{email}) r
+		(select * from reply where email=#{email} order by rdate desc) r
 		</otherwise>
 		</choose>
 			left join (select num,url,title from post) p on r.pnum=p.num
@@ -110,8 +110,23 @@
 	
 	<!--공지사항 리스트 -->
 	<select id="noticeList" resultType="java.util.HashMap">
-		select * from post where email='MyType' order by pdate
+ 		select * from post where email='MyType' order by pdate
+  	</select>
+
+	<!--성인인증 신청 리스트 -->
+	<select id="adultlist" resultType="java.util.HashMap">
+		select * from member where certified != 'N' and certified != 'Y' and power !=1
 	</select>
+	
+	<!--성인인증 신청 승인 -->
+	<update id="adultApply" parameterType="java.util.HashMap">
+		update member set certified='Y' where email=#{email}
+	</update>
+
+	<!--성인인증 신청 반려 -->
+	<update id="adultCompanion" parameterType="java.util.HashMap">
+		update member set certified='N' where email=#{email}
+	</update>
 	
 	
 </mapper>

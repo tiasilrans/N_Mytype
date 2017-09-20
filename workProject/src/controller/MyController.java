@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 import javax.servlet.ServletContext;
@@ -558,6 +559,33 @@ public class MyController {
 	public ModelAndView drop( ) {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("settings_drop");
+		return mav;
+	}
+	
+	@RequestMapping("/settings/adult")
+	public ModelAndView adult(@RequestParam(name = "image") MultipartFile f, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("settings_certified2");
+		
+		String my =  (String)session.getAttribute("login");
+		try {
+			if (f.getOriginalFilename().length() > 0) {
+				File dir = new File(application.getRealPath("/images/adult"));
+				System.out.println(dir.getPath());
+				if (!dir.exists()) {
+					dir.mkdirs();
+				}
+
+				File dst = new File(dir, my + ".png");
+				f.transferTo(dst);
+				Map map = new HashMap();
+				map.put("email", my);
+				map.put("img", my+".png");
+				mav.addObject("result", myDao.adultupdate(map));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return mav;
 	}
 	
