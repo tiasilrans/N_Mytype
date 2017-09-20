@@ -23,6 +23,12 @@
 	margin-left: 10px;
 }
 
+.ptable{
+	margin-left: 10px;
+	width: 70%;
+	float: left;
+}
+
 </style>
 
 
@@ -33,45 +39,45 @@
 
 	<div class="title">
 		<span style="float:left; font-size: 17px; margin-left: 5px;"><b>1. 충전할 포인트의 양을 선택해 주세요.</b></span>
-	</div>
+	</div><br/>
 
-<li class="list-group-item">
-  <table class="table table-hover" style="margin-bottom: 0px;">
+	<div style="width:100%;">
+  <table class="table ptable" >
     <thead>
       <tr>
-        <th width="50%">충전할 포인트</th>
-        <th width="50%">결제할 금액</th>
+        <th width="30%">충전포인트</th>
+        <th width="30%">결제하실금액</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><input type="radio" name="point" value="3,000" required/> 3,000P</td>
-        <td>3,300원 <small class="text-muted">(부가가치세 10% 포함)</small></td>
+        <td>3,300원 <small class="text-muted">(VAT 10% 포함)</small></td>
       </tr>
       <tr>
         <td><input type="radio" name="point" value="5,000"/> 5,000P</td>
-        <td>5,500원 <small class="text-muted">(부가가치세 10% 포함)</small></td>
+        <td>5,500원 <small class="text-muted">(VAT 10% 포함)</small></td>
       </tr>
       <tr>
         <td><input type="radio" name="point" value="10,000"/> 10,000P</td>
-        <td>11,000원 <small class="text-muted">(부가가치세 10% 포함)</small></td>
+        <td>11,000원 <small class="text-muted">(VAT 10% 포함)</small></td>
       </tr>
       <tr>
         <td><input type="radio" name="point" value="20,000"/> 20,000P</td>
-        <td>22,000원 <small class="text-muted">(부가가치세 10% 포함)</small></td>
+        <td>22,000원 <small class="text-muted">(VAT 10% 포함)</small></td>
       </tr>
       <tr>
         <td><input type="radio" name="point" value="30,000"/> 30,000P</td>
-        <td>33,000원 <small class="text-muted">(부가가치세 10% 포함)</small></td>
+        <td>33,000원 <small class="text-muted">(VAT 10% 포함)</small></td>
       </tr>
     </tbody>
-  </table></li>
-
-<li class="list-group-item" style="background-color: #F6F6F6;">
-<h5><b>2. 결제 정보를 입력해 주세요.</b></h5>
-</li>
-
-<li class="list-group-item">
+  </table>
+  </div><br/>
+  
+	<div class="title">
+		<span style="float:left; font-size: 17px; margin-left: 5px;"><b>2. 결제 정보를 입력해 주세요.</b></span>
+	</div><br/>
+	
 <table class="table table-condensed">
 <tbody >
 	<tr>
@@ -127,8 +133,6 @@
 	</tr>
 </tbody>
 </table>
-</li>
-<li class="list-group-item" >
 <table class="table table-condensed" style="margin-bottom: 0px;">
 <tbody >
 	<tr>
@@ -150,7 +154,6 @@
 </table>
 
 
-</li>
 
 
 </div>
