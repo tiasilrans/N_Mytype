@@ -180,7 +180,7 @@ input[type=checkbox]:checked+label:before {
 								<div class="comment-content">
 									${obj.CONTENT }
 								</div>
-								<div class="comment-action">
+								<div class="comment-action" style="border: none;">
 									<button>답글</button>
 									<button>편집</button>
 									<button>삭제</button>
