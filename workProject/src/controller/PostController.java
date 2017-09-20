@@ -162,6 +162,27 @@ public class PostController {
 	}
 	
 	
+	@RequestMapping("like.mt")
+	@ResponseBody
+	public Map postLike(@RequestParam Map m, HttpSession session){
+		System.out.println("포스트 좋아요 넘어온 값 :" + m);
+		
+		Map map = new HashMap<>();
+		return map;
+	}
+	
+	@RequestMapping("unlike.mt")
+	@ResponseBody
+	public Map postUnLike(@RequestParam Map m, HttpSession session){
+		System.out.println("포스트 좋아요 취소 넘어온 값 :" + m);
+		
+		Map map = new HashMap<>();
+		return map;
+	}
+	
+	
+	
+	
 	@RequestMapping("postgood.mt")
 	@ResponseBody
 	public String postgood(@RequestParam Map map,HttpSession session) throws JsonProcessingException{

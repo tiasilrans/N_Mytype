@@ -165,7 +165,8 @@ footer {
 									  <div class="media-right" style="width: 100px;">
 										  <div class="media-left">
 										  		<div class="like">
-										 			<i class="material-icons" style="font-size: 15px; color: #808080; float: left;">favorite_border</i>
+										  			<input type="hidden" value="${obj.NUM }"/>
+										 			<a href="#" onclick="like();"><i class="material-icons" style="font-size: 15px; color: #808080; float: left;">favorite_border</i></a>
 										 		</div>
 										 		<div class="media-body"> 
 										 			<span style="color: #808080; font-size: 12px; margin-left: 2px;">${obj.likeCount }</span>
@@ -391,6 +392,20 @@ footer {
 	    }
 	};
 	
+	//like
+	function like() {
+		$.post({
+			url : "/like.mt",
+			data : {				
+				"num" : $(".like").children('input').val()
+			}
+		}).done(function(result) {
+			if(result.result){
+				location.reload();
+			}
+		});
+		
+	};
 	
 
 	
