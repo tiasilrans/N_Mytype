@@ -37,7 +37,7 @@
 </style>
 
 <section class="main">
-	<div class="container box">
+	<div class="container box" style="margin-left: 270px;">
 		<div class="row">
 			<form action="/blogSetting.mt" method="post" enctype="multipart/form-data">
 				<!-- 블로그 정보 -->
