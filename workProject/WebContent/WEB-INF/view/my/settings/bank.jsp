@@ -31,15 +31,13 @@ label{
     border-bottom: 1px solid rgba(0,0,0,.075);
 }
 
-.scard {
-    position: relative;
-    display: block;
-    width : 850px;
-	height: 55%;
-    margin-bottom: .75rem;
-    background-color: #fff;
-    border-radius: .25rem;
-    border: 1px solid rgba(0,0,0,.125);
+.box {
+
+	background-color:white;
+	border-radius:10px;
+	margin: 20px;
+	width: 70%;
+	padding: 20px;
 }
 
 .card-block {
@@ -59,7 +57,8 @@ select {
 
 
 <form class="form-inline form-horizontal" action="/my/settings/bankExec">
-	<div class="scard col-xs-offset-2 col-md-offset-2">
+	<div class="col-xs-0 col-md-2"></div>
+	<div class="box col-xs-12 col-md-8 col-lg-12">
 		<div class="title">
 			<span style="float:left; font-size: 17px; margin-left: 5px;"><b>출금계좌 설정</b></span>
 		</div>

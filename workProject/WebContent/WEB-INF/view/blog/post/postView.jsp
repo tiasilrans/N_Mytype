@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <link rel="stylesheet" href="/css/postviewcss.css">
+
 <style>
 input[type=checkbox] {
 	display: none;
@@ -122,12 +123,14 @@ input[type=checkbox]:checked+label:before {
 							<div class="charged-content">${post.CCONTENT }</div>
 						</c:when>
 						<c:otherwise>
+						<c:if test="${ post.PRICE ne null || post.PRICE > 0}">
 							<div class="support" style="display: table; width: 100%;">
 								<div class="message"
 									style="display: table-cell; vertical-align: middle; padding-right: .75rem; line-height: 1.25; font-family: sans-serif; color: black; font-weight: 800px; width: 55%;">
 									<span style="font-family: sans-serif; color: black; font-size: 15px;">
 									<span style="font-weight: bold ;font-family: sans-serif; color: red; font-size: 18px;" id="price">
-									${post.PRICE}</span> point 구매하여 나머지 내용 보기
+									${post.PRICE}</span>
+									 point 구매하여 나머지 내용 보기
 									</span>
 								</div>
 								
@@ -143,10 +146,11 @@ input[type=checkbox]:checked+label:before {
 								</div>
 								
 							</div>
+						</c:if>
 						</c:otherwise>
 					</c:choose>
 				</div>
-				<c:if test="${ sessionScope.login ne post.EMAIL }">
+				<c:if test="${ sessionScope.login ne post.EMAIL && post.EMAIL ne 'MyType' }">
 				<div class="support" style="display: table; width: 100%;">
 					<div class="message"
 						style="display: table-cell; vertical-align: middle; padding-right: .75rem; line-height: 1.25; font-family: sans-serif; color: black; font-weight: 800px; width: 55%;">
@@ -155,7 +159,7 @@ input[type=checkbox]:checked+label:before {
 							창작활동을 응원하고 싶으세요?</span>
 					</div>
 					<div style="display: table-cell;">
-						<button class="button button1">후원하기</button>
+						<button class="button button1" id="sptbtn" data-toggle="modal" data-target="#spt-form">후원하기</button>
 					</div>
 				</div>
 				</c:if>
@@ -218,6 +222,7 @@ input[type=checkbox]:checked+label:before {
 									<button class="re-reply-write" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
 									<button class="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
 									<button class="reply-delete" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">삭제</button>
+									<input type="hidden" value="${obj.NUM }" />
 								</div>
 								<div class="comment-editor" style="display: none;">
 									<div style="float: left;">				
@@ -228,8 +233,8 @@ input[type=checkbox]:checked+label:before {
 										</div>																				
 									</div>
 									<div class="edit-bt" style="float: right; margin-right: 295px; margin-top: 10px;">
-										<button class="button button3" style="margin-top: -10px;">취소</button>
-										<button class="button button2">저장</button>
+										<button class="button button3 edit-cancel" style="margin-top: -10px;">취소</button>
+										<button class="button button2 edit-update">저장</button>
 									</div>
 								</div>
 							</div>					
@@ -311,6 +316,42 @@ input[type=checkbox]:checked+label:before {
     </div>
   </div>
   </form>
+
+<!-- 후원 modal  -->
+<form action="/support.mt" onsubmit="return nbcheck();">
+<input type="hidden" name="num" value="${post.NUM}" />
+<input type="hidden" name="email" value="${post.EMAIL}" />
+<input type="hidden" name="url" value="${post.URL}" />
+<input type="hidden" name="title" value="${post.TITLE}" />
+  <div class="modal fade" id="spt-form" role="dialog">
+    <div class="modal-dialog" style="width: 450px;">
+	    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">후원하기 - <span style="color: blue;">${post.TITLE}</span></h4>
+        </div>
+        
+        <div class="modal-body">
+				<div class="row"><div class="col-md-6" style="vertical-align: middle;">보유 포인트</div><div class="col-md-6" style="vertical-align: middle;"><span style="font-size: 15 ;"><fmt:formatNumber value="${mypoint.SUM}" pattern="#,###"/></span></div></div>
+				<hr/>
+				<div class="row"><div class="col-md-6">후원할 포인트</div><div class="col-md-6"><span style="font-size: 15 ;"><input name="price" id="nb" type="number" min="1" max="9999999"/></span></div></div>
+				<hr/>
+				<div class="row"><div class="col-md-6">남은 포인트</div><div class="col-md-6"><span id="ap" style="font-size: 15 ;"><fmt:formatNumber value="${mypoint.SUM}" pattern="#,###"/></span></div></div>
+        </div>
+        <div class="modal-footer">
+          		<div class="form-group row" align="center">
+				<div align="center" class="row">
+					<button class="button button1" id="login-sbt" type="submit"  style="width: 360px; height: 60px;">후원하기</button>
+				</div>
+		</div>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+  </form>
   
 <!-- 로그인창 modal  -->
   <div class="modal fade" id="login-form" role="dialog">
@@ -326,7 +367,7 @@ input[type=checkbox]:checked+label:before {
           		<div class="form-group row" align="center">		
 			<form action="/loginExec.mt?post=post" method="post">		
 			<input type="hidden" name="num" value="${post.NUM}" />
-			<input type="hidden" name="url" value="${post.URL}" />			
+			<input type="hidden" name="url" value="${post.URL}" />
 				<div class="form-group row">
 						<input class="form-control" type="text"
 							placeholder="e-mail" name="email" id="login-email" required />
@@ -352,10 +393,41 @@ input[type=checkbox]:checked+label:before {
     </div>
   </div>
 
+<script>
+Number.prototype.format = function(){
+    if(this==0) return 0;
+ 
+    var reg = /(^[+-]?\d+)(\d{3})/;
+    var n = (this + '');
+ 
+    while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2');
+ 
+    return n;
+};
+</script>
 
+<script>
+function nbcheck(){
+	var nb = $("#nb").val();
+	var p = '${mypoint.SUM}';
+	if(nb == null){
+		return false;
+	}
+	else if( nb > 0 && p-nb >= 0 ){
+		return true;
+	}else{
+		window.alert('정확한 값을 입력하시오');
+		return false;
+	}
+}
 
-
-
+$("#nb").on("keyup", function(){
+	var nb = $("#nb").val();
+	var p = '${mypoint.SUM}';
+	$("#ap").html((p-nb).format());
+	
+});
+</script>
 <script>
 
 // disply f
@@ -367,13 +439,21 @@ function disply(target) {
 	}	
 };
 
+// comment-action margin
+function margin_change(target) {
+	if(target.css("margin-top") == "-55px"){   
+		target.css("margin-top", "-105px");        
+	} else {  
+		target.css("margin-top", "-55px"); 
+	}		
+};
 
-$("#sub").on("click", function() {
-	
+
+$("#sub").on("click", function() {	
 	$.ajax({
 		url : "/${post.NUM }/peply.mt",
 		data : {			
-			"content" : $("#mention").val(),			
+			"content" : $("#mention").val().replace(/\n/g, "<br>"),			
 			"secret" : $("#secret").prop("checked"),
 			"url" : "${post.URL}"			
 		}
@@ -392,9 +472,11 @@ $("#sub").on("click", function() {
 $(".reply-edit").on("click", function(){	
 	var p = $(this).parent().prev().children('p');	
 	var editor = $(this).parent().next();
+	var action = $(this).parent();
 	console.log(editor);
 	disply(p);
 	disply(editor);
+	margin_change(action);
 	var c = p.html();
 	var add_editor = "<textarea class=\"form-control\" data-autosize-on=\"true\" style=\"overflow: hidden; resize: none;" 
 						+ "word-wrap: break-word; height: 80px; width: 700px; margin-top: 8px;\">"+ c.replace(/<br>/gi, "\r\n") +"</textarea>";
@@ -414,6 +496,64 @@ $(".re-reply-write").on("click", function(){
 	
 	
 });
+
+
+//reply-delete
+$(".reply-delete").on("click", function(){
+	var num = $(this).next().attr("value");
+	console.log(num);
+	$.ajax({
+		url : "/replyDelete.mt",
+		data : {			
+			"num" : num		
+		}
+	}).done(function(result) {				
+		if (result.result) {			
+			location.reload();
+		}
+	})	
+	
+});
+
+
+
+//edit-cancel
+$(".edit-cancel").on("click", function(){
+	$(this).parent().parent().prev().prev().children('textarea').remove();
+	var p = $(this).parent().parent().prev().prev().children('p');	
+	var editor = $(this).parent().parent();
+	var action = $(this).parent().parent().prev();
+	disply(p);
+	disply(editor);
+	margin_change(action);
+});
+
+
+//edit-update
+$(".edit-update").on("click", function(){
+	var num = $(this).parent().parent().prev().children('[type="hidden"]').attr("value");
+	var content = $(this).parent().parent().prev().prev().children('textarea').val().replace(/\n/g, "<br>");
+	console.log(content);
+	$.ajax({
+		url : "/"+num+"/peplyEdit.mt",
+		data : {			
+			"content" : content,			
+			"secret" : $(this).parent().prev().children().children('[type="checkbox"]').prop("checked"),
+			"url" : "${post.URL}"			
+		}
+	}).done(function(result) {				
+		if (result.result) {
+			window.alert("댓글 수정 완료");
+			location.reload();
+		}
+	})
+	
+	
+	
+});
+
+
+
 
 
 </script>

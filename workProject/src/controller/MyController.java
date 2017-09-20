@@ -451,7 +451,7 @@ public class MyController {
 		return mav;
 	}
 	
-	@RequestMapping("/settings/profileExec")
+	@RequestMapping("/settings/profile.mt")
 	public ModelAndView profilExec(@RequestParam Map map, @RequestParam(name = "image") MultipartFile f, HttpSession session) {
 		try {
 			String my =  (String)session.getAttribute("login");
@@ -492,14 +492,16 @@ public class MyController {
 		return mav;
 	}
 	
-	@RequestMapping("/settings/passwordExec")
+	@RequestMapping("/settings/password.mt")
 	public ModelAndView passwordExec(@RequestParam Map map, HttpSession session) {
 		map.put("email", (String)session.getAttribute("login"));
-		System.out.println(map);
+		System.out.println("map => "+map);
 		boolean str = myDao.pwchange(map);
+		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("settings_password");
-		mav.addObject("change", str);
+			mav.setViewName("settings_password");
+			mav.addObject("change", str);
+			
 		if(str){
 			session.setAttribute("info", myDao.info((String)session.getAttribute("login")));
 		}

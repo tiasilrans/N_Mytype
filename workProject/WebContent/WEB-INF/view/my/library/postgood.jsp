@@ -71,13 +71,8 @@ a{text-decoration: none;}
 	<hr style="margin-top: 10px;"/>
 </div>
 
-<<<<<<< HEAD
-	<div class="row" style="width: 60%">
-		<div align="left" >
-=======
 	<div class="row" style="width:60%;">
 		<div align="left" style="width: 100%;">
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 			<c:forEach var="all" items="${list }" begin="0" end="${list.size() < 8 ? list.size() : 8}" varStatus="vs">
 				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
 					<div class="title">

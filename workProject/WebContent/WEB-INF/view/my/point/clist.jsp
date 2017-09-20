@@ -9,37 +9,21 @@
 <style>
 
 body {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
 	background: whitesmoke;
 }
- 
-label{
-	margin-bottom: 2%;
-	width: 80px;
-}
 
-.scard {
-    position: relative;
-    display: block;
-    width : 800px;
-	height: 500px;
-    margin-bottom: .75rem;
-    background-color: #fff;
-    border-radius: .25rem;
-    border: 1px solid rgba(0,0,0,.125);
+.box {
+	position: relative;
+	display: block;
+	background-color:white;
+	border-radius:10px;
+	margin: 20px;
+	width: 70%;
+	padding: 20px;
 }
-
-.card-block {
-	margin-left: 15px;
-    position: relative;
-    vertical-align:middle;
-}
-
-.title{
-	padding-top :20px;
-	margin-left: 15px;
-	margin-bottom:25;
-}
- 
 
 table.type07 {
     line-height: 1.5;
@@ -66,12 +50,13 @@ ul li a:hover, ul li a:focus {
 
 </style>
 
-	<div class="scard col-xs-offset-2 col-md-offset-2">
-		<div align="center" style="min-height: 227px;">
-			<div class="title" style="margin-bottom: 40px;">
-				<span style="float:left; font-size: 18px; margin-left: 5px;"><b>충전내역</b></span>
-			</div><hr/>
-			
+<div class="col-xs-0 col-md-2"></div>
+<div class="box col-xs-12 col-md-8 col-lg-12">
+		<div class="title" style="margin-bottom: 40px;">
+			<span style="float:left; font-size: 18px; margin-left: 5px;"><b>충전내역</b></span>
+		</div><hr/>
+		
+		<div style="min-height: 317px;">
 			<table class="table type07">
 				<thead>
 					<tr>
@@ -125,15 +110,17 @@ ul li a:hover, ul li a:focus {
 			</table>
 		</div>
 	
-		<div align="center">
-			<ul class="pagination">
-				<c:forEach var="i" begin="1" end="${page}">
-					<li ${np == i? "class=\"active\"": ""}><a
-						href="/my/point/clist.mt?np=${i}">${i}</a></li>
-				</c:forEach>
-			</ul>
-		</div>
+	<div align="center">
+	<ul class="pagination">
+		<c:forEach var="i" begin="1" end="${page}">
+				<li ${np == i? "class=\"active\"": ""}><a
+					href="/my/point/clist.mt?np=${i}">${i}</a></li>
+			</c:forEach>
+		</ul>
 	</div>
+	
+</div>
+	
 
 
 <script>
