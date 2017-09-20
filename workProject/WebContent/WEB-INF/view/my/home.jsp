@@ -13,6 +13,8 @@
 
 <style>
 
+a{ text-decoration: none; }
+
 #secondlogo{
 	height: 260px;
 	width : 260px;
@@ -119,6 +121,11 @@ body {
 	color : red;
 }
 
+.notice{
+	margin-top: 14px;
+	margin-bottom: 14px;
+}
+
 </style>
 
 <section style="min-height: 75%;">
@@ -179,17 +186,19 @@ body {
 	
 
 <div class="col-xs-0 col-md-2"></div>
-<div class="box col-xs-12 col-md-8 col-lg-12">
-		<div class="title row">
+<div class="box col-xs-12 col-md-8 col-lg-12" style="min-height: 250px;">
+		<div class="title row" style="margin-bottom: 20px;">
           <span style="float:left; font-size: 17px;"><b>공지사항</b></span>
           <span style="font-size: 13px; float:right; padding-right:15px;">
-				<a style="text-decoration:none; color: #999999;"> 더 보기 > </a> 
+				<a href="/blog/MyTypeBlog1" style="text-decoration:none; color: #999999;"> 더 보기 > </a> 
 			</span>
         </div>
-        <div class="row" style="padding-left: 25px;">
-        <c:forEach var="n" items="${notice}" begin="0" end="${notice.size() < 2 ? notice.size() : 2}">
-			<div id="secondlogo" class="col-xs-0 col-md-4">
-				<div class="secondlogo-head">MyType 소식</div>
+        <div class="row" style="padding-left: 25px; width:780px; height: 180px;">
+	        <c:forEach var="n" items="${notice}" begin="0" end="${notice.size() < 2 ? notice.size() : 2}">
+	        	<div class="notice"><a style="text-decoration: none; color: #707070; " href="/MyTypeBlog1/post/${n.NUM }">${n.TITLE}</a></div>
+				<!-- 
+				<div id="secondlogo" class="col-xs-0 col-md-4">
+					<div class="secondlogo-head">MyType 소식</div>
 					<div class="secondlogo-body">
 						<img class="secondlogo-body-profileimg" src="/images/blogMark.png">
 						<div class="secondlogo-body-title">
@@ -197,18 +206,22 @@ body {
 							<span class="secondlogo-body-title-blog">blog.mytypeblog.com</span>
 						</div>	
 					</div>
-						<div class="secondlogo-body-content"><span>
-						<c:choose>
-						<c:when test="${n.SUBCONTENT ne null}">
-							${n.SUBCONTENT}
-						</c:when>
-						<c:otherwise>
-							${n.CONTENT}
-						</c:otherwise>
-						</c:choose>
-						</span></div>
-			</div>
-        </c:forEach>
+					
+					<div class="secondlogo-body-content">
+						<span>
+							<c:choose>
+							<c:when test="${n.SUBCONTENT ne null}">
+								${n.SUBCONTENT}
+							</c:when>
+							<c:otherwise>
+								${n.CONTENT}
+							</c:otherwise>
+							</c:choose>
+						</span>
+					</div>
+				</div>
+				-->
+	        </c:forEach>
 			
         </div>
 </div>
