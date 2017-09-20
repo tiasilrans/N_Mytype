@@ -246,12 +246,20 @@ a{ text-decoration: none; }
 					<div class="secondlogo-body">
 						<img class="secondlogo-body-profileimg" src="/images/blogMark.png">
 						<div class="secondlogo-body-title">
-							<span ><a href="/" class="secondlogo-body-title-name"><b>MyType 공식 블로그</b></a></span><br/>
+							<span ><a href="/blog/${notice.URL}" class="secondlogo-body-title-name"><b>MyType 공식 블로그</b></a></span><br/>
 							<span class="secondlogo-body-title-blog">blog.mytypeblog.com</span>
 						</div>	
 					</div>
-						<div class="secondlogo-body-content"><span>
-						</span></div>
+						<div class="secondlogo-body-content"><a href="/${notice.URL}/post/${notice.NUM}"><span style="color: gray; font-size: 12;">
+						<c:choose>
+						<c:when test="${notice.SUBCONTET ne null}">
+							${notice.SUBCONTENT }
+						</c:when>
+						<c:otherwise>
+							${notice.FCONTENT }
+						</c:otherwise>
+						</c:choose>
+						</span></a></div>
 			</div>
 			<!-- 목록 nav -->
 			<div class="col-xs-0 col-md-12">
