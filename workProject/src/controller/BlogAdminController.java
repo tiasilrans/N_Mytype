@@ -1,7 +1,6 @@
 package controller;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 import javax.servlet.ServletContext;
@@ -49,9 +48,7 @@ public class BlogAdminController {
 		 	mav.addObject("url", url);
 		 	mav.addObject("list", list);
 		return mav;
-	}
-	
-	
+	}	
 	@RequestMapping("/blog/{url}/subscribers")
 	public ModelAndView blogSubscribers(@PathVariable(value="url") String url, HttpSession session){
 		Map map = new HashMap();
@@ -115,10 +112,7 @@ public class BlogAdminController {
 			mav.setViewName("redirect:/blog/"+(String)map.get("url")+"/setting");
 			mav.addObject("r", rst);
 		return mav;
-	}
-	
-	
-	
+	}	
 	@RequestMapping("/blog/{url}/categories")
 	public ModelAndView categories(@PathVariable(value="url") String url, HttpSession session){
 		String email = (String)session.getAttribute("login");
@@ -141,12 +135,11 @@ public class BlogAdminController {
 		
 	}
 	
-	@RequestMapping("/categoryUpdate.mt")
+	@RequestMapping("/blog/categoryUpdate.mt")
 	@ResponseBody
 	public Map categoryAdd(@RequestParam Map m, HttpSession session){
 			m.put("email", session.getAttribute("login"));
-		System.out.println("넘어온 값 : " + m);
-		
+		System.out.println("넘어온 값 : " + m);		
 		Map map = new HashMap();
 		String delete = (String)m.get("cate_delete");
 		String[] arr = delete.split(",");
@@ -157,8 +150,7 @@ public class BlogAdminController {
 		String uuid = "";	
 		boolean add = false;
 		boolean orderadd = false;
-		boolean order = false;
-		
+		boolean order = false;		
 		List<Map> before = bDAO.cateAfterList(m);
 		for(String d : arr){// 삭제해야 할 경우			
 			for(Map li : before){
@@ -171,8 +163,7 @@ public class BlogAdminController {
 				}
 			}					
 			System.out.println("삭제 완료");
-		}
-		
+		}		
 		
 		for(int i = 0; i<addcate_name.length; i++){
 			if(addcate_name[i]!=""){ // 카테고리 추가 해야 할 경우 -------------------------------------*
@@ -182,8 +173,7 @@ public class BlogAdminController {
 				add = bDAO.categoryAdd(m);
 				orderadd = bDAO.categoryAddOrder(m);				
 			}
-		}
-				
+		}				
 			
 		List<Map> list = bDAO.cateAfterList(m);		
 		Map cateNameOrder = new HashMap();

@@ -102,7 +102,7 @@ public class MyController {
 			if(email != null){
 				map.put("email", email);
 				System.out.println(map);
-				mav.addObject("list",lDao.List(map));
+				mav.addObject("list",postDao.sublist(lDao.List(map)));
 			}
 			
 			//리스트 밑에 페이지수
@@ -149,7 +149,7 @@ public class MyController {
 			if(email != null){
 				map.put("email", email);
 				System.out.println(map);
-				mav.addObject("list",lDao.List(map));
+				mav.addObject("list",postDao.sublist(lDao.List(map)));
 			}
 			
 			//리스트 밑에 페이지수
@@ -464,8 +464,6 @@ public class MyController {
 					
 				File dst = new File(dir, my+".png");
 				f.transferTo(dst);
-				
-				System.out.println("realPath => "+dir);
 				
 			}
 			

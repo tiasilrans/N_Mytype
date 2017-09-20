@@ -7,9 +7,14 @@
 <link rel="stylesheet" href="/module/nailthumb/jquery.nailthumb.1.1.min.css">
 
 <style>
+<<<<<<< HEAD
 section{
 	background: whitesmoke;
 }
+=======
+
+a{ text-decoration: none; }
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 
 .logo-frame{
 	width:100%;
@@ -18,7 +23,7 @@ section{
 
 #secondlogo{
 	height: 350px;
-	width : 330px;
+	width : 300px;
 	border-radius: 5px;
 	margin: 10px;
 	border-radius : 5px;
@@ -78,6 +83,7 @@ section{
 	border-radius: 5px;
 	
 }
+<<<<<<< HEAD
 .conhead{
 	width : 100%;
 	height: 20%;
@@ -137,6 +143,8 @@ section{
 	font-size: 17;
 	color : red;
 }
+=======
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 
 .title{
 	padding-top :15px;
@@ -151,6 +159,19 @@ section{
     border-radius : 5px;
     border : 1px solid silver;
     background: white;
+}
+
+.conhead-profileimg{
+	float: left;
+	width:48px;
+	height:48px;
+	border-radius: 50%;
+	margin-right: 8px;
+}
+
+.conhead-title-blog, .conhead-title-blog:LINK, .conhead-title-blog:ACTIVE{
+	font-size: 12;
+	color: gray; 
 }
 
 .conbody-hashtag{
@@ -173,14 +194,29 @@ section{
 	border : 0px;
 }
 
+.confooter{
+	width : 100%;
+	height: 10%;
+}
+
+.confooter{
+	padding-top: 7px;
+}
+
+.confooter-count{
+	font-size: 17;
+	color : red;
+}
+
 
 
 </style>   
-
-<div class="container" style="margin-left: auto;">
+<div class="row">
+<div class="col-md-2" style="margin-left: 40px;"></div>
+<div class="col-md-7" style="margin-left: auto; margin-bottom: 100px;">
 
 			<!-- 메인쪽 로고 부분 -->
-			  <div class="container col-md-4" style="width:620px; height: 350px;">
+			  <div class="container col-md-4" style="width:600px; height: 350px; " >
 			  <div id="myCarousel" class="carousel" data-ride="carousel" style="width:580px; margin: 10px; border:1px solid silver;border-radius:5px;">
 			  
 			    <!-- Indicators -->
@@ -250,10 +286,15 @@ section{
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
 						<div>${all.NICKNAME }</div>
+<<<<<<< HEAD
 						<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${all.URL }">${all.URL }</a></div>
+=======
+						<div style="color:#909090; font-size: 12px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="-title-blog" style="text-decoration: none; color:#909090" href="/blog/${all.URL }">${all.URL }</a></div>
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 					</div>
 					
 	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
+<<<<<<< HEAD
 		                	<c:if test="${all.IMG.length() > 10}">
 		                		<div class="nailthumb-column-metadata" id="thumbnail">
 		                			${all.IMG }
@@ -262,6 +303,17 @@ section{
 						<a href="/${all.URL}/post/${all.NUM}" style="font-size: 15px; text-decoration: none; color: #333333;padding-bottom: 5px;">
 							${all.TITLE }
 						</a>
+=======
+						<a href="/${all.URL}/post/${all.NUM}" style="font-size: 15px; text-decoration: none; color: #333333; padding-bottom: 5px;">
+							${all.TITLE }
+						
+						<c:if test="${all.IMG.length() > 10}">
+		                		<div class="nailthumb-column-metadata" id="thumbnail">
+		                			${all.IMG }
+		                		</div>  
+	                	</c:if>
+	                	</a>
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
 							${all.FCONTENT }
 						</a>
@@ -309,29 +361,28 @@ section{
 			</div>
 			</c:when>
 			<c:otherwise>
-			<c:forEach var="like" items="${listLike}" begin="0" end="${listLike.size() < 5 ? listLike.size() : 5}" varStatus="vs">
-				
-					<!-- head -->
-					<div class="incard" style="<c:if test="${vs.last}">margin-left:15px;</c:if> clear: right;" >
+			<c:forEach var="like" items="${listLike }" begin="0" end="${listLike.size() < 5 ? listLike.size() : 5}" varStatus="vs">
+				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
 						<div>${like.NICKNAME }</div>
-						<div style="color:#909090; font-size: 11px;">6일전 · ${like.URL }</div>
+						<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${like.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${like.URL }">${like.URL }</a></div>
 					</div>
-	                <div style="height:50px; margin:12px; padding-bottom: 3px;">
-	                	<div style="font-size: 15px; padding-bottom: 5px; ">제목 없음</div>
-	                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
-	                	<c:choose>
-	                	<c:when test="${all.IMG.length() > 10}">
-	                		<%-- <p style="width: 224px; height: 72px;">${all.IMG }<p> --%>
-	                		${like.IMG }
-	                	</c:when>
-	                	<c:otherwise>
-	                		${like.FCONTENT }
-	                	</c:otherwise>
-	                	</c:choose>
-	                	</div>
-	                </div> <br/><br/><br/>
+					
+	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
+						<a href="/${like.URL}/post/${like.NUM}" style="font-size: 15px; text-decoration: none; color: #333333;padding-bottom: 5px;">
+							${like.TITLE }
+						
+						<c:if test="${like.IMG.length() > 10}">
+		                		<div class="nailthumb-column-metadata" id="thumbnail">
+		                			${like.IMG }
+		                		</div>  
+	                	</c:if>
+	                	</a>
+						<a href="/${like.URL}/post/${like.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
+							${like.FCONTENT }
+						</a>
+					</div> <br/><br/><br/>
 	                
 	                <div>
 		                <c:set var="msg" value="${like.HASH }"/>
@@ -357,9 +408,10 @@ section{
 					</div>
 				</div>
 			
-			<c:if test="(vs+1) % 3 = 0">
-				<br/>
-			</c:if>
+				<c:if test="(vs+1) % 3 = 0">
+					<br/>
+				</c:if>
+				
 			</c:forEach>
 			</c:otherwise>
 			</c:choose>
@@ -369,6 +421,8 @@ section{
 			
 			</div>
 </div>
+</div>
+
 </div>
 
 <c:choose>

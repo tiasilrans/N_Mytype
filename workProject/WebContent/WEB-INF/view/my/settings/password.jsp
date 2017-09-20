@@ -49,7 +49,7 @@ label{
 
 
 <form class="form-inline form-horizontal">
-	<div class="scard col-xs-offset-1 col-md-offset-1">
+	<div class="scard col-xs-offset-2 col-md-offset-2">
 		<div class="title">
 			<span style="float:left; font-size: 17px; margin-left: 5px;"><b>비밀번호 설정</b></span>
 		</div>

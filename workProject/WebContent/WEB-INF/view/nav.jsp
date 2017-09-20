@@ -11,7 +11,7 @@
 </style>
 <!--navbar menu-->
 <section class="navbar-info ">
-	<nav class="navbar navbar-default navbar-me" style="margin-bottom: 0px; ">
+	<nav class="navbar navbar-default navbar-me">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button"
@@ -23,8 +23,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="/"><img src="/images/title.png" style="margin: 5px;"></a>
-				</div> 
-
+			</div>
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse">
 				<c:choose>

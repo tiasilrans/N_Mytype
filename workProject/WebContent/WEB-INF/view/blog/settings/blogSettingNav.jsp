@@ -7,8 +7,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <!-- blogSetting navbar menu-->
-<nav class="secondary-nav navbar ">
-	<div class="col-xs-offset-1 col-md-offset-1">
+<nav class="secondary-nav navbar">
 		<ul class="nav navbar-nav">
 			<li class="nav-item">
 				<a class="nav-link" href="/blog/${url}">${blogTitle.TITLE}</a>
@@ -26,39 +25,10 @@
 				<a class="nav-link" href="/blog/${url}/setting">설정</a>
 			</li>
 		</ul>
-	</div>
 </nav>
 
 
-<script>
-function postSet(){    	
-    	$.post({
-			url : "/blog/admin/posts",
-			data : {
-				"num" : "${post.NUM }",
-				"url" : "${post.URL}"
-			}
-		}).done(function(result) {
-			if(result.result){
-				location.replace("")
-				window.alert("삭제가 완료되었습니다.");
-			}else{
-				window.alert("포스트 삭제에 실패하였습니다.");
-			}
-		});
 
-};
-
-
-
-
-
-
-
-
-
-
-</script>
 
 
 

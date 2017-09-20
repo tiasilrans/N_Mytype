@@ -3,12 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <link rel="stylesheet" href="/css/searchcss.css">  
 <link rel="stylesheet" href="/css/my.css">
+<script src="/module/nailthumb/jquery.nailthumb.1.1.min.js"></script>
+<link rel="stylesheet" href="/module/nailthumb/jquery.nailthumb.1.1.min.css">
 
 <style>
 
+<<<<<<< HEAD
+=======
+a{text-decoration: none;}
+
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 .card {
     position: relative;
     display: block;
@@ -63,28 +69,49 @@
 <div align="center">
 
 <div style="width: 60%;" align="left">
-<h2>좋아요</h2>
-<hr style="margin-top: 10px;"/>
+	<h2>좋아요</h2>
+	<hr style="margin-top: 10px;"/>
 </div>
 
 <div style="width: 59%;" align="left">
+<<<<<<< HEAD
 	<div class="row container">
 		<div align="left" style="width: 100%;">
 			<c:forEach var="all" items="${list }" begin="0" end="${list.size() < 8 ? list.size() : 8}" varStatus="vs">
+=======
+	<div class="row">
+		<div align="left" style="width: 100%;">
+			<c:forEach var="all" items="${list }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
 						<div>${all.NICKNAME }</div>
+<<<<<<< HEAD
 						<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${all.URL }">${all.URL }</a></div>
+=======
+						<div style="color:#909090; font-size: 12px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" style="text-decoration: none; color:#909090" href="/blog/${all.URL }">${all.URL }</a></div>
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 					</div>
 					
 	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
+<<<<<<< HEAD
 	                	<c:if test="${all.IMG.length() > 10}">
 	                		${all.IMG }
 	                	</c:if>
 						<a href="/${all.URL}/post/${all.NUM}" style="font-size: 15px; text-decoration: none; color: #333333;padding-bottom: 5px;">
 							${all.TITLE }
 						</a>
+=======
+						<a href="/${all.URL}/post/${all.NUM}" style="font-size: 15px; text-decoration: none; color: #333333; padding-bottom: 5px;">
+							${all.TITLE }
+								<c:if test="${all.IMG.length() > 10}">
+				                		<div class="nailthumb-column-metadata" id="thumbnail">
+				                			${all.IMG }
+				                		</div>  
+			                	</c:if>
+	                	</a>
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
 							${all.FCONTENT }
 						</a>

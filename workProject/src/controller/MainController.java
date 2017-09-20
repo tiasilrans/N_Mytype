@@ -80,6 +80,9 @@ public class MainController {
 		Map result = mdao.Login(map);
 		if(result != null){
 			mav.setViewName("redirect:/");
+			if(map.get("post") != null){
+				mav.setViewName("redirect:/"+(String)map.get("url")+"/post/"+(String)map.get("num"));
+			}
 			session.setAttribute("login", map.get("email"));
 			session.setAttribute("blog", bdao.mybloglist(map));
 			System.out.println(myDao.info((String)session.getAttribute("login")));
