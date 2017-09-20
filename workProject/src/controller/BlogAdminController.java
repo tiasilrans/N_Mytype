@@ -139,7 +139,7 @@ public class BlogAdminController {
 	@ResponseBody
 	public Map categoryAdd(@RequestParam Map m, HttpSession session){
 			m.put("email", session.getAttribute("login"));
-		System.out.println("�꽆�뼱�삩 媛� : " + m);		
+		System.out.println("넘어온 값 : " + m);		
 		Map map = new HashMap();
 		String delete = (String)m.get("cate_delete");
 		String[] arr = delete.split(",");
@@ -156,13 +156,12 @@ public class BlogAdminController {
 			for(Map li : before){
 				String id = (String)li.get("CATE_ID");
 				if(id.equals(d)){
-					System.out.println( " ID >> "+  d + "�쓽 �궘�젣瑜� �떆�옉�븳�떎");
+					System.out.println( " ID >> "+  d);
 					Map deleteMap = new HashMap();					
 					deleteMap.put("cate_id", d);
 					bDAO.cateRemover(deleteMap);
 				}
 			}					
-			System.out.println("�궘�젣 �셿猷�");
 		}		
 		
 		for(int i = 0; i<addcate_name.length; i++){
@@ -183,7 +182,7 @@ public class BlogAdminController {
 		for(Map li : list){
 			String key = (String)li.get("CATEGORY_NAME");
 			String id = (String)li.get("CATE_ID");
-			if(!key.equals("�쟾泥� 蹂닿린")){
+			if(!key.equals("전체 보기")){
 				Integer idx = (Integer)cateNameOrder.get(key);				
 				Map orderMap = new HashMap();
 					orderMap.put("cate_index", idx);
