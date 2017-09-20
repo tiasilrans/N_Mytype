@@ -109,7 +109,6 @@ ul li a:hover, ul li a:focus {
 				</tbody>
 			</table>
 		</div>
-	</div>
 	
 	<div align="center">
 	<ul class="pagination">
@@ -119,6 +118,8 @@ ul li a:hover, ul li a:focus {
 			</c:forEach>
 		</ul>
 	</div>
+	
+</div>
 	
 
 

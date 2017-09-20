@@ -62,7 +62,7 @@ ul li a:hover, ul li a:focus {
 		</span>
 	</div><hr/>
 	
-	<div style="min-height: 227px;">
+	<div style="min-height: 294px;">
 		<table class="table type07">
 			<thead>
 				<tr>
@@ -77,7 +77,7 @@ ul li a:hover, ul li a:focus {
 			<c:choose>
 				<c:when test="${list ne null}">
 					<c:forEach var="point" items="${list}">
-						<tr>
+						<tr style="height:50px;">
 							<td style="vertical-align: middle;">
 								<fmt:formatDate value="${point.PTDATE }" pattern="yyyy-MM-dd"/>
 							</td>
@@ -92,7 +92,7 @@ ul li a:hover, ul li a:focus {
 									</fmt:formatNumber>
 								</span>
 							</td>
-							<td style="vertical-align: middle;">${point.CAUSE }</td>
+							<td vertical-align: middle;">${point.CAUSE }</td>
 						</tr>
 					</c:forEach>
 				</c:when>

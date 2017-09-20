@@ -25,13 +25,6 @@ body {
 	padding: 20px;
 }
 
-.ptable{
-	margin-left: 20px;
-	margin-right:100%;
-	margin-bottom: 5%;
-	width: 80%;
-}
-
 </style>
 
 <section style="min-height: 90%;">
@@ -46,7 +39,7 @@ body {
 			<span style="float:left; font-size: 17px; margin-left: 5px;">1. 충전할 포인트의 양을 선택해 주세요.</span>
 		</div><br/>
 		
-		<table class="card-block table ptable">
+		<table class="table" style="margin-left: 15px;">
 		<thead>
 			<tr>
 	        	<th width="30%">충전포인트</th>
