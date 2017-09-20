@@ -26,9 +26,9 @@
 	<div class="col-xs-0 col-md-4"></div>
 	<div class="col-xs-12 col-md-4">
 		
- <div class="form-group joinbox row" >
+ <div class="form-group joinbox row" style="float: right;">
 			<form action="/joinExec.mt" method="post">					
-				<h3 align="left">회원가입 </h3>
+				<h5 align="left">회원가입 </h5>
 				<br/>				
 				<div class="form-group row">
 						<input class="form-control" type="email"
