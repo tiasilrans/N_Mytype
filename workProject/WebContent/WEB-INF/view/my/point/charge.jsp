@@ -16,11 +16,6 @@ body {
 	background: whitesmoke;
 }
 
-label{
-	margin-bottom: 2%;
-	width: 80px;
-}
-
 .box {
 	position: relative;
 	background-color:white;
@@ -28,18 +23,6 @@ label{
 	margin: 20px;
 	width: 70%;
 	padding: 20px;
-}
-
-.card-block {
-	margin-left: 15px;
-    position: relative;
-    vertical-align: middle;
-}
-
-.title{
-	padding-top :20px;
-	margin-left: 15px;
-	margin-bottom:25;
 }
 
 .ptable{

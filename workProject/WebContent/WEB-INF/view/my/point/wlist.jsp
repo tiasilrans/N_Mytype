@@ -45,63 +45,65 @@ table.type07 td {
 }
 </style>
 
+<div class="col-xs-0 col-md-2"></div>
+<div class="box col-xs-12 col-md-8 col-lg-12">
+	<div align="center" style="min-height: 227px;">
+		<div class="title" style="margin-bottom: 40px;">
+			<span style="float:left; font-size: 18px; margin-left: 5px;"><b>출금내역</b></span>
+		</div><hr/>
 
-<div align="center" >
-	<div style="width: 40%;" align="left">
-	<h2>출금 내역</h2>
-	<hr style="margin-top: 10px;"/>
-	</div>
-
-	<table class="table type07" style="width: 40%;">
-		<thead>
-			<tr style="background-color: #F6F6F6;">
-				<th>출금신청일</th>
-				<th>신청포인트</th>
-				<th>처리 결과</th>
-				<th>충전 취소</th>
-			</tr>
-		</thead>
-		<tbody style="font-size: 14px;">
-		<c:choose>
-		<c:when test="${list ne null}">
-			<c:forEach var="withdraw" items="${list}">
+		<table class="table type07">
+			<thead>
 				<tr>
-					<td style="vertical-align: middle;">
-					<fmt:formatDate value="${withdraw.WDATE }" pattern="yyyy-MM-dd HH:mm"/>
-					</td>
-					<td style="vertical-align: middle; height: 50px;"><fmt:formatNumber pattern="#,###">${withdraw.MONEY }</fmt:formatNumber>P</td>
-					<td style="vertical-align: middle; height: 50px;"><small style="color: ${withdraw.ACCEPT eq 'N'? '#FF7171': '#74D36D'}">
-						${withdraw.ACCEPT eq 'N'? '출금진행중': '출금완료'}
-					</small></td>
-					<td style="vertical-align: middle; height: 50px;">
-					<c:choose>
-					<c:when test="${withdraw.ACCEPT eq 'N'}">
-						<button class="btn btn-default" type="button" id="delete" value="${withdraw.PNUM}">출금취소</button>
-					</c:when>
-					<c:otherwise>
-						<b>출금 완료</b>
-					</c:otherwise>
-					</c:choose>
-					</td>
+					<th>출금신청일</th>
+					<th>신청포인트</th>
+					<th>처리 결과</th>
+					<th>충전 취소</th>
 				</tr>
-			</c:forEach>
-			</c:when>
-			<c:otherwise>
-				<td colspan="4" style="vertical-align: middle; height: 50px;">
-					<b>출금 내역이 없습니다.</b>
-				</td>
-			</c:otherwise>
-		</c:choose>
-		</tbody>
-	</table>
-	
-	<ul class="pagination">
-	<c:forEach var="i" begin="1" end="${page}">
-		<li ${np == i? "class=\"active\"": ""}><a
-			href="/my/point/wlist.mt?np=${i}">${i}</a></li>
-	</c:forEach>
-	</ul>
+			</thead>
+			<tbody style="font-size: 14px;">
+			<c:choose>
+			<c:when test="${list ne null}">
+				<c:forEach var="withdraw" items="${list}">
+					<tr>
+						<td style="vertical-align: middle;">
+						<fmt:formatDate value="${withdraw.WDATE }" pattern="yyyy-MM-dd HH:mm"/>
+						</td>
+						<td style="vertical-align: middle; height: 50px;"><fmt:formatNumber pattern="#,###">${withdraw.MONEY }</fmt:formatNumber>P</td>
+						<td style="vertical-align: middle; height: 50px;"><small style="color: ${withdraw.ACCEPT eq 'N'? '#FF7171': '#74D36D'}">
+							${withdraw.ACCEPT eq 'N'? '출금진행중': '출금완료'}
+						</small></td>
+						<td style="vertical-align: middle; height: 50px;">
+						<c:choose>
+						<c:when test="${withdraw.ACCEPT eq 'N'}">
+							<button class="btn btn-default" type="button" id="delete" value="${withdraw.PNUM}">출금취소</button>
+						</c:when>
+						<c:otherwise>
+							<b>출금 완료</b>
+						</c:otherwise>
+						</c:choose>
+						</td>
+					</tr>
+				</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<td colspan="4" style="vertical-align: middle; height: 50px;">
+						<b>출금 내역이 없습니다.</b>
+					</td>
+				</c:otherwise>
+			</c:choose>
+			</tbody>
+		</table>
+		
+		<ul class="pagination">
+		<c:forEach var="i" begin="1" end="${page}">
+			<li ${np == i? "class=\"active\"": ""}><a
+				href="/my/point/wlist.mt?np=${i}">${i}</a></li>
+		</c:forEach>
+		</ul>
+	</div>
 </div>
+	
 
 <script>
 	$("#delete").on("click",function(){
