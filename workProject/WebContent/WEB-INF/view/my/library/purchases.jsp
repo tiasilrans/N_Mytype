@@ -28,6 +28,7 @@
 	margin: 8px;
     border-radius : 5px;
     border : 1px solid silver;
+    background: white;
 }
 
 .conbody-hashtag{
@@ -112,7 +113,7 @@
 	<hr style="margin-top: 10px;"/>
 </div>
 
-<div class="row">
+<div class="row" style="width:60%;">
 <div align="left" style="width: 100%;">
 	<div class="row">
 		<div align="left" style="width: 100%;">

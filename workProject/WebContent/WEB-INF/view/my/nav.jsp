@@ -37,6 +37,7 @@
 							<li><a href="/my/settings/profile">프로필 편집</a></li>
 							<li><a href="/my/settings/password">비밀번호 변경</a></li>
 							<li><a href="/my/settings/bank">출금계좌 설정</a></li>
+							<li><a href="/my/settings/memberdelete">회원 탈퇴</a></li>
 						</ul>
 					</li> 
 					<li class="dropdown gd"><a class="dropdown-toggle" href="#" style="padding: 5px; padding-left: 10px; padding-right:10px;">쪽지</a>

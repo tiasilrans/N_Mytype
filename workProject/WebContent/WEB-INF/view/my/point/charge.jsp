@@ -22,7 +22,7 @@ label{
     position: relative;
     display: block;
     width : 800px;
-	height: 650px;
+	height: 700px;
     margin-bottom: .75rem;
     background-color: #fff;
     border-radius: .25rem;
@@ -32,7 +32,7 @@ label{
 .card-block {
 	margin-left: 15px;
     position: relative;
-    vertical-align:middle;
+    vertical-align: middle;
 }
 
 .title{
@@ -52,9 +52,12 @@ label{
 
 <form class="form-inline form-horizontal" action="/my/point/chargeExec">
 	<div class="scard col-xs-offset-2 col-md-offset-2">
+		<div class="title" style="margin-bottom: 40px;">
+			<span style="float:left; font-size: 18px; margin-left: 5px;"><b>충전하기</b></span>
+		</div><hr/>
 		
 		<div class="title">
-			<span style="float:left; font-size: 17px; margin-left: 5px;"><b>1. 충전할 포인트의 양을 선택해 주세요.</b></span>
+			<span style="float:left; font-size: 17px; margin-left: 5px;">1. 충전할 포인트의 양을 선택해 주세요.</span>
 		</div><br/>
 		
 		<table class="card-block table ptable">
@@ -89,9 +92,9 @@ label{
 		</table>
   
 		<div class="title">
-			<span style="float:left; font-size: 17px; margin-left: 5px; margin-right: 70%;"><b>2. 결제 정보를 입력해 주세요.</b></span>
+			<span style="float:left; font-size: 17px; margin-left: 5px; margin-right: 70%;">2. 결제 정보를 입력해 주세요.</span>
 		</div> <br/><br/>
-	
+		
 		<div class="card-block" style="float:left; padding-left:0; padding-right:60px;">
 			<label style="color: #606060;">이름</label>
 			<input type="text" name="name" class="form-control" style="width:70%;" 

@@ -199,7 +199,7 @@ public class MyController {
 				mav.addObject("list",pointDao.selectpoint(map));
 				mav.addObject("pointsum",pointDao.selectpointsum(email));
 			}
-			System.out.println("pmap => "+pointDao.selectpoint(map));
+			//System.out.println("pmap => "+pointDao.selectpoint(map));
 			
 			//리스트 밑에 페이지수
 			int eSize = 5;
@@ -499,6 +499,27 @@ public class MyController {
 		boolean str = myDao.pwchange(map);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("settings_password");
+		mav.addObject("change", str);
+		if(str){
+			session.setAttribute("info", myDao.info((String)session.getAttribute("login")));
+		}
+		return mav;
+	}
+	
+	@RequestMapping("/settings/memberdelete")
+	public ModelAndView memberdelete() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("settings_memberdelete");
+		return mav;
+	}
+	
+	@RequestMapping("/settings/memberdeleteExec")
+	public ModelAndView memberdeleteExec(@RequestParam Map map, HttpSession session) {
+		map.put("email", (String)session.getAttribute("login"));
+		System.out.println(map);
+		boolean str = myDao.pwchange(map);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("settings_memberdeleteExec");
 		mav.addObject("change", str);
 		if(str){
 			session.setAttribute("info", myDao.info((String)session.getAttribute("login")));

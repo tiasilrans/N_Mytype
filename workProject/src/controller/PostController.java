@@ -43,7 +43,7 @@ public class PostController {
 	public Map posrWrite(@RequestParam Map m,HttpSession session){
 		String email = (String)session.getAttribute("login");
 			m.put("email", email);
-		System.out.println("넘어온 값 : " + m);
+		System.out.println("가져온 값 : " + m);
 		Map map= new HashMap<>();
 		boolean f = pdao.postWrite(m);
 		if(f){			
@@ -83,7 +83,7 @@ public class PostController {
 				mav.addObject("buy", false);
 			}
 		}
-			mav.addObject("totalpost", pdao.postCount(map));// 블로그 총 포스트 수 
+			mav.addObject("totalpost", pdao.postCount(map)); 
 		return mav;	
 	}
 	
@@ -117,7 +117,7 @@ public class PostController {
 		List<Map> catelist = pdao.categoryList(m);		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("post");
-			mav.addObject("title", "포스트 편집");
+			mav.addObject("title", "전제 보기");
 			mav.addObject("map", m);
 			mav.addObject("catelist", catelist);
 			session.setAttribute("updateMap", m);
@@ -166,8 +166,8 @@ public class PostController {
 		mav.setViewName("redirect:/"+(String)map.get("url")+"/post/"+(String)map.get("num"));
 		map.put("myemail", session.getAttribute("login"));
 		String title = (String)map.get("title");
-		map.put("btitle", "["+title+"]�룷�씤�듃 援щℓ");
-		map.put("stitle", "["+title+"]�룷�씤�듃 �뙋留�");
+		map.put("btitle", "["+title+"]占쎈７占쎌뵥占쎈뱜 �뤃�됤꼻");
+		map.put("stitle", "["+title+"]占쎈７占쎌뵥占쎈뱜 占쎈솇筌랃옙");
 		pdao.buyPost(map);
 		return mav;
 	}

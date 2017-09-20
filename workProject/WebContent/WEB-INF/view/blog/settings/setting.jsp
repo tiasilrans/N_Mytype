@@ -10,7 +10,7 @@
 	background-color:white;
 	border-radius:10px;
 	margin: 20px;
-	width: 50%;
+	width: 70%;
 	padding: 20px;
 }
 
