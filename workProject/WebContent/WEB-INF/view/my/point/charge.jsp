@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <link rel="stylesheet" href="/css/my.css">
+<link rel="stylesheet" href="/css/postviewcss.css">
 
 <div align="center" >
 	<div style="width: 50%;" align="left">
@@ -123,7 +124,7 @@
 	<td style="width: 50%; border-top-color: white;">
 	<div align="right" style="margin: 10px;">
 		<a href="/"><button type="button" class="btn btn-default">취소</button></a>
-		<button type="submit" class="btn btn-primary">결제하기</button>
+		<button type="submit" class="btn button button1">결제하기</button>
 	</div>
 		
 	</td>

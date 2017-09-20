@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <link rel="stylesheet" href="/css/my.css">
+<link rel="stylesheet" href="/css/postviewcss.css">
 
 <style>
   
@@ -64,7 +65,7 @@ table.type07 td {
 					<td style="vertical-align: middle; height: 50px;">
 					<c:choose>
 					<c:when test="${deposit.ACCEPT eq 'N'}">
-						<button class="btn btn-default" type="button" id="delete" value="${deposit.NUM}">결제취소</button>
+						<button class="btn button button1" type="button" id="delete" value="${deposit.NUM}">결제취소</button>
 					</c:when>
 					<c:otherwise>
 						<b>충전 완료</b>
