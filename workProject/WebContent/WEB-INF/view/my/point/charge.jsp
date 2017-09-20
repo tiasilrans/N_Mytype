@@ -5,17 +5,35 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <link rel="stylesheet" href="/css/my.css">
+<style>
+
+.scard {
+    position: relative;
+    display: block;
+    width : 850px;
+	height: 53%;
+    margin-bottom: .75rem;
+    background-color: #fff;
+    border-radius: .25rem;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.title{
+	padding-top :15px;
+	margin-left: 10px;
+}
+
+</style>
+
 
 <div align="center" >
-	<div style="width: 50%;" align="left">
-	<h2>포인트 충전</h2>
-	<hr style="margin-top: 10px;"/>
-	</div>
+
 <form action="/my/point/chargeExec">
-<ul class="list-group" style="width: 50%; text-align: left">
-<li class="list-group-item" style="background-color: #F6F6F6;">
-<h5><b>1. 충전할 포인트의 양을 선택해 주세요.</b></h5>
-</li>
+<div class="scard">
+
+	<div class="title">
+		<span style="float:left; font-size: 17px; margin-left: 5px;"><b>1. 충전할 포인트의 양을 선택해 주세요.</b></span>
+	</div>
 
 <li class="list-group-item">
   <table class="table table-hover" style="margin-bottom: 0px;">
@@ -134,7 +152,8 @@
 
 </li>
 
-</ul>
+
+</div>
 </form>
 
 </div>
