@@ -212,7 +212,7 @@ input[type=checkbox]:checked+label:before {
 					</div>					
 					</c:forEach>
 					<h5>댓글</h5>
-							<textarea class="form-control autosize" name="content"
+							<textarea class="form-control autosize content" name="content"
 								id="mention" data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; 
 								height: 60px; width: 750px; resize: none;" ${sessionScope.login eq null ? "readonly" : "" }></textarea>
 							<div class="clearfix">
@@ -335,11 +335,11 @@ input[type=checkbox]:checked+label:before {
 
 // reply write
 $("#sub").on("click", function() {
-	
+
 	$.ajax({
 		url : "/${post.NUM }/peply.mt",
 		data : {			
-			"content" : $("#mention").html(),			
+			"content" : $("#mention").val().replace(/\n/g, "<br>"),			
 			"secret" : $("#secret").prop("checked"),
 			"url" : "${post.URL}"			
 		}
