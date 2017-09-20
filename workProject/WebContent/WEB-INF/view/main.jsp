@@ -251,14 +251,7 @@ a{ text-decoration: none; }
 						</div>	
 					</div>
 						<div class="secondlogo-body-content"><span>
-						<c:choose>
-						<c:when test="${notice.get(0).SUBCONTENT ne null}">
-							${notice.get(0).SUBCONTENT}
-						</c:when>
-						<c:otherwise>
-							${notice.get(0).CONTENT}
-						</c:otherwise>
-						</c:choose>
+
 						</span></div>
 			</div>
 			<!-- 목록 nav -->
