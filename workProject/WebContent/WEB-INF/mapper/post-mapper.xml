@@ -49,6 +49,17 @@
  		SELECT p.num, p.title, p.CATEGORY, p.PDATE, p.COUNT FROM post p where url=#{url} order by num desc
  	</select>
  	
+ 	
+ 	<!-- 블로그 내 검색  / 타이틀, 서브타이틀만 검색 / 조회수 정렬 -->
+ 	<select id="search" parameterType="java.util.Iterator" resultType="java.util.HashMap">
+ 		SELECT * FROM (SELECT * FROM post where url=#{url}) p where 
+ 			<foreach collection="arr" item="keyword" separator=" or " open="(" close=")">
+				p.title like #{keyword} or p.SUBTITLE like #{keyword}
+			</foreach>
+ 				order by count desc
+ 	</select>
+ 	
+ 	
   	
   	
   	<!--(메인) 게시물 전체 불러오기 -->

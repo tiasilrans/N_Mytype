@@ -350,6 +350,21 @@ public class PostDao {
 		}
 	}
 	
+	public List<Map> blogSearch(Map map){
+		SqlSession session = factory.openSession();
+		List<Map> list = new ArrayList<>();
+		try{
+			list = session.selectList("post.search", map);
+			return list; 
+		}catch(Exception e){
+			System.out.println("blogSearch Error");
+			e.printStackTrace();
+			return list;
+		}finally{
+			session.close();
+		}
+	}
+	
 	
 	
 	

@@ -115,6 +115,12 @@ footer {
 <div class="row" align="center">
 	<div class="col-xs-0 col-md-1"></div>
 	<div class="col-xs-12 col-md-10">
+	<c:if test="${searchMode}">
+			<div class="search-result" align="left" style="padding: 1.75rem; margin-top: .5rem;">
+				<div style="font-size: 14;">검색결과</div>
+				<div style="font-size: 20;">${keyword }</div>
+			</div>
+		</c:if>
 		<div class="row">
 		<c:choose>
 			<c:when test="${list ne null }">
@@ -196,7 +202,7 @@ footer {
 				<section class="section box">
 					<div class="form-group" align="left" style="margin-bottom: -15px;">
 						<form class="search" aria-labelledby="search-toggler"
-							role="search" action="/search" method="get">
+							role="search" action="/blog/${map.URL }/search" method="get">
 							<input class="form-control form-control-sm search-input"
 								type="search" name="keyword" value="" data-action="grow"
 								placeholder="검색어를 입력해 주세요">
