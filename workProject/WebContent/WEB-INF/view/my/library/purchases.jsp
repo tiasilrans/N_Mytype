@@ -81,7 +81,6 @@ a{text-decoration: none;}
 .div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
 
 </style>
-    
 
 <div class="col-lg-3 col-md-3"></div>
 <div class="col-lg-7 col-md-6" style="margin-left: auto;">
