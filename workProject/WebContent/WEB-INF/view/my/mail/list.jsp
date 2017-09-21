@@ -8,20 +8,6 @@
 
 <style>
 
-body {
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-}
-
-.box {
-	background-color:white;
-	border-radius:10px;
-	margin: 20px;
-	width: 70%;
-	padding: 20px;
-}
-
 .button {
 	background-color: #4CAF50; /* Green */
 	border: none;
@@ -61,6 +47,7 @@ table.type07 td {
 </style>
 
 
+<section style="min-height: 80%;">
 <form action="/mail/delete.mt">
 <div class="col-xs-0 col-md-2"></div>
 <div class="box col-xs-12 col-md-8 col-lg-12">
@@ -116,6 +103,8 @@ table.type07 td {
 	</div>
 </div>
 </form>
+</section>
+
 
 <script>
 $("#allcheck").on("click",function(){
