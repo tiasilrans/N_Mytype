@@ -10,6 +10,7 @@
 				<a class="list-group-item" style="padding-left: 20px;" href="/admin/post">포스트 관리</a>
 				<a class="list-group-item" style="padding-left: 20px;" href="/admin/reply">댓글 관리</a>
 				<a class="list-group-item" style="padding-left: 20px;" href="/admin/mailsend">관리자 쪽지 보내기</a>
+				<a class="list-group-item" style="padding-left: 20px;" href="/admin/adult">성인인증 승인</a>
 		</div>
 	</div>
 </div>

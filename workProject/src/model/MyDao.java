@@ -117,5 +117,17 @@ public class MyDao {
 		}
 	}
 	
+	public boolean adultupdate(Map map) {
+		SqlSession session = factory.openSession();
+		try{
+			session.update("my.adultupdate",map);
+			return true;
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}finally{
+			session.close();
+		}
+	}
 	
 }
