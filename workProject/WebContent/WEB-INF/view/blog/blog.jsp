@@ -214,7 +214,7 @@
 							</ul> 
 					</div>
 				</div>
-			</c:when>
+			</c:when> 
 			<c:otherwise>			
 				<c:if test="${sessionScope.login eq map.EMAIL }">
 				<div class="col-xs-8" align="left" style="color: black;">
