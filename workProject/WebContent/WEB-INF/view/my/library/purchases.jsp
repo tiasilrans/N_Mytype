@@ -89,6 +89,8 @@ a{text-decoration: none;}
 		<br/><hr style="margin-top: 10px;"/>
 	</div>
 	<div class="w3-row w3-container" style="width:1100px;">
+	<c:choose>
+	<c:when test="${list.size() > 0}">
 		<c:forEach var="all" items="${list }" begin="0" end="${list.size() < 8 ? list.size() : 8}" varStatus="vs">
 			<div class="incard w3-col s3" style="clear: right;" >
 				<div class="title">
@@ -142,6 +144,11 @@ a{text-decoration: none;}
 			</c:if>
 			
 		</c:forEach>
+	</c:when>
+	<c:otherwise>
+	<h1 align="center">포스트가 없습니다.</h1>
+	</c:otherwise>
+	</c:choose>
 	</div>
 
 	

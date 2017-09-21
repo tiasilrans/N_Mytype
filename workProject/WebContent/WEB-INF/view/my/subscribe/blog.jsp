@@ -64,7 +64,7 @@ table.type07 td {
 	</div>
 	<br/><hr/>
 	<c:choose>
-		<c:when test="${slist ne null}">
+		<c:when test="${slist.size() > 0}">
 			<c:forEach var="blog" items="${slist}">
 				<div class="panel panel-default" style="text-align: left; height:85px;">
 					<div class="panel-body" style="padding-top: 10px;">
@@ -86,7 +86,7 @@ table.type07 td {
 							<span style="margin-left: 5px">${blog.TITLE}</span></a>
 						</div>
 						<div style="padding: 5px; padding-left: 5px;">${blog.INTRO}</div>
-					</div>
+					</div>  
 					
 					<div class="col-md-3" style="padding : 0px; padding-top: 10px;" align="right">
 						<button class="btn subscribe" id="${blog.URL}" value="${blog.URL}" type="button" style="width: 50%; height: 40px; font-size: 15; background-color: black;"><b class="${blog.URL }" style="color: white;">구독취소</b></button>
@@ -99,7 +99,7 @@ table.type07 td {
 		<c:otherwise>
 			<ul class="list-group" style="width: 50%; text-align: left">
 				<c:forEach var="blog" items="${slist}">
-					<h5>구독중인 블로그가 없습니다.</h5>
+					<h5 align="center">구독중인 블로그가 없습니다.</h5>
 				</c:forEach>
 			</ul>
 			</c:otherwise>

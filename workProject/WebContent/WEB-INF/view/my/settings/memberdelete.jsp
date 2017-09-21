@@ -40,7 +40,7 @@ label{
 </style>
 
 
-<form class="form-inline form-horizontal" action="/my/settings/passwordExec">
+<form class="form-inline form-horizontal" action="/my/settings/memberdelete">
 	<div class="col-xs-0 col-md-2"></div>
 	<div class="box col-xs-12 col-md-8 col-lg-12">
 		<div class="title">
@@ -56,19 +56,14 @@ label{
 		<div style="margin-left: 300px;"><p><span style="color:red; font-size: 15px;" id="result"></span></p></div>
 		<div class="card-block">
 			<label style="color: #606060;">MyType에게 한마디</label>
-			<textarea id="survey" name="survey" class="form-control"  cols="40" rows="5"  style="width: 525px; resize: none;"  required></textarea>
+			<textarea id="survey" name="content" class="form-control"  cols="40" rows="5"  style="width: 525px; resize: none;"  required></textarea>
 		</div>
 		<hr style="margin: 0px;" />
 	    <div class="card-block ">
-	    	<button id="sbtn" class="w3-button w3-black w3-round" style="float:right" disabled>탈퇴하기</button>
+	    	<button id="sbtn" class="w3-button w3-black w3-round" style="float:right" type="submit" disabled>탈퇴하기</button>
 	    </div>
 	</div>
 </form>
-<c:if test="${change}">
-<script>
-	window.alert("비밀번호 변경 완료!");
-</script>
-</c:if>
 
 <script>
 	function pwcheck(){
