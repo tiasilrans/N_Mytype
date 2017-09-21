@@ -5,21 +5,8 @@
 
 
 <section class="navbar-info ">
-	<nav class="navbar navbar-default" style="margin-bottom: 0px; ">
-		<div>
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header navbar-me">
-				<button type="button"
-					class="navbar-toggle collapsed menu-collapsed-button"
-					data-toggle="collapse" data-target="#navbar-primary-collapse"
-					aria-expanded="false" style="float: left;">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-			</div> 
-
-			
+	<nav class="navbar navbar-default navbar-me" style="margin-bottom: 0px; ">
+		<div>		
 				 <!-- 나브바 왼쪽 -->
 				<ul class="nav navbar-nav navbar-left">
 				<li class="dropdown"><a class="dropdown-toggle"
@@ -37,6 +24,10 @@
 							<a href="/blog/${post.URL}"><i class="material-icons" style="color: black;">arrow_back</i>
 						</a></li>    
 				</ul> 
+				<ul class="nav navbar-nav navbar" style="margin-left: 500px; margin-top: 20px;">
+					<li class="post-title" style="display: none; font-size: 20;">${post.TITLE }</li>
+				</ul>
+				
 			   <!-- 나브바 오른쪽 -->
 				<ul class="nav navbar-nav navbar-right"> 
 					<li class="dropdown"><a class="dropdown-toggle"
@@ -60,10 +51,28 @@
 
 
 <script>
+
 $(window).scroll(function() {
+	var f = $(".post-title");
+	if ($(this).scrollTop() > 5) {
+		if(f.css("display") == "none"){   
+			f.css("display", "block");        
+		}		
+	} else {
+		if(f.css("display") == "block"){   
+			f.css("display", "none");        
+		}
+		
+	}
+});
+
+
+
+$(window).scroll(function() {
+	
 	if ($(this).scrollTop() > 5) {
 		$(".navbar-me").addClass("fixed-me");
-		$(".fixed-me").removeClass("navbar-me");
+		$(".fixed-me").removeClass("navbar-me");		
 	} else {
 		$(".fixed-me").addClass("navbar-me");
 		$(".navbar-me").removeClass("fixed-me");

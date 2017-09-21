@@ -79,7 +79,7 @@ input[type=checkbox]:checked+label:before {
 </style>
 <div class="row">
 	<div class="col-xs-0 col-md-2"></div>
-	<div class="col-xs-6 col-md-6">
+	<div class="col-xs-12 col-md-8">
 		<div class="content"
 			style="margin-top: 100px; margin-left: 100px; padding: 0px;">
 			<div class="container">
@@ -275,6 +275,7 @@ input[type=checkbox]:checked+label:before {
 	<br/>
 	<br/>
 	</div>
+	<div class="col-xs-0 col-md-2"></div>
 </div>
 
 

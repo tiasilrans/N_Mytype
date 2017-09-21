@@ -265,18 +265,6 @@ a{ text-decoration: none; }
 						</span></a>
 					</div>
 			</div>
-<<<<<<< HEAD
-		</div>
-
-		<!-- 목록 nav -->
-		<div class="w3-row w3-container" style="width:1100px;">
-			<div style="margin-left: 10px;">
-				<ul class="nav nav-tabs" style="width: 950px;">
-					<li class="active"><a data-toggle="tab" href="#allList"><b>전체</b></a></li>
-					<c:if test="${sessionScope.login ne null}">
-						<li><a data-toggle="tab" href="#likeList"><b>구독</b></a></li>
-					</c:if>
-=======
 		<div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
 	</div>
 	
@@ -292,7 +280,7 @@ a{ text-decoration: none; }
 				<c:if test="${sessionScope.login ne null}">
 					<li><a data-toggle="tab" href="#likeList"><b>구독</b></a></li>
 				</c:if>
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
+
 				</ul>
 <<<<<<< HEAD
 			</div>			
