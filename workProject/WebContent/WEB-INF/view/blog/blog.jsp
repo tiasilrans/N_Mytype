@@ -319,8 +319,11 @@ footer {
 	 					</c:otherwise>
  					</c:choose>
  				</div>
- 			
- 				       
+ 				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
+ 					<a class="home" href="/" id="home">
+ 					<label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">home</label></a>
+ 					<a href="/"><div class="home" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">홈</div></a>
+ 				</div> 				       
  			</div> 
  			
  			 
