@@ -133,6 +133,14 @@
 	
 }
 
+.nav-link:hover{
+	border-left: 1px solid;
+	border-left-color: red;
+	
+
+}
+
+
 </style>  
 
 <div class="row" align="center" style="padding-top: 50px;">
