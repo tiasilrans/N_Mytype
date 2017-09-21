@@ -36,7 +36,7 @@
 						<li style="margin-top: 3px;">
 							<a href="/blog/${post.URL}"><i class="material-icons" style="color: black;">arrow_back</i>
 						</a></li>    
-				</ul> 
+				</ul>   
 			   <!-- 나브바 오른쪽 -->
 				<ul class="nav navbar-nav navbar-right"> 
 					<li class="dropdown"><a class="dropdown-toggle"
