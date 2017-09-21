@@ -49,11 +49,7 @@ table.type07 td {
     color: #fff;
     cursor: default;
     background-color: #0d0d0d;
-<<<<<<< HEAD
-    border-color: black;
-=======
     border-color:rgba( 255, 0, 0, 0 );
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 }
 
 .div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
