@@ -3,10 +3,14 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<link rel="stylesheet" href="/css/postviewcss.css">
+<link rel="stylesheet" href="/css/my.css">
     
 <style>
-  
+
+body{
+	background: whitesomke;
+}
+
 table.type07 {
     line-height: 1.5;
     border: 1px solid #ccc;
@@ -28,40 +32,39 @@ table.type07 td {
 </style>
 
 
-<div align="center" >
-	<div style="width: 50%;" align="left" >
-	<h2>구독중인 블로그</h2>
-	<hr style="margin-top: 10px;"/>
+<div class="col-xs-0 col-md-2"></div>
+<div class="box col-xs-12 col-md-8 col-lg-12" style="margin-bottom: 0;">
+	<div class="title">
+		<span style="float:left; font-size: 17px; margin-left: 5px;"><b>구독 중인 블로그</b></span>
 	</div>
-
-		<c:choose>
+	<br/><hr/>
+	<c:choose>
 		<c:when test="${slist ne null}">
-				<c:forEach var="blog" items="${slist}">
-				
-				<div class="panel panel-default"
-					style="width: 40%; text-align: left">
-					<div class="panel-body" style="background-color: #F6F6F6;">
+			<c:forEach var="blog" items="${slist}">
+				<div class="panel panel-default" style="text-align: left; height:85px;">
+					<div class="panel-body" style="padding-top: 10px;">
 					<div class="col-md-2" style="padding : 0px;">
 					<a href="/blog/${blog.URL }" style="color: #616161;">
 						<c:choose>
 							<c:when test="${blog.IMAGE eq null}">
-								<img src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png" style="width: 100px; height: 100px; border-radius: 5px;">
+								<img src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png" style="width: 60px; height: 60px; border-radius: 5px;">
 							</c:when>
 							<c:otherwise>
-								<img src="/images/profile/${blog.IMAGE}" style="width: 100px; height: 100px; border-radius: 5px;">
+								<img src="/images/profile/${blog.IMAGE}" style="width: 60px; height: 60px; border-radius: 5px;">
 							</c:otherwise>
 						</c:choose>
 					</a>
 					</div>
 					<div class="col-md-7" style="padding : 0px;">
-						<div style="font-size: 20px; font-weight: bold; padding-top: 10px;">
-						<a href="/blog/${blog.URL }" style="color: #616161; text-decoration: none;">
-						${blog.TITLE}</a></div>
-						<div style="padding: 5px; padding-left: 5px; padding-top: 5px;">${blog.INTRO}</div>
+						<div style="font-size: 15px; font-weight: bold;">
+							<a href="/blog/${blog.URL }" style="color: #616161; text-decoration: none;">
+							${blog.TITLE}</a>
+						</div>
+						<div style="padding: 5px; padding-left: 5px;">${blog.INTRO}</div>
 					</div>
 					
-					<div class="col-md-3" style="padding : 0px; padding-top: 25px;" align="center">
-						<button class="btn subscribe" id="${blog.URL}" value="${blog.URL}" type="button" style="width: 60%; height: 50px; font-size: 15; background-color: black;"><b class="${blog.URL }" style="color: white;">구독취소</b></button>
+					<div class="col-md-3" style="padding : 0px; padding-top: 10px;" align="right">
+						<button class="btn subscribe" id="${blog.URL}" value="${blog.URL}" type="button" style="width: 60%; height: 40px; font-size: 15; background-color: black;"><b class="${blog.URL }" style="color: white;">구독취소</b></button>
 					</div>
 					</div>
 				</div>
@@ -75,14 +78,16 @@ table.type07 td {
 				</c:forEach>
 			</ul>
 			</c:otherwise>
-		</c:choose>
+	</c:choose>
 	
-	<ul class="pagination">
-	<c:forEach var="i" begin="1" end="${page}">
-		<li ${np == i? "class=\"active\"": ""}><a
-			href="/subscribe/blog.mt?np=${i}">${i}</a></li>
-	</c:forEach>
-	</ul>
+	<div align="center">
+		<ul class="pagination">
+			<c:forEach var="i" begin="1" end="${page}">
+				<li ${np == i? "class=\"active\"": ""}><a
+					href="/subscribe/blog.mt?np=${i}">${i}</a></li>
+			</c:forEach>
+		</ul>
+	</div>
 </div>
 
 <script>

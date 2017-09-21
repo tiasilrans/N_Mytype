@@ -242,7 +242,6 @@ input[type=radio]:checked+label:before {
 
 <title> ${title }</title>
 <body>
-
 	<header>		
 		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="navbar-header">
@@ -258,7 +257,7 @@ input[type=radio]:checked+label:before {
 			<div class="collapse navbar-collapse" id="postNav">
 				<ul class="nav navbar-nav">
 					<li class="back" style="margin-left: 200px; margin-top: 4px;"><a href="/blog/${map.url }" style=" margin-right: 0px;"><i class="material-icons">keyboard_backspace</i></a>
-					<li class="home" style="margin-right: 15px;"><a href="/" style=" margin: 0px; padding-left:0px; background-image: none; background-color: white;"><span><img
+					<li class="home" style="margin-right: 15px;"><a href="/" style=" margin: 0px; padding-left:0px; background-image: none; background-color: rgba( 255, 0, 0, 0 );"><span><img
 								src="/images/mytype.png"></span></a>
 						 
 				</ul>
@@ -283,19 +282,6 @@ input[type=radio]:checked+label:before {
 				<h4>발행</h4>
 			</div>
 			<div class="modal-body">
-				<div class="form-group">
-					<div class="row">
-						<div class="col-xs-12 col-sm-3">       
-							<label class="form-control-label" style="color: #4d4d4d;">썸네일</label>
-						</div>
-						<div class="col-xs-12 col-sm-9" style="margin-left: -9px;">
-							<a class="btn btn-default" href="#" role="button" id="">썸네일 
-								선택</a> <a class="btn btn-default" href="#" role="button" id=""
-								style="margin-left: -10px;">삭제</a>
-						</div>
-					</div>
-				</div> 
-
 				<div class="row" style="margin-top: 20px;">
 					<div class="col-xs-3" style="color: #4d4d4d;">카테고리</div>
 					<div class="col-xs-3">  
@@ -303,7 +289,7 @@ input[type=radio]:checked+label:before {
 							<option>카테고리 선택</option>								
 							<c:forEach var="obj" items="${catelist }">
 							<c:if test="${obj.CATEGORY_NAME ne '전체 보기'}">				
-								<option>${obj.CATEGORY_NAME }</option>	
+								<option selected=${updatePostInfo.CATEGORY eq obj.CATEGORY_NAME ? 'selected' : '' }>${obj.CATEGORY_NAME }</option>	
 							</c:if>															
 							</c:forEach>
 							
@@ -314,47 +300,56 @@ input[type=radio]:checked+label:before {
 					<div class="col-xs-3" style="color: #4d4d4d;">최소 후원금액</div>
 					<div class="col-xs-6">
 						<input class="form-control" type="text" name=" support"
-							id=" support" required style="width: 100px;" />
+							id="support" style="width:100px;" placeholder="0">
 					</div>
-					<div class="col-xs-3" style="margin-left: -690px; margin-top: 7px;"> 
+					<div class="col-xs-3" style="margin-left: -570px; margin-top: 7px;"> 
 						<span>포인트</span> 
 					</div>  
 				</div>
 				<div class="row" style="margin-top: 20px;">
-					<div class="col-xs-3" style="color: #4d4d4d;">결제 금액</div>
-					<div class="col-xs-6">
+					<div class="col-xs-3 col-lg-3" style="color: #4d4d4d;">결제 금액</div>
+					<div class="col-xs-6 col-lg-6">
 						<input class="form-control" type="text" name="price"
-							id="price" required style="width: 100px;" />
+							id="price" style="width: 100px;" value="${updatePostInfo.PRICE eq  null ? 0 : '' } ">
 					</div>
-					<div class="col-xs-3" style="margin-left: -690px; margin-top: 7px;"> 
+					<div class="col-xs-3 col-lg-3" style="margin-left: -570px; margin-top: 7px;"> 
 						<span>포인트</span> 
 					</div>  
 				</div>
 				<div class="row" style="margin-top: 20px;">
 					<div class="col-xs-3" style="color: #4d4d4d;">표시설정</div>
 					<div class="col-xs-9">
-						<input type="checkbox" id="notice" class="checkbox-style" />
+						<input type="checkbox" id="notice" class="checkbox-style"
+											${updatePostInfo.NOTICE eq true ? 'checked' : '' }>
 						<label for="notice">공지</label>
-						<input type="checkbox" id="adult" class="checkbox-style" />
+						<input type="checkbox" id="adult" class="checkbox-style"
+											${updatePostInfo.ADULT eq true ? 'checked' : '' }>
 						<label for="adult">성인물</label>
 					</div>
 				</div>
 					<div class="row" style="margin-top: 20px;">
 						<div class="col-xs-3" style="color: #4d4d4d;">공개설정</div>
 						<div class="col-xs-9">
-						<input type="radio" id="all" class="radio-style" name="open" /><label
-							for="all">전체 공개</label> <input type="radio" id="my"
-							class="radio-style" name="open" /><label for="my">나만 보기</label> <input
-							type="radio" id="secret" class="radio-style" name="open" /><label
-							for="secret">비밀글</label>
+						<input type="radio" id="public" class="radio-style" name="open" 
+											${updatePostInfo.OPEN eq 'public' ? 'checked' : '' }>
+						<label for="public">전체 공개</label>
+						<input type="radio" id="my" class="radio-style" name="open"
+											${updatePostInfo.OPEN eq 'my' ? 'checked' : '' }>
+						<label for="my">나만 보기</label>
+						<input type="radio" id="secret" class="radio-style" name="open"
+											${updatePostInfo.OPEN eq 'secret' ? 'checked' : '' }>
+						<label for="secret">비밀글</label>
 						</div>
 					</div>
 					<div class="row" style="margin-top: 20px;">
 						<div class="col-xs-3" style="color: #4d4d4d;">댓글 쓰기 권한</div>
 						<div class="col-xs-9">
-						<input type="radio" id="login" class="radio-style" name="comment" /><label
-							for="login">로그인 사용자</label> <input type="radio" id="buy"
-							class="radio-style" name="comment" /><label for="buy">구매자/후원자</label>
+						<input type="radio" id="login" class="radio-style" name="comment"
+											${updatePostInfo.REPLY_RIGHT eq 'login' ? 'checked' : '' }>
+						<label for="login">로그인 사용자</label>
+						<input type="radio" id="supporter" class="radio-style" name="comment"
+										${updatePostInfo.REPLY_RIGHT eq 'supporter' ? 'checked' : '' }>
+						<label for="supporter">구매자/후원자</label>
 					</div>
 
 	          	</div>	         
@@ -378,22 +373,23 @@ input[type=radio]:checked+label:before {
 						<div class="title-wrap">
 							<div class="form-group" style="margin-top: 70px; margin-left: 112px;">
 								<input type="text" class="form-control" id="title" 
-									name="title" placeholder="제목을 입력하세요." 
+									name="title" placeholder="제목을 입력하세요." value="${updatePostInfo.TITLE }" 
 									style="font-size: 32px;">
 							</div> 						 
 							<div class="form-group" style="margin-left: 112px;">
 								<input type="text" class="form-control" id="subtitle"
-									name="subtitle" placeholder="부제목을 입력하세요."
+									name="subtitle" placeholder="부제목을 입력하세요." value="${updatePostInfo.SUBTITLE }"
 									style="font-size: 16px;"> 
 							</div>  
 						</div>
 						
 						<div class="editor" id="editor">
-							<p></p>
+							${updatePostInfo.FCONTENT }
 							<div class="payment-line" id="payline" align="center" contenteditable="false">
 								<i class="material-icons" style="color: white;">attach_money</i>
 								<span class="payment-line-description" style="vertical-align: top; color: white;">결제선</span> <span class="payment-line-description" style="vertical-align: top; color: #d9d9d9; font-size: 15px;"> — 이 선 아래쪽에 유료 콘텐츠를 작성하세요.</span>
-							</div> 
+							</div>
+							${updatePostInfo.CCONTENT }
 							<p></p>
 						 
 						</div> 
@@ -428,6 +424,33 @@ input[type=radio]:checked+label:before {
 
 <!-- Initialize the editor. -->
 <script>
+	// checked
+	function replychecked() {
+		var login = $("#login").prop("checked");
+		var supporter = $("#supporter").prop("checked");
+		if(login){
+			return "login";
+		}else{
+			return "supporter";
+		}
+		
+	};
+	
+	function openchecked() {
+		var publicoepn = $("#public").prop("checked");
+		var my = $("#my").prop("checked");
+		var secret = $("#secret").prop("checked");
+		if(publicoepn){
+			return "public";
+		}else if(my){
+			return "supporter";
+		}else{
+			return "secret";
+		}
+		
+	};
+	
+
 
 	$(function() {
 		$("#editor").froalaEditor(
@@ -446,6 +469,7 @@ input[type=radio]:checked+label:before {
 			$("[href='https://www.froala.com/wysiwyg-editor?k=u']").eq(0).remove();
 		}, 5);
 
+		// 발행
 		$("#publisher").on("click", function() {
 			var prev = "";
 			var next = "";
@@ -457,6 +481,8 @@ input[type=radio]:checked+label:before {
 				next += "<p>" + $(this).html() +"</p>";
 			})			
 			$.ajax({
+					
+			
 				url : "/postWriter.mt",
 				data : {				
 					"category" : $("#category").val(),
@@ -467,15 +493,19 @@ input[type=radio]:checked+label:before {
 					"price" : $("#price").val(),
 					"notice" : $("#notice").prop("checked"),
 					"adult" : $("#adult").prop("checked"),
-					"url" : "${map.url}"
+					"open" : openchecked(), 
+					"reply_right" : replychecked(),
+					"url" : "${map.url}",
+					"mode" : "${map.mode}",
+					"num" : "${map.num}"
 					
 				}
 			}).done(function(result) {				
 				if (result.result) {
-					window.alert("포스트 작성 완료");
+					window.alert("포스트 저장 완료");
 					location.href = "/blog/" + result.url;
 				}else{				
-					window.alert("포스트 작성 실패");
+					window.alert("포스트 저장 실패");
 				}
 			})
 		});

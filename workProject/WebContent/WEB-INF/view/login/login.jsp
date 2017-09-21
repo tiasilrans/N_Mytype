@@ -47,7 +47,7 @@
 	<div class="col-xs-12 col-md-4">
 		<div class="form-group loginbox row">		
 			<form action="/loginExec.mt" method="post">					
-				<h3 align="left">로그인 </h3>
+				<h6 align="left" style="color: #999999; margin-left: 30px;">로그인 </h6>
 				<br/>				
 				<div class="form-group row">
 						<input class="form-control" type="text"

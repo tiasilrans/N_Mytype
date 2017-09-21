@@ -10,7 +10,7 @@
 	background-color:white;
 	border-radius:10px;
 	margin: 20px;
-	width: 70%;
+	width: 80%;
 	padding: 20px;
 }
 
@@ -34,10 +34,11 @@
 	background-color: #303030;
 }
 
+
 </style>
 
 <section class="main">
-	<div class="container box" style="margin-left: 270px;">
+	<div class="container box" style="margin-left: 150px;">
 		<div class="row" style="margin-left: 5px; margin-top: -8px;">
 			<form action="/blogSetting.mt" method="post" enctype="multipart/form-data">
 				<!-- 블로그 정보 -->
@@ -85,7 +86,7 @@
                          <div class="form-group mb-4" style="margin-bottom: 25px; margin-top: 25px;">
                                 <label class="form-label-sm" for="blog-url" style="font-family: sans-serif; width: 750px;">블로그 URL</label>
                                 <div class="input-group input-group-transparent">
-                                    <input class="form-control" id="blog-url" name="url" value="${url }" placeholder="블로그 URL" style="font-family: sans-serif; width: 845px; border-radius: 5px;">
+                                    <input class="form-control" id="blog-url" name="url" value="${url }" placeholder="블로그 URL" style="font-family: sans-serif; width: 975px; border-radius: 5px;">
                                 </div>
                                 <small class="form-text0" style="font-family: sans-serif; color: #999999;">영문 소문자, 숫자, 대시(-)를 조합하여 6자 이상으로 만들 수 있습니다. (대시는 문장 가운데에만 입력 가능합니다.)</small>
                          </div>

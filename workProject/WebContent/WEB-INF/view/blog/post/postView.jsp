@@ -3,8 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <link rel="stylesheet" href="/css/postviewcss.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css"><style>
 
-<style>
+
 input[type=checkbox] {
 	display: none;
 }
@@ -74,8 +75,7 @@ input[type=checkbox]:checked+label:before {
 	padding: 6px 17px;
 	font-size: 12px;
 }
-	
-}
+
 </style>
 <div class="row">
 	<div class="col-xs-0 col-md-2"></div>
@@ -86,7 +86,7 @@ input[type=checkbox]:checked+label:before {
 				<div class="header">
 					<div class="category"
 						style="margin-bottom: 120px; margin-left: 3px;">
-						<a style="color: black; font-family: sans-serif;" href="">${post.CATEGORY }</a>
+						<a style="color: black; font-family: NanumSquare; font-weight: 700;" href="">${post.CATEGORY }</a>
 					</div>
 
 					<div style="margin-top: -70px;">
@@ -99,8 +99,17 @@ input[type=checkbox]:checked+label:before {
 						<div class="media-profile">
 							<div class="media-left"
 								style="margin: 10px; vertical-align: middle;">
+								<c:choose>
+									<c:when test="${post.IMAGE != null}">
+										<img src="/images/profile/${post.IMAGE}"	onerror="this.src='/images/avatar_yellow.png'"
+											class="media-object"
+											style="width: 45px; border-radius: 30px; width: 32px; height: 32px; margin-top: -5px;">
+									</c:when>
+									<c:otherwise>
 								<img src="/images/avatar_yellow.png" class="media-object"
 									style="width: 45px; border-radius: 30px; width: 32px; height: 32px; margin-top: -5px;">
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<div class="media-body">
 								<h4 class="media-heading"
@@ -168,8 +177,6 @@ input[type=checkbox]:checked+label:before {
 					<i class="material-icons"
 						style="font-size: 20px; color: #0d0d0d; float: left; font-weight: bold;">favorite_border</i><span
 						style="margin-left: 3px; color: #0d0d0d; font-size: 15px;">0</span>
-					<i class="material-icons" title="링크복사"
-						style="font-size: 25px; color: #0d0d0d; float: right; margin-right: 395px;">insert_link</i>
 				</footer>
 			</div>
 		</div>
@@ -179,7 +186,7 @@ input[type=checkbox]:checked+label:before {
 
 		<aside class="container aside">
 			<!-- 블로그 소개 섹션 -->
-			<section class="">
+			<section class="box">
 				<div class="body blog-info"
 					style="margin-bottom: 30px; margin-top: 30px;">
 					<div class="media" style="margin-left: 95px;">
@@ -192,26 +199,28 @@ input[type=checkbox]:checked+label:before {
 				</div>
 			</section>
 			<!-- 블로그 포스트 리스트 섹션 -->
-			<section class="">
-				<div style="margin-left: 95px; margin-bottom: 30px;">
-					<h5>이 블로그의 다른 포스트</h5>
-				</div>
-			</section>
 			<!-- 포스트 댓글 섹션 -->
-			<section class="comments">
+			<section class="comments box">
 				<div class="body" style="margin-left: 95px;">
 					<h6>댓글</h6>
-					
 					<div class="comments" id="comments">
 					<c:forEach var="obj" items="${list }">
 					<div class="comment-list" style="margin-top: 30px; margin-bottom: 30px;">
 						<div class="media">
 							<div class="media-left">
+							
+							<c:choose>
+							<c:when test="${obj.IMAGE ne null}">
+								<a><img src="/images/profile/${obj.IMAGE ne null}"   style="border-radius: 40px; width: 40px; height: 40px; margin-top:5px;"></a>
+							</c:when>
+							<c:otherwise>
 								<a><img src="/images/avatar_yellow.png" style="border-radius: 40px; width: 40px; height: 40px; margin-top:5px;"></a>
+							</c:otherwise>
+							</c:choose>
 							</div>
 							<div class="media-body">
 								<div class="comment-header">
-									<a style="color: black; font-family: sans-serif; font-size: 15px;">${obj.EMAIL }</a>
+									<a style="color: black; font-family: sans-serif; font-size: 15px;">${obj.NICKNAME ne null ? obj.NICKNAME : obj.EMAIL }</a>
 									<time style="color: #999999; font-family: sans-serif; font-size: 12px;">${obj.CDATE }</time>
 								</div>
 								<div class="comment-content" style="color: black; font-family: sans-serif;">

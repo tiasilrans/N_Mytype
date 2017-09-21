@@ -12,6 +12,14 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 
+.box {
+	border: 1px solid;
+	border-color: #d9d9d9;
+	width: 100%;
+	padding: 30px;   
+	border-radius: 10px;  
+}
+
 #app-menu-toggler:hover {
     box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 5px 10px 0 rgba(0,0,0,.05), 0 10px 20px 0 rgba(0,0,0,.05);
 }
@@ -72,23 +80,22 @@
 .post-body{
 	background-color:white;
 	width: 100%;
-	padding-top: 20px;
+	padding-top: 0px;
     padding-right: 20px;
     padding-bottom: 20px;
-    padding-left: 20px;   
- 	margin: 20px;  
- 	margin-top: -1.3px;
+    padding-left: 40px;    
 }   
  
-footer {
+.ft {
 	background-color:white;
 	width: 100%;
 	padding-top: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
     padding-left: 20px;
-	margin: 20px;
-	margin-top: -20px;  
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	margin-bottom: 40px;
 }
 
 
@@ -111,19 +118,36 @@ footer {
 .div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
 
 .srbox {
-	border: 1px solid;
-	border-color: #d9d9d9;
+	background-color:white;
 	width: 60%;
-	padding: 0px;     
+	padding: 0px; 
+	border-radius: 10px;    
 }
+
+.post-header{
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background-color:white;
+	padding: 10px 10px 0px 10px;
+	height: 50px; 
+	
+}
+
+.nav-link:hover{
+	border-left: 1px solid;
+	border-left-color: red;
+	
+
+}
+
 
 </style>  
 
-<div class="row" align="center">
+<div class="row" align="center" style="padding-top: 50px;">
 	<div class="col-xs-0 col-md-1"></div>
 	<div class="col-xs-12 col-md-10">
 	<c:if test="${searchMode}">
-			<div class="search-result srbox" align="left" style="padding: 1.75rem; margin-top: .5rem; margin-left: -550px; margin-bottom: 40px;">
+			<div class="search-result srbox" align="left" style="padding: 1.75rem; margin-top: .5rem; margin-left:-520px; margin-bottom: 40px;">
 				<div style="font-size: 12; font-family: sans-serif; color: #999999;">검색결과</div>
 				<div style="font-size: 20; font-family: sans-serif;">${keyword }</div>
 			</div>
@@ -131,14 +155,14 @@ footer {
 		<div class="row">
 		<c:choose>
 			<c:when test="${list ne null }">
-				<div class="col-xs-8 blog-post-list" align="left">
+				<div class="col-xs-8 col-lg-8 blog-post-list" align="left">
 					<div class="blog-post-list">
 						<c:forEach var="obj" items="${list }">
-							<c:if test="${obj.NOTICE}">
-								<header class="post-header" style="margin-bottom: -20px;">
-									<img src="/images/notice.png" style="margin-left: 40px; ">
-								</header>
+						<header class="post-header">
+							<c:if test="${obj.NOTICE}">								
+								<img src="/images/notice.png">								
 							</c:if>
+							</header>
 							<div class="post-body">
 								<a href="/${obj.URL }/post/${obj.NUM}" style="color: #0d0d0d;">
 									<h2 style="color: black; font-family: sans-serif; font-size: 20px; margin: 0px;">${obj.TITLE }</h2>								
@@ -150,21 +174,28 @@ footer {
 									</div>
 								</a>
 							</div>      
-							<footer>
+							<div class="ft">
 								   <div class="media">
 								    	<div class="media-left">
 										 	<div class="media-left" style="vertical-align: middle;">
-										 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+										 		<c:choose>
+										 		<c:when test="${obj.IMAGE != null}">
+											 		<img src="/images/profile/${obj.IMAGE}" onerror="this.src='/images/avatar_yellow.png'" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+										 		</c:when>
+										 		<c:otherwise>
+											 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+										 		</c:otherwise>
+										 		</c:choose>
 										 	</div> 
 										  	<div class="media-body"> 
-										  		<span style="font-size: 12px; color: black;">닉네임</span>										 	
+										  		<span style="font-size: 12px; color: black;">${obj.NICKNAME eq nul? obj.EMAIL :obj.NICKNAME}</span>										 	
 										  		<span style="font-size: 12px; color: #808080;">
 										  		<fmt:formatDate value="${obj.PDATE }" pattern="yyyy.MM.dd"/></span>
 										 	</div>
 									  </div>
 									  <div class="media-right" style="width: 100px;">
 										  <div class="media-left">
-										  		<div class="like">									
+										  		<div class="like">
 										 			<a href="#" onclick="like(this);" post-num="${obj.NUM }"><i class="material-icons" style="font-size: 15px; color: #808080; float: left;">favorite_border</i></a>
 										 		</div>
 										 		<div class="media-body"> 
@@ -179,7 +210,7 @@ footer {
 											</div>
 										</div>						
 								</div>
-							</footer>
+							</div>
 						</c:forEach>				
 					</div>  
 					<div class="div-pagination" style="text-align: center;" > 
@@ -190,12 +221,13 @@ footer {
 							</ul> 
 					</div>
 				</div>
-			</c:when>
+			</c:when> 
 			<c:otherwise>			
 				<c:if test="${sessionScope.login eq map.EMAIL }">
 				<div class="col-xs-8" align="left" style="color: black;">
 				발행한 포스트가 없습니다.<br /> <br />
 					<form action="/blog/postWrite" method="post">
+						<input type="hidden" name="mode" value="new"/>
 						<input type="hidden" name="title" value="${map.TITLE }"/>
 						<input type="hidden" name="url" value="${map.URL }"/>
 						<button class="button button1" type="submit" title="새 포스트를 작성합니다.">새 포스트 쓰기</button>
@@ -206,7 +238,7 @@ footer {
 		</c:choose>
 			
 			
-			<div class="col-xs-4">
+			<div class="col-xs-4 col-lg-4">
 
 				<section class="section box">
 					<div class="form-group" align="left" style="margin-bottom: -15px;">
@@ -286,39 +318,58 @@ footer {
  		<div>
  			<div class="menu-header">
  				<div class="col-xs-8 px-0" style="margin-bottom: 5px; margin-top: 20px;">
- 					<a href="/blog/${map.url }"><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">사용자 이름</span></a> 					 
+ 				<c:choose>
+ 				<c:when test="${sessionScope.login eq null}">
+ 					<a href="/login.mt"><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">로그인</span></a> 					 
+ 				</c:when>
+ 				<c:otherwise>
+ 					<a href="/blog/${map.URL }">
+ 					<c:choose>
+ 					<c:when test="${sessionScope.info.IMAGE ne null}">
+	 					<img src="/images/profile/${sessionScope.info.IMAGE}" onerror="this.src='/images/avatar_yellow.png'" style="border-radius: 50%; height: 32px; width: 32px;"/>
+ 					</c:when>
+ 					<c:otherwise>
+ 					<img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"/>
+ 					</c:otherwise>
+ 					</c:choose>
+ 					<span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">${sessionScope.info.NICKNAME ne null ? sessionScope.info.NICKNAME : sessionScope.EMAIL}</span></a> 					 
+ 				</c:otherwise>
+ 				</c:choose>
  				</div>
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
- 					<span><i class="material-icons" style="color: #a6a6a6; font-size: 26px;">notifications_none</i></span> 
+ 					<span><i class="material-icons" style="color: #005ce6; font-size: 26px;">notifications_none</i></span> 
  				</div> 				
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
  					<a href="/logout.mt"><i class="material-icons" title="로그아웃" style="color: #a6a6a6; font-size: 26px;">power_settings_new</i></a>
  				</div> 				
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
  					<a class="home" href="/"
-						id="home"><label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">home</label></a><a href="/"><div class="home" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">홈</div></a>
+						id="home"><label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -3px;">home</label></a><a href="/"><div class="home" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">홈</div></a>
  				</div> 				      
- 				<div class="col-xs-8 px-0" style="margin : 5px; margin-bottom: 30px;">
+ 				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
  					<c:choose>
 	 					<c:when test="${sessionScope.login eq map.EMAIL }">
 							<form action="/blog/postWrite" method="post">
+								<input type="hidden" name="mode" value="new"/>
 								<input type="hidden" name="title" value="${map.TITLE }"/>
 								<input type="hidden" name="url" value="${map.URL }"/>
 								<button type="submit" title="새 포스트를 작성합니다." style="border: 0px; background-color: white; padding-left: 0px; ">
 									<a class="newpost" href="/blog/postWrite" id="newpost">
-									<label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">mode_edit</label></a>
+									<label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -3px;">mode_edit</label></a>
 									<a href="/blog/postWrite">
 									<div class="newpost" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">새 포스트 쓰기</div></a>
 								</button>
 							</form>
 	 					</c:when>
 	 					<c:otherwise>
-	 						<label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="home" style="display:inline; margin-left: 14px;">구독</div>
+	 						<label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="home" style="display:inline; margin-left: 14px;">구독</div>
 	 					</c:otherwise>
  					</c:choose>
  				</div>
- 			
- 				       
+ 				<div class="col-xs-8 px-0" style="margin : 5px;  margin-top: -5px;"> 				
+ 					<a href="/my/home"><label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -3px;">dashboard</label></a>
+ 					<a href="/my/home"><div class="myhome" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">내 블로그 설정</div></a>
+ 				</div> 				       
  			</div> 
  			
  			 

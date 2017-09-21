@@ -44,7 +44,7 @@
 						  <ul class="dropdown-menu" style=" right: 20px;">     
                             	<c:choose>
                             	<c:when test="${sessionScope.login eq post.EMAIL }">
-                            		<li><a href="#" onclick="updateChk();"><i class="material-icons" style="color: #1a1a1a; font-size: 23px; float: left;">insert_link</i>　　<span style="margin-left: -20px;">편집하기</span> </a></li>
+                            		<li><a href="/${post.URL}/postEdit/${post.NUM }"><i class="material-icons" style="color: #1a1a1a; font-size: 23px; float: left;">insert_link</i>　　<span style="margin-left: -20px;">편집하기</span> </a></li>
                             		<li><a href="#" onclick="delchk();"><i class="material-icons" style="color: #1a1a1a; font-size: 23px; float: left;">clear</i>　　<span style="margin-left: -20px;">삭제하기</span> </a></li>
                             	</c:when>
                             	<c:otherwise>
@@ -72,26 +72,6 @@ $(window).scroll(function() {
 });
 
 
-function updateChk(){
-	
-	$.post({
-		url : "/blog/update/${post.NUM }",
-		data : {
-			"num" : "${post.NUM }",
-			"url" : "${post.URL}"
-		}
-	}).done(function(result) {
-		if(result.result){
-			location.href="/blog/"+result.url;
-			window.alert("삭제가 완료되었습니다.");
-		}else{
-			window.alert("포스트 삭제에 실패하였습니다.");
-		}
-	});
-	
-}
-
-
 
 function delchk(){
     if(confirm("포스트를 삭제하시겠습니까?")){
@@ -100,7 +80,8 @@ function delchk(){
 			url : "/postdelete.mt",
 			data : {
 				"num" : "${post.NUM }",
-				"url" : "${post.URL}"
+				"url" : "${post.URL}",
+				"mode" : "edit"
 			}
 		}).done(function(result) {
 			if(result.result){
