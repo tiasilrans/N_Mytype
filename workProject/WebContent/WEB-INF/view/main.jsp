@@ -209,12 +209,13 @@ a{ text-decoration: none; }
 </style>   
 <div class="row">
 <div class="col-lg-3 col-md-3"></div>
-<div class="col-lg-7 col-md-8" style="margin-left: auto;">
+<div class="col-lg-7 col-md-6" style="margin-left: auto;">
 
 			<!-- 메인쪽 로고 부분 -->
-			  <div class="container col-md-4" style="width:600px; height: 350px; " >
-			  <div id="myCarousel" class="carousel" data-ride="carousel" style="width:580px; margin: 10px; border:1px solid silver;border-radius:5px;">
-			  
+			  <div class="container" style=" height: 350px; " >
+			  <div class="row">
+			  <div id="myCarousel" class="carousel col-xs-2 col-md-4" data-ride="carousel" style="width:580px; margin: 10px; border:1px solid silver;border-radius:5px;">
+			  	
 			    <!-- Indicators -->
 			    <ol class="carousel-indicators">
 			      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -237,11 +238,11 @@ a{ text-decoration: none; }
 			      </div>
 			    </div>
 			  </div>
-			</div>
+			
 			
 
 			<!-- 메인쪽 로고 오른쪽 부분 -->
-			<div id="secondlogo" class="col-xs-0 col-md-4">
+			<div id="secondlogo" class="col-xs-1 col-md-4">
 				<div class="secondlogo-head">MyType 소식</div>
 					<div class="secondlogo-body">
 						<img class="secondlogo-body-profileimg" src="/images/blogMark.png">
@@ -260,6 +261,8 @@ a{ text-decoration: none; }
 						</c:otherwise>
 						</c:choose>
 						</span></a></div>
+				</div>
+			</div>
 			</div>
 
 			<!-- 목록 nav -->
@@ -279,7 +282,7 @@ a{ text-decoration: none; }
 			<!-- 전체 게시글 배치 -->
 			<div id="allList" class="tab-pane fade in active">
 			<c:forEach var="all" items="${listAll }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
-				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
+				<div class="incard col-12 col-sm-6 col-lg-4" style="clear: right;" >
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
 						<div>${all.NICKNAME }</div>
@@ -402,7 +405,7 @@ a{ text-decoration: none; }
 
 			
 			</div>
-</div>
+	</div>
 </div>
 
 </div>
