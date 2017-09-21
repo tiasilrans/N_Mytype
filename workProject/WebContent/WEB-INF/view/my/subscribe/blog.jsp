@@ -29,13 +29,32 @@ table.type07 td {
 	text-align: center;
     padding: 7px;
 }
+
+.div-pagination a {
+    color: #0d0d0d;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #0d0d0d;
+    border-color: #ffffff;
+}
+
+.div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
+
 </style>
 
 
 <div class="col-xs-0 col-md-2"></div>
 <div class="box col-xs-12 col-md-8 col-lg-12" style="margin-bottom: 0;">
 	<div class="title">
-		<span style="float:left; font-size: 17px; margin-left: 5px;"><b>구독 중인 블로그</b></span>
+		<span style="float:left; font-size: 17px; margin-left: -8px;"><b>구독 중인 블로그</b></span>
 	</div>
 	<br/><hr/>
 	<c:choose>
@@ -58,13 +77,13 @@ table.type07 td {
 					<div class="col-md-7" style="padding : 0px;">
 						<div style="font-size: 15px; font-weight: bold;">
 							<a href="/blog/${blog.URL }" style="color: #616161; text-decoration: none;">
-							${blog.TITLE}</a>
+							<span style="margin-left: 5px">${blog.TITLE}</span></a>
 						</div>
 						<div style="padding: 5px; padding-left: 5px;">${blog.INTRO}</div>
 					</div>
 					
 					<div class="col-md-3" style="padding : 0px; padding-top: 10px;" align="right">
-						<button class="btn subscribe" id="${blog.URL}" value="${blog.URL}" type="button" style="width: 60%; height: 40px; font-size: 15; background-color: black;"><b class="${blog.URL }" style="color: white;">구독취소</b></button>
+						<button class="btn subscribe" id="${blog.URL}" value="${blog.URL}" type="button" style="width: 30%; height: 40px; font-size: 15; background-color: black;"><b class="${blog.URL }" style="color: white;">구독취소</b></button>
 					</div>
 					</div>
 				</div>
