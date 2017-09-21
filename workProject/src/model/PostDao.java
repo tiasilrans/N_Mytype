@@ -38,6 +38,8 @@ public class PostDao {
 				if(ar.indexOf("froala") > -1){
 					if(img.length() == 0){
 						ar = ar.replaceAll("<br>", "");
+						ar = ar.replaceAll("\">", "\"onerror=\"this.src='/images/error.jpg'\">");
+						System.out.println(ar);
 						img+=ar;
 					}
 				}else{
