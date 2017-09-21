@@ -202,7 +202,7 @@ input[type=checkbox]:checked+label:before {
 			</section>
 			<!-- 블로그 포스트 리스트 섹션 -->
 			<!-- 포스트 댓글 섹션 -->
-			<h6 style="margin-left: 95px;">댓글</h6>
+			<h6 style="margin-left: 95px; margin-bottom:30px;">댓글</h6>
 			<section class="comments box">
 				<div class="body" style="margin-left: 95px;">
 					<div class="comments" id="comments">

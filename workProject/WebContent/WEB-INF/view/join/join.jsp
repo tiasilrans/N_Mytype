@@ -62,7 +62,7 @@
 						
 						<div id="emailtrue" style="display: none;">
 						<br/><b>해당 이메일을 사용할 수 있습니다.사용하시겠습니까 ?<br/>
-						<button id="emailuse" type="button" class="btn" style="display: block;">확인</button>
+						<button id="emailuse" type="button" class="button button1" style="display: block;">확인</button>
 						</b>
 						</div>	
 						
@@ -83,7 +83,7 @@
 				
 				<div align="center" class="row">
 					<button id="cnbt" type="button" class="button button1" style="display: block;" disabled>이메일인증</button>
-					<button id="sbt" type="submit" class="btn" style="display: none;" disabled>회원가입</button>
+					<button id="sbt" type="submit" class="button button1" style="display: none;" disabled>회원가입</button>
 				</div>
 			</form>
 
