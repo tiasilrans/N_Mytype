@@ -10,7 +10,7 @@
 				 <!-- 나브바 왼쪽 -->
 				<ul class="nav navbar-nav navbar-left">
 				<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#" style="background-image: none; background-color: white; margin: 0px;"><i class="material-icons" style="font-size: 30px; color: black;">menu</i></a>
+						data-toggle="dropdown" href="#" style="background-image: none; background-color: rgba( 255, 0, 0, 0 ); margin: 0px;"><i class="material-icons" style="font-size: 30px; color: black;">menu</i></a>
 						<ul class="dropdown-menu" style="width: 250px;">						
 							<li style="margin-bottom: 20px;"><a href="/"><img src="/images/title.png" style="height: 18px;"></a></li>
 							<li style="margin-left: 20px; font-family: sans-serif; color: black; font-size: 15px; font-weight: 700%"><span>${post.TITLE}</span></li> 
@@ -31,7 +31,7 @@
 			   <!-- 나브바 오른쪽 -->
 				<ul class="nav navbar-nav navbar-right"> 
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#" style="background-image: none; background-color: white; margin: 0px; right: 25px;"><i class="material-icons" style="color: black;">more_vert</i></a>
+						data-toggle="dropdown" href="#" style="background-image: none; background-color: rgba( 255, 0, 0, 0 ); margin: 0px; right: 25px;"><i class="material-icons" style="color: black;">more_vert</i></a>
 						  <ul class="dropdown-menu" style=" right: 20px;">     
                             	<c:choose>
                             	<c:when test="${sessionScope.login eq post.EMAIL }">
