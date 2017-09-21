@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import model.BlogDAO;
 import model.PointDao;
 import model.PostDao;
 import model.ReplyDAO;
@@ -42,16 +43,47 @@ public class PostController {
 	
 	@Autowired
 	PointDao ptdao;
+	
+	@Autowired
+	BlogDAO bDAO;
 
+	
+	// 포스트 수정
+	@RequestMapping("/{url}/postEdit/{num}")
+	public ModelAndView postWrite(@RequestParam Map m, HttpSession session, @PathVariable(value="num") int num,
+														@PathVariable(value="url") String url){
+			m.put("num", num);
+			m.put("url", url);
+			m.put("mode", "edit");
+		Map	blogTitle = bDAO.blogTitle(m);
+			m.put("title", blogTitle.get("TITLE")); // 블로그 제목 - 카테고리 리스트 가져오는데 필요
+		Map postInfo = pdao.onePost(m); // 수정할 포스트의 정보			
+		
+		List<Map> catelist = pdao.categoryList(m);		
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("post");
+			mav.addObject("title", "포스트편집");
+			mav.addObject("map", m);
+			mav.addObject("catelist", catelist);
+			mav.addObject("updatePostInfo", postInfo);
+						
+		return mav;
+	}	
 	
 	@RequestMapping("/postWriter.mt")
 	@ResponseBody
-	public Map posrWrite(@RequestParam Map m,HttpSession session){
+	public Map posrWrite(@RequestParam Map m, HttpSession session){
 		String email = (String)session.getAttribute("login");
 			m.put("email", email);
-		System.out.println("가져온 값 : " + m);
+		String mode = (String)m.get("mode");
+		System.out.println("가져온 값 : " + m + " / 모드 :" + mode);		
 		Map map= new HashMap<>();
-		boolean f = pdao.postWrite(m);
+		boolean f;
+		if(mode.equals("new")){
+			f=pdao.postWrite(m);
+		}else{
+			f=pdao.postEdit(m);
+		}
 		if(f){			
 			map.put("result", true);
 			map.put("url", m.get("url"));

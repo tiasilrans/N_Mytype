@@ -8,10 +8,6 @@
 
 <style>
 
-body {
-	background: whitesmoke;
-}
-
 a{ text-decoration: none; }
 
 .logo-frame{

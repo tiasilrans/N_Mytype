@@ -130,13 +130,11 @@
 .search-box:focus+button {
 	z-index: 3;
 }
-
 @media ( min-width : 768px) {
 	.dropdown:hover {
 		background-color: #fff;
 		border-bottom-left-radius: 5px;
 		border-bottom-right-radius: 5px;
-		
 	}
 	.dropdown:hover .dropdown-menu {
 		display: block;
@@ -148,12 +146,9 @@
 		width: 260px;
 		height: 32px;
 	}
-	
 	.search-nav{
 		display: none;
 	}
-	
-	
 }
 
 
