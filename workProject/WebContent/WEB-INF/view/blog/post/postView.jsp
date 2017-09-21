@@ -101,7 +101,7 @@ input[type=checkbox]:checked+label:before {
 								style="margin: 10px; vertical-align: middle;">
 								<c:choose>
 									<c:when test="${post.IMAGE != null}">
-										<img src="/images/profile/${post.IMAGE}" 						onerror="this.src='/images/avatar_yellow.png'"
+										<img src="/images/profile/${post.IMAGE}" onerror="this.src='/images/avatar_yellow.png'"
 											class="media-object"
 											style="width: 45px; border-radius: 30px; width: 32px; height: 32px; margin-top: -5px;">
 									</c:when>
@@ -123,6 +123,8 @@ input[type=checkbox]:checked+label:before {
 						</div>
 					</div>
 				</div>
+				<c:choose>
+				<c:when test="${post.EMAIL eq sessionScope.login || post.ADULT eq 'false' || (post.ADULT eq 'true' && sessionScope.info.CERTIFIED eq 'Y')}">
 				<div class="post-content"
 					style="margin-top: 50px; color: black; font-family: sans-serif; font-weight: 700px;">
 					<div class="free-content">${post.FCONTENT }</div>
@@ -172,6 +174,33 @@ input[type=checkbox]:checked+label:before {
 					</div>
 				</div>
 				</c:if>
+				</c:when>
+				
+				<c:otherwise>
+				<div class="support" style="display: table; width: 100%;">
+				<div class="message"
+					style="display: table-cell; vertical-align: middle; padding-right: .75rem; line-height: 1.25; font-family: sans-serif; color: black; font-weight: 800px; width: 55%;">
+						<span style="font-family: sans-serif; color: black; font-size: 15px;">
+						성인인증이 필요한 포스트입니다.
+						</span>
+				</div>
+				<div style="display: table-cell;">
+				<c:choose>
+				<c:when test="${sessionScope.login eq null }">
+					<button class="button button1" data-toggle="modal" data-target="#login-form">로그인</button>
+				</c:when>
+				<c:otherwise>
+					<button class="button button1" onclick="location.href='/my/settings/certified2'">인증하러가기</button>
+				</c:otherwise>
+				</c:choose>
+				</div>
+				</div>
+				
+				</c:otherwise>
+				
+				</c:choose>
+		
+				
 				
 				<footer class="post-footer" style="margin-top: 40px;">
 					<i class="material-icons"
@@ -229,8 +258,10 @@ input[type=checkbox]:checked+label:before {
 
 								<div class="comment-action" style="border: none; float: right; margin-right: 240px; margin-top: -55px;">
 									<button class="re-reply-write" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
-									<button class="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
-									<button class="reply-delete" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">삭제</button>
+									<c:if test="${sessionScope.login eq obj.EMAIL || post.EMAIL eq sessionScope.login }">
+										<button class="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
+										<button class="reply-delete" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">삭제</button>
+									</c:if>
 									<input type="hidden" value="${obj.NUM }" />
 								</div>
 								<div class="comment-editor" style="display: none;">

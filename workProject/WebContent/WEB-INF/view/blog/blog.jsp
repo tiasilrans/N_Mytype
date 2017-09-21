@@ -332,7 +332,7 @@
  					<img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"/>
  					</c:otherwise>
  					</c:choose>
- 					<span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">${sessionScope.info.NICKNAME ne null ? sessionScope.info.NICKNAME : sessionScope.EMAIL}</span></a> 					 
+ 					<span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">${sessionScope.info.NICKNAME ne null ? sessionScope.info.NICKNAME : sessionScope.info.EMAIL}</span></a> 					 
  				</c:otherwise>
  				</c:choose>
  				</div>
