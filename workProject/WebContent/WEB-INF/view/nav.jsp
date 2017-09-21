@@ -36,8 +36,7 @@
 						<!-- 블로그 리스트 -->				
 						<c:if test="${sessionScope.blog ne null }">
 						<c:forEach var="blog" items="${sessionScope.blog}" begin="0" end="${sessionScope.blog.size()}">
-							<li><a style="font-weight: bold; background-color: #80c1ff; color: white;" href="/blog/${blog.URL}">${blog.TITLE}</a></li>
-							<li><a href="/blog/admin/${blog.URL }/posts"> <i class="material-icons" style="color: #999999; font-size: 23px; float: left;">mode_edit</i> 포스트</a></li>  
+							<li><a style="font-weight: bold; background-color: #80c1ff; color: white;" href="/blog/${blog.URL}">${blog.TITLE}</a></li>  
 							<li><a href="/blog/${blog.URL}/categories"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">toc</i>  카테고리</a></li> 
 							<li><a href="/blog/${blog.URL}/subscribers"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">face</i>  구독자</a></li>   
 							<li><a href="/blog/${blog.URL}/setting"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">settings</i>  설정</a></li>  
