@@ -7,6 +7,13 @@
 <link rel="stylesheet" href="/module/nailthumb/jquery.nailthumb.1.1.min.css">
 
 <style>
+
+body {
+	background: whitesmoke;
+}
+
+a{ text-decoration: none; }
+
 .logo-frame{
 	width:100%;
 	border-radius: 5px;
@@ -14,11 +21,12 @@
 
 #secondlogo{
 	height: 350px;
-	width : 330px;
+	width : 300px;
 	border-radius: 5px;
 	margin: 10px;
 	border-radius : 5px;
     border : 1px solid silver;
+    background-color: white;
 }
 
 .secondlogo-head{
@@ -73,6 +81,7 @@
 	border-radius: 5px;
 	
 }
+
 .conhead{
 	width : 100%;
 	height: 20%;
@@ -125,7 +134,7 @@
 }
 
 .confooter{
-	padding-top: 7px;
+	padding-top: 5px;
 }
 
 .confooter-count{
@@ -145,6 +154,20 @@
 	margin: 8px;
     border-radius : 5px;
     border : 1px solid silver;
+    background: white;
+}
+
+.conhead-profileimg{
+	float: left;
+	width:48px;
+	height:48px;
+	border-radius: 50%;
+	margin-right: 8px;
+}
+
+.conhead-title-blog, .conhead-title-blog:LINK, .conhead-title-blog:ACTIVE{
+	font-size: 12;
+	color: gray; 
 }
 
 .conbody-hashtag{
@@ -167,14 +190,29 @@
 	border : 0px;
 }
 
+.confooter{
+	width : 100%;
+	height: 10%;
+}
+
+.confooter{
+	padding-top: 7px;
+}
+
+.confooter-count{
+	font-size: 17;
+	color : red;
+}
+
 
 
 </style>   
-
-<div class="container" style="margin-left: auto;">
+<div class="row">
+<div class="col-lg-3 col-md-3"></div>
+<div class="col-lg-7 col-md-8" style="margin-left: auto;">
 
 			<!-- 메인쪽 로고 부분 -->
-			  <div class="container col-md-4" style="width:620px; height: 350px;">
+			  <div class="container col-md-4" style="width:600px; height: 350px; " >
 			  <div id="myCarousel" class="carousel" data-ride="carousel" style="width:580px; margin: 10px; border:1px solid silver;border-radius:5px;">
 			  
 			    <!-- Indicators -->
@@ -195,7 +233,7 @@
 			      </div>
 			    
 			      <div class="logo-frame item">
-			        <img src="/images/mainimg/3.png" alt="New york" style="width:100%; height: 350px; border-radius: 5px;">
+			        <img src="/images/mainimg/33.png" alt="New york" style="width:100%; height: 350px; border-radius: 5px;">
 			      </div>
 			    </div>
 			  </div>
@@ -208,21 +246,22 @@
 					<div class="secondlogo-body">
 						<img class="secondlogo-body-profileimg" src="/images/blogMark.png">
 						<div class="secondlogo-body-title">
-							<span ><a href="/" class="secondlogo-body-title-name"><b>MyType 공식 블로그</b></a></span><br/>
+							<span ><a href="/blog/${notice.URL}" class="secondlogo-body-title-name"><b>MyType 공식 블로그</b></a></span><br/>
 							<span class="secondlogo-body-title-blog">blog.mytypeblog.com</span>
 						</div>	
 					</div>
-						<div class="secondlogo-body-content"><span>
+						<div class="secondlogo-body-content"><a href="/${notice.URL}/post/${notice.NUM}"><span style="color: gray; font-size: 12;">
 						<c:choose>
-						<c:when test="${notice.get(0).SUBCONTENT ne null}">
-							${notice.get(0).SUBCONTENT}
+						<c:when test="${notice.SUBCONTET ne null}">
+							${notice.SUBCONTENT }
 						</c:when>
 						<c:otherwise>
-							${notice.get(0).CONTENT}
+							${notice.FCONTENT }
 						</c:otherwise>
 						</c:choose>
-						</span></div>
+						</span></a></div>
 			</div>
+
 			<!-- 목록 nav -->
 			<div class="col-xs-0 col-md-12">
 			<div style="margin-left: 10px;">
@@ -239,28 +278,28 @@
 			
 			<!-- 전체 게시글 배치 -->
 			<div id="allList" class="tab-pane fade in active">
-				<c:forEach var="all" items="${listAll }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
+			<c:forEach var="all" items="${listAll }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
 				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
 						<div>${all.NICKNAME }</div>
-						<div style="color:#909090; font-size: 11px;">6일전 · ${all.URL }</div>
+						<div style="color:#909090; font-size: 12px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="-title-blog" style="text-decoration: none; color:#909090" href="/blog/${all.URL }">${all.URL }</a></div>
 					</div>
-	                <div style="height:50px; margin:12px; padding-bottom: 3px;">
-	                	<div style="font-size: 15px; padding-bottom: 5px; ">제목 없음</div>
-	                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
-	                	<c:choose>
-	                	<c:when test="${all.IMG.length() > 10}">
-	                		<div class="nailthumb-column-metadata" id="thumbnail">
-	                		${all.IMG }
-	                		</div>
-	                	</c:when>
-	                	<c:otherwise>
-	                		${all.FCONTENT }
-	                	</c:otherwise>
-	                	</c:choose>
-	                	</div>
-	                </div> <br/><br/><br/>
+					
+	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
+						<a href="/${all.URL}/post/${all.NUM}" style="font-size: 15px; text-decoration: none; color: #333333; padding-bottom: 5px;">
+							${all.TITLE }
+						
+						<c:if test="${all.IMG.length() > 10}">
+		                		<div class="nailthumb-column-metadata" id="thumbnail">
+		                			${all.IMG }
+		                		</div>  
+	                	</c:if>
+	                	</a>
+						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
+							${all.FCONTENT }
+						</a>
+					</div> <br/><br/><br/>
 	                
 	                <div>
 		                <c:set var="msg" value="${all.HASH }"/>
@@ -300,33 +339,32 @@
 			<c:choose>
 			<c:when test="${listLike.size() == 0}">
 			<div align="center">
-				<div style="width:600px; margin-top: 10px;"><h1>게시물이 없습니다.</h1></div>
+				<div style="width:600px; margin-top: 10px; margin-top: 50px;"><h4 style="color: gray;">게시물이 없습니다.</h4></div>
 			</div>
 			</c:when>
 			<c:otherwise>
-			<c:forEach var="like" items="${listLike}" begin="0" end="${listLike.size() < 5 ? listLike.size() : 5}" varStatus="vs">
-				
-					<!-- head -->
-					<div class="incard" style="<c:if test="${vs.last}">margin-left:15px;</c:if> clear: right;" >
+			<c:forEach var="like" items="${listLike }" begin="0" end="${listLike.size() < 5 ? listLike.size() : 5}" varStatus="vs">
+				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
 						<div>${like.NICKNAME }</div>
-						<div style="color:#909090; font-size: 11px;">6일전 · ${like.URL }</div>
+						<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${like.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${like.URL }">${like.URL }</a></div>
 					</div>
-	                <div style="height:50px; margin:12px; padding-bottom: 3px;">
-	                	<div style="font-size: 15px; padding-bottom: 5px; ">제목 없음</div>
-	                	<div style="color:#909090; font-size: 13px; overflow: hidden;">
-	                	<c:choose>
-	                	<c:when test="${all.IMG.length() > 10}">
-	                		<%-- <p style="width: 224px; height: 72px;">${all.IMG }<p> --%>
-	                		${like.IMG }
-	                	</c:when>
-	                	<c:otherwise>
-	                		${like.FCONTENT }
-	                	</c:otherwise>
-	                	</c:choose>
-	                	</div>
-	                </div> <br/><br/><br/>
+					
+	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
+						<a href="/${like.URL}/post/${like.NUM}" style="font-size: 15px; text-decoration: none; color: #333333;padding-bottom: 5px;">
+							${like.TITLE }
+						
+						<c:if test="${like.IMG.length() > 10}">
+		                		<div class="nailthumb-column-metadata" id="thumbnail">
+		                			${like.IMG }
+		                		</div>  
+	                	</c:if>
+	                	</a>
+						<a href="/${like.URL}/post/${like.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
+							${like.FCONTENT }
+						</a>
+					</div> <br/><br/><br/>
 	                
 	                <div>
 		                <c:set var="msg" value="${like.HASH }"/>
@@ -352,9 +390,10 @@
 					</div>
 				</div>
 			
-			<c:if test="(vs+1) % 3 = 0">
-				<br/>
-			</c:if>
+				<c:if test="(vs+1) % 3 = 0">
+					<br/>
+				</c:if>
+				
 			</c:forEach>
 			</c:otherwise>
 			</c:choose>
@@ -364,6 +403,8 @@
 			
 			</div>
 </div>
+</div>
+
 </div>
 
 <c:choose>

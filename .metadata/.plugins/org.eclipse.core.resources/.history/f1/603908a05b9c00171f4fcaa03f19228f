@@ -1,0 +1,24 @@
+package controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import model.BlogDAO;
+import model.PostDao;
+
+@Controller
+@SuppressWarnings({ "unchecked", "rawtypes" })
+public class BlogAdminController {
+	
+	@Autowired
+	BlogDAO bDAO;
+	
+	@Autowired
+	PostDao pDAO;
+	
+	
+	
+	
+	
+
+}

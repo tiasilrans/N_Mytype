@@ -5,6 +5,16 @@
 
 <style>
 
+.box {
+
+	background-color:white;
+	border-radius:10px;
+	margin: 20px;
+	width: 70%;
+	padding: 20px;
+}
+
+
 .button {
 	background-color: #4CAF50; /* Green */
 	border: none;
@@ -26,10 +36,9 @@
 
 </style>
 
-
 <section class="main">
-	<div class="container">
-		<div class="row">
+	<div class="container box" style="margin-left: 270px;">
+		<div class="row" style="margin-left: 5px; margin-top: -8px;">
 			<form action="/blogSetting.mt" method="post" enctype="multipart/form-data">
 				<!-- 블로그 정보 -->
 				<div class="blog-info">					
@@ -44,7 +53,7 @@
                                     	style="vertical-align: middle; width: 7rem; height: 7rem; border-radius: 10px; " src="${imgPath }">
                                     </div> 
                                     <div class="media-body">
-                                        <div class="form-control">
+                                        <div class="form-control" style="margin-top: 3px;">
                                             <label class="sr-only" for="upload-profile-photo" style="font-family: sans-serif; font-size: 12px;">파일 선택</label>                              
                                             <input type="hidden" name="target_url" value="${url }">
                                             <input class="form-control-file col-12 px-0" id="upload-profile-photo" type="file" name="file" aria-describedby="fileHelp" 
@@ -74,9 +83,9 @@
                          </div>
                          <!-- 블로그 URL -->
                          <div class="form-group mb-4" style="margin-bottom: 25px; margin-top: 25px;">
-                                <label class="form-label-sm" for="blog-url" style="font-family: sans-serif;">블로그 URL</label>
+                                <label class="form-label-sm" for="blog-url" style="font-family: sans-serif; width: 750px;">블로그 URL</label>
                                 <div class="input-group input-group-transparent">
-                                    <input class="form-control" id="blog-url" name="url" value="${url }" placeholder="블로그 URL" style="font-family: sans-serif;">
+                                    <input class="form-control" id="blog-url" name="url" value="${url }" placeholder="블로그 URL" style="font-family: sans-serif; width: 845px; border-radius: 5px;">
                                 </div>
                                 <small class="form-text0" style="font-family: sans-serif; color: #999999;">영문 소문자, 숫자, 대시(-)를 조합하여 6자 이상으로 만들 수 있습니다. (대시는 문장 가운데에만 입력 가능합니다.)</small>
                          </div>

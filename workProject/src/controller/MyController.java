@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 import javax.servlet.ServletContext;
@@ -70,7 +71,7 @@ public class MyController {
 			mav.addObject("listlike", postDao.sublist(listAll));
 			mav.addObject("revenue", myDao.revenue(rvn));
 			mav.addObject("use", myDao.usepoint(rvn));
-			mav.addObject("notice", adminDao.sublistReply(adminDao.noticeList("main"), 120, "SUBCONTENT", "SUBCONTENT"));
+			mav.addObject("notice", adminDao.noticeList("main"));
 			mav.addObject("pointsum", pointDao.selectpointsum((String) session.getAttribute("login")));
 		}
 		return mav;
@@ -101,8 +102,7 @@ public class MyController {
 			
 			if(email != null){
 				map.put("email", email);
-				System.out.println(map);
-				mav.addObject("list",lDao.List(map));
+				mav.addObject("list",postDao.sublist(postDao.imgRedefinition(lDao.List(map))));
 			}
 			
 			//리스트 밑에 페이지수
@@ -148,8 +148,7 @@ public class MyController {
 			
 			if(email != null){
 				map.put("email", email);
-				System.out.println(map);
-				mav.addObject("list",lDao.List(map));
+				mav.addObject("list",postDao.sublist(postDao.imgRedefinition(lDao.List(map))));
 			}
 			
 			//리스트 밑에 페이지수
@@ -195,11 +194,13 @@ public class MyController {
 			map.put("last", e);
 			map.put("type", "point");
 			
+			
 			if(email != null){
 				map.put("email", email);
 				mav.addObject("list",pointDao.selectpoint(map));
 				mav.addObject("pointsum",pointDao.selectpointsum(email));
 			}
+			//System.out.println("pmap => "+pointDao.selectpoint(map));
 			
 			//리스트 밑에 페이지수
 			int eSize = 5;
@@ -451,7 +452,7 @@ public class MyController {
 		return mav;
 	}
 	
-	@RequestMapping("/settings/profileExec")
+	@RequestMapping("/settings/profile.mt")
 	public ModelAndView profilExec(@RequestParam Map map, @RequestParam(name = "image") MultipartFile f, HttpSession session) {
 		try {
 			String my =  (String)session.getAttribute("login");
@@ -464,8 +465,6 @@ public class MyController {
 					
 				File dst = new File(dir, my+".png");
 				f.transferTo(dst);
-				
-				System.out.println("realPath => "+dir);
 				
 			}
 			
@@ -494,20 +493,40 @@ public class MyController {
 		return mav;
 	}
 	
-	@RequestMapping("/settings/passwordExec")
+	@RequestMapping("/settings/password.mt")
 	public ModelAndView passwordExec(@RequestParam Map map, HttpSession session) {
-		Map info = myDao.info((String)session.getAttribute("login"));
-		String my =  (String)session.getAttribute("login");
-		String dbpw = (String)info.get("PASSWORD");
-		
-		if(dbpw.equals(map.get("password")) && map.get("newpw").equals(map.get("newpw_ck")) ) {
-			map.put("email", my);
-			String str = myDao.pwchange(map);
-			System.out.println("pwchange => "+str);
-		}
+		map.put("email", (String)session.getAttribute("login"));
+		System.out.println("map => "+map);
+		boolean str = myDao.pwchange(map);
 		
 		ModelAndView mav = new ModelAndView();
-			mav.setViewName("redirect:/my/settings/password");
+			mav.setViewName("settings_password");
+			mav.addObject("change", str);
+			
+		if(str){
+			session.setAttribute("info", myDao.info((String)session.getAttribute("login")));
+		}
+		return mav;
+	}
+	
+	@RequestMapping("/settings/memberdelete")
+	public ModelAndView memberdelete() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("settings_memberdelete");
+		return mav;
+	}
+	
+	@RequestMapping("/settings/memberdeleteExec")
+	public ModelAndView memberdeleteExec(@RequestParam Map map, HttpSession session) {
+		map.put("email", (String)session.getAttribute("login"));
+		System.out.println(map);
+		boolean str = myDao.pwchange(map);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("settings_memberdeleteExec");
+		mav.addObject("change", str);
+		if(str){
+			session.setAttribute("info", myDao.info((String)session.getAttribute("login")));
+		}
 		return mav;
 	}
 	
@@ -540,6 +559,33 @@ public class MyController {
 	public ModelAndView drop( ) {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("settings_drop");
+		return mav;
+	}
+	
+	@RequestMapping("/settings/adult")
+	public ModelAndView adult(@RequestParam(name = "image") MultipartFile f, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("settings_certified2");
+		
+		String my =  (String)session.getAttribute("login");
+		try {
+			if (f.getOriginalFilename().length() > 0) {
+				File dir = new File(application.getRealPath("/images/adult"));
+				System.out.println(dir.getPath());
+				if (!dir.exists()) {
+					dir.mkdirs();
+				}
+
+				File dst = new File(dir, my + ".png");
+				f.transferTo(dst);
+				Map map = new HashMap();
+				map.put("email", my);
+				map.put("img", my+".png");
+				mav.addObject("result", myDao.adultupdate(map));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return mav;
 	}
 	

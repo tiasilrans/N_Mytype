@@ -321,6 +321,16 @@ input[type=radio]:checked+label:before {
 					</div>  
 				</div>
 				<div class="row" style="margin-top: 20px;">
+					<div class="col-xs-3" style="color: #4d4d4d;">결제 금액</div>
+					<div class="col-xs-6">
+						<input class="form-control" type="text" name="price"
+							id="price" required style="width: 100px;" />
+					</div>
+					<div class="col-xs-3" style="margin-left: -690px; margin-top: 7px;"> 
+						<span>포인트</span> 
+					</div>  
+				</div>
+				<div class="row" style="margin-top: 20px;">
 					<div class="col-xs-3" style="color: #4d4d4d;">표시설정</div>
 					<div class="col-xs-9">
 						<input type="checkbox" id="notice" class="checkbox-style" />
@@ -454,7 +464,7 @@ input[type=radio]:checked+label:before {
 					"subtitle" : $("#subtitle").val(),
 					"fcontent" : prev,
 					"ccontent" : next,
-					"hash" : $("#hash").val(),
+					"price" : $("#price").val(),
 					"notice" : $("#notice").prop("checked"),
 					"adult" : $("#adult").prop("checked"),
 					"url" : "${map.url}"

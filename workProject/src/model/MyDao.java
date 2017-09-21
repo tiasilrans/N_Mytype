@@ -54,15 +54,15 @@ public class MyDao {
 		}
 	}
 	
-	public String pwchange(Map map) {
+	public boolean pwchange(Map map) {
 		SqlSession session = factory.openSession();
 		try{
-			session.update("my.pwhchange",map);
+			session.update("my.pwchange",map);
 			session.commit();
-			return "Success";
+			return true;
 		}catch(Exception e){
 			e.printStackTrace();
-			return "Fail";
+			return false;
 		}finally{
 			session.close();
 		}
@@ -117,5 +117,17 @@ public class MyDao {
 		}
 	}
 	
+	public boolean adultupdate(Map map) {
+		SqlSession session = factory.openSession();
+		try{
+			session.update("my.adultupdate",map);
+			return true;
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}finally{
+			session.close();
+		}
+	}
 	
 }

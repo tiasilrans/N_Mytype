@@ -78,6 +78,7 @@
 				<value>/WEB-INF/mapper/subscribe-mapper.xml</value>
 				<value>/WEB-INF/mapper/library-mapper.xml</value>
 				<value>/WEB-INF/mapper/admin-mapper.xml</value>
+				<value>/WEB-INF/mapper/reply-mapper.xml</value>
 			</list>
 		</property>
 	</bean>	

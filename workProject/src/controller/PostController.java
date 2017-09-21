@@ -1,10 +1,12 @@
 package controller;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,23 +20,36 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import model.PointDao;
 import model.PostDao;
+import model.ReplyDAO;
 
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class PostController {
+	
+	@Autowired
+	ServletContext application;
+	
 	@Autowired
 	ObjectMapper objMapper;
 	
 	@Autowired
 	PostDao pdao;
 	
+	@Autowired
+	ReplyDAO rDAO;
+	
+	@Autowired
+	PointDao ptdao;
+
+	
 	@RequestMapping("/postWriter.mt")
 	@ResponseBody
 	public Map posrWrite(@RequestParam Map m,HttpSession session){
 		String email = (String)session.getAttribute("login");
 			m.put("email", email);
-		System.out.println("³Ñ¾î¿Â °ª : " + m);
+		System.out.println("ê°€ì ¸ì˜¨ ê°’ : " + m);
 		Map map= new HashMap<>();
 		boolean f = pdao.postWrite(m);
 		if(f){			
@@ -51,34 +66,41 @@ public class PostController {
 	public ModelAndView postView(@PathVariable(value="url") String url,
 											@PathVariable(value="num") int num, HttpSession session){
 		ModelAndView mav = new ModelAndView();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+		// ë¸”ë¡œê·¸ ì•„ë°”íƒ€ ê°€ì ¸ì˜¤ê¸°
+				String path = "/images/blogImg/"+url;
+				String rPath = application.getRealPath(path);
+				File dir = new File(rPath);
+				if(dir.exists()) {
+					mav.addObject("imgPath", path);
+				}else {
+					mav.addObject("imgPath", "/images/avatar_yellow.png");
+				}
+		
+		
 		Map map = new HashMap<>();
 			map.put("num", num);
 			map.put("url", url);
-		boolean c = pdao.postCounter(map); // Á¶È¸¼ö Áõ°¡
+		boolean c = pdao.postCounter(map); 
 		if(c){
 			HashMap post = pdao.onePost(map);
 			post.put("PDATE", sdf.format(post.get("PDATE")));
 			mav.setViewName("post_view");
 			mav.addObject("section", "blog/post/postView");
 			mav.addObject("post", post);
+			mav.addObject("list", rDAO.replyList(map));
 			
-			//numÀÌ¶û email °¡Áö°í buy ¿¡¼­ ³»°¡ ±¸¸ÅÇÑ Ç×¸ñÀÎÁö È®ÀÎ
-			//±¸¸ÅÇßÀ¸¸é true ÅÍÁö°Å³ª ±¸¸Å±â·ÏÀÌ ¾ø°Å³ª ºñ·Î±×ÀÎ = false
 			String email = (String)session.getAttribute("login");
 			if(email != null){
 				map.put("email", email);
 				boolean buy = pdao.buyCheck(map);
 				mav.addObject("buy", buy);
+				mav.addObject("mypoint", ptdao.selectpointsum(email));
 			}else{
 				mav.addObject("buy", false);
 			}
-			
-			
-			
-			
 		}
-			mav.addObject("totalpost", pdao.postCount(map));// ÇØ´ç ºí·Î±×ÀÇ ÃÑ Æ÷½ºÆ® ¼ö 
+			mav.addObject("totalpost", pdao.postCount(map)); 
 		return mav;	
 	}
 	
@@ -100,7 +122,6 @@ public class PostController {
 	@RequestMapping("/blog/update/{num }")
 	public ModelAndView postUpdate(@RequestParam Map m, HttpSession session,
 												@PathVariable(value="num") int num){
-		// m= Å¸ÀÌÆ², url µé¾î°¡ ÀÖÀ½
 		Map updateMap = (Map)session.getAttribute("writeMap");
 		if(updateMap !=null){
 			String title = (String)updateMap.get("title");
@@ -113,7 +134,7 @@ public class PostController {
 		List<Map> catelist = pdao.categoryList(m);		
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("post");
-			mav.addObject("title", "Æ÷½ºÆ®ÆíÁı");
+			mav.addObject("title", "ì „ì œ ë³´ê¸°");
 			mav.addObject("map", m);
 			mav.addObject("catelist", catelist);
 			session.setAttribute("updateMap", m);
@@ -121,9 +142,90 @@ public class PostController {
 		return mav;
 	}
 	
+	@RequestMapping("/{num}/peply.mt")
+	@ResponseBody
+	public Map reply(@PathVariable(value="num") int num, @RequestParam Map m, HttpSession session){
+		m.put("email", (String)session.getAttribute("login"));
+		m.put("num", num);
+		System.out.println(m);
+		boolean f = rDAO.replyWrite(m);
+		Map map = new HashMap<>();
+		if(f){
+			map.put("result", f);
+			map.put("url", (String)m.get("url"));
+			
+		}else{
+			map.put("result", f);
+			
+		}
+		return map;
+	}
+	
+	@RequestMapping("/{num}/peplyEdit.mt")
+	@ResponseBody
+	public Map peplyEdit(@PathVariable(value="num") int num, @RequestParam Map m){
+		m.put("num", num);
+		System.out.println(m);
+		boolean f = rDAO.replyEdit(m);
+		Map map = new HashMap<>();
+		if(f){
+			map.put("result", f);
+			map.put("url", (String)m.get("url"));
+			
+		}else{
+			map.put("result", f);
+			
+		}
+		return map;
+	}
 	
 	
+	
+	
+	@RequestMapping("/replyDelete.mt")
+	@ResponseBody
+	public Map replyDelete(@RequestParam Map m){	
+		System.out.println(m);
+		boolean f = rDAO.replyDelete(m);
+		Map map = new HashMap<>();
+		if(f){
+			map.put("result", f);
+			
+		}else{
+			map.put("result", f);
+			
+		}
+		return map;
+	}
+	
+	
+	
+	@RequestMapping("like.mt")
+	@ResponseBody
+	public Map postLike(@RequestParam Map m, HttpSession session){
+		m.put("email", (String)session.getAttribute("login"));
+		System.out.println("í¬ìŠ¤íŠ¸ ì¢‹ì•„ìš” ë„˜ì–´ì˜¨ ê°’ :" + m);
+		int rst = pdao.postgoodAdd(m);
+		Map map = new HashMap<>();
+		if(rst == 1){
+			map.put("result", true);
+		}else{
+			map.put("result", false);
+		}
+		return map;
+	}
+	
+	@RequestMapping("unlike.mt")
+	@ResponseBody
+	public Map postUnLike(@RequestParam Map m, HttpSession session){
+		System.out.println("í¬ìŠ¤íŠ¸ ì¢‹ì•„ìš” ì·¨ì†Œ ë„˜ì–´ì˜¨ ê°’ :" + m);
 		
+		Map map = new HashMap<>();
+		return map;
+	}
+	
+	
+	
 	
 	@RequestMapping("postgood.mt")
 	@ResponseBody
@@ -138,6 +240,31 @@ public class PostController {
 		}
 		String mz=objMapper.writeValueAsString(result);
 		return mz;
+	}
+	
+	@RequestMapping("buypost.mt")
+	public ModelAndView buypost(@RequestParam Map map,HttpSession session) throws JsonProcessingException{
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/"+(String)map.get("url")+"/post/"+(String)map.get("num"));
+		map.put("myemail", session.getAttribute("login"));
+		String title = (String)map.get("title");
+		map.put("btitle", "["+title+"]í¬ìŠ¤íŠ¸ êµ¬ë§¤");
+		map.put("stitle", "["+title+"]í¬ìŠ¤íŠ¸ íŒë§¤");
+		pdao.buyPost(map);
+		return mav;
+	}
+	
+	@RequestMapping("support.mt")
+	public ModelAndView support(@RequestParam Map map,HttpSession session) throws JsonProcessingException{
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/"+(String)map.get("url")+"/post/"+(String)map.get("num"));
+		String myemail = (String)session.getAttribute("login");
+		map.put("myemail", myemail);
+		String title = (String)map.get("title");
+		map.put("support", "["+title+"]í¬ìŠ¤íŠ¸ í›„ì›");
+		map.put("supported", "["+title+"] í¬ìŠ¤íŠ¸ì—ì„œ "+myemail+"ë‹˜ì´ í›„ì›í•˜ì…¨ìŠµë‹ˆë‹¤.");
+		pdao.surpport(map);
+		return mav;
 	}
 	
 }

@@ -4,12 +4,19 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>   
 
 <link rel="stylesheet" href="/css/searchcss.css">   
+<link rel="stylesheet" href="/css/my.css">  
+
+<style>
+
+a{text-decoration: none;}
+
+</style>
 
 <div align="center">
 
 <div style="width: 60%;" align="left">
-태그 <span style="font-weight: bold; font-size: 20;">'${keyword}'</span><br/>
-<hr style="margin-top: 10px;"/>
+	태그 <span style="font-weight: bold; font-size: 20;">'${keyword}'</span><br/>
+	<hr style="margin-top: 10px;"/>
 </div>
 
 <div class="row" style="width: 60%; min-height: 10%">
