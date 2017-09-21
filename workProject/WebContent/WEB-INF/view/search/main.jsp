@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" href="/css/searchcss.css">   
 <link rel="stylesheet" href="/css/my.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <style>
 
@@ -65,13 +66,13 @@ a{text-decoration: none;}
 
 <div class="col-lg-3 col-md-3"></div>
 <div class="col-lg-7 col-md-6" style="margin-left: auto;">
-
-	<div style="width: 60%;" align="left">
-		포스트 <span style="font-weight: bold; font-size: 20;">'${keyword}'</span><br/>
-		<hr style="margin-top: 10px;"/>
-	</div>
-
 	<div class="w3-row w3-container" style="width:1100px;">
+	
+		<div class="w3-col s10" align="left">
+			포스트 <span style="font-weight: bold; font-size: 20;">'${keyword}'</span><br/>
+			<hr style="margin-top: 10px;"/>
+		</div>
+	
 		<c:forEach var="like" items="${plist }" begin="0" end="${listLike.size() < 5 ? listLike.size() : 5}" varStatus="vs">
 			<div class="incard w3-col s3" style="clear: right;" >
 				<div class="title">
@@ -121,28 +122,29 @@ a{text-decoration: none;}
 			</div>
 		</c:forEach>
 	
-
-<a class="btn btn-block " href="/search/post.mt?keyword=${keyword}" style="background-color: #F6F6F6; width: 60%; margin-bottom: 10px;">검색 결과 더 보기</a>
-
-<div style="width: 60%;" align="left">
-	태그 <span style="font-weight: bold; font-size: 20;">'${keyword}'</span><br/>
-	<hr style="margin-top: 10px;"/>
-</div>
-
-<div class="row" style="width: 60%;">
-	<c:forEach items="${hash}" var="tag">
-		<div class="col-md-3" style=" padding: 5px;">
-			<div style="background-color: #F6F6F6; padding: 15px;" align="left">
-				<a href="/search/tag.mt?keyword=${tag}"><span style="font-size: 18px;">#${tag }</span></a>
-			</div>
+		<div class="w3-col s10">
+			<a class="btn btn-block" href="/search/post.mt?keyword=${keyword}" style="background-color: #F6F6F6; width:98%; margin-bottom: 10px;">검색 결과 더 보기</a>
 		</div>
-	</c:forEach>
-</div>
-
-<a class="btn btn-block " href="/search/tagsearch.mt?keyword=${keyword}" style="background-color: #F6F6F6; width: 60%; margin-bottom: 10px;">검색 결과 더 보기</a>
-   
-</div>
-
+	
+		<div class="w3-col s10" align="left">
+			태그 <span style="font-weight: bold; font-size: 20;">'${keyword}'</span><br/>
+			<hr style="margin-top: 10px;"/>
+		</div>
+	
+		<div class="row" style="width: 60%;">
+			<c:forEach items="${hash}" var="tag">
+				<div class="col-md-3" style=" padding: 5px;">
+					<div style="background-color: #F6F6F6; padding: 15px;" align="left">
+						<a href="/search/tag.mt?keyword=${tag}"><span style="font-size: 18px;">#${tag }</span></a>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+	
+		<div class="w3-col s10">
+			<a class="btn btn-block " href="/search/tagsearch.mt?keyword=${keyword}" style="background-color: #F6F6F6; width:98%; margin-bottom: 10px;">검색 결과 더 보기</a>	
+	   </div>
+   </div>
 </div>
    
 <c:choose>
