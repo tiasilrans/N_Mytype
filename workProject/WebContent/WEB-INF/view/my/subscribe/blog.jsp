@@ -4,9 +4,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" href="/css/postviewcss.css">
-    
+<link rel="stylesheet" href="/css/my.css">
+
 <style>
-  
+ 
+body {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+	background: whitesmoke;
+}
+
+.box {
+	position: relative;
+	background-color:white;
+	border-radius:10px;
+	margin: 20px;
+	width: 70%;
+	padding: 20px;
+} 
+
 table.type07 {
     line-height: 1.5;
     border: 1px solid #ccc;
@@ -29,10 +46,6 @@ table.type07 td {
 
 
 <div align="center" >
-	<div style="width: 50%;" align="left" >
-	<h2>구독중인 블로그</h2>
-	<hr style="margin-top: 10px;"/>
-	</div>
 
 		<c:choose>
 		<c:when test="${slist ne null}">
