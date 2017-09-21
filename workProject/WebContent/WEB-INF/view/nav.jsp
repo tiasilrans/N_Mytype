@@ -22,33 +22,33 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/"><img src="/images/MTtitle.png" style="margin-top: -3px;"></a>
+				<a class="navbar-brand" href="/"><img src="/images/MTtitle.png" style="margin-top: -1px;"></a>
 			</div>
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse">
 				<c:choose>
 				<c:when test="${sessionScope.login ne null }">
 				<ul class="nav navbar-nav navbar-left">
-					<li class=""><a class="header" href="/" id="home">홈</a></li>
+					<li class=""><a class="header" href="/" id="home"><span style="color: #1a1a1a;">홈</span></a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">내 블로그<span class="caret"></span></a>
+						data-toggle="dropdown" href="#"><span style="color: #005ce6;">내 블로그</span><span class="caret" style="color: #005ce6;"></span></a>
 						<ul class="dropdown-menu">						
 						<!-- 블로그 리스트 -->				
 						<c:if test="${sessionScope.blog ne null }">
 						<c:forEach var="blog" items="${sessionScope.blog}" begin="0" end="${sessionScope.blog.size()}">
-							<li><a style="font-weight: bold; background-color: #80c1ff; color: white;" href="/blog/${blog.URL}">${blog.TITLE}</a></li>  
-							<li><a href="/blog/${blog.URL}/categories"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">toc</i>  카테고리</a></li> 
-							<li><a href="/blog/${blog.URL}/subscribers"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">face</i>  구독자</a></li>   
-							<li><a href="/blog/${blog.URL}/setting"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">settings</i>  설정</a></li>  
+							<li style="margin-bottom: 8px;"><a style="font-weight: bold; background-color: #66a3ff; color: white;" href="/blog/${blog.URL}">${blog.TITLE}</a></li> 
+							<li><a href="/blog/${blog.URL}/categories"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">toc</i>  <span style="margin-left: 10px;">카테고리</span></a></li> 
+							<li><a href="/blog/${blog.URL}/subscribers"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">face</i>  <span style="margin-left: 10px;">구독자</span></a></li>   
+							<li><a href="/blog/${blog.URL}/setting"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">settings</i>  <span style="margin-left: 10px;">설정</span></a></li>  
 						</c:forEach>
 						</c:if>     
-							<li><a href="/blog/create"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">add</i>  새 블로그 만들기</a></li>
+							<li><a href="/blog/create"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">add</i>  <span style="margin-left: 10px;">새 블로그 생성</span></a></li>
 						</ul></li>
 				</ul>  
 			   
 				<ul class="nav navbar-nav navbar-right" style="margin-right: 13px;">
 				<!-- 알림 -->				
-					<li style="margin: -7px;"><a href="/my/home"><i class="material-icons" style="color: #999999; font-size: 30px;">notifications_none</i></a></li>
+					<li style="margin: -7px;"><a href="/my/home"><i class="material-icons" style="color: #005ce6; font-size: 30px;">notifications_none</i></a></li>
 				<!-- 알림끝 -->				
 					<li class="dropdown">
 						<a id="account-toggler" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#" role="button" title="MY"
@@ -65,17 +65,17 @@
                             
                             <span class="sr-only">계정</span></a>
                             <ul class="dropdown-menu">     
-                            	<li><a href="/my/home"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">dashboard</i>　　MY홈</a></li>  
-                            	<li><a href="/subscribe/blog.mt"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">turned_in</i>　　구독</a></li>   
-                            	<li><a href="/my/library/postgood"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">subject</i>　　라이브러리 </a></li>
-                            	<li><a href="/my/point/plist"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">monetization_on</i>　　포인트</a></li> 
-                            	<li><a href="/my/settings/account"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">settings</i>　　설정</a></li>
-                            	<li><a href="/mail/list.mt?type=send"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">mail</i>　　쪽지</a></li>
+                            	<li><a href="/my/home"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">dashboard</i><span style="margin-left: 10px;">MY홈</span></a></li>  
+                            	<li><a href="/subscribe/blog.mt"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">turned_in</i><span style="margin-left: 10px;">구독</span></a></li>   
+                            	<li><a href="/my/library/postgood"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">subject</i><span style="margin-left: 10px;">라이브러리</span> </a></li>
+                            	<li><a href="/my/point/plist"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">monetization_on</i><span style="margin-left: 10px;">포인트</span></a></li> 
+                            	<li><a href="/my/settings/account"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">settings</i><span style="margin-left: 10px;">설정</span></a></li>
+                            	<li><a href="/mail/list.mt?type=send"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">mail</i><span style="margin-left: 10px;">쪽지</span></a></li>
                             	<c:if test="${sessionScope.info.POWER eq 1}">
-	                            	<li><a href="/admin/main"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">vpn_key</i>　　관리자페이지</a></li>     
+	                            	<li><a href="/admin/main"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">vpn_key</i><span style="margin-left: 10px;">관리자 페이지</span></a></li>     
                             	</c:if>
                             	<li><a></a></li>  
-                            	<li><a href="/logout.mt"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">power_settings_new</i>　　로그아웃</a></li>
+                            	<li><a href="/logout.mt"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">power_settings_new</i><span style="margin-left: 10px;">로그아웃</span></a></li>
                             </ul>
 					</li>   
 				</ul>
@@ -90,9 +90,9 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><form class="navbar-form form-horizontal" role="search" action="/search/main.mt">
 					<div class="input-group">
-						<input type="text" class="search-box" placeholder="마이타입 검색" name="keyword">
+						<input type="text" class="search-box" placeholder="마이타입 검색" name="keyword" style="color: #1a1a1a;">
 						<button type="submit" class="btn">
-							<span class="glyphicon glyphicon-search" style="margin-bottom: 7px; color: #999999;"></span>
+							<span class="glyphicon glyphicon-search" style="margin-bottom: 7px; color: #005ce6;"></span>
 						</button>
 					</div>
 				</form></li>				

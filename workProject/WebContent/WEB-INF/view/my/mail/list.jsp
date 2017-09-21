@@ -5,9 +5,26 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <link rel="stylesheet" href="/css/my.css">
-<link rel="stylesheet" href="/css/postviewcss.css">
 
 <style>
+
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.button1 {
+	background-color: #303030;
+}
   
 table.type07 {
     line-height: 1.5;
@@ -30,18 +47,19 @@ table.type07 td {
 </style>
 
 
-<div align="center" >
-	<div style="width: 50%;" align="left">
-	<h2>${type == 'send' ? '보낸': '받은'}쪽지함</h2>
-	<hr style="margin-top: 10px;"/>
-	</div>
-
+<section style="min-height: 100%;">
 <form action="/mail/delete.mt">
+<div class="col-xs-0 col-md-2"></div>
+<div class="box col-xs-12 col-md-8 col-lg-12">
+	<div class="title" style="margin-bottom: 40px;">
+		<span style="float:left; font-size: 18px; margin-left: 5px;"><b>${type == 'send' ? '보낸': '받은'}쪽지함</b></span>
+	</div><hr/>
+	
 	<input type="hidden" name="part" value="list"/>
 	<input type="hidden" name="type" value="${type}"/>
-	<table class="table type07" style="width: 50%;">
+	<table class="table type07">
 		<thead>
-			<tr style="background-color: #F6F6F6;">
+			<tr>
 				<th width="5%"><input type="checkbox" id="allcheck"/></th>
 				<th width="20%">${type == 'send' ? '받은': '보낸'}사람</th>
 				<th width="55%">내용</th>
@@ -50,17 +68,17 @@ table.type07 td {
 		</thead>
 		<tbody style="font-size: 14px;">
 		<c:choose>
-		<c:when test="${mlist.size() > 0}">
-			<c:forEach var="mail" items="${mlist}">
-				<tr>
-					<td style="vertical-align: middle; height: 50px;"><input class="ch" type="checkbox" name="num" value="${mail.NUM}" style="vertical-align: middle;"/></td>
-					<td style="vertical-align: middle; height: 50px;">${mail.EMAIL}</td>
-					<td style="vertical-align: middle; height: 50px;"><a href="/mail/view.mt?num=${mail.NUM}&type=${type}">${mail.CONTENT}</a></td>
-					<td style="vertical-align: middle;">
-						<fmt:formatDate value="${mail.MDATE }" pattern="yyyy-MM-dd HH:mm"/>
-					</td>
-				</tr>
-			</c:forEach>
+			<c:when test="${mlist.size() > 0}">
+				<c:forEach var="mail" items="${mlist}">
+					<tr>
+						<td style="vertical-align: middle; height: 50px;"><input class="ch" type="checkbox" name="num" value="${mail.NUM}" style="vertical-align: middle;"/></td>
+						<td style="vertical-align: middle; height: 50px;">${mail.EMAIL}</td>
+						<td style="vertical-align: middle; height: 50px;"><a href="/mail/view.mt?num=${mail.NUM}&type=${type}">${mail.CONTENT}</a></td>
+						<td style="vertical-align: middle;">
+							<fmt:formatDate value="${mail.MDATE }" pattern="yyyy-MM-dd HH:mm"/>
+						</td>
+					</tr>
+				</c:forEach>
 			</c:when>
 			<c:otherwise>
 				<td colspan="4" style="vertical-align: middle; height: 50px;">
@@ -72,20 +90,21 @@ table.type07 td {
 	</table>
 
 	<div style="width: 50%;" align="left">
-	<hr style="margin-top: 10px;"/>
-	<button class="button button1" type="submit" id="delete" >삭제하기</button>
+		<button class="button button1" type="submit" id="delete" >삭제하기</button>
 	</div>
-	<div style="width: 50%;" align="center">
-	<ul class="pagination">
-	<c:forEach var="i" begin="1" end="${page}">
-		<li ${np == i? "class=\"active\"": ""}><a
-			href="/mail/list.mt?np=${i}&type=${type}">${i}</a></li>
-	</c:forEach>
-	</ul>
+	
+	<div align="center">
+		<ul class="pagination">
+			<c:forEach var="i" begin="1" end="${page}">
+				<li ${np == i? "class=\"active\"": ""}><a
+					href="/mail/list.mt?np=${i}&type=${type}">${i}</a></li>
+			</c:forEach>
+		</ul>
 	</div>
-</form>
-
 </div>
+</form>
+</section>
+
 
 <script>
 $("#allcheck").on("click",function(){

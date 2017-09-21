@@ -5,9 +5,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <link rel="stylesheet" href="/css/my.css">
-<link rel="stylesheet" href="/css/postviewcss.css">
 
 <style>
+
+.box {
+	background-color:white;
+	border-radius:10px;
+	margin: 20px;
+	width: 70%;
+	padding: 20px;
+}
   
 table.type07 {
     line-height: 1.5;
@@ -21,41 +28,44 @@ table.type07 td {
 </style>
 
     
-<div align="center">
-	<div style="width: 40%;" align="left">
-	<h2>쪽지쓰기</h2>
-	<hr style="margin-top: 10px;"/>
-	</div>
-
+<section style="min-height: 90%;">
 <form action="writeExec.mt">
-	<table class="table type07" style="width: 35%; background-color: #F6F6F6;">
+<div class="col-xs-0 col-md-2"></div>
+<div class="box col-xs-12 col-md-8 col-lg-12">
+	<div class="title" style="margin-bottom: 40px;">
+		<span style="float:left; font-size: 18px; margin-left: 5px;"><b>쪽지보내기</b></span>
+	</div><hr/>
+	<table class="table type07">
 		<tbody style="font-size: 14px;">
-				<tr>
-					<td style="vertical-align: middle; width: 20%;"><label>받는사람</label></td>
-					
-					<td style="width: 70%">
-						<input class="form-control" type="text" name="receiver" id="receiver" value="${email}" ${email ne null ? 'readonly':''} required />
-					</td>
-					<td style="width: 5%; vertical-align: middle;">
-						<i class="fa fa-check-circle" id="emailtrue" style="font-size:23px; color:#14c880; ${email ne null ? 'display: block;':'display: none;'}"></i>
-						<i class="fa fa-times-circle" id="emailfalse" style="font-size:23px; color:red; ${email eq null ? 'display: block;':'display: none;'} "></i>
-					</td>
-					<td style="width: 5%"></td>
-					
-				</tr>
-				<tr>
-					<td style="vertical-align: middle; width: 20%;"><label>내용</label></td>
-					<td colspan="2" style="width: 60%"><textarea class="form-control" cols="40" rows="15" name="content" style="resize: none;" required></textarea></td>
-					<td style="width: 20%"></td>
-				</tr>
+			<tr>
+				<td style="vertical-align: middle; width: 20%;"><label>받는사람</label></td>
+				
+				<td style="width: 70%">
+					<input class="form-control" type="text" name="receiver" id="receiver" value="${email}" ${email ne null ? 'readonly':''} required />
+				</td>
+				<td style="width: 5%; vertical-align: middle;">
+					<i class="fa fa-check-circle" id="emailtrue" style="font-size:23px; color:#14c880; ${email ne null ? 'display: block;':'display: none;'}"></i>
+					<i class="fa fa-times-circle" id="emailfalse" style="font-size:23px; color:red; ${email eq null ? 'display: block;':'display: none;'} "></i>
+				</td>
+				<td style="width: 5%"></td>
+				
+			</tr>
+			<tr>
+				<td style="vertical-align: middle; width: 20%;"><label>내용</label></td>
+				<td colspan="2" style="width: 60%"><textarea class="form-control" cols="40" rows="15" name="content" style="resize: none;" required></textarea></td>
+				<td style="width: 20%"></td>
+			</tr>
 		</tbody>
 	</table>
-	<div style="width: 35%;" align="right">
+	
+	<div align="right">
 		<input class="btn button button1" type="submit" value="보내기" id="sbtn" disabled/>
 	</div>
-</form>
-
+	
 </div>
+</form>
+</section>
+
 
 <script>
 //이메일 텍스트창에서 포커스 취소할때 마다 중복확인 이벤트 발생

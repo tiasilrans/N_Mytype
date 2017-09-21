@@ -8,8 +8,11 @@
 
 <style>
 
-body {
-	background: whitesmoke;
+
+body{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 1.42857143;
+	background: linear-gradient(to bottom, #80c1ff, #cce6ff);
 }
 
 a{ text-decoration: none; }
@@ -207,9 +210,9 @@ a{ text-decoration: none; }
 
 
 </style>   
-<div class="row">
-<div class="col-lg-3 col-md-3"></div>
-<div class="col-lg-7 col-md-8" style="margin-left: auto;">
+<div class="row" style="width: 70%; margin: auto; max-width: 70%;">
+<!-- <div class="col-md-3"></div>
+<div class="col-md-8" style="margin-left: auto;"> -->
 
 			<!-- 메인쪽 로고 부분 -->
 			  <div class="container col-md-4" style="width:600px; height: 350px; " >
@@ -405,7 +408,7 @@ a{ text-decoration: none; }
 </div>
 </div>
 
-</div>
+<!-- </div> -->
 
 <c:choose>
 	<c:when test="${sessionScope.login == null}">
