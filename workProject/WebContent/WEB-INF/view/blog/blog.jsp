@@ -12,6 +12,14 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 
+.box {
+	border: 1px solid;
+	border-color: #d9d9d9;
+	width: 100%;
+	padding: 30px;   
+	border-radius: 10px;  
+}
+
 #app-menu-toggler:hover {
     box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 5px 10px 0 rgba(0,0,0,.05), 0 10px 20px 0 rgba(0,0,0,.05);
 }
@@ -77,10 +85,11 @@
     padding-bottom: 20px;
     padding-left: 20px;   
  	margin: 20px;  
- 	margin-top: -1.3px;
+ 	margin-top: -10px;
+ 	border-radius: 10px;
 }   
  
-footer {
+.ft {
 	background-color:white;
 	width: 100%;
 	padding-top: 20px;
@@ -88,7 +97,8 @@ footer {
     padding-bottom: 20px;
     padding-left: 20px;
 	margin: 20px;
-	margin-top: -20px;  
+	margin-top: -30px;
+	border-radius: 10px;  
 }
 
 
@@ -150,7 +160,7 @@ footer {
 									</div>
 								</a>
 							</div>      
-							<footer>
+							<div class="ft">
 								   <div class="media">
 								    	<div class="media-left">
 										 	<div class="media-left" style="vertical-align: middle;">
@@ -179,7 +189,7 @@ footer {
 											</div>
 										</div>						
 								</div>
-							</footer>
+							</div>
 						</c:forEach>				
 					</div>  
 					<div class="div-pagination" style="text-align: center;" > 
