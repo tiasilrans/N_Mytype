@@ -86,7 +86,7 @@ input[type=checkbox]:checked+label:before {
 				<div class="header">
 					<div class="category"
 						style="margin-bottom: 120px; margin-left: 3px;">
-						<a style="color: black; font-family: NanumSquare;" href="">${post.CATEGORY }</a>
+						<a style="color: black; font-family: NanumSquare;" href="/blog/${post.URL }/category/${post.CATEGORY}">${post.CATEGORY }</a>
 					</div>
 
 					<div style="margin-top: -70px;">
