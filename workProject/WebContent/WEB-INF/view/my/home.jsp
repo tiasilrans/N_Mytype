@@ -110,13 +110,8 @@ a{ text-decoration: none; }
 }
 
 </style>
-<<<<<<< HEAD
-<div class="row">
-<section style="min-height: 75%;">
-=======
 
 <section style="min-height: 90%;">
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 <div class="col-xs-0 col-md-2"></div>
 <div class="box col-xs-12 col-md-8 col-lg-12" style="margin-bottom: 0;">
 		<div class="title">
