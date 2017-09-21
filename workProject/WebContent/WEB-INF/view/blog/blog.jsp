@@ -183,7 +183,7 @@
 											 		<img src="/images/profile/${obj.IMAGE}" onerror="this.src='/images/avatar_yellow.png'" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
 										 		</c:when>
 										 		<c:otherwise>
-											 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+											 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:-2px;">
 										 		</c:otherwise>
 										 		</c:choose>
 										 	</div> 
