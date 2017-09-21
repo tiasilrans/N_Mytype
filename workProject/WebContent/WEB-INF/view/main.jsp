@@ -19,13 +19,13 @@ body{
 a{ text-decoration: none; }
 
 .logo-frame{
-	width:100%;
+	
 	border-radius: 5px;
 }
 
 #secondlogo{
 	height: 350px;
-	width : 300px;
+	
 	border-radius: 5px;
 	margin: 10px;
 	border-radius : 5px;
@@ -40,13 +40,12 @@ a{ text-decoration: none; }
 }
 
 .secondlogo-body{
-	width : 100%;
 	height: 15%;
 }
 
 .secondlogo-body-profileimg{
 	float: left;
-	width:48px;
+	
 	height:48px;
 	border-radius: 50%;
 	margin-right: 8px;
@@ -211,13 +210,14 @@ a{ text-decoration: none; }
 
 
 </style>   
-<div class="row" style="width: 70%; margin: auto; max-width: 70%;">
+<div class="container" style="margin: auto;">
 <!-- <div class="col-md-3"></div>
 <div class="col-md-8" style="margin-left: auto;"> -->
-
+	<div class="row">
 			<!-- 메인쪽 로고 부분 -->
-			  <div class="w3-row w3-container" style="width:1100px; height: 350px; " >
-			  <div id="myCarousel" class="carousel w3-col s5" data-ride="carousel" style="width:580px; margin: 10px; margin-right:0; border:1px solid silver;border-radius:5px;">
+			<div class="col-lg-1"></div>
+			  <div class="col-lg-6 col-md-8 col-sm-12" >
+			  <div id="myCarousel" class="carousel" data-ride="carousel" style="margin: 10px; margin-right:0; border:1px solid silver;border-radius:5px; padding: 0px;">
 			  
 			    <!-- Indicators -->
 			    <ol class="carousel-indicators">
@@ -229,23 +229,21 @@ a{ text-decoration: none; }
 			    <!-- Wrapper for slides -->
 			    <div class="carousel-inner">
 			      <div class="logo-frame item active">
-			        <img src="/images/mainimg/1.png" alt="Los Angeles" style="width:100%; height: 350px; border-radius: 5px;">
+			        <img src="/images/mainimg/1.png" alt="Los Angeles" style=" height: 350px; border-radius: 5px;">
 			      </div>
 			
 			      <div class="logo-frame item">
-			        <img src="/images/mainimg/2.png" alt="Chicago" style="width:100%; height: 350px; border-radius: 5px;">
+			        <img src="/images/mainimg/2.png" alt="Chicago" style=" height: 350px; border-radius: 5px;">
 			      </div>
 			    
 			      <div class="logo-frame item">
-			        <img src="/images/mainimg/33.png" alt="New york" style="width:100%; height: 350px; border-radius: 5px;">
+			        <img src="/images/mainimg/33.png" alt="New york" style=" height: 350px; border-radius: 5px;">
 			      </div>
 			    </div>
 			  </div>
-			
-			
-
+			</div>
 			<!-- 메인쪽 로고 오른쪽 부분 -->
-			<div id="secondlogo" class="w3-col s3">
+			<div id="secondlogo" class="col-lg-4 col-md-4 col-sm-0">
 				<div class="secondlogo-head">MyType 소식</div>
 					<div class="secondlogo-body">
 						<img class="secondlogo-body-profileimg" src="/images/blogMark.png">
@@ -265,8 +263,8 @@ a{ text-decoration: none; }
 						</c:choose>
 						</span></a></div>
 			</div>
-			</div>
-
+	</div>
+	<div class="col-lg-1"></div>
 			<!-- 목록 nav -->
 			<div class="w3-row w3-container">
 			<div style="margin-left: 10px;">
