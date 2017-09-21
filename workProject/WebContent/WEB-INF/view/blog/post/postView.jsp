@@ -229,10 +229,17 @@ input[type=checkbox]:checked+label:before {
 									<p style="display: block;">${obj.CONTENT }</p>
 								</div>
 
+<<<<<<< HEAD
 								<div class="comment-action" style="border: none; float: right; margin-right: 295px; margin-top: -55px;">
 									<button class="re-reply-write" style="border: 0px; background-color: white; color: #999999; font-size: 12px; font-family: NanumSquare;">답글</button>
 									<button class="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px; font-family: NanumSquare;">편집</button>
 									<button class="reply-delete" style="border: 0px; background-color: white; color: #999999; font-size: 12px; font-family: NanumSquare;">삭제</button>
+=======
+								<div class="comment-action" style="border: none; float: right; margin-right: 280px; margin-top: -55px;">
+									<button class="re-reply-write" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
+									<button class="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
+									<button class="reply-delete" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">삭제</button>
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 									<input type="hidden" value="${obj.NUM }" />
 								</div>
 								<div class="comment-editor" style="display: none;">
