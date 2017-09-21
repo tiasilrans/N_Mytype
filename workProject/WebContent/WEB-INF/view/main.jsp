@@ -175,7 +175,6 @@ a{ text-decoration: none; }
 
 .incard {
     float: left;
-    width : 280px;
 	height: 270px;
 	margin: 8px;
     border-radius : 5px;
@@ -234,7 +233,6 @@ a{ text-decoration: none; }
 
 </style>   
 <div class="container">
-
 	<div class="row">
 			<!-- 메인쪽 로고 부분 -->
 			<div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
@@ -288,24 +286,27 @@ a{ text-decoration: none; }
 						</c:choose>
 						</span></a></div>
 			</div>
+		<div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
 	</div>
-	<div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
-			<!-- 목록 nav -->
-			<div class="w3-row w3-container">
-			<div style="margin-left: 10px;">
-			<ul class="nav nav-tabs" style="width: 950px;">
-			<li class="active"><a data-toggle="tab" href="#allList"><b>전체</b></a></li>
-			<c:if test="${sessionScope.login ne null}">
-				<li><a data-toggle="tab" href="#likeList"><b>구독</b></a></li>
-			</c:if>
-			</ul>
-			</div>			
-			
-			
-			<div class="tab-content" >
-			
+	
+	
+	
+	
+	<!-- 목록 nav -->
+	<div class="row">
+		<div class="col-lg-12">
+			<div>
+				<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#allList"><b>전체</b></a></li>
+				<c:if test="${sessionScope.login ne null}">
+					<li><a data-toggle="tab" href="#likeList"><b>구독</b></a></li>
+				</c:if>
+				</ul>
+			</div>
+			<div>	
+		<div class="row" >			
 			<!-- 전체 게시글 배치 -->
-			<div id="allList" class="tab-pane fade in active w3-col-s3">
+			
 			<div class="row">
 						<c:forEach var="all" items="${listAll }" begin="0" end="${listAll.size() < 2 ? listAll.size() : 2}" varStatus="vs">
 				<div class="incard " style="clear: right;" >
@@ -455,17 +456,16 @@ a{ text-decoration: none; }
 				</div>
 			
 			</c:forEach>
-			</div>
 
 
 
 
 			</div>
+			
 			
 			
 			<!-- 구독 게시물 배치 -->
 			<div id="likeList" class="tab-pane fade">
-
 			<c:choose>
 			<c:when test="${listLike.size() == 0}">
 			<div align="center">
@@ -473,7 +473,8 @@ a{ text-decoration: none; }
 			</div>
 			</c:when>
 			<c:otherwise>
-			<c:forEach var="like" items="${listLike }" begin="0" end="${listLike.size() < 5 ? listLike.size() : 5}" varStatus="vs">
+			<div class="row">
+			<c:forEach var="like" items="${listLike }" begin="0" end="${listLike.size() < 2 ? listLike.size() : 2}" varStatus="vs">
 				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
@@ -519,19 +520,117 @@ a{ text-decoration: none; }
 							<span class="confooter-count heart-${like.NUM}">${like.GOOD }</span>
 					</div>
 				</div>
-			
-				<c:if test="(vs+1) % 3 = 0">
-					<br/>
-				</c:if>
 				
 			</c:forEach>
+			</div>
+			<div class="row">
+			<c:forEach var="like" items="${listLike }" begin="3" end="${listLike.size() < 5 ? listLike.size() : 5}" varStatus="vs">
+				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
+					<div class="title">
+						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
+						<div>${like.NICKNAME }</div>
+						<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${like.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${like.URL }">${like.URL }</a></div>
+					</div>
+					
+	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
+						<a href="/${like.URL}/post/${like.NUM}" style="font-size: 15px; text-decoration: none; color: #333333;padding-bottom: 5px;">
+							${like.TITLE }
+						
+						<c:if test="${like.IMG.length() > 10}">
+		                		<div class="nailthumb-column-metadata" id="thumbnail">
+		                			${like.IMG }
+		                		</div>  
+	                	</c:if>
+	                	</a>
+						<a href="/${like.URL}/post/${like.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
+							${like.FCONTENT }
+						</a>
+					</div> <br/><br/><br/>
+	                
+	                <div>
+		                <c:set var="msg" value="${like.HASH }"/>
+						<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
+						<c:forEach items="${hashtag}" var="hash">
+						<span class="conbody-hashtag">
+							<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
+						</span>
+						</c:forEach>
+	                </div>
+	                
+	                <!-- footer -->
+					<div class="confooter">
+						<c:choose>
+						<c:when test="${like.HEART == null}">
+							<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
+						</c:otherwise>
+						</c:choose>
+							<span class="confooter-count heart-${like.NUM}">${like.GOOD }</span>
+					</div>
+				</div>
+				
+			</c:forEach>
+			</div>
+			<div class="row">
+			<c:forEach var="like" items="${listLike }" begin="6" end="${listLike.size() < 8 ? listLike.size() : 8}" varStatus="vs">
+				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
+					<div class="title">
+						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
+						<div>${like.NICKNAME }</div>
+						<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${like.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${like.URL }">${like.URL }</a></div>
+					</div>
+					
+	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
+						<a href="/${like.URL}/post/${like.NUM}" style="font-size: 15px; text-decoration: none; color: #333333;padding-bottom: 5px;">
+							${like.TITLE }
+						
+						<c:if test="${like.IMG.length() > 10}">
+		                		<div class="nailthumb-column-metadata" id="thumbnail">
+		                			${like.IMG }
+		                		</div>  
+	                	</c:if>
+	                	</a>
+						<a href="/${like.URL}/post/${like.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
+							${like.FCONTENT }
+						</a>
+					</div> <br/><br/><br/>
+	                
+	                <div>
+		                <c:set var="msg" value="${like.HASH }"/>
+						<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
+						<c:forEach items="${hashtag}" var="hash">
+						<span class="conbody-hashtag">
+							<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
+						</span>
+						</c:forEach>
+	                </div>
+	                
+	                <!-- footer -->
+					<div class="confooter">
+						<c:choose>
+						<c:when test="${like.HEART == null}">
+							<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
+						</c:otherwise>
+						</c:choose>
+							<span class="confooter-count heart-${like.NUM}">${like.GOOD }</span>
+					</div>
+				</div>
+				
+			</c:forEach>
+			</div>
 			</c:otherwise>
 			</c:choose>
 			
 			</div>
 
 			
-			</div>
+	</div></div>
+	</div>
 </div>
 </div>
 
