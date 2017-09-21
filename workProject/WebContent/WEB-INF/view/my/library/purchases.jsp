@@ -85,7 +85,7 @@ a{text-decoration: none;}
 <div class="col-lg-3 col-md-3"></div>
 <div class="col-lg-7 col-md-6" style="margin-left: auto;">
 	<div class="title">
-		<b style="float:left; font-size: 17px;">구매 항목</b>
+		<b style="float:left; font-size: 17px; color: white;">구매 항목</b>
 		<br/><hr style="margin-top: 10px;"/>
 	</div>
 	<div class="w3-row w3-container" style="width:1100px;">
