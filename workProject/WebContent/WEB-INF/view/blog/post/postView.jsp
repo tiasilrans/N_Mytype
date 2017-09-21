@@ -203,9 +203,9 @@ input[type=checkbox]:checked+label:before {
 				
 				
 				<footer class="post-footer" style="margin-top: 40px;">
-					<i class="material-icons"
-						style="font-size: 20px; color: #0d0d0d; float: left; font-weight: bold;">favorite_border</i><span
-						style="margin-left: 3px; color: #0d0d0d; font-size: 15px;">0</span>
+				<a href="#" onclick="like(this);" post-num="${post.NUM }">
+					<i class="material-icons" style="font-size: 20px; color: #0d0d0d; float: left; font-weight: bold;">favorite_border</i></a>
+					<span style="margin-left: 3px; color: #0d0d0d; font-size: 15px;">${like }</span>
 				</footer>
 			</div>
 		</div>
@@ -219,12 +219,21 @@ input[type=checkbox]:checked+label:before {
 				<div class="body blog-info"
 					style="margin-bottom: 30px; margin-top: 30px;">
 					<div class="media" style="margin-left: 95px;">
-						<img src="${imgPath }"
-							style="border-radius: 17%; height: 70px; width: 70px;">
+						<div class="media-left">
+							<img src="${imgPath }"
+								style="border-radius: 17%; height: 70px; width: 70px;">
+						</div>
+						<div class="media-body" style="vertical-align: middle;">${blog.INTRO }</div>
 					</div>
-					<div class="media-body"></div>
-					<button class="btn btn-default"
-						style="float: right; margin-right: 295px; margin-top: -45px;">구독하기</button>
+					
+					<c:choose>
+						<c:when test="${subCk.ADDRESS ne blog.URL }">
+							<a href="#" onclick="subscribe();" id="s-bt"><button class="button button1 subscribe-bt" style="float: right; margin-right: 295px; margin-top: -45px;">구독하기</button></a>
+						</c:when>
+						<c:otherwise>	
+							<a href="#" onclick="cancel();" id="s-cbt"><button class="button button1 subscribe-cbt" style="float: right; margin-right: 295px; margin-top: -45px;"">구독취소</button></a>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</section>
 			<!-- 블로그 포스트 리스트 섹션 -->
@@ -592,6 +601,67 @@ $(".edit-update").on("click", function(){
 	
 	
 });
+
+
+//subscribe-bt
+function subscribe(){
+if(confirm("이 블로그를 구독하시겠습니까?")){    	
+	$.post({
+		url : "/subscribe/subscribe.mt",
+		data : {
+			"url" : "${blog.URL}"
+		}
+	}).done(function(result) {
+		if(result.result){
+			window.alert("구독 목록에 추가되었습니다.");
+			location.reload();
+		}
+	});
+	
+    return true;
+    } else {
+        return false;
+    }
+};
+
+
+//subscribe-cbt
+function cancel(){
+if(confirm("이 블로그를 구독취소 하시겠습니까?")){    	
+	$.post({
+		url : "/subscribe/cancel.mt",
+		data : {
+			"url" : "${blog.URL}"
+		}
+	}).done(function(result) {
+		if(result.result){
+			window.alert("구독취소 되었습니다.");
+			location.reload();
+		}
+	});
+	
+    return true;
+    } else {
+        return false;
+    }
+};
+
+//like
+function like(obj) {
+	var num = $(obj).attr('post-num');
+	$.post({
+		url : "/like.mt",
+		data : {				
+			"num" : num
+		}
+	}).done(function(result) {
+		if(result.result){
+			location.reload();
+		}
+	});
+	
+};
+
 
 
 

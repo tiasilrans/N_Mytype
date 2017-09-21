@@ -24,6 +24,7 @@ import model.BlogDAO;
 import model.PointDao;
 import model.PostDao;
 import model.ReplyDAO;
+import model.SubscribeDAO;
 
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -46,6 +47,9 @@ public class PostController {
 	
 	@Autowired
 	BlogDAO bDAO;
+	
+	@Autowired
+	SubscribeDAO sDAO;
 
 	
 	// 포스트 수정
@@ -113,7 +117,8 @@ public class PostController {
 		Map map = new HashMap<>();
 			map.put("num", num);
 			map.put("url", url);
-		boolean c = pdao.postCounter(map); 
+		boolean c = pdao.postCounter(map);
+		Map blog = bDAO.blogView(map);
 		if(c){
 			HashMap post = pdao.onePost(map);
 			post.put("PDATE", sdf.format(post.get("PDATE")));
@@ -121,6 +126,7 @@ public class PostController {
 			mav.addObject("section", "blog/post/postView");
 			mav.addObject("post", post);
 			mav.addObject("list", rDAO.replyList(map));
+			mav.addObject("blog", blog);
 			
 			String email = (String)session.getAttribute("login");
 			if(email != null){
@@ -132,7 +138,9 @@ public class PostController {
 				mav.addObject("buy", false);
 			}
 		}
-			mav.addObject("totalpost", pdao.postCount(map)); 
+			mav.addObject("like", pdao.postLikeCount(map));
+			mav.addObject("totalpost", pdao.postCount(map));
+			mav.addObject("subCk", sDAO.subCheck(map));
 		return mav;	
 	}
 	
