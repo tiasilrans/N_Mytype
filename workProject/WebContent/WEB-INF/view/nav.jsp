@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <link rel="stylesheet" href="/css/navcss.css">
 <style>
 @media ( max-width : 767px) {	
@@ -76,7 +77,7 @@
 			   
 				<ul class="nav navbar-nav navbar-right" style="margin-right: 13px;">
 				<!-- 알림 -->				
-					<li style="margin: -7px;"><a href="/my/home"><i class="material-icons" style="color: #005ce6; font-size: 30px;">notifications_none</i></a></li>
+					<li style="margin: -7px;"><a href="/my/home" title="MY홈"><i class="material-icons" style="color: #005ce6; font-size: 30px;">notifications_none</i></a></li>
 				<!-- 알림끝 -->				
 					<li class="dropdown">
 						<a id="account-toggler" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#" role="button" title="MY"
@@ -93,7 +94,6 @@
                             
                             <span class="sr-only">계정</span></a>
                             <ul class="dropdown-menu">     
-                            	<li><a href="/my/home"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">dashboard</i><span style="margin-left: 10px;">MY홈</span></a></li>  
                             	<li><a href="/subscribe/blog.mt"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">turned_in</i><span style="margin-left: 10px;">구독</span></a></li>   
                             	<li><a href="/my/library/postgood"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">subject</i><span style="margin-left: 10px;">라이브러리</span> </a></li>
                             	<li><a href="/my/point/plist"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">monetization_on</i><span style="margin-left: 10px;">포인트</span></a></li> 

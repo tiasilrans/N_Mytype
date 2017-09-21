@@ -257,7 +257,7 @@ input[type=radio]:checked+label:before {
 			<div class="collapse navbar-collapse" id="postNav">
 				<ul class="nav navbar-nav">
 					<li class="back" style="margin-left: 200px; margin-top: 4px;"><a href="/blog/${map.url }" style=" margin-right: 0px;"><i class="material-icons">keyboard_backspace</i></a>
-					<li class="home" style="margin-right: 15px;"><a href="/" style=" margin: 0px; padding-left:0px; background-image: none; background-color: white;"><span><img
+					<li class="home" style="margin-right: 15px;"><a href="/" style=" margin: 0px; padding-left:0px; background-image: none; background-color: rgba( 255, 0, 0, 0 );"><span><img
 								src="/images/mytype.png"></span></a>
 						 
 				</ul>

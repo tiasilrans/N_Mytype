@@ -93,7 +93,7 @@ public class BlogController {
 			pageMap.put("start", start);
 			pageMap.put("end", end);
 			pageMap.put("url", url);
-			
+			pageMap.put("email", (String)session.getAttribute("login"));
 		List<Map> list = bDAO.cate_List(map);
 		for(Map m : list){
 			String cn = (String)m.get("CATEGORY_NAME");

@@ -163,6 +163,7 @@ public class PostDao {
 		List<Map> list = new ArrayList<>();
 		SqlSession session = factory.openSession();
 		try {
+			System.out.println(map);
 			list = session.selectList("post.main_page_view", map);			
 			return list;
 		} catch (Exception e) {
