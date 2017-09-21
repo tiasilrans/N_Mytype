@@ -66,12 +66,12 @@ ul li a:hover, ul li a:focus {
 <div class="col-xs-0 col-md-2"></div>
 <div class="box col-xs-12 col-md-8 col-lg-12">
 	<div class="title" style="margin-bottom: 40px;">
-		<span style="float:left; font-size: 18px; margin-left: 5px;"><b>사용내역</b></span>
+		<span style="float:left; font-size: 18px; margin-left: 5px;"><b><span style="margin-left: -12px;">사용내역</span></b></span>
 		<span style="float:right;">
 			<label>
 				잔여 포인트 : 
 			</label>
-			<label style=" color:#909090; font-weight: bold; font-size: 25px; margin-right: 7px;">
+			<label style=" color:#80aaff; font-weight: bold; font-size: 25px; margin-right: 7px;">
 			<fmt:formatNumber pattern="#,###">		
 				${pointsum.SUM }
 			</fmt:formatNumber></label> <b>Point</b>

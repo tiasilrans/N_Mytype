@@ -323,7 +323,16 @@
  					<a href="/login.mt"><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">로그인</span></a> 					 
  				</c:when>
  				<c:otherwise>
- 					<a href="/blog/${map.url }"><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">${sessionScope.info.NICKNAME ne null ? sessionScope.info.NICKNAME : sessionScope.EMAIL}</span></a> 					 
+ 					<a href="/blog/${map.URL }">
+ 					<c:choose>
+ 					<c:when test="${sessionScope.info.IMAGE ne null}">
+	 					<img src="/images/profile/${sessionScope.info.IMAGE}" onerror="this.src='/images/avatar_yellow.png'" style="border-radius: 50%; height: 32px; width: 32px;"/>
+ 					</c:when>
+ 					<c:otherwise>
+ 					<img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"/>
+ 					</c:otherwise>
+ 					</c:choose>
+ 					<span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">${sessionScope.info.NICKNAME ne null ? sessionScope.info.NICKNAME : sessionScope.EMAIL}</span></a> 					 
  				</c:otherwise>
  				</c:choose>
  				</div>

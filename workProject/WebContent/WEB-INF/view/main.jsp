@@ -265,6 +265,7 @@ a{ text-decoration: none; }
 						</span></a>
 					</div>
 			</div>
+<<<<<<< HEAD
 		</div>
 
 		<!-- 목록 nav -->
@@ -275,12 +276,38 @@ a{ text-decoration: none; }
 					<c:if test="${sessionScope.login ne null}">
 						<li><a data-toggle="tab" href="#likeList"><b>구독</b></a></li>
 					</c:if>
+=======
+		<div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
+	</div>
+	
+	
+	
+	
+	<!-- 목록 nav -->
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="col-lg-12">
+				<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#allList"><b>전체</b></a></li>
+				<c:if test="${sessionScope.login ne null}">
+					<li><a data-toggle="tab" href="#likeList"><b>구독</b></a></li>
+				</c:if>
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 				</ul>
+<<<<<<< HEAD
 			</div>			
 			
 			
 			<div class="tab-content" >
 			
+=======
+			</div>
+			<div class="col-lg-12 post-list">	
+				<div class="col-lg-12 line" ></div>
+				<div class="col-lg-12 line" ></div>
+				<div class="col-lg-12 line" ></div>		
+			<div>
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 			<!-- 전체 게시글 배치 -->
 			<div id="allList" class="tab-pane fade in active">
 			<c:forEach var="all" items="${listAll }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
