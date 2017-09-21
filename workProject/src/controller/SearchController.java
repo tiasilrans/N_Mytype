@@ -56,11 +56,11 @@ public class SearchController {
 					}
 					map.put("keyword", arr);
 					mav.addObject("hash", pdao.hashlist("%"+keyword+"%"));
-					mav.addObject("plist", pdao.sublist(pdao.imgRedefinition(pdao.listAll(map))));
+					mav.addObject("plist", pdao.sublist((pdao.listAll(map))));
 				}
 			}else{
 				map.put("keyword", null);
-				mav.addObject("plist", pdao.sublist(pdao.imgRedefinition(pdao.listAll(map))));
+				mav.addObject("plist", pdao.sublist((pdao.listAll(map))));
 			}
 			
 			mav.setViewName("search_main");
@@ -111,11 +111,11 @@ public class SearchController {
 					arr[i] = "%"+arr[i]+"%";
 				}
 				map.put("keyword", arr);
-				mav.addObject("plist", pdao.sublist(pdao.imgRedefinition(pdao.listAll(map))));
+				mav.addObject("plist", pdao.sublist((pdao.listAll(map))));
 			}
 		}else{
 			map.put("keyword", null);
-			mav.addObject("plist", pdao.sublist(pdao.imgRedefinition(pdao.listAll(map))));
+			mav.addObject("plist", pdao.sublist((pdao.listAll(map))));
 		}
 		
 		//����Ʈ �ؿ� ��������
@@ -213,10 +213,10 @@ public class SearchController {
 		
 		//��ĭ �˻��ϼ��������ϱ�
 		if(map.get("keyword") != null && keyword.length() > 0){
-			mav.addObject("plist", pdao.sublist(pdao.imgRedefinition(pdao.listTag(map))));
+			mav.addObject("plist", pdao.sublist((pdao.listTag(map))));
 		}else{
 			map.put("keyword", null);
-			mav.addObject("plist", pdao.sublist(pdao.imgRedefinition(pdao.listTag(map))));
+			mav.addObject("plist", pdao.sublist((pdao.listTag(map))));
 		}
 		
 		//����Ʈ �ؿ� ��������

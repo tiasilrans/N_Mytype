@@ -94,7 +94,7 @@ a{text-decoration: none;}
 		<c:forEach var="like" items="${plist }" begin="0" end="${listLike.size() < 11 ? listLike.size() : 11}" varStatus="vs">
 			<div class="incard col-xs-0 col-md-3" style="clear: right;" >
 				<div class="title w3-col 3">
-					<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
+					<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" onerror="this.src='/images/avatar_yellow.png'" style="border-radius: 50%;" width="40px" height="40px" /></a>
 					<div>${like.NICKNAME }</div>
 					<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${like.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${like.URL }">${like.URL }</a></div>
 				</div>
@@ -152,6 +152,14 @@ a{text-decoration: none;}
 </div>
 </section>
 
+<script>
+	function imgsize(){
+		$(".fr-fic").css("width","220px");
+		$(".fr-fic").css("height","74px");
+		$(".fr-fic").css("border-radius","2px");
+	}
+	imgsize();
+</script>
 
 <c:choose>
 	<c:when test="${sessionScope.login == null}">

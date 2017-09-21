@@ -8,21 +8,17 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <style>
-
 body{
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
 	background: linear-gradient(to bottom, #80c1ff, #cce6ff);
 }
-
 a{ text-decoration: none; }
-
 .logo-frame{
 	width:100%;
 	border-radius: 5px;
 }
-
 #secondlogo{
 	height: 350px;
 	width : 300px;
@@ -32,18 +28,15 @@ a{ text-decoration: none; }
     border : 1px solid silver;
     background-color: white;
 }
-
 .secondlogo-head{
 	padding-top : 15px;
 	padding-left : 8px;
 	font-weight: bold;
 }
-
 .secondlogo-body{
 	width : 100%;
 	height: 15%;
 }
-
 .secondlogo-body-profileimg{
 	float: left;
 	width:48px;
@@ -54,13 +47,11 @@ a{ text-decoration: none; }
 .secondlogo-body-title{
 	padding-top : 5px;
 }
-
 .secondlogo-body-title-name,.secondlogo-body-title-name:LINK,.secondlogo-body-title-name:ACTIVE{
 	font-size: 14;
 	color : black;
 	text-decoration: none;
 }
-
 .secondlogo-body-title-blog{
 	font-size: 12;
 	color : gray;
@@ -68,9 +59,7 @@ a{ text-decoration: none; }
 .secondlogo-body-content{
 	padding: 8px;
 	padding-top: 0px; 
-
 }
-
 #post{
 	height: 330px;
 	width : 300px;
@@ -85,22 +74,18 @@ a{ text-decoration: none; }
 	border-radius: 5px;
 	
 }
-
 .conhead{
 	width : 100%;
 	height: 20%;
 }
-
 .conbody{
 	width : 100%;
 	height: 70%;
 }
-
 .confooter{
 	width : 100%;
 	height: 10%;
 }
-
 .conhead-profileimg{
 	float: left;
 	width:48px;
@@ -111,15 +96,12 @@ a{ text-decoration: none; }
 .conhead-title{
 	padding-top : 5px;
 }
-
 .conhead-title-name{
 	font-size: 14;
 }
-
 .conhead-title-date{
 	font-size: 12;
 }
-
 .conhead-title-blog, .conhead-title-blog:LINK, .conhead-title-blog:ACTIVE{
 	font-size: 12;
 	color: gray; 
@@ -127,30 +109,24 @@ a{ text-decoration: none; }
 .conbody{
 	height: 60%;
 }
-
 .conbody-title{
 	font-size: 23;
 }
-
 .conbody-content{
 	font-size: 13;
 	color : gray;
 }
-
 .confooter{
 	padding-top: 5px;
 }
-
 .confooter-count{
 	font-size: 17;
 	color : red;
 }
-
 .title{
 	padding-top :15px;
 	margin-left: 10px;
 }
-
 .incard {
     float: left;
     width : 280px;
@@ -160,7 +136,6 @@ a{ text-decoration: none; }
     border : 1px solid silver;
     background: white;
 }
-
 .conhead-profileimg{
 	float: left;
 	width:48px;
@@ -168,12 +143,10 @@ a{ text-decoration: none; }
 	border-radius: 50%;
 	margin-right: 8px;
 }
-
 .conhead-title-blog, .conhead-title-blog:LINK, .conhead-title-blog:ACTIVE{
 	font-size: 12;
 	color: gray; 
 }
-
 .conbody-hashtag{
 	font-size: 13;
 	background-color: #ebebeb;
@@ -183,7 +156,6 @@ a{ text-decoration: none; }
 	padding-bottom:5px;
 	text-decoration: none;
 }
-
 .confooter-like, .confooter-like:focus, .confooter-like:hover{
 	font-size: 18;
 	color : red;
@@ -193,22 +165,17 @@ a{ text-decoration: none; }
 	padding-left: 12px;
 	border : 0px;
 }
-
 .confooter{
 	width : 100%;
 	height: 10%;
 }
-
 .confooter{
 	padding-top: 7px;
 }
-
 .confooter-count{
 	font-size: 17;
 	color : red;
 }
-
-
 </style>
 
 <section style="min-height:140%">
@@ -237,7 +204,7 @@ a{ text-decoration: none; }
 					</div>
 					    
 					<div class="logo-frame item">
-						<img src="/images/mainimg/33.png" alt="New york" style="width:100%; height: 350px; border-radius: 5px;">
+						<img src="/images/mainimg/3.png" alt="New york" style="width:100%; height: 350px; border-radius: 5px;">
 					</div>
 				</div>
 			</div>
@@ -265,7 +232,6 @@ a{ text-decoration: none; }
 						</span></a>
 					</div>
 			</div>
-<<<<<<< HEAD
 		</div>
 
 		<!-- 목록 nav -->
@@ -276,44 +242,17 @@ a{ text-decoration: none; }
 					<c:if test="${sessionScope.login ne null}">
 						<li><a data-toggle="tab" href="#likeList"><b>구독</b></a></li>
 					</c:if>
-=======
-		<div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
-	</div>
-	
-	
-	
-	
-	<!-- 목록 nav -->
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="col-lg-12">
-				<ul class="nav nav-tabs">
-				<li class="active"><a data-toggle="tab" href="#allList"><b>전체</b></a></li>
-				<c:if test="${sessionScope.login ne null}">
-					<li><a data-toggle="tab" href="#likeList"><b>구독</b></a></li>
-				</c:if>
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 				</ul>
-<<<<<<< HEAD
 			</div>			
 			
 			
 			<div class="tab-content" >
-			
-=======
-			</div>
-			<div class="col-lg-12 post-list">	
-				<div class="col-lg-12 line" ></div>
-				<div class="col-lg-12 line" ></div>
-				<div class="col-lg-12 line" ></div>		
-			<div>
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 			<!-- 전체 게시글 배치 -->
 			<div id="allList" class="tab-pane fade in active">
 			<c:forEach var="all" items="${listAll }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
 				<div class="incard w3-col s3" style="clear: right;" >
 					<div class="title">
-						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
+						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" onerror="this.src='/images/avatar_yellow.png'" style="border-radius: 50%;" width="40px" height="40px" /></a>
 						<div>${all.NICKNAME }</div>
 						<div style="color:#909090; font-size: 12px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="-title-blog" style="text-decoration: none; color:#909090" href="/blog/${all.URL }">${all.URL }</a></div>
 					</div>
@@ -378,7 +317,7 @@ a{ text-decoration: none; }
 			<c:forEach var="like" items="${listLike }" begin="0" end="${listLike.size() < 5 ? listLike.size() : 5}" varStatus="vs">
 				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
 					<div class="title">
-						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
+						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" onerror="this.src='/images/avatar_yellow.png'" style="border-radius: 50%;" width="40px" height="40px" /></a>
 						<div>${like.NICKNAME }</div>
 						<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${like.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${like.URL }">${like.URL }</a></div>
 					</div>
@@ -494,7 +433,6 @@ a{ text-decoration: none; }
 
 <!-- 메인 썸네일 이미지 조정 
 <script>
-
 $(document).ready(function() {
 	$("#thumbnail").children().addClass("nailthumb-container");
 	
@@ -504,11 +442,4 @@ $(document).ready(function() {
 	
     
   });
-
-
 </script>-->
-
-
-
-
-

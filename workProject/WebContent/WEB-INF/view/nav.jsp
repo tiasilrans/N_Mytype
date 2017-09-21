@@ -59,7 +59,7 @@
 				<ul class="nav navbar-nav navbar-left">
 					<li class=""><a class="header" href="/" id="home"><span style="color: #1a1a1a;">홈</span></a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#"><span style="color: #005ce6;">내 블로그</span><span class="caret" style="color: #005ce6;"></span></a>
+						data-toggle="dropdown" href="#" style="background-color: rgba( 255, 0, 0, 0 );"><span style="color: #005ce6; background-color: rgba( 255, 0, 0, 0 );">내 블로그</span><span class="caret" style="color: #005ce6;"></span></a>
 						<ul class="dropdown-menu">						
 						<!-- 블로그 리스트 -->				
 						<c:if test="${sessionScope.blog ne null }">
@@ -81,7 +81,7 @@
 				<!-- 알림끝 -->				
 					<li class="dropdown">
 						<a id="account-toggler" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#" role="button" title="MY"
-													style="padding: 0px; margin: 6px;">
+													style="padding: 0px; margin: 6px; background-color: rgba( 255, 0, 0, 0 );">
 													
                             <c:choose>
 								<c:when test="${sessionScope.info.IMAGE eq null }">
