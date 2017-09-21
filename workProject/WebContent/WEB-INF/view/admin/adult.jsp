@@ -15,7 +15,7 @@
 	<div style="width: 80%;" align="left">
 	<h2>성인인증 승인</h2>
 	<hr style="margin-top: 10px;"/>
-	</div>
+	</div> 
 
 <div class="row" >
 <div class="col-md-4">
