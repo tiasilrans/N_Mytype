@@ -23,7 +23,7 @@
 	<header style="min-height: 40%;">
 		<tiles:insertAttribute name="header"/>
 	</header>
-	<section style="min-height: 70%;">
+	<section style="min-height: 70%; background-color: gray;">
 		<tiles:insertAttribute name="section"/>
 	</section>
 	<footer>
