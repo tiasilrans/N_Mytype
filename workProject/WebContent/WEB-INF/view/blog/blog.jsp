@@ -80,12 +80,10 @@
 .post-body{
 	background-color:white;
 	width: 100%;
-	padding-top: 20px;
+	padding-top: 0px;
     padding-right: 20px;
     padding-bottom: 20px;
-    padding-left: 20px;    
- 	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
+    padding-left: 40px;    
 }   
  
 .ft {
@@ -126,6 +124,15 @@
 	padding: 0px;     
 }
 
+.post-header{
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background-color:white;
+	padding: 10px 10px 0px 10px;
+	height: 50px; 
+	
+}
+
 </style>  
 
 <div class="row" align="center" style="padding-top: 50px;">
@@ -143,11 +150,11 @@
 				<div class="col-xs-8 col-lg-8 blog-post-list" align="left">
 					<div class="blog-post-list">
 						<c:forEach var="obj" items="${list }">
-							<c:if test="${obj.NOTICE}">
-								<header class="post-header" style="margin-bottom: -20px;">
-									<img src="/images/notice.png" style="margin-left: 40px; ">
-								</header>
+						<header class="post-header">
+							<c:if test="${obj.NOTICE}">								
+								<img src="/images/notice.png">								
 							</c:if>
+							</header>
 							<div class="post-body">
 								<a href="/${obj.URL }/post/${obj.NUM}" style="color: #0d0d0d;">
 									<h2 style="color: black; font-family: sans-serif; font-size: 20px; margin: 0px;">${obj.TITLE }</h2>								
