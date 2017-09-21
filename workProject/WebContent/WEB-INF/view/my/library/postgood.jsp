@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="/css/my.css">
 <script src="/module/nailthumb/jquery.nailthumb.1.1.min.js"></script>
 <link rel="stylesheet" href="/module/nailthumb/jquery.nailthumb.1.1.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 
 <style>
 
@@ -62,19 +64,36 @@ a{text-decoration: none;}
 	color : red;
 }
 
+.div-pagination a {
+    color: #0d0d0d;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #0d0d0d;
+    border-color: #ffffff;
+}
+
+.div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
+
 </style>
-    
-<div align="center">
+   
 
-<div style="width: 60%;" align="left">
-	<h2>좋아요</h2>
-	<hr style="margin-top: 10px;"/>
-</div>
-
-<div class="row" style="width: 60%;">
-	<div align="left" style="width: 100%;">
+<div class="col-lg-3 col-md-3"></div>
+<div class="col-lg-7 col-md-6" style="margin-left: auto;">
+	<div class="title">
+		<b style="float:left; font-size: 17px;">좋아요</b>
+		<br/><hr style="margin-top: 10px;"/>
+	</div>
+	
+	<div class="w3-row w3-container" style="width:1100px;">
 		<c:forEach var="all" items="${list }" begin="0" end="${list.size() < 8 ? list.size() : 8}" varStatus="vs">
-			<div class="incard col-xs-0 col-md-3" style="clear: right;" >
+			<div class="incard w3-col s3" style="clear: right;" >
 				<div class="title">
 					<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
 					<div>${all.NICKNAME }</div>
@@ -107,7 +126,7 @@ a{text-decoration: none;}
                 </div>
 	                
                 <!-- footer -->
-				<div class="confooter">
+				<div class="confooter" style="padding:0">
 					<c:choose>
 					<c:when test="${all.HEART == null}">
 						<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
@@ -127,15 +146,16 @@ a{text-decoration: none;}
 			
 		</c:forEach>
 	</div>
-</div>
 
-<ul class="pagination">
-	<c:forEach var="i" begin="1" end="${page}">
-		<li ${np == i? "class=\"active\"": ""}><a
-			href="/library/postgood.mt?np=${i}">${i}</a></li>
-	</c:forEach>
-</ul>
-
+	
+	<div class="div-pagination" align="center">
+		<ul class="pagination">
+			<c:forEach var="i" begin="1" end="${page}">
+				<li ${np == i? "class=\"active\"": ""}><a
+					href="/library/postgood.mt?np=${i}">${i}</a></li>
+			</c:forEach>
+		</ul>
+	</div>
 </div>
 
 <c:choose>

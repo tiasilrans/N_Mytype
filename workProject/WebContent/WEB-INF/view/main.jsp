@@ -5,8 +5,16 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <script src="/module/nailthumb/jquery.nailthumb.1.1.min.js"></script>
 <link rel="stylesheet" href="/module/nailthumb/jquery.nailthumb.1.1.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <style>
+
+body{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+	background: linear-gradient(to bottom, #80c1ff, #cce6ff);
+}
 
 a{ text-decoration: none; }
 
@@ -15,7 +23,7 @@ a{ text-decoration: none; }
 	border-radius: 5px;
 }
 
-#secondlogo{d
+#secondlogo{
 	height: 350px;
 	width : 300px;
 	border-radius: 5px;
@@ -201,44 +209,42 @@ a{ text-decoration: none; }
 }
 
 
+</style>
 
-</style>   
-<div class="row">
+<section style="min-height:140%">
 <div class="col-lg-3 col-md-3"></div>
-<div class="col-lg-7 col-md-6" style="margin-left: auto;">
-
-			<!-- 메인쪽 로고 부분 -->
-			  <div class="container" style=" height: 350px; " >
-			  <div class="row">
-			  <div id="myCarousel" class="carousel col-xs-2 col-md-4" data-ride="carousel" style="width:580px; margin: 10px; border:1px solid silver;border-radius:5px;">
-			  	
-			    <!-- Indicators -->
-			    <ol class="carousel-indicators">
-			      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			      <li data-target="#myCarousel" data-slide-to="1"></li>
-			      <li data-target="#myCarousel" data-slide-to="2"></li>
-			    </ol>
+	<div class="col-lg-7 col-md-6" style="margin-left: auto;">
+	
+		<!-- 메인쪽 로고 부분 -->
+		<div class="w3-row w3-container" style="width:1100px; height: 350px;" >
+			<div id="myCarousel" class="carousel w3-col s5" data-ride="carousel" style="width:580px; margin: 10px; margin-right:0; border:1px solid silver;border-radius:5px;">
+				
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+				</ol>
+					
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner">
+					<div class="logo-frame item active">
+						<img src="/images/mainimg/1.png" alt="Los Angeles" style="width:100%; height: 350px; border-radius: 5px;">
+					</div>
+				
+					<div class="logo-frame item">
+						<img src="/images/mainimg/2.png" alt="Chicago" style="width:100%; height: 350px; border-radius: 5px;">
+					</div>
+					    
+					<div class="logo-frame item">
+						<img src="/images/mainimg/33.png" alt="New york" style="width:100%; height: 350px; border-radius: 5px;">
+					</div>
+				</div>
+			</div>
+		
 			
-			    <!-- Wrapper for slides -->
-			    <div class="carousel-inner">
-			      <div class="logo-frame item active">
-			        <img src="/images/mainimg/1.png" alt="Los Angeles" style="width:100%; height: 350px; border-radius: 5px;">
-			      </div>
-			
-			      <div class="logo-frame item">
-			        <img src="/images/mainimg/2.png" alt="Chicago" style="width:100%; height: 350px; border-radius: 5px;">
-			      </div>
-			    
-			      <div class="logo-frame item">
-			        <img src="/images/mainimg/33.png" alt="New york" style="width:100%; height: 350px; border-radius: 5px;">
-			      </div>
-			    </div>
-			  </div>
-			
-			
-
 			<!-- 메인쪽 로고 오른쪽 부분 -->
-			<div id="secondlogo" class="col-xs-1 col-md-4">
+			<div id="secondlogo" class="w3-col s3">
 				<div class="secondlogo-head">MyType 소식</div>
 					<div class="secondlogo-body">
 						<img class="secondlogo-body-profileimg" src="/images/blogMark.png">
@@ -247,7 +253,7 @@ a{ text-decoration: none; }
 							<span class="secondlogo-body-title-blog">blog.mytypeblog.com</span>
 						</div>	
 					</div>
-						<div class="secondlogo-body-content"><a href="/${notice.URL}/post/${notice.NUM}"><span style="color: gray; font-size: 12;">
+					<div class="secondlogo-body-content"><a href="/${notice.URL}/post/${notice.NUM}"><span style="color: gray; font-size: 12;">
 						<c:choose>
 						<c:when test="${notice.SUBCONTET ne null}">
 							${notice.SUBCONTENT }
@@ -256,20 +262,20 @@ a{ text-decoration: none; }
 							${notice.FCONTENT }
 						</c:otherwise>
 						</c:choose>
-						</span></a></div>
-				</div>
+						</span></a>
+					</div>
 			</div>
-			</div>
+		</div>
 
-			<!-- 목록 nav -->
-			<div class="col-xs-0 col-md-12">
+		<!-- 목록 nav -->
+		<div class="w3-row w3-container" style="width:1100px;">
 			<div style="margin-left: 10px;">
-			<ul class="nav nav-tabs" style="width: 950px;">
-			<li class="active"><a data-toggle="tab" href="#allList"><b>전체</b></a></li>
-			<c:if test="${sessionScope.login ne null}">
-				<li><a data-toggle="tab" href="#likeList"><b>구독</b></a></li>
-			</c:if>
-			</ul>
+				<ul class="nav nav-tabs" style="width: 950px;">
+					<li class="active"><a data-toggle="tab" href="#allList"><b>전체</b></a></li>
+					<c:if test="${sessionScope.login ne null}">
+						<li><a data-toggle="tab" href="#likeList"><b>구독</b></a></li>
+					</c:if>
+				</ul>
 			</div>			
 			
 			
@@ -278,7 +284,7 @@ a{ text-decoration: none; }
 			<!-- 전체 게시글 배치 -->
 			<div id="allList" class="tab-pane fade in active">
 			<c:forEach var="all" items="${listAll }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
-				<div class="incard col-12 col-sm-6 col-lg-4" style="clear: right;" >
+				<div class="incard w3-col s3" style="clear: right;" >
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
 						<div>${all.NICKNAME }</div>
@@ -403,8 +409,8 @@ a{ text-decoration: none; }
 			</div>
 	</div>
 </div>
+</section>
 
-</div>
 
 <c:choose>
 	<c:when test="${sessionScope.login == null}">

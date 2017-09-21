@@ -3,23 +3,11 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<<<<<<< HEAD
 <link rel="stylesheet" href="/css/postviewcss.css">
 <link rel="stylesheet" href="/css/my.css">
 
-=======
-<link rel="stylesheet" href="/css/my.css">
     
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 <style>
-<<<<<<< HEAD
- 
-body {
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-	background: whitesmoke;
-}
 
 .box {
 	position: relative;
@@ -29,12 +17,6 @@ body {
 	width: 70%;
 	padding: 20px;
 } 
-=======
-
-body{
-	background: whitesomke;
-}
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 
 table.type07 {
     line-height: 1.5;
@@ -54,6 +36,24 @@ table.type07 td {
 	text-align: center;
     padding: 7px;
 }
+
+.div-pagination a {
+    color: #0d0d0d;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #0d0d0d;
+    border-color: #ffffff;
+}
+
+.div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
+
 </style>
 
 
@@ -105,7 +105,7 @@ table.type07 td {
 			</c:otherwise>
 	</c:choose>
 	
-	<div align="center">
+	<div class="div-pagination" align="center">
 		<ul class="pagination">
 			<c:forEach var="i" begin="1" end="${page}">
 				<li ${np == i? "class=\"active\"": ""}><a
