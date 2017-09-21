@@ -37,14 +37,20 @@
 	background-color: #303030;
 }
 
+
 </style>   
 <div align="center" class="row">
 <div class="col-xs-0 col-sm-1 col-md-3 col-lg-3"></div>
-<div class="col-xs-12 col-sm-10 col-md-6 col-lg-6" style="width: 100%;  background : url('/images/hero.jpg');">
+<div class="col-xs-12 col-sm-10 col-md-6 col-lg-6" style="width:100%; height:70%; background : url('/images/hero.jpg');">
 
 	<div class="hero" style= "position: relative; padding: 4rem 3rem;">	
-
- 	<div class="form-group joinbox row">
+	
+	<div class="form-group row" style="float: left; margin-top: 50px; margin-left: 150px;">
+		<img src="/images/fr.png">
+	</div>
+	
+	
+ 	<div class="form-group joinbox row" style="width: 30%; float: right; margin-right: 80px; margin-top: 80px;">
 			<form action="/joinExec.mt" method="post">	
 				<div style="margin-left: 30px;">				
 				<h6 align="left" style="color: #999999;">회원가입 </h6>
@@ -84,13 +90,22 @@
 		</div>		
 	</div>
 </div>		
+
+		<div class="section">
+			<div class="section" style="margin-bottom: 60px; margin-left: 40px;">
+				<div align="center">
+			<img src="/images/head.png" >
+				</div>
+			</div>
+		</div>
+
 		<div class="section">
 			<div class="section" style="margin-bottom: 60px; margin-left: 40px;">
 				<div align="center">
 			<img src="/images/first.png" >
 				</div>
 			</div>
-			</div>
+		</div>
 		
 		
 		<div class="section" style="margin-bottom: 60px; margin-left: 40px;">
@@ -105,7 +120,7 @@
 		<div class="section" style="margin-bottom: 60px; margin-left: 80px;">
 			<div class="container">
 				<div align="center">
-			<img src="/images/.png">
+			<img src="/images/second.png">
 				</div>
 			</div>
 		</div>
@@ -114,7 +129,24 @@
 		<div class="section" style="margin-bottom: 150px;">
 			<div class="container">
 				<div align="center";>
-			<img src="/images/.png">
+			<img src="/images/second2.png">
+				</div>
+			</div>
+		</div>
+		
+		<div class="section" style="margin-bottom: 150px;">
+			<div class="container">
+				<div align="center";>
+			<img src="/images/third.png">
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="section" style="margin-bottom: 150px;">
+			<div class="container">
+				<div align="center";>
+			<img src="/images/third2.png">
 				</div>
 			</div>
 		</div>
