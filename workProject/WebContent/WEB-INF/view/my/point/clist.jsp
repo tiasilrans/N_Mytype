@@ -71,7 +71,7 @@ ul li a:hover, ul li a:focus {
 <div class="col-xs-0 col-md-2"></div>
 <div class="box col-xs-12 col-md-8 col-lg-12">
 		<div class="title" style="margin-bottom: 40px;">
-			<span style="float:left; font-size: 18px; margin-left: 5px;"><b>충전내역</b></span>
+			<span style="float:left; font-size: 18px; margin-left: -12px;"><b>충전내역</b></span>
 		</div><hr/>
 		
 		<div style="min-height: 317px;">

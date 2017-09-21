@@ -18,6 +18,29 @@
 	padding: 20px;
 }
 
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.button1 {
+	background-color: #303030;
+}
+
+.button2 {
+	background-color: #80aaff;
+}
+
+
 </style>
 
 <section style="min-height: 90%;">
@@ -25,7 +48,7 @@
 	<div class="col-xs-0 col-md-2"></div>
 	<div class="box col-xs-12 col-md-8 col-lg-12">
 		<div class="title" style="margin-bottom: 40px;">
-			<span style="float:left; font-size: 18px; margin-left: 5px;"><b>충전하기</b></span>
+			<span style="float:left; font-size: 18px; margin-left: 5px;"><b><span style="margin-left: -12px;">충전하기</span></b></span>
 		</div><hr/>
 		
 		<div class="title">
@@ -72,7 +95,7 @@
 			<input type="text" name="name" class="form-control" style="width:70%;" 
 			 <c:if test="${info.NICKNAME ne null }"> value="${info.NICKNAME }" </c:if> />
 			 <br/>
-			<label style="color: #606060; padding-top: 3px;">연락처</label>
+			<label style="color: #606060; padding-top: 3px; margin-top: 12px;">연락처</label>
 			<input type="text" name="phonenumber" class="form-control" style="width:70%;" />
 		</div><br/>
 			
@@ -84,7 +107,7 @@
 			</div>
 				
 			<div class="panel-body form-inline" id="cardpanel">
-				<b>카드 선택 : </b>
+				<b style="margin-left: 4px;">카드 선택 : </b>
 				<select class="form-control" name="card" style="width: 45%;">
 					<option value="null">카드를 선택해주세요.</option>
 					<c:forEach var="card" items="${cards}">
@@ -117,7 +140,7 @@
 		<div>
 			<span>
 				<label style="width:100px; margin-top:10px; margin-left: 15px;">
-					<b>충전 포인트 : </b>
+					<b style="margin-left: -5px;">충전 포인트 : </b>
 				</label>
 				<label>
 					<span id="chargepoint" style="font-size: 25px;"></span>
@@ -125,7 +148,7 @@
 			</span>
 			
 			<span style="float:right; margin-right:10px;">
-				<a href="/"><button type="button" class="btn btn-default">취소</button></a>
+				<a href="/"><button type="button" class="btn button button2">취소</button></a>
 				<button type="submit" class="btn button button1">결제하기</button>
 			</span>
 		</div>

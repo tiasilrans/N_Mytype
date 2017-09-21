@@ -10,6 +10,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/css/blogViewcss.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 <style>
 
 .box {
@@ -112,7 +113,7 @@
     color: #fff;
     cursor: default;
     background-color: #0d0d0d;
-    border-color: #ffffff;
+    border-color: rgba( 255, 0, 0, 0 );;
 }
 
 .div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
@@ -165,11 +166,11 @@
 							</header>
 							<div class="post-body">
 								<a href="/${obj.URL }/post/${obj.NUM}" style="color: #0d0d0d;">
-									<h2 style="color: black; font-family: sans-serif; font-size: 20px; margin: 0px;">${obj.TITLE }</h2>								
+									<h2 style="color: black; font-family: NanumSquare; font-size: 20px; margin: 0px;">${obj.TITLE }</h2>								
 									<div class="subtitle" style="margin-top: -10px; margin-left: 3px;"> 
-										<h3 style="color: #0d0d0d; font-family: sans-serif; font-size: 13px;">${obj.SUBTITLE }</h3> 
+										<h3 style="color: #0d0d0d; font-family: NanumSquare; font-size: 13px;">${obj.SUBTITLE }</h3> 
 									</div>								  
-									 <div class="fcountent" style="margin-top: 20px; margin-left: 3px; color: #808080;">
+									 <div class="fcountent" style="margin-top: 20px; margin-left: 3px; color: #808080; font-family: NanumSquare; font-weight: 500;">
 										${obj.FCONTENT }
 									</div>
 								</a>
@@ -180,10 +181,10 @@
 										 	<div class="media-left" style="vertical-align: middle;">
 										 		<c:choose>
 										 		<c:when test="${obj.IMAGE != null}">
-											 		<img src="/images/profile/${obj.IMAGE}" onerror="this.src='/images/avatar_yellow.png'" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+											 		<img src="/images/profile/${obj.IMAGE}" onerror="this.src='/images/avatar_yellow.png'" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:-2px;">
 										 		</c:when>
 										 		<c:otherwise>
-											 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+											 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:-2px;">
 										 		</c:otherwise>
 										 		</c:choose>
 										 	</div> 
@@ -213,7 +214,7 @@
 							</div>
 						</c:forEach>				
 					</div>  
-					<div class="div-pagination" style="text-align: center;" > 
+					<div class="div-pagination" style="text-align: center; margin-right: 100px;" > 
 							<ul class="pagination">
 								<c:forEach var="i" begin="1" end="${pNum }">				
 									<li class="active"><a href="/blog/${map.URL }?p=${i }">${i }</a>		
@@ -257,7 +258,7 @@
 				<section class="section box">
 					<div class="media">
 						<div class="media-body" align="left">
-							<h4 class="media-heading" style="color: black; font-family: sans-serif; font-size: 15px;">${map.TITLE }</h4>
+							<h4 class="media-heading" style="color: black; font-family: NanumSquare; font-size: 15px;">${map.TITLE }</h4>
 						 	<div style="color: #a6a6a6;">          
 								<span style="font-size: 12px;">구독자</span> <span style="font-size: 12px;">0</span> <span style="font-size: 12px;">포스트</span> <span style="font-size: 12px;">${map.totalPostCnt }</span>
 							</div>
@@ -323,7 +324,16 @@
  					<a href="/login.mt"><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">로그인</span></a> 					 
  				</c:when>
  				<c:otherwise>
- 					<a href="/blog/${map.url }"><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">${sessionScope.info.NICKNAME ne null ? sessionScope.info.NICKNAME : sessionScope.EMAIL}</span></a> 					 
+ 					<a href="/blog/${map.URL }">
+ 					<c:choose>
+ 					<c:when test="${sessionScope.info.IMAGE ne null}">
+	 					<img src="/images/profile/${sessionScope.info.IMAGE}" onerror="this.src='/images/avatar_yellow.png'" style="border-radius: 50%; height: 32px; width: 32px;"/>
+ 					</c:when>
+ 					<c:otherwise>
+ 					<img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"/>
+ 					</c:otherwise>
+ 					</c:choose>
+ 					<span style="margin: 10px; font-family:NanumSquare; font-weight:500; color:black; text-decoration:none;">${sessionScope.info.NICKNAME ne null ? sessionScope.info.NICKNAME : sessionScope.EMAIL}</span></a> 					 
  				</c:otherwise>
  				</c:choose>
  				</div>
