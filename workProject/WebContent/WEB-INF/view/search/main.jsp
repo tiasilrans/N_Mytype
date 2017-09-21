@@ -63,66 +63,64 @@ a{text-decoration: none;}
 
 </style>
 
-<div align="center">
+<div class="col-lg-3 col-md-3"></div>
+<div class="col-lg-7 col-md-6" style="margin-left: auto;">
 
-<div style="width: 60%;" align="left">
-	포스트 <span style="font-weight: bold; font-size: 20;">'${keyword}'</span><br/>
-	<hr style="margin-top: 10px;"/>
-</div>
+	<div style="width: 60%;" align="left">
+		포스트 <span style="font-weight: bold; font-size: 20;">'${keyword}'</span><br/>
+		<hr style="margin-top: 10px;"/>
+	</div>
 
-<div class="row" style="width: 60%;">
-<div align="left" style="width: 100%;">
-	<c:forEach var="like" items="${plist }" begin="0" end="${listLike.size() < 5 ? listLike.size() : 5}" varStatus="vs">
-		<div class="incard col-xs-0 col-md-3" style="clear: right;" >
-			<div class="title">
-				<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
-				<div>${like.NICKNAME }</div>
-				<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${like.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${like.URL }">${like.URL }</a></div>
-			</div>
-			
-			<div style="height:65px; margin:12px; padding-bottom: 5px;">
-				<a href="/${like.URL}/post/${like.NUM}" style="font-size: 15px; text-decoration: none; color: #333333;padding-bottom: 5px;">
-					${like.TITLE }
+	<div class="w3-row w3-container" style="width:1100px;">
+		<c:forEach var="like" items="${plist }" begin="0" end="${listLike.size() < 5 ? listLike.size() : 5}" varStatus="vs">
+			<div class="incard w3-col s3" style="clear: right;" >
+				<div class="title">
+					<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
+					<div>${like.NICKNAME }</div>
+					<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${like.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${like.URL }">${like.URL }</a></div>
+				</div>
 				
-					<c:if test="${like.IMG.length() > 10}">
-						<div class="nailthumb-column-metadata" id="thumbnail">
-							${like.IMG }
-						</div>  
-					</c:if>
-				</a>
-				<a href="/${like.URL}/post/${like.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
-					${like.FCONTENT }
-				</a>
-			</div> <br/><br/><br/>
-			
-			<div>
-				<c:set var="msg" value="${like.HASH }"/>
-				<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
-				<c:forEach items="${hashtag}" var="hash">
-					<span class="conbody-hashtag">
-						<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
-					</span>
-				</c:forEach>
+				<div style="height:65px; margin:12px; padding-bottom: 5px;">
+					<a href="/${like.URL}/post/${like.NUM}" style="font-size: 15px; text-decoration: none; color: #333333;padding-bottom: 5px;">
+						${like.TITLE }
+					
+						<c:if test="${like.IMG.length() > 10}">
+							<div class="nailthumb-column-metadata" id="thumbnail">
+								${like.IMG }
+							</div>  
+						</c:if>
+					</a>
+					<a href="/${like.URL}/post/${like.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
+						${like.FCONTENT }
+					</a>
+				</div> <br/><br/><br/>
+				
+				<div>
+					<c:set var="msg" value="${like.HASH }"/>
+					<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
+					<c:forEach items="${hashtag}" var="hash">
+						<span class="conbody-hashtag">
+							<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
+						</span>
+					</c:forEach>
+				</div>
+				
+				<!-- footer -->
+				<div class="confooter">
+					<c:choose>
+						<c:when test="${like.HEART == null}">
+							<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
+						</c:otherwise>
+					</c:choose>
+					<span class="confooter-count heart-${like.NUM}">${like.GOOD }</span>
+				</div>
+				
 			</div>
-			
-			<!-- footer -->
-			<div class="confooter">
-				<c:choose>
-					<c:when test="${like.HEART == null}">
-						<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
-					</c:when>
-					<c:otherwise>
-						<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
-					</c:otherwise>
-				</c:choose>
-				<span class="confooter-count heart-${like.NUM}">${like.GOOD }</span>
-			</div>
-			
-		</div>
-	</c:forEach>
+		</c:forEach>
 	
-</div>
-</div>
 
 <a class="btn btn-block " href="/search/post.mt?keyword=${keyword}" style="background-color: #F6F6F6; width: 60%; margin-bottom: 10px;">검색 결과 더 보기</a>
 
@@ -143,6 +141,8 @@ a{text-decoration: none;}
 
 <a class="btn btn-block " href="/search/tagsearch.mt?keyword=${keyword}" style="background-color: #F6F6F6; width: 60%; margin-bottom: 10px;">검색 결과 더 보기</a>
    
+</div>
+
 </div>
    
 <c:choose>

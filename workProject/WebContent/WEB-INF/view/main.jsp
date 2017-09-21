@@ -217,7 +217,7 @@ a{ text-decoration: none; }
 	
 		<!-- 메인쪽 로고 부분 -->
 		<div class="w3-row w3-container" style="width:1100px; height: 350px;" >
-			<div id="myCarousel" class="carousel w3-col s5" data-ride="carousel" style="width:580px; margin: 10px; margin-right:0; border:1px solid silver;border-radius:5px;">
+			<div id="myCarousel" class="carousel w3-col s5" data-ride="carousel" style="width:520px; margin: 10px; margin-right:0; border:1px solid silver;border-radius:5px;">
 				
 				<!-- Indicators -->
 				<ol class="carousel-indicators">
