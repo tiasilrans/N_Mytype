@@ -43,6 +43,24 @@ table.type07 td {
 	text-align: center;
     padding: 7px;
 }
+
+.div-pagination a {
+    color: #0d0d0d;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #0d0d0d;
+    border-color: #ffffff;
+}
+
+.div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
+
 </style>
 
 <section style="min-height: 10sssss0%;">
@@ -98,12 +116,14 @@ table.type07 td {
 			</table>
 		</div>
 		
-		<ul class="pagination">
-		<c:forEach var="i" begin="1" end="${page}">
-			<li ${np == i? "class=\"active\"": ""}><a
-				href="/my/point/wlist.mt?np=${i}">${i}</a></li>
-		</c:forEach>
-		</ul>
+		<div class="div-pagination">
+			<ul class="pagination">
+			<c:forEach var="i" begin="1" end="${page}">
+				<li ${np == i? "class=\"active\"": ""}><a
+					href="/my/point/wlist.mt?np=${i}">${i}</a></li>
+			</c:forEach>
+			</ul>
+		</div>
 	</div>
 </div>
 </section>
