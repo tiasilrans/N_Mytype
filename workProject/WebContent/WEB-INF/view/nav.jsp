@@ -59,7 +59,7 @@
 				<ul class="nav navbar-nav navbar-left">
 					<li class=""><a class="header" href="/" id="home"><span style="color: #1a1a1a;">홈</span></a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#"><span style="color: #005ce6;">내 블로그</span><span class="caret" style="color: #005ce6;"></span></a>
+						data-toggle="dropdown" href="#"><span style="color: #005ce6; background-color: rgba( 255, 0, 0, 0 );">내 블로그</span><span class="caret" style="color: #005ce6;"></span></a>
 						<ul class="dropdown-menu">						
 						<!-- 블로그 리스트 -->				
 						<c:if test="${sessionScope.blog ne null }">

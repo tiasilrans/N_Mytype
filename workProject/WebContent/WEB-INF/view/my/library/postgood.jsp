@@ -95,7 +95,7 @@ a{text-decoration: none;}
 		<c:forEach var="all" items="${list }" begin="0" end="${list.size() < 8 ? list.size() : 8}" varStatus="vs">
 			<div class="incard w3-col s3" style="clear: right;" >
 				<div class="title">
-					<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
+					<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" onerror="this.src='/images/avatar_yellow.png'" style="border-radius: 50%;" width="40px" height="40px" /></a>
 					<div>${all.NICKNAME }</div>
 					<div style="color:#909090; font-size: 12px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="-title-blog" style="text-decoration: none; color:#909090" href="/blog/${all.URL }">${all.URL }</a></div>
 				</div>

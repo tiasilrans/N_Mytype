@@ -76,7 +76,7 @@ a{text-decoration: none;}
 		<c:forEach var="like" items="${plist }" begin="0" end="${listLike.size() < 5 ? listLike.size() : 5}" varStatus="vs">
 			<div class="incard w3-col s3" style="clear: right;" >
 				<div class="title">
-					<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
+					<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" onerror="this.src='/images/avatar_yellow.png'" style="border-radius: 50%;" width="40px" height="40px" /></a>
 					<div>${like.NICKNAME }</div>
 					<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${like.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${like.URL }">${like.URL }</a></div>
 				</div>

@@ -86,15 +86,15 @@ input[type=checkbox]:checked+label:before {
 				<div class="header">
 					<div class="category"
 						style="margin-bottom: 120px; margin-left: 3px;">
-						<a style="color: black; font-family: NanumSquare; font-weight: 700;" href="">${post.CATEGORY }</a>
+						<a style="color: black; font-family: NanumSquare;" href="">${post.CATEGORY }</a>
 					</div>
 
 					<div style="margin-top: -70px;">
 						<h1 class="title"
-							style="font-family: sans-serif; font-weight: bold; color: black;">${post.TITLE }</h1>
+							style="font-family: NanumSquare; font-weight: bold; color: black;">${post.TITLE }</h1>
 					</div>
 					<div class="subtitle"
-						style="font-family: sans-serif; color: black; font-size: 18px; margin-left: 3px;">${post.SUBTITLE }</div>
+						style="font-family: NanumSquare; color: black; font-size: 18px; margin-left: 3px;">${post.SUBTITLE }</div>
 					<div class="profile" style="margin-top: 45px;">
 						<div class="media-profile">
 							<div class="media-left"
@@ -113,7 +113,7 @@ input[type=checkbox]:checked+label:before {
 							</div>
 							<div class="media-body">
 								<h4 class="media-heading"
-									style="font-family: sans-serif; color: black; font-size: 17px;">${post.NICKNAME }</h4>
+									style="font-family: NanumSquare; color: black; font-size: 17px;">${post.NICKNAME }</h4>
 								<div style="margin-top: -10px;">
 									<h4 style="font-family: sans-serif; color: #808080;">
 										<small>${post.PDATE }</small> <small>조회 ${post.COUNT }</small>
@@ -123,8 +123,10 @@ input[type=checkbox]:checked+label:before {
 						</div>
 					</div>
 				</div>
+				<c:choose>
+				<c:when test="${post.EMAIL eq sessionScope.login || post.ADULT eq 'false' || (post.ADULT eq 'true' && sessionScope.info.CERTIFIED eq 'Y')}">
 				<div class="post-content"
-					style="margin-top: 50px; color: black; font-family: sans-serif; font-weight: 700px;">
+					style="margin-top: 50px; color: black; font-family: NanumSquare; font-weight: 700px;">
 					<div class="free-content">${post.FCONTENT }</div>
 					<!-- 유료 컨텐츠 부분 -->
 					<c:choose>
@@ -149,7 +151,7 @@ input[type=checkbox]:checked+label:before {
 									<button class="button button1" data-toggle="modal" data-target="#login-form">로그인</button>
 								</c:when>
 								<c:otherwise>
-									<button class="button button1" id="buybtn" data-toggle="modal" data-target="#buy-form">구매하기</button>
+									<button class="button button1" id="buybtn" data-toggle="modal" data-target="#buy-form" style="margin-left: 26px;">구매하기</button>
 								</c:otherwise>
 								</c:choose>
 								</div>
@@ -168,10 +170,37 @@ input[type=checkbox]:checked+label:before {
 							창작활동을 응원하고 싶으세요?</span>
 					</div>
 					<div style="display: table-cell;">
-						<button class="button button1" id="sptbtn" data-toggle="modal" data-target="#spt-form">후원하기</button>
+						<button class="button button1" id="sptbtn" data-toggle="modal" data-target="#spt-form" style="margin-left: 23px;">후원하기</button>
 					</div>
 				</div>
 				</c:if>
+				</c:when>
+				
+				<c:otherwise>
+				<div class="support" style="display: table; width: 100%;">
+				<div class="message"
+					style="display: table-cell; vertical-align: middle; padding-right: .75rem; line-height: 1.25; font-family: sans-serif; color: black; font-weight: 800px; width: 55%;">
+						<span style="font-family: sans-serif; color: black; font-size: 15px;">
+						성인인증이 필요한 포스트입니다.
+						</span>
+				</div>
+				<div style="display: table-cell;">
+				<c:choose>
+				<c:when test="${sessionScope.login eq null }">
+					<button class="button button1" data-toggle="modal" data-target="#login-form">로그인</button>
+				</c:when>
+				<c:otherwise>
+					<button class="button button1" onclick="location.href='/my/settings/certified2'">인증하러가기</button>
+				</c:otherwise>
+				</c:choose>
+				</div>
+				</div>
+				
+				</c:otherwise>
+				
+				</c:choose>
+		
+				
 				
 				<footer class="post-footer" style="margin-top: 40px;">
 					<i class="material-icons"
@@ -200,9 +229,9 @@ input[type=checkbox]:checked+label:before {
 			</section>
 			<!-- 블로그 포스트 리스트 섹션 -->
 			<!-- 포스트 댓글 섹션 -->
+			<h6 style="margin-left: 95px;">댓글</h6>
 			<section class="comments box">
 				<div class="body" style="margin-left: 95px;">
-					<h6>댓글</h6>
 					<div class="comments" id="comments">
 					<c:forEach var="obj" items="${list }">
 					<div class="comment-list" style="margin-top: 30px; margin-bottom: 30px;">
@@ -211,7 +240,7 @@ input[type=checkbox]:checked+label:before {
 							
 							<c:choose>
 							<c:when test="${obj.IMAGE ne null}">
-								<a><img src="/images/profile/${obj.IMAGE ne null}"   style="border-radius: 40px; width: 40px; height: 40px; margin-top:5px;"></a>
+								<a><img src="/images/profile/${obj.IMAGE}"  onerror="this.src='/images/avatar_yellow.png'"  style="border-radius: 40px; width: 40px; height: 40px; margin-top:5px;"></a>
 							</c:when>
 							<c:otherwise>
 								<a><img src="/images/avatar_yellow.png" style="border-radius: 40px; width: 40px; height: 40px; margin-top:5px;"></a>
@@ -220,17 +249,19 @@ input[type=checkbox]:checked+label:before {
 							</div>
 							<div class="media-body">
 								<div class="comment-header">
-									<a style="color: black; font-family: sans-serif; font-size: 15px;">${obj.NICKNAME ne null ? obj.NICKNAME : obj.EMAIL }</a>
-									<time style="color: #999999; font-family: sans-serif; font-size: 12px;">${obj.CDATE }</time>
+									<a style="color: black; font-family: NanumSquare; font-size: 15px;">${obj.NICKNAME ne null ? obj.NICKNAME : obj.EMAIL }</a>
+									<time style="color: #999999; font-family: NanumSquare; font-size: 12px;">${obj.CDATE }</time>
 								</div>
-								<div class="comment-content" style="color: black; font-family: sans-serif;">
+								<div class="comment-content" style="color: black; font-family: NanumSquare;">
 									<p style="display: block;">${obj.CONTENT }</p>
 								</div>
 
-								<div class="comment-action" style="border: none; float: right; margin-right: 280px; margin-top: -55px;">
-									<button class="re-reply-write" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
-									<button class="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
-									<button class="reply-delete" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">삭제</button>
+								<div class="comment-action" style="border: none; float: right; margin-right: 295px; margin-top: -55px;">
+									<button class="re-reply-write" style="border: 0px; background-color: white; color: #999999; font-size: 12px; font-family: NanumSquare;">답글</button>
+									<c:if test="${sessionScope.login eq obj.EMAIL || post.EMAIL eq sessionScope.login }">
+										<button class="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px; font-family: NanumSquare;">편집</button>
+										<button class="reply-delete" style="border: 0px; background-color: white; color: #999999; font-size: 12px; font-family: NanumSquare;">삭제</button>
+									</c:if>
 									<input type="hidden" value="${obj.NUM }" />
 								</div>
 								<div class="comment-editor" style="display: none;">
@@ -250,7 +281,7 @@ input[type=checkbox]:checked+label:before {
 						</div>
 					</div>					
 					</c:forEach>
-					<h5>댓글</h5>
+					<h5 style="font-family:  NanumSquare;">댓글</h5>
 							<textarea class="form-control autosize" name="content"
 								id="mention" data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; 
 								height: 60px; width: 750px; resize: none;" ${sessionScope.login eq null ? "readonly" : "" }></textarea>

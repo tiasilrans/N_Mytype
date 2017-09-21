@@ -47,7 +47,7 @@
 <i class="material-icons" style="color: #999999; font-size: 100px; vertical-align: middle; padding-top: 170px;">forward</i>
 </div>
 <div class="col-md-7" style="padding-top: 50px;" >
-	<img id="view" style="border-radius: 10px; width: 500; height: 400; display: none;">
+	<img id="view" onerror="this.src='/images/avatar_yellow.png'" style="border-radius: 10px; width: 500; height: 400; display: none;">
 </div>
 </div>
 </div>
