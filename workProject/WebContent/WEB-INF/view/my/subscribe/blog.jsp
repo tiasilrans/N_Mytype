@@ -6,7 +6,11 @@
 <link rel="stylesheet" href="/css/postviewcss.css">
     
 <style>
-  
+
+body{
+	background: whitesomke;
+}
+
 table.type07 {
     line-height: 1.5;
     border: 1px solid #ccc;

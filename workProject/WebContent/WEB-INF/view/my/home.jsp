@@ -66,7 +66,6 @@ body {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
-	background: whitesmoke;
 }
 
 .box {

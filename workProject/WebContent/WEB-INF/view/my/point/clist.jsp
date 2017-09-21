@@ -12,7 +12,7 @@ body {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
-	background: whitesmoke;
+	background: linear-gradient(to bottom, #80c1ff, #cce6ff);	
 }
 
 .box {
