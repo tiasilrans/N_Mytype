@@ -40,8 +40,10 @@
 </style>   
 <div align="center" class="row">
 <div class="col-xs-0 col-sm-1 col-md-3 col-lg-3"></div>
-<div class="col-xs-12 col-sm-10 col-md-6 col-lg-6">
-	<div class="hero" style= "position: relative; padding: 4rem 3rem; width: 100%;  background : url('/images/hero.jpg');">	
+<div class="col-xs-12 col-sm-10 col-md-6 col-lg-6" style="width: 100%;  background : url('/images/hero.jpg');">
+
+	<div class="hero" style= "position: relative; padding: 4rem 3rem;">	
+
  	<div class="form-group joinbox row">
 			<form action="/joinExec.mt" method="post">	
 				<div style="margin-left: 30px;">				
