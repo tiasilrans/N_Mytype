@@ -30,7 +30,7 @@ body{
 
 <c:choose>
 <c:when test="${info.BANK ne null || info.ACCOUNT ne null || info.HOLDER ne null}">
-
+<section style="min-height: 90%;">
 <div class="col-xs-0 col-md-2"></div>
 <div class="box col-xs-12 col-md-8 col-lg-12">
 	<div class="title" style="margin-bottom: 40px;">
@@ -95,6 +95,8 @@ body{
 		</div>
 	</form>
 </div>
+</section>
+
 
 <script>
 //숫자 타입에서 쓸 수 있도록 format() 함수 추가
