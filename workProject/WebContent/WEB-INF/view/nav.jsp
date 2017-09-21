@@ -37,13 +37,13 @@
 						<c:if test="${sessionScope.blog ne null }">
 						<c:forEach var="blog" items="${sessionScope.blog}" begin="0" end="${sessionScope.blog.size()}">
 							<li><a style="font-weight: bold; background-color: #80c1ff; color: white;" href="/blog/${blog.URL}">${blog.TITLE}</a></li>
-							<li><a href="/blog/admin/${blog.URL }/posts"> <i class="material-icons" style="color: #999999; font-size: 23px; float: left;">mode_edit</i> 포스트</a></li>  
-							<li><a href="/blog/${blog.URL}/categories"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">toc</i>  카테고리</a></li> 
-							<li><a href="/blog/${blog.URL}/subscribers"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">face</i>  구독자</a></li>   
-							<li><a href="/blog/${blog.URL}/setting"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">settings</i>  설정</a></li>  
+							<li><a href="/blog/admin/${blog.URL }/posts"> <i class="material-icons" style="color: #999999; font-size: 23px; float: left;">mode_edit</i> <span style="margin-left: 10px;">포스트</span></a></li>  
+							<li><a href="/blog/${blog.URL}/categories"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">toc</i>  <span style="margin-left: 10px;">카테고리</span></a></li> 
+							<li><a href="/blog/${blog.URL}/subscribers"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">face</i>  <span style="margin-left: 10px;">구독자</span></a></li>   
+							<li><a href="/blog/${blog.URL}/setting"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">settings</i>  <span style="margin-left: 10px;">설정</span></a></li>  
 						</c:forEach>
 						</c:if>     
-							<li><a href="/blog/create"><i class="material-icons" style="color: #999999; font-size: 23px; float: left;">add</i>  새 블로그 만들기</a></li>
+							<li><a href="/blog/create"><i class="material-icons" style="color: #1a75ff; font-size: 23px; float: left;">add</i>  <span style="margin-left: 10px;">새 블로그 생성</span></a></li>
 						</ul></li>
 				</ul>  
 			   
