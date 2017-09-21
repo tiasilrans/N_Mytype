@@ -99,8 +99,17 @@ input[type=checkbox]:checked+label:before {
 						<div class="media-profile">
 							<div class="media-left"
 								style="margin: 10px; vertical-align: middle;">
+								<c:choose>
+									<c:when test="${post.IMAGE != null}">
+										<img src="/images/profile/${post.IMAGE}"	onerror="this.src='/images/avatar_yellow.png'"
+											class="media-object"
+											style="width: 45px; border-radius: 30px; width: 32px; height: 32px; margin-top: -5px;">
+									</c:when>
+									<c:otherwise>
 								<img src="/images/avatar_yellow.png" class="media-object"
 									style="width: 45px; border-radius: 30px; width: 32px; height: 32px; margin-top: -5px;">
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<div class="media-body">
 								<h4 class="media-heading"
@@ -199,11 +208,19 @@ input[type=checkbox]:checked+label:before {
 					<div class="comment-list" style="margin-top: 30px; margin-bottom: 30px;">
 						<div class="media">
 							<div class="media-left">
+							
+							<c:choose>
+							<c:when test="${obj.IMAGE ne null}">
+								<a><img src="/images/profile/${obj.IMAGE ne null}"   style="border-radius: 40px; width: 40px; height: 40px; margin-top:5px;"></a>
+							</c:when>
+							<c:otherwise>
 								<a><img src="/images/avatar_yellow.png" style="border-radius: 40px; width: 40px; height: 40px; margin-top:5px;"></a>
+							</c:otherwise>
+							</c:choose>
 							</div>
 							<div class="media-body">
 								<div class="comment-header">
-									<a style="color: black; font-family: sans-serif; font-size: 15px;">${obj.EMAIL }</a>
+									<a style="color: black; font-family: sans-serif; font-size: 15px;">${obj.NICKNAME ne null ? obj.NICKNAME : obj.EMAIL }</a>
 									<time style="color: #999999; font-family: sans-serif; font-size: 12px;">${obj.CDATE }</time>
 								</div>
 								<div class="comment-content" style="color: black; font-family: sans-serif;">

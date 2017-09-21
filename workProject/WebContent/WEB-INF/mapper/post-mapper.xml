@@ -49,7 +49,16 @@
   		<!-- 페이징 -->
  	<select id="main_page_view" parameterType="java.util.HashMap" resultType="java.util.HashMap">
  		select * from (select rownum r, tmp.* from 
- 							(select * from (select p.*,m.image from post p left join member m on p.email=m.email) where url=#{url} order by num desc)tmp 
+ 							(select * from (select p.*,m.image, m.nickname from
+ 							<choose>
+ 							<when test="email != null">
+	 							 (select * from post p left join (select pnum,email as pgood from postgood where email=#{email})g on p.num=g.pnum)
+ 							</when>
+ 							<otherwise>
+ 								post
+ 							</otherwise>
+ 							</choose>
+ 							  p left join member m on p.email=m.email) where url=#{url} order by num desc)tmp 
  						) where r between #{start} and #{end}
  	</select>
  		<!-- 해당 포스트 좋아요 수 -->

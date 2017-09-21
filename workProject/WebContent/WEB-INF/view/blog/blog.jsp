@@ -178,17 +178,24 @@
 								   <div class="media">
 								    	<div class="media-left">
 										 	<div class="media-left" style="vertical-align: middle;">
-										 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+										 		<c:choose>
+										 		<c:when test="${obj.IMAGE != null}">
+											 		<img src="/images/profile/${obj.IMAGE}" onerror="this.src='/images/avatar_yellow.png'" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+										 		</c:when>
+										 		<c:otherwise>
+											 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+										 		</c:otherwise>
+										 		</c:choose>
 										 	</div> 
 										  	<div class="media-body"> 
-										  		<span style="font-size: 12px; color: black;">닉네임</span>										 	
+										  		<span style="font-size: 12px; color: black;">${obj.NICKNAME eq nul? obj.EMAIL :obj.NICKNAME}</span>										 	
 										  		<span style="font-size: 12px; color: #808080;">
 										  		<fmt:formatDate value="${obj.PDATE }" pattern="yyyy.MM.dd"/></span>
 										 	</div>
 									  </div>
 									  <div class="media-right" style="width: 100px;">
 										  <div class="media-left">
-										  		<div class="like">									
+										  		<div class="like">
 										 			<a href="#" onclick="like(this);" post-num="${obj.NUM }"><i class="material-icons" style="font-size: 15px; color: #808080; float: left;">favorite_border</i></a>
 										 		</div>
 										 		<div class="media-body"> 
@@ -311,7 +318,14 @@
  		<div>
  			<div class="menu-header">
  				<div class="col-xs-8 px-0" style="margin-bottom: 5px; margin-top: 20px;">
- 					<a href="/blog/${map.url }"><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">사용자 이름</span></a> 					 
+ 				<c:choose>
+ 				<c:when test="${sessionScope.login eq null}">
+ 					<a href="/login.mt"><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">로그인</span></a> 					 
+ 				</c:when>
+ 				<c:otherwise>
+ 					<a href="/blog/${map.url }"><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">${sessionScope.info.NICKNAME ne null ? sessionScope.info.NICKNAME : sessionScope.EMAIL}</span></a> 					 
+ 				</c:otherwise>
+ 				</c:choose>
  				</div>
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
  					<span><i class="material-icons" style="color: #005ce6; font-size: 26px;">notifications_none</i></span> 

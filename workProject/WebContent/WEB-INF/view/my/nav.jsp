@@ -7,11 +7,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
-<!-- <style>
-.nav-item:hover{
-        background: rgba( 255, 0, 0, 0.1 );
-}
-</style> -->
 <!-- blogSetting navbar menu-->
 <nav class="secondary-nav navbar">
 		<ul class="nav navbar-nav" style="margin-left: 5px; margin-top: 10px;">
@@ -30,7 +25,7 @@
 			</li>
 			
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px;"><span style="color: white; font-family: sans-serif; ">라이브러리</span></a>
+				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px;  background-color:opacity;"><span style="color: white; font-family: sans-serif; ">라이브러리</span></a>
 						<ul class="dropdown-menu">						
 							<li><a href="/subscribe/blog.mt" >구독한 블로그</a></li>
 						</ul>
