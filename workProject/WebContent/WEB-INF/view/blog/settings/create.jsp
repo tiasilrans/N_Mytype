@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">   
+
 <style>
 .box{
-	border: 1px solid;
-	border-color: #d9d9d9;
+	background-color:gray;
 	margin: 20px;
 	width: 90%;
 	padding: 20px;
+	border-radius: 10px;
 }
 
 p {
@@ -36,36 +37,36 @@ p {
 	<div class="col-xs-0 col-md-2"></div>
 	<div class="col-xs-12 col-md-8">
 		<div class="form-group box row">				
-				<h3 align="left" style="color: #262626">새 블로그 만들기 </h3>
+				<h3 align="left" style="color: #262626; margin-left: 50px; font-family:NanumSquare; " >새 블로그 만들기 </h3>
 				<br/>				
 				<div class="form-group row">
 					<div class="col-sm-3" align="left">
-						<label style="color: #4d4d4d;">제목</label> 
+						<label style="color: black; margin-left: 50px; font-family:NanumSquare;">제목</label> 
 					</div>
 					<div class="col-sm-9">
 						<input class="form-control" type="text"
-							placeholder="제목" name="title" id="title" required />
+							placeholder="제목" name="title" id="title"  style="margin-left: margin-left: -120px;"   required />
 					</div>
 				</div>
 				
 				<div class="form-group row">
 					<div class="col-sm-3" align="left">
-						<label style="color: #4d4d4d;">블로그 소개</label>
+						<label style="color: black; margin-left: 50px; font-family:NanumSquare;">블로그 소개</label>
 					</div>
 				<div class="col-sm-9">
 					 <input class="form-control" type="text"
-						placeholder="블로그 소개" name="intro" id="intro" required />
+						placeholder="블로그 소개" name="intro" id="intro" style="margin-left: margin-left: -120px;" required />
 				</div>
 				</div>
 				
 				<div class="form-group row">
 					<div class="col-sm-3" align="left">
-						<label style="color: #4d4d4d;">블로그 URL</label>
+						<label style="color: black; margin-left: 50px; font-family:NanumSquare; ">블로그 URL</label>
 					</div>
 					<div class="col-sm-9">
 					    <input class="form-control" type="text"
-						placeholder="블로그 URL" name="url" id="url" required/>
-						<p align="left">영문 소문자, 숫자, 대시(-)를 조합하여 6자 이상으로 만들 수 있습니다.</p>
+						placeholder="블로그 URL" name="url" id="url" style="margin-left: margin-left: -120px;"    required/>
+						<p align="left" style="font-family: NanumSquare;">영문 소문자, 숫자, 대시(-)를 조합하여 6자 이상으로 만들 수 있습니다.</p>
 					</div>
 				</div>
 				<br/>
@@ -74,7 +75,7 @@ p {
 					<div class="col-md-6 form-group">
 					</div>
 					<div class="col-md-6 form-group" align="right">
-						<button class="button button1" id="bt">새 블로그 만들기</button>
+						<button class="button button1" id="bt" style="margin-top: -40px;">새 블로그 만들기</button>
 					</div>
 				</div>
 		</div>

@@ -152,6 +152,14 @@ a{text-decoration: none;}
 </div>
 </section>
 
+<script>
+	function imgsize(){
+		$(".fr-fic").css("width","220px");
+		$(".fr-fic").css("height","74px");
+		$(".fr-fic").css("border-radius","2px");
+	}
+	imgsize();
+</script>
 
 <c:choose>
 	<c:when test="${sessionScope.login == null}">

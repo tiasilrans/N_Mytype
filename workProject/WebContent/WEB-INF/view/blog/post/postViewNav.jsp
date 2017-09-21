@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 
 <section class="navbar-info ">
 	<nav class="navbar navbar-default navbar-me" style="margin-bottom: 0px; ">
@@ -25,7 +25,7 @@
 						</a></li>    
 				</ul> 
 				<ul class="nav navbar-nav navbar" style="margin-left: 500px; margin-top: 20px;">
-					<li class="post-title" style="display: none; font-size: 20;">${post.TITLE }</li>
+					<li class="post-title" style="display: none; font-size: 20; font-family: NanumSquare;">${post.TITLE }</li>
 				</ul>
 				
 			   <!-- 나브바 오른쪽 -->
