@@ -68,7 +68,7 @@ table.type07 td {
 <div class="box col-xs-12 col-md-8 col-lg-12">
 	<div align="center" style="min-height: 227px;">
 		<div class="title" style="margin-bottom: 40px;">
-			<span style="float:left; font-size: 18px; margin-left: 5px;"><b>출금내역</b></span>
+			<span style="float:left; font-size: 18px; margin-left: 5px;"><b><span style="margin-left: -12px;">출금내역</span></b></span>
 		</div><hr/>
 
 		<div style="min-height: 317px;">
