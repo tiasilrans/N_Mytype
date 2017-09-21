@@ -299,14 +299,14 @@
  					<a href="/blog/${map.url }"><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">사용자 이름</span></a> 					 
  				</div>
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
- 					<span><i class="material-icons" style="color: #a6a6a6; font-size: 26px;">notifications_none</i></span> 
+ 					<span><i class="material-icons" style="color: #005ce6; font-size: 26px;">notifications_none</i></span> 
  				</div> 				
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
  					<a href="/logout.mt"><i class="material-icons" title="로그아웃" style="color: #a6a6a6; font-size: 26px;">power_settings_new</i></a>
  				</div> 				
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
  					<a class="home" href="/"
-						id="home"><label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">home</label></a><a href="/"><div class="home" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">홈</div></a>
+						id="home"><label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -3px;">home</label></a><a href="/"><div class="home" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">홈</div></a>
  				</div> 				      
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
  					<c:choose>
@@ -317,20 +317,20 @@
 								<input type="hidden" name="url" value="${map.URL }"/>
 								<button type="submit" title="새 포스트를 작성합니다." style="border: 0px; background-color: white; padding-left: 0px; ">
 									<a class="newpost" href="/blog/postWrite" id="newpost">
-									<label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">mode_edit</label></a>
+									<label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -3px;">mode_edit</label></a>
 									<a href="/blog/postWrite">
 									<div class="newpost" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">새 포스트 쓰기</div></a>
 								</button>
 							</form>
 	 					</c:when>
 	 					<c:otherwise>
-	 						<label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="home" style="display:inline; margin-left: 14px;">구독</div>
+	 						<label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="home" style="display:inline; margin-left: 14px;">구독</div>
 	 					</c:otherwise>
  					</c:choose>
  				</div>
- 				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;"> 				
- 					<a href="/my/home"><label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">dashboard</label></a>
- 					<a href="/my/home"><div class="myhome" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">MY홈</div></a>
+ 				<div class="col-xs-8 px-0" style="margin : 5px;  margin-top: -5px;"> 				
+ 					<a href="/my/home"><label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -3px;">dashboard</label></a>
+ 					<a href="/my/home"><div class="myhome" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">내 블로그 설정</div></a>
  				</div> 				       
  			</div> 
  			
