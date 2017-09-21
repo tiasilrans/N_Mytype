@@ -13,7 +13,27 @@
 	.search-nav{
 		display: block;
 	}	
+
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
 }
+
+
+.button1 {
+	background-color: #303030;
+}
+
+
 
 </style>
 <!--navbar menu-->
@@ -146,7 +166,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">로그인</h4>
+          <h6 align="left" style="color: #999999; margin-left: 30px;">로그인 </h6>
         </div>
         
         <div class="modal-body">
@@ -164,9 +184,9 @@
 				<div align="center" class="row">
 
 					<div class="form-group row" align="right" style="width: 360px;">
-					<a>비밀번호 찾기</a>｜<a href="join.mt">회원가입</a>
+					<a style="color: black;">비밀번호 찾기</a>｜<a style="color: black;" href="join.mt">회원가입</a>
 					</div>
-					<button id="login-sbt" type="submit" class="btn">로그인</button>
+					<button id="login-sbt" type="submit" class="button button1">로그인</button>
 				</div>
 			</form>
 		</div>
