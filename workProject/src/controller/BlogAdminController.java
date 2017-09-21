@@ -1,7 +1,6 @@
 package controller;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 import javax.servlet.ServletContext;
@@ -33,38 +32,27 @@ public class BlogAdminController {
 	
 	@Autowired
 	SubscribeDAO sDAO;
-	
-	
-	@RequestMapping("/blog/admin/{url}/posts")
-	public ModelAndView blogPosts(@PathVariable(value="url") String url, HttpSession session){
-		Map map = new HashMap();
-			map.put("url", url);
-		HashMap blogTitle = bDAO.blogTitle(map);
-		List<Map> list = pDAO.ad_postList(map);
-		ModelAndView mav = new ModelAndView();
-			mav.setViewName("blog_setting");
-			mav.addObject("title", "Æ÷½ºÆ®");
-		 	mav.addObject("section", "blog/settings/posts");
-		 	mav.addObject("blogTitle", blogTitle);
-		 	mav.addObject("url", url);
-		 	mav.addObject("list", list);
-		return mav;
-	}
-	
+
 	
 	@RequestMapping("/blog/{url}/subscribers")
 	public ModelAndView blogSubscribers(@PathVariable(value="url") String url, HttpSession session){
 		Map map = new HashMap();
 			map.put("url", url);
 		HashMap blogTitle = bDAO.blogTitle(map);
+		System.out.println(" blogTitle? " + blogTitle);
 		List<Map> list = sDAO.blogSubscribers(map);
+		System.out.println(list.isEmpty());
+		for(Map li : list){
+			System.out.println(li);
+		}
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("blog_setting");
-			mav.addObject("title", "±¸µ¶ÀÚ");
+			mav.addObject("title", "êµ¬ë…ì");
 		 	mav.addObject("section", "blog/settings/subscribers");		 	
 		 	mav.addObject("blogTitle", blogTitle);
 		 	mav.addObject("url", url);
 		 	mav.addObject("list", list);
+		 	mav.addObject("listempty", list.isEmpty());
 		return mav;
 	}
 	
@@ -86,7 +74,7 @@ public class BlogAdminController {
 			mav.addObject("imgPath", "/images/avatar_yellow.png");
 		}		
 			mav.setViewName("blog_setting");
-			mav.addObject("title", "ºí·Î±×");
+			mav.addObject("title", "ë¸”ë¡œê·¸");
 		 	mav.addObject("section", "blog/settings/setting");		 	
 		 	mav.addObject("blogTitle", blogTitle);
 		 	mav.addObject("url", url);
@@ -97,7 +85,7 @@ public class BlogAdminController {
 	@RequestMapping("/blogSetting.mt")
 	public ModelAndView blogSettingUp(@RequestParam(name="file") MultipartFile f, 
 			HttpSession session, @RequestParam Map map) throws IllegalStateException, IOException{
-		System.out.println("ºí·Î±× ¼³Á¤ ³Ñ¾î¿Â °ª : " + map);
+		System.out.println("ë¸”ë¡œê·¸ ì„¤ì • ë„˜ì–´ì˜¨ ê°’ : " + map);
 		String path = application.getRealPath("/images/blogImg");
 		File dir = new File(path);
 		if(!dir.exists()) {
@@ -115,10 +103,7 @@ public class BlogAdminController {
 			mav.setViewName("redirect:/blog/"+(String)map.get("url")+"/setting");
 			mav.addObject("r", rst);
 		return mav;
-	}
-	
-	
-	
+	}	
 	@RequestMapping("/blog/{url}/categories")
 	public ModelAndView categories(@PathVariable(value="url") String url, HttpSession session){
 		String email = (String)session.getAttribute("login");
@@ -141,12 +126,11 @@ public class BlogAdminController {
 		
 	}
 	
-	@RequestMapping("/categoryUpdate.mt")
+	@RequestMapping("/blog/categoryUpdate.mt")
 	@ResponseBody
 	public Map categoryAdd(@RequestParam Map m, HttpSession session){
 			m.put("email", session.getAttribute("login"));
-		System.out.println("³Ñ¾î¿Â °ª : " + m);
-		
+		System.out.println("ë„˜ì–´ì˜¨ ê°’ : " + m);		
 		Map map = new HashMap();
 		String delete = (String)m.get("cate_delete");
 		String[] arr = delete.split(",");
@@ -157,43 +141,40 @@ public class BlogAdminController {
 		String uuid = "";	
 		boolean add = false;
 		boolean orderadd = false;
-		boolean order = false;
-		
+		boolean order = false;		
 		List<Map> before = bDAO.cateAfterList(m);
-		for(String d : arr){// »èÁ¦ÇØ¾ß ÇÒ °æ¿ì			
+		for(String d : arr){// ì‚­ì œí•´ì•¼ í•  ê²½ìš°			
 			for(Map li : before){
 				String id = (String)li.get("CATE_ID");
 				if(id.equals(d)){
-					System.out.println( " ID >> "+  d + "ÀÇ »èÁ¦¸¦ ½ÃÀÛÇÑ´Ù");
+					System.out.println( " ID >> "+  d + "ì˜ ì‚­ì œë¥¼ ì‹œì‘í•œë‹¤");
 					Map deleteMap = new HashMap();					
 					deleteMap.put("cate_id", d);
 					bDAO.cateRemover(deleteMap);
 				}
 			}					
-			System.out.println("»èÁ¦ ¿Ï·á");
-		}
-		
+			System.out.println("ì‚­ì œ ì™„ë£Œ");
+		}		
 		
 		for(int i = 0; i<addcate_name.length; i++){
-			if(addcate_name[i]!=""){ // Ä«Å×°í¸® Ãß°¡ ÇØ¾ß ÇÒ °æ¿ì -------------------------------------*
+			if(addcate_name[i]!=""){ // ì¹´í…Œê³ ë¦¬ ì¶”ê°€ í•´ì•¼ í•  ê²½ìš° -------------------------------------*
 				uuid += UUID.randomUUID().toString().substring(0, 11) + ",";
 				m.put("addcate_id", uuid.split(",")[i]);
 				m.put("addcate_name", addcate_name[i]);
 				add = bDAO.categoryAdd(m);
 				orderadd = bDAO.categoryAddOrder(m);				
 			}
-		}
-				
+		}				
 			
 		List<Map> list = bDAO.cateAfterList(m);		
 		Map cateNameOrder = new HashMap();
-		for(int i = 0; i<orderArr.length; i++ ){// Ä«Å×°í¸® ¼ø¼­ ¼³Á¤
-			cateNameOrder.put(orderArr[i], i); // Å° : Ä«Å×°í¸® ÀÌ¸§  - °ª : Ä«Å×°í¸® ÀÎµ¦½º			
+		for(int i = 0; i<orderArr.length; i++ ){// ì¹´í…Œê³ ë¦¬ ìˆœì„œ ì„¤ì •
+			cateNameOrder.put(orderArr[i], i); // í‚¤ : ì¹´í…Œê³ ë¦¬ ì´ë¦„  - ê°’ : ì¹´í…Œê³ ë¦¬ ì¸ë±ìŠ¤			
 		}		
 		for(Map li : list){
 			String key = (String)li.get("CATEGORY_NAME");
 			String id = (String)li.get("CATE_ID");
-			if(!key.equals("ÀüÃ¼ º¸±â")){
+			if(!key.equals("ì „ì²´ ë³´ê¸°")){
 				Integer idx = (Integer)cateNameOrder.get(key);				
 				Map orderMap = new HashMap();
 					orderMap.put("cate_index", idx);

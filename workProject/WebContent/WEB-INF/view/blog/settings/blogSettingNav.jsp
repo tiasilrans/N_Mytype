@@ -7,58 +7,47 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <!-- blogSetting navbar menu-->
-<nav class="secondary-nav navbar ">
-	<div class="col-xs-offset-1 col-md-offset-1">
-		<ul class="nav navbar-nav">
-			<li class="nav-item">
-				<a class="nav-link" href="/blog/${url}">${blogTitle.TITLE}</a>
+<nav class="secondary-nav navbar">
+		<ul class="nav navbar-nav" style="margin-left: 5px; margin-top: 10px;">
+		
+			<li class="nav-item" style="margin-left: 28px; margin-top: -2px;">
+				<i class="material-icons" style="color: white; float: left; font-size: 22px;">border_color</i>
 			</li>
+		
 			<li class="nav-item">
-				<a class="nav-link" href="/blog/admin/${url}/posts">포스트</a>
+				<a class="nav-link" href="/blog/${url}" style="background-image: none; padding: 0px; background-color:opacity;"><span style="color: white; font-family: sans-serif;"">${blogTitle.TITLE}</span></a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/blog/${url}/categories">카테고리</a>
+			
+			<li class="nav-item" style="margin-left: 30px; margin-top: -2px;">
+				<i class="material-icons"  style="color: white; float: left; font-size: 25px;">toc</i>
 			</li>
+			
+			
 			<li class="nav-item">
-				<a class="nav-link" href="/blog/${url}/subscribers">구독자</a>
+				<a class="nav-link" href="/blog/${url}/categories" style="background-image: none; padding: 0px; background-color:opacity;"><span style="color: white; font-family: sans-serif;"">카테고리</span></a>
 			</li>
+			
+			<li class="nav-item" style="margin-left: 30px; margin-top: -1px;">
+				<i class="material-icons" style="color: white; float: left; font-size: 22px;">face</i>
+			</li>
+			
 			<li class="nav-item">
-				<a class="nav-link" href="/blog/${url}/setting">설정</a>
+				<a class="nav-link" href="/blog/${url}/subscribers" style="background-image: none; padding: 0px; background-color:opacity;"><span style="color: white; font-family: sans-serif;">구독자</span></a>
+			</li>
+			
+			
+			<li class="nav-item" style="margin-left: 30px; margin-top: -2px;">
+				<i class="material-icons" style="color: white; float: left; font-size: 22px;">settings</i>
+			</li>
+			
+			<li class="nav-item">
+				<a class="nav-link" href="/blog/${url}/setting" style="background-image: none; padding: 0px; background-color:opacity;"><span style="color: white; font-family: sans-serif;"">설정</span></a>
 			</li>
 		</ul>
-	</div>
 </nav>
 
 
-<script>
-function postSet(){    	
-    	$.post({
-			url : "/blog/admin/posts",
-			data : {
-				"num" : "${post.NUM }",
-				"url" : "${post.URL}"
-			}
-		}).done(function(result) {
-			if(result.result){
-				location.replace("")
-				window.alert("삭제가 완료되었습니다.");
-			}else{
-				window.alert("포스트 삭제에 실패하였습니다.");
-			}
-		});
 
-};
-
-
-
-
-
-
-
-
-
-
-</script>
 
 
 

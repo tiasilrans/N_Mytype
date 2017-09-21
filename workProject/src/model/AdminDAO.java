@@ -12,10 +12,13 @@ import org.springframework.stereotype.Service;
 public class AdminDAO {
 	@Autowired
 	SqlSessionFactory factory;	
+
+	@Autowired
+	MailDAO maildao;	
+
 	
-	// ¸®½ºÆ®Áß ³»¿ëÀÌ ±æ°æ¿ì Àû´çÈ÷ ÀÚ¸£±â
+	
 	public List<Map> sublistReply(List<Map> list, int size, String con, String subcon){
-		//con : ÀÚ¸¦ ³»¿ë / subcon : ÀÚ¸£°í ÀúÀåÇÒ¶§ ÁöÁ¤ÇÒ ÀÌ¸§
 		for(Map map : list){
 			String fcontent = (String)map.get(con);
 			if(fcontent.length() > size){
@@ -27,7 +30,6 @@ public class AdminDAO {
 		return list;
 	}
 	
-	//¸â¹ö¸®½ºÆ®
 	public List<Map> memberList(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -43,7 +45,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//ºí·Î±× ¸®½ºÆ®
 	public List<Map> blogList(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -59,7 +60,6 @@ public class AdminDAO {
 		}
 	}
 	
-	// Æ÷½ºÆ® ¸®½ºÆ®
 	public List<Map> selectPost(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -76,7 +76,6 @@ public class AdminDAO {
 	}
 	
 	
-	//´ñ±Û ¸®½ºÆ®
 	public List<Map> replyList(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -92,7 +91,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//ÂÊÁö º¸³»±â
 	public boolean sendmessage(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -116,7 +114,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//Æ÷½ºÆ® »èÁ¦
 	public boolean deletePost(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -131,7 +128,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//´ñ±Û »èÁ¦
 	public boolean deleteReply(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -146,7 +142,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//ÃæÀü ½ÅÃ» ³»¿ª
 	public List<Map> selectDepositApply(){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -162,7 +157,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//Ãâ±İ ½ÅÃ» ³»¿ª
 	public List<Map> selectWithdrawApply(){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -178,7 +172,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//(°³ÀÎ)ÃæÀü ½ÅÃ» ³»¿ª
 	public List<Map> selectDeposit(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -194,7 +187,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//(°³ÀÎ)Ãâ±İ ½ÅÃ» ³»¿ª
 	public List<Map> selectWithdraw(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -210,7 +202,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//ÃæÀü ½ÂÀÎ
 	public boolean applyCharge(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -226,7 +217,6 @@ public class AdminDAO {
 		}
 	}
 	
-	//Ãâ±İ ½ÂÀÎ
 	public boolean applyWithdraw(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -241,12 +231,11 @@ public class AdminDAO {
 		}
 	}
 	
-	//°øÁö»çÇ× ¸®½ºÆ®
 	public List<Map> noticeList(String type){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
 		try{
-			if(type.equals("main")){
+/*			if(type.equals("main")){
 				Map map = new HashMap();
 				long first = System.currentTimeMillis()-(1000*60*60*24*7); 
 				long last = System.currentTimeMillis()+(1000*60*60*24*7); 
@@ -256,7 +245,9 @@ public class AdminDAO {
 				map.put("last", week.format(last));
 				list = session.selectList("admin.noticeList", map);
 				list = this.sublistReply(list, 180, "CONTENT", "SUBCONTENT");
-			}
+			}*/
+			list = session.selectList("admin.noticeList");
+			list = this.sublistReply(list, 180, "FCONTENT", "SUBCONTENT");
 			return list;
 		}catch(Exception e){
 			System.out.println("AdminNoticeList Error");
@@ -266,4 +257,59 @@ public class AdminDAO {
 			session.close();
 		}
 	}
+	
+	public List<Map> adultlist(){
+		SqlSession session = factory.openSession();
+		List<Map> list = new ArrayList<>();
+		try{
+			list  = session.selectList("admin.adultlist");
+			return list;
+		}catch(Exception e){
+			System.out.println("AdminAdultlist Error");
+			e.printStackTrace();
+			return list;
+		}finally{
+			session.close();
+		}
+	}
+	
+	
+	public boolean adultApply(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			int i  = session.update("admin.adultApply", map);
+			map.put("content", "[MyType] ì„±ì¸ì¸ì¦ì´ ìŠ¹ì¸ë˜ì—ˆìŠµë‹ˆë‹¤.");
+			map.put("sender", map.get("email"));
+			map.put("receiver", map.get("email"));
+			maildao.send(map);
+			return true;
+		}catch(Exception e){
+			System.out.println("AdminAdultApply Error");
+			e.printStackTrace();
+			return false;
+		}finally{
+			session.close();
+		}
+	}
+	
+	public boolean adultCompanion(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			int i  = session.update("admin.adultCompanion", map);
+			map.put("content", "[MyType] ì„±ì¸ì¸ì¦ì´ ë°˜ë ¤ë˜ì—ˆìŠµë‹ˆë‹¤.");
+			map.put("sender", map.get("email"));
+			map.put("receiver", map.get("email"));
+			maildao.send(map);
+			return true;
+		}catch(Exception e){
+			System.out.println("AdminAdultCompanion Error");
+			e.printStackTrace();
+			return false;
+		}finally{
+			session.close();
+		}
+	}
+	
+	
+	
 }

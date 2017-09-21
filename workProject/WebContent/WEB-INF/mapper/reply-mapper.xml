@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="reply">
+ 	<!-- 댓글 달기 -->
+ 	<insert id="write" parameterType="java.util.HashMap">
+ 		insert into reply(num, pnum, pgnum, email, content, secret, cdate)
+ 			values(reply_seq.nextval, #{num}, reply_seq.currval, #{email}, #{content},
+ 					#{secret}, sysdate)
+ 	</insert>
+ 	
+ 	<!-- 댓글 수정 -->
+ 	<update id="edit" parameterType="java.util.HashMap">
+ 		update reply set content=#{content} where num=#{num}
+ 	</update>
+ 	
+ 	<!-- 댓글 삭제 -->
+ 	<delete id="delete" parameterType="java.util.HashMap">
+ 		delete from reply where num=#{num}
+ 	</delete>
+ 	
+ 	<!-- 댓글 리스트 가져오기 -->
+  	<select id="list" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+  		SELECT * FROM(SELECT * FROM reply where pnum=#{num} order by PGNUM desc)r 
+  				order by r.num asc
+  	</select>
+  	
+  	<!-- 블로그 메인 뷰 / 해당 포스트의 댓글 수 -->
+  	<select id="post_reply_count" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+  		SELECT COUNT(*) FROM reply where pnum=#{num}
+  	</select>
+  	
+  
+  </mapper>

@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <link rel="stylesheet" href="/css/postviewcss.css">
+
 <style>
 input[type=checkbox] {
 	display: none;
@@ -40,6 +42,39 @@ input[type=checkbox]:checked+label:before {
 	background: #1a1a1a;
 	text-align: center;
 	line-height: 18px;
+	
+}	
+	
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.button1 {
+		background-color: black;
+}
+
+.button2 {
+	background-color: black;
+	padding: 6px 17px;
+	font-size: 12px;
+}
+
+.button3 {
+	background-color: gray;
+	padding: 6px 17px;
+	font-size: 12px;
+}
+	
 }
 </style>
 <div class="row">
@@ -88,22 +123,47 @@ input[type=checkbox]:checked+label:before {
 							<div class="charged-content">${post.CCONTENT }</div>
 						</c:when>
 						<c:otherwise>
-				구매하여 나머지 보기
-			</c:otherwise>
+						<c:if test="${ post.PRICE ne null || post.PRICE > 0}">
+							<div class="support" style="display: table; width: 100%;">
+								<div class="message"
+									style="display: table-cell; vertical-align: middle; padding-right: .75rem; line-height: 1.25; font-family: sans-serif; color: black; font-weight: 800px; width: 55%;">
+									<span style="font-family: sans-serif; color: black; font-size: 15px;">
+									<span style="font-weight: bold ;font-family: sans-serif; color: red; font-size: 18px;" id="price">
+									${post.PRICE}</span>
+									 point 구매하여 나머지 내용 보기
+									</span>
+								</div>
+								
+								<div style="display: table-cell;">
+								<c:choose>
+								<c:when test="${sessionScope.login eq null }">
+									<button class="button button1" data-toggle="modal" data-target="#login-form">로그인</button>
+								</c:when>
+								<c:otherwise>
+									<button class="button button1" id="buybtn" data-toggle="modal" data-target="#buy-form">구매하기</button>
+								</c:otherwise>
+								</c:choose>
+								</div>
+								
+							</div>
+						</c:if>
+						</c:otherwise>
 					</c:choose>
 				</div>
+				<c:if test="${ sessionScope.login ne post.EMAIL && post.EMAIL ne 'MyType' }">
 				<div class="support" style="display: table; width: 100%;">
 					<div class="message"
-						style="display: table-cell; vertical-align: middle; padding-right: .75rem; line-height: 1.25; font-family: sans-serif; color: black; font-weight: 800px;">
+						style="display: table-cell; vertical-align: middle; padding-right: .75rem; line-height: 1.25; font-family: sans-serif; color: black; font-weight: 800px; width: 55%;">
 						<span
 							style="font-family: sans-serif; color: black; font-size: 15px;">${post.NICKNAME }님의
 							창작활동을 응원하고 싶으세요?</span>
-
 					</div>
 					<div style="display: table-cell;">
-						<button class="button button1" style="float: right;">후원하기</button>
+						<button class="button button1" id="sptbtn" data-toggle="modal" data-target="#spt-form">후원하기</button>
 					</div>
 				</div>
+				</c:if>
+				
 				<footer class="post-footer" style="margin-top: 40px;">
 					<i class="material-icons"
 						style="font-size: 20px; color: #0d0d0d; float: left; font-weight: bold;">favorite_border</i><span
@@ -123,7 +183,7 @@ input[type=checkbox]:checked+label:before {
 				<div class="body blog-info"
 					style="margin-bottom: 30px; margin-top: 30px;">
 					<div class="media" style="margin-left: 95px;">
-						<img src="/images/avatar_yellow.png"
+						<img src="${imgPath }"
 							style="border-radius: 17%; height: 70px; width: 70px;">
 					</div>
 					<div class="media-body"></div>
@@ -140,24 +200,62 @@ input[type=checkbox]:checked+label:before {
 			<!-- 포스트 댓글 섹션 -->
 			<section class="comments">
 				<div class="body" style="margin-left: 95px;">
-					<h5>댓글</h5>
+					<h6>댓글</h6>
+					
 					<div class="comments" id="comments">
-						<form action="">
-							<input type="hidden" value="" id="postNum">
+					<c:forEach var="obj" items="${list }">
+					<div class="comment-list" style="margin-top: 30px; margin-bottom: 30px;">
+						<div class="media">
+							<div class="media-left">
+								<a><img src="/images/avatar_yellow.png" style="border-radius: 40px; width: 40px; height: 40px; margin-top:5px;"></a>
+							</div>
+							<div class="media-body">
+								<div class="comment-header">
+									<a style="color: black; font-family: sans-serif; font-size: 15px;">${obj.EMAIL }</a>
+									<time style="color: #999999; font-family: sans-serif; font-size: 12px;">${obj.CDATE }</time>
+								</div>
+								<div class="comment-content" style="color: black; font-family: sans-serif;">
+									<p style="display: block;">${obj.CONTENT }</p>
+								</div>
+
+								<div class="comment-action" style="border: none; float: right; margin-right: 240px; margin-top: -55px;">
+									<button class="re-reply-write" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
+									<button class="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>
+									<button class="reply-delete" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">삭제</button>
+									<input type="hidden" value="${obj.NUM }" />
+								</div>
+								<div class="comment-editor" style="display: none;">
+									<div style="float: left;">				
+										<div class="checkbox-wrap"
+												style="float: left; margin-top: 20px; margin-left: 2px;">
+											<input type="checkbox" id="comment-editor-secret" class="checkbox-style"/> <label
+													for="secret">비밀댓글</label>
+										</div>																				
+									</div>
+									<div class="edit-bt" style="float: right; margin-right: 295px; margin-top: 10px;">
+										<button class="button button3 edit-cancel" style="margin-top: -10px;">취소</button>
+										<button class="button button2 edit-update">저장</button>
+									</div>
+								</div>
+							</div>					
+						</div>
+					</div>					
+					</c:forEach>
+					<h5>댓글</h5>
 							<textarea class="form-control autosize" name="content"
-								id="mention" data-autosize-on="true"
-								style="overflow: hidden; word-wrap: break-word; height: 60px; width: 750px; resize: none;"></textarea>
+								id="mention" data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; 
+								height: 60px; width: 750px; resize: none;" ${sessionScope.login eq null ? "readonly" : "" }></textarea>
 							<div class="clearfix">
 								<div class="checkbox-wrap"
 									style="float: left; margin-top: 20px; margin-left: 2px;">
-									<input type="checkbox" id="notice" class="checkbox-style" /> <label
-										for="notice">비밀댓글</label>
+									<input type="checkbox" id="secret" class="checkbox-style"/> <label
+										for="secret">비밀댓글</label>
 								</div>
 								<div style="float: right; margin-top: 7px; margin-right: 293px;">
-									<button class="button button1">댓글 남기기</button>
+									<button type="button" class="button button1" id="sub">댓글 남기기</button>
 								</div>
 							</div>
-						</form>
+						
 					</div>
 				</div>
 
@@ -171,6 +269,294 @@ input[type=checkbox]:checked+label:before {
 </div>
 
 
+<!-- 구매하기 modal  -->
+<form action="/buypost.mt">
+<input type="hidden" name="price" value="${post.PRICE}" />
+<input type="hidden" name="num" value="${post.NUM}" />
+<input type="hidden" name="email" value="${post.EMAIL}" />
+<input type="hidden" name="url" value="${post.URL}" />
+<input type="hidden" name="title" value="${post.TITLE}" />
+  <div class="modal fade" id="buy-form" role="dialog">
+    <div class="modal-dialog" style="width: 450px;">
+	    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">구매하기 - <span style="color: blue;">${post.TITLE}</span></h4>
+        </div>
+        
+        <div class="modal-body">
+				<div class="row"><div class="col-md-6" style="vertical-align: middle;">보유 포인트</div><div class="col-md-6" style="vertical-align: middle;"><span style="font-size: 15 ;"><fmt:formatNumber value="${mypoint.SUM}" pattern="#,###"/></span></div></div>
+				<hr/>
+				<div class="row"><div class="col-md-6">사용할 포인트</div><div class="col-md-6"><span style="font-size: 15 ;"><fmt:formatNumber value="${post.PRICE}" pattern="#,###"/></span></div></div>
+				<hr/>
+				<div class="row"><div class="col-md-6">남은 포인트</div><div class="col-md-6"><span style="font-size: 15 ;"><fmt:formatNumber value="${(mypoint.SUM-post.PRICE)}" pattern="#,###"/></span></div></div>
+				<c:if  test="${(mypoint.SUM-post.PRICE) < 0}">
+					<hr/>
+					<div class="row"><div class="col-md-12">※포인트가 부족합니다. 충전하러 가시겠습니까 ?</div></div>
+				</c:if>
+        </div>
+        <div class="modal-footer">
+          		<div class="form-group row" align="center">
+				<div align="center" class="row">
+				<c:choose>
+				<c:when test="${(mypoint.SUM-post.PRICE) < 0}">
+					<button class="button button1" type="button" style="width: 360px; height: 60px;" onclick="location.href='/my/point/charge' ">포인트 충전</button>
+				</c:when>
+				<c:otherwise>
+					<button class="button button1" id="login-sbt" type="submit"  style="width: 360px; height: 60px;">구매하기</button>
+				</c:otherwise>
+				</c:choose>
+				</div>
+		</div>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+  </form>
+
+<!-- 후원 modal  -->
+<form action="/support.mt" onsubmit="return nbcheck();">
+<input type="hidden" name="num" value="${post.NUM}" />
+<input type="hidden" name="email" value="${post.EMAIL}" />
+<input type="hidden" name="url" value="${post.URL}" />
+<input type="hidden" name="title" value="${post.TITLE}" />
+  <div class="modal fade" id="spt-form" role="dialog">
+    <div class="modal-dialog" style="width: 450px;">
+	    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">후원하기 - <span style="color: blue;">${post.TITLE}</span></h4>
+        </div>
+        
+        <div class="modal-body">
+				<div class="row"><div class="col-md-6" style="vertical-align: middle;">보유 포인트</div><div class="col-md-6" style="vertical-align: middle;"><span style="font-size: 15 ;"><fmt:formatNumber value="${mypoint.SUM}" pattern="#,###"/></span></div></div>
+				<hr/>
+				<div class="row"><div class="col-md-6">후원할 포인트</div><div class="col-md-6"><span style="font-size: 15 ;"><input name="price" id="nb" type="number" min="1" max="9999999"/></span></div></div>
+				<hr/>
+				<div class="row"><div class="col-md-6">남은 포인트</div><div class="col-md-6"><span id="ap" style="font-size: 15 ;"><fmt:formatNumber value="${mypoint.SUM}" pattern="#,###"/></span></div></div>
+        </div>
+        <div class="modal-footer">
+          		<div class="form-group row" align="center">
+				<div align="center" class="row">
+					<button class="button button1" id="login-sbt" type="submit"  style="width: 360px; height: 60px;">후원하기</button>
+				</div>
+		</div>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+  </form>
+  
+<!-- 로그인창 modal  -->
+  <div class="modal fade" id="login-form" role="dialog">
+    <div class="modal-dialog" style="width: 450px;">
+    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">로그인</h4>
+        </div>
+        
+        <div class="modal-body">
+          		<div class="form-group row" align="center">		
+			<form action="/loginExec.mt?post=post" method="post">		
+			<input type="hidden" name="num" value="${post.NUM}" />
+			<input type="hidden" name="url" value="${post.URL}" />
+				<div class="form-group row">
+						<input class="form-control" type="text"
+							placeholder="e-mail" name="email" id="login-email" required />
+				</div>
+				
+				<div class="form-group row">
+					 <input class="form-control" type="password"
+						placeholder="비밀번호" name="pw" id="login-pw" required />
+				</div>
+				<div align="center" class="row">
+
+					<div class="form-group row" align="right" style="width: 360px;">
+					<a>비밀번호 찾기</a>｜<a href="join.mt">회원가입</a>
+					</div>
+					<button id="login-sbt" type="submit" class="btn">로그인</button>
+				</div>
+			</form>
+		</div>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+
+<script>
+Number.prototype.format = function(){
+    if(this==0) return 0;
+ 
+    var reg = /(^[+-]?\d+)(\d{3})/;
+    var n = (this + '');
+ 
+    while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2');
+ 
+    return n;
+};
+</script>
+
+<script>
+function nbcheck(){
+	var nb = $("#nb").val();
+	var p = '${mypoint.SUM}';
+	if(nb == null){
+		return false;
+	}
+	else if( nb > 0 && p-nb >= 0 ){
+		return true;
+	}else{
+		window.alert('정확한 값을 입력하시오');
+		return false;
+	}
+}
+
+$("#nb").on("keyup", function(){
+	var nb = $("#nb").val();
+	var p = '${mypoint.SUM}';
+	$("#ap").html((p-nb).format());
+	
+});
+</script>
+<script>
+
+// disply f
+function disply(target) {	
+	if(target.css("display") == "none"){   
+		target.css("display", "block");        
+	} else {  
+		target.css("display", "none"); 
+	}	
+};
+
+// comment-action margin
+function margin_change(target) {
+	if(target.css("margin-top") == "-55px"){   
+		target.css("margin-top", "-105px");        
+	} else {  
+		target.css("margin-top", "-55px"); 
+	}		
+};
+
+
+$("#sub").on("click", function() {	
+	$.ajax({
+		url : "/${post.NUM }/peply.mt",
+		data : {			
+			"content" : $("#mention").val().replace(/\n/g, "<br>"),			
+			"secret" : $("#secret").prop("checked"),
+			"url" : "${post.URL}"			
+		}
+	}).done(function(result) {				
+		if (result.result) {
+			window.alert("댓글 작성 완료");
+			location.reload();
+		}else{				
+			window.alert("댓글 작성 실패");
+		}
+	})
+	
+});
+
+// reply edit
+$(".reply-edit").on("click", function(){	
+	var p = $(this).parent().prev().children('p');	
+	var editor = $(this).parent().next();
+	var action = $(this).parent();
+	console.log(editor);
+	disply(p);
+	disply(editor);
+	margin_change(action);
+	var c = p.html();
+	var add_editor = "<textarea class=\"form-control\" data-autosize-on=\"true\" style=\"overflow: hidden; resize: none;" 
+						+ "word-wrap: break-word; height: 80px; width: 700px; margin-top: 8px;\">"+ c.replace(/<br>/gi, "\r\n") +"</textarea>";
+	
+
+	$(this).parent().prev().append(add_editor);
+
+	
+});
+
+
+
+// re-reply-write
+$(".re-reply-write").on("click", function(){
+	var add = "";
+	
+	
+	
+});
+
+
+//reply-delete
+$(".reply-delete").on("click", function(){
+	var num = $(this).next().attr("value");
+	console.log(num);
+	$.ajax({
+		url : "/replyDelete.mt",
+		data : {			
+			"num" : num		
+		}
+	}).done(function(result) {				
+		if (result.result) {			
+			location.reload();
+		}
+	})	
+	
+});
+
+
+
+//edit-cancel
+$(".edit-cancel").on("click", function(){
+	$(this).parent().parent().prev().prev().children('textarea').remove();
+	var p = $(this).parent().parent().prev().prev().children('p');	
+	var editor = $(this).parent().parent();
+	var action = $(this).parent().parent().prev();
+	disply(p);
+	disply(editor);
+	margin_change(action);
+});
+
+
+//edit-update
+$(".edit-update").on("click", function(){
+	var num = $(this).parent().parent().prev().children('[type="hidden"]').attr("value");
+	var content = $(this).parent().parent().prev().prev().children('textarea').val().replace(/\n/g, "<br>");
+	console.log(content);
+	$.ajax({
+		url : "/"+num+"/peplyEdit.mt",
+		data : {			
+			"content" : content,			
+			"secret" : $(this).parent().prev().children().children('[type="checkbox"]').prop("checked"),
+			"url" : "${post.URL}"			
+		}
+	}).done(function(result) {				
+		if (result.result) {
+			window.alert("댓글 수정 완료");
+			location.reload();
+		}
+	})
+	
+	
+	
+});
+
+
+
+
+
+</script>
 
 
 

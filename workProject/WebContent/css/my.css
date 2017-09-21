@@ -2,6 +2,10 @@
 
 a { color: black;}
 
+body {
+	background: whitesmoke;
+}
+
 .card {
     position: relative;
     display: block;
@@ -39,19 +43,6 @@ a { color: black;}
 .title{
 	padding-top :15px;
 	margin-left: 10px;
-}
-
-.lbox{
-  float:left;
-  width:50%;
-  height:35%;
-}
-  
-.rbox{
-  clear:right;
-  float:right;
-  width:50%;
-  height:35%;
 }
   
 .boxsp{

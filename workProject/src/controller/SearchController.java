@@ -41,12 +41,12 @@ public class SearchController {
 			mav.addObject("keyword", keyword);
 			map.put("first", 1);
 			map.put("last", 6);
-			map.put("post", true);//Æ÷½ºÆ®°Ë»öÀÓÀ» ¾Ë¸®±âÀ§ÇÔ
+			map.put("post", true);//ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			String email = (String)session.getAttribute("login");
 			if(email != null){
 				map.put("email", email);
 			}
-			//ºóÄ­ °Ë»öÀÏ¼öµµÀÖÀ¸´Ï±î
+			//ï¿½ï¿½Ä­ ï¿½Ë»ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 			if(map.get("keyword") != null && keyword.length() > 0){
 				
 				String[] arr = (keyword).split("\\s");
@@ -56,11 +56,11 @@ public class SearchController {
 					}
 					map.put("keyword", arr);
 					mav.addObject("hash", pdao.hashlist("%"+keyword+"%"));
-					mav.addObject("plist", pdao.sublist((pdao.listAll(map))));
+					mav.addObject("plist", pdao.sublist(pdao.imgRedefinition(pdao.listAll(map))));
 				}
 			}else{
 				map.put("keyword", null);
-				mav.addObject("plist", pdao.sublist((pdao.listAll(map))));
+				mav.addObject("plist", pdao.sublist(pdao.imgRedefinition(pdao.listAll(map))));
 			}
 			
 			mav.setViewName("search_main");
@@ -85,24 +85,24 @@ public class SearchController {
 		}
 		
 		
-		//¸ñ·Ï¿¡ Ç¥½ÃÇÒ Æ÷½ºÆ® ¼ö
+		//ï¿½ï¿½Ï¿ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½
 		int pc = 12;
 		
-		//ÇöÀç ÆäÀÌÁö
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		int np = 1;
 		if(map.get("np") != null){
 			np = Integer.parseInt((String)map.get("np"));
 		}
 		mav.addObject("np", np);
 		
-		//ºÒ·¯¿Ã ¸®½ºÆ®ÀÇ ½ÃÀÛ°ú ³¡
+		//ï¿½Ò·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Û°ï¿½ ï¿½ï¿½
 		int e = np*pc;
 		int s = e-pc+1;		
 		map.put("first", s);
 		map.put("last", e);
 		map.put("post", true);
 		
-		//ºóÄ­ °Ë»öÀÏ¼öµµÀÖÀ¸´Ï±î
+		//ï¿½ï¿½Ä­ ï¿½Ë»ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 		if(map.get("keyword") != null && keyword.length() > 0){
 			
 			String[] arr = (keyword).split("\\s");
@@ -111,21 +111,21 @@ public class SearchController {
 					arr[i] = "%"+arr[i]+"%";
 				}
 				map.put("keyword", arr);
-				mav.addObject("plist", pdao.sublist((pdao.listAll(map))));
+				mav.addObject("plist", pdao.sublist(pdao.imgRedefinition(pdao.listAll(map))));
 			}
 		}else{
 			map.put("keyword", null);
-			mav.addObject("plist", pdao.sublist((pdao.listAll(map))));
+			mav.addObject("plist", pdao.sublist(pdao.imgRedefinition(pdao.listAll(map))));
 		}
 		
-		//¸®½ºÆ® ¹Ø¿¡ ÆäÀÌÁö¼ö
+		//ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ø¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		int eSize = 5;
 		int p1 = pdao.selectcount(map);
 		int p = p1 / pc;
 		p = p1 % pc != 0 ? p+1: p;
 		mav.addObject("page", p);
 		
-		//È­»ìÇ¥
+		//È­ï¿½ï¿½Ç¥
 		int from = (np-1)*eSize;
 		int to = np*eSize;
 		if(to > p){
@@ -147,28 +147,28 @@ public class SearchController {
 		mav.addObject("keyword", keyword);
 		
 		
-		//¸ñ·Ï¿¡ Ç¥½ÃÇÒ Æ÷½ºÆ® ¼ö
+		//ï¿½ï¿½Ï¿ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½
 		int pc = 12;
 		
-		//ÇöÀç ÆäÀÌÁö
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		int np = 1;
 		if(map.get("np") != null){
 			np = Integer.parseInt((String)map.get("np"));
 		}
 		mav.addObject("np", np);
 		
-		//ºóÄ­ °Ë»öÀÏ¼öµµÀÖÀ¸´Ï±î
+		//ï¿½ï¿½Ä­ ï¿½Ë»ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 		List list = pdao.hashlist("%"+keyword+"%");
 		mav.addObject("hash", list);
 		
-		//¸®½ºÆ® ¹Ø¿¡ ÆäÀÌÁö¼ö
+		//ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ø¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		int eSize = 5;
 		int p1 = list.size();
 		int p = p1 / pc;
 		p = p1 % pc != 0 ? p+1: p;
 		mav.addObject("page", p);
 		
-		//È­»ìÇ¥
+		//È­ï¿½ï¿½Ç¥
 		int from = (np-1)*eSize;
 		int to = np*eSize;
 		if(to > p){
@@ -194,39 +194,39 @@ public class SearchController {
 		}
 		
 		
-		//¸ñ·Ï¿¡ Ç¥½ÃÇÒ Æ÷½ºÆ® ¼ö
+		//ï¿½ï¿½Ï¿ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½
 		int pc = 12;
 		
-		//ÇöÀç ÆäÀÌÁö
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		int np = 1;
 		if(map.get("np") != null){
 			np = Integer.parseInt((String)map.get("np"));
 		}
 		mav.addObject("np", np);
 		
-		//ºÒ·¯¿Ã ¸®½ºÆ®ÀÇ ½ÃÀÛ°ú ³¡
+		//ï¿½Ò·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Û°ï¿½ ï¿½ï¿½
 		int e = np*pc;
 		int s = e-pc+1;		
 		map.put("first", s);
 		map.put("last", e);
 		map.put("tag", true);
 		
-		//ºóÄ­ °Ë»öÀÏ¼öµµÀÖÀ¸´Ï±î
+		//ï¿½ï¿½Ä­ ï¿½Ë»ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 		if(map.get("keyword") != null && keyword.length() > 0){
-			mav.addObject("plist", pdao.sublist((pdao.listTag(map))));
+			mav.addObject("plist", pdao.sublist(pdao.imgRedefinition(pdao.listTag(map))));
 		}else{
 			map.put("keyword", null);
-			mav.addObject("plist", pdao.sublist((pdao.listTag(map))));
+			mav.addObject("plist", pdao.sublist(pdao.imgRedefinition(pdao.listTag(map))));
 		}
 		
-		//¸®½ºÆ® ¹Ø¿¡ ÆäÀÌÁö¼ö
+		//ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ø¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		int eSize = 5;
 		int p1 = pdao.selectcount(map);
 		int p = p1 / pc;
 		p = p1 % pc != 0 ? p+1: p;
 		mav.addObject("page", p);
 		
-		//È­»ìÇ¥
+		//È­ï¿½ï¿½Ç¥
 		int from = (np-1)*eSize;
 		int to = np*eSize;
 		if(to > p){

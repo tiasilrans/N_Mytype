@@ -4,8 +4,9 @@
 
 <style>
 .box {
-	border: 1px solid;
-	border-color: #d9d9d9;
+
+	background-color:white;
+	border-radius:10px;
 	margin: 20px;
 	width: 90%;
 	padding: 20px;
@@ -34,7 +35,7 @@ p {
 }
 
 .button2 {
-	background-color: #cccccc;
+	background-color: #80aaff;
 }
 
 .cate-bt {
@@ -46,7 +47,7 @@ p {
 <div class="col-xs-0 col-md-2"></div>
 <div class="col-xs-12 col-md-8">
 	<div class="form-group box">
-		<h3 align="left" style="color: #262626">카테고리 편집</h3>
+		<h3 align="left" style="color: #262626; font-family: sans-serif;">카테고리 편집</h3>
 		<div align="right" style="margin-top: -40px;">
 			<button class="button button2" id="add">추가</button>
 		</div>

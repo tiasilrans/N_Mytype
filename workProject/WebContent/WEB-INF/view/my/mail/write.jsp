@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <link rel="stylesheet" href="/css/my.css">
+<link rel="stylesheet" href="/css/postviewcss.css">
 
 <style>
   
@@ -44,12 +45,13 @@ table.type07 td {
 				</tr>
 				<tr>
 					<td style="vertical-align: middle; width: 20%;"><label>내용</label></td>
-					<td colspan="3" style="width: 80%"><textarea class="form-control" cols="50" rows="15" name="content" style="resize: none;" required></textarea></td>
+					<td colspan="2" style="width: 60%"><textarea class="form-control" cols="40" rows="15" name="content" style="resize: none;" required></textarea></td>
+					<td style="width: 20%"></td>
 				</tr>
 		</tbody>
 	</table>
 	<div style="width: 35%;" align="right">
-		<input class="btn btn-default" type="submit" value="보내기" id="sbtn" disabled/>
+		<input class="btn button button1" type="submit" value="보내기" id="sbtn" disabled/>
 	</div>
 </form>
 
