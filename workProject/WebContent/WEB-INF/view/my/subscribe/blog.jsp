@@ -44,16 +44,12 @@ table.type07 td {
     text-decoration: none;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
     z-index: 3;
     color: #fff;
     cursor: default;
     background-color: #0d0d0d;
-    border-color: #ffffff;
+    border-color: black;
 }
 
 .div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
@@ -93,7 +89,7 @@ table.type07 td {
 					</div>
 					
 					<div class="col-md-3" style="padding : 0px; padding-top: 10px;" align="right">
-						<button class="btn subscribe" id="${blog.URL}" value="${blog.URL}" type="button" style="width: 30%; height: 40px; font-size: 15; background-color: black;"><b class="${blog.URL }" style="color: white;">구독취소</b></button>
+						<button class="btn subscribe" id="${blog.URL}" value="${blog.URL}" type="button" style="width: 50%; height: 40px; font-size: 15; background-color: black;"><b class="${blog.URL }" style="color: white;">구독취소</b></button>
 					</div>
 					</div>
 				</div>
