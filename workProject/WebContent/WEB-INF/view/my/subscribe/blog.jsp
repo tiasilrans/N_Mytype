@@ -86,7 +86,7 @@ table.type07 td {
 							<span style="margin-left: 5px">${blog.TITLE}</span></a>
 						</div>
 						<div style="padding: 5px; padding-left: 5px;">${blog.INTRO}</div>
-					</div> 
+					</div>  
 					
 					<div class="col-md-3" style="padding : 0px; padding-top: 10px;" align="right">
 						<button class="btn subscribe" id="${blog.URL}" value="${blog.URL}" type="button" style="width: 50%; height: 40px; font-size: 15; background-color: black;"><b class="${blog.URL }" style="color: white;">구독취소</b></button>
