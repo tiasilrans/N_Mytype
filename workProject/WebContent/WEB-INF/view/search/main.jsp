@@ -131,15 +131,13 @@ a{text-decoration: none;}
 			<hr style="margin-top: 10px;"/>
 		</div>
 	
-		<div class="row" style="width: 60%;">
-			<c:forEach items="${hash}" var="tag">
-				<div class="col-md-3" style=" padding: 5px;">
-					<div style="background-color: #F6F6F6; padding: 15px;" align="left">
-						<a href="/search/tag.mt?keyword=${tag}"><span style="font-size: 18px;">#${tag }</span></a>
-					</div>
+		<c:forEach items="${hash}" var="tag">
+			<div class="col-xs-3 col-md-3" style="padding: 5px;">
+				<div style="background-color: #F6F6F6; padding: 15px;" align="left">
+					<a href="/search/tag.mt?keyword=${tag}"><span style="font-size: 18px;">#${tag }</span></a>
 				</div>
-			</c:forEach>
-		</div>
+			</div>
+		</c:forEach>
 	
 		<div class="w3-col s10">
 			<a class="btn btn-block " href="/search/tagsearch.mt?keyword=${keyword}" style="background-color: #F6F6F6; width:98%; margin-bottom: 10px;">검색 결과 더 보기</a>	
