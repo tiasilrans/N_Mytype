@@ -5,25 +5,12 @@
 
 
 <section class="navbar-info ">
-	<nav class="navbar navbar-default" style="margin-bottom: 0px; ">
-		<div>
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header navbar-me">
-				<button type="button"
-					class="navbar-toggle collapsed menu-collapsed-button"
-					data-toggle="collapse" data-target="#navbar-primary-collapse"
-					aria-expanded="false" style="float: left;">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-			</div> 
-
-			
+	<nav class="navbar navbar-default navbar-me" style="margin-bottom: 0px; ">
+		<div>		
 				 <!-- 나브바 왼쪽 -->
 				<ul class="nav navbar-nav navbar-left">
 				<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#" style="background-image: none; background-color: white; margin: 0px;"><i class="material-icons" style="font-size: 30px; color: black;">menu</i></a>
+						data-toggle="dropdown" href="#" style="background-image: none; background-color: rgba( 255, 0, 0, 0 ); margin: 0px;"><i class="material-icons" style="font-size: 30px; color: black;">menu</i></a>
 						<ul class="dropdown-menu" style="width: 250px;">						
 							<li style="margin-bottom: 20px;"><a href="/"><img src="/images/title.png" style="height: 18px;"></a></li>
 							<li style="margin-left: 20px; font-family: sans-serif; color: black; font-size: 15px; font-weight: 700%"><span>${post.TITLE}</span></li> 
@@ -37,10 +24,14 @@
 							<a href="/blog/${post.URL}"><i class="material-icons" style="color: black;">arrow_back</i>
 						</a></li>    
 				</ul> 
+				<ul class="nav navbar-nav navbar" style="margin-left: 500px; margin-top: 20px;">
+					<li class="post-title" style="display: none; font-size: 20;">${post.TITLE }</li>
+				</ul>
+				
 			   <!-- 나브바 오른쪽 -->
 				<ul class="nav navbar-nav navbar-right"> 
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#" style="background-image: none; background-color: white; margin: 0px; right: 25px;"><i class="material-icons" style="color: black;">more_vert</i></a>
+						data-toggle="dropdown" href="#" style="background-image: none; background-color: rgba( 255, 0, 0, 0 ); margin: 0px; right: 25px;"><i class="material-icons" style="color: black;">more_vert</i></a>
 						  <ul class="dropdown-menu" style=" right: 20px;">     
                             	<c:choose>
                             	<c:when test="${sessionScope.login eq post.EMAIL }">
@@ -60,10 +51,28 @@
 
 
 <script>
+
 $(window).scroll(function() {
+	var f = $(".post-title");
+	if ($(this).scrollTop() > 5) {
+		if(f.css("display") == "none"){   
+			f.css("display", "block");        
+		}		
+	} else {
+		if(f.css("display") == "block"){   
+			f.css("display", "none");        
+		}
+		
+	}
+});
+
+
+
+$(window).scroll(function() {
+	
 	if ($(this).scrollTop() > 5) {
 		$(".navbar-me").addClass("fixed-me");
-		$(".fixed-me").removeClass("navbar-me");
+		$(".fixed-me").removeClass("navbar-me");		
 	} else {
 		$(".fixed-me").addClass("navbar-me");
 		$(".navbar-me").removeClass("fixed-me");

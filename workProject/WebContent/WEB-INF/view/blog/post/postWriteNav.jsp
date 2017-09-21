@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<section class="navbar-info ">
 <div class="navbar navbar-default navbar-me">
 			<div class="navbar-header">
 				<a class="navbar-toggle" style="float: left; border: 0px;"> <span
@@ -27,7 +28,7 @@
 				</ul>
 			</div>    
 		</div> 
-		
+</section>		
 		
 <script>
 	$(window).scroll(function() {

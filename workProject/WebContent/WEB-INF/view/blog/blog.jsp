@@ -331,9 +331,9 @@
  					</c:when>
  					<c:otherwise>
  					<img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"/>
- 					</c:otherwise>
- 					</c:choose>
- 					<span style="margin: 10px; font-family:NanumSquare; font-weight:500; color:black; text-decoration:none;">${sessionScope.info.NICKNAME ne null ? sessionScope.info.NICKNAME : sessionScope.EMAIL}</span></a> 					 
+ 					</c:otherwise> 
+ 					</c:choose>			 
+ 					<span style="margin: 10px; font-family:NanumSquare; font-weight:500; color:black; text-decoration:none;">${sessionScope.info.NICKNAME ne null ? sessionScope.info.NICKNAME : sessionScope.info.EMAIL}</span></a> 					 
  				</c:otherwise>
  				</c:choose>
  				</div>
