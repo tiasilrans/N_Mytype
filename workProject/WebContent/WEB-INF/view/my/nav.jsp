@@ -28,8 +28,7 @@
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px; background-color:rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif;">구독</span></a>
 						<ul class="dropdown-menu">						
-							<li><a href="/my/library/postgood">좋아요</a></li>
-							<li><a href="/my/library/purchases">구매 항목</a></li>
+							<li><a href="/subscribe/blog.mt" >구독한 블로그</a></li>
 						</ul>
 			</li>
 			
@@ -42,8 +41,9 @@
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px;  background-color:rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif; ">라이브러리</span></a>
 						<ul class="dropdown-menu">						
-							<li><a href="/subscribe/blog.mt" >구독한 블로그</a></li>
-						</ul>
+							<li><a href="/my/library/postgood">좋아요</a></li>
+							<li><a href="/my/library/purchases">구매 항목</a></li>
+						</ul>							
 			</li>
 			
 			
