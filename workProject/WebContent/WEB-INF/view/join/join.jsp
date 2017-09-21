@@ -41,8 +41,7 @@
 <div align="center" class="row">
 <div class="col-xs-0 col-sm-1 col-md-3 col-lg-3"></div>
 <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6">
-	<div class="first" style= "position: relative; padding: 4rem 3rem; background-image: url('/images/img.jpg');
-    background-size: 1500px 500px;">	
+	<div class="hero" style= "position: relative; padding: 4rem 3rem; width: 100%;  background : url('/images/hero.jpg');">	
  	<div class="form-group joinbox row">
 			<form action="/joinExec.mt" method="post">	
 				<div style="margin-left: 30px;">				
@@ -84,16 +83,12 @@
 	</div>
 </div>		
 		<div class="section">
-		
-		
-		
-
 			<div class="section" style="margin-bottom: 60px; margin-left: 40px;">
 				<div align="center">
 			<img src="/images/first.png" >
 				</div>
 			</div>
-		</div>
+			</div>
 		
 		
 		<div class="section" style="margin-bottom: 60px; margin-left: 40px;">
@@ -105,18 +100,10 @@
 		</div>
 		
 		
-		<div class="section" style="margin-bottom: 60px; margin-left: 60px">
-			<div class="container">
-				<div align="center">
-			<img src="/images/Second.png">
-				</div>
-			</div>
-		</div>
-		
 		<div class="section" style="margin-bottom: 60px; margin-left: 80px;">
 			<div class="container">
 				<div align="center">
-			<img src="/images/third.png">
+			<img src="/images/.png">
 				</div>
 			</div>
 		</div>
@@ -125,7 +112,7 @@
 		<div class="section" style="margin-bottom: 150px;">
 			<div class="container">
 				<div align="center";>
-			<img src="/images/end.png">
+			<img src="/images/.png">
 				</div>
 			</div>
 		</div>
