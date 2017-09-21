@@ -18,6 +18,29 @@
 	padding: 20px;
 }
 
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.button1 {
+	background-color: #303030;
+}
+
+.button2 {
+	background-color: #80aaff;
+}
+
+
 </style>
 
 <section style="min-height: 90%;">
@@ -125,7 +148,7 @@
 			</span>
 			
 			<span style="float:right; margin-right:10px;">
-				<a href="/"><button type="button" class="btn btn-default">취소</button></a>
+				<a href="/"><button type="button" class="btn button button2">취소</button></a>
 				<button type="submit" class="btn button button1">결제하기</button>
 			</span>
 		</div>
