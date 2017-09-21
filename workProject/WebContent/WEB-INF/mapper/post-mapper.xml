@@ -13,7 +13,10 @@
   	
   	<!-- 포스트 불러오기 -->
  		<!-- 포스트 번호로 하나의 포스트 불러오기 -->
-  	
+ 	<select id="one_post" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+ 		select * from(SELECT * FROM (select p.*,m.image from post p left join member m on p.email=m.email) where num=#{num})p left join member m on m.email=p.email
+ 	</select>
+ 	
   	<!-- 포스트 수정 -->
  	<update id="edit" parameterType="java.util.HashMap">
  		update post set category=#{category}, title=#{title}, subtitle=#{subtitle},
@@ -66,11 +69,6 @@
  		SELECT COUNT(*) FROM postgood where pnum=#{num}
  	</select>	
  	
- 	<!-- 포스트 불러오기 -->
- 		<!-- 포스트 번호로 하나의 포스트 불러오기 -->
- 	<select id="one_post" parameterType="java.util.HashMap" resultType="java.util.HashMap">
- 		select * from(SELECT * FROM (select p.*,m.image from post p left join member m on p.email=m.email) where num=#{num})p left join member m on m.email=p.email
- 	</select>
  	
  	
  	<!-- 블로그 내 검색  / 타이틀, 서브타이틀만 검색 / 조회수 정렬 -->
