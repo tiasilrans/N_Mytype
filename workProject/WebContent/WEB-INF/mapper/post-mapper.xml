@@ -13,9 +13,6 @@
   	
   	<!-- 포스트 불러오기 -->
  		<!-- 포스트 번호로 하나의 포스트 불러오기 -->
- 	<select id="one_post" parameterType="java.util.HashMap" resultType="java.util.HashMap">
- 		select * from(SELECT * FROM post where num=#{num})p left join member m on m.email=p.email
- 	</select>  	
   	
   	<!-- 포스트 수정 -->
  	<update id="edit" parameterType="java.util.HashMap">
