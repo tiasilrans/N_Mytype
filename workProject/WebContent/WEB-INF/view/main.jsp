@@ -15,7 +15,7 @@ a{ text-decoration: none; }
 	border-radius: 5px;
 }
 
-#secondlogo{
+#secondlogo{d
 	height: 350px;
 	width : 300px;
 	border-radius: 5px;
