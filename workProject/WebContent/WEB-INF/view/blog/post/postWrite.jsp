@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
 <link
@@ -13,94 +11,46 @@
 <link 
 	href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_style.min.css"
 	rel="stylesheet" type="text/css" />
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymous">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"></script>
 
-<!-- css -->
-<link rel="stylesheet" href="/css/blogViewcss.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<style type="text/css">
+<style>
 
 div#editor {
-	width: 81%;
-	margin: auto;
+	
+	width: 100%;
 	text-align: left;
 }
 
+input:focus {
+  outline: none;
+   outline-style:none;
+}
+
+
 .title-wrap {
     padding: 0;
-    margin: 0;
-    border-bottom: 1px solid rgba(0,0,0,.09);
-}
-@media (min-width: 576px)
- .post {
-    padding: 2.5em 0;
+    margin-bottom: 50px;
 }
 
-.post .container {
-    padding: 0 20px;
-}
+	.title-wrap input {
 
-.post .container {
-    padding: 0 20px;
-}
-
-.container {
-    width: 100%;
-}
-@media (min-width: 576px)
-
-.container {
-    width: 540px;
-    max-width: 100%;
-}
-
-.container {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-.title-wrap input {
-    width: 100%;
-    border: 0;
-    padding: 0;
-    margin: 10px;
-    border-radius: 0;
-}
-
-textarea.autosize {
-    resize: none;
-}
+	    border: 0;
+	    padding: 0;
+	    margin: 10px;
+	    border-radius: 0;
+	}
+	
+	textarea.autosize {
+	    resize: none;
+	}
 
 
  .post {
-    width: 100%;
+   
     height: 100%;
     padding: 1.5em 0;
     margin: 20px;
     font-size: 16px;
-    overflow-x: hidden;
-    overflow-y: auto;
 }
 
 a.dropdown-toggle{
@@ -238,44 +188,10 @@ input[type=radio]:checked+label:before {
 
 </head>
 
-
-
-<title> ${title }</title>
 <body>
-	<header>		
-		<div class="navbar navbar-default navbar-fixed-top">
-			<div class="navbar-header">
-				<a class="navbar-toggle" style="float: left; border: 0px;"> <span
-					class="glyphicon glyphicon-menu-left"></span></a>  
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#postNav"> 
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span> 
-				</button>
-			</div>		
-			
-			<div class="collapse navbar-collapse" id="postNav">
-				<ul class="nav navbar-nav">
-					<li class="back" style="margin-left: 200px; margin-top: 4px;"><a href="/blog/${map.url }" style=" margin-right: 0px;"><i class="material-icons">keyboard_backspace</i></a>
-					<li class="home" style="margin-right: 15px;"><a href="/" style=" margin: 0px; padding-left:0px; background-image: none; background-color: rgba( 255, 0, 0, 0 );"><span><img
-								src="/images/mytype.png"></span></a>
-						 
-				</ul>
-
-				<ul class="nav navbar-nav navbar-right">
-					<li style="margin-right: -25px; margin-top: 13px;"><a class="bnt dropdown-toggle" data-toggle="modal"
-						data-target="#modalPublish"><span>발행</span></a></li>
-					<li style="margin-right: 220px; margin-top: 13px;"><a class="bnt dropdown-toggle" data-toggle="modal"
-						data-target="#modalPublish"><span><i class="material-icons">keyboard_arrow_down</i></span></a></li>
-				</ul>
-			</div>    
-		</div>   
-  
-	</header> 
-
-
-
+	
 	<div class="modal fade" id="modalPublish" role="dialog">
+	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header" style="border-bottom: 0px;">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -302,17 +218,17 @@ input[type=radio]:checked+label:before {
 						<input class="form-control" type="text" name=" support"
 							id="support" style="width:100px;" placeholder="0">
 					</div>
-					<div class="col-xs-3" style="margin-left: -570px; margin-top: 7px;"> 
+					<div class="col-xs-3" style="margin-left:-190px; margin-top: 7px;"> 
 						<span>포인트</span> 
 					</div>  
 				</div>
 				<div class="row" style="margin-top: 20px;">
-					<div class="col-xs-3 col-lg-3" style="color: #4d4d4d;">결제 금액</div>
-					<div class="col-xs-6 col-lg-6">
+					<div class="col-xs-3" style="color: #4d4d4d;">결제 금액</div>
+					<div class="col-xs-6">
 						<input class="form-control" type="text" name="price"
 							id="price" style="width: 100px;" value="${updatePostInfo.PRICE eq  null ? 0 : '' } ">
 					</div>
-					<div class="col-xs-3 col-lg-3" style="margin-left: -570px; margin-top: 7px;"> 
+					<div class="col-xs-3" style="margin-left:-190px; margin-top: 7px;"> 
 						<span>포인트</span> 
 					</div>  
 				</div>
@@ -357,26 +273,26 @@ input[type=radio]:checked+label:before {
 		        <div class="modal-footer">
 		          <button type="button" class="button button1" id="publisher">발행하기</button>
 		        </div>
-	    	</div>  		  		
+	    	</div> 		  		
   		</div>
+ 	</div>
  	
-  	
   	
 	
 
 	<section>
 		<div align="center" class="row ">
-			<div class="col-xs-0 col-md-1"></div>
-			<div class="col-xs-12 col-md-10">
+		<div class="col-xs-0 col-md-1 col-lg-2"></div>
+			<div class="col-xs-12 col-md-10 col-lg-8">
 				<article class="post">
-					<div class="container">				
+					<div class="row">				
 						<div class="title-wrap">
-							<div class="form-group" style="margin-top: 70px; margin-left: 112px;">
+							<div class="form-group">
 								<input type="text" class="form-control" id="title" 
 									name="title" placeholder="제목을 입력하세요." value="${updatePostInfo.TITLE }" 
 									style="font-size: 32px;">
 							</div> 						 
-							<div class="form-group" style="margin-left: 112px;">
+							<div class="form-group" style="">
 								<input type="text" class="form-control" id="subtitle"
 									name="subtitle" placeholder="부제목을 입력하세요." value="${updatePostInfo.SUBTITLE }"
 									style="font-size: 16px;"> 
@@ -385,6 +301,7 @@ input[type=radio]:checked+label:before {
 						
 						<div class="editor" id="editor">
 							${updatePostInfo.FCONTENT }
+							<p></p>
 							<div class="payment-line" id="payline" align="center" contenteditable="false">
 								<i class="material-icons" style="color: white;">attach_money</i>
 								<span class="payment-line-description" style="vertical-align: top; color: white;">결제선</span> <span class="payment-line-description" style="vertical-align: top; color: #d9d9d9; font-size: 15px;"> — 이 선 아래쪽에 유료 콘텐츠를 작성하세요.</span>
@@ -400,7 +317,7 @@ input[type=radio]:checked+label:before {
 
 
 			</div> 
-			<div class="col-xs-0 col-md-1"></div>
+			<div class="col-xs-0 col-md-1 col-lg-2"></div>
 		</div>
 
 	</section>

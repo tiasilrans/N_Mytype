@@ -78,10 +78,10 @@
 	</definition>
 	
 	<!-- 포스트 작성 -->
-	<definition name="post" template="/WEB-INF/view/blog/post/postWrite.jsp">
-		<put-attribute name="title" expression="${title}" />
-		<put-attribute name="header" value=""/>
-		<put-attribute name="nav" value="" />	
+	<definition name="post" template="/WEB-INF/view/blog/post/postWriteTemp.jsp">
+		<put-attribute name="title" expression="${title}"/>
+		<put-attribute name="section" value="/WEB-INF/view/blog/post/postWrite.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/view/blog/post/postWriteNav.jsp" />	
 	</definition>
 	
 	<!-- 블로그 세팅  -->
