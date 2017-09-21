@@ -16,21 +16,10 @@
 			</li>
 			
 			<li class="nav-item dd">
-				<a class="nav-link dd" href="/my/home" style="background-image: none; padding: 0px; background-color: rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif;">MY홈</span></a>
+				<a class="nav-link dd" href="/my/home" style="background-image: none; padding: 0px; background-color: rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif;">My홈</span></a>
 			</li>
 						
 			
-			<li class="nav-item" style="margin-left: 30px; margin-top: -2px;">
-				<i class="material-icons"  style="color: white; float: left; font-size: 25px;">turned_in</i>
-			</li>
-			
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px;  background-color:rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif; ">라이브러리</span></a>
-						<ul class="dropdown-menu">						
-							<li><a href="/subscribe/blog.mt" >구독한 블로그</a></li>
-						</ul>
-			</li>
-
 			
 			<li class="nav-item" style="margin-left: 30px; margin-top: -2px;">
 				<i class="material-icons"  style="color: white; float: left; font-size: 25px;">subject</i>
@@ -43,6 +32,20 @@
 							<li><a href="/my/library/purchases">구매 항목</a></li>
 						</ul>
 			</li>
+			
+			
+			
+			<li class="nav-item" style="margin-left: 30px; margin-top: -2px;">
+				<i class="material-icons"  style="color: white; float: left; font-size: 25px;">turned_in</i>
+			</li>
+			
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px;  background-color:rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif; ">라이브러리</span></a>
+						<ul class="dropdown-menu">						
+							<li><a href="/subscribe/blog.mt" >구독한 블로그</a></li>
+						</ul>
+			</li>
+			
 			
 			
 			<li class="nav-item" style="margin-left: 30px; margin-top: -2px;">
@@ -82,7 +85,7 @@
 			</li>
 			
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px; background-color:opacity;"><span style="color: white; font-family: sans-serif;">쪽지</span></a>
+				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px; background-color:rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif;">쪽지</span></a>
 						<ul class="dropdown-menu">						
 							<li><a href="/mail/write.mt">쪽지보내기</a></li>
 							<li><a href="/mail/list.mt?type=send">보낸쪽지함</a></li>
