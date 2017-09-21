@@ -309,7 +309,7 @@
  					<a class="home" href="/"
 						id="home"><label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">home</label></a><a href="/"><div class="home" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">홈</div></a>
  				</div> 				      
- 				<div class="col-xs-8 px-0" style="margin : 5px; margin-bottom: 30px;">
+ 				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
  					<c:choose>
 	 					<c:when test="${sessionScope.login eq map.EMAIL }">
 							<form action="/blog/postWrite" method="post">
@@ -329,8 +329,10 @@
 	 					</c:otherwise>
  					</c:choose>
  				</div>
- 			
- 				       
+ 				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;"> 				
+ 					<a href="/my/home"><label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">dashboard</label></a>
+ 					<a href="/my/home"><div class="myhome" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">MY홈</div></a>
+ 				</div> 				       
  			</div> 
  			
  			 

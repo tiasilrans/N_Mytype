@@ -8,6 +8,28 @@
 
 <style>
 
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.button1 {
+	background-color: #303030;
+}
+
+.button2 {
+	background-color: #80aaff;
+}  
+
 .box {
 	background-color:white;
 	border-radius:10px;
@@ -59,7 +81,7 @@ table.type07 td {
 	</table>
 	
 	<div align="right">
-		<input class="btn button button1" type="submit" value="보내기" id="sbtn" disabled/>
+		<input class="btn button button2" type="submit" value="보내기" id="sbtn" disabled/>
 	</div>
 	
 </div>

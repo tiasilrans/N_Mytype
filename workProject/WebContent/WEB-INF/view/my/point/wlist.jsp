@@ -45,6 +45,7 @@ table.type07 td {
 }
 </style>
 
+<section style="min-height: 10sssss0%;">
 <div class="col-xs-0 col-md-2"></div>
 <div class="box col-xs-12 col-md-8 col-lg-12">
 	<div align="center" style="min-height: 227px;">
@@ -105,6 +106,7 @@ table.type07 td {
 		</ul>
 	</div>
 </div>
+</section>
 	
 
 <script>

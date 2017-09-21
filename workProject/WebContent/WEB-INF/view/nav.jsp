@@ -8,6 +8,13 @@
 		display: none;
 	}	
 }
+
+@media ( min-width : 768px) {	
+	.search-nav{
+		display: block;
+	}	
+}
+
 </style>
 <!--navbar menu-->
 <section class="navbar-info ">
@@ -87,7 +94,7 @@
 				</ul>
 				</c:otherwise>
 			</c:choose>	
-			<ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar-right search-nav">
 				<li><form class="navbar-form form-horizontal" role="search" action="/search/main.mt">
 					<div class="input-group">
 						<input type="text" class="search-box" placeholder="마이타입 검색" name="keyword" style="color: #1a1a1a;">

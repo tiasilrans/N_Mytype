@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <script src="/module/nailthumb/jquery.nailthumb.1.1.min.js"></script>
 <link rel="stylesheet" href="/module/nailthumb/jquery.nailthumb.1.1.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <style>
 
@@ -215,8 +216,8 @@ a{ text-decoration: none; }
 <div class="col-md-8" style="margin-left: auto;"> -->
 
 			<!-- 메인쪽 로고 부분 -->
-			  <div class="container col-md-4" style="width:600px; height: 350px; " >
-			  <div id="myCarousel" class="carousel" data-ride="carousel" style="width:580px; margin: 10px; border:1px solid silver;border-radius:5px;">
+			  <div class="w3-row w3-container" style="width:1100px; height: 350px; " >
+			  <div id="myCarousel" class="carousel w3-col s5" data-ride="carousel" style="width:580px; margin: 10px; margin-right:0; border:1px solid silver;border-radius:5px;">
 			  
 			    <!-- Indicators -->
 			    <ol class="carousel-indicators">
@@ -240,11 +241,11 @@ a{ text-decoration: none; }
 			      </div>
 			    </div>
 			  </div>
-			</div>
+			
 			
 
 			<!-- 메인쪽 로고 오른쪽 부분 -->
-			<div id="secondlogo" class="col-xs-0 col-md-4">
+			<div id="secondlogo" class="w3-col s3">
 				<div class="secondlogo-head">MyType 소식</div>
 					<div class="secondlogo-body">
 						<img class="secondlogo-body-profileimg" src="/images/blogMark.png">
@@ -264,9 +265,10 @@ a{ text-decoration: none; }
 						</c:choose>
 						</span></a></div>
 			</div>
+			</div>
 
 			<!-- 목록 nav -->
-			<div class="col-xs-0 col-md-12">
+			<div class="w3-row w3-container">
 			<div style="margin-left: 10px;">
 			<ul class="nav nav-tabs" style="width: 950px;">
 			<li class="active"><a data-toggle="tab" href="#allList"><b>전체</b></a></li>
@@ -280,9 +282,9 @@ a{ text-decoration: none; }
 			<div class="tab-content" >
 			
 			<!-- 전체 게시글 배치 -->
-			<div id="allList" class="tab-pane fade in active">
+			<div id="allList" class="tab-pane fade in active w3-col-s3">
 			<c:forEach var="all" items="${listAll }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
-				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
+				<div class="incard " style="clear: right;" >
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
 						<div>${all.NICKNAME }</div>
