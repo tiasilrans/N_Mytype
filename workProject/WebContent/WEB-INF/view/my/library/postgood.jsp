@@ -71,62 +71,63 @@ a{text-decoration: none;}
 	<hr style="margin-top: 10px;"/>
 </div>
 
-	<div class="row" style="width:60%;">
-		<div align="left" style="width: 100%;">
-			<c:forEach var="all" items="${list }" begin="0" end="${list.size() < 8 ? list.size() : 8}" varStatus="vs">
-				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
-					<div class="title">
-						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
-						<div>${all.NICKNAME }</div>
-						<div style="color:#909090; font-size: 12px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="-title-blog" style="text-decoration: none; color:#909090" href="/blog/${all.URL }">${all.URL }</a></div>
-					</div>
-					
-	                <div style="height:65px; margin:12px; padding-bottom: 5px;">
-						<a href="/${all.URL}/post/${all.NUM}" style="font-size: 15px; text-decoration: none; color: #333333; padding-bottom: 5px;">
-							${all.TITLE }
-						
-						<c:if test="${all.IMG.length() > 10}">
-		                		<div class="nailthumb-column-metadata" id="thumbnail">
-		                			${all.IMG }
-		                		</div>  
-	                	</c:if>
-	                	</a>
-						<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
-							${all.FCONTENT }
-						</a>
-					</div> <br/><br/><br/>
-	                
-	                <div>
-		                <c:set var="msg" value="${all.HASH }"/>
-						<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
-						<c:forEach items="${hashtag}" var="hash">
-						<span class="conbody-hashtag">
-							<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
-						</span>
-						</c:forEach>
-	                </div>
-	                
-	                <!-- footer -->
-					<div class="confooter">
-						<c:choose>
-						<c:when test="${all.HEART == null}">
-							<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
-						</c:when>
-						<c:otherwise>
-							<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
-						</c:otherwise>
-						</c:choose>
-							<span class="confooter-count heart-${all.NUM}">${all.GOOD }</span>
-					</div>
+<div class="row" style="width: 60%;">
+	<div align="left" style="width: 100%;">
+		<c:forEach var="all" items="${list }" begin="0" end="${list.size() < 8 ? list.size() : 8}" varStatus="vs">
+			<div class="incard col-xs-0 col-md-3" style="clear: right;" >
+				<div class="title">
+					<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
+					<div>${all.NICKNAME }</div>
+					<div style="color:#909090; font-size: 12px;"><fmt:formatDate value="${all.PDATE }" pattern="yy.MM.dd"/> · <a class="-title-blog" style="text-decoration: none; color:#909090" href="/blog/${all.URL }">${all.URL }</a></div>
 				</div>
-			
-				<c:if test="(vs+1) % 3 = 0">
-					<br/>
-				</c:if>
 				
-			</c:forEach>
-		</div>
+                <div style="height:65px; margin:12px; padding-bottom: 5px;">
+					<a href="/${all.URL}/post/${all.NUM}" style="font-size: 15px; text-decoration: none; color: #333333; padding-bottom: 5px;">
+						${all.TITLE }
+					
+					<c:if test="${all.IMG.length() > 10}">
+	                		<div class="nailthumb-column-metadata" id="thumbnail">
+	                			${all.IMG }
+	                		</div>  
+                	</c:if>
+                	</a>
+					<a href="/${all.URL}/post/${all.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
+						${all.FCONTENT }
+					</a>
+				</div> <br/><br/><br/>
+                
+                <div>
+	                <c:set var="msg" value="${all.HASH }"/>
+					<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
+					<c:forEach items="${hashtag}" var="hash">
+					<span class="conbody-hashtag">
+						<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
+					</span>
+					</c:forEach>
+                </div>
+	                
+                <!-- footer -->
+				<div class="confooter">
+					<c:choose>
+					<c:when test="${all.HEART == null}">
+						<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${all.NUM}" value="heart-${all.NUM}"></button>
+					</c:otherwise>
+					</c:choose>
+					
+					<span class="confooter-count heart-${all.NUM}">${all.GOOD }</span>
+				</div>
+			</div>
+			
+			<c:if test="(vs+1) % 3 = 0">
+				<br/>
+			</c:if>
+			
+		</c:forEach>
 	</div>
+</div>
 
 <ul class="pagination">
 	<c:forEach var="i" begin="1" end="${page}">

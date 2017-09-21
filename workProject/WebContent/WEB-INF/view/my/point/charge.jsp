@@ -10,48 +10,27 @@
 <style>
 
 body {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
 	background: whitesmoke;
 }
 
-label{
-	margin-bottom: 2%;
-	width: 80px;
-}
-
-.scard {
-    position: relative;
-    display: block;
-    width : 800px;
-	height: 700px;
-    margin-bottom: .75rem;
-    background-color: #fff;
-    border-radius: .25rem;
-    border: 1px solid rgba(0,0,0,.125);
-}
-
-.card-block {
-	margin-left: 15px;
-    position: relative;
-    vertical-align: middle;
-}
-
-.title{
-	padding-top :20px;
-	margin-left: 15px;
-	margin-bottom:25;
-}
-
-.ptable{
-	margin-left: 20px;
-	margin-right:100%;
-	margin-bottom: 5%;
-	width: 80%;
+.box {
+	position: relative;
+	background-color:white;
+	border-radius:10px;
+	margin: 20px;
+	width: 70%;
+	padding: 20px;
 }
 
 </style>
 
+<section style="min-height: 90%;">
 <form class="form-inline form-horizontal" action="/my/point/chargeExec">
-	<div class="scard col-xs-offset-2 col-md-offset-2">
+	<div class="col-xs-0 col-md-2"></div>
+	<div class="box col-xs-12 col-md-8 col-lg-12">
 		<div class="title" style="margin-bottom: 40px;">
 			<span style="float:left; font-size: 18px; margin-left: 5px;"><b>충전하기</b></span>
 		</div><hr/>
@@ -60,7 +39,7 @@ label{
 			<span style="float:left; font-size: 17px; margin-left: 5px;">1. 충전할 포인트의 양을 선택해 주세요.</span>
 		</div><br/>
 		
-		<table class="card-block table ptable">
+		<table class="table" style="margin-left: 15px;">
 		<thead>
 			<tr>
 	        	<th width="30%">충전포인트</th>
@@ -96,11 +75,11 @@ label{
 		</div> <br/><br/>
 		
 		<div class="card-block" style="float:left; padding-left:0; padding-right:60px;">
-			<label style="color: #606060;">이름</label>
+			<label style="color: #606060; width: 42px;">이름</label>
 			<input type="text" name="name" class="form-control" style="width:70%;" 
-			 <c:if test="${info.NICKNAME ne null }"> value="${info.NICKNAME }" </c:if> /> <br/>
-		
-			<label style="color: #606060;">연락처</label>
+			 <c:if test="${info.NICKNAME ne null }"> value="${info.NICKNAME }" </c:if> />
+			 <br/>
+			<label style="color: #606060; padding-top: 3px;">연락처</label>
 			<input type="text" name="phonenumber" class="form-control" style="width:70%;" />
 		</div><br/>
 			
@@ -142,7 +121,7 @@ label{
 			</div>
 		</div> <br/>
 	
-		<div class="card-blcok " style="margin-bottom: 0px;">
+		<div>
 			<span>
 				<label style="width:100px; margin-top:10px; margin-left: 15px;">
 					<b>충전 포인트 : </b>
@@ -160,7 +139,7 @@ label{
 		
 	</div>
 </form>
-	
+</section>
 
 
 

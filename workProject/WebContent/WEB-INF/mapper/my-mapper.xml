@@ -69,6 +69,10 @@
 	</select>
 	
 	
+	<!-- 신분증으로 성인인증 신청 -->
+	<update id="adultupdate" parameterType="java.util.HashMap">
+		update member set certified=#{img} where email=#{email}
+	</update>
 </mapper>
 
 

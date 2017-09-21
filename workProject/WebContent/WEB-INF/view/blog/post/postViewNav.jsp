@@ -42,11 +42,9 @@
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#" style="background-image: none; background-color: white; margin: 0px; right: 25px;"><i class="material-icons" style="color: black;">more_vert</i></a>
 						  <ul class="dropdown-menu" style=" right: 20px;">     
-                            	<li><a href=""><i class="material-icons" style="color: #1a1a1a; font-size: 23px; float: left;">bookmark_border</i>　　<span style="margin-left: -20px;">읽기 목록에 추가</span></a></li>   
-                            	<li><a href=""><i class="material-icons" style="color: #1a1a1a; font-size: 23px; float: left;">insert_link</i>　　<span style="margin-left: -20px;">링크 복사</span> </a></li>
                             	<c:choose>
                             	<c:when test="${sessionScope.login eq post.EMAIL }">
-                            		<li><a href="#" onclick="updateChk();"><i class="material-icons" style="color: #1a1a1a; font-size: 23px; float: left;">clear</i>　　<span style="margin-left: -20px;">편집하기</span> </a></li>
+                            		<li><a href="#" onclick="updateChk();"><i class="material-icons" style="color: #1a1a1a; font-size: 23px; float: left;">insert_link</i>　　<span style="margin-left: -20px;">편집하기</span> </a></li>
                             		<li><a href="#" onclick="delchk();"><i class="material-icons" style="color: #1a1a1a; font-size: 23px; float: left;">clear</i>　　<span style="margin-left: -20px;">삭제하기</span> </a></li>
                             	</c:when>
                             	<c:otherwise>

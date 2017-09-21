@@ -15,8 +15,7 @@ import org.springframework.stereotype.Service;
 public class PostDao {	
 	@Autowired
 	SqlSessionFactory factory;
-	
-	//占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쌘몌옙占쏙옙
+
 	public List<Map> sublist(List<Map> list){
 		for(Map map : list){
 			String fcontent = (String)map.get("FCONTENT");
@@ -110,7 +109,7 @@ public class PostDao {
 		}		
 	}
 	
-	// 占쏙옙慣占� 占쏙옙占쏙옙 占쏙옙占쏙옙트 占쏙옙占�
+	
 	public int postCount(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -126,7 +125,24 @@ public class PostDao {
 		
 	}
 	
-		// 占쏙옙慣占� 占쏙옙占쏙옙징
+	
+	public int postLikeCount(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			int r = session.selectOne("post.post_Like_count", map);
+			return r;
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("postLikeCount ERROR : " + e.toString());
+			return 0;
+		}finally {
+			session.close();
+		}
+		
+	}
+	
+	
+	
 	public List<Map> blogPostList(Map map){		
 		List<Map> list = new ArrayList<>();
 		SqlSession session = factory.openSession();
@@ -158,24 +174,24 @@ public class PostDao {
 		
 	}
 	
-	public List<Map> ad_postList(Map map){		
+	
+	
+	public List<Map> categoryPostList(Map map){		
 		List<Map> list = new ArrayList<>();
 		SqlSession session = factory.openSession();
 		try {
-			list = session.selectList("post.admin_postList", map);			
+			list = session.selectList("post.category_post_list", map);			
 			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("ad_postList ERROR : " + e.toString());
+			System.out.println("categoryPostList ERROR : " + e.toString());
 			return list;
 		}finally {
 			session.close();
 		}		
 	}
 	
-	
-	
-	//占쏙옙체 占쌉시뱄옙 占쌀뤄옙占쏙옙占쏙옙
+
 	public List<Map> listAll(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -192,7 +208,7 @@ public class PostDao {
 		}
 	}
 	
-	//占쏙옙占쏙옙占쏙옙 占쌉시뱄옙 占쌀뤄옙占쏙옙占쏙옙
+
 	public List<Map> listLike(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -209,7 +225,7 @@ public class PostDao {
 		}
 	}
 	
-	// 占승그곤옙 占쏙옙載� 占쏙옙占쏙옙트 占쏙옙占쏙옙트 占쌀뤄옙占쏙옙占쏙옙
+
 	public List<Map> listTag(Map map){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
@@ -237,7 +253,7 @@ public class PostDao {
 		}
 	}
 
-	//占쏙옙占싣울옙
+
 	public int postgoodAdd(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -254,7 +270,7 @@ public class PostDao {
 		}
 	}
 	
-	//占쏙옙占싣울옙 占쏙옙占�
+
 	public int postgoodRemove(Map map){
 		SqlSession session = factory.openSession();
 		try{
@@ -271,14 +287,14 @@ public class PostDao {
 		}
 	}
 	
-	//占쌔쏙옙占승깍옙 占쌀뤄옙占쏙옙占쏙옙(占싯삼옙占쏙옙占쏙옙)
+
 	public List hashlist(String keyword){
 		SqlSession session = factory.openSession();
 		List<Map> list = new ArrayList<>();
 		List result = new ArrayList<>();
 		try{
 			list = session.selectList("post.selectHashtag", keyword);
-			//占쏙옙占쏙옙占쏙옙 占쌔쏙옙占승깍옙 占쏙옙占쏙옙트 占쏙옙占쏙옙占썽서 占쏙옙占시몌옙占싹곤옙 占쏙옙치占쏙옙占쏙옙 확占쏙옙占쏙옙 result占쏙옙 占쌩곤옙 
+ 
 			for(Map m : list){
 				String[] arr = ((String)m.get("HASH")).split("\\s");
 				
@@ -299,7 +315,7 @@ public class PostDao {
 	}
 	
 	
-	//占쌉시뱄옙 占쏙옙占쏙옙 占쏙옙占싹깍옙(占쏙옙占쏙옙징)
+
 	public int selectcount(Map map){
 		SqlSession session = factory.openSession();
 		Map list = new HashMap<>();
@@ -346,6 +362,37 @@ public class PostDao {
 			System.out.println("PostBuyPost Error");
 			e.printStackTrace();
 			return false;
+		}finally{
+			session.close();
+		}
+	}
+	
+	public boolean surpport(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			int i = session.insert("point.support", map);
+			i = session.insert("point.supportlog", map);
+			i = session.insert("point.supportedlog", map);
+			return true; 
+		}catch(Exception e){
+			System.out.println("PostSupport Error");
+			e.printStackTrace();
+			return false;
+		}finally{
+			session.close();
+		}
+	}
+	
+	public List<Map> blogSearch(Map map){
+		SqlSession session = factory.openSession();
+		List<Map> list = new ArrayList<>();
+		try{
+			list = session.selectList("post.search", map);
+			return list; 
+		}catch(Exception e){
+			System.out.println("blogSearch Error");
+			e.printStackTrace();
+			return list;
 		}finally{
 			session.close();
 		}

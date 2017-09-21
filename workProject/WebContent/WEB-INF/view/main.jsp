@@ -208,8 +208,8 @@ a{ text-decoration: none; }
 
 </style>   
 <div class="row">
-<div class="col-md-2" style="margin-left: 40px;"></div>
-<div class="col-md-8" style="margin-left: auto; margin-bottom: 100px;">
+<div class="col-lg-3 col-md-3"></div>
+<div class="col-lg-7 col-md-8" style="margin-left: auto;">
 
 			<!-- 메인쪽 로고 부분 -->
 			  <div class="container col-md-4" style="width:600px; height: 350px; " >
@@ -246,13 +246,22 @@ a{ text-decoration: none; }
 					<div class="secondlogo-body">
 						<img class="secondlogo-body-profileimg" src="/images/blogMark.png">
 						<div class="secondlogo-body-title">
-							<span ><a href="/" class="secondlogo-body-title-name"><b>MyType 공식 블로그</b></a></span><br/>
+							<span ><a href="/blog/${notice.URL}" class="secondlogo-body-title-name"><b>MyType 공식 블로그</b></a></span><br/>
 							<span class="secondlogo-body-title-blog">blog.mytypeblog.com</span>
 						</div>	
 					</div>
-						<div class="secondlogo-body-content"><span>
-						</span></div>
+						<div class="secondlogo-body-content"><a href="/${notice.URL}/post/${notice.NUM}"><span style="color: gray; font-size: 12;">
+						<c:choose>
+						<c:when test="${notice.SUBCONTET ne null}">
+							${notice.SUBCONTENT }
+						</c:when>
+						<c:otherwise>
+							${notice.FCONTENT }
+						</c:otherwise>
+						</c:choose>
+						</span></a></div>
 			</div>
+
 			<!-- 목록 nav -->
 			<div class="col-xs-0 col-md-12">
 			<div style="margin-left: 10px;">
@@ -269,7 +278,7 @@ a{ text-decoration: none; }
 			
 			<!-- 전체 게시글 배치 -->
 			<div id="allList" class="tab-pane fade in active">
-				<c:forEach var="all" items="${listAll }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
+			<c:forEach var="all" items="${listAll }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
 				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
