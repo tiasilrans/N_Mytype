@@ -76,7 +76,6 @@ a{text-decoration: none;}
     color: #fff;
     cursor: default;
     background-color: #0d0d0d;
-    border-color: #ffffff;
 }
 
 .div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
