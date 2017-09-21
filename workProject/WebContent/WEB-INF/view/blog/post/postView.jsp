@@ -101,7 +101,7 @@ input[type=checkbox]:checked+label:before {
 								style="margin: 10px; vertical-align: middle;">
 								<c:choose>
 									<c:when test="${post.IMAGE != null}">
-										<img src="/images/profile/${post.IMAGE}"	onerror="this.src='/images/avatar_yellow.png'"
+										<img src="/images/profile/${post.IMAGE}" 						onerror="this.src='/images/avatar_yellow.png'"
 											class="media-object"
 											style="width: 45px; border-radius: 30px; width: 32px; height: 32px; margin-top: -5px;">
 									</c:when>
@@ -211,7 +211,7 @@ input[type=checkbox]:checked+label:before {
 							
 							<c:choose>
 							<c:when test="${obj.IMAGE ne null}">
-								<a><img src="/images/profile/${obj.IMAGE ne null}"   style="border-radius: 40px; width: 40px; height: 40px; margin-top:5px;"></a>
+								<a><img src="/images/profile/${obj.IMAGE}"  onerror="this.src='/images/avatar_yellow.png'"  style="border-radius: 40px; width: 40px; height: 40px; margin-top:5px;"></a>
 							</c:when>
 							<c:otherwise>
 								<a><img src="/images/avatar_yellow.png" style="border-radius: 40px; width: 40px; height: 40px; margin-top:5px;"></a>
