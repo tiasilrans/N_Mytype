@@ -11,11 +11,9 @@
 <link rel="stylesheet" href="/css/blogViewcss.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
-
 #app-menu-toggler:hover {
     box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 5px 10px 0 rgba(0,0,0,.05), 0 10px 20px 0 rgba(0,0,0,.05);
 }
-
 #app-menu-toggler {
     z-index: 1060;
     padding: 8px;
@@ -23,30 +21,25 @@
     background-color: #fff;
     box-shadow: 0 0 0 1px rgba(0,0,0,.15);
 }
-
 .btn-secondary:hover, .btn-secondary.focus, .btn-secondary:focus {
     color: #303030!important;
     background-color: #f5f5f5;
     border-color: #e5e5e5;
 }
-
 .btn-secondary:hover {
     color: #373a3c;
     background-color: #e6e6e6;
     border-color: #adadad;
 }
-
 .btn{
 	padding: 0px;
 }
-
 #app-menu-container {
     position: fixed;
     right: 16px;
     bottom: 16px;
     z-index: 1050;
 }
-
  #app-menu {
     display: none;
     position: fixed;
@@ -63,12 +56,9 @@
     background-color: #fff;
     box-shadow: 0 0 0 1px rgba(0,0,0,.05), 0 5px 10px 0 rgba(0,0,0,.05), 0 10px 20px 0 rgba(0,0,0,.05);
 }
-
-
  a:link { color: white; text-decoration: none;}
  a:visited { color: white; text-decoration: none;}
  a:hover { color: white; text-decoration: none;}
-
 .post-body{
 	background-color:white;
 	width: 100%;
@@ -90,16 +80,12 @@ footer {
 	margin: 20px;
 	margin-top: -20px;  
 }
-
-
 .div-pagination a {
     color: #0d0d0d;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
 }
-
-
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
     z-index: 3;
     color: #fff;
@@ -107,19 +93,16 @@ footer {
     background-color: #0d0d0d;
     border-color: #ffffff;
 }
-
 .div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
-
 .srbox {
 	border: 1px solid;
 	border-color: #d9d9d9;
 	width: 60%;
 	padding: 0px;     
 }
-
 </style>  
 
-<div class="row" align="center">
+<div class="row" align="center" style="padding-top: 50px;">
 	<div class="col-xs-0 col-md-1"></div>
 	<div class="col-xs-12 col-md-10">
 	<c:if test="${searchMode}">
@@ -154,7 +137,14 @@ footer {
 								   <div class="media">
 								    	<div class="media-left">
 										 	<div class="media-left" style="vertical-align: middle;">
-										 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+										 		<c:choose>
+										 		<c:when test="${obj.IMAGE != null}">
+											 		<img src="/images/profile/${obj.IMAGE}" onerror="this.src='/images/avatar_yellow.png'" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+										 		</c:when>
+										 		<c:otherwise>
+											 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+										 		</c:otherwise>
+										 		</c:choose>
 										 	</div> 
 										  	<div class="media-body"> 
 										  		<span style="font-size: 12px; color: black;">닉네임</span>										 	
@@ -196,6 +186,7 @@ footer {
 				<div class="col-xs-8" align="left" style="color: black;">
 				발행한 포스트가 없습니다.<br /> <br />
 					<form action="/blog/postWrite" method="post">
+						<input type="hidden" name="mode" value="new"/>
 						<input type="hidden" name="title" value="${map.TITLE }"/>
 						<input type="hidden" name="url" value="${map.URL }"/>
 						<button class="button button1" type="submit" title="새 포스트를 작성합니다.">새 포스트 쓰기</button>
@@ -264,7 +255,6 @@ footer {
 									class="post-count"> ${obj.cnt }</span></a></li>
 							</c:if>
 							</c:forEach>
-
 						</ul>
 					</div>
 				</section>
@@ -280,7 +270,6 @@ footer {
 	</div>
 	<div class="col-xs-0 col-md-1"></div>
 </div>
-
  <div id="app-menu" style="display: none;">
  	<div>
  		<div>
@@ -302,6 +291,7 @@ footer {
  					<c:choose>
 	 					<c:when test="${sessionScope.login eq map.EMAIL }">
 							<form action="/blog/postWrite" method="post">
+								<input type="hidden" name="mode" value="new"/>
 								<input type="hidden" name="title" value="${map.TITLE }"/>
 								<input type="hidden" name="url" value="${map.URL }"/>
 								<button type="submit" title="새 포스트를 작성합니다." style="border: 0px; background-color: white; padding-left: 0px; ">
@@ -335,8 +325,6 @@ footer {
 			target.css("display", "none"); 
 		}	
 	};
-
-
 	//app-menu-disply
 	$("#app-menu-toggler").on("click", function(){
 		var menu = $("#app-menu");
@@ -407,9 +395,6 @@ footer {
 		
 	};
 	
-
 	
 	
-
 </script>
-								

@@ -39,7 +39,8 @@
 							<li style="margin-bottom: 8px;"><a style="font-weight: bold; background-color: #66a3ff; color: white;" href="/blog/${blog.URL}">${blog.TITLE}</a></li> 
 							<li><a href="/blog/${blog.URL}/categories"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">toc</i>  <span style="margin-left: 10px;">카테고리</span></a></li> 
 							<li><a href="/blog/${blog.URL}/subscribers"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">face</i>  <span style="margin-left: 10px;">구독자</span></a></li>   
-							<li><a href="/blog/${blog.URL}/setting"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">settings</i>  <span style="margin-left: 10px;">설정</span></a></li>  
+							<li style="margin-bottom: 13px;"><a href="/blog/${blog.URL}/setting"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">settings</i>  <span style="margin-left: 10px;">설정</span></a></li>
+							  
 						</c:forEach>
 						<hr/>
 						</c:if>     

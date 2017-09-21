@@ -39,7 +39,7 @@
   		<!-- 페이징 -->
  	<select id="main_page_view" parameterType="java.util.HashMap" resultType="java.util.HashMap">
  		select * from (select rownum r, tmp.* from 
- 							(select * from post where url=#{url} order by num desc)tmp 
+ 							(select * from (select p.*,m.image from post p left join member m on p.email=m.email) where url=#{url} order by num desc)tmp 
  						) where r between #{start} and #{end}
  	</select>
  		<!-- 해당 포스트 좋아요 수 -->
@@ -50,7 +50,7 @@
  	<!-- 포스트 불러오기 -->
  		<!-- 포스트 번호로 하나의 포스트 불러오기 -->
  	<select id="one_post" parameterType="java.util.HashMap" resultType="java.util.HashMap">
- 		select * from(SELECT * FROM post where num=#{num})p left join member m on m.email=p.email
+ 		select * from(SELECT * FROM (select p.*,m.image from post p left join member m on p.email=m.email) where num=#{num})p left join member m on m.email=p.email
  	</select>
  	
  	
