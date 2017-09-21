@@ -151,7 +151,7 @@ input[type=checkbox]:checked+label:before {
 									<button class="button button1" data-toggle="modal" data-target="#login-form">로그인</button>
 								</c:when>
 								<c:otherwise>
-									<button class="button button1" id="buybtn" data-toggle="modal" data-target="#buy-form">구매하기</button>
+									<button class="button button1" id="buybtn" data-toggle="modal" data-target="#buy-form" style="margin-left: 26px;">구매하기</button>
 								</c:otherwise>
 								</c:choose>
 								</div>
@@ -170,7 +170,7 @@ input[type=checkbox]:checked+label:before {
 							창작활동을 응원하고 싶으세요?</span>
 					</div>
 					<div style="display: table-cell;">
-						<button class="button button1" id="sptbtn" data-toggle="modal" data-target="#spt-form">후원하기</button>
+						<button class="button button1" id="sptbtn" data-toggle="modal" data-target="#spt-form" style="margin-left: 23px;">후원하기</button>
 					</div>
 				</div>
 				</c:if>
