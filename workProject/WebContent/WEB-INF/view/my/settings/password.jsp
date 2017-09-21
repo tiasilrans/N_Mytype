@@ -12,7 +12,7 @@ a:hover {
 }
 
 label{
-	width: 80px;
+	width: 85px;
 	font-weight: normal;
 	margin-right: 24%;
 }
@@ -40,7 +40,7 @@ label{
 </style>
 
 
-<form class="form-inline form-horizontal" action="/my/settings/password.mt" method="post">
+<form class="form-inline form-horizontal" action="/my/settings/password.mt">
 	<div class="col-xs-0 col-md-2"></div>
 	<div class="box col-xs-12 col-md-8 col-lg-12">
 		<div class="title">
