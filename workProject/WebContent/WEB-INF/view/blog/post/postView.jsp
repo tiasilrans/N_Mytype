@@ -99,16 +99,8 @@ input[type=checkbox]:checked+label:before {
 						<div class="media-profile">
 							<div class="media-left"
 								style="margin: 10px; vertical-align: middle;">
-								<c:choose>
-								<c:when test="${post.IMAGE ne null }">
-								<img src="/images/profile/${post.IMAGE}" class="media-object" onerror="this.src='/images/avatar_yellow.png'"
-									style="width: 45px; border-radius: 30px; width: 32px; height: 32px; margin-top: -5px;">
-								</c:when>
-								<c:otherwise>
 								<img src="/images/avatar_yellow.png" class="media-object"
 									style="width: 45px; border-radius: 30px; width: 32px; height: 32px; margin-top: -5px;">
-								</c:otherwise>
-								</c:choose>
 							</div>
 							<div class="media-body">
 								<h4 class="media-heading"
@@ -207,16 +199,7 @@ input[type=checkbox]:checked+label:before {
 					<div class="comment-list" style="margin-top: 30px; margin-bottom: 30px;">
 						<div class="media">
 							<div class="media-left">
-								<a>
-								<c:choose>
-								<c:when test="${obj.IMAGE ne null }">
-									<img src="/images/profile/${obj.IMAGE}" onerror="this.src='/images/avatar_yellow.png'" style="border-radius: 40px; width: 40px; height: 40px; margin-top:5px;">
-								</c:when>
-								<c:otherwise>
-									<img src="/images/avatar_yellow.png" style="border-radius: 40px; width: 40px; height: 40px; margin-top:5px;">
-								</c:otherwise>
-								</c:choose>
-								</a>
+								<a><img src="/images/avatar_yellow.png" style="border-radius: 40px; width: 40px; height: 40px; margin-top:5px;"></a>
 							</div>
 							<div class="media-body">
 								<div class="comment-header">
