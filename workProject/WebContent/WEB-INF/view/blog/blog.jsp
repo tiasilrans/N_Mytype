@@ -119,7 +119,7 @@ footer {
 
 </style>  
 
-<div class="row" align="center">
+<div class="row" align="center" style="padding-top: 50px;">
 	<div class="col-xs-0 col-md-1"></div>
 	<div class="col-xs-12 col-md-10">
 	<c:if test="${searchMode}">
@@ -196,6 +196,7 @@ footer {
 				<div class="col-xs-8" align="left" style="color: black;">
 				발행한 포스트가 없습니다.<br /> <br />
 					<form action="/blog/postWrite" method="post">
+						<input type="hidden" name="mode" value="new"/>
 						<input type="hidden" name="title" value="${map.TITLE }"/>
 						<input type="hidden" name="url" value="${map.URL }"/>
 						<button class="button button1" type="submit" title="새 포스트를 작성합니다.">새 포스트 쓰기</button>
@@ -302,6 +303,7 @@ footer {
  					<c:choose>
 	 					<c:when test="${sessionScope.login eq map.EMAIL }">
 							<form action="/blog/postWrite" method="post">
+								<input type="hidden" name="mode" value="new"/>
 								<input type="hidden" name="title" value="${map.TITLE }"/>
 								<input type="hidden" name="url" value="${map.URL }"/>
 								<button type="submit" title="새 포스트를 작성합니다." style="border: 0px; background-color: white; padding-left: 0px; ">
