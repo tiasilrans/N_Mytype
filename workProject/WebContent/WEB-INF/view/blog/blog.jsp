@@ -131,7 +131,7 @@ footer {
 		<div class="row">
 		<c:choose>
 			<c:when test="${list ne null }">
-				<div class="col-xs-8 blog-post-list" align="left">
+				<div class="col-xs-8 col-lg-8 blog-post-list" align="left">
 					<div class="blog-post-list">
 						<c:forEach var="obj" items="${list }">
 							<c:if test="${obj.NOTICE}">
@@ -207,7 +207,7 @@ footer {
 		</c:choose>
 			
 			
-			<div class="col-xs-4">
+			<div class="col-xs-4 col-lg-4">
 
 				<section class="section box">
 					<div class="form-group" align="left" style="margin-bottom: -15px;">
