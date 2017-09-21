@@ -70,7 +70,6 @@ a{text-decoration: none;}
     text-decoration: none;
 }
 
-<<<<<<< HEAD
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
     z-index: 3;
     color: #fff;
@@ -80,24 +79,9 @@ a{text-decoration: none;}
 }
 
 .div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
-=======
-
-.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
-    z-index: 3;
-    color: #fff;
-    cursor: default;
-    background-color: #0d0d0d;
-    border-color: rgba( 255, 0, 0, 0 );
-}
-
-.div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
-
-}
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 
 </style>
 
-<<<<<<< HEAD
 <div class="col-lg-3 col-md-3"></div>
 <div class="col-lg-7 col-md-6" style="margin-left: auto;">
 	<div class="title">
@@ -105,15 +89,6 @@ a{text-decoration: none;}
 		<br/><hr style="margin-top: 10px;"/>
 	</div>
 	<div class="w3-row w3-container" style="width:1100px;">
-=======
-<div style="width: 60%;" align="left">
-	<h2 style="color: white;">구매한 항목</h2>
-	<hr style="margin-top: 10px;"/>
-</div>
-
-<div class="row" style="width:60%; margin-right: -250px;">
-	<div align="left" style="width: 100%;">
->>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 		<c:forEach var="all" items="${list }" begin="0" end="${list.size() < 8 ? list.size() : 8}" varStatus="vs">
 			<div class="incard w3-col s3" style="clear: right;" >
 				<div class="title">
