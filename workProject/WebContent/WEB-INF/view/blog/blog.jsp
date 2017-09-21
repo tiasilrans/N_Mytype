@@ -12,18 +12,9 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 
-.box {
-	border: 1px solid;
-	border-color: #d9d9d9;
-	width: 100%;
-	padding: 30px;   
-	border-radius: 10px;  
-}
-
 #app-menu-toggler:hover {
     box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 5px 10px 0 rgba(0,0,0,.05), 0 10px 20px 0 rgba(0,0,0,.05);
 }
-
 #app-menu-toggler {
     z-index: 1060;
     padding: 8px;
@@ -31,30 +22,25 @@
     background-color: #fff;
     box-shadow: 0 0 0 1px rgba(0,0,0,.15);
 }
-
 .btn-secondary:hover, .btn-secondary.focus, .btn-secondary:focus {
     color: #303030!important;
     background-color: #f5f5f5;
     border-color: #e5e5e5;
 }
-
 .btn-secondary:hover {
     color: #373a3c;
     background-color: #e6e6e6;
     border-color: #adadad;
 }
-
 .btn{
 	padding: 0px;
 }
-
 #app-menu-container {
     position: fixed;
     right: 16px;
     bottom: 16px;
     z-index: 1050;
 }
-
  #app-menu {
     display: none;
     position: fixed;
@@ -71,42 +57,36 @@
     background-color: #fff;
     box-shadow: 0 0 0 1px rgba(0,0,0,.05), 0 5px 10px 0 rgba(0,0,0,.05), 0 10px 20px 0 rgba(0,0,0,.05);
 }
-
-
  a:link { color: white; text-decoration: none;}
  a:visited { color: white; text-decoration: none;}
  a:hover { color: white; text-decoration: none;}
-
 .post-body{
 	background-color:white;
 	width: 100%;
-	padding-top: 0px;
+	padding-top: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
-    padding-left: 40px;    
+    padding-left: 20px;   
+ 	margin: 20px;  
+ 	margin-top: -1.3px;
 }   
  
-.ft {
+footer {
 	background-color:white;
 	width: 100%;
 	padding-top: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
     padding-left: 20px;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-	margin-bottom: 40px;
+	margin: 20px;
+	margin-top: -20px;  
 }
-
-
 .div-pagination a {
     color: #0d0d0d;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
 }
-
-
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
     z-index: 3;
     color: #fff;
@@ -114,40 +94,20 @@
     background-color: #0d0d0d;
     border-color: #ffffff;
 }
-
 .div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
-
 .srbox {
-	background-color:white;
+	border: 1px solid;
+	border-color: #d9d9d9;
 	width: 60%;
-	padding: 0px; 
-	border-radius: 10px;    
+	padding: 0px;     
 }
-
-.post-header{
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	background-color:white;
-	padding: 10px 10px 0px 10px;
-	height: 50px; 
-	
-}
-
-.nav-link:hover{
-	border-left: 1px solid;
-	border-left-color: red;
-	
-
-}
-
-
 </style>  
 
 <div class="row" align="center" style="padding-top: 50px;">
 	<div class="col-xs-0 col-md-1"></div>
 	<div class="col-xs-12 col-md-10">
 	<c:if test="${searchMode}">
-			<div class="search-result srbox" align="left" style="padding: 1.75rem; margin-top: .5rem; margin-left:-520px; margin-bottom: 40px;">
+			<div class="search-result srbox" align="left" style="padding: 1.75rem; margin-top: .5rem; margin-left: -550px; margin-bottom: 40px;">
 				<div style="font-size: 12; font-family: sans-serif; color: #999999;">검색결과</div>
 				<div style="font-size: 20; font-family: sans-serif;">${keyword }</div>
 			</div>
@@ -155,14 +115,14 @@
 		<div class="row">
 		<c:choose>
 			<c:when test="${list ne null }">
-				<div class="col-xs-8 col-lg-8 blog-post-list" align="left">
+				<div class="col-xs-8 blog-post-list" align="left">
 					<div class="blog-post-list">
 						<c:forEach var="obj" items="${list }">
-						<header class="post-header">
-							<c:if test="${obj.NOTICE}">								
-								<img src="/images/notice.png">								
+							<c:if test="${obj.NOTICE}">
+								<header class="post-header" style="margin-bottom: -20px;">
+									<img src="/images/notice.png" style="margin-left: 40px; ">
+								</header>
 							</c:if>
-							</header>
 							<div class="post-body">
 								<a href="/${obj.URL }/post/${obj.NUM}" style="color: #0d0d0d;">
 									<h2 style="color: black; font-family: sans-serif; font-size: 20px; margin: 0px;">${obj.TITLE }</h2>								
@@ -174,11 +134,18 @@
 									</div>
 								</a>
 							</div>      
-							<div class="ft">
+							<footer>
 								   <div class="media">
 								    	<div class="media-left">
 										 	<div class="media-left" style="vertical-align: middle;">
-										 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+										 		<c:choose>
+										 		<c:when test="${obj.IMAGE != null}">
+											 		<img src="/images/profile/${obj.IMAGE}" onerror="this.src='/images/avatar_yellow.png'" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+										 		</c:when>
+										 		<c:otherwise>
+											 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+										 		</c:otherwise>
+										 		</c:choose>
 										 	</div> 
 										  	<div class="media-body"> 
 										  		<span style="font-size: 12px; color: black;">닉네임</span>										 	
@@ -203,7 +170,7 @@
 											</div>
 										</div>						
 								</div>
-							</div>
+							</footer>
 						</c:forEach>				
 					</div>  
 					<div class="div-pagination" style="text-align: center;" > 
@@ -214,7 +181,7 @@
 							</ul> 
 					</div>
 				</div>
-			</c:when> 
+			</c:when>
 			<c:otherwise>			
 				<c:if test="${sessionScope.login eq map.EMAIL }">
 				<div class="col-xs-8" align="left" style="color: black;">
@@ -231,7 +198,7 @@
 		</c:choose>
 			
 			
-			<div class="col-xs-4 col-lg-4">
+			<div class="col-xs-4">
 
 				<section class="section box">
 					<div class="form-group" align="left" style="margin-bottom: -15px;">
@@ -289,7 +256,6 @@
 									class="post-count"> ${obj.cnt }</span></a></li>
 							</c:if>
 							</c:forEach>
-
 						</ul>
 					</div>
 				</section>
@@ -305,7 +271,6 @@
 	</div>
 	<div class="col-xs-0 col-md-1"></div>
 </div>
-
  <div id="app-menu" style="display: none;">
  	<div>
  		<div>
@@ -314,16 +279,16 @@
  					<a href="/blog/${map.url }"><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">사용자 이름</span></a> 					 
  				</div>
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
- 					<span><i class="material-icons" style="color: #005ce6; font-size: 26px;">notifications_none</i></span> 
+ 					<span><i class="material-icons" style="color: #a6a6a6; font-size: 26px;">notifications_none</i></span> 
  				</div> 				
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
  					<a href="/logout.mt"><i class="material-icons" title="로그아웃" style="color: #a6a6a6; font-size: 26px;">power_settings_new</i></a>
  				</div> 				
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
  					<a class="home" href="/"
-						id="home"><label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -3px;">home</label></a><a href="/"><div class="home" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">홈</div></a>
+						id="home"><label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">home</label></a><a href="/"><div class="home" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">홈</div></a>
  				</div> 				      
- 				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
+ 				<div class="col-xs-8 px-0" style="margin : 5px; margin-bottom: 30px;">
  					<c:choose>
 	 					<c:when test="${sessionScope.login eq map.EMAIL }">
 							<form action="/blog/postWrite" method="post">
@@ -332,21 +297,19 @@
 								<input type="hidden" name="url" value="${map.URL }"/>
 								<button type="submit" title="새 포스트를 작성합니다." style="border: 0px; background-color: white; padding-left: 0px; ">
 									<a class="newpost" href="/blog/postWrite" id="newpost">
-									<label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -3px;">mode_edit</label></a>
+									<label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -3px;">mode_edit</label></a>
 									<a href="/blog/postWrite">
 									<div class="newpost" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">새 포스트 쓰기</div></a>
 								</button>
 							</form>
 	 					</c:when>
 	 					<c:otherwise>
-	 						<label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="home" style="display:inline; margin-left: 14px;">구독</div>
+	 						<label class="material-icons" style="color: #a6a6a6; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="home" style="display:inline; margin-left: 14px;">구독</div>
 	 					</c:otherwise>
  					</c:choose>
  				</div>
- 				<div class="col-xs-8 px-0" style="margin : 5px;  margin-top: -5px;"> 				
- 					<a href="/my/home"><label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -3px;">dashboard</label></a>
- 					<a href="/my/home"><div class="myhome" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">내 블로그 설정</div></a>
- 				</div> 				       
+ 			
+ 				       
  			</div> 
  			
  			 
@@ -363,8 +326,6 @@
 			target.css("display", "none"); 
 		}	
 	};
-
-
 	//app-menu-disply
 	$("#app-menu-toggler").on("click", function(){
 		var menu = $("#app-menu");
@@ -435,9 +396,6 @@
 		
 	};
 	
-
 	
 	
-
 </script>
-								

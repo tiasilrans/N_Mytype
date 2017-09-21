@@ -22,7 +22,7 @@
  	
  	<!-- 댓글 리스트 가져오기 -->
   	<select id="list" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-  		SELECT * FROM(SELECT * FROM reply where pnum=#{num} order by PGNUM desc)r 
+  		SELECT * FROM(SELECT * FROM (select r.*,m.image from reply r left join member m on r.email=m.email) where pnum=#{num} order by PGNUM desc)r 
   				order by r.num asc
   	</select>
   	
