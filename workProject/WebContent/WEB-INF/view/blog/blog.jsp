@@ -152,19 +152,19 @@
 				<div style="font-size: 12; font-family: sans-serif; color: #999999;">검색결과</div>
 				<div style="font-size: 20; font-family: sans-serif;">${keyword }</div>
 			</div>
-		</c:if>
+	</c:if>
 		<div class="row">
 		<c:choose>
-			<c:when test="${list ne null }">
+			<c:when test="${pl}">
 				<div class="col-xs-8 col-lg-8 blog-post-list" align="left">
 					<div class="blog-post-list">
 						<c:forEach var="obj" items="${list }">
-						<header class="post-header">
-							<c:if test="${obj.NOTICE}">								
-								<img src="/images/notice.png">								
-							</c:if>
-							</header>
-							<div class="post-body">
+							<c:choose>
+							<c:when test="${obj.NOTICE}">
+								<header class="post-header">															
+									<img src="/images/notice.png">						
+								</header>
+								<div class="post-body">
 								<a href="/${obj.URL }/post/${obj.NUM}" style="color: #0d0d0d;">
 									<h2 style="color: black; font-family: NanumSquare; font-size: 20px; margin: 0px;">${obj.TITLE }</h2>								
 									<div class="subtitle" style="margin-top: -10px; margin-left: 3px;"> 
@@ -174,8 +174,8 @@
 										${obj.FCONTENT }
 									</div>
 								</a>
-							</div>      
-							<div class="ft">
+						</div>      
+						<div class="ft">
 								   <div class="media">
 								    	<div class="media-left">
 										 	<div class="media-left" style="vertical-align: middle;">
@@ -211,7 +211,59 @@
 											</div>
 										</div>						
 								</div>
-							</div>
+						</div>
+							</c:when>
+							<c:otherwise>
+								<div class="post-body">
+									<a href="/${obj.URL }/post/${obj.NUM}" style="color: #0d0d0d;">
+										<h2 style="color: black; font-family: NanumSquare; font-size: 20px; margin: 0px;">${obj.TITLE }</h2>								
+										<div class="subtitle" style="margin-top: -10px; margin-left: 3px;"> 
+											<h3 style="color: #0d0d0d; font-family: NanumSquare; font-size: 13px;">${obj.SUBTITLE }</h3> 
+										</div>								  
+										 <div class="fcountent" style="margin-top: 20px; margin-left: 3px; color: #808080; font-family: NanumSquare; font-weight: 500;">
+											${obj.FCONTENT }
+										</div>
+									</a>
+								</div>      
+								<div class="ft">
+										   <div class="media">
+										    	<div class="media-left">
+												 	<div class="media-left" style="vertical-align: middle;">
+												 		<c:choose>
+												 		<c:when test="${obj.IMAGE != null}">
+													 		<img src="/images/profile/${obj.IMAGE}" onerror="this.src='/images/avatar_yellow.png'" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:-2px;">
+												 		</c:when>
+												 		<c:otherwise>
+													 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:-2px;">
+												 		</c:otherwise>
+												 		</c:choose>
+												 	</div> 
+												  	<div class="media-body"> 
+												  		<span style="font-size: 12px; color: black;">${obj.NICKNAME eq nul? obj.EMAIL :obj.NICKNAME}</span>										 	
+												  		<span style="font-size: 12px; color: #808080;">
+												  		<fmt:formatDate value="${obj.PDATE }" pattern="yyyy.MM.dd"/></span>
+												 	</div>
+											  </div>
+											  <div class="media-right" style="width: 100px;">
+												  <div class="media-left">
+												  		<div class="like">
+												 			<a href="#" onclick="like(this);" post-num="${obj.NUM }"><i class="material-icons" style="font-size: 15px; color: #808080; float: left;">favorite_border</i></a>
+												 		</div>
+												 		<div class="media-body"> 
+												 			<span style="color: #808080; font-size: 12px; margin-left: 2px;">${obj.likeCount }</span>
+												 		</div>
+												  </div>
+													<div class="media-left" >
+													 	<i class="material-icons" style="font-size: 15px; color: #808080; float: left;">chat_bubble_outline</i>
+													 	<div class="media-body">
+													 		<span style="color: #808080; font-size: 12px; margin-left: 2px;">${obj.replyCount }</span>
+														</div>
+													</div>
+												</div>						
+										</div>
+								</div>
+							</c:otherwise>						
+							</c:choose>
 						</c:forEach>				
 					</div>  
 					<div class="div-pagination" style="text-align: center; margin-right: 100px;" > 
