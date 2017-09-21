@@ -79,14 +79,14 @@ input[type=checkbox]:checked+label:before {
 </style>
 <div class="row">
 	<div class="col-xs-0 col-md-2"></div>
-	<div class="col-xs-6 col-md-6">
+	<div class="col-xs-12 col-md-8">
 		<div class="content"
 			style="margin-top: 100px; margin-left: 100px; padding: 0px;">
 			<div class="container">
 				<div class="header">
 					<div class="category"
 						style="margin-bottom: 120px; margin-left: 3px;">
-						<a style="color: black; font-family: NanumSquare;" href="">${post.CATEGORY }</a>
+						<a style="color: black; font-family: NanumSquare;" href="/blog/${post.URL }/category/${post.CATEGORY}">${post.CATEGORY }</a>
 					</div>
 
 					<div style="margin-top: -70px;">
@@ -229,7 +229,7 @@ input[type=checkbox]:checked+label:before {
 			</section>
 			<!-- 블로그 포스트 리스트 섹션 -->
 			<!-- 포스트 댓글 섹션 -->
-			<h6 style="margin-left: 95px;">댓글</h6>
+			<h6 style="margin-left: 95px; margin-bottom:30px;">댓글</h6>
 			<section class="comments box">
 				<div class="body" style="margin-left: 95px;">
 					<div class="comments" id="comments">
@@ -306,6 +306,7 @@ input[type=checkbox]:checked+label:before {
 	<br/>
 	<br/>
 	</div>
+	<div class="col-xs-0 col-md-2"></div>
 </div>
 
 
