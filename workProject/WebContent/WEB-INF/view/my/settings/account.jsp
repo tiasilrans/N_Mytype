@@ -29,15 +29,13 @@ label{
     border-bottom: 1px solid rgba(0,0,0,.075);
 }
 
-.scard {
-    position: relative;
-    display: block;
-    width : 850px;
-	height: 390px;
-    margin-bottom: .75rem;
-    background-color: #fff;
-    border-radius: .25rem;
-    border: 1px solid rgba(0,0,0,.125);
+.box {
+
+	background-color:white;
+	border-radius:10px;
+	margin: 20px;
+	width: 70%;
+	padding: 20px;
 }
 
 .card-block {
@@ -51,7 +49,8 @@ label{
 
   
 <form class="form-inline form-horizontal" method="post" >
-	<div class="scard col-xs-offset-2 col-md-offset-2" >
+	<div class="col-xs-0 col-md-2"></div>
+	<div class="box col-xs-12 col-md-8 col-lg-12" >
 		<div class="title">
 			<span style="float:left; font-size: 17px; margin-left: 5px;"><b>계정 설정</b></span>
 		</div>
@@ -72,7 +71,7 @@ label{
 	    	<p style="color:#909090; font-size: 13px;">성인 콘텐츠를 보거나 게시하기 위해서는 성인 확인이 필요합니다.</p>
 	    	<label style="color: #606060;">성인 확인</label>
 	    	<c:choose>
-	    		<c:when test="${certified eq 'N' }">
+	    		<c:when test="${certified ne 'Y' }">
 	    			<button class="w3-button w3-white w3-border w3-round-large"><a href="/my/settings/certified1">성인 확인하기(휴대전화)</a></button>
 	    			<button class="w3-button w3-white w3-border w3-round-large"><a href="/my/settings/certified2">성인 확인하기(신분증)</a></button>
 	    		</c:when>
@@ -84,7 +83,9 @@ label{
 	    <hr style="margin: 0px;" />
 	    <div class="card-block ">
 	    	<a href="#" style="color:#909090; font-size: 12px">계정 삭제</a>
+	    	<!-- 
 	    	<button class="w3-button w3-black w3-round" style="float:right">변경 내용 저장</button>
+	    	-->
 	    </div>
 	</div>
 </form>

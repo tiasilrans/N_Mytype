@@ -20,7 +20,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
-<body style="background-color: gray;">
+<body style="background: linear-gradient(to bottom, #80c1ff, #cce6ff );"> 
 	<nav>
 		<tiles:insertAttribute name="nav"/>
 		<tiles:insertAttribute name="nav2"/>

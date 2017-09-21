@@ -9,7 +9,7 @@
 <style>
 
 body {
-	background: whitesmoke;
+	background: linear-gradient(to bottom, #80c1ff, #cce6ff);
 }
 
 a{ text-decoration: none; }
@@ -207,9 +207,9 @@ a{ text-decoration: none; }
 
 
 </style>   
-<div class="row">
-<div class="col-md-2" style="margin-left: 40px;"></div>
-<div class="col-md-8" style="margin-left: auto; margin-bottom: 100px;">
+<div class="row" style="width: 70%; margin: auto; max-width: 70%;">
+<!-- <div class="col-md-3"></div>
+<div class="col-md-8" style="margin-left: auto;"> -->
 
 			<!-- 메인쪽 로고 부분 -->
 			  <div class="container col-md-4" style="width:600px; height: 350px; " >
@@ -261,6 +261,7 @@ a{ text-decoration: none; }
 						</c:choose>
 						</span></a></div>
 			</div>
+
 			<!-- 목록 nav -->
 			<div class="col-xs-0 col-md-12">
 			<div style="margin-left: 10px;">
@@ -277,7 +278,7 @@ a{ text-decoration: none; }
 			
 			<!-- 전체 게시글 배치 -->
 			<div id="allList" class="tab-pane fade in active">
-				<c:forEach var="all" items="${listAll }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
+			<c:forEach var="all" items="${listAll }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
 				<div class="incard col-xs-0 col-md-3" style="clear: right;" >
 					<div class="title">
 						<a style="float:left; padding-right: 10px;"><img src="/images/profile/${all.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
@@ -404,7 +405,7 @@ a{ text-decoration: none; }
 </div>
 </div>
 
-</div>
+<!-- </div> -->
 
 <c:choose>
 	<c:when test="${sessionScope.login == null}">

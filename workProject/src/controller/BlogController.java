@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import model.BlogDAO;
 import model.PostDao;
+import model.ReplyDAO;
+import model.SubscribeDAO;
 
 @Controller
 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -30,6 +32,12 @@ public class BlogController {
 	
 	@Autowired
 	PostDao pDAO;
+	
+	@Autowired
+	SubscribeDAO sDAO;
+	
+	@Autowired
+	ReplyDAO rDAO;
 	
 	@RequestMapping("/blog/create")
 	public ModelAndView newBlog(){
@@ -93,6 +101,15 @@ public class BlogController {
 			int cnt = bDAO.oneCateCnt(map);
 				m.put("cnt", cnt);
 		}
+		
+		List<Map> mainPostList = pDAO.blogPostList(pageMap);
+		for(Map m : mainPostList){
+			map.put("num", m.get("NUM"));
+			int count = rDAO.postReplyCount(map);
+			int like = pDAO.postLikeCount(map);
+			m.put("replyCount", count);
+			m.put("likeCount", like);
+		}
 	
 			mav.setViewName("blog_base");
 			mav.addObject("section", "blog/blog");
@@ -100,8 +117,9 @@ public class BlogController {
 			mav.addObject("map", r); // 블로그 정보
 			mav.addObject("title", r.get("TITLE"));
 			mav.addObject("pNum", tp);
-			mav.addObject("list", pDAO.blogPostList(pageMap)); // 블로그 메인 포스트 리스트
+			mav.addObject("list", mainPostList); // 블로그 메인 포스트 리스트
 			mav.addObject("category", list);
+			mav.addObject("subCk", sDAO.subCheck(map));
 			
 		return mav;
 	}
@@ -130,6 +148,107 @@ public class BlogController {
 		return mav;
 	}
 	
+	
+	// 블로그 카테고리 내 포스트 리스트 뷰
+	@RequestMapping("/blog/{url}/category/{categoryname}")
+	public ModelAndView categoryView(@PathVariable(value="url") String url, 
+				@PathVariable(value="categoryname") String categoryname, HttpSession session){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+		Map map = new HashMap<>();
+			map.put("url", url);
+			map.put("categoryname", categoryname);
+			map.put("email", (String)session.getAttribute("login"));
+		HashMap blogInfo = bDAO.blogView(map);
+			map.put("title", blogInfo.get("TITLE"));
+		int lc = pDAO.postCount(map);
+		 	blogInfo.put("totalPostCnt", lc);
+		ModelAndView mav = new ModelAndView();
+			mav.setViewName("blog_base");
+			mav.addObject("section", "blog/blog");
+			mav.addObject("header", "blog/header"); // 블로그 제목, 소개 들어가야 함
+			mav.addObject("title", blogInfo.get("TITLE"));
+		// 블로그 아바타 가져오기
+				String path = "/images/blogImg/"+url;
+				String rPath = application.getRealPath(path);
+				File dir = new File(rPath);
+				if(dir.exists()) {
+					mav.addObject("imgPath", path);
+				}else {
+					mav.addObject("imgPath", "/images/avatar_yellow.png");
+				}
+		List<Map> list = bDAO.cate_List(map);
+		for(Map cateMap : list){
+			String cn = (String)cateMap.get("CATEGORY_NAME");
+				map.put("category", cn);
+			int cnt = bDAO.oneCateCnt(map);
+				cateMap.put("cnt", cnt);
+		}		
+		
+		mav.addObject("category", list);
+		mav.addObject("map", blogInfo);
+		mav.addObject("subCk", sDAO.subCheck(map));
+		mav.addObject("searchMode", false);		
+		mav.addObject("list", pDAO.categoryPostList(map));
+		return mav;  
+	}
+	
+	
+	@RequestMapping("/blog/{url}/search")
+	public ModelAndView blogSearch(@RequestParam Map m, @PathVariable(value="url") String url,
+									HttpSession session, @RequestParam(name="p", defaultValue="1") int p){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+		ModelAndView mav = new ModelAndView();
+		// 블로그 아바타 가져오기
+		String path = "/images/blogImg/"+url;
+		String rPath = application.getRealPath(path);
+		File dir = new File(rPath);
+		if(dir.exists()) {
+			mav.addObject("imgPath", path);
+		}else {
+			mav.addObject("imgPath", "/images/avatar_yellow.png");
+		}
+		
+		
+		 HashMap map = new HashMap();
+		 	map.put("url", url);
+		 	map.put("email", (String)session.getAttribute("login"));
+		 HashMap blogInfo = bDAO.blogView(map);	
+		 	map.put("title", blogInfo.get("TITLE"));
+		 int lc = pDAO.postCount(map);
+		 	blogInfo.put("totalPostCnt", lc);	
+		 List<Map> list = bDAO.cate_List(map);
+			for(Map cateMap : list){
+				String cn = (String)cateMap.get("CATEGORY_NAME");
+					map.put("category", cn);
+				int cnt = bDAO.oneCateCnt(map);
+					cateMap.put("cnt", cnt);
+			}
+		 
+		 
+		 System.out.println("search map = " + m);
+		 String a = "";	
+		 String keyword = (String)m.get("keyword");
+		 String[] keys = keyword.split("\\s");
+		 for(String msg : keys){
+			 a += "%"+msg+"%&";
+		 }
+		 String[] arr = a.split("&");
+		 	map.put("arr", arr);		 	
+		
+		
+		 	mav.setViewName("blog_base");
+		 	mav.addObject("section", "blog/blog");
+		 	mav.addObject("header", "blog/header"); // 블로그 제목, 소개 들어가야 함
+		 	mav.addObject("title", keyword + "의 검색 결과");
+		 	mav.addObject("list", pDAO.blogSearch(map));
+		 	mav.addObject("category", list);
+		 	mav.addObject("map", blogInfo);
+		 	mav.addObject("subCk", sDAO.subCheck(map));
+		 	mav.addObject("searchMode", true);
+		 	mav.addObject("keyword", keyword);
+		 return mav;  	 
+		
+	}
 	
 	
 	

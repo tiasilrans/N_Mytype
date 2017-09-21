@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 import javax.servlet.ServletContext;
@@ -451,7 +452,7 @@ public class MyController {
 		return mav;
 	}
 	
-	@RequestMapping("/settings/profileExec")
+	@RequestMapping("/settings/profile.mt")
 	public ModelAndView profilExec(@RequestParam Map map, @RequestParam(name = "image") MultipartFile f, HttpSession session) {
 		try {
 			String my =  (String)session.getAttribute("login");
@@ -492,14 +493,16 @@ public class MyController {
 		return mav;
 	}
 	
-	@RequestMapping("/settings/passwordExec")
+	@RequestMapping("/settings/password.mt")
 	public ModelAndView passwordExec(@RequestParam Map map, HttpSession session) {
 		map.put("email", (String)session.getAttribute("login"));
-		System.out.println(map);
+		System.out.println("map => "+map);
 		boolean str = myDao.pwchange(map);
+		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("settings_password");
-		mav.addObject("change", str);
+			mav.setViewName("settings_password");
+			mav.addObject("change", str);
+			
 		if(str){
 			session.setAttribute("info", myDao.info((String)session.getAttribute("login")));
 		}
@@ -556,6 +559,33 @@ public class MyController {
 	public ModelAndView drop( ) {
 		ModelAndView mav = new ModelAndView();
 			mav.setViewName("settings_drop");
+		return mav;
+	}
+	
+	@RequestMapping("/settings/adult")
+	public ModelAndView adult(@RequestParam(name = "image") MultipartFile f, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("settings_certified2");
+		
+		String my =  (String)session.getAttribute("login");
+		try {
+			if (f.getOriginalFilename().length() > 0) {
+				File dir = new File(application.getRealPath("/images/adult"));
+				System.out.println(dir.getPath());
+				if (!dir.exists()) {
+					dir.mkdirs();
+				}
+
+				File dst = new File(dir, my + ".png");
+				f.transferTo(dst);
+				Map map = new HashMap();
+				map.put("email", my);
+				map.put("img", my+".png");
+				mav.addObject("result", myDao.adultupdate(map));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return mav;
 	}
 	

@@ -28,6 +28,10 @@
   	</select>
   	
   	<!-- 블로그 메인 뷰 -->
+  		<!-- 각 카테고리의 포스트 리스트 -->
+ 	<select id="category_post_list" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+ 		SELECT * FROM post where CATEGORY=#{categoryname} and url=#{url}
+ 	</select>
   		<!-- 해당 블로그 총 포스트 수 -->
   	<select id="post_count" parameterType="java.util.HashMap" resultType="java.lang.Integer">
 		select count(*) from post where url=#{url}
@@ -38,16 +42,27 @@
  							(select * from post where url=#{url} order by num desc)tmp 
  						) where r between #{start} and #{end}
  	</select>
+ 		<!-- 해당 포스트 좋아요 수 -->
+ 	<select id="post_Like_count" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+ 		SELECT COUNT(*) FROM postgood where pnum=#{num}
+ 	</select>	
  	
  	<!-- 포스트 불러오기 -->
  		<!-- 포스트 번호로 하나의 포스트 불러오기 -->
  	<select id="one_post" parameterType="java.util.HashMap" resultType="java.util.HashMap">
  		select * from(SELECT * FROM post where num=#{num})p left join member m on m.email=p.email
  	</select>
- 		<!-- 블로그 관리자 모드 - 해당 블로그 포스트 전부 불러오기 -->
- 	<select id="admin_postList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
- 		SELECT p.num, p.title, p.CATEGORY, p.PDATE, p.COUNT FROM post p where url=#{url} order by num desc
+ 	
+ 	
+ 	<!-- 블로그 내 검색  / 타이틀, 서브타이틀만 검색 / 조회수 정렬 -->
+ 	<select id="search" parameterType="java.util.Iterator" resultType="java.util.HashMap">
+ 		SELECT * FROM (SELECT * FROM post where url=#{url}) p where 
+ 			<foreach collection="arr" item="keyword" separator=" or " open="(" close=")">
+				p.title like #{keyword} or p.SUBTITLE like #{keyword}
+			</foreach>
+ 				order by count desc
  	</select>
+ 	
  	
   	
   	

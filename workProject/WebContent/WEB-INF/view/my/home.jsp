@@ -12,6 +12,9 @@
 <link rel="stylesheet" href="/css/my.css">
 
 <style>
+
+a{ text-decoration: none; }
+
 #secondlogo{
 	height: 260px;
 	width : 260px;
@@ -59,15 +62,33 @@
 
 }
 
-.card {
-    position: relative;
-    display: block;
-    width : 630px;
-	height: 330px;
-    margin-bottom: .75rem;
-    background-color: #fff;
-    border-radius: .25rem;
-    border: 1px solid rgba(0,0,0,.125);
+body {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+}
+
+.box {
+	position: relative;
+	display: block;
+	background-color:white;
+	border-radius:10px;
+	margin: 20px;
+	width: 70%;
+	padding: 20px;
+}
+
+.lbox{
+  float:left;
+  width:50%;
+  height: 80px;
+}
+  
+.rbox{
+  clear:right;
+  float:right;
+  width:50%;
+  height: 80px;
 }
 
 .conbody-hashtag{
@@ -99,10 +120,16 @@
 	color : red;
 }
 
+.notice{
+	margin-top: 14px;
+	margin-bottom: 14px;
+}
+
 </style>
-<div class="row" style="margin-top: 60px;">
-	<div class="col-xs-2 col-md-2 col-lg-2"></div>
-	<div class="card col-xs-6 col-md-6 col-lg-4">
+<div class="row">
+<section style="min-height: 75%;">
+<div class="col-xs-0 col-md-2"></div>
+<div class="box col-xs-12 col-md-8 col-lg-12" style="margin-bottom: 0;">
 		<div class="title">
 			<span style="float:left; font-size: 17px; margin-left: 5px;"><b>오늘</b></span>
 			<span style="float:right; font-size: 13px; padding-right:15px; color: #999999;" ><%=today %></span>
@@ -155,22 +182,22 @@
             </div>  
 		</div>
 	</div>
-	</div>
 	
 
-<div class="row">
-	<div class="col-xs-2 col-md-2 col-lg-2"></div>
-    <div class="card col-xs-3 col-md-3 col-lg-2">
-		<div class="title row">
+<div class="col-xs-0 col-md-2"></div>
+<div class="box col-xs-12 col-md-8 col-lg-12" style="min-height: 250px;">
+		<div class="title row" style="margin-bottom: 20px;">
           <span style="float:left; font-size: 17px;"><b>공지사항</b></span>
           <span style="font-size: 13px; float:right; padding-right:15px;">
-				<a style="text-decoration:none; color: #999999;"> 더 보기 > </a> 
+				<a href="/blog/MyTypeBlog1" style="text-decoration:none; color: #999999;"> 더 보기 > </a> 
 			</span>
         </div>
-        <div class="row" style="padding-left: 25px;">
-        <c:forEach var="n" items="${notice}" begin="0" end="${notice.size() < 2 ? notice.size() : 2}">
-			<div id="secondlogo" class="col-xs-0 col-md-4">
-				<div class="secondlogo-head">MyType 소식</div>
+        <div class="row" style="padding-left: 25px; width:780px; height: 180px;">
+	        <c:forEach var="n" items="${notice}" begin="0" end="${notice.size() < 2 ? notice.size() : 2}">
+	        	<div class="notice"><a style="text-decoration: none; color: #707070; " href="/MyTypeBlog1/post/${n.NUM }">${n.TITLE}</a></div>
+				<!-- 
+				<div id="secondlogo" class="col-xs-0 col-md-4">
+					<div class="secondlogo-head">MyType 소식</div>
 					<div class="secondlogo-body">
 						<img class="secondlogo-body-profileimg" src="/images/blogMark.png">
 						<div class="secondlogo-body-title">
@@ -178,21 +205,26 @@
 							<span class="secondlogo-body-title-blog">blog.mytypeblog.com</span>
 						</div>	
 					</div>
-						<div class="secondlogo-body-content"><span>
-						<c:choose>
-						<c:when test="${n.SUBCONTENT ne null}">
-							${n.SUBCONTENT}
-						</c:when>
-						<c:otherwise>
-							${n.CONTENT}
-						</c:otherwise>
-						</c:choose>
-						</span></div>
-			</div>
-        </c:forEach>
+					
+					<div class="secondlogo-body-content">
+						<span>
+							<c:choose>
+							<c:when test="${n.SUBCONTENT ne null}">
+								${n.SUBCONTENT}
+							</c:when>
+							<c:otherwise>
+								${n.CONTENT}
+							</c:otherwise>
+							</c:choose>
+						</span>
+					</div>
+				</div>
+				-->
+	        </c:forEach>
 			
         </div>
 </div>
+</section>
 </div>
 
 

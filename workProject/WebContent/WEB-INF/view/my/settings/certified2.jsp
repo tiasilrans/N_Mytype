@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link href="/css/my.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
@@ -46,7 +46,7 @@ label{
 
 </style>
 
-<form class="form-inline form-horizontal">
+<form class="form-inline form-horizontal" action="/my/settings/adult" method="post" enctype="multipart/form-data">
 	<div class="scard col-xs-offset-2 col-md-offset-2">
 		<div class="card-block col-xs-10" style="padding-top: 3%; font-size: 15px;">
 			<p style="color:#909090; font-size: 13px;">성인 콘텐츠를 보거나 게시하기 위해서는 본인 확인이 필요합니다.</p>
@@ -58,12 +58,28 @@ label{
 				번호 뒷자리 등)를 가려주세요.</li>
 				<li>생년월일과 이메일 주소가 잘 보이도록 사진을 찰영하여 아래 양식에 첨부해주세요.</li>
 			</ol> <br/>
-			
-			<label style="width: 100px;">신분증 업로드</label>
-			<div class="form-control" style="width:62%; vertical-align:middle; border-radius: .25rem; border: 1px solid #C8C8C8;">
-				<button>파일 선택</button>
-				선택된 파일 없음
+			<div class="row" style="margin-bottom: 15px;">
+			<div class="col-md-4">
+				<label style="width: 100px;">신분증 업로드</label>
+			</div>
+			<div class="col-md-6">
+				<input type="file" name="image" id="upload-profile-photo" class="w3-button w3-white w3-border w3-round-large" style="width:300px;" >
+			</div>
+			<div class="col-md-2" style="padding : 8px;">
+				<button class="btn" type="submit" style="background-color: black; color: white; ">보내기</button>
+			</div>
 			</div>
 		</div>
 	</div>
 </form>
+
+<c:if test="${result ne null}">
+<script>
+	var r = '${result}';
+	if(r){
+		window.alert("성공");
+	}else{
+		window.alert("실패");
+	}
+</script>
+</c:if>

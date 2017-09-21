@@ -160,6 +160,14 @@ public class AdminController {
 		return mav;
 	}
 	
+	//성인인증 신청 승인 리스트
+	@RequestMapping("adult")
+	public ModelAndView adult(@RequestParam Map map,HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("admin_adult");
+		mav.addObject("mlist", adminDAO.adultlist());
+		return mav;
+	}
 	
 	
 	//ReponseBody======================================
@@ -247,5 +255,25 @@ public class AdminController {
 		return rst;
 	}
 
+	//성인인증 승인
+	@RequestMapping("applyadult")
+	@ResponseBody
+	public String applyadult(@RequestParam Map map) throws JsonProcessingException{
+		Map result = new HashMap();//날려줄 JSON
+		result.put("rst", adminDAO.adultApply(map));
+		String rst = objMapper.writeValueAsString(result);
+		return rst;
+	}
+	
+	//성인인증 반려
+	@RequestMapping("deleteadult")
+	@ResponseBody
+	public String deleteadult(@RequestParam Map map) throws JsonProcessingException{
+		Map result = new HashMap();//날려줄 JSON
+		result.put("rst", adminDAO.adultCompanion(map));
+		String rst = objMapper.writeValueAsString(result);
+		return rst;
+	}
+	
 	
 }
