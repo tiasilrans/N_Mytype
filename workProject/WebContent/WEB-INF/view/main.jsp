@@ -295,7 +295,7 @@ a{ text-decoration: none; }
 	<!-- 목록 nav -->
 	<div class="row">
 		<div class="col-lg-12">
-			<div>
+			<div class="col-lg-12">
 				<ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#allList"><b>전체</b></a></li>
 				<c:if test="${sessionScope.login ne null}">
@@ -303,8 +303,11 @@ a{ text-decoration: none; }
 				</c:if>
 				</ul>
 			</div>
-			<div>	
-		<div class="row" >			
+			<div class="col-lg-12 post-list">	
+				<div class="col-lg-12 line" ></div>
+				<div class="col-lg-12 line" ></div>
+				<div class="col-lg-12 line" ></div>		
+			<div>
 			<!-- 전체 게시글 배치 -->
 			
 			<div class="row">
