@@ -32,5 +32,20 @@
 	<footer style="margin-bottom: 50px;">
 		<tiles:insertAttribute name="footer"/>
 	</footer>
+	
+	<script>
+	//app-menu-disply
+	$("#app-menu-toggler").on("click", function(){
+		var menu = $("#app-menu");
+		if(menu.css("display") == "none"){
+			menu.css("display", "block");
+		}else{
+			menu.css("display", "none");
+		}
+		
+	});
+	
+	</script>
+	
 </body>
 </html>
