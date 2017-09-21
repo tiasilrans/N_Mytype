@@ -8,6 +8,33 @@
 		display: none;
 	}	
 }
+
+@media ( min-width : 768px) {	
+	.search-nav{
+		display: block;
+	}	
+
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+
+.button1 {
+	background-color: #303030;
+}
+
+
+
 </style>
 <!--navbar menu-->
 <section class="navbar-info ">
@@ -22,16 +49,16 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/"><img src="/images/MTtitle.png" style="margin-top: -3px;"></a>
+				<a class="navbar-brand" href="/"><img src="/images/MTtitle.png" style="margin-top: -1px;"></a>
 			</div>
 			<div class="collapse navbar-collapse header-right-menu"
 				id="navbar-primary-collapse">
 				<c:choose>
 				<c:when test="${sessionScope.login ne null }">
 				<ul class="nav navbar-nav navbar-left">
-					<li class=""><a class="header" href="/" id="home">홈</a></li>
+					<li class=""><a class="header" href="/" id="home"><span style="color: #1a1a1a;">홈</span></a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">내 블로그<span class="caret"></span></a>
+						data-toggle="dropdown" href="#"><span style="color: #005ce6;">내 블로그</span><span class="caret" style="color: #005ce6;"></span></a>
 						<ul class="dropdown-menu">						
 						<!-- 블로그 리스트 -->				
 						<c:if test="${sessionScope.blog ne null }">
@@ -42,7 +69,6 @@
 							<li style="margin-bottom: 13px;"><a href="/blog/${blog.URL}/setting"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">settings</i>  <span style="margin-left: 10px;">설정</span></a></li>
 							  
 						</c:forEach>
-						<hr/>
 						</c:if>     
 							<li><a href="/blog/create"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">add</i>  <span style="margin-left: 10px;">새 블로그 생성</span></a></li>
 						</ul></li>
@@ -50,7 +76,7 @@
 			   
 				<ul class="nav navbar-nav navbar-right" style="margin-right: 13px;">
 				<!-- 알림 -->				
-					<li style="margin: -7px;"><a href="/my/home"><i class="material-icons" style="color: #999999; font-size: 30px;">notifications_none</i></a></li>
+					<li style="margin: -7px;"><a href="/my/home"><i class="material-icons" style="color: #005ce6; font-size: 30px;">notifications_none</i></a></li>
 				<!-- 알림끝 -->				
 					<li class="dropdown">
 						<a id="account-toggler" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#" role="button" title="MY"
@@ -89,12 +115,12 @@
 				</ul>
 				</c:otherwise>
 			</c:choose>	
-			<ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar-right search-nav">
 				<li><form class="navbar-form form-horizontal" role="search" action="/search/main.mt">
 					<div class="input-group">
-						<input type="text" class="search-box" placeholder="마이타입 검색" name="keyword">
+						<input type="text" class="search-box" placeholder="마이타입 검색" name="keyword" style="color: #1a1a1a;">
 						<button type="submit" class="btn">
-							<span class="glyphicon glyphicon-search" style="margin-bottom: 7px; color: #999999;"></span>
+							<span class="glyphicon glyphicon-search" style="margin-bottom: 7px; color: #005ce6;"></span>
 						</button>
 					</div>
 				</form></li>				
@@ -141,7 +167,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">로그인</h4>
+          <h6 align="left" style="color: #999999; margin-left: 30px;">로그인 </h6>
         </div>
         
         <div class="modal-body">
@@ -159,9 +185,9 @@
 				<div align="center" class="row">
 
 					<div class="form-group row" align="right" style="width: 360px;">
-					<a>비밀번호 찾기</a>｜<a href="join.mt">회원가입</a>
+					<a style="color: black;">비밀번호 찾기</a>｜<a style="color: black;" href="join.mt">회원가입</a>
 					</div>
-					<button id="login-sbt" type="submit" class="btn">로그인</button>
+					<button id="login-sbt" type="submit" class="button button1">로그인</button>
 				</div>
 			</form>
 		</div>

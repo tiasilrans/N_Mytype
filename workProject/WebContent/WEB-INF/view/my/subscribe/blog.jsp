@@ -41,29 +41,30 @@ table.type07 td {
 	<c:choose>
 		<c:when test="${slist ne null}">
 			<c:forEach var="blog" items="${slist}">
-				<div class="panel panel-default" style="text-align: left">
-					<div class="panel-body">
+				<div class="panel panel-default" style="text-align: left; height:85px;">
+					<div class="panel-body" style="padding-top: 10px;">
 					<div class="col-md-2" style="padding : 0px;">
 					<a href="/blog/${blog.URL }" style="color: #616161;">
 						<c:choose>
 							<c:when test="${blog.IMAGE eq null}">
-								<img src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png" style="width: 70px; height: 70px; border-radius: 5px;">
+								<img src="https://cdn.postype.com/assets/img/avatar/avatar_blue.png" style="width: 60px; height: 60px; border-radius: 5px;">
 							</c:when>
 							<c:otherwise>
-								<img src="/images/profile/${blog.IMAGE}" style="width: 70px; height: 70px; border-radius: 5px;">
+								<img src="/images/profile/${blog.IMAGE}" style="width: 60px; height: 60px; border-radius: 5px;">
 							</c:otherwise>
 						</c:choose>
 					</a>
 					</div>
 					<div class="col-md-7" style="padding : 0px;">
-						<div style="font-size: 18px; font-weight: bold;">
-						<a href="/blog/${blog.URL }" style="color: #616161; text-decoration: none;">
-						${blog.TITLE}</a></div>
+						<div style="font-size: 15px; font-weight: bold;">
+							<a href="/blog/${blog.URL }" style="color: #616161; text-decoration: none;">
+							${blog.TITLE}</a>
+						</div>
 						<div style="padding: 5px; padding-left: 5px;">${blog.INTRO}</div>
 					</div>
 					
 					<div class="col-md-3" style="padding : 0px; padding-top: 10px;" align="right">
-						<button class="btn subscribe" id="${blog.URL}" value="${blog.URL}" type="button" style="width: 60%; height: 50px; font-size: 15; background-color: black;"><b class="${blog.URL }" style="color: white;">구독취소</b></button>
+						<button class="btn subscribe" id="${blog.URL}" value="${blog.URL}" type="button" style="width: 60%; height: 40px; font-size: 15; background-color: black;"><b class="${blog.URL }" style="color: white;">구독취소</b></button>
 					</div>
 					</div>
 				</div>

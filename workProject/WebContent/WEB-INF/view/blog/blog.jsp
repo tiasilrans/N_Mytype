@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="/css/blogViewcss.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
+
 #app-menu-toggler:hover {
     box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 5px 10px 0 rgba(0,0,0,.05), 0 10px 20px 0 rgba(0,0,0,.05);
 }

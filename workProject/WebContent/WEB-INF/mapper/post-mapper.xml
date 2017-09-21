@@ -11,6 +11,19 @@
  						#{fcontent}, #{ccontent}, 0, 0, sysdate, #{url}, 0, #{notice}, #{adult} <if test="price != 0 || price != null">, #{price}</if>)
   	</insert>
   	
+  	<!-- 포스트 불러오기 -->
+ 		<!-- 포스트 번호로 하나의 포스트 불러오기 -->
+ 	<select id="one_post" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+ 		select * from(SELECT * FROM post where num=#{num})p left join member m on m.email=p.email
+ 	</select>  	
+  	
+  	<!-- 포스트 수정 -->
+ 	<update id="edit" parameterType="java.util.HashMap">
+ 		update post set category=#{category}, title=#{title}, subtitle=#{subtitle},
+ 			fcontent=#{fcontent}, ccontent=#{ccontent}, notice=#{notice}, adult=#{adult}, open=#{open}, reply_right=#{reply_right}
+ 			 <if test="price != 0 || price != null">, price=#{price}</if> where num=#{num}
+ 	</update>  	
+  	
   	<!-- 조회수 증가 -->
   	<update id="counter" parameterType="java.util.HashMap">
   		update post set count = count+1 where num = #{num}

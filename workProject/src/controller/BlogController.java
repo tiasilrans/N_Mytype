@@ -127,6 +127,7 @@ public class BlogController {
 	@RequestMapping("/blog/postWrite")
 	public ModelAndView postWrite(@RequestParam Map m, HttpSession session){
 		// m= 타이틀, url 들어가 있음
+			m.put("mode", "new");
 		Map writeMap = (Map)session.getAttribute("writeMap");
 		if(writeMap !=null){
 			String title = (String)writeMap.get("title");
@@ -147,6 +148,8 @@ public class BlogController {
 			
 		return mav;
 	}
+	
+	
 	
 	
 	// 블로그 카테고리 내 포스트 리스트 뷰
