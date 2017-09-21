@@ -62,16 +62,36 @@ a{text-decoration: none;}
 	color : red;
 }
 
+.div-pagination a {
+    color: #0d0d0d;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #0d0d0d;
+    border-color: #ffffff;
+}
+
+.div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
+
+}
+
 </style>
     
 <div align="center">
 
 <div style="width: 60%;" align="left">
-	<h2>좋아요</h2>
+	<h2 style="color: white;">좋아요</h2>
 	<hr style="margin-top: 10px;"/>
 </div>
 
-<div class="row" style="width: 60%;">
+<div class="row" style="width: 60%; margin-right: -250px;">
 	<div align="left" style="width: 100%;">
 		<c:forEach var="all" items="${list }" begin="0" end="${list.size() < 8 ? list.size() : 8}" varStatus="vs">
 			<div class="incard col-xs-0 col-md-3" style="clear: right;" >
