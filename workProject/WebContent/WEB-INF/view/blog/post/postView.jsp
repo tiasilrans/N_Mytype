@@ -256,7 +256,7 @@ input[type=checkbox]:checked+label:before {
 									<p style="display: block;">${obj.CONTENT }</p>
 								</div>
 
-								<div class="comment-action" style="border: none; float: right; margin-right: 240px; margin-top: -55px;">
+								<div class="comment-action" style="border: none; float: right; margin-right: 280px; margin-top: -55px;">
 									<button class="re-reply-write" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">답글</button>
 									<c:if test="${sessionScope.login eq obj.EMAIL || post.EMAIL eq sessionScope.login }">
 										<button class="reply-edit" style="border: 0px; background-color: white; color: #999999; font-size: 12px;">편집</button>

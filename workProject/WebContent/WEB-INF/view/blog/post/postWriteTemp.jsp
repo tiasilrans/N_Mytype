@@ -18,19 +18,15 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+<link rel="stylesheet" href="/css/blogViewcss.css">
+<link rel="stylesheet" href="/css/navcss.css">
 </head>
 <body>
 	<nav>
 		<tiles:insertAttribute name="nav"/>
-		<tiles:insertAttribute name="nav2"/>
 	</nav>
-	<section style="min-height:100%; margin-bottom: 50px;">
-		<tiles:insertAttribute name="sidebar"/>
+	<section style="margin-top: 50px;">
 		<tiles:insertAttribute name="section"/>
 	</section>
-	<footer style="margin-bottom: 50px;">
-		<tiles:insertAttribute name="footer"/>
-	</footer>
 </body>
 </html>

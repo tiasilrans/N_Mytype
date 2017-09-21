@@ -3,13 +3,20 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<link rel="stylesheet" href="/css/postviewcss.css">
 <link rel="stylesheet" href="/css/my.css">
+
     
 <style>
 
-body{
-	background: whitesomke;
-}
+.box {
+	position: relative;
+	background-color:white;
+	border-radius:10px;
+	margin: 20px;
+	width: 70%;
+	padding: 20px;
+} 
 
 table.type07 {
     line-height: 1.5;
@@ -37,13 +44,12 @@ table.type07 td {
     text-decoration: none;
 }
 
-
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
     z-index: 3;
     color: #fff;
     cursor: default;
     background-color: #0d0d0d;
-    border-color: #ffffff;
+    border-color:rgba( 255, 0, 0, 0 );
 }
 
 .div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
@@ -83,7 +89,7 @@ table.type07 td {
 					</div>
 					
 					<div class="col-md-3" style="padding : 0px; padding-top: 10px;" align="right">
-						<button class="btn subscribe" id="${blog.URL}" value="${blog.URL}" type="button" style="width: 30%; height: 40px; font-size: 15; background-color: black;"><b class="${blog.URL }" style="color: white;">구독취소</b></button>
+						<button class="btn subscribe" id="${blog.URL}" value="${blog.URL}" type="button" style="width: 50%; height: 40px; font-size: 15; background-color: black;"><b class="${blog.URL }" style="color: white;">구독취소</b></button>
 					</div>
 					</div>
 				</div>
@@ -99,7 +105,7 @@ table.type07 td {
 			</c:otherwise>
 	</c:choose>
 	
-	<div align="center">
+	<div class="div-pagination" align="center">
 		<ul class="pagination">
 			<c:forEach var="i" begin="1" end="${page}">
 				<li ${np == i? "class=\"active\"": ""}><a
