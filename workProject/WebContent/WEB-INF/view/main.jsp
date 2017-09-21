@@ -175,7 +175,6 @@ a{ text-decoration: none; }
 
 .incard {
     float: left;
-    width : 280px;
 	height: 270px;
 	margin: 8px;
     border-radius : 5px;
@@ -234,7 +233,6 @@ a{ text-decoration: none; }
 
 </style>   
 <div class="container">
-
 	<div class="row">
 			<!-- 메인쪽 로고 부분 -->
 			<div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
@@ -288,24 +286,27 @@ a{ text-decoration: none; }
 						</c:choose>
 						</span></a></div>
 			</div>
+		<div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
 	</div>
-	<div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
-			<!-- 목록 nav -->
-			<div class="w3-row w3-container">
-			<div style="margin-left: 10px;">
-			<ul class="nav nav-tabs" style="width: 950px;">
-			<li class="active"><a data-toggle="tab" href="#allList"><b>전체</b></a></li>
-			<c:if test="${sessionScope.login ne null}">
-				<li><a data-toggle="tab" href="#likeList"><b>구독</b></a></li>
-			</c:if>
-			</ul>
-			</div>			
-			
-			
-			<div class="tab-content" >
-			
+	
+	
+	
+	
+	<!-- 목록 nav -->
+	<div class="row">
+		<div class="col-lg-12">
+			<div>
+				<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#allList"><b>전체</b></a></li>
+				<c:if test="${sessionScope.login ne null}">
+					<li><a data-toggle="tab" href="#likeList"><b>구독</b></a></li>
+				</c:if>
+				</ul>
+			</div>
+			<div>	
+		<div class="row" >			
 			<!-- 전체 게시글 배치 -->
-			<div id="allList" class="tab-pane fade in active w3-col-s3">
+			
 			<c:forEach var="all" items="${listAll }" begin="0" end="${listAll.size() < 8 ? listAll.size() : 8}" varStatus="vs">
 				<div class="incard " style="clear: right;" >
 					<div class="title">
@@ -358,7 +359,7 @@ a{ text-decoration: none; }
 				</c:if>
 				
 			</c:forEach>
-			</div>
+			
 			
 			
 			<!-- 구독 게시물 배치 -->
@@ -429,7 +430,8 @@ a{ text-decoration: none; }
 			</div>
 
 			
-			</div>
+	</div></div>
+	</div>
 </div>
 </div>
 
