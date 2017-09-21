@@ -8,6 +8,33 @@
 		display: none;
 	}	
 }
+
+@media ( min-width : 768px) {	
+	.search-nav{
+		display: block;
+	}	
+
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+
+.button1 {
+	background-color: #303030;
+}
+
+
+
 </style>
 <!--navbar menu-->
 <section class="navbar-info ">
@@ -39,7 +66,8 @@
 							<li style="margin-bottom: 8px;"><a style="font-weight: bold; background-color: #66a3ff; color: white;" href="/blog/${blog.URL}">${blog.TITLE}</a></li> 
 							<li><a href="/blog/${blog.URL}/categories"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">toc</i>  <span style="margin-left: 10px;">카테고리</span></a></li> 
 							<li><a href="/blog/${blog.URL}/subscribers"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">face</i>  <span style="margin-left: 10px;">구독자</span></a></li>   
-							<li><a href="/blog/${blog.URL}/setting"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">settings</i>  <span style="margin-left: 10px;">설정</span></a></li>  
+							<li style="margin-bottom: 13px;"><a href="/blog/${blog.URL}/setting"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">settings</i>  <span style="margin-left: 10px;">설정</span></a></li>
+							  
 						</c:forEach>
 						</c:if>     
 							<li><a href="/blog/create"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">add</i>  <span style="margin-left: 10px;">새 블로그 생성</span></a></li>
@@ -87,7 +115,7 @@
 				</ul>
 				</c:otherwise>
 			</c:choose>	
-			<ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar-right search-nav">
 				<li><form class="navbar-form form-horizontal" role="search" action="/search/main.mt">
 					<div class="input-group">
 						<input type="text" class="search-box" placeholder="마이타입 검색" name="keyword" style="color: #1a1a1a;">
@@ -139,7 +167,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">로그인</h4>
+          <h6 align="left" style="color: #999999; margin-left: 30px;">로그인 </h6>
         </div>
         
         <div class="modal-body">
@@ -157,9 +185,9 @@
 				<div align="center" class="row">
 
 					<div class="form-group row" align="right" style="width: 360px;">
-					<a>비밀번호 찾기</a>｜<a href="join.mt">회원가입</a>
+					<a style="color: black;">비밀번호 찾기</a>｜<a style="color: black;" href="join.mt">회원가입</a>
 					</div>
-					<button id="login-sbt" type="submit" class="btn">로그인</button>
+					<button id="login-sbt" type="submit" class="button button1">로그인</button>
 				</div>
 			</form>
 		</div>

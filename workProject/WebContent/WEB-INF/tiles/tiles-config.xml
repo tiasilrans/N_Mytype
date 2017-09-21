@@ -74,8 +74,7 @@
 	<definition name="blog_base" template="/WEB-INF/view/blog/template.jsp">
 		<put-attribute name="title" expression="${title}" />
 		<put-attribute name="header" expression="/WEB-INF/view/${header}.jsp"/>
-		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/view/blog/footer.jsp" />	
+		<put-attribute name="section" expression="/WEB-INF/view/${section}.jsp"/>	
 	</definition>
 	
 	<!-- 포스트 작성 -->
