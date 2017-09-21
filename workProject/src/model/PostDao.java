@@ -65,6 +65,22 @@ public class PostDao {
 		
 	}
 	
+	public boolean postEdit(Map map){
+		SqlSession session = factory.openSession();
+		try {
+			int update = session.update("post.edit", map);				
+			return true;			
+		} catch (Exception e) {
+			System.out.println("replyEdit Error");
+			e.printStackTrace();
+			return false;
+		}finally {
+			session.close();
+		}
+		
+	}
+	
+	
 	public boolean postCounter(Map map){
 		SqlSession session = factory.openSession();
 		try {
@@ -147,6 +163,7 @@ public class PostDao {
 		List<Map> list = new ArrayList<>();
 		SqlSession session = factory.openSession();
 		try {
+			System.out.println(map);
 			list = session.selectList("post.main_page_view", map);			
 			return list;
 		} catch (Exception e) {

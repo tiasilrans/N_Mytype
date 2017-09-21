@@ -12,7 +12,7 @@ body {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
-	background: whitesmoke;
+	background: linear-gradient(to bottom, #80c1ff, #cce6ff);	
 }
 
 .box {
@@ -48,8 +48,26 @@ ul li a:hover, ul li a:focus {
 	color: black;
 }
 
+.div-pagination a {
+    color: #0d0d0d;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #0d0d0d;
+    border-color: #ffffff;
+}
+
+.div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
+
 </style>
 
+<section style="min-height: 80%;">
 <div class="col-xs-0 col-md-2"></div>
 <div class="box col-xs-12 col-md-8 col-lg-12">
 		<div class="title" style="margin-bottom: 40px;">
@@ -110,9 +128,9 @@ ul li a:hover, ul li a:focus {
 			</table>
 		</div>
 	
-	<div align="center">
-	<ul class="pagination">
-		<c:forEach var="i" begin="1" end="${page}">
+	<div class="div-pagination" align="center">
+		<ul class="pagination">
+			<c:forEach var="i" begin="1" end="${page}">
 				<li ${np == i? "class=\"active\"": ""}><a
 					href="/my/point/clist.mt?np=${i}">${i}</a></li>
 			</c:forEach>
@@ -120,6 +138,7 @@ ul li a:hover, ul li a:focus {
 	</div>
 	
 </div>
+</section>
 	
 
 

@@ -7,12 +7,6 @@
 
 <style>
 
-body {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-}
-
 a:hover {
 	text-decoration: none;
 }
@@ -71,8 +65,10 @@ label{
 	    	<p style="color:#909090; font-size: 13px;">성인 콘텐츠를 보거나 게시하기 위해서는 성인 확인이 필요합니다.</p>
 	    	<label style="color: #606060;">성인 확인</label>
 	    	<c:choose>
-	    		<c:when test="${certified eq 'N' }">
+	    		<c:when test="${certified ne 'Y' }">
+	    			<!-- 
 	    			<button class="w3-button w3-white w3-border w3-round-large"><a href="/my/settings/certified1">성인 확인하기(휴대전화)</a></button>
+	    			-->
 	    			<button class="w3-button w3-white w3-border w3-round-large"><a href="/my/settings/certified2">성인 확인하기(신분증)</a></button>
 	    		</c:when>
 	    		<c:otherwise>

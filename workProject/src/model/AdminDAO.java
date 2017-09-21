@@ -12,6 +12,11 @@ import org.springframework.stereotype.Service;
 public class AdminDAO {
 	@Autowired
 	SqlSessionFactory factory;	
+
+	@Autowired
+	MailDAO maildao;	
+
+	
 	
 	public List<Map> sublistReply(List<Map> list, int size, String con, String subcon){
 		for(Map map : list){
@@ -252,4 +257,59 @@ public class AdminDAO {
 			session.close();
 		}
 	}
+	
+	public List<Map> adultlist(){
+		SqlSession session = factory.openSession();
+		List<Map> list = new ArrayList<>();
+		try{
+			list  = session.selectList("admin.adultlist");
+			return list;
+		}catch(Exception e){
+			System.out.println("AdminAdultlist Error");
+			e.printStackTrace();
+			return list;
+		}finally{
+			session.close();
+		}
+	}
+	
+	
+	public boolean adultApply(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			int i  = session.update("admin.adultApply", map);
+			map.put("content", "[MyType] 성인인증이 승인되었습니다.");
+			map.put("sender", map.get("email"));
+			map.put("receiver", map.get("email"));
+			maildao.send(map);
+			return true;
+		}catch(Exception e){
+			System.out.println("AdminAdultApply Error");
+			e.printStackTrace();
+			return false;
+		}finally{
+			session.close();
+		}
+	}
+	
+	public boolean adultCompanion(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			int i  = session.update("admin.adultCompanion", map);
+			map.put("content", "[MyType] 성인인증이 반려되었습니다.");
+			map.put("sender", map.get("email"));
+			map.put("receiver", map.get("email"));
+			maildao.send(map);
+			return true;
+		}catch(Exception e){
+			System.out.println("AdminAdultCompanion Error");
+			e.printStackTrace();
+			return false;
+		}finally{
+			session.close();
+		}
+	}
+	
+	
+	
 }
