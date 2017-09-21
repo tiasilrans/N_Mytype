@@ -16,7 +16,7 @@
 			</li>
 			
 			<li class="nav-item dd">
-				<a class="nav-link dd" href="/my/home" style="background-image: none; padding: 0px; background-color: rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif;">My홈</span></a>
+				<a class="nav-link dd" href="/my/home" style="background-image: none; padding: 0px; background-color: rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif;">MY홈</span></a>
 			</li>
 						
 			
