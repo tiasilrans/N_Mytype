@@ -45,7 +45,7 @@ ul li a:hover, ul li a:focus {
 
 </style>
 
-
+<section style="min-height: 80%;">
 <div class="col-xs-0 col-md-2"></div>
 <div class="box col-xs-12 col-md-8 col-lg-12">
 	<div class="title" style="margin-bottom: 40px;">
@@ -116,7 +116,7 @@ ul li a:hover, ul li a:focus {
 	
 </div>
 
-
+</section>
 
 
 

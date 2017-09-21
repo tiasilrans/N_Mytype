@@ -62,22 +62,6 @@ a{ text-decoration: none; }
 
 }
 
-body {
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-}
-
-.box {
-	position: relative;
-	display: block;
-	background-color:white;
-	border-radius:10px;
-	margin: 20px;
-	width: 70%;
-	padding: 20px;
-}
-
 .lbox{
   float:left;
   width:50%;
@@ -126,8 +110,13 @@ body {
 }
 
 </style>
+<<<<<<< HEAD
 <div class="row">
 <section style="min-height: 75%;">
+=======
+
+<section style="min-height: 90%;">
+>>>>>>> branch 'test' of https://github.com/HongSeungTaek/mytype.git
 <div class="col-xs-0 col-md-2"></div>
 <div class="box col-xs-12 col-md-8 col-lg-12" style="margin-bottom: 0;">
 		<div class="title">
