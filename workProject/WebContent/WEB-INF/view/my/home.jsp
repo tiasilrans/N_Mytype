@@ -209,6 +209,7 @@ a{ text-decoration: none; }
         </div>
 </div>
 </section>
+</div>
 
 
 <c:choose>

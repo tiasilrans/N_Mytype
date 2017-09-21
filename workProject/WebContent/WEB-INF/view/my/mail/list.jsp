@@ -47,7 +47,7 @@ table.type07 td {
 </style>
 
 
-<section style="min-height: 80%;">
+<section style="min-height: 100%;">
 <form action="/mail/delete.mt">
 <div class="col-xs-0 col-md-2"></div>
 <div class="box col-xs-12 col-md-8 col-lg-12">
