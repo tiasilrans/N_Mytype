@@ -5,13 +5,6 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
 
-body {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-    background: whitesmoke;
-}
-
 a:hover {
 	text-decoration: none;
 }
@@ -46,8 +39,10 @@ label{
 
 </style>
 
+<section style="min-height: 90%;">
 <form class="form-inline form-horizontal" action="/my/settings/adult" method="post" enctype="multipart/form-data">
-	<div class="scard col-xs-offset-2 col-md-offset-2">
+	<div class="col-xs-0 col-md-2"></div>
+	<div class="box col-xs-12 col-md-8 col-lg-12">
 		<div class="card-block col-xs-10" style="padding-top: 3%; font-size: 15px;">
 			<p style="color:#909090; font-size: 13px;">성인 콘텐츠를 보거나 게시하기 위해서는 본인 확인이 필요합니다.</p>
 			<label>신분증으로 본인 확인하기</label>
@@ -72,6 +67,8 @@ label{
 		</div>
 	</div>
 </form>
+</section>
+
 
 <c:if test="${result ne null}">
 <script>

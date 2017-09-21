@@ -8,8 +8,10 @@
 
 <style>
 
-body {
-	background: whitesmoke;
+body{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 1.42857143;
+	background: linear-gradient(to bottom, #80c1ff, #cce6ff);
 }
 
 a{ text-decoration: none; }
