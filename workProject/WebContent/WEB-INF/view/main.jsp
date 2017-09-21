@@ -259,7 +259,9 @@ a{ text-decoration: none; }
 			      </div>
 			    
 			      <div class="logo-frame item">
-			        <img src="/images/mainimg/33.png" style=" height: 350px; border-radius: 5px;">
+
+			        <img src="/images/mainimg/3.png" style=" height: 350px; border-radius: 5px;">
+
 			      </div>
 			    </div>
 			  </div>

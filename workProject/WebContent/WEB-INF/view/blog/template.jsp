@@ -26,9 +26,5 @@
 	<section style="min-height: 70%; background-color: #d9d9d9;">
 		<tiles:insertAttribute name="section"/>
 	</section>
-	<footer>
-		<tiles:insertAttribute name="footer"/>
-	</footer>
-	
 </body>
 </html>
