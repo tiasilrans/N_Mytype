@@ -9,6 +9,29 @@
 
 <style>
 
+@media (max-width: 1024px){
+
+	#myCarousel{
+		padding-left: 5%;
+	}	
+   
+}
+
+
+@media (max-width: 991px){
+	#secondlogo{
+		display: none;
+	}
+}
+
+@media (max-width: 767px){
+	#secondlogo{
+		display: none;
+		}
+   
+}
+
+
 
 body{
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -210,14 +233,13 @@ a{ text-decoration: none; }
 
 
 </style>   
-<div class="container" style="margin: auto;">
-<!-- <div class="col-md-3"></div>
-<div class="col-md-8" style="margin-left: auto;"> -->
+<div class="container">
+
 	<div class="row">
 			<!-- 메인쪽 로고 부분 -->
-			<div class="col-lg-1"></div>
-			  <div class="col-lg-6 col-md-8 col-sm-12" >
-			  <div id="myCarousel" class="carousel" data-ride="carousel" style="margin: 10px; margin-right:0; border:1px solid silver;border-radius:5px; padding: 0px;">
+			<div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
+			  <div class="col-lg-6 col-md-7 col-sm-10 col-xs-12" >
+			  <div id="myCarousel" class="carousel" data-ride="carousel" style="margin-top: 10px;">
 			  
 			    <!-- Indicators -->
 			    <ol class="carousel-indicators">
@@ -227,23 +249,24 @@ a{ text-decoration: none; }
 			    </ol>
 			
 			    <!-- Wrapper for slides -->
-			    <div class="carousel-inner">
+			    <div class="carousel-inner" style="overflow: visible;">	
 			      <div class="logo-frame item active">
-			        <img src="/images/mainimg/1.png" alt="Los Angeles" style=" height: 350px; border-radius: 5px;">
+			        <img src="/images/mainimg/1.png"  style=" height: 350px; border-radius: 5px;">
 			      </div>
 			
 			      <div class="logo-frame item">
-			        <img src="/images/mainimg/2.png" alt="Chicago" style=" height: 350px; border-radius: 5px;">
+			        <img src="/images/mainimg/2.png" style=" height: 350px; border-radius: 5px;">
 			      </div>
 			    
 			      <div class="logo-frame item">
-			        <img src="/images/mainimg/33.png" alt="New york" style=" height: 350px; border-radius: 5px;">
+			        <img src="/images/mainimg/33.png" style=" height: 350px; border-radius: 5px;">
 			      </div>
 			    </div>
 			  </div>
 			</div>
+			<div class="col-lg-1" style="margin: 0px; padding: 0px;"></div>
 			<!-- 메인쪽 로고 오른쪽 부분 -->
-			<div id="secondlogo" class="col-lg-4 col-md-4 col-sm-0">
+			<div id="secondlogo" class="col-lg-3 col-md-3 col-sm-2 col-xs-0">
 				<div class="secondlogo-head">MyType 소식</div>
 					<div class="secondlogo-body">
 						<img class="secondlogo-body-profileimg" src="/images/blogMark.png">
@@ -264,7 +287,7 @@ a{ text-decoration: none; }
 						</span></a></div>
 			</div>
 	</div>
-	<div class="col-lg-1"></div>
+	<div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
 			<!-- 목록 nav -->
 			<div class="w3-row w3-container">
 			<div style="margin-left: 10px;">
