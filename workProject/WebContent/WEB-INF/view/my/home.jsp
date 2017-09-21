@@ -62,22 +62,6 @@ a{ text-decoration: none; }
 
 }
 
-body {
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-}
-
-.box {
-	position: relative;
-	display: block;
-	background-color:white;
-	border-radius:10px;
-	margin: 20px;
-	width: 70%;
-	padding: 20px;
-}
-
 .lbox{
   float:left;
   width:50%;
