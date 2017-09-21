@@ -163,6 +163,7 @@ public class PostDao {
 	
 	public List<Map> blogPostList(Map map){		
 		List<Map> list = new ArrayList<>();
+		System.out.println(list == null);
 		SqlSession session = factory.openSession();
 		try {
 			System.out.println(map);

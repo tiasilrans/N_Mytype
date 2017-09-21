@@ -103,6 +103,9 @@ public class BlogController {
 		}
 		
 		List<Map> mainPostList = pDAO.blogPostList(pageMap);
+		if(!mainPostList.isEmpty()){
+			mav.addObject("pl", true);
+		}
 		for(Map m : mainPostList){
 			map.put("num", m.get("NUM"));
 			int count = rDAO.postReplyCount(map);
