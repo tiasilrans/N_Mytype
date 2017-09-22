@@ -416,14 +416,16 @@
 							</form>
 	 					</c:when>
 	 					<c:otherwise>
-	 						<label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="home" style="display:inline; margin-left: 14px;">구독</div>
+	 						<label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="sub" style="display:inline; margin-left: 14px;">구독</div>
 	 					</c:otherwise>
  					</c:choose>
  				</div>
- 				<div class="col-xs-8 px-0" style="margin : 5px;  margin-top: -5px;"> 				
+ 				<c:if test="${sessionScope.login ne null }">
+ 				<div class="col-xs-8 px-0" style="margin : 5px;  margin-top: 10px;"> 				
  					<a href="/"><label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -3px;">dashboard</label></a>
- 					<a href="/"><div class="myhome" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">내 블로그 설정</div></a>
- 				</div> 				       
+ 					<a href="/blog/${sessionScope.userBlog.URL }/setting"><div class="myblog" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">내 블로그 설정</div></a>
+ 				</div>
+ 				</c:if>				       
  			</div> 
  			
  			 

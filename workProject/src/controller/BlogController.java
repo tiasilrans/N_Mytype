@@ -70,6 +70,11 @@ public class BlogController {
 	public ModelAndView BlogView(@PathVariable(value="url") String url, 
 						@RequestParam(name="p", defaultValue="1") int p, HttpSession session){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+		List<Map> li = (List)session.getAttribute("blog");
+		for(Map mm:li){
+			System.out.println(mm.get("URL"));
+			session.setAttribute("userBlog", mm);
+		}
 		ModelAndView mav = new ModelAndView();
 		String path = "/images/blogImg/"+url;
 		String rPath = application.getRealPath(path);
