@@ -63,6 +63,9 @@ select {
 		<div class="card-block">
 			<label style="color: #606060;">은행</label>
 				<select name="bank">
+					<c:if test="${info.BANK ne null }">
+						<option value="${info.BANK }">${info.BANK }</option>
+					</c:if>
 					<option>은행을 선택해주세요.</option>
 					<option value="기업은행">기업은행</option>
 					<option value="국민은행">국민은행</option>

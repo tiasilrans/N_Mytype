@@ -49,7 +49,7 @@
 		reply r
 		</when>
 		<otherwise>
-		(select * from reply where email=#{email} order by rdate desc) r
+		(select * from reply where email=#{email} order by cdate desc) r
 		</otherwise>
 		</choose>
 			left join (select num,url,title from post) p on r.pnum=p.num

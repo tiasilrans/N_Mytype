@@ -176,7 +176,7 @@
 <div align="left" style="margin-left: 100px; margin-bottom: 50px;">
 	<h4><b>'${sessionScope.target}'</b>님이 작성한 댓글</h4>
 	<hr style="margin-top: 10px; width: 80%;" align="left"/>
-		<table class="table reply" style="margin-left: 80px ;width: 530px; border-collapse: collapse; display: block; border: 1px solid #ccc;">
+		<table class="table reply" style="margin-left: 0px ;width: 530px; border-collapse: collapse; display: block; border: 1px solid #ccc;">
 		<thead>
 			<tr style="background-color: #F6F6F6;">
 				<th>내용</th>

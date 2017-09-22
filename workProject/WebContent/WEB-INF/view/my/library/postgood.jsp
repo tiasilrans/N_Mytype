@@ -149,7 +149,7 @@ a{text-decoration: none;}
 		</c:forEach>
 	</c:when>
 	<c:otherwise>
-	<h1 align="center">포스트가 없습니다.</h1>
+		<h1 align="center">포스트가 없습니다.</h1>
 	</c:otherwise>
 	</c:choose>
 	</div>

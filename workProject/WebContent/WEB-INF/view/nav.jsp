@@ -210,7 +210,7 @@
         
         <div class="modal-body">
           		<div class="form-group row" align="center">
-          		<a href="/mail/list.mt?type=receive"><button type="button" class="btn btn-primary">쪽지함이동</button></a>
+          		<a href="/mail/list.mt?type=receive"><button type="button" class="button button1" >쪽지함이동</button></a>
 		</div>
         </div>
 

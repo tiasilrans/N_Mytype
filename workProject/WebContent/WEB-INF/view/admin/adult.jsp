@@ -13,9 +13,9 @@
     
 <div class="col-md-10"style="margin-top: 20px;">
 	<div style="width: 80%;" align="left">
-	<h2>댓글 관리</h2>
+	<h2>성인인증 승인</h2>
 	<hr style="margin-top: 10px;"/>
-	</div>
+	</div> 
 
 <div class="row" >
 <div class="col-md-4">
@@ -34,7 +34,7 @@
 			<tr>
 			<td>${m.EMAIL}</td>
 			<td>
-			<button type="button" class="btn btn-link" style="font-size: 13;" id="detail" value="${m.CERTIFIED}">보기</button></td>
+			<button type="button" class="btn btn-link detail" style="font-size: 13;" value="${m.CERTIFIED}">보기</button></td>
 			<td><button type="button" class="btn btn-link" id="apply" style="font-size: 13;" value="${m.EMAIL}">승인</button></td>
 			<td><button type="button" class="btn btn-link" id="companion" style="font-size: 13;" value="${m.EMAIL}">반려</button></td>
 			</tr>
@@ -53,7 +53,7 @@
 </div>
 
 <script>
-$("#detail").on("click", function(){
+$(".detail").on("click", function(){
 	var path = '/images/adult/'+$(this).val();
 	console.log(path);
 	
