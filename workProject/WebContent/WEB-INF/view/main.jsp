@@ -178,9 +178,9 @@ a{ text-decoration: none; }
 }
 </style>
 
-<section style="min-height:140%">
-<div class="col-lg-3 col-md-3"></div>
-	<div class="col-lg-7 col-md-6" style="margin-left: auto;">
+<section>
+<div class="col-lg-2 col-md-3"></div>
+	<div class="col-lg-7 col-md-6">
 	
 		<!-- 메인쪽 로고 부분 -->
 		<div class="w3-row w3-container" style="width:1100px; height: 350px;" >
@@ -375,6 +375,7 @@ a{ text-decoration: none; }
 			</div>
 	</div>
 </div>
+<div class="col-lg-2 col-md-3"></div>
 </section>
 
 
@@ -431,15 +432,3 @@ a{ text-decoration: none; }
 	imgsize();
 </script>
 
-<!-- 메인 썸네일 이미지 조정 
-<script>
-$(document).ready(function() {
-	$("#thumbnail").children().addClass("nailthumb-container");
-	
-	$('.nailthumb-column-metadata .nailthumb-container').nailthumb({width:220,height:74,fitDirection:'center center'});
-	
-	
-	
-    
-  });
-</script>-->
