@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" href="/css/searchcss.css">
 <link rel="stylesheet" href="/css/my.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   
 <style>
 
@@ -61,76 +62,113 @@ a{text-decoration: none;}
 	color : red;
 }
 
+.div-pagination a {
+    color: #0d0d0d;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #0d0d0d;
+    border-color: black;
+}
+
+.div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
+
 </style>
-    
-<div align="center">
 
-	<div style="width: 60%;" align="left">
-	포스트 <span style="font-weight: bold; font-size: 20;">'${keyword}'</span><br/>
-<hr style="margin-top: 10px;"/>
-</div>
-
-<div class="row" style="width: 60%;">
-<div align="left" style="width: 100%;">
-	<c:forEach var="like" items="${plist }" begin="0" end="${listLike.size() < 11 ? listLike.size() : 11}" varStatus="vs">
-		<div class="incard col-xs-0 col-md-3" style="clear: right;" >
-			<div class="title">
-				<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
-				<div>${like.NICKNAME }</div>
-				<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${like.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${like.URL }">${like.URL }</a></div>
-			</div>
-			
-			<div style="height:65px; margin:12px; padding-bottom: 5px;">
-				<a href="/${like.URL}/post/${like.NUM}" style="font-size: 15px; text-decoration: none; color: #333333;padding-bottom: 5px;">
-					${like.TITLE }
-				
-					<c:if test="${like.IMG.length() > 10}">
-						<div class="nailthumb-column-metadata" id="thumbnail">
-							${like.IMG }
-						</div>  
-					</c:if>
-				</a>
-				<a href="/${like.URL}/post/${like.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
-					${like.FCONTENT }
-				</a>
-			</div> <br/><br/><br/>
-			
-			<div>
-				<c:set var="msg" value="${like.HASH }"/>
-				<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
-				<c:forEach items="${hashtag}" var="hash">
-					<span class="conbody-hashtag">
-						<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
-					</span>
-				</c:forEach>
-			</div>
-			
-			<!-- footer -->
-			<div class="confooter">
-				<c:choose>
-					<c:when test="${like.HEART == null}">
-						<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
-					</c:when>
-					<c:otherwise>
-						<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
-					</c:otherwise>
-				</c:choose>
-				<span class="confooter-count heart-${like.NUM}">${like.GOOD }</span>
-			</div>
-			
+<section style="min-height: 110%;">  
+<div class="col-lg-3 col-md-3"></div>
+<div class="col-lg-7 col-md-6" style="margin-left: auto;">
+	<div class="w3-row w3-container" style="width:1100px;">
+	
+		<div class="w3-col s10" align="left">
+			포스트 <span style="font-weight: bold; font-size: 20;">'${keyword}'</span><br/>
+			<hr style="margin-top: 10px;"/>
 		</div>
-	</c:forEach>
-</div>
-</div>
+	
+		<c:forEach var="like" items="${plist }" begin="0" end="${listLike.size() < 11 ? listLike.size() : 11}" varStatus="vs">
+			<div class="incard col-xs-0 col-md-3" style="clear: right;" >
+				<div class="title w3-col 3">
+					<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" onerror="this.src='/images/avatar_yellow.png'" style="border-radius: 50%;" width="40px" height="40px" /></a>
+					<div>${like.NICKNAME ne null ? like.NICKNAME : like.EMAIL }</div>
+					<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${like.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${like.URL }">${like.URL }</a></div>
+				</div>
+				
+				<div style="height:65px; margin:12px; padding-bottom: 5px;">
+				<c:choose>
+				<c:when test="${like.ADULT eq 'false' || (like.ADULT eq 'true' && sessionScope.info.CERTIFIED eq 'Y') || sessionScope.login eq like.EMAIL}">								
+					<a href="/${like.URL}/post/${like.NUM}" style="font-size: 15px; text-decoration: none; color: #333333;padding-bottom: 5px;">
+						${like.TITLE }
+					
+						<c:if test="${like.IMG.length() > 10}">
+							<div class="nailthumb-column-metadata" id="thumbnail">
+								${like.IMG }
+							</div>  
+						</c:if>
+					</a>
+					<a href="/${like.URL}/post/${like.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
+						${like.FCONTENT }
+					</a>
+				</c:when>
+				<c:otherwise>
+				<a href="/${like.URL}/post/${like.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
+					성인인증이 필요한 글입니다.
+				</a>						
+				</c:otherwise>
+				</c:choose>						
+				</div> <br/><br/><br/>
+				
+				<div>
+					<c:set var="msg" value="${like.HASH }"/>
+					<c:set var="hashtag" value="${fn:split(msg,' ')}"/>
+					<c:forEach items="${hashtag}" var="hash">
+						<span class="conbody-hashtag">
+							<a href="/search/tag.mt?keyword=${hash}"><span style="color: #909090;">#${hash}</span></a>
+						</span>
+					</c:forEach>
+				</div>
+				
+				<!-- footer -->
+				<div class="confooter">
+					<c:choose>
+						<c:when test="${like.HEART == null}">
+							<button type="button" class="btn-link glyphicon glyphicon-heart-empty confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="btn-link glyphicon glyphicon-heart confooter-like like oheart-${like.NUM}" value="heart-${like.NUM}"></button>
+						</c:otherwise>
+					</c:choose>
+					<span class="confooter-count heart-${like.NUM}">${like.GOOD }</span>
+				</div>
+				
+			</div>
+		</c:forEach>
+	</div>
 
-<ul class="pagination">
-	<c:forEach var="i" begin="1" end="${page}">
-		<li ${np == i? "class=\"active\"": ""}><a
-			href="/search/post.mt?np=${i}&keyword=${keyword}">${i}</a></li>
-	</c:forEach>
-</ul>
-
+	<div class="div-pagination" align="center">
+		<ul class="pagination">
+			<c:forEach var="i" begin="1" end="${page}">
+				<li ${np == i? "class=\"active\"": ""}><a
+					href="/search/post.mt?np=${i}&keyword=${keyword}">${i}</a></li>
+			</c:forEach>
+		</ul>
+	</div>
 </div>
+</section>
+
+<script>
+	function imgsize(){
+		$(".fr-fic").css("width","220px");
+		$(".fr-fic").css("height","74px");
+		$(".fr-fic").css("border-radius","2px");
+	}
+	imgsize();
+</script>
 
 <c:choose>
 	<c:when test="${sessionScope.login == null}">

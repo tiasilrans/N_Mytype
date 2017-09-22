@@ -21,7 +21,7 @@ a:hover {
 			</li>
 		
 			<li class="nav-item">
-				<a class="nav-link" href="/blog/${url}" style="background-image: none; padding: 0px; background-color:opacity;"><span style="color: white; font-family: sans-serif;"">${blogTitle.TITLE}</span></a>
+				<a class="nav-link" href="/blog/${url}" style="background-image: none; padding: 0px; background-color:rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif;"">${blogTitle.TITLE}</span></a>
 			</li>
 			
 			<li class="nav-item" style="margin-left: 30px; margin-top: -2px;">
@@ -30,7 +30,7 @@ a:hover {
 			
 			
 			<li class="nav-item">
-				<a class="nav-link" href="/blog/${url}/categories" style="background-image: none; padding: 0px; background-color:rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif;"">카테고리</span></a>
+				<a class="nav-link" href="/blog/${url}/categories" style="background-image: none; padding: 0px; background-color:rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif;">카테고리</span></a>
 			</li>
 			
 			<li class="nav-item" style="margin-left: 30px; margin-top: -1px;">
@@ -47,7 +47,7 @@ a:hover {
 			</li>
 			
 			<li class="nav-item">
-				<a class="nav-link" href="/blog/${url}/setting" style="background-image: none; padding: 0px; background-color:rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif;"">설정</span></a>
+				<a class="nav-link" href="/blog/${url}/setting" style="background-image: none; padding: 0px; background-color:rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif;">설정</span></a>
 			</li>
 		</ul>
 </nav>

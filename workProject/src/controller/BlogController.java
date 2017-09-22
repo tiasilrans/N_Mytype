@@ -70,6 +70,11 @@ public class BlogController {
 	public ModelAndView BlogView(@PathVariable(value="url") String url, 
 						@RequestParam(name="p", defaultValue="1") int p, HttpSession session){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+		List<Map> li = (List)session.getAttribute("blog");
+		for(Map mm:li){
+			System.out.println(mm.get("URL"));
+			session.setAttribute("userBlog", mm);
+		}
 		ModelAndView mav = new ModelAndView();
 		String path = "/images/blogImg/"+url;
 		String rPath = application.getRealPath(path);
@@ -93,7 +98,7 @@ public class BlogController {
 			pageMap.put("start", start);
 			pageMap.put("end", end);
 			pageMap.put("url", url);
-			
+			pageMap.put("email", (String)session.getAttribute("login"));
 		List<Map> list = bDAO.cate_List(map);
 		for(Map m : list){
 			String cn = (String)m.get("CATEGORY_NAME");
@@ -103,6 +108,9 @@ public class BlogController {
 		}
 		
 		List<Map> mainPostList = pDAO.blogPostList(pageMap);
+		if(!mainPostList.isEmpty()){
+			mav.addObject("pl", true);
+		}
 		for(Map m : mainPostList){
 			map.put("num", m.get("NUM"));
 			int count = rDAO.postReplyCount(map);
@@ -110,7 +118,8 @@ public class BlogController {
 			m.put("replyCount", count);
 			m.put("likeCount", like);
 		}
-	
+		Map mmm = sDAO.subCount(map);
+		System.out.println(sDAO.subCount(map).get("COUNT(*)"));
 			mav.setViewName("blog_base");
 			mav.addObject("section", "blog/blog");
 			mav.addObject("header", "blog/header");
@@ -120,7 +129,7 @@ public class BlogController {
 			mav.addObject("list", mainPostList); // 블로그 메인 포스트 리스트
 			mav.addObject("category", list);
 			mav.addObject("subCk", sDAO.subCheck(map));
-			
+			mav.addObject("subcnt",mmm.get("COUNT(*)"));
 		return mav;
 	}
 	

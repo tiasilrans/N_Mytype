@@ -7,11 +7,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
-<!-- <style>
-.nav-item:hover{
-        background: rgba( 255, 0, 0, 0.1 );
-}
-</style> -->
 <!-- blogSetting navbar menu-->
 <nav class="secondary-nav navbar">
 		<ul class="nav navbar-nav" style="margin-left: 5px; margin-top: 10px;">
@@ -21,33 +16,36 @@
 			</li>
 			
 			<li class="nav-item dd">
-				<a class="nav-link dd" href="/my/home" style="background-image: none; padding: 0px; background-color: rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif;">My홈</span></a>
+				<a class="nav-link dd" href="/my/home" style="background-image: none; padding: 0px; background-color: rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif;">MY홈</span></a>
 			</li>
 						
 			
-			<li class="nav-item" style="margin-left: 30px; margin-top: -2px;">
-				<i class="material-icons"  style="color: white; float: left; font-size: 25px;">turned_in</i>
-			</li>
-			
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px;"><span style="color: white; font-family: sans-serif; ">라이브러리</span></a>
-						<ul class="dropdown-menu">						
-							<li><a href="/subscribe/blog.mt" >구독한 블로그</a></li>
-						</ul>
-			</li>
-
 			
 			<li class="nav-item" style="margin-left: 30px; margin-top: -2px;">
 				<i class="material-icons"  style="color: white; float: left; font-size: 25px;">subject</i>
 			</li>
 			
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px; background-color:opacity;"><span style="color: white; font-family: sans-serif;">구독</span></a>
+				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px; background-color:rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif;">구독</span></a>
+						<ul class="dropdown-menu">						
+							<li><a href="/subscribe/blog.mt" >구독한 블로그</a></li>
+						</ul>
+			</li>
+			
+			
+			
+			<li class="nav-item" style="margin-left: 30px; margin-top: -2px;">
+				<i class="material-icons"  style="color: white; float: left; font-size: 25px;">turned_in</i>
+			</li>
+			
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px;  background-color:rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif; ">라이브러리</span></a>
 						<ul class="dropdown-menu">						
 							<li><a href="/my/library/postgood">좋아요</a></li>
 							<li><a href="/my/library/purchases">구매 항목</a></li>
-						</ul>
+						</ul>							
 			</li>
+			
 			
 			
 			<li class="nav-item" style="margin-left: 30px; margin-top: -2px;">
@@ -55,7 +53,7 @@
 			</li>
 			
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px; background-color:opacity;"><span style="color: white; font-family: sans-serif;">포인트</span></a>
+				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px; background-color:rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif;">포인트</span></a>
 						<ul class="dropdown-menu">						
 							<li><a href="/my/point/plist">사용내역</a></li>
 							<li><a href="/my/point/charge">충전하기</a></li>
@@ -71,13 +69,12 @@
 			</li>
 			
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px; background-color:opacity;"><span style="color: white; font-family: sans-serif;">설정</span></a>
+				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px; background-color:rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif;">설정</span></a>
 						<ul class="dropdown-menu">						
 							<li><a href="/my/settings/account">계정 설정</a></li>
 							<li><a href="/my/settings/profile">프로필 편집</a></li>
 							<li><a href="/my/settings/password">비밀번호 변경</a></li>
 							<li><a href="/my/settings/bank">출금계좌 설정</a></li>
-							<li><a href="/my/settings/memberdelete">회원 탈퇴</a></li>
 						</ul>
 			</li>
 			
@@ -87,7 +84,7 @@
 			</li>
 			
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px; background-color:opacity;"><span style="color: white; font-family: sans-serif;">쪽지</span></a>
+				<a class="nav-link dropdown-toggle" href="#" style="background-image: none; padding: 0px; background-color:rgba( 255, 0, 0, 0 );"><span style="color: white; font-family: sans-serif;">쪽지</span></a>
 						<ul class="dropdown-menu">						
 							<li><a href="/mail/write.mt">쪽지보내기</a></li>
 							<li><a href="/mail/list.mt?type=send">보낸쪽지함</a></li>

@@ -38,6 +38,8 @@ public class PostDao {
 				if(ar.indexOf("froala") > -1){
 					if(img.length() == 0){
 						ar = ar.replaceAll("<br>", "");
+						ar = ar.replaceAll("\">", "\"onerror=\"this.src='/images/error.jpg'\">");
+						System.out.println(ar);
 						img+=ar;
 					}
 				}else{
@@ -161,8 +163,10 @@ public class PostDao {
 	
 	public List<Map> blogPostList(Map map){		
 		List<Map> list = new ArrayList<>();
+		System.out.println(list == null);
 		SqlSession session = factory.openSession();
 		try {
+			System.out.println(map);
 			list = session.selectList("post.main_page_view", map);			
 			return list;
 		} catch (Exception e) {

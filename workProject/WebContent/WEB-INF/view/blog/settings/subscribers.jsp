@@ -21,7 +21,10 @@
     left: 0;
    }
 
- a:hover { color: white; text-decoration: underline;}
+
+ a:link { color: white; text-decoration: none;}
+ a:visited { color: white; text-decoration: none;}
+ a:hover { color: white; text-decoration: none;}
 
 }
 </style> 
@@ -82,9 +85,6 @@
                 <h5 class="modal-title" id="modal-user-nickname">박소라</h5>
                 </div>
                 <div class="small" id="modal-user-bio"></div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="닫기">
-                    <i class="mi mi-sm" aria-label="닫기"></i>
-                </button>
             </div>
             <div class="modal-body" id="modal-user-blog-container" style="margin-left: 5px;">
             <div style="margin-left: 2px;">

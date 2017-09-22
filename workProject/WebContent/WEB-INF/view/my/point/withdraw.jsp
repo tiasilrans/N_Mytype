@@ -42,7 +42,7 @@ body{
 			<label style="width:105px; margin-top:10px; margin-left: 15px; margin-right: 15px;">
 				<b>보유 포인트 &nbsp;&nbsp;&nbsp;&nbsp; : </b>
 			</label>
-			<span id="pointsum" style="color:gray; font-weight: bold; font-size: 30px;">
+			<span id="pointsum" style="color:#80aaff; font-weight: bold; font-size: 30px;">
 				<fmt:formatNumber pattern="#,###">		
 					${pointsum.SUM }
 				</fmt:formatNumber>
@@ -53,7 +53,7 @@ body{
 			<label style="width:105x; margin-top:10px; margin-left: 15px; margin-right: 15px;">
 				<b>출금 후 포인트 &nbsp; :&nbsp; </b>
 			</label>
-			<span id="rpoint" style="color:gray; font-weight: bold; font-size: 30px;">
+			<span id="rpoint" style="color:#80aaff; font-weight: bold; font-size: 30px;">
 				<fmt:formatNumber pattern="#,###">		
 					${pointsum.SUM }
 				</fmt:formatNumber>

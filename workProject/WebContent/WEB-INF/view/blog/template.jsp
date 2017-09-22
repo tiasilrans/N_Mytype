@@ -26,6 +26,6 @@
 	<section style="min-height: 70%; background-color: #d9d9d9;">
 		<tiles:insertAttribute name="section"/>
 	</section>
-
+	
 </body>
 </html>

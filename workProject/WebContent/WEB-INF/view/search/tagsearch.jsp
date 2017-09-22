@@ -10,6 +10,23 @@
 
 a{text-decoration: none;}
 
+.div-pagination a {
+    color: #0d0d0d;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #0d0d0d;
+    border-color: black;
+}
+
+.div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
+
 </style>
 
 <div align="center">
@@ -20,18 +37,20 @@ a{text-decoration: none;}
 </div>
 
 <div class="row" style="width: 60%; min-height: 10%">
-<c:forEach items="${hash}" var="tag">
-	<div class="col-md-3" style=" padding: 5px;">
-	<div style="background-color: #F6F6F6; padding: 15px;" align="left">
-		<a href="/search/tag.mt?keyword=${tag}"><span style="font-size: 18px;">#${tag }</span></a>
-	</div>
-	</div>
-</c:forEach>
-</div>
-<ul class="pagination">
-	<c:forEach var="i" begin="1" end="${page}">
-		<li ${np == i? "class=\"active\"": ""}><a
-			href="/search/tagsearch.mt?np=${i}&keyword=${keyword}">${i}</a></li>
+	<c:forEach items="${hash}" var="tag">
+		<div class="col-md-3" style=" padding: 5px;">
+		<div style="background-color: #F6F6F6; padding: 15px;" align="left">
+			<a href="/search/tag.mt?keyword=${tag}"><span style="font-size: 18px;">#${tag }</span></a>
+		</div>
+		</div>
 	</c:forEach>
-</ul>
+	</div>
+	<div class="div-pagination" align="center">
+		<ul class="pagination">
+			<c:forEach var="i" begin="1" end="${page}">
+				<li ${np == i? "class=\"active\"": ""}><a
+					href="/search/tagsearch.mt?np=${i}&keyword=${keyword}">${i}</a></li>
+			</c:forEach>
+		</ul>
+	</div>
 </div>

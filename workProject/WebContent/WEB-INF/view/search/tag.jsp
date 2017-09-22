@@ -61,6 +61,23 @@ a{text-decoration: none;}
 	color : red;
 }
 
+.div-pagination a {
+    color: #0d0d0d;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #0d0d0d;
+    border-color: black;
+}
+
+.div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
+
 </style>
     
 <div align="center">
@@ -75,12 +92,14 @@ a{text-decoration: none;}
 	<c:forEach var="like" items="${plist }" begin="0" end="${listLike.size() < 11 ? listLike.size() : 11}" varStatus="vs">
 		<div class="incard col-xs-0 col-md-3" style="clear: right;" >
 			<div class="title">
-				<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" style="border-radius: 50%;" width="40px" height="40px" /></a>
-				<div>${like.NICKNAME }</div>
+				<a style="float:left; padding-right: 10px;"><img src="/images/profile/${like.IMAGE }" onerror="this.src='/images/avatar_yellow.png'" style="border-radius: 50%;" width="40px" height="40px" /></a>
+				<div>${like.NICKNAME ne null ? like.NICKNAME : like.EMAIL }</div>
 				<div style="color:#909090; font-size: 11px;"><fmt:formatDate value="${like.PDATE }" pattern="yy.MM.dd"/> · <a class="conhead-title-blog" href="/blog/${like.URL }">${like.URL }</a></div>
 			</div>
 			
 			<div style="height:65px; margin:12px; padding-bottom: 5px;">
+				<c:choose>
+				<c:when test="${like.ADULT eq 'false' || (like.ADULT eq 'true' && sessionScope.info.CERTIFIED eq 'Y') || sessionScope.login eq like.EMAIL}">				
 				<a href="/${like.URL}/post/${like.NUM}" style="font-size: 15px; text-decoration: none; color: #333333;padding-bottom: 5px;">
 					${like.TITLE }
 				
@@ -93,6 +112,13 @@ a{text-decoration: none;}
 				<a href="/${like.URL}/post/${like.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
 					${like.FCONTENT }
 				</a>
+				</c:when>
+				<c:otherwise>
+				<a href="/${like.URL}/post/${like.NUM}" style="text-decoration: none; color: gray; font-size: 13px;">
+					성인인증이 필요한 글입니다.
+				</a>						
+				</c:otherwise>
+				</c:choose>				
 			</div> <br/><br/><br/>
 			
 			<div>
@@ -123,14 +149,25 @@ a{text-decoration: none;}
 </div>
 </div>
 
-<ul class="pagination">
-	<c:forEach var="i" begin="1" end="${page}">
-		<li ${np == i? "class=\"active\"": ""}><a
-			href="/search/tag.mt?np=${i}&keyword=${keyword}">${i}</a></li>
-	</c:forEach>
-</ul>
+	<div class="div-pagination" align="center">
+		<ul class="pagination">
+			<c:forEach var="i" begin="1" end="${page}">
+				<li ${np == i? "class=\"active\"": ""}><a
+					href="/search/tag.mt?np=${i}&keyword=${keyword}">${i}</a></li>
+			</c:forEach>
+		</ul>
+	</div>
 
 </div>
+
+<script>
+	function imgsize(){
+		$(".fr-fic").css("width","220px");
+		$(".fr-fic").css("height","74px");
+		$(".fr-fic").css("border-radius","2px");
+	}
+	imgsize();
+</script>
 
 <c:choose>
 	<c:when test="${sessionScope.login == null}">

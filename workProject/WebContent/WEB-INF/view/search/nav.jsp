@@ -9,17 +9,19 @@
 }
 </style>
 
+<!-- blogSetting navbar menu-->
+<nav class="secondary-nav navbar">
+		<ul class="nav navbar-nav" style="margin-left: 105px; margin-top: 10px;">
+			<li class="nav-item">
+				<a class="nav-link dropdown-toggle" href="/search/main.mt?keyword=${keyword}" style="background-image: none; padding: 0px; background-color:rgba( 255, 0, 0, 0 ); margin-left: 45px;"><span style="color: white; font-family: sans-serif;">전체</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link dropdown-toggle" href="/search/post.mt?keyword=${keyword}" style="background-image: none; padding: 0px; background-color:rgba( 255, 0, 0, 0 );  margin-left: 45px;"><span style="color: white; font-family: sans-serif;">포스트</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link dropdown-toggle" href="/search/post.mt?keyword=${keyword}" style="background-image: none; padding: 0px; background-color:rgba( 255, 0, 0, 0 );  margin-left: 45px;"><span style="color: white; font-family: sans-serif;">태그</span></a>
+			</li>
 
-
-<!-- search navbar menu-->
-	<nav class="navbar navbar-default search-navbar" style="border-top-style: none; min-height: 45px; padding-left: 147px;">
-		<div>		
-		<ul class="nav navbar-nav navbar-left">
-			<li class=""><a class="header" href="/search/main.mt?keyword=${keyword}" id="home" style="padding-top: 12px; height: 5px;">전체</a></li>
-			<li class=""><a class="header" href="/search/post.mt?keyword=${keyword}" id="home" style="padding-top: 12px; height: 5px;">포스트</a></li>
-			<li class=""><a class="header" href="/search/tagsearch.mt?keyword=${keyword}"  id="home" style="padding-top: 12px; height: 5px;">태그</a></li>
-		</ul></div>		
-	</nav>
-<!-- end of navbar-->
-
+		</ul>
+</nav>
 

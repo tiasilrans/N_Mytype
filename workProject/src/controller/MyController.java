@@ -496,7 +496,6 @@ public class MyController {
 	@RequestMapping("/settings/password.mt")
 	public ModelAndView passwordExec(@RequestParam Map map, HttpSession session) {
 		map.put("email", (String)session.getAttribute("login"));
-		System.out.println("map => "+map);
 		boolean str = myDao.pwchange(map);
 		
 		ModelAndView mav = new ModelAndView();
@@ -519,7 +518,8 @@ public class MyController {
 	@RequestMapping("/settings/memberdeleteExec")
 	public ModelAndView memberdeleteExec(@RequestParam Map map, HttpSession session) {
 		map.put("email", (String)session.getAttribute("login"));
-		System.out.println(map);
+		map.put("sender", (String)session.getAttribute("login"));
+		map.put("receiver", "MyType");
 		boolean str = myDao.pwchange(map);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("settings_memberdeleteExec");
