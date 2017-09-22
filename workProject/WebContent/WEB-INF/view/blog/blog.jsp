@@ -214,6 +214,7 @@
 						</div>
 							</c:when>
 							<c:otherwise>
+							<header class="post-header"></header>
 								<div class="post-body">
 									<a href="/${obj.URL }/post/${obj.NUM}" style="color: #0d0d0d;">
 										<h2 style="color: black; font-family: NanumSquare; font-size: 20px; margin: 0px;">${obj.TITLE }</h2>								
