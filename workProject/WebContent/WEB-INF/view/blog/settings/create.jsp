@@ -3,8 +3,13 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">   
 
 <style>
+
+body{
+	background: linear-gradient(to bottom, #80c1ff, #cce6ff );
+}
+
 .box{
-	background-color:gray;
+	background-color:white;
 	margin: 20px;
 	width: 90%;
 	padding: 20px;
