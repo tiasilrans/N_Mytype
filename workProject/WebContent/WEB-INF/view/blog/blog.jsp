@@ -399,10 +399,11 @@
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
  					<a class="home" href="/"
 						id="home"><label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -3px;">home</label></a><a href="/"><div class="home" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">홈</div></a>
- 				</div> 				      
+ 				</div> 
+ 				<c:choose>
+	 			<c:when test="${sessionScope.login eq map.EMAIL }">			      
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
- 					<c:choose>
-	 					<c:when test="${sessionScope.login eq map.EMAIL }">
+ 					
 							<form action="/blog/postWrite" method="post">
 								<input type="hidden" name="mode" value="new"/>
 								<input type="hidden" name="title" value="${map.TITLE }"/>
@@ -413,13 +414,11 @@
 									<a href="/blog/postWrite">
 									<div class="newpost" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">새 포스트 쓰기</div></a>
 								</button>
-							</form>
-	 					</c:when>
-	 					<c:otherwise>
-	 						<label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="sub" style="display:inline; margin-left: 14px;">구독</div>
-	 					</c:otherwise>
- 					</c:choose>
+							</form>	 					
  				</div>
+ 				</c:when>
+	 				
+ 					</c:choose>
  				<c:if test="${sessionScope.login ne null }">
  				<div class="col-xs-8 px-0" style="margin : 5px;  margin-top: 10px;"> 				
  					<a href="/"><label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -3px;">dashboard</label></a>
