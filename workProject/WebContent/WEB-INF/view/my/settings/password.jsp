@@ -14,7 +14,7 @@ a:hover {
 label{
 	width: 125px;
 	font-weight: normal;
-	margin-right: 15%;
+	margin-right: 19%;
 }
 
 .tertiary-nav {
