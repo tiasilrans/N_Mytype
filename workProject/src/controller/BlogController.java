@@ -113,7 +113,8 @@ public class BlogController {
 			m.put("replyCount", count);
 			m.put("likeCount", like);
 		}
-	
+		Map mmm = sDAO.subCount(map);
+		System.out.println(sDAO.subCount(map).get("COUNT(*)"));
 			mav.setViewName("blog_base");
 			mav.addObject("section", "blog/blog");
 			mav.addObject("header", "blog/header");
@@ -123,7 +124,7 @@ public class BlogController {
 			mav.addObject("list", mainPostList); // 블로그 메인 포스트 리스트
 			mav.addObject("category", list);
 			mav.addObject("subCk", sDAO.subCheck(map));
-			
+			mav.addObject("subcnt",mmm.get("COUNT(*)"));
 		return mav;
 	}
 	

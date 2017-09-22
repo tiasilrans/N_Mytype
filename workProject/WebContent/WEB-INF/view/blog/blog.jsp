@@ -313,7 +313,7 @@
 						<div class="media-body" align="left">
 							<h4 class="media-heading" style="color: black; font-family: NanumSquare; font-size: 15px;">${map.TITLE }</h4>
 						 	<div style="color: #a6a6a6;">          
-								<span style="font-size: 12px;">구독자</span> <span style="font-size: 12px;">0</span> <span style="font-size: 12px;">포스트</span> <span style="font-size: 12px;">${map.totalPostCnt }</span>
+								<span style="font-size: 12px;">구독자</span> <span style="font-size: 12px;">${subcnt }</span> <span style="font-size: 12px;">포스트</span> <span style="font-size: 12px;">${map.totalPostCnt }</span>
 							</div>
 							<c:if test="${sessionScope.login ne map.EMAIL }">
 							<c:choose>
