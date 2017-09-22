@@ -32,6 +32,23 @@ public class SubscribeDAO {
 		
 	}
 	
+	
+	public HashMap subCount(Map map){
+		SqlSession session = factory.openSession();
+		try{
+			HashMap r = session.selectOne("subscribe.count", map);
+			return r;
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("subCount ERROR : " + e.toString());
+			return null;
+		}finally {
+			session.close();
+		}
+		
+	}
+	
+	
 		
 	public List<Map> blogList(Map map){
 		SqlSession session = factory.openSession();

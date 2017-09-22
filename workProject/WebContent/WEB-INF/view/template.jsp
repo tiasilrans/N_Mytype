@@ -25,12 +25,27 @@
 		<tiles:insertAttribute name="nav"/>
 		<tiles:insertAttribute name="nav2"/>
 	</nav>
-	<section style="min-height: 70%;">
+	<section style="min-height:100%; margin-bottom: 50px;">
 		<tiles:insertAttribute name="sidebar"/>
 		<tiles:insertAttribute name="section"/>
 	</section>
-	<footer>
+	<footer style="margin-bottom: 50px;">
 		<tiles:insertAttribute name="footer"/>
 	</footer>
+	
+	<script>
+	//app-menu-disply
+	$("#app-menu-toggler").on("click", function(){
+		var menu = $("#app-menu");
+		if(menu.css("display") == "none"){
+			menu.css("display", "block");
+		}else{
+			menu.css("display", "none");
+		}
+		
+	});
+	
+	</script>
+	
 </body>
 </html>

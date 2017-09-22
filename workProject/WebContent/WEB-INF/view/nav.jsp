@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <link rel="stylesheet" href="/css/navcss.css">
 <style>
 @media ( max-width : 767px) {	
@@ -13,7 +14,27 @@
 	.search-nav{
 		display: block;
 	}	
+
+.button {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 8px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
 }
+
+
+.button1 {
+	background-color: #303030;
+}
+
+
 
 </style>
 <!--navbar menu-->
@@ -38,7 +59,7 @@
 				<ul class="nav navbar-nav navbar-left">
 					<li class=""><a class="header" href="/" id="home"><span style="color: #1a1a1a;">홈</span></a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#"><span style="color: #005ce6;">내 블로그</span><span class="caret" style="color: #005ce6;"></span></a>
+						data-toggle="dropdown" href="#" style="background-color: rgba( 255, 0, 0, 0 );"><span style="color: #005ce6; background-color: rgba( 255, 0, 0, 0 );">내 블로그</span><span class="caret" style="color: #005ce6;"></span></a>
 						<ul class="dropdown-menu">						
 						<!-- 블로그 리스트 -->				
 						<c:if test="${sessionScope.blog ne null }">
@@ -46,7 +67,8 @@
 							<li style="margin-bottom: 8px;"><a style="font-weight: bold; background-color: #66a3ff; color: white;" href="/blog/${blog.URL}">${blog.TITLE}</a></li> 
 							<li><a href="/blog/${blog.URL}/categories"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">toc</i>  <span style="margin-left: 10px;">카테고리</span></a></li> 
 							<li><a href="/blog/${blog.URL}/subscribers"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">face</i>  <span style="margin-left: 10px;">구독자</span></a></li>   
-							<li><a href="/blog/${blog.URL}/setting"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">settings</i>  <span style="margin-left: 10px;">설정</span></a></li>  
+							<li style="margin-bottom: 13px;"><a href="/blog/${blog.URL}/setting"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">settings</i>  <span style="margin-left: 10px;">설정</span></a></li>
+							  
 						</c:forEach>
 						</c:if>     
 							<li><a href="/blog/create"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">add</i>  <span style="margin-left: 10px;">새 블로그 생성</span></a></li>
@@ -55,11 +77,11 @@
 			   
 				<ul class="nav navbar-nav navbar-right" style="margin-right: 13px;">
 				<!-- 알림 -->				
-					<li style="margin: -7px;"><a href="/my/home"><i class="material-icons" style="color: #005ce6; font-size: 30px;">notifications_none</i></a></li>
+					<li style="margin: -7px;"><a href="/my/home" title="MY홈"><i class="material-icons" style="color: #005ce6; font-size: 30px;">notifications_none</i></a></li>
 				<!-- 알림끝 -->				
 					<li class="dropdown">
 						<a id="account-toggler" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="#" role="button" title="MY"
-													style="padding: 0px; margin: 6px;">
+													style="padding: 0px; margin: 6px; background-color: rgba( 255, 0, 0, 0 );">
 													
                             <c:choose>
 								<c:when test="${sessionScope.info.IMAGE eq null }">
@@ -72,7 +94,6 @@
                             
                             <span class="sr-only">계정</span></a>
                             <ul class="dropdown-menu">     
-                            	<li><a href="/my/home"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">dashboard</i><span style="margin-left: 10px;">MY홈</span></a></li>  
                             	<li><a href="/subscribe/blog.mt"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">turned_in</i><span style="margin-left: 10px;">구독</span></a></li>   
                             	<li><a href="/my/library/postgood"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">subject</i><span style="margin-left: 10px;">라이브러리</span> </a></li>
                             	<li><a href="/my/point/plist"><i class="material-icons" style="color: #66a3ff; font-size: 23px; float: left;">monetization_on</i><span style="margin-left: 10px;">포인트</span></a></li> 
@@ -146,7 +167,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">로그인</h4>
+          <h6 align="left" style="color: #999999; margin-left: 30px;">로그인 </h6>
         </div>
         
         <div class="modal-body">
@@ -164,9 +185,9 @@
 				<div align="center" class="row">
 
 					<div class="form-group row" align="right" style="width: 360px;">
-					<a>비밀번호 찾기</a>｜<a href="join.mt">회원가입</a>
+					<a style="color: black;">비밀번호 찾기</a>｜<a style="color: black;" href="join.mt">회원가입</a>
 					</div>
-					<button id="login-sbt" type="submit" class="btn">로그인</button>
+					<button id="login-sbt" type="submit" class="button button1">로그인</button>
 				</div>
 			</form>
 		</div>
@@ -189,7 +210,7 @@
         
         <div class="modal-body">
           		<div class="form-group row" align="center">
-          		<a href="/mail/list.mt?type=receive"><button type="button" class="btn btn-primary">쪽지함이동</button></a>
+          		<a href="/mail/list.mt?type=receive"><button type="button" class="button button1" >쪽지함이동</button></a>
 		</div>
         </div>
 

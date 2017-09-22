@@ -12,9 +12,9 @@ a:hover {
 }
 
 label{
-	width: 80px;
+	width: 125px;
 	font-weight: normal;
-	margin-right: 24%;
+	margin-right: 19%;
 }
 
 .tertiary-nav {
@@ -40,7 +40,7 @@ label{
 </style>
 
 
-<form class="form-inline form-horizontal" action="/my/settings/password.mt" method="post">
+<form class="form-inline form-horizontal" action="/my/settings/password.mt">
 	<div class="col-xs-0 col-md-2"></div>
 	<div class="box col-xs-12 col-md-8 col-lg-12">
 		<div class="title">
@@ -49,19 +49,16 @@ label{
 		<br/><hr/>
 		<div class="card-block">
 			<label style="color: #606060;" >비밀번호</label>
-			<input type="password" id="mypw2" name="password" class="form-control" style="width:65%;" placeholder="비밀번호" required>
+			<input type="password" id="mypw2" name="password" class="form-control" style="width: 60%;" placeholder="비밀번호" required>
 		</div>
 		<div class="card-block ">
 			<label style="color: #606060;">새 비밀번호</label>
-			<div class="form-group" style="margin-left: 1.5px;">
-				<input type="password" id="pw1" name="newpw" class="form-control" style="width: 525px;" placeholder="새 비밀번호" required>
-				<p style="color:#909090; font-size: 13px;">비밀번호는 복잡할수록 안전합니다.</p>
-				<span style="color:red; font-size: 15px;" id="result"></span>
-			</div>
+			<input type="password" id="pw1" name="newpw" class="form-control" style="width: 60%;" placeholder="새 비밀번호" required>
+			<label></label> <span style="color:red; font-size: 15px;" id="result"></span>
 		</div>
 		<div class="card-block">
-			<label style="color: #606060; width:120px; margin-right: 19.5%;">새 비밀번호 확인</label>
-			<input type="password" id="pw2" name="newpw_ck" class="form-control" style="width:65%;" placeholder="새 비밀번호 확인" required>
+			<label style="color: #606060;" >새 비밀번호 확인</label>
+			<input type="password" id="pw2" name="newpw_ck" class="form-control" style="width: 60%;" placeholder="새 비밀번호 확인" required>
 		</div>
 		<hr style="margin: 0px;" />
 	    <div class="card-block ">

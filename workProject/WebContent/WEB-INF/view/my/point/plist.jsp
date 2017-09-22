@@ -43,18 +43,35 @@ ul li a:hover, ul li a:focus {
 	color: black;
 }
 
+.div-pagination a {
+    color: #0d0d0d;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #0d0d0d;
+    border-color: #ffffff;
+}
+
+.div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
+
 </style>
 
 <section style="min-height: 80%;">
 <div class="col-xs-0 col-md-2"></div>
 <div class="box col-xs-12 col-md-8 col-lg-12">
 	<div class="title" style="margin-bottom: 40px;">
-		<span style="float:left; font-size: 18px; margin-left: 5px;"><b>사용내역</b></span>
+		<span style="float:left; font-size: 18px; margin-left: 5px;"><b><span style="margin-left: -12px;">사용내역</span></b></span>
 		<span style="float:right;">
 			<label>
 				잔여 포인트 : 
 			</label>
-			<label style=" color:#909090; font-weight: bold; font-size: 25px; margin-right: 7px;">
+			<label style=" color:#80aaff; font-weight: bold; font-size: 25px; margin-right: 7px;">
 			<fmt:formatNumber pattern="#,###">		
 				${pointsum.SUM }
 			</fmt:formatNumber></label> <b>Point</b>
@@ -105,7 +122,7 @@ ul li a:hover, ul li a:focus {
 		</table>
 	</div>
 	
-	<div align="center">
+	<div class="div-pagination" align="center">
 		<ul class="pagination">
 			<c:forEach var="i" begin="1" end="${page}">
 				<li ${np == i? "class=\"active\"": ""}><a

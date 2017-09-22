@@ -10,8 +10,8 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/css/blogViewcss.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 <style>
-
 .box {
 	border: 1px solid;
 	border-color: #d9d9d9;
@@ -19,11 +19,9 @@
 	padding: 30px;   
 	border-radius: 10px;  
 }
-
 #app-menu-toggler:hover {
     box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 5px 10px 0 rgba(0,0,0,.05), 0 10px 20px 0 rgba(0,0,0,.05);
 }
-
 #app-menu-toggler {
     z-index: 1060;
     padding: 8px;
@@ -31,30 +29,25 @@
     background-color: #fff;
     box-shadow: 0 0 0 1px rgba(0,0,0,.15);
 }
-
 .btn-secondary:hover, .btn-secondary.focus, .btn-secondary:focus {
     color: #303030!important;
     background-color: #f5f5f5;
     border-color: #e5e5e5;
 }
-
 .btn-secondary:hover {
     color: #373a3c;
     background-color: #e6e6e6;
     border-color: #adadad;
 }
-
 .btn{
 	padding: 0px;
 }
-
 #app-menu-container {
     position: fixed;
     right: 16px;
     bottom: 16px;
     z-index: 1050;
 }
-
  #app-menu {
     display: none;
     position: fixed;
@@ -71,21 +64,16 @@
     background-color: #fff;
     box-shadow: 0 0 0 1px rgba(0,0,0,.05), 0 5px 10px 0 rgba(0,0,0,.05), 0 10px 20px 0 rgba(0,0,0,.05);
 }
-
-
  a:link { color: white; text-decoration: none;}
  a:visited { color: white; text-decoration: none;}
  a:hover { color: white; text-decoration: none;}
-
 .post-body{
 	background-color:white;
 	width: 100%;
-	padding-top: 20px;
+	padding-top: 0px;
     padding-right: 20px;
     padding-bottom: 20px;
-    padding-left: 20px;    
- 	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
+    padding-left: 40px;    
 }   
  
 .ft {
@@ -99,81 +87,94 @@
 	border-bottom-right-radius: 10px;
 	margin-bottom: 40px;
 }
-
-
 .div-pagination a {
     color: #0d0d0d;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
 }
-
-
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
     z-index: 3;
     color: #fff;
     cursor: default;
     background-color: #0d0d0d;
-    border-color: #ffffff;
+    border-color: rgba( 255, 0, 0, 0 );;
 }
-
 .div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
-
 .srbox {
-	border: 1px solid;
-	border-color: #d9d9d9;
+	background-color:white;
 	width: 60%;
-	padding: 0px;     
+	padding: 0px; 
+	border-radius: 10px;    
 }
-
+.post-header{
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background-color:white;
+	padding: 10px 10px 0px 10px;
+	height: 50px; 
+	
+}
+.nav-link:hover{
+	border-left: 1px solid;
+	border-left-color: red;
+	
+}
 </style>  
 
 <div class="row" align="center" style="padding-top: 50px;">
 	<div class="col-xs-0 col-md-1"></div>
 	<div class="col-xs-12 col-md-10">
 	<c:if test="${searchMode}">
-			<div class="search-result srbox" align="left" style="padding: 1.75rem; margin-top: .5rem; margin-left: -550px; margin-bottom: 40px;">
+			<div class="search-result srbox" align="left" style="padding: 1.75rem; margin-top: .5rem; margin-left:-520px; margin-bottom: 40px;">
 				<div style="font-size: 12; font-family: sans-serif; color: #999999;">검색결과</div>
 				<div style="font-size: 20; font-family: sans-serif;">${keyword }</div>
 			</div>
-		</c:if>
+	</c:if>
 		<div class="row">
 		<c:choose>
-			<c:when test="${list ne null }">
+			<c:when test="${pl}">
 				<div class="col-xs-8 col-lg-8 blog-post-list" align="left">
 					<div class="blog-post-list">
 						<c:forEach var="obj" items="${list }">
-							<c:if test="${obj.NOTICE}">
-								<header class="post-header" style="margin-bottom: -20px;">
-									<img src="/images/notice.png" style="margin-left: 40px; ">
+							<c:choose>
+							<c:when test="${obj.NOTICE}">
+								<header class="post-header">															
+									<img src="/images/notice.png">						
 								</header>
-							</c:if>
-							<div class="post-body">
+								<div class="post-body">
 								<a href="/${obj.URL }/post/${obj.NUM}" style="color: #0d0d0d;">
-									<h2 style="color: black; font-family: sans-serif; font-size: 20px; margin: 0px;">${obj.TITLE }</h2>								
+									<h2 style="color: black; font-family: NanumSquare; font-size: 20px; margin: 0px;">${obj.TITLE }</h2>								
 									<div class="subtitle" style="margin-top: -10px; margin-left: 3px;"> 
-										<h3 style="color: #0d0d0d; font-family: sans-serif; font-size: 13px;">${obj.SUBTITLE }</h3> 
+										<h3 style="color: #0d0d0d; font-family: NanumSquare; font-size: 13px;">${obj.SUBTITLE }</h3> 
 									</div>								  
-									 <div class="fcountent" style="margin-top: 20px; margin-left: 3px; color: #808080;">
+									 <div class="fcountent" style="margin-top: 20px; margin-left: 3px; color: #808080; font-family: NanumSquare; font-weight: 500;">
 										${obj.FCONTENT }
 									</div>
 								</a>
-							</div>      
-							<div class="ft">
+						</div>      
+						<div class="ft">
 								   <div class="media">
 								    	<div class="media-left">
 										 	<div class="media-left" style="vertical-align: middle;">
-										 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:3px;">
+										 		<c:choose>
+										 		<c:when test="${obj.IMAGE != null}">
+											 		<img src="/images/profile/${obj.IMAGE}" onerror="this.src='/images/avatar_yellow.png'" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:-2px;">
+										 		</c:when>
+										 		<c:otherwise>
+											 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:-2px;">
+										 		</c:otherwise>
+										 		</c:choose>
 										 	</div> 
 										  	<div class="media-body"> 
-										  		<span style="font-size: 12px; color: black;">닉네임</span>										 	
+										  		<span style="font-size: 12px; color: black;">${obj.NICKNAME eq nul? obj.EMAIL :obj.NICKNAME}</span>										 	
 										  		<span style="font-size: 12px; color: #808080;">
 										  		<fmt:formatDate value="${obj.PDATE }" pattern="yyyy.MM.dd"/></span>
 										 	</div>
 									  </div>
 									  <div class="media-right" style="width: 100px;">
 										  <div class="media-left">
-										  		<div class="like">									
+										  		<div class="like">
 										 			<a href="#" onclick="like(this);" post-num="${obj.NUM }"><i class="material-icons" style="font-size: 15px; color: #808080; float: left;">favorite_border</i></a>
 										 		</div>
 										 		<div class="media-body"> 
@@ -188,10 +189,63 @@
 											</div>
 										</div>						
 								</div>
-							</div>
+						</div>
+							</c:when>
+							<c:otherwise>
+							<header class="post-header"></header>
+								<div class="post-body">
+									<a href="/${obj.URL }/post/${obj.NUM}" style="color: #0d0d0d;">
+										<h2 style="color: black; font-family: NanumSquare; font-size: 20px; margin: 0px;">${obj.TITLE }</h2>								
+										<div class="subtitle" style="margin-top: -10px; margin-left: 3px;"> 
+											<h3 style="color: #0d0d0d; font-family: NanumSquare; font-size: 13px;">${obj.SUBTITLE }</h3> 
+										</div>								  
+										 <div class="fcountent" style="margin-top: 20px; margin-left: 3px; color: #808080; font-family: NanumSquare; font-weight: 500;">
+											${obj.FCONTENT }
+										</div>
+									</a>
+								</div>      
+								<div class="ft">
+										   <div class="media">
+										    	<div class="media-left">
+												 	<div class="media-left" style="vertical-align: middle;">
+												 		<c:choose>
+												 		<c:when test="${obj.IMAGE != null}">
+													 		<img src="/images/profile/${obj.IMAGE}" onerror="this.src='/images/avatar_yellow.png'" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:-2px;">
+												 		</c:when>
+												 		<c:otherwise>
+													 		<img src="/images/avatar_yellow.png" class="media-object" style="width:45px; border-radius: 30px; width: 18px; height: 18px; margin-top:-2px;">
+												 		</c:otherwise>
+												 		</c:choose>
+												 	</div> 
+												  	<div class="media-body"> 
+												  		<span style="font-size: 12px; color: black;">${obj.NICKNAME eq nul? obj.EMAIL :obj.NICKNAME}</span>										 	
+												  		<span style="font-size: 12px; color: #808080;">
+												  		<fmt:formatDate value="${obj.PDATE }" pattern="yyyy.MM.dd"/></span>
+												 	</div>
+											  </div>
+											  <div class="media-right" style="width: 100px;">
+												  <div class="media-left">
+												  		<div class="like">
+												 			<a href="#" onclick="like(this);" post-num="${obj.NUM }"><i class="material-icons" style="font-size: 15px; color: #808080; float: left;">favorite_border</i></a>
+												 		</div>
+												 		<div class="media-body"> 
+												 			<span style="color: #808080; font-size: 12px; margin-left: 2px;">${obj.likeCount }</span>
+												 		</div>
+												  </div>
+													<div class="media-left" >
+													 	<i class="material-icons" style="font-size: 15px; color: #808080; float: left;">chat_bubble_outline</i>
+													 	<div class="media-body">
+													 		<span style="color: #808080; font-size: 12px; margin-left: 2px;">${obj.replyCount }</span>
+														</div>
+													</div>
+												</div>						
+										</div>
+								</div>
+							</c:otherwise>						
+							</c:choose>
 						</c:forEach>				
 					</div>  
-					<div class="div-pagination" style="text-align: center;" > 
+					<div class="div-pagination" style="text-align: center; margin-right: 100px;" > 
 							<ul class="pagination">
 								<c:forEach var="i" begin="1" end="${pNum }">				
 									<li class="active"><a href="/blog/${map.URL }?p=${i }">${i }</a>		
@@ -199,7 +253,7 @@
 							</ul> 
 					</div>
 				</div>
-			</c:when>
+			</c:when> 
 			<c:otherwise>			
 				<c:if test="${sessionScope.login eq map.EMAIL }">
 				<div class="col-xs-8" align="left" style="color: black;">
@@ -235,9 +289,9 @@
 				<section class="section box">
 					<div class="media">
 						<div class="media-body" align="left">
-							<h4 class="media-heading" style="color: black; font-family: sans-serif; font-size: 15px;">${map.TITLE }</h4>
+							<h4 class="media-heading" style="color: black; font-family: NanumSquare; font-size: 15px;">${map.TITLE }</h4>
 						 	<div style="color: #a6a6a6;">          
-								<span style="font-size: 12px;">구독자</span> <span style="font-size: 12px;">0</span> <span style="font-size: 12px;">포스트</span> <span style="font-size: 12px;">${map.totalPostCnt }</span>
+								<span style="font-size: 12px;">구독자</span> <span style="font-size: 12px;">${subcnt }</span> <span style="font-size: 12px;">포스트</span> <span style="font-size: 12px;">${map.totalPostCnt }</span>
 							</div>
 							<c:if test="${sessionScope.login ne map.EMAIL }">
 							<c:choose>
@@ -274,7 +328,6 @@
 									class="post-count"> ${obj.cnt }</span></a></li>
 							</c:if>
 							</c:forEach>
-
 						</ul>
 					</div>
 				</section>
@@ -290,16 +343,31 @@
 	</div>
 	<div class="col-xs-0 col-md-1"></div>
 </div>
-
  <div id="app-menu" style="display: none;">
  	<div>
  		<div>
  			<div class="menu-header">
  				<div class="col-xs-8 px-0" style="margin-bottom: 5px; margin-top: 20px;">
- 					<a href="/blog/${map.url }"><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">사용자 이름</span></a> 					 
+ 				<c:choose>
+ 				<c:when test="${sessionScope.login eq null}">
+ 					<a href="/login.mt"><img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"><span style="margin: 10px; font-weight: bold; color:#262626; text-decoration:none;">로그인</span></a> 					 
+ 				</c:when>
+ 				<c:otherwise>
+ 					<a href="/blog/${map.URL }">
+ 					<c:choose>
+ 					<c:when test="${sessionScope.info.IMAGE ne null}">
+	 					<img src="/images/profile/${sessionScope.info.IMAGE}" onerror="this.src='/images/avatar_yellow.png'" style="border-radius: 50%; height: 32px; width: 32px;"/>
+ 					</c:when>
+ 					<c:otherwise>
+ 					<img src="/images/avatar_yellow.png" style="border-radius: 50%; height: 32px; width: 32px;"/>
+ 					</c:otherwise> 
+ 					</c:choose>			 
+ 					<span style="margin: 10px; font-family:NanumSquare; font-weight:500; color:black; text-decoration:none;">${sessionScope.info.NICKNAME ne null ? sessionScope.info.NICKNAME : sessionScope.info.EMAIL}</span></a> 					 
+ 				</c:otherwise>
+ 				</c:choose>
  				</div>
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
- 					<span><i class="material-icons" style="color: #005ce6; font-size: 26px;">notifications_none</i></span> 
+ 					<span><a href="/my/home"><i class="material-icons" style="color: #005ce6; font-size: 26px;">notifications_none</i></a></span> 
  				</div> 				
  				<div class="col-xs-2 px-0" style="margin-top: 23px;">
  					<a href="/logout.mt"><i class="material-icons" title="로그아웃" style="color: #a6a6a6; font-size: 26px;">power_settings_new</i></a>
@@ -307,10 +375,11 @@
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
  					<a class="home" href="/"
 						id="home"><label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -3px;">home</label></a><a href="/"><div class="home" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">홈</div></a>
- 				</div> 				      
+ 				</div> 
+ 				<c:choose>
+	 			<c:when test="${sessionScope.login eq map.EMAIL }">			      
  				<div class="col-xs-8 px-0" style="margin : 5px; margin-top: 10px;">
- 					<c:choose>
-	 					<c:when test="${sessionScope.login eq map.EMAIL }">
+ 					
 							<form action="/blog/postWrite" method="post">
 								<input type="hidden" name="mode" value="new"/>
 								<input type="hidden" name="title" value="${map.TITLE }"/>
@@ -321,17 +390,17 @@
 									<a href="/blog/postWrite">
 									<div class="newpost" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">새 포스트 쓰기</div></a>
 								</button>
-							</form>
-	 					</c:when>
-	 					<c:otherwise>
-	 						<label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -2px;">check_circle</label> <div class="home" style="display:inline; margin-left: 14px;">구독</div>
-	 					</c:otherwise>
- 					</c:choose>
+							</form>	 					
  				</div>
- 				<div class="col-xs-8 px-0" style="margin : 5px;  margin-top: -5px;"> 				
- 					<a href="/my/home"><label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -3px;">dashboard</label></a>
- 					<a href="/my/home"><div class="myhome" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">내 블로그 설정</div></a>
- 				</div> 				       
+ 				</c:when>
+	 				
+ 					</c:choose>
+ 				<c:if test="${sessionScope.login ne null }">
+ 				<div class="col-xs-8 px-0" style="margin : 5px;  margin-top: 10px;"> 				
+ 					<a href="/"><label class="material-icons" style="color: #66a3ff; font-size: 25px; float: left; margin-top: -3px;">dashboard</label></a>
+ 					<a href="/blog/${sessionScope.userBlog.URL }/setting"><div class="myblog" style="display:inline; margin-left: 14px; color: #1a1a1a; text-decoration:none;">내 블로그 설정</div></a>
+ 				</div>
+ 				</c:if>				       
  			</div> 
  			
  			 
@@ -348,8 +417,6 @@
 			target.css("display", "none"); 
 		}	
 	};
-
-
 	//app-menu-disply
 	$("#app-menu-toggler").on("click", function(){
 		var menu = $("#app-menu");
@@ -420,9 +487,6 @@
 		
 	};
 	
-
 	
 	
-
 </script>
-								

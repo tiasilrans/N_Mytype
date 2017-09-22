@@ -13,7 +13,7 @@ a:hover {
 }
 
 label{
-	width: 80px;
+	width: 82px;
 	font-weight: normal;
 	margin-right: 24%;
 }
@@ -62,7 +62,7 @@ label{
 			<div class="input-group">
 				<input type="file" name="image" id="upload-profile-photo" class="w3-button w3-white w3-border w3-round-large" style="width:100%;" >
 				<p style="padding-top: 5px; margin-bottom:0; color:#909090; font-size: 13px;">최대 5MB의 이미지 파일</p>
-				<p><input class="w3-check" type="checkbox" style="width:15px; height:15px;"> <label style="font-size: 12px;">사진 삭제</label></p>
+				<p><input class="w3-check" name="imageDelete" type="checkbox" style="width:15px; height:15px;"> <label style="font-size: 12px;">사진 삭제</label></p>
 			</div>
 		</div>
 		<div class="card-block ">
@@ -93,5 +93,6 @@ label{
 		reader.readAsDataURL(this.files[0]);
 		
 	});
+	
 	
 </script>

@@ -3,13 +3,20 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<link rel="stylesheet" href="/css/postviewcss.css">
 <link rel="stylesheet" href="/css/my.css">
+
     
 <style>
 
-body{
-	background: whitesomke;
-}
+.box {
+	position: relative;
+	background-color:white;
+	border-radius:10px;
+	margin: 20px;
+	width: 70%;
+	padding: 20px;
+} 
 
 table.type07 {
     line-height: 1.5;
@@ -29,17 +36,35 @@ table.type07 td {
 	text-align: center;
     padding: 7px;
 }
+
+.div-pagination a {
+    color: #0d0d0d;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #0d0d0d;
+    border-color:rgba( 255, 0, 0, 0 );
+}
+
+.div-pagination a:hover:not(.active) {background-color: #333333; color: white;}
+
 </style>
 
 
 <div class="col-xs-0 col-md-2"></div>
 <div class="box col-xs-12 col-md-8 col-lg-12" style="margin-bottom: 0;">
 	<div class="title">
-		<span style="float:left; font-size: 17px; margin-left: 5px;"><b>구독 중인 블로그</b></span>
+		<span style="float:left; font-size: 17px; margin-left: -8px;"><b>구독 중인 블로그</b></span>
 	</div>
 	<br/><hr/>
 	<c:choose>
-		<c:when test="${slist ne null}">
+		<c:when test="${slist.size() > 0}">
 			<c:forEach var="blog" items="${slist}">
 				<div class="panel panel-default" style="text-align: left; height:85px;">
 					<div class="panel-body" style="padding-top: 10px;">
@@ -58,13 +83,13 @@ table.type07 td {
 					<div class="col-md-7" style="padding : 0px;">
 						<div style="font-size: 15px; font-weight: bold;">
 							<a href="/blog/${blog.URL }" style="color: #616161; text-decoration: none;">
-							${blog.TITLE}</a>
+							<span style="margin-left: 5px">${blog.TITLE}</span></a>
 						</div>
 						<div style="padding: 5px; padding-left: 5px;">${blog.INTRO}</div>
-					</div>
+					</div>  
 					
 					<div class="col-md-3" style="padding : 0px; padding-top: 10px;" align="right">
-						<button class="btn subscribe" id="${blog.URL}" value="${blog.URL}" type="button" style="width: 60%; height: 40px; font-size: 15; background-color: black;"><b class="${blog.URL }" style="color: white;">구독취소</b></button>
+						<button class="btn subscribe" id="${blog.URL}" value="${blog.URL}" type="button" style="width: 50%; height: 40px; font-size: 15; background-color: black;"><b class="${blog.URL }" style="color: white;">구독취소</b></button>
 					</div>
 					</div>
 				</div>
@@ -74,13 +99,13 @@ table.type07 td {
 		<c:otherwise>
 			<ul class="list-group" style="width: 50%; text-align: left">
 				<c:forEach var="blog" items="${slist}">
-					<h5>구독중인 블로그가 없습니다.</h5>
+					<h5 align="center">구독중인 블로그가 없습니다.</h5>
 				</c:forEach>
 			</ul>
 			</c:otherwise>
 	</c:choose>
 	
-	<div align="center">
+	<div class="div-pagination" align="center">
 		<ul class="pagination">
 			<c:forEach var="i" begin="1" end="${page}">
 				<li ${np == i? "class=\"active\"": ""}><a
