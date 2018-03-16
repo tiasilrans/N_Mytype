@@ -1,0 +1,178 @@
+@CHARSET "UTF-8";
+.navbar-form {
+  margin:0;
+  margin-top: 5px;
+  padding:8px 0px;
+}
+ 
+.navbar-form .search-box {
+  border:0px;
+  height:35px;
+  outline: none;
+  width:320px;
+  padding-right: 3px;
+  padding-left: 15px;
+  margin:4px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  border-radius: 22px;
+}
+ 
+.navbar-form button {
+  border: 0;
+  background: none;
+  padding: 2px 5px;
+  margin-top: 2px;
+  position: relative;
+  left: -34px;
+  margin-bottom: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+ 
+.search-box:focus + button {
+  z-index: 3;   
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	min-height: 2500px;
+	background-color: #fff;
+}
+
+.navbar-info {
+	width: 100%;
+}
+
+.fixed-me {
+	background-color: #fff !important;
+	padding: 0px !important;
+	margin-bottom: 5px;
+	
+	top: 0;
+	z-index: 888;
+	width: 100%;
+	border-bottom: 3px solid #00134d !important;
+	transition: all 1s;
+}
+
+
+.navbar-me{
+    padding: 10px 0px;
+    background-color: transparent;
+    top: 0px;
+    border: 0px;
+    border-radius: 0px;
+    bottom : 0px;
+    transition: all 1s;
+}
+  
+.navbar-collapse{
+    text-align: center;
+    border-top-width: 0px;
+    padding-top: 10px;
+    margin-top: 5px;
+}
+  
+.header-right-menu {
+	padding: 5px 15px !important;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover
+	{
+	background-color: transparent;	
+}
+
+.menu-collapsed-button {
+	margin: 10px 15px 10px 15px !important;
+}
+
+@media ( max-width : 767px) {
+	.navbar-nav>li>a {
+		line-height: 20px;
+	}
+	.navbar-brand {
+		padding: 7px 15px;
+	}
+	.navbar-brand img {
+		width: 144px;
+	}
+}
+
+.navbar-form {
+	margin: 0;
+	margin-top: 5px;
+	padding: 8px 0px;
+}
+
+.navbar-form .search-box {
+	border: 1px solid rgba(0,0,0,.25);
+	height: 35px;
+	outline: none;
+	width: 320px;
+	padding-right: 3px;
+	padding-left: 15px;
+	margin: 4px;
+	-webkit-border-radius: 22px;
+	-moz-border-radius: 22px;
+	border-radius: 22px;
+}
+
+.navbar-form button {
+	border: 0;
+	background: none;
+	padding: 2px 5px;
+	margin-top: 2px;
+	position: relative;
+	left: -34px;
+	margin-bottom: 0;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.search-box:focus+button {
+	z-index: 3;
+}
+
+@media ( min-width : 768px) {
+	.dropdown:hover {
+		background-color: #fff;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+		
+	}
+	.dropdown:hover .dropdown-menu {
+		display: block;
+	}
+	.navbar-form {
+		padding: 0px;
+	}
+	.navbar-form .search-box {
+		width: 260px;
+		height: 32px;
+	}
+	
+	.search-nav{
+		display: none;
+	}
+	
+	
+}
+
+
+
+
+
+
+/* 로그인창 */
+#login-sbt,#login-alert{
+	width : 360px;
+	height: 60px;
+}
+#login-email,#login-pw{
+	width : 360px;
+	height: 40px;
+}

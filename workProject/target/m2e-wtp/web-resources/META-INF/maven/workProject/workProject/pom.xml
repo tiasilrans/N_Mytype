@@ -24,7 +24,8 @@
       </plugin>
     </plugins>
   </build>
-  <dependencies>
+<dependencies>
+
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -136,5 +137,5 @@
 			<artifactId>spring-integration-mail</artifactId>
 			<version>4.3.9.RELEASE</version>
 		</dependency>
-	</dependencies>
+	</dependencies>  
 </project>
